@@ -1,46 +1,69 @@
 ---
 layout: page
-title: Hello World!
-tagline: Supporting tagline
+title: Frege Programming Language
 ---
 {% include JB/setup %}
 
-Read [Jekyll Quick Start](http://jekyllbootstrap.com/usage/jekyll-quick-start.html)
+What is Frege?
+==============
 
-Complete usage and documentation available at: [Jekyll Bootstrap](http://jekyllbootstrap.com)
+Frege is a non-strict, pure functional programming language in the spirit of Haskell. It enjoys a strong static type system with type inference. Higher rank types are supported, though type annotations are required for that.
 
-## Update Author Attributes
+Frege programs are compiled to Java and run in a JVM. Existing Java Classes and Methods can be used seamlessly from Frege.
 
-In `_config.yml` remember to specify your own data:
-    
-    title : My Blog =)
-    
-    author :
-      name : Name Lastname
-      email : blah@email.test
-      github : username
-      twitter : username
+The Frege programming language is named after and in honor of Gottlob Frege. (This is surprisingly hard for english speakers to pronounce, but [you can use this translator page](http://translate.google.de/#de/en/Frege) to get it right. Just click the audio symbol in the left (german) part.)
 
-The theme should reference these variables whenever needed.
-    
-## Sample Posts
+Motivation
+----------
 
-This blog contains sample posts which help stage pages and blog data.
-When you don't need the samples anymore just delete the `_posts/core-samples` folder.
+There have been attempts to [port Haskell to the JVM](http://www.haskell.org/haskellwiki/GHC/FAQ#Why_isn.27t_GHC_available_for_.NET_or_on_the_JVM.3F), though said projects seem failed or stuck. The common wisdom suggests that it is not easily possible.
 
-    $ rm -rf _posts/core-samples
+Frege is thought as a substitute for this missing GHC port. While not derived from any existing Haskell implementation, it is more or less equivalent to Haskell 2010. Please see the wiki page that details the differences.
 
-Here's a sample "posts list".
+Project State
+-------------
 
-<ul class="posts">
-  {% for post in site.posts %}
-    <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
-  {% endfor %}
-</ul>
+The compiler, an Eclipse plugin and a provisional version of the documentation can be [downloaded](https://github.com/Frege/frege/downloads). Note that Frege requires JDK 7 to compile and run programs.
 
-## To-Do
+The compiler and the documentation tool are quite stable, the documentation provisional and the library is evolving. It already supports important parts of the Haskell 2010 standard library.
 
-This theme is still unfinished. If you'd like to be added as a contributor, [please fork](http://github.com/plusjade/jekyll-bootstrap)!
-We need to clean up the themes, make theme usage guides with theme-specific markup examples.
+See the [Getting Started](https://github.com/Frege/frege/wiki/Getting-Started) page for getting started at the command-line or read the Eclipse plugin page.
 
+Contributions
+-------------
 
+If you are interested in contributing, here are some hot topics:
+
+* write frege code to support more of the Java API
+* create a nicer logo
+* port Haskell libraries or tools
+* open issues on the Issues page if you find bugs, errors in documentation, etc.
+* vote for Enhancement issues you consider most important by "starring" them or create new ones.
+
+Contact
+-------
+
+You can contact the project members through the
+[discussion group](http://groups.google.com/group/frege-programming-language)
+devoted to the Frege programming language.
+Specific programming problems are best solved on
+[Stack Overflow](http://stackoverflow.com/questions/tagged/frege),
+we check questions tagged "frege" on a regular basis.
+
+If you find a bug, please let us know by opening an issue in the issue tracker.
+(You'll need a GitHub account to do this.)
+
+Links
+----
+
+[Frege Wiki](https://github.com/Frege/frege/wiki/_pages)
+
+[Author's Blog](http://fregepl.blogspot.com/)
+
+[Nightly Builds](http://jenkins.jamestastic.com/job/frege/)
+
+[Online REPL](http://try.frege-lang.org/)
+
+[Online Docs (Runtime Javadoc)](http://jamestastic.com/frege-doc/)
+
+[Online Docs (Frege)](http://jamestastic.com/frege-doc/frege/)
