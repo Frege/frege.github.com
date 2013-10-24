@@ -64,6 +64,6 @@ Links
 
 [Online REPL](http://try.frege-lang.org/)
 
-[Online Docs (Runtime Javadoc)](http://jamestastic.com/frege-doc/)
+[Online Docs (Runtime Javadoc)](http://frege.github.com/doc/index.html)
 
-[Online Docs (Frege)](http://jamestastic.com/frege-doc/frege/)
+[Online Docs (Frege)](http://frege.github.com/doc/frege/)
