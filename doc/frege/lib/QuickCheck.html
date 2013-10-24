@@ -1,0 +1,1352 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<META http-equiv="Content-Type" content="text/html;charset=utf-8">
+<TITLE>frege.lib.QuickCheck - frege documentation</TITLE>
+<style TYPE="text/css">
+body { font-family: helvetica, arial, sans-serif }
+pre { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
+h3  { font-weight: lighter }
+dt.func { background: rgb(95%, 95%, 80%) }
+dt.clas { background: rgb(80%, 95%, 95%) }
+dt.inst { background: rgb(95%, 90%, 95%) }
+dt.data { background: rgb(95%, 95%, 95%) }
+span.code { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
+span.unknown { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: red }
+a.fref { text-decoration: none; font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(30%, 30%, 0%) }
+a.tref { text-decoration: none; font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(40%, 0%,  40%) }
+</style>
+<BODY>
+<h1>
+<a name="package">Package <tt>frege.lib.QuickCheck</tt></a></h1>
+<p>
+Compiled: Thu Oct 24 10:47:18 CEST 2013 from source file: <tt>./frege/lib/QuickCheck.fr</tt></p>
+<h3>
+Package Documentation</h3>
+<p>
+Please see the QuickCheck manual at <tt>http://www.cse.chalmers.se/~rjmh/QuickCheck/manual.html</tt></p>
+<h3>
+Table of Content</h3>
+<ul>
+<li>
+<div>
+<a HREF="#class">Classes</a></div>
+<div>
+<a class="tref" href="#Arbitrary">Arbitrary</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Testable">Testable</a></div>
+</li>
+<li>
+<div>
+<a HREF="#instance">Instances</a></div>
+<div>
+<a class="tref" href="#Arbitrary_l__r">Arbitrary_()</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Arbitrary_l_c_r">Arbitrary_(,)</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Arbitrary_l_cc_r">Arbitrary_(,,)</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Arbitrary_l_ccc_r">Arbitrary_(,,,)</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Arbitrary__minus_gt">Arbitrary_-&gt;</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Arbitrary_Bool">Arbitrary_Bool</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Arbitrary_Char">Arbitrary_Char</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Arbitrary_Double">Arbitrary_Double</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Arbitrary_Either">Arbitrary_Either</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Arbitrary_Float">Arbitrary_Float</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Arbitrary_Int">Arbitrary_Int</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Arbitrary_Integer">Arbitrary_Integer</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Arbitrary_Long">Arbitrary_Long</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Arbitrary_Maybe">Arbitrary_Maybe</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Arbitrary_String">Arbitrary_String</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Arbitrary__lbrack_rbrack">Arbitrary_[]</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Functor_Gen">Functor_Gen</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Monad_Gen">Monad_Gen</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Testable_l__r">Testable_()</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Testable__minus_gt">Testable_-&gt;</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Testable_Bool">Testable_Bool</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Testable_Property">Testable_Property</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Testable_Result">Testable_Result</a></div>
+</li>
+<li>
+<div>
+<a HREF="#data">Data Types</a></div>
+<div>
+<a class="tref" href="#Config">Config</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Gen">Gen</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Property">Property</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Result">Result</a></div>
+</li>
+<li>
+<div>
+<a HREF="#let">Functions and Values (alphabetically)</a></div>
+<div>
+<a class="fref" href="#_eq_eq_gt">==&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#backN">backN</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#backspaces">backspaces</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#check">check</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#choose">choose</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#classify">classify</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#collect">collect</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#defaultConfig">defaultConfig</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#done">done</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#elements">elements</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#evaluate">evaluate</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#forAll">forAll</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#four">four</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#fraction">fraction</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#frequency">frequency</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#generate">generate</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#label">label</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#lnsep">lnsep</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#nothing">nothing</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#oneof">oneof</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#promote">promote</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#quick">quick</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#quickCheck">quickCheck</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#rand">rand</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#resize">resize</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#result">result</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#sized">sized</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#test">test</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#tests">tests</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#three">three</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#trivial">trivial</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#two">two</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#variant">variant</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#vector">vector</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#verbose">verbose</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#verboseCheck">verboseCheck</a></div>
+</li>
+<li>
+<div>
+<a HREF="#case">Functions and Values (by type)</a></div>
+<div>
+<a class="fref" href="#_eq_eq_gt">==&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#backN">backN</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#backspaces">backspaces</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#check">check</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#choose">choose</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#classify">classify</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#collect">collect</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#defaultConfig">defaultConfig</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#done">done</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#elements">elements</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#evaluate">evaluate</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#forAll">forAll</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#four">four</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#fraction">fraction</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#frequency">frequency</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#generate">generate</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#label">label</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#lnsep">lnsep</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#nothing">nothing</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#oneof">oneof</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#promote">promote</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#quick">quick</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#quickCheck">quickCheck</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#rand">rand</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#resize">resize</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#result">result</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#sized">sized</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#test">test</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#tests">tests</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#three">three</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#trivial">trivial</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#two">two</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#variant">variant</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#vector">vector</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#verbose">verbose</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#verboseCheck">verboseCheck</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary:arbitrary">Arbitrary.arbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary:coarbitrary">Arbitrary.coarbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Testable:property">Testable.property</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary_l__r:arbitrary">Arbitrary_().arbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary_l__r:coarbitrary">Arbitrary_().coarbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary_l_c_r:arbitrary">Arbitrary_(,).arbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary_l_c_r:coarbitrary">Arbitrary_(,).coarbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary_l_cc_r:arbitrary">Arbitrary_(,,).arbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary_l_cc_r:coarbitrary">Arbitrary_(,,).coarbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary_l_ccc_r:arbitrary">Arbitrary_(,,,).arbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary_l_ccc_r:coarbitrary">Arbitrary_(,,,).coarbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary__minus_gt:arbitrary">Arbitrary_-&gt;.arbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary__minus_gt:coarbitrary">Arbitrary_-&gt;.coarbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary_Bool:arbitrary">Arbitrary_Bool.arbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary_Bool:coarbitrary">Arbitrary_Bool.coarbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary_Char:arbitrary">Arbitrary_Char.arbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary_Char:coarbitrary">Arbitrary_Char.coarbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary_Double:arbitrary">Arbitrary_Double.arbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary_Double:coarbitrary">Arbitrary_Double.coarbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary_Either:arbitrary">Arbitrary_Either.arbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary_Either:coarbitrary">Arbitrary_Either.coarbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary_Float:arbitrary">Arbitrary_Float.arbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary_Float:coarbitrary">Arbitrary_Float.coarbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary_Int:arbitrary">Arbitrary_Int.arbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary_Int:coarbitrary">Arbitrary_Int.coarbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary_Integer:arbitrary">Arbitrary_Integer.arbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary_Integer:coarbitrary">Arbitrary_Integer.coarbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary_Long:arbitrary">Arbitrary_Long.arbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary_Long:coarbitrary">Arbitrary_Long.coarbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary_Maybe:arbitrary">Arbitrary_Maybe.arbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary_Maybe:coarbitrary">Arbitrary_Maybe.coarbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary_String:arbitrary">Arbitrary_String.arbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary_String:coarbitrary">Arbitrary_String.coarbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary__lbrack_rbrack:arbitrary">Arbitrary_[].arbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arbitrary__lbrack_rbrack:coarbitrary">Arbitrary_[].coarbitrary</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Functor_Gen:fmap">Functor_Gen.fmap</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_Gen:_lt_star_gt">Monad_Gen.&lt;*&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_Gen:_lt_star">Monad_Gen.&lt;*</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_Gen:_star_gt">Monad_Gen.*&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_Gen:_gt_gt_eq">Monad_Gen.&gt;&gt;=</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_Gen:_gt_gt">Monad_Gen.&gt;&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_Gen:_return">Monad_Gen.return</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_Gen:join">Monad_Gen.join</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Testable_l__r:property">Testable_().property</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Testable__minus_gt:property">Testable_-&gt;.property</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Testable_Bool:property">Testable_Bool.property</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Testable_Property:property">Testable_Property.property</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Testable_Result:property">Testable_Result.property</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Config:configMaxTest">Config.configMaxTest</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Config:chg$configMaxTest">Config.chg$configMaxTest</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Config:chg$configEvery">Config.chg$configEvery</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Config:Config">Config.Config</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Config:chg$configMaxFail">Config.chg$configMaxFail</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Config:configEvery">Config.configEvery</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Config:chg$configSize">Config.chg$configSize</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Config:configMaxFail">Config.configMaxFail</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Config:has$configMaxTest">Config.has$configMaxTest</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Config:has$configEvery">Config.has$configEvery</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Config:configSize">Config.configSize</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Config:has$configMaxFail">Config.has$configMaxFail</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Config:upd$configEvery">Config.upd$configEvery</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Config:has$configSize">Config.has$configSize</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Config:upd$configMaxTest">Config.upd$configMaxTest</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Config:upd$configMaxFail">Config.upd$configMaxFail</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Config:upd$configSize">Config.upd$configSize</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Gen:Gen">Gen.Gen</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Property:Prop">Property.Prop</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Result:has$ok">Result.has$ok</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Result:chg$ok">Result.chg$ok</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Result:arguments">Result.arguments</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Result:Result">Result.Result</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Result:chg$arguments">Result.chg$arguments</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Result:has$arguments">Result.has$arguments</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Result:chg$stamp">Result.chg$stamp</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Result:upd$arguments">Result.upd$arguments</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Result:ok">Result.ok</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Result:has$stamp">Result.has$stamp</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Result:stamp">Result.stamp</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Result:upd$ok">Result.upd$ok</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Result:upd$stamp">Result.upd$stamp</a></div>
+</li>
+</ul>
+<h3>
+Imports</h3>
+<ul>
+<li>
+<div>
+import <a HREF="../prelude/PreludeNative.html">frege.prelude.PreludeNative</a> as PreludeNative</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeBase.html">frege.prelude.PreludeBase</a> as PreludeBase</div>
+</li>
+<li>
+<div>
+import <a HREF="../Prelude.html">frege.Prelude</a> as Prelude</div>
+</li>
+<li>
+<div>
+import <a HREF="../data/List.html">frege.data.List</a> as List</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeList.html">frege.prelude.PreludeList</a> as PreludeList</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeIO.html">frege.prelude.PreludeIO</a> as PreludeIO</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeMonad.html">frege.prelude.PreludeMonad</a> as PreludeMonad</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeText.html">frege.prelude.PreludeText</a> as PreludeText</div>
+</li>
+<li>
+<div>
+import <a HREF="./Random.html">frege.lib.Random</a> as Random</div>
+</li>
+</ul>
+<h2>
+<a name="class">Classes</a></h2>
+<dl class="clas">
+<dt class="clas">
+<tt><b>class </b><a name="Arbitrary">Arbitrary</a>  a</tt></dt>
+<dd class="clas">
+<h3>
+Known Instances</h3>
+<p>
+<a class="tref" href="#Arbitrary_String">StringJ</a>, <a class="tref" href="#Arbitrary__lbrack_rbrack">[]</a>, <a class="tref" href="#Arbitrary_Long">Long</a>, <a class="tref" href="#Arbitrary_Maybe">Maybe</a>, <a class="tref" href="#Arbitrary_Int">Int</a>, <a class="tref" href="#Arbitrary_Either">Either</a>, <a class="tref" href="#Arbitrary_Double">Double</a>, <a class="tref" href="#Arbitrary_Float">Float</a>, <a class="tref" href="#Arbitrary_Integer">Integer</a>, <a class="tref" href="#Arbitrary_Bool">Bool</a>, <a class="tref" href="#Arbitrary_l_ccc_r">(,,,)</a>, <a class="tref" href="#Arbitrary__minus_gt">-&gt;</a>, <a class="tref" href="#Arbitrary_l_c_r">(,)</a>, <a class="tref" href="#Arbitrary_l__r">()</a>, <a class="tref" href="#Arbitrary_l_cc_r">(,,)</a>, <a class="tref" href="#Arbitrary_Char">Char</a></p>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Arbitrary:arbitrary">arbitrary</a> :: <a class="tref" href="#Arbitrary">Arbitrary</a> a =&gt; <a class="tref" href="#Gen">Gen</a> a</tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="Arbitrary:coarbitrary">coarbitrary</a> :: <a class="tref" href="#Arbitrary">Arbitrary</a> a =&gt; a -&gt; <a class="tref" href="#Gen">Gen</a> b -&gt; <a class="tref" href="#Gen">Gen</a> b</tt></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="clas">
+<tt><b>class </b><a name="Testable">Testable</a>  a</tt></dt>
+<dd class="clas">
+<h3>
+Known Instances</h3>
+<p>
+<a class="tref" href="#Testable_Result">Result</a>, <a class="tref" href="#Testable__minus_gt">-&gt;</a>, <a class="tref" href="#Testable_Bool">Bool</a>, <a class="tref" href="#Testable_Property">Property</a>, <a class="tref" href="#Testable_l__r">()</a></p>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Testable:property">property</a> :: <a class="tref" href="#Testable">Testable</a> a =&gt; a -&gt; <a class="tref" href="#Property">Property</a></tt></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+</dl>
+<h2>
+<a name="instance">Instances</a></h2>
+<dl class="inst">
+<dt class="inst">
+<tt><b>instance </b><a name="Arbitrary_l__r"> </a> <a class="tref" href="#Arbitrary">Arbitrary</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></tt></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Arbitrary_l__r:arbitrary">arbitrary</a> :: <a class="tref" href="#Gen">Gen</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="Arbitrary_l__r:coarbitrary">coarbitrary</a> :: <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a> -&gt; <b><a class="tref" href="#Gen">Gen</a> α</b> -&gt; <a class="tref" href="#Gen">Gen</a> α</tt></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<tt><b>instance </b><a name="Arbitrary_l_c_r"> </a> <a class="tref" href="#Arbitrary">Arbitrary</a> (<a class="tref" href="#Arbitrary">Arbitrary</a> a, <a class="tref" href="#Arbitrary">Arbitrary</a> b) =&gt; (a, b)</tt></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Arbitrary_l_c_r:arbitrary">arbitrary</a> :: (<a class="tref" href="#Arbitrary">Arbitrary</a> α, <a class="tref" href="#Arbitrary">Arbitrary</a> β) =&gt; <a class="tref" href="#Gen">Gen</a> (α, β)</tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="Arbitrary_l_c_r:coarbitrary">coarbitrary</a> :: (<a class="tref" href="#Arbitrary">Arbitrary</a> β, <a class="tref" href="#Arbitrary">Arbitrary</a> α) =&gt; <b>(β, α)</b> -&gt; <a class="tref" href="#Gen">Gen</a> γ -&gt; <a class="tref" href="#Gen">Gen</a> γ</tt></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<tt><b>instance </b><a name="Arbitrary_l_cc_r"> </a> <a class="tref" href="#Arbitrary">Arbitrary</a> (<a class="tref" href="#Arbitrary">Arbitrary</a> a, <a class="tref" href="#Arbitrary">Arbitrary</a> b, <a class="tref" href="#Arbitrary">Arbitrary</a> c) =&gt; (a, b, c)</tt></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Arbitrary_l_cc_r:arbitrary">arbitrary</a> :: (<a class="tref" href="#Arbitrary">Arbitrary</a> α, <a class="tref" href="#Arbitrary">Arbitrary</a> β, <a class="tref" href="#Arbitrary">Arbitrary</a> γ) =&gt; <a class="tref" href="#Gen">Gen</a> (α, β, γ)</tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="Arbitrary_l_cc_r:coarbitrary">coarbitrary</a> :: (<a class="tref" href="#Arbitrary">Arbitrary</a> α, <a class="tref" href="#Arbitrary">Arbitrary</a> β, <a class="tref" href="#Arbitrary">Arbitrary</a> γ) =&gt; <b>(α, β, γ)</b> -&gt; <a class="tref" href="#Gen">Gen</a> δ -&gt; <a class="tref" href="#Gen">Gen</a> δ</tt></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<tt><b>instance </b><a name="Arbitrary_l_ccc_r"> </a> <a class="tref" href="#Arbitrary">Arbitrary</a> (<a class="tref" href="#Arbitrary">Arbitrary</a> a, <a class="tref" href="#Arbitrary">Arbitrary</a> b, <a class="tref" href="#Arbitrary">Arbitrary</a> c, <a class="tref" href="#Arbitrary">Arbitrary</a> d) =&gt; (a, b, c, d)</tt></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Arbitrary_l_ccc_r:arbitrary">arbitrary</a> :: (<a class="tref" href="#Arbitrary">Arbitrary</a> α, <a class="tref" href="#Arbitrary">Arbitrary</a> β, <a class="tref" href="#Arbitrary">Arbitrary</a> γ, <a class="tref" href="#Arbitrary">Arbitrary</a> δ) =&gt; <a class="tref" href="#Gen">Gen</a> (α, β, γ, δ)</tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="Arbitrary_l_ccc_r:coarbitrary">coarbitrary</a> :: (<a class="tref" href="#Arbitrary">Arbitrary</a> α, <a class="tref" href="#Arbitrary">Arbitrary</a> β, <a class="tref" href="#Arbitrary">Arbitrary</a> δ, <a class="tref" href="#Arbitrary">Arbitrary</a> γ) =&gt; <b>(α, β, δ, γ)</b> -&gt; <a class="tref" href="#Gen">Gen</a> ε -&gt; <a class="tref" href="#Gen">Gen</a> ε</tt></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<tt><b>instance </b><a name="Arbitrary__minus_gt"> </a> <a class="tref" href="#Arbitrary">Arbitrary</a> (<a class="tref" href="#Arbitrary">Arbitrary</a> a, <a class="tref" href="#Arbitrary">Arbitrary</a> b) =&gt; a -&gt; b</tt></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Arbitrary__minus_gt:arbitrary">arbitrary</a> :: (<a class="tref" href="#Arbitrary">Arbitrary</a> α, <a class="tref" href="#Arbitrary">Arbitrary</a> β) =&gt; <a class="tref" href="#Gen">Gen</a> (α-&gt;β)</tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="Arbitrary__minus_gt:coarbitrary">coarbitrary</a> :: (<a class="tref" href="#Arbitrary">Arbitrary</a> β, <a class="tref" href="#Arbitrary">Arbitrary</a> α) =&gt; (β-&gt;α) -&gt; <a class="tref" href="#Gen">Gen</a> γ -&gt; <a class="tref" href="#Gen">Gen</a> γ</tt></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<tt><b>instance </b><a name="Arbitrary_Bool"> </a> <a class="tref" href="#Arbitrary">Arbitrary</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></tt></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Arbitrary_Bool:arbitrary">arbitrary</a> :: <a class="tref" href="#Gen">Gen</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="Arbitrary_Bool:coarbitrary">coarbitrary</a> :: <b><a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></b> -&gt; <b><a class="tref" href="#Gen">Gen</a> α</b> -&gt; <a class="tref" href="#Gen">Gen</a> α</tt></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<tt><b>instance </b><a name="Arbitrary_Char"> </a> <a class="tref" href="#Arbitrary">Arbitrary</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a></tt></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Arbitrary_Char:arbitrary">arbitrary</a> :: <a class="tref" href="#Gen">Gen</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a></tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="Arbitrary_Char:coarbitrary">coarbitrary</a> :: <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> -&gt; <b><a class="tref" href="#Gen">Gen</a> α</b> -&gt; <a class="tref" href="#Gen">Gen</a> α</tt></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<tt><b>instance </b><a name="Arbitrary_Double"> </a> <a class="tref" href="#Arbitrary">Arbitrary</a> <a class="tref" href="../prelude/PreludeBase.html#Double">Double</a></tt></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Arbitrary_Double:arbitrary">arbitrary</a> :: <a class="tref" href="#Gen">Gen</a> <a class="tref" href="../prelude/PreludeBase.html#Double">Double</a></tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="Arbitrary_Double:coarbitrary">coarbitrary</a> :: <a class="tref" href="../prelude/PreludeBase.html#Double">Double</a> -&gt; <a class="tref" href="#Gen">Gen</a> α -&gt; <a class="tref" href="#Gen">Gen</a> α</tt></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<tt><b>instance </b><a name="Arbitrary_Either"> </a> <a class="tref" href="#Arbitrary">Arbitrary</a> (<a class="tref" href="#Arbitrary">Arbitrary</a> a, <a class="tref" href="#Arbitrary">Arbitrary</a> b) =&gt; (a | b)</tt></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Arbitrary_Either:arbitrary">arbitrary</a> :: (<a class="tref" href="#Arbitrary">Arbitrary</a> α, <a class="tref" href="#Arbitrary">Arbitrary</a> β) =&gt; <a class="tref" href="#Gen">Gen</a> (α | β)</tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="Arbitrary_Either:coarbitrary">coarbitrary</a> :: (<a class="tref" href="#Arbitrary">Arbitrary</a> β, <a class="tref" href="#Arbitrary">Arbitrary</a> α) =&gt; <b>(β | α)</b> -&gt; <a class="tref" href="#Gen">Gen</a> γ -&gt; <a class="tref" href="#Gen">Gen</a> γ</tt></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<tt><b>instance </b><a name="Arbitrary_Float"> </a> <a class="tref" href="#Arbitrary">Arbitrary</a> <a class="tref" href="../prelude/PreludeBase.html#Float">Float</a></tt></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Arbitrary_Float:arbitrary">arbitrary</a> :: <a class="tref" href="#Gen">Gen</a> <a class="tref" href="../prelude/PreludeBase.html#Float">Float</a></tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="Arbitrary_Float:coarbitrary">coarbitrary</a> :: <a class="tref" href="../prelude/PreludeBase.html#Float">Float</a> -&gt; <a class="tref" href="#Gen">Gen</a> α -&gt; <a class="tref" href="#Gen">Gen</a> α</tt></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<tt><b>instance </b><a name="Arbitrary_Int"> </a> <a class="tref" href="#Arbitrary">Arbitrary</a> <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></tt></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Arbitrary_Int:arbitrary">arbitrary</a> :: <a class="tref" href="#Gen">Gen</a> <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="Arbitrary_Int:coarbitrary">coarbitrary</a> :: <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <b><a class="tref" href="#Gen">Gen</a> α</b> -&gt; <a class="tref" href="#Gen">Gen</a> α</tt></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<tt><b>instance </b><a name="Arbitrary_Integer"> </a> <a class="tref" href="#Arbitrary">Arbitrary</a> <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></tt></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Arbitrary_Integer:arbitrary">arbitrary</a> :: <a class="tref" href="#Gen">Gen</a> <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="Arbitrary_Integer:coarbitrary">coarbitrary</a> :: <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a> -&gt; <b><a class="tref" href="#Gen">Gen</a> α</b> -&gt; <a class="tref" href="#Gen">Gen</a> α</tt></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<tt><b>instance </b><a name="Arbitrary_Long"> </a> <a class="tref" href="#Arbitrary">Arbitrary</a> <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></tt></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Arbitrary_Long:arbitrary">arbitrary</a> :: <a class="tref" href="#Gen">Gen</a> <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="Arbitrary_Long:coarbitrary">coarbitrary</a> :: <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a> -&gt; <b><a class="tref" href="#Gen">Gen</a> α</b> -&gt; <a class="tref" href="#Gen">Gen</a> α</tt></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<tt><b>instance </b><a name="Arbitrary_Maybe"> </a> <a class="tref" href="#Arbitrary">Arbitrary</a> <a class="tref" href="#Arbitrary">Arbitrary</a> a =&gt; <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> a</tt></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Arbitrary_Maybe:arbitrary">arbitrary</a> :: <a class="tref" href="#Arbitrary">Arbitrary</a> α =&gt; <a class="tref" href="#Gen">Gen</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α)</tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="Arbitrary_Maybe:coarbitrary">coarbitrary</a> :: <a class="tref" href="#Arbitrary">Arbitrary</a> α =&gt; <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α</b> -&gt; <a class="tref" href="#Gen">Gen</a> β -&gt; <a class="tref" href="#Gen">Gen</a> β</tt></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<tt><b>instance </b><a name="Arbitrary_String"> </a> <a class="tref" href="#Arbitrary">Arbitrary</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></tt></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Arbitrary_String:arbitrary">arbitrary</a> :: <a class="tref" href="#Gen">Gen</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="Arbitrary_String:coarbitrary">coarbitrary</a> :: <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> -&gt; <b><a class="tref" href="#Gen">Gen</a> α</b> -&gt; <a class="tref" href="#Gen">Gen</a> α</tt></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<tt><b>instance </b><a name="Arbitrary__lbrack_rbrack"> </a> <a class="tref" href="#Arbitrary">Arbitrary</a> <a class="tref" href="#Arbitrary">Arbitrary</a> a =&gt; [a]</tt></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Arbitrary__lbrack_rbrack:arbitrary">arbitrary</a> :: <a class="tref" href="#Arbitrary">Arbitrary</a> α =&gt; <a class="tref" href="#Gen">Gen</a> [α]</tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="Arbitrary__lbrack_rbrack:coarbitrary">coarbitrary</a> :: <a class="tref" href="#Arbitrary">Arbitrary</a> α =&gt; <b>[α]</b> -&gt; <a class="tref" href="#Gen">Gen</a> β -&gt; <a class="tref" href="#Gen">Gen</a> β</tt></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<tt><b>instance </b><a name="Functor_Gen"> </a> <a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> <a class="tref" href="#Gen">Gen</a></tt></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Functor_Gen:fmap">fmap</a> :: (α -&gt; β) -&gt; <b><a class="tref" href="#Gen">Gen</a> α</b> -&gt; <a class="tref" href="#Gen">Gen</a> β</tt></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<tt><b>instance </b><a name="Monad_Gen"> </a> <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> <a class="tref" href="#Gen">Gen</a></tt></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Monad_Gen:_star_gt">*&gt;</a> :: <a class="tref" href="#Gen">Gen</a> α -&gt; <a class="tref" href="#Gen">Gen</a> β -&gt; <a class="tref" href="#Gen">Gen</a> β</tt></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeMonad.html#Applicative:_star_gt">Applicative.*&gt;</a></p>
+</dd>
+<dt class="func">
+<tt><a name="Monad_Gen:_lt_star">&lt;*</a> :: <a class="tref" href="#Gen">Gen</a> α -&gt; <a class="tref" href="#Gen">Gen</a> β -&gt; <a class="tref" href="#Gen">Gen</a> α</tt></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeMonad.html#Applicative:_lt_star">Applicative.&lt;*</a></p>
+</dd>
+<dt class="func">
+<tt><a name="Monad_Gen:_lt_star_gt">&lt;*&gt;</a> :: <a class="tref" href="#Gen">Gen</a> (α-&gt;β) -&gt; <a class="tref" href="#Gen">Gen</a> α -&gt; <a class="tref" href="#Gen">Gen</a> β</tt></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad:_lt_star_gt">Monad.&lt;*&gt;</a></p>
+</dd>
+<dt class="func">
+<tt><a name="Monad_Gen:_gt_gt">&gt;&gt;</a> :: <b><a class="tref" href="#Gen">Gen</a> α</b> -&gt; <a class="tref" href="#Gen">Gen</a> β -&gt; <a class="tref" href="#Gen">Gen</a> β</tt></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad:_gt_gt">Monad.&gt;&gt;</a></p>
+</dd>
+<dt class="func">
+<tt><a name="Monad_Gen:_gt_gt_eq">&gt;&gt;=</a> :: <b><a class="tref" href="#Gen">Gen</a> α</b> -&gt; (α -&gt; <a class="tref" href="#Gen">Gen</a> β) -&gt; <a class="tref" href="#Gen">Gen</a> β</tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="Monad_Gen:join">join</a> :: <b><a class="tref" href="#Gen">Gen</a> (<a class="tref" href="#Gen">Gen</a> α)</b> -&gt; <a class="tref" href="#Gen">Gen</a> α</tt></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad:join">Monad.join</a></p>
+</dd>
+<dt class="func">
+<tt><a name="Monad_Gen:_return">return</a> :: α -&gt; <a class="tref" href="#Gen">Gen</a> α</tt></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<tt><b>instance </b><a name="Testable_l__r"> </a> <a class="tref" href="#Testable">Testable</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></tt></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Testable_l__r:property">property</a> :: <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a> -&gt; <a class="tref" href="#Property">Property</a></tt></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<tt><b>instance </b><a name="Testable__minus_gt"> </a> <a class="tref" href="#Testable">Testable</a> (<a class="tref" href="#Arbitrary">Arbitrary</a> a, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> a, <a class="tref" href="#Testable">Testable</a> b) =&gt; a -&gt; b</tt></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Testable__minus_gt:property">property</a> :: (<a class="tref" href="#Arbitrary">Arbitrary</a> α, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="#Testable">Testable</a> β) =&gt; (α-&gt;β) -&gt; <a class="tref" href="#Property">Property</a></tt></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<tt><b>instance </b><a name="Testable_Bool"> </a> <a class="tref" href="#Testable">Testable</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></tt></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Testable_Bool:property">property</a> :: <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a> -&gt; <a class="tref" href="#Property">Property</a></tt></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<tt><b>instance </b><a name="Testable_Property"> </a> <a class="tref" href="#Testable">Testable</a> <a class="tref" href="#Property">Property</a></tt></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Testable_Property:property">property</a> :: <b><a class="tref" href="#Property">Property</a></b> -&gt; <a class="tref" href="#Property">Property</a></tt></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<tt><b>instance </b><a name="Testable_Result"> </a> <a class="tref" href="#Testable">Testable</a> <a class="tref" href="#Result">Result</a></tt></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Testable_Result:property">property</a> :: <a class="tref" href="#Result">Result</a> -&gt; <a class="tref" href="#Property">Property</a></tt></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+</dl>
+<h2>
+<a name="data">Data Types</a></h2>
+<dl class="data">
+<dt class="data">
+<tt><b>data </b><a name="Config"> </a> <a class="tref" href="#Config">Config</a></tt></dt>
+<dd class="data">
+<h3>
+Constructors</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Config">Config</a> {configMaxTest :: <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, configMaxFail :: <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, configSize :: <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, configEvery :: <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>] -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a>}</tt></dt>
+<dd class="func">
+</dd>
+</dl>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Config:configEvery">configEvery</a> :: <b><a class="tref" href="#Config">Config</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>] -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a></tt></dt>
+<dd class="func">
+<p>
+access field <tt>configEvery</tt></p>
+</dd>
+<dt class="func">
+<tt><a name="Config:configMaxFail">configMaxFail</a> :: <b><a class="tref" href="#Config">Config</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></tt></dt>
+<dd class="func">
+<p>
+access field <tt>configMaxFail</tt></p>
+</dd>
+<dt class="func">
+<tt><a name="Config:configMaxTest">configMaxTest</a> :: <b><a class="tref" href="#Config">Config</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></tt></dt>
+<dd class="func">
+<p>
+access field <tt>configMaxTest</tt></p>
+</dd>
+<dt class="func">
+<tt><a name="Config:configSize">configSize</a> :: <b><a class="tref" href="#Config">Config</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></tt></dt>
+<dd class="func">
+<p>
+access field <tt>configSize</tt></p>
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<tt><b>data </b><a name="Gen"> </a> <a class="tref" href="#Gen">Gen</a> a</tt></dt>
+<dd class="data">
+<h3>
+Constructors</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Gen">Gen</a> (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./Random.html#StdGen">StdGen</a> -&gt; a)</tt></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<tt><b>data </b><a name="Property"> </a> <a class="tref" href="#Property">Property</a></tt></dt>
+<dd class="data">
+<h3>
+Constructors</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Prop">Prop</a> (<a class="tref" href="#Gen">Gen</a> <a class="tref" href="#Result">Result</a>)</tt></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<tt><b>data </b><a name="Result"> </a> <a class="tref" href="#Result">Result</a></tt></dt>
+<dd class="data">
+<h3>
+Constructors</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Result">Result</a> {ok :: <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>, stamp :: [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>], arguments :: [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]}</tt></dt>
+<dd class="func">
+</dd>
+</dl>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<tt><a name="Result:arguments">arguments</a> :: <b><a class="tref" href="#Result">Result</a></b> -&gt; [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</tt></dt>
+<dd class="func">
+<p>
+access field <tt>arguments</tt></p>
+</dd>
+<dt class="func">
+<tt><a name="Result:ok">ok</a> :: <b><a class="tref" href="#Result">Result</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></tt></dt>
+<dd class="func">
+<p>
+access field <tt>ok</tt></p>
+</dd>
+<dt class="func">
+<tt><a name="Result:stamp">stamp</a> :: <b><a class="tref" href="#Result">Result</a></b> -&gt; [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</tt></dt>
+<dd class="func">
+<p>
+access field <tt>stamp</tt></p>
+</dd>
+</dl>
+</dd>
+</dl>
+<h2>
+<a name="let">Functions and Values</a></h2>
+<dl class="func">
+<dt class="func">
+<tt><a name="_eq_eq_gt">==&gt;</a> :: <a class="tref" href="#Testable">Testable</a> a =&gt; <b><a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></b> -&gt; a -&gt; <a class="tref" href="#Property">Property</a></tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="backN">backN</a> :: <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a></tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="backspaces">backspaces</a> :: [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>]</tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="check">check</a> :: <a class="tref" href="#Testable">Testable</a> a =&gt; <a class="tref" href="#Config">Config</a> -&gt; a -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="choose">choose</a> :: <a class="tref" href="./Random.html#Random">Random</a> a =&gt; (a, a) -&gt; <a class="tref" href="#Gen">Gen</a> a</tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="classify">classify</a> :: <a class="tref" href="#Testable">Testable</a> a =&gt; <b><a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a> -&gt; a -&gt; <a class="tref" href="#Property">Property</a></tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="collect">collect</a> :: (<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> a, <a class="tref" href="#Testable">Testable</a> b) =&gt; a -&gt; b -&gt; <a class="tref" href="#Property">Property</a></tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="defaultConfig">defaultConfig</a> :: <a class="tref" href="#Config">Config</a></tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="done">done</a> :: <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> -&gt; <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> -&gt; [[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]] -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="elements">elements</a> :: [a] -&gt; <a class="tref" href="#Gen">Gen</a> a</tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="evaluate">evaluate</a> :: <a class="tref" href="#Testable">Testable</a> a =&gt; a -&gt; <a class="tref" href="#Gen">Gen</a> <a class="tref" href="#Result">Result</a></tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="forAll">forAll</a> :: (<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> a, <a class="tref" href="#Testable">Testable</a> b) =&gt; <a class="tref" href="#Gen">Gen</a> a -&gt; (a -&gt; b) -&gt; <a class="tref" href="#Property">Property</a></tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="four">four</a> :: <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m =&gt; m a -&gt; m (a, a, a, a)</tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="fraction">fraction</a> :: <a class="tref" href="../prelude/PreludeBase.html#Real">Real</a> f =&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; f</tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="frequency">frequency</a> :: [(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="#Gen">Gen</a> a)] -&gt; <a class="tref" href="#Gen">Gen</a> a</tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="generate">generate</a> :: <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./Random.html#StdGen">StdGen</a> -&gt; <b><a class="tref" href="#Gen">Gen</a> a</b> -&gt; a</tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="label">label</a> :: <a class="tref" href="#Testable">Testable</a> a =&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a> -&gt; a -&gt; <a class="tref" href="#Property">Property</a></tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="lnsep">lnsep</a> :: <a class="tref" href="../prelude/PreludeBase.html#String">String</a></tt></dt>
+<dd class="func">
+<ul>
+<LI>
+------------------------------------------------------------------ </LI>
+</ul>
+<p>
+line separator   </p>
+</dd>
+<dt class="func">
+<tt><a name="nothing">nothing</a> :: <a class="tref" href="#Result">Result</a></tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="oneof">oneof</a> :: [<a class="tref" href="#Gen">Gen</a> a] -&gt; <a class="tref" href="#Gen">Gen</a> a</tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="promote">promote</a> :: (a -&gt; <a class="tref" href="#Gen">Gen</a> b) -&gt; <a class="tref" href="#Gen">Gen</a> (a-&gt;b)</tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="quick">quick</a> :: <a class="tref" href="#Config">Config</a></tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="quickCheck">quickCheck</a> :: <a class="tref" href="#Testable">Testable</a> a =&gt; a -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="rand">rand</a> :: <a class="tref" href="#Gen">Gen</a> <a class="tref" href="./Random.html#StdGen">StdGen</a></tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="resize">resize</a> :: <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <b><a class="tref" href="#Gen">Gen</a> a</b> -&gt; <a class="tref" href="#Gen">Gen</a> a</tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="result">result</a> :: <a class="tref" href="#Result">Result</a> -&gt; <a class="tref" href="#Property">Property</a></tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="sized">sized</a> :: (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="#Gen">Gen</a> a) -&gt; <a class="tref" href="#Gen">Gen</a> a</tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="test">test</a> :: <a class="tref" href="#Testable">Testable</a> a =&gt; a -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="tests">tests</a> :: <b><a class="tref" href="#Config">Config</a></b> -&gt; <a class="tref" href="#Gen">Gen</a> <a class="tref" href="#Result">Result</a> -&gt; <a class="tref" href="./Random.html#StdGen">StdGen</a> -&gt; <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; [[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]] -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="three">three</a> :: <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m =&gt; m a -&gt; m (a, a, a)</tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="trivial">trivial</a> :: <a class="tref" href="#Testable">Testable</a> a =&gt; <b><a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></b> -&gt; a -&gt; <a class="tref" href="#Property">Property</a></tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="two">two</a> :: <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m =&gt; m a -&gt; m (a, a)</tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="variant">variant</a> :: <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <b><a class="tref" href="#Gen">Gen</a> a</b> -&gt; <a class="tref" href="#Gen">Gen</a> a</tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="vector">vector</a> :: <a class="tref" href="#Arbitrary">Arbitrary</a> a =&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="#Gen">Gen</a> [a]</tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="verbose">verbose</a> :: <a class="tref" href="#Config">Config</a></tt></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<tt><a name="verboseCheck">verboseCheck</a> :: <a class="tref" href="#Testable">Testable</a> a =&gt; a -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></tt></dt>
+<dd class="func">
+</dd>
+</dl>
+<h2>
+<a name="case">Functions and Values by Type</a></h2>
+<dl class="func">
+<dt class="func">
+<tt><a class="tref" href="#Gen">Gen</a> <a class="tref" href="#Result">Result</a> -&gt; <a class="tref" href="#Property">Property</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Property:Prop">Property.Prop</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a> -&gt; [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>] -&gt; [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>] -&gt; <a class="tref" href="#Result">Result</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Result:Result">Result.Result</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="../prelude/PreludeBase.html#String">String</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; [[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]] -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#done">done</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Config">Config</a> -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Function">-&gt;</a> <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> ([<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]-&gt;<a class="tref" href="../prelude/PreludeBase.html#String">String</a>)-&gt;<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>-&gt;[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]-&gt;<a class="tref" href="../prelude/PreludeBase.html#String">String</a>) -&gt; <a class="tref" href="#Config">Config</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Config:chg$configEvery">Config.chg$configEvery</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Config">Config</a> -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Function">-&gt;</a> <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>-&gt;<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>-&gt;<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>) -&gt; <a class="tref" href="#Config">Config</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Config:chg$configSize">Config.chg$configSize</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Config">Config</a> -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>-&gt;[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]-&gt;<a class="tref" href="../prelude/PreludeBase.html#String">String</a>) -&gt; <a class="tref" href="#Config">Config</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Config:upd$configEvery">Config.upd$configEvery</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Config">Config</a> -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>-&gt;<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>) -&gt; <a class="tref" href="#Config">Config</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Config:chg$configMaxTest">Config.chg$configMaxTest</a>, <a class="fref" href="#Config:chg$configMaxFail">Config.chg$configMaxFail</a>, <a class="fref" href="#Config:upd$configSize">Config.upd$configSize</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Config">Config</a> -&gt; <a class="tref" href="#Gen">Gen</a> <a class="tref" href="#Result">Result</a> -&gt; <a class="tref" href="./Random.html#StdGen">StdGen</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; [[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]] -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#tests">tests</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Config">Config</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>] -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Config:configEvery">Config.configEvery</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Config">Config</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="#Config">Config</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Config:upd$configMaxTest">Config.upd$configMaxTest</a>, <a class="fref" href="#Config:upd$configMaxFail">Config.upd$configMaxFail</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Config">Config</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Config:configSize">Config.configSize</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Config">Config</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Config:configMaxTest">Config.configMaxTest</a>, <a class="fref" href="#Config:configMaxFail">Config.configMaxFail</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Property">Property</a> -&gt; <a class="tref" href="#Property">Property</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Testable_Property:property">Testable_Property.property</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Result">Result</a> -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>-&gt;<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) -&gt; <a class="tref" href="#Result">Result</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Result:chg$ok">Result.chg$ok</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Result">Result</a> -&gt; ([<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]-&gt;[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]) -&gt; <a class="tref" href="#Result">Result</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Result:chg$arguments">Result.chg$arguments</a>, <a class="fref" href="#Result:chg$stamp">Result.chg$stamp</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Result">Result</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a> -&gt; <a class="tref" href="#Result">Result</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Result:upd$ok">Result.upd$ok</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Result">Result</a> -&gt; [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>] -&gt; <a class="tref" href="#Result">Result</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Result:upd$arguments">Result.upd$arguments</a>, <a class="fref" href="#Result:upd$stamp">Result.upd$stamp</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Result">Result</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Result:ok">Result.ok</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Result">Result</a> -&gt; [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Result:arguments">Result.arguments</a>, <a class="fref" href="#Result:stamp">Result.stamp</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Result">Result</a> -&gt; <a class="tref" href="#Property">Property</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#result">result</a>, <a class="fref" href="#Testable_Result:property">Testable_Result.property</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="../prelude/PreludeBase.html#Unit">()</a> -&gt; <a class="tref" href="#Property">Property</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Testable_l__r:property">Testable_().property</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a> -&gt; <a class="tref" href="#Property">Property</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Testable_Bool:property">Testable_Bool.property</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>) -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>] -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a>) -&gt; <a class="tref" href="#Config">Config</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Config:Config">Config.Config</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#backN">backN</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Gen">Gen</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary_String:arbitrary">Arbitrary_String.arbitrary</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Gen">Gen</a> <a class="tref" href="./Random.html#StdGen">StdGen</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#rand">rand</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Gen">Gen</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary_l__r:arbitrary">Arbitrary_().arbitrary</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Gen">Gen</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary_Bool:arbitrary">Arbitrary_Bool.arbitrary</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Gen">Gen</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary_Char:arbitrary">Arbitrary_Char.arbitrary</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Gen">Gen</a> <a class="tref" href="../prelude/PreludeBase.html#Double">Double</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary_Double:arbitrary">Arbitrary_Double.arbitrary</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Gen">Gen</a> <a class="tref" href="../prelude/PreludeBase.html#Float">Float</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary_Float:arbitrary">Arbitrary_Float.arbitrary</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Gen">Gen</a> <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary_Int:arbitrary">Arbitrary_Int.arbitrary</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Gen">Gen</a> <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary_Integer:arbitrary">Arbitrary_Integer.arbitrary</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Gen">Gen</a> <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary_Long:arbitrary">Arbitrary_Long.arbitrary</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="../prelude/PreludeBase.html#String">String</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#lnsep">lnsep</a></p>
+</dd>
+<dt class="func">
+<tt>[<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>]</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#backspaces">backspaces</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Config">Config</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#defaultConfig">defaultConfig</a>, <a class="fref" href="#quick">quick</a>, <a class="fref" href="#verbose">verbose</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Result">Result</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#nothing">nothing</a></p>
+</dd>
+<dt class="func">
+<tt>(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./Random.html#StdGen">StdGen</a> -&gt; a) -&gt; <a class="tref" href="#Gen">Gen</a> a</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Gen:Gen">Gen.Gen</a></p>
+</dd>
+<dt class="func">
+<tt>(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="#Gen">Gen</a> a) -&gt; <a class="tref" href="#Gen">Gen</a> a</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#sized">sized</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Gen">Gen</a> (<a class="tref" href="#Gen">Gen</a> α) -&gt; <a class="tref" href="#Gen">Gen</a> α</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_Gen:join">Monad_Gen.join</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="../prelude/PreludeBase.html#String">String</a> -&gt; <a class="tref" href="#Gen">Gen</a> α -&gt; <a class="tref" href="#Gen">Gen</a> α</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary_String:coarbitrary">Arbitrary_String.coarbitrary</a></p>
+</dd>
+<dt class="func">
+<tt>[(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="#Gen">Gen</a> a)] -&gt; <a class="tref" href="#Gen">Gen</a> a</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#frequency">frequency</a></p>
+</dd>
+<dt class="func">
+<tt>[<a class="tref" href="#Gen">Gen</a> a] -&gt; <a class="tref" href="#Gen">Gen</a> a</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#oneof">oneof</a></p>
+</dd>
+<dt class="func">
+<tt>[a] -&gt; <a class="tref" href="#Gen">Gen</a> a</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#elements">elements</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="../prelude/PreludeBase.html#Unit">()</a> -&gt; <a class="tref" href="#Gen">Gen</a> α -&gt; <a class="tref" href="#Gen">Gen</a> α</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary_l__r:coarbitrary">Arbitrary_().coarbitrary</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a> -&gt; <a class="tref" href="#Gen">Gen</a> α -&gt; <a class="tref" href="#Gen">Gen</a> α</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary_Bool:coarbitrary">Arbitrary_Bool.coarbitrary</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> -&gt; <a class="tref" href="#Gen">Gen</a> α -&gt; <a class="tref" href="#Gen">Gen</a> α</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary_Char:coarbitrary">Arbitrary_Char.coarbitrary</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="../prelude/PreludeBase.html#Double">Double</a> -&gt; <a class="tref" href="#Gen">Gen</a> α -&gt; <a class="tref" href="#Gen">Gen</a> α</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary_Double:coarbitrary">Arbitrary_Double.coarbitrary</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="../prelude/PreludeBase.html#Float">Float</a> -&gt; <a class="tref" href="#Gen">Gen</a> α -&gt; <a class="tref" href="#Gen">Gen</a> α</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary_Float:coarbitrary">Arbitrary_Float.coarbitrary</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="#Gen">Gen</a> a -&gt; <a class="tref" href="#Gen">Gen</a> a</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#resize">resize</a>, <a class="fref" href="#variant">variant</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="#Gen">Gen</a> α -&gt; <a class="tref" href="#Gen">Gen</a> α</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary_Int:coarbitrary">Arbitrary_Int.coarbitrary</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./Random.html#StdGen">StdGen</a> -&gt; <a class="tref" href="#Gen">Gen</a> a -&gt; a</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#generate">generate</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a> -&gt; <a class="tref" href="#Gen">Gen</a> α -&gt; <a class="tref" href="#Gen">Gen</a> α</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary_Integer:coarbitrary">Arbitrary_Integer.coarbitrary</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a> -&gt; <a class="tref" href="#Gen">Gen</a> α -&gt; <a class="tref" href="#Gen">Gen</a> α</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary_Long:coarbitrary">Arbitrary_Long.coarbitrary</a></p>
+</dd>
+<dt class="func">
+<tt>α -&gt; <a class="tref" href="#Gen">Gen</a> α</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_Gen:_return">Monad_Gen.return</a></p>
+</dd>
+<dt class="func">
+<tt>α -&gt; <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Config:has$configMaxTest">Config.has$configMaxTest</a>, <a class="fref" href="#Config:has$configEvery">Config.has$configEvery</a>, <a class="fref" href="#Config:has$configMaxFail">Config.has$configMaxFail</a>, <a class="fref" href="#Config:has$configSize">Config.has$configSize</a>, <a class="fref" href="#Result:has$ok">Result.has$ok</a>, <a class="fref" href="#Result:has$arguments">Result.has$arguments</a>, <a class="fref" href="#Result:has$stamp">Result.has$stamp</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Arbitrary">Arbitrary</a> a =&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="#Gen">Gen</a> [a]</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#vector">vector</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Testable">Testable</a> a =&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a> -&gt; a -&gt; <a class="tref" href="#Property">Property</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#label">label</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Testable">Testable</a> a =&gt; <a class="tref" href="#Config">Config</a> -&gt; a -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#check">check</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Testable">Testable</a> a =&gt; <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a> -&gt; a -&gt; <a class="tref" href="#Property">Property</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#classify">classify</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Testable">Testable</a> a =&gt; <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a> -&gt; a -&gt; <a class="tref" href="#Property">Property</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#_eq_eq_gt">==&gt;</a>, <a class="fref" href="#trivial">trivial</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Testable">Testable</a> a =&gt; a -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#quickCheck">quickCheck</a>, <a class="fref" href="#test">test</a>, <a class="fref" href="#verboseCheck">verboseCheck</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Testable">Testable</a> a =&gt; a -&gt; <a class="tref" href="#Gen">Gen</a> <a class="tref" href="#Result">Result</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#evaluate">evaluate</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Testable">Testable</a> a =&gt; a -&gt; <a class="tref" href="#Property">Property</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Testable:property">Testable.property</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="./Random.html#Random">Random</a> a =&gt; (a, a) -&gt; <a class="tref" href="#Gen">Gen</a> a</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#choose">choose</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="../prelude/PreludeBase.html#Real">Real</a> f =&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; f</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#fraction">fraction</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Arbitrary">Arbitrary</a> a =&gt; <a class="tref" href="#Gen">Gen</a> a</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary:arbitrary">Arbitrary.arbitrary</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Arbitrary">Arbitrary</a> α =&gt; <a class="tref" href="#Gen">Gen</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α)</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary_Maybe:arbitrary">Arbitrary_Maybe.arbitrary</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Arbitrary">Arbitrary</a> α =&gt; <a class="tref" href="#Gen">Gen</a> [α]</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary__lbrack_rbrack:arbitrary">Arbitrary_[].arbitrary</a></p>
+</dd>
+<dt class="func">
+<tt>(a -&gt; <a class="tref" href="#Gen">Gen</a> b) -&gt; <a class="tref" href="#Gen">Gen</a> (a-&gt;b)</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#promote">promote</a></p>
+</dd>
+<dt class="func">
+<tt>(α -&gt; β) -&gt; <a class="tref" href="#Gen">Gen</a> α -&gt; <a class="tref" href="#Gen">Gen</a> β</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Functor_Gen:fmap">Functor_Gen.fmap</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Gen">Gen</a> (α-&gt;β) -&gt; <a class="tref" href="#Gen">Gen</a> α -&gt; <a class="tref" href="#Gen">Gen</a> β</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_Gen:_lt_star_gt">Monad_Gen.&lt;*&gt;</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Gen">Gen</a> α -&gt; (α -&gt; <a class="tref" href="#Gen">Gen</a> β) -&gt; <a class="tref" href="#Gen">Gen</a> β</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_Gen:_gt_gt_eq">Monad_Gen.&gt;&gt;=</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Gen">Gen</a> α -&gt; <a class="tref" href="#Gen">Gen</a> β -&gt; <a class="tref" href="#Gen">Gen</a> α</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_Gen:_lt_star">Monad_Gen.&lt;*</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Gen">Gen</a> α -&gt; <a class="tref" href="#Gen">Gen</a> β -&gt; <a class="tref" href="#Gen">Gen</a> β</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_Gen:_star_gt">Monad_Gen.*&gt;</a>, <a class="fref" href="#Monad_Gen:_gt_gt">Monad_Gen.&gt;&gt;</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Arbitrary">Arbitrary</a> a =&gt; a -&gt; <a class="tref" href="#Gen">Gen</a> b -&gt; <a class="tref" href="#Gen">Gen</a> b</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary:coarbitrary">Arbitrary.coarbitrary</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Arbitrary">Arbitrary</a> α =&gt; <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α -&gt; <a class="tref" href="#Gen">Gen</a> β -&gt; <a class="tref" href="#Gen">Gen</a> β</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary_Maybe:coarbitrary">Arbitrary_Maybe.coarbitrary</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="#Arbitrary">Arbitrary</a> α =&gt; [α] -&gt; <a class="tref" href="#Gen">Gen</a> β -&gt; <a class="tref" href="#Gen">Gen</a> β</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary__lbrack_rbrack:coarbitrary">Arbitrary_[].coarbitrary</a></p>
+</dd>
+<dt class="func">
+<tt>(<a class="tref" href="#Arbitrary">Arbitrary</a> α, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="#Testable">Testable</a> β) =&gt; (α-&gt;β) -&gt; <a class="tref" href="#Property">Property</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Testable__minus_gt:property">Testable_-&gt;.property</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m =&gt; m a -&gt; m (a, a, a, a)</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#four">four</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m =&gt; m a -&gt; m (a, a, a)</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#three">three</a></p>
+</dd>
+<dt class="func">
+<tt><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m =&gt; m a -&gt; m (a, a)</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#two">two</a></p>
+</dd>
+<dt class="func">
+<tt>(<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> a, <a class="tref" href="#Testable">Testable</a> b) =&gt; <a class="tref" href="#Gen">Gen</a> a -&gt; (a -&gt; b) -&gt; <a class="tref" href="#Property">Property</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#forAll">forAll</a></p>
+</dd>
+<dt class="func">
+<tt>(<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> a, <a class="tref" href="#Testable">Testable</a> b) =&gt; a -&gt; b -&gt; <a class="tref" href="#Property">Property</a></tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#collect">collect</a></p>
+</dd>
+<dt class="func">
+<tt>(<a class="tref" href="#Arbitrary">Arbitrary</a> α, <a class="tref" href="#Arbitrary">Arbitrary</a> β) =&gt; <a class="tref" href="#Gen">Gen</a> (α, β)</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary_l_c_r:arbitrary">Arbitrary_(,).arbitrary</a></p>
+</dd>
+<dt class="func">
+<tt>(<a class="tref" href="#Arbitrary">Arbitrary</a> α, <a class="tref" href="#Arbitrary">Arbitrary</a> β) =&gt; <a class="tref" href="#Gen">Gen</a> (α-&gt;β)</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary__minus_gt:arbitrary">Arbitrary_-&gt;.arbitrary</a></p>
+</dd>
+<dt class="func">
+<tt>(<a class="tref" href="#Arbitrary">Arbitrary</a> α, <a class="tref" href="#Arbitrary">Arbitrary</a> β) =&gt; <a class="tref" href="#Gen">Gen</a> (α | β)</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary_Either:arbitrary">Arbitrary_Either.arbitrary</a></p>
+</dd>
+<dt class="func">
+<tt>(<a class="tref" href="#Arbitrary">Arbitrary</a> β, <a class="tref" href="#Arbitrary">Arbitrary</a> α) =&gt; (β, α) -&gt; <a class="tref" href="#Gen">Gen</a> γ -&gt; <a class="tref" href="#Gen">Gen</a> γ</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary_l_c_r:coarbitrary">Arbitrary_(,).coarbitrary</a></p>
+</dd>
+<dt class="func">
+<tt>(<a class="tref" href="#Arbitrary">Arbitrary</a> β, <a class="tref" href="#Arbitrary">Arbitrary</a> α) =&gt; (β-&gt;α) -&gt; <a class="tref" href="#Gen">Gen</a> γ -&gt; <a class="tref" href="#Gen">Gen</a> γ</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary__minus_gt:coarbitrary">Arbitrary_-&gt;.coarbitrary</a></p>
+</dd>
+<dt class="func">
+<tt>(<a class="tref" href="#Arbitrary">Arbitrary</a> β, <a class="tref" href="#Arbitrary">Arbitrary</a> α) =&gt; (β | α) -&gt; <a class="tref" href="#Gen">Gen</a> γ -&gt; <a class="tref" href="#Gen">Gen</a> γ</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary_Either:coarbitrary">Arbitrary_Either.coarbitrary</a></p>
+</dd>
+<dt class="func">
+<tt>(<a class="tref" href="#Arbitrary">Arbitrary</a> α, <a class="tref" href="#Arbitrary">Arbitrary</a> β, <a class="tref" href="#Arbitrary">Arbitrary</a> γ) =&gt; <a class="tref" href="#Gen">Gen</a> (α, β, γ)</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary_l_cc_r:arbitrary">Arbitrary_(,,).arbitrary</a></p>
+</dd>
+<dt class="func">
+<tt>(<a class="tref" href="#Arbitrary">Arbitrary</a> α, <a class="tref" href="#Arbitrary">Arbitrary</a> β, <a class="tref" href="#Arbitrary">Arbitrary</a> γ) =&gt; (α, β, γ) -&gt; <a class="tref" href="#Gen">Gen</a> δ -&gt; <a class="tref" href="#Gen">Gen</a> δ</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary_l_cc_r:coarbitrary">Arbitrary_(,,).coarbitrary</a></p>
+</dd>
+<dt class="func">
+<tt>(<a class="tref" href="#Arbitrary">Arbitrary</a> α, <a class="tref" href="#Arbitrary">Arbitrary</a> β, <a class="tref" href="#Arbitrary">Arbitrary</a> γ, <a class="tref" href="#Arbitrary">Arbitrary</a> δ) =&gt; <a class="tref" href="#Gen">Gen</a> (α, β, γ, δ)</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary_l_ccc_r:arbitrary">Arbitrary_(,,,).arbitrary</a></p>
+</dd>
+<dt class="func">
+<tt>(<a class="tref" href="#Arbitrary">Arbitrary</a> α, <a class="tref" href="#Arbitrary">Arbitrary</a> β, <a class="tref" href="#Arbitrary">Arbitrary</a> δ, <a class="tref" href="#Arbitrary">Arbitrary</a> γ) =&gt; (α, β, δ, γ) -&gt; <a class="tref" href="#Gen">Gen</a> ε -&gt; <a class="tref" href="#Gen">Gen</a> ε</tt></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Arbitrary_l_ccc_r:coarbitrary">Arbitrary_(,,,).coarbitrary</a></p>
+</dd>
+</dl>
+<p>
+<a HREF="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Strict" height="31" width="88"></a></p>
+</BODY>
+</HTML>
