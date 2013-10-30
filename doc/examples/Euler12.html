@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<META http-equiv="Content-Type" content="text/html;charset=utf-8">
+<TITLE>examples.Euler12 - frege documentation</TITLE>
+<style TYPE="text/css">
+body { font-family: helvetica, arial, sans-serif }
+pre { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
+h3  { font-weight: lighter }
+dt.func { background: rgb(95%, 95%, 80%) }
+dt.clas { background: rgb(80%, 95%, 95%) }
+dt.inst { background: rgb(95%, 90%, 95%) }
+dt.data { background: rgb(95%, 95%, 95%) }
+span.code { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
+span.unknown { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: red }
+a.fref { text-decoration: none; font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(30%, 30%, 0%) }
+a.tref { text-decoration: none; font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(40%, 0%,  40%) }
+</style>
+<BODY>
+<h1>
+<a name="package">Package <SPAN CLASS="code">examples.Euler12</SPAN></a></h1>
+<p>
+Compiled: Tue Oct 29 14:57:12 CET 2013 from source file: <SPAN CLASS="code">examples/Euler12.fr</SPAN></p>
+<h3>
+Package Documentation</h3>
+<p>
+Solve <a HREF="http://projecteuler.net/index.php?section=problems&id=12">Euler probelm 12</a> in less than a second. The original question asks for the first triangular number with at least 500 divisors. We print the first one with at least 1000 divisors in under a second.   </p>
+<h3>
+Table of Content</h3>
+<ul>
+<li>
+<div>
+<a HREF="#let">Functions and Values (alphabetically)</a></div>
+<div>
+<a class="fref" href="#_main">main</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#nDivisors">nDivisors</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#property_nDivisors">property_nDivisors</a></div>
+</li>
+<li>
+<div>
+<a HREF="#case">Functions and Values (by type)</a></div>
+<div>
+<a class="fref" href="#_main">main</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#nDivisors">nDivisors</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#property_nDivisors">property_nDivisors</a></div>
+</li>
+</ul>
+<h3>
+Imports</h3>
+<ul>
+<li>
+<div>
+import <a HREF="../frege/prelude/PreludeList.html">frege.prelude.PreludeList</a> as PreludeList</div>
+</li>
+<li>
+<div>
+import <a HREF="../frege/Prelude.html">frege.Prelude</a> as Prelude</div>
+</li>
+<li>
+<div>
+import <a HREF="./EulerLib.html">examples.EulerLib</a> as EulerLib</div>
+</li>
+<li>
+<div>
+import <a HREF="../frege/data/List.html">frege.data.List</a> as List</div>
+</li>
+<li>
+<div>
+import <a HREF="../frege/prelude/PreludeBase.html">frege.prelude.PreludeBase</a> as PreludeBase</div>
+</li>
+<li>
+<div>
+import <a HREF="../frege/prelude/PreludeIO.html">frege.prelude.PreludeIO</a> as PreludeIO</div>
+</li>
+<li>
+<div>
+import <a HREF="../frege/prelude/PreludeNative.html">frege.prelude.PreludeNative</a> as PreludeNative</div>
+</li>
+<li>
+<div>
+import <a HREF="../frege/prelude/PreludeMonad.html">frege.prelude.PreludeMonad</a> as PreludeMonad</div>
+</li>
+<li>
+<div>
+import <a HREF="../frege/prelude/PreludeText.html">frege.prelude.PreludeText</a> as PreludeText</div>
+</li>
+<li>
+<div>
+import <a HREF="../frege/lib/QuickCheck.html">frege.lib.QuickCheck</a> as QuickCheck</div>
+</li>
+</ul>
+<h2>
+<a name="let">Functions and Values</a></h2>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="_main">main</a> :: [<a class="tref" href="../frege/prelude/PreludeBase.html#String">String</a>] -&gt; <a class="tref" href="../frege/prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../frege/prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="nDivisors">nDivisors</a> :: <b><a class="tref" href="../frege/prelude/PreludeBase.html#Long">Long</a></b> -&gt; <a class="tref" href="../frege/prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+compute number of divisors from prime factors combinatorically   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="property_nDivisors">property_nDivisors</a> :: <a class="tref" href="../frege/lib/QuickCheck.html#Property">Property</a></SPAN></dt>
+<dd class="func">
+<p>
+check that <a class="fref" href="#nDivisors">nDivisors</a> works properly   </p>
+</dd>
+</dl>
+<h2>
+<a name="case">Functions and Values by Type</a></h2>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code">[<a class="tref" href="../frege/prelude/PreludeBase.html#String">String</a>] -&gt; <a class="tref" href="../frege/prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../frege/prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#_main">main</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../frege/prelude/PreludeBase.html#Long">Long</a> -&gt; <a class="tref" href="../frege/prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#nDivisors">nDivisors</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../frege/lib/QuickCheck.html#Property">Property</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#property_nDivisors">property_nDivisors</a></p>
+</dd>
+</dl>
+<p>
+<a HREF="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Strict" height="31" width="88"></a></p>
+</BODY>
+</HTML>
