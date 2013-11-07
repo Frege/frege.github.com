@@ -6,10 +6,10 @@
 body { font-family: helvetica, arial, sans-serif }
 pre { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
 h3  { font-weight: lighter }
-dt.func { background: rgb(95%, 95%, 80%) }
-dt.clas { background: rgb(80%, 95%, 95%) }
-dt.inst { background: rgb(95%, 90%, 95%) }
-dt.data { background: rgb(95%, 95%, 95%) }
+dt.func { background: rgb(95%, 95%, 80%); margin-top: 10px }
+dt.clas { background: rgb(80%, 95%, 95%); margin-top: 10px }
+dt.inst { background: rgb(95%, 90%, 95%); margin-top: 10px }
+dt.data { background: rgb(95%, 95%, 95%); margin-top: 10px }
 span.code { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
 span.unknown { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: red }
 a.fref { text-decoration: none; font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(30%, 30%, 0%) }
@@ -17,9 +17,9 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 </style>
 <BODY>
 <h1>
-<a name="package">Package <tt>frege.control.arrow.Kleisli</tt></a></h1>
+<a name="package">Package <SPAN CLASS="code">frege.control.arrow.Kleisli</SPAN></a></h1>
 <p>
-Compiled: Thu Oct 24 11:01:35 CEST 2013 from source file: <tt>./frege/control/arrow/Kleisli.fr</tt></p>
+Compiled: Thu Nov 07 18:30:32 CET 2013 from source file: <SPAN CLASS="code">./frege/control/arrow/Kleisli.fr</SPAN></p>
 <h3>
 Package Documentation</h3>
 <h3>
@@ -41,7 +41,7 @@ Table of Content</h3>
 <div>
 <a HREF="#case">Functions and Values (by type)</a></div>
 <div>
-<a class="fref" href="#Arrow_Kleisli:arr">Arrow_Kleisli.arr</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arrow_Kleisli:_star_star_star">Arrow_Kleisli.***</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arrow_Kleisli:_amp_amp_amp">Arrow_Kleisli.&amp;&amp;&amp;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arrow_Kleisli:id">Arrow_Kleisli.id</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arrow_Kleisli:first">Arrow_Kleisli.first</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arrow_Kleisli:_bullet">Arrow_Kleisli.•</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arrow_Kleisli:second">Arrow_Kleisli.second</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_Kleisli:_gt_gt">Monad_Kleisli.&gt;&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_Kleisli:_lt_star">Monad_Kleisli.&lt;*</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_Kleisli:_star_gt">Monad_Kleisli.*&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_Kleisli:_lt_star_gt">Monad_Kleisli.&lt;*&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_Kleisli:fmap">Monad_Kleisli.fmap</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_Kleisli:_gt_gt_eq">Monad_Kleisli.&gt;&gt;=</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_Kleisli:_return">Monad_Kleisli.return</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_Kleisli:join">Monad_Kleisli.join</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Kleisli:Kleisli">Kleisli.Kleisli</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Kleisli:has$run">Kleisli.has$run</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Kleisli:chg$run">Kleisli.chg$run</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Kleisli:run">Kleisli.run</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Kleisli:upd$run">Kleisli.upd$run</a></div>
+<a class="fref" href="#Arrow_Kleisli.arr">Arrow_Kleisli.arr</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arrow_Kleisli._star_star_star">Arrow_Kleisli.***</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arrow_Kleisli._amp_amp_amp">Arrow_Kleisli.&amp;&amp;&amp;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arrow_Kleisli.id">Arrow_Kleisli.id</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arrow_Kleisli.first">Arrow_Kleisli.first</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arrow_Kleisli._bullet">Arrow_Kleisli.•</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Arrow_Kleisli.second">Arrow_Kleisli.second</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_Kleisli._gt_gt">Monad_Kleisli.&gt;&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_Kleisli._lt_star">Monad_Kleisli.&lt;*</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_Kleisli._star_gt">Monad_Kleisli.*&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_Kleisli._lt_star_gt">Monad_Kleisli.&lt;*&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_Kleisli.fmap">Monad_Kleisli.fmap</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_Kleisli._gt_gt_eq">Monad_Kleisli.&gt;&gt;=</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_Kleisli.pure">Monad_Kleisli.pure</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_Kleisli.join">Monad_Kleisli.join</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_Kleisli._return">Monad_Kleisli.return</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Kleisli.has$run">Kleisli.has$run</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Kleisli.Kleisli">Kleisli.Kleisli</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Kleisli.chg$run">Kleisli.chg$run</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Kleisli.run">Kleisli.run</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Kleisli.upd$run">Kleisli.upd$run</a></div>
 </li>
 </ul>
 <h3>
@@ -92,85 +92,91 @@ import <a HREF="../Semigroupoid.html">frege.control.Semigroupoid</a> as Semigrou
 <a name="instance">Instances</a></h2>
 <dl class="inst">
 <dt class="inst">
-<tt><b>instance </b><a name="Arrow_Kleisli"> </a> <a class="tref" href="../Arrow.html#Arrow">Arrow</a> <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> m =&gt; <a class="tref" href="#Kleisli">Kleisli</a> m</tt></dt>
+<SPAN CLASS="code"><b>instance </b><a name="Arrow_Kleisli"> </a> <a class="tref" href="../Arrow.html#Arrow">Arrow</a> <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> m =&gt; <a class="tref" href="#Kleisli">Kleisli</a> m</SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<tt><a name="Arrow_Kleisli:_amp_amp_amp">&amp;&amp;&amp;</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β γ α</b> -&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β γ δ</b> -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β γ (α, δ)</tt></dt>
+<SPAN CLASS="code"><a name="Arrow_Kleisli._amp_amp_amp">&amp;&amp;&amp;</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β γ α</b> -&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β γ δ</b> -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β γ (α, δ)</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<tt><a name="Arrow_Kleisli:_star_star_star">***</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β δ α</b> -&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β ε γ</b> -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β (δ, ε) (α, γ)</tt></dt>
+<SPAN CLASS="code"><a name="Arrow_Kleisli._star_star_star">***</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β δ α</b> -&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β ε γ</b> -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β (δ, ε) (α, γ)</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<tt><a name="Arrow_Kleisli:arr">arr</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; (α -&gt; γ) -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α γ</tt></dt>
+<SPAN CLASS="code"><a name="Arrow_Kleisli.arr">arr</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; (α -&gt; γ) -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α γ</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<tt><a name="Arrow_Kleisli:first">first</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β γ α</b> -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β (γ, δ) (α, δ)</tt></dt>
+<SPAN CLASS="code"><a name="Arrow_Kleisli.first">first</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β γ α</b> -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β (γ, δ) (α, δ)</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<tt><a name="Arrow_Kleisli:id">id</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> α =&gt; <a class="tref" href="#Kleisli">Kleisli</a> α β β</tt></dt>
+<SPAN CLASS="code"><a name="Arrow_Kleisli.id">id</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> α =&gt; <a class="tref" href="#Kleisli">Kleisli</a> α β β</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<tt><a name="Arrow_Kleisli:second">second</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β α γ</b> -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β (δ, α) (δ, γ)</tt></dt>
+<SPAN CLASS="code"><a name="Arrow_Kleisli.second">second</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β α γ</b> -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β (δ, α) (δ, γ)</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<tt><a name="Arrow_Kleisli:_bullet">•</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β α γ</b> -&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β δ α</b> -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β δ γ</tt></dt>
+<SPAN CLASS="code"><a name="Arrow_Kleisli._bullet">•</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β α γ</b> -&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β δ α</b> -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β δ γ</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
 </dd>
 <dt class="inst">
-<tt><b>instance </b><a name="Monad_Kleisli"> </a> <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> m =&gt; <a class="tref" href="#Kleisli">Kleisli</a> m a</tt></dt>
+<SPAN CLASS="code"><b>instance </b><a name="Monad_Kleisli"> </a> <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> m =&gt; <a class="tref" href="#Kleisli">Kleisli</a> m a</SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<tt><a name="Monad_Kleisli:_star_gt">*&gt;</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β α γ</b> -&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β α δ</b> -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α δ</tt></dt>
+<SPAN CLASS="code"><a name="Monad_Kleisli._star_gt">*&gt;</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β α γ</b> -&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β α δ</b> -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α δ</SPAN></dt>
 <dd class="func">
 <p>
-inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Applicative:_star_gt">Applicative.*&gt;</a></p>
+inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Applicative._star_gt">Applicative.*&gt;</a></p>
 </dd>
 <dt class="func">
-<tt><a name="Monad_Kleisli:_lt_star">&lt;*</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β α γ</b> -&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β α δ</b> -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α γ</tt></dt>
+<SPAN CLASS="code"><a name="Monad_Kleisli._lt_star">&lt;*</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β α γ</b> -&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β α δ</b> -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α γ</SPAN></dt>
 <dd class="func">
 <p>
-inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Applicative:_lt_star">Applicative.&lt;*</a></p>
+inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Applicative._lt_star">Applicative.&lt;*</a></p>
 </dd>
 <dt class="func">
-<tt><a name="Monad_Kleisli:_lt_star_gt">&lt;*&gt;</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β α (γ-&gt;δ)</b> -&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β α γ</b> -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α δ</tt></dt>
+<SPAN CLASS="code"><a name="Monad_Kleisli._lt_star_gt">&lt;*&gt;</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β α (γ-&gt;δ)</b> -&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β α γ</b> -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α δ</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<tt><a name="Monad_Kleisli:_gt_gt">&gt;&gt;</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β α γ</b> -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α δ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α δ</tt></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Monad:_gt_gt">Monad.&gt;&gt;</a></p>
-</dd>
-<dt class="func">
-<tt><a name="Monad_Kleisli:_gt_gt_eq">&gt;&gt;=</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β α γ</b> -&gt; (γ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α δ) -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α δ</tt></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<tt><a name="Monad_Kleisli:fmap">fmap</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> γ =&gt; (δ -&gt; α) -&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> γ β δ</b> -&gt; <a class="tref" href="#Kleisli">Kleisli</a> γ β α</tt></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<tt><a name="Monad_Kleisli:join">join</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β α (<a class="tref" href="#Kleisli">Kleisli</a> β α γ)</b> -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α γ</tt></dt>
+<SPAN CLASS="code"><a name="Monad_Kleisli._gt_gt">&gt;&gt;</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β α γ</b> -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α δ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α δ</SPAN></dt>
 <dd class="func">
 <p>
-inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Monad:join">Monad.join</a></p>
+inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Monad._gt_gt">Monad.&gt;&gt;</a></p>
 </dd>
 <dt class="func">
-<tt><a name="Monad_Kleisli:_return">return</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; γ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α γ</tt></dt>
+<SPAN CLASS="code"><a name="Monad_Kleisli._gt_gt_eq">&gt;&gt;=</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β α γ</b> -&gt; (γ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α δ) -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α δ</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Monad_Kleisli.fmap">fmap</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> γ =&gt; (δ -&gt; α) -&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> γ β δ</b> -&gt; <a class="tref" href="#Kleisli">Kleisli</a> γ β α</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Monad_Kleisli.join">join</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <b><a class="tref" href="#Kleisli">Kleisli</a> β α (<a class="tref" href="#Kleisli">Kleisli</a> β α γ)</b> -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α γ</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Monad.join">Monad.join</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Monad_Kleisli.pure">pure</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; γ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α γ</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Monad.pure">Monad.pure</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Monad_Kleisli._return">return</a> :: <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; γ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α γ</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -180,13 +186,13 @@ inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Monad:join"
 <a name="data">Data Types</a></h2>
 <dl class="data">
 <dt class="data">
-<tt><b>data </b><a name="Kleisli"> </a> <a class="tref" href="#Kleisli">Kleisli</a> m a b</tt></dt>
+<SPAN CLASS="code"><b>data </b><a name="Kleisli"> </a> <a class="tref" href="#Kleisli">Kleisli</a> m a b</SPAN></dt>
 <dd class="data">
 <h3>
 Constructors</h3>
 <dl class="func">
 <dt class="func">
-<tt><a name="Kleisli">Kleisli</a> {run :: a -&gt; m b}</tt></dt>
+<SPAN CLASS="code"><a name="Kleisli.Kleisli">Kleisli</a> {run :: a -&gt; m b}</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -194,10 +200,10 @@ Constructors</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<tt><a name="Kleisli:run">run</a> :: <b><a class="tref" href="#Kleisli">Kleisli</a> γ α β</b> -&gt; α -&gt; γ β</tt></dt>
+<SPAN CLASS="code"><a name="Kleisli.run">run</a> :: <b><a class="tref" href="#Kleisli">Kleisli</a> γ α β</b> -&gt; α -&gt; γ β</SPAN></dt>
 <dd class="func">
 <p>
-access field <tt>run</tt></p>
+access field <SPAN CLASS="code">run</SPAN></p>
 </dd>
 </dl>
 </dd>
@@ -206,118 +212,118 @@ access field <tt>run</tt></p>
 <a name="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
-<tt>α -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a></tt></dt>
+<SPAN CLASS="code">α -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Kleisli:has$run">Kleisli.has$run</a></p>
+<a class="fref" href="#Kleisli.has$run">Kleisli.has$run</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> α =&gt; <a class="tref" href="#Kleisli">Kleisli</a> α β β</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> α =&gt; <a class="tref" href="#Kleisli">Kleisli</a> α β β</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Arrow_Kleisli:id">Arrow_Kleisli.id</a></p>
+<a class="fref" href="#Arrow_Kleisli.id">Arrow_Kleisli.id</a></p>
 </dd>
 <dt class="func">
-<tt>(a -&gt; m b) -&gt; <a class="tref" href="#Kleisli">Kleisli</a> m a b</tt></dt>
+<SPAN CLASS="code">(a -&gt; m b) -&gt; <a class="tref" href="#Kleisli">Kleisli</a> m a b</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Kleisli:Kleisli">Kleisli.Kleisli</a></p>
+<a class="fref" href="#Kleisli.Kleisli">Kleisli.Kleisli</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="#Kleisli">Kleisli</a> γ α β -&gt; α -&gt; γ β</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="#Kleisli">Kleisli</a> γ α β -&gt; α -&gt; γ β</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Kleisli:run">Kleisli.run</a></p>
+<a class="fref" href="#Kleisli.run">Kleisli.run</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; (α -&gt; γ) -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α γ</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; (α -&gt; γ) -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α γ</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Arrow_Kleisli:arr">Arrow_Kleisli.arr</a></p>
+<a class="fref" href="#Arrow_Kleisli.arr">Arrow_Kleisli.arr</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α (<a class="tref" href="#Kleisli">Kleisli</a> β α γ) -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α γ</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α (<a class="tref" href="#Kleisli">Kleisli</a> β α γ) -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α γ</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Monad_Kleisli:join">Monad_Kleisli.join</a></p>
+<a class="fref" href="#Monad_Kleisli.join">Monad_Kleisli.join</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; γ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α γ</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; γ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α γ</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Monad_Kleisli:_return">Monad_Kleisli.return</a></p>
+<a class="fref" href="#Monad_Kleisli.pure">Monad_Kleisli.pure</a>, <a class="fref" href="#Monad_Kleisli._return">Monad_Kleisli.return</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α (γ-&gt;δ) -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α γ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α δ</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α (γ-&gt;δ) -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α γ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α δ</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Monad_Kleisli:_lt_star_gt">Monad_Kleisli.&lt;*&gt;</a></p>
+<a class="fref" href="#Monad_Kleisli._lt_star_gt">Monad_Kleisli.&lt;*&gt;</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α γ -&gt; (γ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α δ) -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α δ</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α γ -&gt; (γ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α δ) -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α δ</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Monad_Kleisli:_gt_gt_eq">Monad_Kleisli.&gt;&gt;=</a></p>
+<a class="fref" href="#Monad_Kleisli._gt_gt_eq">Monad_Kleisli.&gt;&gt;=</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α γ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α δ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α γ</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α γ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α δ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α γ</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Monad_Kleisli:_lt_star">Monad_Kleisli.&lt;*</a></p>
+<a class="fref" href="#Monad_Kleisli._lt_star">Monad_Kleisli.&lt;*</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α γ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α δ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α δ</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α γ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α δ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α δ</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Monad_Kleisli:_gt_gt">Monad_Kleisli.&gt;&gt;</a>, <a class="fref" href="#Monad_Kleisli:_star_gt">Monad_Kleisli.*&gt;</a></p>
+<a class="fref" href="#Monad_Kleisli._gt_gt">Monad_Kleisli.&gt;&gt;</a>, <a class="fref" href="#Monad_Kleisli._star_gt">Monad_Kleisli.*&gt;</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α γ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β δ α -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β δ γ</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α γ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β δ α -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β δ γ</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Arrow_Kleisli:_bullet">Arrow_Kleisli.•</a></p>
+<a class="fref" href="#Arrow_Kleisli._bullet">Arrow_Kleisli.•</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α γ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β (δ, α) (δ, γ)</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <a class="tref" href="#Kleisli">Kleisli</a> β α γ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β (δ, α) (δ, γ)</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Arrow_Kleisli:second">Arrow_Kleisli.second</a></p>
+<a class="fref" href="#Arrow_Kleisli.second">Arrow_Kleisli.second</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <a class="tref" href="#Kleisli">Kleisli</a> β γ α -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β γ δ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β γ (α, δ)</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <a class="tref" href="#Kleisli">Kleisli</a> β γ α -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β γ δ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β γ (α, δ)</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Arrow_Kleisli:_amp_amp_amp">Arrow_Kleisli.&amp;&amp;&amp;</a></p>
+<a class="fref" href="#Arrow_Kleisli._amp_amp_amp">Arrow_Kleisli.&amp;&amp;&amp;</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <a class="tref" href="#Kleisli">Kleisli</a> β γ α -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β (γ, δ) (α, δ)</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <a class="tref" href="#Kleisli">Kleisli</a> β γ α -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β (γ, δ) (α, δ)</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Arrow_Kleisli:first">Arrow_Kleisli.first</a></p>
+<a class="fref" href="#Arrow_Kleisli.first">Arrow_Kleisli.first</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> γ =&gt; (δ -&gt; α) -&gt; <a class="tref" href="#Kleisli">Kleisli</a> γ β δ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> γ β α</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> γ =&gt; (δ -&gt; α) -&gt; <a class="tref" href="#Kleisli">Kleisli</a> γ β δ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> γ β α</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Monad_Kleisli:fmap">Monad_Kleisli.fmap</a></p>
+<a class="fref" href="#Monad_Kleisli.fmap">Monad_Kleisli.fmap</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <a class="tref" href="#Kleisli">Kleisli</a> β δ α -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β ε γ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β (δ, ε) (α, γ)</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β =&gt; <a class="tref" href="#Kleisli">Kleisli</a> β δ α -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β ε γ -&gt; <a class="tref" href="#Kleisli">Kleisli</a> β (δ, ε) (α, γ)</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Arrow_Kleisli:_star_star_star">Arrow_Kleisli.***</a></p>
+<a class="fref" href="#Arrow_Kleisli._star_star_star">Arrow_Kleisli.***</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="#Kleisli">Kleisli</a> δ β γ -&gt; (<a class="tref" href="../../prelude/PreludeBase.html#Function">-&gt;</a> β (δ γ)-&gt;ζ-&gt;ε α) -&gt; <a class="tref" href="#Kleisli">Kleisli</a> ε ζ α</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="#Kleisli">Kleisli</a> δ β γ -&gt; (<a class="tref" href="../../prelude/PreludeBase.html#Function">-&gt;</a> β (δ γ)-&gt;ζ-&gt;ε α) -&gt; <a class="tref" href="#Kleisli">Kleisli</a> ε ζ α</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Kleisli:chg$run">Kleisli.chg$run</a></p>
+<a class="fref" href="#Kleisli.chg$run">Kleisli.chg$run</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="#Kleisli">Kleisli</a> δ β γ -&gt; (ζ-&gt;ε α) -&gt; <a class="tref" href="#Kleisli">Kleisli</a> ε ζ α</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="#Kleisli">Kleisli</a> δ β γ -&gt; (ζ-&gt;ε α) -&gt; <a class="tref" href="#Kleisli">Kleisli</a> ε ζ α</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Kleisli:upd$run">Kleisli.upd$run</a></p>
+<a class="fref" href="#Kleisli.upd$run">Kleisli.upd$run</a></p>
 </dd>
 </dl>
 <p>

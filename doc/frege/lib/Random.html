@@ -6,10 +6,10 @@
 body { font-family: helvetica, arial, sans-serif }
 pre { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
 h3  { font-weight: lighter }
-dt.func { background: rgb(95%, 95%, 80%) }
-dt.clas { background: rgb(80%, 95%, 95%) }
-dt.inst { background: rgb(95%, 90%, 95%) }
-dt.data { background: rgb(95%, 95%, 95%) }
+dt.func { background: rgb(95%, 95%, 80%); margin-top: 10px }
+dt.clas { background: rgb(80%, 95%, 95%); margin-top: 10px }
+dt.inst { background: rgb(95%, 90%, 95%); margin-top: 10px }
+dt.data { background: rgb(95%, 95%, 95%); margin-top: 10px }
 span.code { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
 span.unknown { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: red }
 a.fref { text-decoration: none; font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(30%, 30%, 0%) }
@@ -17,13 +17,13 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 </style>
 <BODY>
 <h1>
-<a name="package">Package <tt>frege.lib.Random</tt></a></h1>
+<a name="package">Package <SPAN CLASS="code">frege.lib.Random</SPAN></a></h1>
 <p>
-Compiled: Thu Oct 24 10:47:16 CEST 2013 from source file: <tt>./frege/lib/Random.fr</tt></p>
+Compiled: Thu Nov 07 18:18:34 CET 2013 from source file: <SPAN CLASS="code">./frege/lib/Random.fr</SPAN></p>
 <h3>
 Package Documentation</h3>
 <p>
-Random numbers This tries to mimick Haskell's System.Random module as far as quickcheck needs it. The type <SPAN CLASS="unknown">JavaGen</SPAN> is the random number generator found in java.util.Random   </p>
+Random numbers This tries to mimick Haskell's System.Random module as far as quickcheck needs it. The type <a class="tref" href="#JavaGen">JavaGen</a> is the random number generator found in java.util.Random   </p>
 <h3>
 Table of Content</h3>
 <ul>
@@ -37,13 +37,13 @@ Table of Content</h3>
 <div>
 <a HREF="#instance">Instances</a></div>
 <div>
-<a class="tref" href="#RandomGen_StdGen">RandomGen_StdGen</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Random_Int">Random_Int</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Random_Long">Random_Long</a></div>
+<a class="tref" href="#RandomGen_StdGen">RandomGen_StdGen</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Random_Bool">Random_Bool</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Random_Int">Random_Int</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Random_Integer">Random_Integer</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Random_Long">Random_Long</a></div>
 </li>
 <li>
 <div>
 <a HREF="#data">Data Types</a></div>
 <div>
-<a class="tref" href="#StdGen">StdGen</a></div>
+<a class="tref" href="#JavaGen">JavaGen</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#StdGen">StdGen</a></div>
 </li>
 <li>
 <div>
@@ -55,7 +55,7 @@ Table of Content</h3>
 <div>
 <a HREF="#case">Functions and Values (by type)</a></div>
 <div>
-<a class="fref" href="#mkStdGen">mkStdGen</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#newStdGen">newStdGen</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random:randomR">Random.randomR</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random:random">Random.random</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random:randomRs">Random.randomRs</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random:randoms">Random.randoms</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#RandomGen:next">RandomGen.next</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#RandomGen:genRange">RandomGen.genRange</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#RandomGen:nextLong">RandomGen.nextLong</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#RandomGen:split">RandomGen.split</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#RandomGen_StdGen:next">RandomGen_StdGen.next</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#RandomGen_StdGen:genRange">RandomGen_StdGen.genRange</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#RandomGen_StdGen:nextLong">RandomGen_StdGen.nextLong</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#RandomGen_StdGen:split">RandomGen_StdGen.split</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random_Int:randomR">Random_Int.randomR</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random_Int:random">Random_Int.random</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random_Int:randomRs">Random_Int.randomRs</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random_Int:randoms">Random_Int.randoms</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random_Long:randomR">Random_Long.randomR</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random_Long:random">Random_Long.random</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random_Long:randomRs">Random_Long.randomRs</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random_Long:randoms">Random_Long.randoms</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#StdGen:StdGen">StdGen.StdGen</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#StdGen:_new">StdGen.new</a></div>
+<a class="fref" href="#mkStdGen">mkStdGen</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#newStdGen">newStdGen</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random.randomR">Random.randomR</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random.random">Random.random</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random.randomRs">Random.randomRs</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random.randoms">Random.randoms</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#RandomGen.nextDouble">RandomGen.nextDouble</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#RandomGen.next">RandomGen.next</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#RandomGen.genRange">RandomGen.genRange</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#RandomGen.nextBool">RandomGen.nextBool</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#RandomGen.nextLong">RandomGen.nextLong</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#RandomGen.split">RandomGen.split</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#RandomGen_StdGen.nextDouble">RandomGen_StdGen.nextDouble</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#RandomGen_StdGen.next">RandomGen_StdGen.next</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#RandomGen_StdGen.genRange">RandomGen_StdGen.genRange</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#RandomGen_StdGen.nextBool">RandomGen_StdGen.nextBool</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#RandomGen_StdGen.nextLong">RandomGen_StdGen.nextLong</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#RandomGen_StdGen.split">RandomGen_StdGen.split</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random_Bool.randomR">Random_Bool.randomR</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random_Bool.random">Random_Bool.random</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random_Bool.randomRs">Random_Bool.randomRs</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random_Bool.randoms">Random_Bool.randoms</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random_Int.randomR">Random_Int.randomR</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random_Int.random">Random_Int.random</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random_Int.randomRs">Random_Int.randomRs</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random_Int.randoms">Random_Int.randoms</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random_Integer.randomR">Random_Integer.randomR</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random_Integer.random">Random_Integer.random</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random_Integer.randomRs">Random_Integer.randomRs</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random_Integer.randoms">Random_Integer.randoms</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random_Long.randomR">Random_Long.randomR</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random_Long.random">Random_Long.random</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random_Long.randomRs">Random_Long.randomRs</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random_Long.randoms">Random_Long.randoms</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#JavaGen.nextBool">JavaGen.nextBool</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#JavaGen.newα">JavaGen.newα</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#JavaGen._new">JavaGen.new</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#JavaGen.newβ">JavaGen.newβ</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#JavaGen.nextFloat">JavaGen.nextFloat</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#JavaGen.nextDouble">JavaGen.nextDouble</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#JavaGen.nextInt">JavaGen.nextInt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#JavaGen.nextLong">JavaGen.nextLong</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#StdGen._new">StdGen.new</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#StdGen.StdGen">StdGen.StdGen</a></div>
 </li>
 </ul>
 <h3>
@@ -94,35 +94,35 @@ import <a HREF="../prelude/PreludeText.html">frege.prelude.PreludeText</a> as Pr
 <a name="class">Classes</a></h2>
 <dl class="clas">
 <dt class="clas">
-<tt><b>class </b><a name="Random">Random</a>  r</tt></dt>
+<SPAN CLASS="code"><b>class </b><a name="Random">Random</a>  r</SPAN></dt>
 <dd class="clas">
 <h3>
 Known Instances</h3>
 <p>
-<a class="tref" href="#Random_Long">Long</a>, <a class="tref" href="#Random_Int">Int</a></p>
+<a class="tref" href="#Random_Integer">Integer</a>, <a class="tref" href="#Random_Long">Long</a>, <a class="tref" href="#Random_Bool">Bool</a>, <a class="tref" href="#Random_Int">Int</a></p>
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<tt><a name="Random:random">random</a> :: (<a class="tref" href="#Random">Random</a> r, <a class="tref" href="#RandomGen">RandomGen</a> g) =&gt; g -&gt; (r, g)</tt></dt>
+<SPAN CLASS="code"><a name="Random.random">random</a> :: (<a class="tref" href="#Random">Random</a> r, <a class="tref" href="#RandomGen">RandomGen</a> g) =&gt; g -&gt; (r, g)</SPAN></dt>
 <dd class="func">
 <p>
 a random value   </p>
 </dd>
 <dt class="func">
-<tt><a name="Random:randomR">randomR</a> :: (<a class="tref" href="#Random">Random</a> r, <a class="tref" href="#RandomGen">RandomGen</a> g) =&gt; (r, r) -&gt; g -&gt; (r, g)</tt></dt>
+<SPAN CLASS="code"><a name="Random.randomR">randomR</a> :: (<a class="tref" href="#Random">Random</a> r, <a class="tref" href="#RandomGen">RandomGen</a> g) =&gt; (r, r) -&gt; g -&gt; (r, g)</SPAN></dt>
 <dd class="func">
 <p>
 a random value in the given bounds   </p>
 </dd>
 <dt class="func">
-<tt><a name="Random:randomRs">randomRs</a> :: (<a class="tref" href="#Random">Random</a> r, <a class="tref" href="#RandomGen">RandomGen</a> g) =&gt; (r, r) -&gt; g -&gt; [r]</tt></dt>
+<SPAN CLASS="code"><a name="Random.randomRs">randomRs</a> :: (<a class="tref" href="#Random">Random</a> r, <a class="tref" href="#RandomGen">RandomGen</a> g) =&gt; (r, r) -&gt; g -&gt; [r]</SPAN></dt>
 <dd class="func">
 <p>
 a list of random values in the given bound   </p>
 </dd>
 <dt class="func">
-<tt><a name="Random:randoms">randoms</a> :: (<a class="tref" href="#Random">Random</a> r, <a class="tref" href="#RandomGen">RandomGen</a> g) =&gt; g -&gt; [r]</tt></dt>
+<SPAN CLASS="code"><a name="Random.randoms">randoms</a> :: (<a class="tref" href="#Random">Random</a> r, <a class="tref" href="#RandomGen">RandomGen</a> g) =&gt; g -&gt; [r]</SPAN></dt>
 <dd class="func">
 <p>
 a list of random values               </p>
@@ -130,7 +130,7 @@ a list of random values               </p>
 </dl>
 </dd>
 <dt class="clas">
-<tt><b>class </b><a name="RandomGen">RandomGen</a>  g</tt></dt>
+<SPAN CLASS="code"><b>class </b><a name="RandomGen">RandomGen</a>  g</SPAN></dt>
 <dd class="clas">
 <p>
 Interface for random number generators</p>
@@ -142,19 +142,27 @@ Known Instances</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<tt><a name="RandomGen:genRange">genRange</a> :: <a class="tref" href="#RandomGen">RandomGen</a> g =&gt; g -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</tt></dt>
+<SPAN CLASS="code"><a name="RandomGen.genRange">genRange</a> :: <a class="tref" href="#RandomGen">RandomGen</a> g =&gt; g -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<tt><a name="RandomGen:next">next</a> :: <a class="tref" href="#RandomGen">RandomGen</a> g =&gt; g -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, g)</tt></dt>
+<SPAN CLASS="code"><a name="RandomGen.next">next</a> :: <a class="tref" href="#RandomGen">RandomGen</a> g =&gt; g -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, g)</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<tt><a name="RandomGen:nextLong">nextLong</a> :: <a class="tref" href="#RandomGen">RandomGen</a> g =&gt; g -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>, g)</tt></dt>
+<SPAN CLASS="code"><a name="RandomGen.nextBool">nextBool</a> :: <a class="tref" href="#RandomGen">RandomGen</a> g =&gt; g -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>, g)</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<tt><a name="RandomGen:split">split</a> :: <a class="tref" href="#RandomGen">RandomGen</a> g =&gt; g -&gt; (g, g)</tt></dt>
+<SPAN CLASS="code"><a name="RandomGen.nextDouble">nextDouble</a> :: <a class="tref" href="#RandomGen">RandomGen</a> g =&gt; g -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Double">Double</a>, g)</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="RandomGen.nextLong">nextLong</a> :: <a class="tref" href="#RandomGen">RandomGen</a> g =&gt; g -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>, g)</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="RandomGen.split">split</a> :: <a class="tref" href="#RandomGen">RandomGen</a> g =&gt; g -&gt; (g, g)</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -164,86 +172,152 @@ Member Functions</h3>
 <a name="instance">Instances</a></h2>
 <dl class="inst">
 <dt class="inst">
-<tt><b>instance </b><a name="RandomGen_StdGen"> </a> <a class="tref" href="#RandomGen">RandomGen</a> <a class="tref" href="#StdGen">StdGen</a></tt></dt>
+<SPAN CLASS="code"><b>instance </b><a name="RandomGen_StdGen"> </a> <a class="tref" href="#RandomGen">RandomGen</a> <a class="tref" href="#StdGen">StdGen</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<tt><a name="RandomGen_StdGen:genRange">genRange</a> :: <a class="tref" href="#StdGen">StdGen</a> -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</tt></dt>
+<SPAN CLASS="code"><a name="RandomGen_StdGen.genRange">genRange</a> :: <a class="tref" href="#StdGen">StdGen</a> -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</SPAN></dt>
 <dd class="func">
 <p>
-inherited from <a class="fref" href="#RandomGen:genRange">RandomGen.genRange</a></p>
+inherited from <a class="fref" href="#RandomGen.genRange">RandomGen.genRange</a></p>
 </dd>
 <dt class="func">
-<tt><a name="RandomGen_StdGen:next">next</a> :: <b><a class="tref" href="#StdGen">StdGen</a></b> -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="#StdGen">StdGen</a>)</tt></dt>
+<SPAN CLASS="code"><a name="RandomGen_StdGen.next">next</a> :: <b><a class="tref" href="#StdGen">StdGen</a></b> -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="#StdGen">StdGen</a>)</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<tt><a name="RandomGen_StdGen:nextLong">nextLong</a> :: <b><a class="tref" href="#StdGen">StdGen</a></b> -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>, <a class="tref" href="#StdGen">StdGen</a>)</tt></dt>
+<SPAN CLASS="code"><a name="RandomGen_StdGen.nextBool">nextBool</a> :: <b><a class="tref" href="#StdGen">StdGen</a></b> -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>, <a class="tref" href="#StdGen">StdGen</a>)</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<tt><a name="RandomGen_StdGen:split">split</a> :: <b><a class="tref" href="#StdGen">StdGen</a></b> -&gt; (<a class="tref" href="#StdGen">StdGen</a>, <a class="tref" href="#StdGen">StdGen</a>)</tt></dt>
+<SPAN CLASS="code"><a name="RandomGen_StdGen.nextDouble">nextDouble</a> :: <b><a class="tref" href="#StdGen">StdGen</a></b> -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Double">Double</a>, <a class="tref" href="#StdGen">StdGen</a>)</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="RandomGen_StdGen.nextLong">nextLong</a> :: <b><a class="tref" href="#StdGen">StdGen</a></b> -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>, <a class="tref" href="#StdGen">StdGen</a>)</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="RandomGen_StdGen.split">split</a> :: <b><a class="tref" href="#StdGen">StdGen</a></b> -&gt; (<a class="tref" href="#StdGen">StdGen</a>, <a class="tref" href="#StdGen">StdGen</a>)</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
 </dd>
 <dt class="inst">
-<tt><b>instance </b><a name="Random_Int"> </a> <a class="tref" href="#Random">Random</a> <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></tt></dt>
+<SPAN CLASS="code"><b>instance </b><a name="Random_Bool"> </a> <a class="tref" href="#Random">Random</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<tt><a name="Random_Int:random">random</a> :: <a class="tref" href="#RandomGen">RandomGen</a> α =&gt; α -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, α)</tt></dt>
+<SPAN CLASS="code"><a name="Random_Bool.random">random</a> :: <a class="tref" href="#RandomGen">RandomGen</a> α =&gt; α -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>, α)</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<tt><a name="Random_Int:randomR">randomR</a> :: <a class="tref" href="#RandomGen">RandomGen</a> α =&gt; <b>(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</b> -&gt; α -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, α)</tt></dt>
+<SPAN CLASS="code"><a name="Random_Bool.randomR">randomR</a> :: <a class="tref" href="#RandomGen">RandomGen</a> α =&gt; <b>(<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>, <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>)</b> -&gt; α -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>, α)</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<tt><a name="Random_Int:randomRs">randomRs</a> :: <a class="tref" href="#RandomGen">RandomGen</a> α =&gt; <b>(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</b> -&gt; α -&gt; [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>]</tt></dt>
+<SPAN CLASS="code"><a name="Random_Bool.randomRs">randomRs</a> :: <a class="tref" href="#RandomGen">RandomGen</a> α =&gt; <b>(<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>, <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>)</b> -&gt; α -&gt; [<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>]</SPAN></dt>
 <dd class="func">
 <p>
-inherited from <a class="fref" href="#Random:randomRs">Random.randomRs</a></p>
+inherited from <a class="fref" href="#Random.randomRs">Random.randomRs</a></p>
 </dd>
 <dt class="func">
-<tt><a name="Random_Int:randoms">randoms</a> :: <a class="tref" href="#RandomGen">RandomGen</a> α =&gt; α -&gt; [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>]</tt></dt>
+<SPAN CLASS="code"><a name="Random_Bool.randoms">randoms</a> :: <a class="tref" href="#RandomGen">RandomGen</a> α =&gt; α -&gt; [<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>]</SPAN></dt>
 <dd class="func">
 <p>
-inherited from <a class="fref" href="#Random:randoms">Random.randoms</a></p>
+inherited from <a class="fref" href="#Random.randoms">Random.randoms</a></p>
 </dd>
 </dl>
 </dd>
 <dt class="inst">
-<tt><b>instance </b><a name="Random_Long"> </a> <a class="tref" href="#Random">Random</a> <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></tt></dt>
+<SPAN CLASS="code"><b>instance </b><a name="Random_Int"> </a> <a class="tref" href="#Random">Random</a> <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<tt><a name="Random_Long:random">random</a> :: <a class="tref" href="#RandomGen">RandomGen</a> α =&gt; α -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>, α)</tt></dt>
+<SPAN CLASS="code"><a name="Random_Int.random">random</a> :: <a class="tref" href="#RandomGen">RandomGen</a> α =&gt; α -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, α)</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<tt><a name="Random_Long:randomR">randomR</a> :: <a class="tref" href="#RandomGen">RandomGen</a> α =&gt; <b>(<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>, <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>)</b> -&gt; α -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>, α)</tt></dt>
+<SPAN CLASS="code"><a name="Random_Int.randomR">randomR</a> :: <a class="tref" href="#RandomGen">RandomGen</a> α =&gt; <b>(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</b> -&gt; α -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, α)</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Random_Int.randomRs">randomRs</a> :: <a class="tref" href="#RandomGen">RandomGen</a> α =&gt; <b>(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</b> -&gt; α -&gt; [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#Random.randomRs">Random.randomRs</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Random_Int.randoms">randoms</a> :: <a class="tref" href="#RandomGen">RandomGen</a> α =&gt; α -&gt; [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#Random.randoms">Random.randoms</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name="Random_Integer"> </a> <a class="tref" href="#Random">Random</a> <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="Random_Integer.random">random</a> :: <a class="tref" href="#RandomGen">RandomGen</a> α =&gt; α -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a>, α)</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Random_Integer.randomR">randomR</a> :: <a class="tref" href="#RandomGen">RandomGen</a> α =&gt; <b>(<a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a>, <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a>)</b> -&gt; α -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a>, α)</SPAN></dt>
 <dd class="func">
 <p>
 We allow only intervals from (Long.minBound `div` 2) to (Long.maxBound `div` 2) with the exception (Long.minBound, Long.maxBound), which is allowed.</p>
 </dd>
 <dt class="func">
-<tt><a name="Random_Long:randomRs">randomRs</a> :: <a class="tref" href="#RandomGen">RandomGen</a> α =&gt; <b>(<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>, <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>)</b> -&gt; α -&gt; [<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>]</tt></dt>
+<SPAN CLASS="code"><a name="Random_Integer.randomRs">randomRs</a> :: <a class="tref" href="#RandomGen">RandomGen</a> α =&gt; <b>(<a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a>, <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a>)</b> -&gt; α -&gt; [<a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a>]</SPAN></dt>
 <dd class="func">
 <p>
-inherited from <a class="fref" href="#Random:randomRs">Random.randomRs</a></p>
+inherited from <a class="fref" href="#Random.randomRs">Random.randomRs</a></p>
 </dd>
 <dt class="func">
-<tt><a name="Random_Long:randoms">randoms</a> :: <a class="tref" href="#RandomGen">RandomGen</a> α =&gt; α -&gt; [<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>]</tt></dt>
+<SPAN CLASS="code"><a name="Random_Integer.randoms">randoms</a> :: <a class="tref" href="#RandomGen">RandomGen</a> α =&gt; α -&gt; [<a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a>]</SPAN></dt>
 <dd class="func">
 <p>
-inherited from <a class="fref" href="#Random:randoms">Random.randoms</a></p>
+inherited from <a class="fref" href="#Random.randoms">Random.randoms</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name="Random_Long"> </a> <a class="tref" href="#Random">Random</a> <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="Random_Long.random">random</a> :: <a class="tref" href="#RandomGen">RandomGen</a> α =&gt; α -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>, α)</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Random_Long.randomR">randomR</a> :: <a class="tref" href="#RandomGen">RandomGen</a> α =&gt; <b>(<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>, <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>)</b> -&gt; α -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>, α)</SPAN></dt>
+<dd class="func">
+<p>
+We allow only intervals from (Long.minBound `div` 2) to (Long.maxBound `div` 2) with the exception (Long.minBound, Long.maxBound), which is allowed.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Random_Long.randomRs">randomRs</a> :: <a class="tref" href="#RandomGen">RandomGen</a> α =&gt; <b>(<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>, <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>)</b> -&gt; α -&gt; [<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#Random.randomRs">Random.randomRs</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Random_Long.randoms">randoms</a> :: <a class="tref" href="#RandomGen">RandomGen</a> α =&gt; α -&gt; [<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#Random.randoms">Random.randoms</a></p>
 </dd>
 </dl>
 </dd>
@@ -252,13 +326,53 @@ inherited from <a class="fref" href="#Random:randoms">Random.randoms</a></p>
 <a name="data">Data Types</a></h2>
 <dl class="data">
 <dt class="data">
-<tt><b>data </b><a name="StdGen"> </a> <a class="tref" href="#StdGen">StdGen</a></tt></dt>
+<SPAN CLASS="code"><b>data </b><a name="JavaGen"> </a> <a class="tref" href="#JavaGen">JavaGen</a> = <b>native </b>java.util.Random</SPAN></dt>
+<dd class="data">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="JavaGen._new">new</a> :: ω<br><b>native </b>new</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="JavaGen.newα">newα</a> :: <b><a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></b> -&gt; <a class="tref" href="../prelude/PreludeIO.html#IOMutable">IOMutable</a> <a class="tref" href="#JavaGen">JavaGen</a><br><b>native </b>new</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="JavaGen.newβ">newβ</a> :: <b><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></b> -&gt; <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> s <a class="tref" href="#JavaGen">JavaGen</a><br><b>native </b>new</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="JavaGen.nextBool">nextBool</a> :: <b><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#JavaGen">JavaGen</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a><br><b>native </b>nextBoolean</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="JavaGen.nextDouble">nextDouble</a> :: <b><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#JavaGen">JavaGen</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Double">Double</a><br><b>native </b>nextDouble</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="JavaGen.nextFloat">nextFloat</a> :: <b><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#JavaGen">JavaGen</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Float">Float</a><br><b>native </b>nextFloat</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="JavaGen.nextInt">nextInt</a> :: <b><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#JavaGen">JavaGen</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a><br><b>native </b>nextInt</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="JavaGen.nextLong">nextLong</a> :: <b><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#JavaGen">JavaGen</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a><br><b>native </b>nextLong</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name="StdGen"> </a> <a class="tref" href="#StdGen">StdGen</a></SPAN></dt>
 <dd class="data">
 <h3>
 Constructors</h3>
 <dl class="func">
 <dt class="func">
-<tt><a name="StdGen">StdGen</a> <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></tt></dt>
+<SPAN CLASS="code"><a name="StdGen.StdGen">StdGen</a> <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -266,7 +380,7 @@ Constructors</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<tt><a name="StdGen:_new">new</a> :: <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="#StdGen">StdGen</a></tt></dt>
+<SPAN CLASS="code"><a name="StdGen._new">new</a> :: <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="#StdGen">StdGen</a></SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -276,13 +390,13 @@ Member Functions</h3>
 <a name="let">Functions and Values</a></h2>
 <dl class="func">
 <dt class="func">
-<tt><a name="mkStdGen">mkStdGen</a> :: <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="#StdGen">StdGen</a></tt></dt>
+<SPAN CLASS="code"><a name="mkStdGen">mkStdGen</a> :: <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="#StdGen">StdGen</a></SPAN></dt>
 <dd class="func">
 <p>
 create a standard random generator with a fixed seed   </p>
 </dd>
 <dt class="func">
-<tt><a name="newStdGen">newStdGen</a> :: <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#StdGen">StdGen</a></tt></dt>
+<SPAN CLASS="code"><a name="newStdGen">newStdGen</a> :: <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#StdGen">StdGen</a></SPAN></dt>
 <dd class="func">
 <p>
 create a standard random generator with an arbitrary seed   </p>
@@ -292,142 +406,262 @@ create a standard random generator with an arbitrary seed   </p>
 <a name="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
-<tt><a class="tref" href="#StdGen">StdGen</a> -&gt; (<a class="tref" href="#StdGen">StdGen</a>, <a class="tref" href="#StdGen">StdGen</a>)</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="#StdGen">StdGen</a> -&gt; (<a class="tref" href="#StdGen">StdGen</a>, <a class="tref" href="#StdGen">StdGen</a>)</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#RandomGen_StdGen:split">RandomGen_StdGen.split</a></p>
+<a class="fref" href="#RandomGen_StdGen.split">RandomGen_StdGen.split</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="#StdGen">StdGen</a> -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="#StdGen">StdGen</a>)</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="#StdGen">StdGen</a> -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>, <a class="tref" href="#StdGen">StdGen</a>)</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#RandomGen_StdGen:next">RandomGen_StdGen.next</a></p>
+<a class="fref" href="#RandomGen_StdGen.nextBool">RandomGen_StdGen.nextBool</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="#StdGen">StdGen</a> -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="#StdGen">StdGen</a> -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Double">Double</a>, <a class="tref" href="#StdGen">StdGen</a>)</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#RandomGen_StdGen:genRange">RandomGen_StdGen.genRange</a></p>
+<a class="fref" href="#RandomGen_StdGen.nextDouble">RandomGen_StdGen.nextDouble</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="#StdGen">StdGen</a> -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>, <a class="tref" href="#StdGen">StdGen</a>)</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="#StdGen">StdGen</a> -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="#StdGen">StdGen</a>)</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#RandomGen_StdGen:nextLong">RandomGen_StdGen.nextLong</a></p>
+<a class="fref" href="#RandomGen_StdGen.next">RandomGen_StdGen.next</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="#StdGen">StdGen</a></tt></dt>
+<SPAN CLASS="code"><a class="tref" href="#StdGen">StdGen</a> -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#mkStdGen">mkStdGen</a>, <a class="fref" href="#StdGen:_new">StdGen.new</a></p>
+<a class="fref" href="#RandomGen_StdGen.genRange">RandomGen_StdGen.genRange</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a> -&gt; <a class="tref" href="#StdGen">StdGen</a></tt></dt>
+<SPAN CLASS="code"><a class="tref" href="#StdGen">StdGen</a> -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>, <a class="tref" href="#StdGen">StdGen</a>)</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#StdGen:StdGen">StdGen.StdGen</a></p>
+<a class="fref" href="#RandomGen_StdGen.nextLong">RandomGen_StdGen.nextLong</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#StdGen">StdGen</a></tt></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Unit">()</a> -&gt; <a class="tref" href="../prelude/PreludeIO.html#IOMutable">IOMutable</a> <a class="tref" href="#JavaGen">JavaGen</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JavaGen.newα">JavaGen.newα</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="#StdGen">StdGen</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#mkStdGen">mkStdGen</a>, <a class="fref" href="#StdGen._new">StdGen.new</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a> -&gt; <a class="tref" href="#StdGen">StdGen</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#StdGen.StdGen">StdGen.StdGen</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#StdGen">StdGen</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#newStdGen">newStdGen</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="#RandomGen">RandomGen</a> g =&gt; g -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#JavaGen">JavaGen</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#RandomGen:genRange">RandomGen.genRange</a></p>
+<a class="fref" href="#JavaGen.nextBool">JavaGen.nextBool</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="#RandomGen">RandomGen</a> g =&gt; g -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, g)</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#JavaGen">JavaGen</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Double">Double</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#RandomGen:next">RandomGen.next</a></p>
+<a class="fref" href="#JavaGen.nextDouble">JavaGen.nextDouble</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="#RandomGen">RandomGen</a> g =&gt; g -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>, g)</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#JavaGen">JavaGen</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Float">Float</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#RandomGen:nextLong">RandomGen.nextLong</a></p>
+<a class="fref" href="#JavaGen.nextFloat">JavaGen.nextFloat</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="#RandomGen">RandomGen</a> g =&gt; g -&gt; (g, g)</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#JavaGen">JavaGen</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#RandomGen:split">RandomGen.split</a></p>
+<a class="fref" href="#JavaGen.nextInt">JavaGen.nextInt</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="#RandomGen">RandomGen</a> α =&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>) -&gt; α -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, α)</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#JavaGen">JavaGen</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Random_Int:randomR">Random_Int.randomR</a></p>
+<a class="fref" href="#JavaGen.nextLong">JavaGen.nextLong</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="#RandomGen">RandomGen</a> α =&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>) -&gt; α -&gt; [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>]</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a> -&gt; <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> s <a class="tref" href="#JavaGen">JavaGen</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Random_Int:randomRs">Random_Int.randomRs</a></p>
+<a class="fref" href="#JavaGen.newβ">JavaGen.newβ</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="#RandomGen">RandomGen</a> α =&gt; (<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>, <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>) -&gt; α -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>, α)</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="#RandomGen">RandomGen</a> g =&gt; g -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>, g)</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Random_Long:randomR">Random_Long.randomR</a></p>
+<a class="fref" href="#RandomGen.nextBool">RandomGen.nextBool</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="#RandomGen">RandomGen</a> α =&gt; (<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>, <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>) -&gt; α -&gt; [<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>]</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="#RandomGen">RandomGen</a> g =&gt; g -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Double">Double</a>, g)</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Random_Long:randomRs">Random_Long.randomRs</a></p>
+<a class="fref" href="#RandomGen.nextDouble">RandomGen.nextDouble</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="#RandomGen">RandomGen</a> α =&gt; α -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, α)</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="#RandomGen">RandomGen</a> g =&gt; g -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Random_Int:random">Random_Int.random</a></p>
+<a class="fref" href="#RandomGen.genRange">RandomGen.genRange</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="#RandomGen">RandomGen</a> α =&gt; α -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>, α)</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="#RandomGen">RandomGen</a> g =&gt; g -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, g)</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Random_Long:random">Random_Long.random</a></p>
+<a class="fref" href="#RandomGen.next">RandomGen.next</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="#RandomGen">RandomGen</a> α =&gt; α -&gt; [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>]</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="#RandomGen">RandomGen</a> g =&gt; g -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>, g)</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Random_Int:randoms">Random_Int.randoms</a></p>
+<a class="fref" href="#RandomGen.nextLong">RandomGen.nextLong</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="#RandomGen">RandomGen</a> α =&gt; α -&gt; [<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>]</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="#RandomGen">RandomGen</a> g =&gt; g -&gt; (g, g)</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Random_Long:randoms">Random_Long.randoms</a></p>
+<a class="fref" href="#RandomGen.split">RandomGen.split</a></p>
 </dd>
 <dt class="func">
-<tt>(<a class="tref" href="#Random">Random</a> r, <a class="tref" href="#RandomGen">RandomGen</a> g) =&gt; (r, r) -&gt; g -&gt; (r, g)</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="#RandomGen">RandomGen</a> α =&gt; (<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>, <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) -&gt; α -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>, α)</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Random:randomR">Random.randomR</a></p>
+<a class="fref" href="#Random_Bool.randomR">Random_Bool.randomR</a></p>
 </dd>
 <dt class="func">
-<tt>(<a class="tref" href="#Random">Random</a> r, <a class="tref" href="#RandomGen">RandomGen</a> g) =&gt; (r, r) -&gt; g -&gt; [r]</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="#RandomGen">RandomGen</a> α =&gt; (<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>, <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) -&gt; α -&gt; [<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>]</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Random:randomRs">Random.randomRs</a></p>
+<a class="fref" href="#Random_Bool.randomRs">Random_Bool.randomRs</a></p>
 </dd>
 <dt class="func">
-<tt>(<a class="tref" href="#Random">Random</a> r, <a class="tref" href="#RandomGen">RandomGen</a> g) =&gt; g -&gt; (r, g)</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="#RandomGen">RandomGen</a> α =&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>) -&gt; α -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, α)</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Random:random">Random.random</a></p>
+<a class="fref" href="#Random_Int.randomR">Random_Int.randomR</a></p>
 </dd>
 <dt class="func">
-<tt>(<a class="tref" href="#Random">Random</a> r, <a class="tref" href="#RandomGen">RandomGen</a> g) =&gt; g -&gt; [r]</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="#RandomGen">RandomGen</a> α =&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>) -&gt; α -&gt; [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>]</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Random:randoms">Random.randoms</a></p>
+<a class="fref" href="#Random_Int.randomRs">Random_Int.randomRs</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#RandomGen">RandomGen</a> α =&gt; (<a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a>, <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a>) -&gt; α -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a>, α)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Random_Integer.randomR">Random_Integer.randomR</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#RandomGen">RandomGen</a> α =&gt; (<a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a>, <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a>) -&gt; α -&gt; [<a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Random_Integer.randomRs">Random_Integer.randomRs</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#RandomGen">RandomGen</a> α =&gt; (<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>, <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>) -&gt; α -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>, α)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Random_Long.randomR">Random_Long.randomR</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#RandomGen">RandomGen</a> α =&gt; (<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>, <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>) -&gt; α -&gt; [<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Random_Long.randomRs">Random_Long.randomRs</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#RandomGen">RandomGen</a> α =&gt; α -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>, α)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Random_Bool.random">Random_Bool.random</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#RandomGen">RandomGen</a> α =&gt; α -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, α)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Random_Int.random">Random_Int.random</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#RandomGen">RandomGen</a> α =&gt; α -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a>, α)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Random_Integer.random">Random_Integer.random</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#RandomGen">RandomGen</a> α =&gt; α -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>, α)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Random_Long.random">Random_Long.random</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#RandomGen">RandomGen</a> α =&gt; α -&gt; [<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Random_Bool.randoms">Random_Bool.randoms</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#RandomGen">RandomGen</a> α =&gt; α -&gt; [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Random_Int.randoms">Random_Int.randoms</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#RandomGen">RandomGen</a> α =&gt; α -&gt; [<a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Random_Integer.randoms">Random_Integer.randoms</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#RandomGen">RandomGen</a> α =&gt; α -&gt; [<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Random_Long.randoms">Random_Long.randoms</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">ω</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JavaGen._new">JavaGen.new</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="#Random">Random</a> r, <a class="tref" href="#RandomGen">RandomGen</a> g) =&gt; (r, r) -&gt; g -&gt; (r, g)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Random.randomR">Random.randomR</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="#Random">Random</a> r, <a class="tref" href="#RandomGen">RandomGen</a> g) =&gt; (r, r) -&gt; g -&gt; [r]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Random.randomRs">Random.randomRs</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="#Random">Random</a> r, <a class="tref" href="#RandomGen">RandomGen</a> g) =&gt; g -&gt; (r, g)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Random.random">Random.random</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="#Random">Random</a> r, <a class="tref" href="#RandomGen">RandomGen</a> g) =&gt; g -&gt; [r]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Random.randoms">Random.randoms</a></p>
 </dd>
 </dl>
 <p>

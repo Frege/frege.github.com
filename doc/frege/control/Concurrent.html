@@ -6,10 +6,10 @@
 body { font-family: helvetica, arial, sans-serif }
 pre { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
 h3  { font-weight: lighter }
-dt.func { background: rgb(95%, 95%, 80%) }
-dt.clas { background: rgb(80%, 95%, 95%) }
-dt.inst { background: rgb(95%, 90%, 95%) }
-dt.data { background: rgb(95%, 95%, 95%) }
+dt.func { background: rgb(95%, 95%, 80%); margin-top: 10px }
+dt.clas { background: rgb(80%, 95%, 95%); margin-top: 10px }
+dt.inst { background: rgb(95%, 90%, 95%); margin-top: 10px }
+dt.data { background: rgb(95%, 95%, 95%); margin-top: 10px }
 span.code { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
 span.unknown { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: red }
 a.fref { text-decoration: none; font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(30%, 30%, 0%) }
@@ -17,15 +17,15 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 </style>
 <BODY>
 <h1>
-<a name="package">Package <tt>frege.control.Concurrent</tt></a></h1>
+<a name="package">Package <SPAN CLASS="code">frege.control.Concurrent</SPAN></a></h1>
 <p>
-Compiled: Thu Oct 24 10:51:30 CEST 2013 from source file: <tt>./frege/control/Concurrent.fr</tt></p>
+Compiled: Thu Nov 07 18:28:38 CET 2013 from source file: <SPAN CLASS="code">./frege/control/Concurrent.fr</SPAN></p>
 <h3>
 Package Documentation</h3>
 <p>
 Support for concurrency.</p>
 <p>
-Concurrency in Frege comes in 2 flavors. The first is through <SPAN CLASS="unknown">Thread</SPAN>s, which are, unlike in Haskell, <tt>OS</tt> threads.</p>
+Concurrency in Frege comes in 2 flavors. The first is through <SPAN CLASS="unknown">Thread</SPAN>s, which are, unlike in Haskell, <SPAN CLASS="code">OS</SPAN> threads.</p>
 <p>
 The second possibility is to use a thread pool and an executor service one can submit tasks to. But note that blocking asynchronous tasks, unlike Haskell green threads, will block an OS thread on blocking actions.</p>
 <h3>
@@ -47,7 +47,7 @@ Table of Content</h3>
 <div>
 <a HREF="#case">Functions and Values (by type)</a></div>
 <div>
-<a class="fref" href="#forkIO">forkIO</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MVar:offer">MVar.offer</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MVar:_new">MVar.new</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MVar:MV">MVar.MV</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MVar:newEmpty">MVar.newEmpty</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MVar:put">MVar.put</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MVar:poll">MVar.poll</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MVar:take">MVar.take</a></div>
+<a class="fref" href="#forkIO">forkIO</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MVar.offer">MVar.offer</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MVar._new">MVar.new</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MVar.MV">MVar.MV</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MVar.newEmpty">MVar.newEmpty</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MVar.put">MVar.put</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MVar.poll">MVar.poll</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MVar.take">MVar.take</a></div>
 </li>
 </ul>
 <h3>
@@ -90,7 +90,7 @@ import <a HREF="../prelude/PreludeText.html">frege.prelude.PreludeText</a> as Pr
 <a name="data">Data Types</a></h2>
 <dl class="data">
 <dt class="data">
-<tt><b>data </b><a name="MVar"> </a> <a class="tref" href="#MVar">MVar</a> a</tt></dt>
+<SPAN CLASS="code"><b>data </b><a name="MVar"> </a> <a class="tref" href="#MVar">MVar</a> a</SPAN></dt>
 <dd class="data">
 <p>
 A thread safe, shared variable, that is either full or empty.       </p>
@@ -98,7 +98,7 @@ A thread safe, shared variable, that is either full or empty.       </p>
 Constructors</h3>
 <dl class="func">
 <dt class="func">
-<tt><a name="MV">MV</a> (<a class="tref" href="../java/util/Concurrent.html#BlockingQueue">BlockingQueue</a> a)</tt></dt>
+<SPAN CLASS="code"><a name="MVar.MV">MV</a> (<a class="tref" href="../java/util/Concurrent.html#BlockingQueue">BlockingQueue</a> a)</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -106,37 +106,37 @@ Constructors</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<tt><a name="MVar:_new">new</a> :: α -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="#MVar">MVar</a> α)</tt></dt>
+<SPAN CLASS="code"><a name="MVar._new">new</a> :: α -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="#MVar">MVar</a> α)</SPAN></dt>
 <dd class="func">
 <p>
 create a <a class="tref" href="#MVar">MVar</a> filled with a value   </p>
 </dd>
 <dt class="func">
-<tt><a name="MVar:newEmpty">newEmpty</a> :: <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="#MVar">MVar</a> α)</tt></dt>
+<SPAN CLASS="code"><a name="MVar.newEmpty">newEmpty</a> :: <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="#MVar">MVar</a> α)</SPAN></dt>
 <dd class="func">
 <p>
 create an empty <a class="tref" href="#MVar">MVar</a>   </p>
 </dd>
 <dt class="func">
-<tt><a name="MVar:offer">offer</a> :: <b><a class="tref" href="#MVar">MVar</a> α</b> -&gt; <b>α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></tt></dt>
+<SPAN CLASS="code"><a name="MVar.offer">offer</a> :: <b><a class="tref" href="#MVar">MVar</a> α</b> -&gt; <b>α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
 put a value in a <a class="tref" href="#MVar">MVar</a>, returns false if already full.   </p>
 </dd>
 <dt class="func">
-<tt><a name="MVar:poll">poll</a> :: <b><a class="tref" href="#MVar">MVar</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α)</tt></dt>
+<SPAN CLASS="code"><a name="MVar.poll">poll</a> :: <b><a class="tref" href="#MVar">MVar</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α)</SPAN></dt>
 <dd class="func">
 <p>
-get the value from a <a class="tref" href="#MVar">MVar</a>, return <a class="fref" href="../prelude/PreludeBase.html#Maybe:Nothing">Maybe.Nothing</a> is empty   </p>
+get the value from a <a class="tref" href="#MVar">MVar</a>, return <a class="fref" href="../prelude/PreludeBase.html#Maybe.Nothing">Maybe.Nothing</a> is empty   </p>
 </dd>
 <dt class="func">
-<tt><a name="MVar:put">put</a> :: <b><a class="tref" href="#MVar">MVar</a> α</b> -&gt; <b>α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></tt></dt>
+<SPAN CLASS="code"><a name="MVar.put">put</a> :: <b><a class="tref" href="#MVar">MVar</a> α</b> -&gt; <b>α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 put a value in a <a class="tref" href="#MVar">MVar</a>, blocks if full   </p>
 </dd>
 <dt class="func">
-<tt><a name="MVar:take">take</a> :: <b><a class="tref" href="#MVar">MVar</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> α</tt></dt>
+<SPAN CLASS="code"><a name="MVar.take">take</a> :: <b><a class="tref" href="#MVar">MVar</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> α</SPAN></dt>
 <dd class="func">
 <p>
 take a value from a <a class="tref" href="#MVar">MVar</a>, blocks if empty            </p>
@@ -148,7 +148,7 @@ take a value from a <a class="tref" href="#MVar">MVar</a>, blocks if empty      
 <a name="let">Functions and Values</a></h2>
 <dl class="func">
 <dt class="func">
-<tt><a name="forkIO">forkIO</a> :: <b><a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../java/Lang.html#Thread">Lang.Thread</a></tt></dt>
+<SPAN CLASS="code"><a name="forkIO">forkIO</a> :: <b><a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../java/Lang.html#Thread">Lang.Thread</a></SPAN></dt>
 <dd class="func">
 <p>
 Create and start a new OS <SPAN CLASS="unknown">Thread</SPAN> that runs an <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> action.</p>
@@ -160,52 +160,52 @@ In Frege, there is no difference between <a class="fref" href="#forkIO">forkIO</
 <a name="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
-<tt><a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../java/Lang.html#Thread">Lang.Thread</a></tt></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../java/Lang.html#Thread">Lang.Thread</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#forkIO">forkIO</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="#MVar">MVar</a> α -&gt; α -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></tt></dt>
+<SPAN CLASS="code"><a class="tref" href="#MVar">MVar</a> α -&gt; α -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#MVar:put">MVar.put</a></p>
+<a class="fref" href="#MVar.put">MVar.put</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="#MVar">MVar</a> α -&gt; α -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></tt></dt>
+<SPAN CLASS="code"><a class="tref" href="#MVar">MVar</a> α -&gt; α -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#MVar:offer">MVar.offer</a></p>
+<a class="fref" href="#MVar.offer">MVar.offer</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="#MVar">MVar</a> α -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α)</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="#MVar">MVar</a> α -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α)</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#MVar:poll">MVar.poll</a></p>
+<a class="fref" href="#MVar.poll">MVar.poll</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="#MVar">MVar</a> α -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> α</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="#MVar">MVar</a> α -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> α</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#MVar:take">MVar.take</a></p>
+<a class="fref" href="#MVar.take">MVar.take</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="../java/util/Concurrent.html#BlockingQueue">BlockingQueue</a> a -&gt; <a class="tref" href="#MVar">MVar</a> a</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="../java/util/Concurrent.html#BlockingQueue">BlockingQueue</a> a -&gt; <a class="tref" href="#MVar">MVar</a> a</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#MVar:MV">MVar.MV</a></p>
+<a class="fref" href="#MVar.MV">MVar.MV</a></p>
 </dd>
 <dt class="func">
-<tt>α -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="#MVar">MVar</a> α)</tt></dt>
+<SPAN CLASS="code">α -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="#MVar">MVar</a> α)</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#MVar:_new">MVar.new</a></p>
+<a class="fref" href="#MVar._new">MVar.new</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="#MVar">MVar</a> α)</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="#MVar">MVar</a> α)</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#MVar:newEmpty">MVar.newEmpty</a></p>
+<a class="fref" href="#MVar.newEmpty">MVar.newEmpty</a></p>
 </dd>
 </dl>
 <p>

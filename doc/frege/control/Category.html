@@ -6,10 +6,10 @@
 body { font-family: helvetica, arial, sans-serif }
 pre { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
 h3  { font-weight: lighter }
-dt.func { background: rgb(95%, 95%, 80%) }
-dt.clas { background: rgb(80%, 95%, 95%) }
-dt.inst { background: rgb(95%, 90%, 95%) }
-dt.data { background: rgb(95%, 95%, 95%) }
+dt.func { background: rgb(95%, 95%, 80%); margin-top: 10px }
+dt.clas { background: rgb(80%, 95%, 95%); margin-top: 10px }
+dt.inst { background: rgb(95%, 90%, 95%); margin-top: 10px }
+dt.data { background: rgb(95%, 95%, 95%); margin-top: 10px }
 span.code { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
 span.unknown { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: red }
 a.fref { text-decoration: none; font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(30%, 30%, 0%) }
@@ -17,11 +17,13 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 </style>
 <BODY>
 <h1>
-<a name="package">Package <tt>frege.control.Category</tt></a></h1>
+<a name="package">Package <SPAN CLASS="code">frege.control.Category</SPAN></a></h1>
 <p>
-Compiled: Thu Oct 24 11:01:33 CEST 2013 from source file: <tt>./frege/control/Category.fr</tt></p>
+Compiled: Thu Nov 07 18:17:05 CET 2013 from source file: <SPAN CLASS="code">frege/control/Category.fr</SPAN></p>
 <h3>
 Package Documentation</h3>
+<p>
+Introduction of the type class for <a HREF="http://en.wikipedia.org/wiki/Category_(mathematics)">categories</a>.   </p>
 <h3>
 Table of Content</h3>
 <ul>
@@ -41,7 +43,7 @@ Table of Content</h3>
 <div>
 <a HREF="#case">Functions and Values (by type)</a></div>
 <div>
-<a class="fref" href="#Category:id">Category.id</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Category__minus_gt:id">Category_-&gt;.id</a></div>
+<a class="fref" href="#Category.id">Category.id</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Category__minus_gt.id">Category_-&gt;.id</a></div>
 </li>
 </ul>
 <h3>
@@ -49,31 +51,7 @@ Imports</h3>
 <ul>
 <li>
 <div>
-import <a HREF="../prelude/PreludeList.html">frege.prelude.PreludeList</a> as PreludeList</div>
-</li>
-<li>
-<div>
 import <a HREF="../prelude/PreludeBase.html">frege.prelude.PreludeBase</a> as PreludeBase</div>
-</li>
-<li>
-<div>
-import <a HREF="../Prelude.html">frege.Prelude</a> as Prelude</div>
-</li>
-<li>
-<div>
-import <a HREF="../prelude/PreludeIO.html">frege.prelude.PreludeIO</a> as PreludeIO</div>
-</li>
-<li>
-<div>
-import <a HREF="../prelude/PreludeNative.html">frege.prelude.PreludeNative</a> as PreludeNative</div>
-</li>
-<li>
-<div>
-import <a HREF="../prelude/PreludeMonad.html">frege.prelude.PreludeMonad</a> as PreludeMonad</div>
-</li>
-<li>
-<div>
-import <a HREF="../prelude/PreludeText.html">frege.prelude.PreludeText</a> as PreludeText</div>
 </li>
 <li>
 <div>
@@ -84,8 +62,16 @@ import <a HREF="./Semigroupoid.html">frege.control.Semigroupoid</a> as Semigroup
 <a name="class">Classes</a></h2>
 <dl class="clas">
 <dt class="clas">
-<tt><b>class </b><a name="Category">Category</a> <a class="tref" href="./Semigroupoid.html#Semigroupoid">Semigroupoid</a> f =&gt;  f</tt></dt>
+<SPAN CLASS="code"><b>class </b><a name="Category">Category</a> <a class="tref" href="./Semigroupoid.html#Semigroupoid">Semigroupoid</a> f =&gt;  f</SPAN></dt>
 <dd class="clas">
+<p>
+A category is a  <a class="tref" href="./Semigroupoid.html#Semigroupoid">Semigroupoid</a> with the following additional properties:</p>
+<ul>
+<LI>
+ For every object <SPAN CLASS="code">A</SPAN>, there exists a mophism <SPAN CLASS="code">id(A): A -&gt; A</SPAN> called the <i>identity morphism for A</i>, such that for every morphism <SPAN CLASS="code">f: A -&gt; B</SPAN> we have</LI>
+</ul>
+<PRE>
+ id(B) • f = f = f • id(A)</PRE>
 <h3>
 Known Instances</h3>
 <p>
@@ -94,7 +80,7 @@ Known Instances</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<tt><a name="Category:id">id</a> :: <a class="tref" href="#Category">Category</a> f =&gt; f a a</tt></dt>
+<SPAN CLASS="code"><a name="Category.id">id</a> :: <a class="tref" href="#Category">Category</a> f =&gt; f a a</SPAN></dt>
 <dd class="func">
 <p>
 the identity morphism   </p>
@@ -106,14 +92,20 @@ the identity morphism   </p>
 <a name="instance">Instances</a></h2>
 <dl class="inst">
 <dt class="inst">
-<tt><b>instance </b><a name="Category__minus_gt"> </a> <a class="tref" href="#Category">Category</a> <a class="tref" href="../prelude/PreludeBase.html#Function">-&gt;</a></tt></dt>
+<SPAN CLASS="code"><b>instance </b><a name="Category__minus_gt"> </a> <a class="tref" href="#Category">Category</a> <a class="tref" href="../prelude/PreludeBase.html#Function">-&gt;</a></SPAN></dt>
 <dd class="inst">
+<p>
+The category of Frege functions</p>
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<tt><a name="Category__minus_gt:id">id</a> :: <b>α</b> -&gt; α</tt></dt>
+<SPAN CLASS="code"><a name="Category__minus_gt.id">id</a> :: <b>α</b> -&gt; α</SPAN></dt>
 <dd class="func">
+<p>
+Identity on values</p>
+<p>
+<SPAN CLASS="code">id x</SPAN> is <SPAN CLASS="code">x</SPAN>    </p>
 </dd>
 </dl>
 </dd>
@@ -122,16 +114,16 @@ Member Functions</h3>
 <a name="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
-<tt>α -&gt; α</tt></dt>
+<SPAN CLASS="code">α -&gt; α</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Category__minus_gt:id">Category_-&gt;.id</a></p>
+<a class="fref" href="#Category__minus_gt.id">Category_-&gt;.id</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="#Category">Category</a> f =&gt; f a a</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="#Category">Category</a> f =&gt; f a a</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Category:id">Category.id</a></p>
+<a class="fref" href="#Category.id">Category.id</a></p>
 </dd>
 </dl>
 <p>

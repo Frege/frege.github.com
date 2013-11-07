@@ -6,10 +6,10 @@
 body { font-family: helvetica, arial, sans-serif }
 pre { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
 h3  { font-weight: lighter }
-dt.func { background: rgb(95%, 95%, 80%) }
-dt.clas { background: rgb(80%, 95%, 95%) }
-dt.inst { background: rgb(95%, 90%, 95%) }
-dt.data { background: rgb(95%, 95%, 95%) }
+dt.func { background: rgb(95%, 95%, 80%); margin-top: 10px }
+dt.clas { background: rgb(80%, 95%, 95%); margin-top: 10px }
+dt.inst { background: rgb(95%, 90%, 95%); margin-top: 10px }
+dt.data { background: rgb(95%, 95%, 95%); margin-top: 10px }
 span.code { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
 span.unknown { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: red }
 a.fref { text-decoration: none; font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(30%, 30%, 0%) }
@@ -17,11 +17,13 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 </style>
 <BODY>
 <h1>
-<a name="package">Package <tt>frege.control.Semigroupoid</tt></a></h1>
+<a name="package">Package <SPAN CLASS="code">frege.control.Semigroupoid</SPAN></a></h1>
 <p>
-Compiled: Thu Oct 24 11:01:32 CEST 2013 from source file: <tt>./frege/control/Semigroupoid.fr</tt></p>
+Compiled: Thu Nov 07 18:17:04 CET 2013 from source file: <SPAN CLASS="code">frege/control/Semigroupoid.fr</SPAN></p>
 <h3>
 Package Documentation</h3>
+<p>
+Introduction of the <a HREF="http://en.wikipedia.org/wiki/Semigroupoid">semigroupoid</a>.   </p>
 <h3>
 Table of Content</h3>
 <ul>
@@ -47,7 +49,7 @@ Table of Content</h3>
 <div>
 <a HREF="#case">Functions and Values (by type)</a></div>
 <div>
-<a class="fref" href="#_lt_lt_lt">&lt;&lt;&lt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_gt_gt_gt">&gt;&gt;&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Semigroupoid:_bullet">Semigroupoid.•</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Semigroupoid__minus_gt:_bullet">Semigroupoid_-&gt;.•</a></div>
+<a class="fref" href="#_lt_lt_lt">&lt;&lt;&lt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_gt_gt_gt">&gt;&gt;&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Semigroupoid._bullet">Semigroupoid.•</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Semigroupoid__minus_gt._bullet">Semigroupoid_-&gt;.•</a></div>
 </li>
 </ul>
 <h3>
@@ -55,39 +57,39 @@ Imports</h3>
 <ul>
 <li>
 <div>
-import <a HREF="../prelude/PreludeNative.html">frege.prelude.PreludeNative</a> as PreludeNative</div>
-</li>
-<li>
-<div>
-import <a HREF="../prelude/PreludeList.html">frege.prelude.PreludeList</a> as PreludeList</div>
-</li>
-<li>
-<div>
 import <a HREF="../prelude/PreludeBase.html">frege.prelude.PreludeBase</a> as PreludeBase</div>
-</li>
-<li>
-<div>
-import <a HREF="../Prelude.html">frege.Prelude</a> as Prelude</div>
-</li>
-<li>
-<div>
-import <a HREF="../prelude/PreludeIO.html">frege.prelude.PreludeIO</a> as PreludeIO</div>
-</li>
-<li>
-<div>
-import <a HREF="../prelude/PreludeMonad.html">frege.prelude.PreludeMonad</a> as PreludeMonad</div>
-</li>
-<li>
-<div>
-import <a HREF="../prelude/PreludeText.html">frege.prelude.PreludeText</a> as PreludeText</div>
 </li>
 </ul>
 <h2>
 <a name="class">Classes</a></h2>
 <dl class="clas">
 <dt class="clas">
-<tt><b>class </b><a name="Semigroupoid">Semigroupoid</a>  f</tt></dt>
+<SPAN CLASS="code"><b>class </b><a name="Semigroupoid">Semigroupoid</a>  f</SPAN></dt>
 <dd class="clas">
+<p>
+Formally, a semigroupoid consists of</p>
+<ul>
+<LI>
+ a set of things called objects. </LI>
+<LI>
+ for every two objects A and B a set Mor(A,B) of things called morphisms from A to B. If <SPAN CLASS="code">f</SPAN> is in Mor(A,B), we write <SPAN CLASS="code">f : A → B</SPAN>.</LI>
+<LI>
+ for every three objects A, B and C a binary operation <SPAN CLASS="code">Mor(A,B) × Mor(B,C) → Mor(A,C)</SPAN> called <b>composition</b> of morphisms. The composition of <SPAN CLASS="code">f : A → B</SPAN> and <SPAN CLASS="code">g : B → C</SPAN> is written as <SPAN CLASS="code">g • f</SPAN>.</LI>
+</ul>
+<p>
+such that the following axiom holds:</p>
+<dl>
+<dt>
+associativity</dt>
+<dd>
+<div>
+ if <SPAN CLASS="code">f : A → B</SPAN>, <SPAN CLASS="code">g : B → C</SPAN> and <SPAN CLASS="code">h : C → D</SPAN> then <SPAN CLASS="code">h • (g • f) = (h • g) • f</SPAN>. </div>
+</dd>
+</dl>
+<ul>
+<LI>
+      </LI>
+</ul>
 <h3>
 Known Instances</h3>
 <p>
@@ -96,7 +98,7 @@ Known Instances</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<tt><a name="Semigroupoid:_bullet">•</a> :: <a class="tref" href="#Semigroupoid">Semigroupoid</a> f =&gt; f b c -&gt; f a b -&gt; f a c</tt></dt>
+<SPAN CLASS="code"><a name="Semigroupoid._bullet">•</a> :: <a class="tref" href="#Semigroupoid">Semigroupoid</a> f =&gt; f b c -&gt; f a b -&gt; f a c</SPAN></dt>
 <dd class="func">
 <p>
 morphism composition   </p>
@@ -108,14 +110,18 @@ morphism composition   </p>
 <a name="instance">Instances</a></h2>
 <dl class="inst">
 <dt class="inst">
-<tt><b>instance </b><a name="Semigroupoid__minus_gt"> </a> <a class="tref" href="#Semigroupoid">Semigroupoid</a> <a class="tref" href="../prelude/PreludeBase.html#Function">-&gt;</a></tt></dt>
+<SPAN CLASS="code"><b>instance </b><a name="Semigroupoid__minus_gt"> </a> <a class="tref" href="#Semigroupoid">Semigroupoid</a> <a class="tref" href="../prelude/PreludeBase.html#Function">-&gt;</a></SPAN></dt>
 <dd class="inst">
+<p>
+The semigroupoid of Frege values where morphisms are functions.   </p>
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<tt><a name="Semigroupoid__minus_gt:_bullet">•</a> :: (<b>β-&gt;γ</b>) -&gt; (α-&gt;β) -&gt; α -&gt; γ</tt></dt>
+<SPAN CLASS="code"><a name="Semigroupoid__minus_gt._bullet">•</a> :: (<b>β-&gt;γ</b>) -&gt; (α-&gt;β) -&gt; α -&gt; γ</SPAN></dt>
 <dd class="func">
+<p>
+function composition   </p>
 </dd>
 </dl>
 </dd>
@@ -124,13 +130,13 @@ Member Functions</h3>
 <a name="let">Functions and Values</a></h2>
 <dl class="func">
 <dt class="func">
-<tt><a name="_lt_lt_lt">&lt;&lt;&lt;</a> :: <a class="tref" href="#Semigroupoid">Semigroupoid</a> f =&gt; f b c -&gt; f a b -&gt; f a c</tt></dt>
+<SPAN CLASS="code"><a name="_lt_lt_lt">&lt;&lt;&lt;</a> :: <a class="tref" href="#Semigroupoid">Semigroupoid</a> f =&gt; f b c -&gt; f a b -&gt; f a c</SPAN></dt>
 <dd class="func">
 <p>
-Right-to-left composition   </p>
+Right-to-left composition. This is the same a ordinary composition with <a class="fref" href="#Semigroupoid._bullet">Semigroupoid.•</a>.   </p>
 </dd>
 <dt class="func">
-<tt><a name="_gt_gt_gt">&gt;&gt;&gt;</a> :: <a class="tref" href="#Semigroupoid">Semigroupoid</a> f =&gt; f a b -&gt; f b c -&gt; f a c</tt></dt>
+<SPAN CLASS="code"><a name="_gt_gt_gt">&gt;&gt;&gt;</a> :: <a class="tref" href="#Semigroupoid">Semigroupoid</a> f =&gt; f a b -&gt; f b c -&gt; f a c</SPAN></dt>
 <dd class="func">
 <p>
 Left-to-right composition   </p>
@@ -140,22 +146,22 @@ Left-to-right composition   </p>
 <a name="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
-<tt>(β-&gt;γ) -&gt; (α-&gt;β) -&gt; α -&gt; γ</tt></dt>
+<SPAN CLASS="code">(β-&gt;γ) -&gt; (α-&gt;β) -&gt; α -&gt; γ</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Semigroupoid__minus_gt:_bullet">Semigroupoid_-&gt;.•</a></p>
+<a class="fref" href="#Semigroupoid__minus_gt._bullet">Semigroupoid_-&gt;.•</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="#Semigroupoid">Semigroupoid</a> f =&gt; f a b -&gt; f b c -&gt; f a c</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="#Semigroupoid">Semigroupoid</a> f =&gt; f a b -&gt; f b c -&gt; f a c</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#_gt_gt_gt">&gt;&gt;&gt;</a></p>
 </dd>
 <dt class="func">
-<tt><a class="tref" href="#Semigroupoid">Semigroupoid</a> f =&gt; f b c -&gt; f a b -&gt; f a c</tt></dt>
+<SPAN CLASS="code"><a class="tref" href="#Semigroupoid">Semigroupoid</a> f =&gt; f b c -&gt; f a b -&gt; f a c</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#_lt_lt_lt">&lt;&lt;&lt;</a>, <a class="fref" href="#Semigroupoid:_bullet">Semigroupoid.•</a></p>
+<a class="fref" href="#_lt_lt_lt">&lt;&lt;&lt;</a>, <a class="fref" href="#Semigroupoid._bullet">Semigroupoid.•</a></p>
 </dd>
 </dl>
 <p>
