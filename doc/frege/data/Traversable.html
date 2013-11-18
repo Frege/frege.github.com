@@ -19,7 +19,7 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 <h1>
 <a name="package">Package <SPAN CLASS="code">frege.data.Traversable</SPAN></a></h1>
 <p>
-Compiled: Thu Nov 07 18:30:23 CET 2013 from source file: <SPAN CLASS="code">./frege/data/Traversable.fr</SPAN></p>
+Compiled: Mon Nov 18 01:55:40 CET 2013 from source file: <SPAN CLASS="code">./frege/data/Traversable.fr</SPAN></p>
 <h3>
 Package Documentation</h3>
 <h3>
@@ -117,9 +117,9 @@ Minimal complete definition: <a class="fref" href="#Traversable.traverse">Traver
 <p>
 The superclass instances should satisfy the following:</p>
 <p>
-In the <a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> instance, <a class="fref" href="../prelude/PreludeMonad.html#Monad.fmap">Monad.fmap</a> should be equivalent to traversal with the identity applicative functor (<a class="fref" href="#fmapDefault">fmapDefault</a>).</p>
+In the <a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> instance, <a class="fref" href="../prelude/PreludeMonad.html#Functor.fmap">Functor.fmap</a> should be equivalent to traversal with the identity applicative functor (<a class="fref" href="#fmapDefault">fmapDefault</a>).</p>
 <p>
-In the <a class="tref" href="./Foldable.html#Foldable">Foldable</a> instance, <a class="fref" href="./Foldable.html#Foldable.foldMap">Foldable.Foldable.foldMap</a> should be equivalent to traversal with a constant applicative functor (<a class="fref" href="#foldMapDefault">foldMapDefault</a>).</p>
+In the <a class="tref" href="./Foldable.html#Foldable">Foldable</a> instance, <a class="fref" href="./Foldable.html#Foldable.foldMap">Foldable.foldMap</a> should be equivalent to traversal with a constant applicative functor (<a class="fref" href="#foldMapDefault">foldMapDefault</a>).</p>
 <p>
 Note that the functions <a class="fref" href="#Traversable.mapM">Traversable.mapM</a>, <a class="fref" href="#Traversable.sequence">Traversable.sequence</a>, <a class="fref" href="#forM">forM</a> are just specialized versions of <a class="fref" href="#Traversable.traverse">Traversable.traverse</a>, <a class="fref" href="#Traversable.sequenceA">Traversable.sequenceA</a> and <a class="fref" href="#_for">for</a>, and wouldn't be required in Frege. They are included for Haskell compatibility only. In Haskell the specialized functions are needed as Haskell monads are no Applicatives.</p>
 <h3>
@@ -409,13 +409,13 @@ This function exists for Haskell compatibility only.   </p>
 <SPAN CLASS="code"><a name="mapAccumL">mapAccumL</a> :: <a class="tref" href="#Traversable">Traversable</a> t =&gt; (a -&gt; b -&gt; (a, c)) -&gt; a -&gt; t b -&gt; (a, t c)</SPAN></dt>
 <dd class="func">
 <p>
-The <a class="fref" href="#mapAccumL">mapAccumL</a> function behaves like a combination of <a class="fref" href="../prelude/PreludeMonad.html#Monad.fmap">Monad.fmap</a> and <a class="fref" href="../prelude/PreludeList.html#foldl">foldl</a>; it applies a function to each element of a structure, passing an accumulating parameter from left to right, and returning a final value of this accumulator together with the new structure.</p>
+The <a class="fref" href="#mapAccumL">mapAccumL</a> function behaves like a combination of <a class="fref" href="../prelude/PreludeMonad.html#Functor.fmap">Functor.fmap</a> and <a class="fref" href="../prelude/PreludeList.html#fold">fold</a>; it applies a function to each element of a structure, passing an accumulating parameter from left to right, and returning a final value of this accumulator together with the new structure.</p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="mapAccumR">mapAccumR</a> :: <a class="tref" href="#Traversable">Traversable</a> t =&gt; (a -&gt; b -&gt; (a, c)) -&gt; a -&gt; t b -&gt; (a, t c)</SPAN></dt>
 <dd class="func">
 <p>
-The <a class="fref" href="#mapAccumR">mapAccumR</a> function behaves like a combination of <a class="fref" href="../prelude/PreludeMonad.html#Monad.fmap">Monad.fmap</a> and <a class="fref" href="../prelude/PreludeList.html#foldr">foldr</a>; it applies a function to each element of a structure, passing an accumulating parameter from right to left, and returning a final value of this accumulator together with the new structure.</p>
+The <a class="fref" href="#mapAccumR">mapAccumR</a> function behaves like a combination of <a class="fref" href="../prelude/PreludeMonad.html#Functor.fmap">Functor.fmap</a> and <a class="fref" href="../prelude/PreludeList.html#foldr">foldr</a>; it applies a function to each element of a structure, passing an accumulating parameter from right to left, and returning a final value of this accumulator together with the new structure.</p>
 </dd>
 </dl>
 <h2>

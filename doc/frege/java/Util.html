@@ -19,7 +19,7 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 <h1>
 <a name="package">Package <SPAN CLASS="code">frege.java.Util</SPAN></a></h1>
 <p>
-Compiled: Thu Nov 07 18:28:34 CET 2013 from source file: <SPAN CLASS="code">./frege/java/Util.fr</SPAN></p>
+Compiled: Mon Nov 18 01:42:52 CET 2013 from source file: <SPAN CLASS="code">./frege/java/Util.fr</SPAN></p>
 <h3>
 Package Documentation</h3>
 <p>
@@ -37,13 +37,13 @@ Table of Content</h3>
 <div>
 <a HREF="#data">Data Types</a></div>
 <div>
-<a class="tref" href="#Enumeration">Enumeration</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#NoSuchElementException">NoSuchElementException</a></div>
+<a class="tref" href="#Enumeration">Enumeration</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#NoSuchElementException">NoSuchElementException</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Random">Random</a></div>
 </li>
 <li>
 <div>
 <a HREF="#case">Functions and Values (by type)</a></div>
 <div>
-<a class="fref" href="#Exceptional_NoSuchElementException.javaClass">Exceptional_NoSuchElementException.javaClass</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Enumeration.nextElement">Enumeration.nextElement</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Enumeration.hasMoreElements">Enumeration.hasMoreElements</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Enumeration.toList">Enumeration.toList</a></div>
+<a class="fref" href="#Exceptional_NoSuchElementException.javaClass">Exceptional_NoSuchElementException.javaClass</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Enumeration.nextElement">Enumeration.nextElement</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Enumeration.hasMoreElements">Enumeration.hasMoreElements</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Enumeration.toList">Enumeration.toList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random.nextInt">Random.nextInt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random.nextBoolean">Random.nextBoolean</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random.newα">Random.newα</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random._new">Random.new</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random.newβ">Random.newβ</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random.nextFloat">Random.nextFloat</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random.nextDouble">Random.nextDouble</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random.nextGaussian">Random.nextGaussian</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random.nextIntβ">Random.nextIntβ</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random.nextIntα">Random.nextIntα</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random.nextLong">Random.nextLong</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Random.setSeed">Random.setSeed</a></div>
 </li>
 </ul>
 <h3>
@@ -121,15 +121,185 @@ Member Functions</h3>
 <SPAN CLASS="code"><b>data </b><a name="NoSuchElementException"> </a> <a class="tref" href="#NoSuchElementException">NoSuchElementException</a> = <b>pure </b><b>native </b>java.util.NoSuchElementException</SPAN></dt>
 <dd class="data">
 </dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name="Random"> </a> <a class="tref" href="#Random">Random</a> = <b>native </b>java.util.Random</SPAN></dt>
+<dd class="data">
+<p>
+A value of this type is used to generate a stream of pseudorandom numbers. The type uses a 48-bit seed, which is modified using a linear congruential formula. (See Donald Knuth, The Art of Computer Programming, Volume 2, Section 3.2.1.)</p>
+<p>
+If two <a class="tref" href="#Random">Random</a> values are created with the same seed, and the same sequence of method calls is made for each, they will generate and return identical sequences of numbers. In order to guarantee this property, particular algorithms are specified for the class Random.</p>
+<p>
+Many applications will find the function <a HREF="../prelude/Math.html#random">random</a> simpler to use.</p>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="Random._new">new</a> :: ω<br><b>native </b>new</SPAN></dt>
+<dd class="func">
+<p>
+Create a new random number generator.</p>
+<p>
+If no seed is given, a value very likely to be distinct from any other invocation of the constructor will be computed from the state of the real world.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Random.newα">newα</a> :: <b><a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></b> -&gt; <a class="tref" href="../prelude/PreludeIO.html#IOMutable">IOMutable</a> <a class="tref" href="#Random">Random</a><br><b>native </b>new</SPAN></dt>
+<dd class="func">
+<p>
+Create a new random number generator.</p>
+<p>
+If no seed is given, a value very likely to be distinct from any other invocation of the constructor will be computed from the state of the real world.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Random.newβ">newβ</a> :: <b><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></b> -&gt; <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> s <a class="tref" href="#Random">Random</a><br><b>native </b>new</SPAN></dt>
+<dd class="func">
+<p>
+Create a new random number generator.</p>
+<p>
+If no seed is given, a value very likely to be distinct from any other invocation of the constructor will be computed from the state of the real world.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Random.nextBoolean">nextBoolean</a> :: <b><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#Random">Random</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a><br><b>native </b>nextBoolean</SPAN></dt>
+<dd class="func">
+<p>
+Returns the next pseudorandom, uniformly distributed <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a> value from this random number generator's sequence.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Random.nextDouble">nextDouble</a> :: <b><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#Random">Random</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Double">Double</a><br><b>native </b>nextDouble</SPAN></dt>
+<dd class="func">
+<p>
+Returns the next pseudorandom, uniformly distributed <a class="tref" href="../prelude/PreludeBase.html#Double">Double</a> value between 0.0 and 1.0 from this random number generator's sequence.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Random.nextFloat">nextFloat</a> :: <b><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#Random">Random</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Float">Float</a><br><b>native </b>nextFloat</SPAN></dt>
+<dd class="func">
+<p>
+Returns the next pseudorandom, uniformly distributed <a class="tref" href="../prelude/PreludeBase.html#Float">Float</a> value between 0.0 and 1.0 from this random number generator's sequence.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Random.nextGaussian">nextGaussian</a> :: <b><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#Random">Random</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Double">Double</a><br><b>native </b>nextGaussian</SPAN></dt>
+<dd class="func">
+<p>
+Returns the next pseudorandom, Gaussian ("normally") distributed <a class="tref" href="../prelude/PreludeBase.html#Double">Double</a> value with mean 0.0 and standard deviation 1.0 from this random number generator's sequence.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Random.nextInt">nextInt</a> :: ω<br><b>native </b>nextInt</SPAN></dt>
+<dd class="func">
+<PRE>
+ random.nextInt</PRE>
+<p>
+Returns the next pseudorandom, uniformly distributed <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> value from this random number generator's sequence.</p>
+<PRE>
+ random.nextInt limit</PRE>
+<p>
+Returns a pseudorandom, uniformly distributed <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> value between 0 (inclusive) and the specified value (exclusive), drawn from this random number generator's sequence. The <i>limit</i> must be positive.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Random.nextIntα">nextIntα</a> :: <b><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#Random">Random</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a><br><b>native </b>nextInt</SPAN></dt>
+<dd class="func">
+<PRE>
+ random.nextInt</PRE>
+<p>
+Returns the next pseudorandom, uniformly distributed <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> value from this random number generator's sequence.</p>
+<PRE>
+ random.nextInt limit</PRE>
+<p>
+Returns a pseudorandom, uniformly distributed <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> value between 0 (inclusive) and the specified value (exclusive), drawn from this random number generator's sequence. The <i>limit</i> must be positive.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Random.nextIntβ">nextIntβ</a> :: <b><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#Random">Random</a></b> -&gt; <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a><br><b>native </b>nextInt</SPAN></dt>
+<dd class="func">
+<PRE>
+ random.nextInt</PRE>
+<p>
+Returns the next pseudorandom, uniformly distributed <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> value from this random number generator's sequence.</p>
+<PRE>
+ random.nextInt limit</PRE>
+<p>
+Returns a pseudorandom, uniformly distributed <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> value between 0 (inclusive) and the specified value (exclusive), drawn from this random number generator's sequence. The <i>limit</i> must be positive.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Random.nextLong">nextLong</a> :: <b><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#Random">Random</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a><br><b>native </b>nextLong</SPAN></dt>
+<dd class="func">
+<p>
+Returns the next pseudorandom, uniformly distributed <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a> value from this random number generator's sequence.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Random.setSeed">setSeed</a> :: <b><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#Random">Random</a></b> -&gt; <b><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a><br><b>native </b>setSeed</SPAN></dt>
+<dd class="func">
+<p>
+Sets the seed of this random number generator using a single long seed.   </p>
+</dd>
+</dl>
+</dd>
 </dl>
 <h2>
 <a name="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Unit">()</a> -&gt; <a class="tref" href="../prelude/PreludeIO.html#IOMutable">IOMutable</a> <a class="tref" href="#Random">Random</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Random.newα">Random.newα</a></p>
+</dd>
+<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Class">Class</a> <a class="tref" href="#NoSuchElementException">NoSuchElementException</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Exceptional_NoSuchElementException.javaClass">Exceptional_NoSuchElementException.javaClass</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#Random">Random</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Random.nextIntβ">Random.nextIntβ</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#Random">Random</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Random.setSeed">Random.setSeed</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#Random">Random</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Random.nextBoolean">Random.nextBoolean</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#Random">Random</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Double">Double</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Random.nextDouble">Random.nextDouble</a>, <a class="fref" href="#Random.nextGaussian">Random.nextGaussian</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#Random">Random</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Float">Float</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Random.nextFloat">Random.nextFloat</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#Random">Random</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Random.nextIntα">Random.nextIntα</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#Random">Random</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Random.nextLong">Random.nextLong</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a> -&gt; <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> s <a class="tref" href="#Random">Random</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Random.newβ">Random.newβ</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">ω</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Random.nextInt">Random.nextInt</a>, <a class="fref" href="#Random._new">Random.new</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s (<a class="tref" href="#Enumeration">Enumeration</a> e) -&gt; <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s [e]</SPAN></dt>

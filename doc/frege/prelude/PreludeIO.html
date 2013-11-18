@@ -19,7 +19,7 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 <h1>
 <a name="package">Package <SPAN CLASS="code">frege.prelude.PreludeIO</SPAN></a></h1>
 <p>
-Compiled: Thu Nov 07 18:17:18 CET 2013 from source file: <SPAN CLASS="code">frege/prelude/PreludeIO.fr</SPAN></p>
+Compiled: Mon Nov 18 01:41:34 CET 2013 from source file: <SPAN CLASS="code">frege/prelude/PreludeIO.fr</SPAN></p>
 <h3>
 Package Documentation</h3>
 <p>
@@ -356,7 +356,7 @@ To summarize:</p>
 Constructors</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Mutable.Mutable">Mutable</a> m</SPAN></dt>
+<SPAN CLASS="code"><b>private</b> <a name="Mutable.Mutable">Mutable</a> m</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -400,7 +400,7 @@ Member Functions</h3>
 get the value the reference is pointing to   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Ref.modify">modify</a> :: (α-&gt;α) -&gt; <b><a class="tref" href="#Mutable">Mutable</a> β (<a class="tref" href="#Ref">Ref</a> α)</b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name="Ref.modify">modify</a> :: <b><a class="tref" href="#Mutable">Mutable</a> α (<a class="tref" href="#Ref">Ref</a> β)</b> -&gt; (β-&gt;β) -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 modify the referenced value with a function   </p>
@@ -529,6 +529,36 @@ should print:</p>
 <PRE>
  return a &gt;&gt;= (\a -&gt; return b &gt;&gt;= (\b -&gt; f a b))</PRE>
 </dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="modifyIORef">modifyIORef</a> :: <b><a class="tref" href="#Mutable">Mutable</a> α (<a class="tref" href="#Ref">Ref</a> β)</b> -&gt; (β-&gt;β) -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+Alias for <a class="fref" href="#Ref.modify">Ref.modify</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="newIORef">newIORef</a> :: <b>a</b> -&gt; <a class="tref" href="#STMutable">STMutable</a> s (<a class="tref" href="#Ref">Ref</a> a)<br><b>native </b>new</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <a class="fref" href="#Ref._new">Ref.new</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="readIORef">readIORef</a> :: <b><a class="tref" href="#Mutable">Mutable</a> s (<a class="tref" href="#Ref">Ref</a> a)</b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> s a<br><b>native </b>get</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <a class="fref" href="#Ref.get">Ref.get</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="readonly">readonly</a> :: (m -&gt; b) -&gt; <b><a class="tref" href="#Mutable">Mutable</a> s m</b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> s b</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <a class="fref" href="#Mutable.readonly">Mutable.readonly</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="writeIORef">writeIORef</a> :: <b><a class="tref" href="#Mutable">Mutable</a> s (<a class="tref" href="#Ref">Ref</a> a)</b> -&gt; <b>a</b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> s <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>put</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <a class="fref" href="#Ref.put">Ref.put</a></p>
+</dd>
 </dl>
 <h2>
 <a name="case">Functions and Values by Type</a></h2>
@@ -588,12 +618,6 @@ should print:</p>
 <a class="fref" href="#Exceptional.javaClass">Exceptional.javaClass</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α-&gt;α) -&gt; <a class="tref" href="#Mutable">Mutable</a> β (<a class="tref" href="#Ref">Ref</a> α) -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Ref.modify">Ref.modify</a></p>
-</dd>
-<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#IO">IO</a> a -&gt; <a class="tref" href="./PreludeBase.html#IO">IO</a> b -&gt; <a class="tref" href="./PreludeBase.html#IO">IO</a> a</SPAN></dt>
 <dd class="func">
 <p>
@@ -616,6 +640,12 @@ should print:</p>
 <dd class="func">
 <p>
 <a class="fref" href="#Ref.get">Ref.get</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Mutable">Mutable</a> α (<a class="tref" href="#Ref">Ref</a> β) -&gt; (β-&gt;β) -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Ref.modify">Ref.modify</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Throwable">Throwable</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> s a</SPAN></dt>

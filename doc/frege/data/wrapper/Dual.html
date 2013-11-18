@@ -19,7 +19,7 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 <h1>
 <a name="package">Package <SPAN CLASS="code">frege.data.wrapper.Dual</SPAN></a></h1>
 <p>
-Compiled: Thu Nov 07 18:29:58 CET 2013 from source file: <SPAN CLASS="code">./frege/data/wrapper/Dual.fr</SPAN></p>
+Compiled: Mon Nov 18 01:55:10 CET 2013 from source file: <SPAN CLASS="code">./frege/data/wrapper/Dual.fr</SPAN></p>
 <h3>
 Package Documentation</h3>
 <p>
@@ -89,7 +89,7 @@ import <a HREF="../../prelude/PreludeText.html">frege.prelude.PreludeText</a> as
 </li>
 <li>
 <div>
-import <a HREF="../../lib/QuickCheck.html">frege.lib.QuickCheck</a> as QuickCheck</div>
+import <a HREF="../../test/QuickCheck.html">frege.test.QuickCheck</a> as QuickCheck</div>
 </li>
 </ul>
 <h2>
@@ -131,7 +131,7 @@ Member Functions</h3>
 <SPAN CLASS="code"><a name="Monoid_Dual.mconcat">mconcat</a> :: <a class="tref" href="../Monoid.html#Monoid">Monoid</a> α =&gt; <b>[<a class="tref" href="#Dual">Dual</a> α]</b> -&gt; <a class="tref" href="#Dual">Dual</a> α</SPAN></dt>
 <dd class="func">
 <p>
-inherited from <a class="fref" href="../Monoid.html#Monoid.mconcat">Monoid.Monoid.mconcat</a></p>
+inherited from <a class="fref" href="../Monoid.html#Monoid.mconcat">Monoid.mconcat</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="Monoid_Dual.mempty">mempty</a> :: <a class="tref" href="../Monoid.html#Monoid">Monoid</a> α =&gt; <a class="tref" href="#Dual">Dual</a> α</SPAN></dt>
@@ -143,7 +143,7 @@ inherited from <a class="fref" href="../Monoid.html#Monoid.mconcat">Monoid.Monoi
 <SPAN CLASS="code"><a name="Monoid_Dual.mtimes">mtimes</a> :: <a class="tref" href="../Monoid.html#Monoid">Monoid</a> α =&gt; <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="#Dual">Dual</a> α -&gt; <a class="tref" href="#Dual">Dual</a> α</SPAN></dt>
 <dd class="func">
 <p>
-inherited from <a class="fref" href="../Monoid.html#Monoid.mtimes">Monoid.Monoid.mtimes</a></p>
+inherited from <a class="fref" href="../Monoid.html#Monoid.mtimes">Monoid.mtimes</a></p>
 </dd>
 </dl>
 </dd>
@@ -219,13 +219,13 @@ Member Functions</h3>
 <SPAN CLASS="code"><a name="Semigroup_Dual.sconcat">sconcat</a> :: <a class="tref" href="../Monoid.html#Semigroup">Semigroup</a> α =&gt; <b>[<a class="tref" href="#Dual">Dual</a> α]</b> -&gt; <a class="tref" href="#Dual">Dual</a> α</SPAN></dt>
 <dd class="func">
 <p>
-inherited from <a class="fref" href="../Monoid.html#Semigroup.sconcat">Monoid.Semigroup.sconcat</a></p>
+inherited from <a class="fref" href="../Monoid.html#Semigroup.sconcat">Semigroup.sconcat</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="Semigroup_Dual.stimes">stimes</a> :: <a class="tref" href="../Monoid.html#Semigroup">Semigroup</a> α =&gt; <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="#Dual">Dual</a> α -&gt; <a class="tref" href="#Dual">Dual</a> α</SPAN></dt>
 <dd class="func">
 <p>
-inherited from <a class="fref" href="../Monoid.html#Semigroup.stimes">Monoid.Semigroup.stimes</a></p>
+inherited from <a class="fref" href="../Monoid.html#Semigroup.stimes">Semigroup.stimes</a></p>
 </dd>
 </dl>
 </dd>
@@ -281,7 +281,7 @@ Function generated for derived istance.</p>
 <SPAN CLASS="code"><b>data </b><a name="Dual"> </a> <a class="tref" href="#Dual">Dual</a> a</SPAN></dt>
 <dd class="data">
 <p>
-Provides a <a class="tref" href="../Monoid.html#Monoid">Monoid</a> where <a class="fref" href="../Monoid.html#Semigroup.mappend">Monoid.Semigroup.mappend</a> appears flipped.   </p>
+Provides a <a class="tref" href="../Monoid.html#Monoid">Monoid</a> where <a class="fref" href="../Monoid.html#Semigroup.mappend">Semigroup.mappend</a> appears flipped.   </p>
 <h3>
 Constructors</h3>
 <dl class="func">
@@ -308,15 +308,21 @@ access field <SPAN CLASS="code">unwrap</SPAN></p>
 <a name="let">Functions and Values</a></h2>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="prop_dual">prop_dual</a> :: <a class="tref" href="../../lib/QuickCheck.html#Property">Property</a></SPAN></dt>
+<SPAN CLASS="code"><a name="prop_dual">prop_dual</a> :: <a class="tref" href="../../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
 <dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="getDual">getDual</a> :: <b><a class="tref" href="#Dual">Dual</a> α</b> -&gt; α</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <a class="fref" href="#Dual.unwrap">Dual.unwrap</a></p>
 </dd>
 </dl>
 <h2>
 <a name="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../lib/QuickCheck.html#Property">Property</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#prop_dual">prop_dual</a></p>

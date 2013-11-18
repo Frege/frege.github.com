@@ -19,13 +19,13 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 <h1>
 <a name="package">Package <SPAN CLASS="code">frege.control.Concurrent</SPAN></a></h1>
 <p>
-Compiled: Thu Nov 07 18:28:38 CET 2013 from source file: <SPAN CLASS="code">./frege/control/Concurrent.fr</SPAN></p>
+Compiled: Mon Nov 18 01:53:36 CET 2013 from source file: <SPAN CLASS="code">./frege/control/Concurrent.fr</SPAN></p>
 <h3>
 Package Documentation</h3>
 <p>
 Support for concurrency.</p>
 <p>
-Concurrency in Frege comes in 2 flavors. The first is through <SPAN CLASS="unknown">Thread</SPAN>s, which are, unlike in Haskell, <SPAN CLASS="code">OS</SPAN> threads.</p>
+Concurrency in Frege comes in 2 flavors. The first is through <a class="tref" href="../java/Lang.html#Thread">Thread</a>s, which are, unlike in Haskell, <i>OS threads</i>.</p>
 <p>
 The second possibility is to use a thread pool and an executor service one can submit tasks to. But note that blocking asynchronous tasks, unlike Haskell green threads, will block an OS thread on blocking actions.</p>
 <h3>
@@ -93,12 +93,14 @@ import <a HREF="../prelude/PreludeText.html">frege.prelude.PreludeText</a> as Pr
 <SPAN CLASS="code"><b>data </b><a name="MVar"> </a> <a class="tref" href="#MVar">MVar</a> a</SPAN></dt>
 <dd class="data">
 <p>
-A thread safe, shared variable, that is either full or empty.       </p>
+A thread safe, shared variable, that is either full or empty.</p>
+<p>
+Technically, this is just a <a class="tref" href="../java/util/Concurrent.html#BlockingQueue">BlockingQueue</a> restricted to length 1.       </p>
 <h3>
 Constructors</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="MVar.MV">MV</a> (<a class="tref" href="../java/util/Concurrent.html#BlockingQueue">BlockingQueue</a> a)</SPAN></dt>
+<SPAN CLASS="code"><b>private</b> <a name="MVar.MV">MV</a> (<a class="tref" href="../java/util/Concurrent.html#BlockingQueue">BlockingQueue</a> a)</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -127,7 +129,7 @@ put a value in a <a class="tref" href="#MVar">MVar</a>, returns false if already
 <SPAN CLASS="code"><a name="MVar.poll">poll</a> :: <b><a class="tref" href="#MVar">MVar</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α)</SPAN></dt>
 <dd class="func">
 <p>
-get the value from a <a class="tref" href="#MVar">MVar</a>, return <a class="fref" href="../prelude/PreludeBase.html#Maybe.Nothing">Maybe.Nothing</a> is empty   </p>
+get the value from a <a class="tref" href="#MVar">MVar</a>, return <a class="fref" href="../prelude/PreludeBase.html#Maybe.Nothing">Maybe.Nothing</a> when empty   </p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="MVar.put">put</a> :: <b><a class="tref" href="#MVar">MVar</a> α</b> -&gt; <b>α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
@@ -148,19 +150,49 @@ take a value from a <a class="tref" href="#MVar">MVar</a>, blocks if empty      
 <a name="let">Functions and Values</a></h2>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="forkIO">forkIO</a> :: <b><a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../java/Lang.html#Thread">Lang.Thread</a></SPAN></dt>
+<SPAN CLASS="code"><a name="forkIO">forkIO</a> :: <b><a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../java/Lang.html#Thread">Thread</a></SPAN></dt>
 <dd class="func">
 <p>
-Create and start a new OS <SPAN CLASS="unknown">Thread</SPAN> that runs an <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> action.</p>
+Create and start a new OS <a class="tref" href="../java/Lang.html#Thread">Thread</a> that runs an <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> action.</p>
 <p>
-In Frege, there is no difference between <a class="fref" href="#forkIO">forkIO</a> and <a class="fref" href="#forkIO">forkIO</a>    </p>
+In Frege, there is no difference between <a class="fref" href="#forkIO">forkIO</a> and <a HREF="./Concurrent.html#forkOS">forkOS</a> at this time.    </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="forkOS">forkOS</a> :: <b><a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../java/Lang.html#Thread">Thread</a></SPAN></dt>
+<dd class="func">
+<p>
+Alias for <a class="fref" href="#forkIO">forkIO</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="newEmptyMVar">newEmptyMVar</a> :: <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="#MVar">MVar</a> α)</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <a class="fref" href="#MVar.newEmpty">MVar.newEmpty</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="newMVar">newMVar</a> :: α -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="#MVar">MVar</a> α)</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <a class="fref" href="#MVar._new">MVar.new</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="tryPutMVar">tryPutMVar</a> :: <b><a class="tref" href="#MVar">MVar</a> α</b> -&gt; <b>α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+Alias for <a class="fref" href="#MVar.offer">MVar.offer</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="tryTakeMVar">tryTakeMVar</a> :: <b><a class="tref" href="#MVar">MVar</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α)</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <a class="fref" href="#MVar.poll">MVar.poll</a></p>
 </dd>
 </dl>
 <h2>
 <a name="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../java/Lang.html#Thread">Lang.Thread</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../java/Lang.html#Thread">Thread</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#forkIO">forkIO</a></p>
