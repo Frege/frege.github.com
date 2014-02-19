@@ -1,0 +1,2239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<META http-equiv="Content-Type" content="text/html;charset=utf-8">
+<TITLE>frege.prelude.PreludeArrays - frege documentation</TITLE>
+<style TYPE="text/css">
+body { font-family: helvetica, arial, sans-serif }
+pre { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
+h3  { font-weight: lighter }
+dt.func { background: rgb(95%, 95%, 80%); margin-top: 10px }
+dt.clas { background: rgb(80%, 95%, 95%); margin-top: 10px }
+dt.inst { background: rgb(95%, 90%, 95%); margin-top: 10px }
+dt.data { background: rgb(95%, 95%, 95%); margin-top: 10px }
+span.code { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
+span.unknown { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: red }
+a.fref { text-decoration: none; font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(30%, 30%, 0%) }
+a.tref { text-decoration: none; font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(40%, 0%,  40%) }
+</style>
+<BODY>
+<h1>
+<a name="package">Package <SPAN CLASS="code">frege.prelude.PreludeArrays</SPAN></a></h1>
+<p>
+Compiled: Wed Feb 19 08:51:24 CET 2014 from source file: <SPAN CLASS="code">frege/prelude/PreludeArrays.fr</SPAN></p>
+<h3>
+Package Documentation</h3>
+<p>
+Support for Java reflective arrays.</p>
+<h3>
+Table of Content</h3>
+<ul>
+<li>
+<div>
+<a HREF="#type">Type Aliases</a></div>
+<div>
+<a class="tref" href="#ArrayOf">ArrayOf</a></div>
+</li>
+<li>
+<div>
+<a HREF="#class">Classes</a></div>
+<div>
+<a class="tref" href="#ArrayElem">ArrayElem</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ArrayElement">ArrayElement</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#PrimitiveArrayElement">PrimitiveArrayElement</a></div>
+</li>
+<li>
+<div>
+<a HREF="#instance">Instances</a></div>
+<div>
+<a class="tref" href="#ArrayElement_l_c_r">ArrayElement_(,)</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ArrayElement_l_cc_r">ArrayElement_(,,)</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ArrayElement__minus_gt">ArrayElement_-&gt;</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ArrayElement_Integer">ArrayElement_Integer</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ArrayElement_String">ArrayElement_String</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ArrayElement__lbrack_rbrack">ArrayElement_[]</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ListSource_JArray">ListSource_JArray</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#PrimitiveArrayElement_Bool">PrimitiveArrayElement_Bool</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#PrimitiveArrayElement_Char">PrimitiveArrayElement_Char</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#PrimitiveArrayElement_Double">PrimitiveArrayElement_Double</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#PrimitiveArrayElement_Float">PrimitiveArrayElement_Float</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#PrimitiveArrayElement_Int">PrimitiveArrayElement_Int</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#PrimitiveArrayElement_Long">PrimitiveArrayElement_Long</a></div>
+</li>
+<li>
+<div>
+<a HREF="#data">Data Types</a></div>
+<div>
+<a class="tref" href="#JArray">JArray</a></div>
+</li>
+<li>
+<div>
+<a HREF="#let">Functions and Values (alphabetically)</a></div>
+<div>
+<a class="fref" href="#arrayCache">arrayCache</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#arrayFold">arrayFold</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#arrayFromIndexList">arrayFromIndexList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#arrayFromList">arrayFromList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#arrayMap">arrayMap</a></div>
+</li>
+<li>
+<div>
+<a HREF="#case">Functions and Values (by type)</a></div>
+<div>
+<a class="fref" href="#arrayCache">arrayCache</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#arrayFold">arrayFold</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#arrayFromIndexList">arrayFromIndexList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#arrayFromList">arrayFromList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#arrayMap">arrayMap</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElem.itemAt">ArrayElem.itemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElem.getAt">ArrayElem.getAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElem.elemAt">ArrayElem.elemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElem.getElemAt">ArrayElem.getElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElem.modifyElemAt">ArrayElem.modifyElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElem.modifyAt">ArrayElem.modifyAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElem.setAt">ArrayElem.setAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElem.newArray">ArrayElem.newArray</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement.newArrayM">ArrayElement.newArrayM</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement.itemAt">PrimitiveArrayElement.itemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement.getAt">PrimitiveArrayElement.getAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement.setAt">PrimitiveArrayElement.setAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_l_c_r.itemAt">ArrayElement_(,).itemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_l_c_r.getAt">ArrayElement_(,).getAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_l_c_r.elemAt">ArrayElement_(,).elemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_l_c_r.getElemAt">ArrayElement_(,).getElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_l_c_r.newArray">ArrayElement_(,).newArray</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_l_c_r.modifyAt">ArrayElement_(,).modifyAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_l_c_r.javaClass">ArrayElement_(,).javaClass</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_l_c_r.modifyElemAt">ArrayElement_(,).modifyElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_l_c_r.setAt">ArrayElement_(,).setAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_l_c_r.newArrayM">ArrayElement_(,).newArrayM</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_l_c_r.setElemAt">ArrayElement_(,).setElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_l_cc_r.itemAt">ArrayElement_(,,).itemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_l_cc_r.getAt">ArrayElement_(,,).getAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_l_cc_r.elemAt">ArrayElement_(,,).elemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_l_cc_r.getElemAt">ArrayElement_(,,).getElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_l_cc_r.newArray">ArrayElement_(,,).newArray</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_l_cc_r.modifyAt">ArrayElement_(,,).modifyAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_l_cc_r.javaClass">ArrayElement_(,,).javaClass</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_l_cc_r.modifyElemAt">ArrayElement_(,,).modifyElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_l_cc_r.setAt">ArrayElement_(,,).setAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_l_cc_r.newArrayM">ArrayElement_(,,).newArrayM</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_l_cc_r.setElemAt">ArrayElement_(,,).setElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement__minus_gt.itemAt">ArrayElement_-&gt;.itemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement__minus_gt.getAt">ArrayElement_-&gt;.getAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement__minus_gt.elemAt">ArrayElement_-&gt;.elemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement__minus_gt.getElemAt">ArrayElement_-&gt;.getElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement__minus_gt.newArray">ArrayElement_-&gt;.newArray</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement__minus_gt.modifyAt">ArrayElement_-&gt;.modifyAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement__minus_gt.javaClass">ArrayElement_-&gt;.javaClass</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement__minus_gt.modifyElemAt">ArrayElement_-&gt;.modifyElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement__minus_gt.setAt">ArrayElement_-&gt;.setAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement__minus_gt.newArrayM">ArrayElement_-&gt;.newArrayM</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement__minus_gt.setElemAt">ArrayElement_-&gt;.setElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_Integer.itemAt">ArrayElement_Integer.itemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_Integer.getAt">ArrayElement_Integer.getAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_Integer.elemAt">ArrayElement_Integer.elemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_Integer.getElemAt">ArrayElement_Integer.getElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_Integer.newArray">ArrayElement_Integer.newArray</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_Integer.modifyAt">ArrayElement_Integer.modifyAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_Integer.javaClass">ArrayElement_Integer.javaClass</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_Integer.modifyElemAt">ArrayElement_Integer.modifyElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_Integer.setAt">ArrayElement_Integer.setAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_Integer.newArrayM">ArrayElement_Integer.newArrayM</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_Integer.setElemAt">ArrayElement_Integer.setElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_String.itemAt">ArrayElement_String.itemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_String.getAt">ArrayElement_String.getAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_String.elemAt">ArrayElement_String.elemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_String.getElemAt">ArrayElement_String.getElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_String.newArray">ArrayElement_String.newArray</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_String.modifyAt">ArrayElement_String.modifyAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_String.javaClass">ArrayElement_String.javaClass</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_String.modifyElemAt">ArrayElement_String.modifyElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_String.setAt">ArrayElement_String.setAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_String.newArrayM">ArrayElement_String.newArrayM</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement_String.setElemAt">ArrayElement_String.setElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement__lbrack_rbrack.itemAt">ArrayElement_[].itemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement__lbrack_rbrack.getAt">ArrayElement_[].getAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement__lbrack_rbrack.elemAt">ArrayElement_[].elemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement__lbrack_rbrack.getElemAt">ArrayElement_[].getElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement__lbrack_rbrack.newArray">ArrayElement_[].newArray</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement__lbrack_rbrack.modifyAt">ArrayElement_[].modifyAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement__lbrack_rbrack.javaClass">ArrayElement_[].javaClass</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement__lbrack_rbrack.modifyElemAt">ArrayElement_[].modifyElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement__lbrack_rbrack.setAt">ArrayElement_[].setAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement__lbrack_rbrack.newArrayM">ArrayElement_[].newArrayM</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayElement__lbrack_rbrack.setElemAt">ArrayElement_[].setElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListSource_JArray.toList">ListSource_JArray.toList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Bool.itemAt">PrimitiveArrayElement_Bool.itemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Bool.getAt">PrimitiveArrayElement_Bool.getAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Bool.elemAt">PrimitiveArrayElement_Bool.elemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Bool.getElemAt">PrimitiveArrayElement_Bool.getElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Bool.newArray">PrimitiveArrayElement_Bool.newArray</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Bool.modifyAt">PrimitiveArrayElement_Bool.modifyAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Bool.javaClass">PrimitiveArrayElement_Bool.javaClass</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Bool.modifyElemAt">PrimitiveArrayElement_Bool.modifyElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Bool.setAt">PrimitiveArrayElement_Bool.setAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Bool.setElemAt">PrimitiveArrayElement_Bool.setElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Char.itemAt">PrimitiveArrayElement_Char.itemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Char.getAt">PrimitiveArrayElement_Char.getAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Char.elemAt">PrimitiveArrayElement_Char.elemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Char.getElemAt">PrimitiveArrayElement_Char.getElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Char.newArray">PrimitiveArrayElement_Char.newArray</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Char.modifyAt">PrimitiveArrayElement_Char.modifyAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Char.javaClass">PrimitiveArrayElement_Char.javaClass</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Char.modifyElemAt">PrimitiveArrayElement_Char.modifyElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Char.setAt">PrimitiveArrayElement_Char.setAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Char.setElemAt">PrimitiveArrayElement_Char.setElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Double.itemAt">PrimitiveArrayElement_Double.itemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Double.getAt">PrimitiveArrayElement_Double.getAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Double.elemAt">PrimitiveArrayElement_Double.elemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Double.getElemAt">PrimitiveArrayElement_Double.getElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Double.newArray">PrimitiveArrayElement_Double.newArray</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Double.modifyAt">PrimitiveArrayElement_Double.modifyAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Double.javaClass">PrimitiveArrayElement_Double.javaClass</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Double.modifyElemAt">PrimitiveArrayElement_Double.modifyElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Double.setAt">PrimitiveArrayElement_Double.setAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Double.setElemAt">PrimitiveArrayElement_Double.setElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Float.itemAt">PrimitiveArrayElement_Float.itemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Float.getAt">PrimitiveArrayElement_Float.getAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Float.elemAt">PrimitiveArrayElement_Float.elemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Float.getElemAt">PrimitiveArrayElement_Float.getElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Float.newArray">PrimitiveArrayElement_Float.newArray</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Float.modifyAt">PrimitiveArrayElement_Float.modifyAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Float.javaClass">PrimitiveArrayElement_Float.javaClass</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Float.modifyElemAt">PrimitiveArrayElement_Float.modifyElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Float.setAt">PrimitiveArrayElement_Float.setAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Float.setElemAt">PrimitiveArrayElement_Float.setElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Int.itemAt">PrimitiveArrayElement_Int.itemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Int.getAt">PrimitiveArrayElement_Int.getAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Int.elemAt">PrimitiveArrayElement_Int.elemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Int.getElemAt">PrimitiveArrayElement_Int.getElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Int.newArray">PrimitiveArrayElement_Int.newArray</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Int.modifyAt">PrimitiveArrayElement_Int.modifyAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Int.javaClass">PrimitiveArrayElement_Int.javaClass</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Int.modifyElemAt">PrimitiveArrayElement_Int.modifyElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Int.setAt">PrimitiveArrayElement_Int.setAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Int.setElemAt">PrimitiveArrayElement_Int.setElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Long.itemAt">PrimitiveArrayElement_Long.itemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Long.getAt">PrimitiveArrayElement_Long.getAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Long.elemAt">PrimitiveArrayElement_Long.elemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Long.getElemAt">PrimitiveArrayElement_Long.getElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Long.newArray">PrimitiveArrayElement_Long.newArray</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Long.modifyAt">PrimitiveArrayElement_Long.modifyAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Long.javaClass">PrimitiveArrayElement_Long.javaClass</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Long.modifyElemAt">PrimitiveArrayElement_Long.modifyElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Long.setAt">PrimitiveArrayElement_Long.setAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#PrimitiveArrayElement_Long.setElemAt">PrimitiveArrayElement_Long.setElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#JArray.getLength">JArray.getLength</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#JArray.fromIndexList">JArray.fromIndexList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#JArray.elemAt">JArray.elemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#JArray.cache">JArray.cache</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#JArray.fold">JArray.fold</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#JArray.getAt">JArray.getAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#JArray.fromList">JArray.fromList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#JArray.getElemAt">JArray.getElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#JArray.map">JArray.map</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#JArray.itemAt">JArray.itemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#JArray.length">JArray.length</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#JArray.newM">JArray.newM</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#JArray.modify">JArray.modify</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#JArray.mapElem">JArray.mapElem</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#JArray._new">JArray.new</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#JArray.setElemAt">JArray.setElemAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#JArray.setAt">JArray.setAt</a></div>
+</li>
+</ul>
+<h3>
+Imports</h3>
+<ul>
+<li>
+<div>
+import <a HREF="../java/Lang.html">frege.java.Lang</a> as Lang</div>
+</li>
+<li>
+<div>
+import <a HREF="./PreludeList.html">frege.prelude.PreludeList</a> as L</div>
+</li>
+<li>
+<div>
+import <a HREF="../control/Category.html">frege.control.Category</a> as Category</div>
+</li>
+<li>
+<div>
+import <a HREF="./Maybe.html">frege.prelude.Maybe</a> as Maybe</div>
+</li>
+<li>
+<div>
+import <a HREF="./PreludeIO.html">frege.prelude.PreludeIO</a> as PreludeIO</div>
+</li>
+<li>
+<div>
+import <a HREF="./PreludeBase.html">frege.prelude.PreludeBase</a> as PreludeBase</div>
+</li>
+<li>
+<div>
+import <a HREF="./PreludeMonad.html">frege.prelude.PreludeMonad</a> as PreludeMonad</div>
+</li>
+<li>
+<div>
+import <a HREF="../control/Semigroupoid.html">frege.control.Semigroupoid</a> as Semigroupoid</div>
+</li>
+</ul>
+<h2>
+<a name="type">Type Aliases</a></h2>
+<dl class="clas">
+<dt class="clas">
+<SPAN CLASS="code"><b>type </b><a name="ArrayOf">ArrayOf</a> s a = <a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> s (<a class="tref" href="#JArray">JArray</a> a)</SPAN></dt>
+<dd class="clas">
+<p>
+short hand for <a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> <SPAN CLASS="code">s</SPAN> (<a class="tref" href="#JArray">JArray</a> <SPAN CLASS="code">a</SPAN>)   </p>
+</dd>
+</dl>
+<h2>
+<a name="class">Classes</a></h2>
+<dl class="clas">
+<dt class="clas">
+<SPAN CLASS="code"><b>class </b><a name="ArrayElem">ArrayElem</a> <a class="tref" href="./PreludeIO.html#JavaType">JavaType</a> a =&gt;  a</SPAN></dt>
+<dd class="clas">
+<p>
+Type class for basic <a class="tref" href="#JArray">JArray</a> operations. The <b>element type</b> must be an instance of this class to support arrays of that type.</p>
+<p>
+<a class="tref" href="#ArrayElem">ArrayElem</a> is not derivable, derive sub-class <a class="tref" href="#ArrayElement">ArrayElement</a> instead.</p>
+<p>
+The operations are mostly overloaded on return type and provide the appropriate <SPAN CLASS="code">java.lang.Class</SPAN> object when needed.</p>
+<p>
+This supports one dimensional and two dimensional arrays. Note that <a class="tref" href="#JArray">JArray</a> cannot be an instance of <a class="tref" href="#ArrayElem">ArrayElem</a> itself, because it has no fixed <SPAN CLASS="code">java.lang.Class</SPAN> instance.</p>
+<h3>
+Known Instances</h3>
+<p>
+<a class="tref" href="#ArrayElement__lbrack_rbrack">[]</a>, <a class="tref" href="#ArrayElement_Integer">Integer</a>, <a class="tref" href="#ArrayElement_l_cc_r">(,,)</a>, <a class="tref" href="#ArrayElement_l_c_r">(,)</a>, <a class="tref" href="#ArrayElement__minus_gt">-&gt;</a>, <a class="tref" href="#ArrayElement_String">StringJ</a>, <a class="tref" href="#PrimitiveArrayElement_Long">Long</a>, <a class="tref" href="#PrimitiveArrayElement_Double">Double</a>, <a class="tref" href="#PrimitiveArrayElement_Float">Float</a>, <a class="tref" href="#PrimitiveArrayElement_Bool">Bool</a>, <a class="tref" href="#PrimitiveArrayElement_Char">Char</a>, <a class="tref" href="#PrimitiveArrayElement_Int">Int</a></p>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElem.elemAt">elemAt</a> :: <a class="tref" href="#ArrayElem">ArrayElem</a> a =&gt; <b><a class="tref" href="#JArray">JArray</a> a</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; a<br><b>pure </b><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+Get non-null element at index from immutable array, see <a class="fref" href="#JArray.elemAt">JArray.elemAt</a>   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElem.getAt">getAt</a> :: <a class="tref" href="#ArrayElem">ArrayElem</a> a =&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> s a</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> s (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> a)<br><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+Get item at index from mutable array, see <a class="fref" href="#JArray.getAt">JArray.getAt</a>   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElem.getElemAt">getElemAt</a> :: <a class="tref" href="#ArrayElem">ArrayElem</a> a =&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> s a</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> s a<br><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+Get non null item at index from mutable array, see <a class="fref" href="#JArray.getElemAt">JArray.getElemAt</a>   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElem.itemAt">itemAt</a> :: <a class="tref" href="#ArrayElem">ArrayElem</a> a =&gt; <b><a class="tref" href="#JArray">JArray</a> a</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> a<br><b>pure </b><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+Get item at index from immutable array, see <a class="fref" href="#JArray.itemAt">JArray.itemAt</a>   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElem.modifyAt">modifyAt</a> :: <a class="tref" href="#ArrayElem">ArrayElem</a> a =&gt; (a -&gt; a) -&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> s a</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> s <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+Modify item at index in mutable array with result of function application.   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElem.modifyElemAt">modifyElemAt</a> :: <a class="tref" href="#ArrayElem">ArrayElem</a> a =&gt; (a -&gt; a) -&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> s a</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> s <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+Modify non null item at index in mutable array with result of function application.   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElem.newArray">newArray</a> :: <a class="tref" href="#ArrayElem">ArrayElem</a> a =&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> s (<a class="tref" href="#JArray">JArray</a> a)<br><b>native </b>new[]</SPAN></dt>
+<dd class="func">
+<p>
+Create a one dimensional array with elements of the instantiated type.   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElem.setAt">setAt</a> :: <a class="tref" href="#ArrayElem">ArrayElem</a> a =&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> s a</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> a</b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> s <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<dd class="func">
+<p>
+Set item or null at index in mutable array, see <a class="fref" href="#JArray.setAt">JArray.setAt</a>   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElem.setElemAt">setElemAt</a> :: <a class="tref" href="#ArrayElem">ArrayElem</a> a =&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> s a</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b>a</b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> s <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<dd class="func">
+<p>
+Set item at index in mutable array. see <a class="fref" href="#JArray.setElemAt">JArray.setElemAt</a>   </p>
+</dd>
+</dl>
+</dd>
+<dt class="clas">
+<SPAN CLASS="code"><b>class </b><a name="ArrayElement">ArrayElement</a> (<a class="tref" href="./PreludeIO.html#JavaType">JavaType</a> a, <a class="tref" href="#ArrayElem">ArrayElem</a> a) =&gt;  a</SPAN></dt>
+<dd class="clas">
+<p>
+<a class="tref" href="#ArrayElement">ArrayElement</a> is the class one derives for array elements.</p>
+<p>
+In addition to the base class <a class="tref" href="#ArrayElem">ArrayElem</a> it also supports mutable array elements.   </p>
+<h3>
+Known Instances</h3>
+<p>
+<a class="tref" href="#ArrayElement__lbrack_rbrack">[]</a>, <a class="tref" href="#ArrayElement_Integer">Integer</a>, <a class="tref" href="#ArrayElement_l_cc_r">(,,)</a>, <a class="tref" href="#ArrayElement_l_c_r">(,)</a>, <a class="tref" href="#ArrayElement__minus_gt">-&gt;</a>, <a class="tref" href="#ArrayElement_String">StringJ</a></p>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement.newArrayM">newArrayM</a> :: <a class="tref" href="#ArrayElement">ArrayElement</a> a =&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> s (<a class="tref" href="#JArray">JArray</a> (<a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> s a))</SPAN></dt>
+<dd class="func">
+<p>
+Create an array of mutable items.</p>
+<p>
+Such an array may never be immutable itself.    </p>
+</dd>
+</dl>
+</dd>
+<dt class="clas">
+<SPAN CLASS="code"><b>class </b><a name="PrimitiveArrayElement">PrimitiveArrayElement</a> (<a class="tref" href="./PreludeIO.html#JavaType">JavaType</a> a, <a class="tref" href="#ArrayElem">ArrayElem</a> a) =&gt;  a</SPAN></dt>
+<dd class="clas">
+<p>
+Type class for array elements of primitive type.</p>
+<p>
+Not thought for public use, as all instances are pre-defined.</p>
+<p>
+The default implementation of <a class="fref" href="#PrimitiveArrayElement.setAt">PrimitiveArrayElement.setAt</a> does not support passing <a class="fref" href="./PreludeBase.html#Maybe.Nothing">Maybe.Nothing</a>, because there can be no <SPAN CLASS="code">null</SPAN> in primitive arrays.</p>
+<h3>
+Known Instances</h3>
+<p>
+<a class="tref" href="#PrimitiveArrayElement_Long">Long</a>, <a class="tref" href="#PrimitiveArrayElement_Double">Double</a>, <a class="tref" href="#PrimitiveArrayElement_Float">Float</a>, <a class="tref" href="#PrimitiveArrayElement_Bool">Bool</a>, <a class="tref" href="#PrimitiveArrayElement_Char">Char</a>, <a class="tref" href="#PrimitiveArrayElement_Int">Int</a></p>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement.getAt">getAt</a> :: <a class="tref" href="#PrimitiveArrayElement">PrimitiveArrayElement</a> a =&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> s a</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> s (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> a)</SPAN></dt>
+<dd class="func">
+<p>
+Default implementation suitable for primitive types, wraps result with <a class="fref" href="./PreludeBase.html#Maybe.Just">Maybe.Just</a>   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement.itemAt">itemAt</a> :: <a class="tref" href="#PrimitiveArrayElement">PrimitiveArrayElement</a> a =&gt; <a class="tref" href="#JArray">JArray</a> a -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> a</SPAN></dt>
+<dd class="func">
+<p>
+Default implementation suitable for primitive types, wraps result with <a class="fref" href="./PreludeBase.html#Maybe.Just">Maybe.Just</a>   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement.setAt">setAt</a> :: <a class="tref" href="#PrimitiveArrayElement">PrimitiveArrayElement</a> a =&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> s a</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> a -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> s <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+Default implementation suitable for primitive types.</p>
+<p>
+It is an error to put <a class="fref" href="./PreludeBase.html#Maybe.Nothing">Maybe.Nothing</a> in a primitive array.   </p>
+</dd>
+</dl>
+</dd>
+</dl>
+<h2>
+<a name="instance">Instances</a></h2>
+<dl class="inst">
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name="ArrayElement_l_c_r"> </a> <a class="tref" href="#ArrayElement">ArrayElement</a> (a, b)</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_l_c_r.elemAt">elemAt</a> :: <b><a class="tref" href="#JArray">JArray</a> (α, β)</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; (α, β)<br><b>pure </b><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.elemAt">ArrayElem.elemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_l_c_r.getAt">getAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> γ (β, α)</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (β, α))<br><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.getAt">ArrayElem.getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_l_c_r.getElemAt">getElemAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> γ (β, α)</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ (β, α)<br><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.getElemAt">ArrayElem.getElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_l_c_r.itemAt">itemAt</a> :: <b><a class="tref" href="#JArray">JArray</a> (α, β)</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α, β)<br><b>pure </b><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.itemAt">ArrayElem.itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_l_c_r.javaClass">javaClass</a> :: <a class="tref" href="./PreludeBase.html#Class">Class</a> (α, β)<br><b>pure </b><b>native </b>frege.prelude.PreludeBase.TTuple2.class</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_l_c_r.modifyAt">modifyAt</a> :: ((β, α) -&gt; (β, α)) -&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> γ (β, α)</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.modifyAt">ArrayElem.modifyAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_l_c_r.modifyElemAt">modifyElemAt</a> :: ((β, α) -&gt; (β, α)) -&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> γ (β, α)</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.modifyElemAt">ArrayElem.modifyElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_l_c_r.newArray">newArray</a> :: <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> γ (<a class="tref" href="#JArray">JArray</a> (β, α))<br><b>native </b>new[]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.newArray">ArrayElem.newArray</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_l_c_r.newArrayM">newArrayM</a> :: <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> γ (<a class="tref" href="#JArray">JArray</a> (<a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> γ (β, α)))</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElement.newArrayM">ArrayElement.newArrayM</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_l_c_r.setAt">setAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> γ (β, α)</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (β, α)</b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.setAt">ArrayElem.setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_l_c_r.setElemAt">setElemAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> γ (β, α)</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b>(β, α)</b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name="ArrayElement_l_cc_r"> </a> <a class="tref" href="#ArrayElement">ArrayElement</a> (a, b, c)</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_l_cc_r.elemAt">elemAt</a> :: <b><a class="tref" href="#JArray">JArray</a> (α, β, γ)</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; (α, β, γ)<br><b>pure </b><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.elemAt">ArrayElem.elemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_l_cc_r.getAt">getAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> γ (α, β, δ)</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α, β, δ))<br><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.getAt">ArrayElem.getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_l_cc_r.getElemAt">getElemAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> γ (α, β, δ)</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ (α, β, δ)<br><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.getElemAt">ArrayElem.getElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_l_cc_r.itemAt">itemAt</a> :: <b><a class="tref" href="#JArray">JArray</a> (α, β, γ)</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α, β, γ)<br><b>pure </b><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.itemAt">ArrayElem.itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_l_cc_r.javaClass">javaClass</a> :: <a class="tref" href="./PreludeBase.html#Class">Class</a> (α, β, γ)<br><b>pure </b><b>native </b>frege.prelude.PreludeBase.TTuple3.class</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_l_cc_r.modifyAt">modifyAt</a> :: ((α, β, γ) -&gt; (α, β, γ)) -&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> δ (α, β, γ)</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> δ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.modifyAt">ArrayElem.modifyAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_l_cc_r.modifyElemAt">modifyElemAt</a> :: ((α, β, γ) -&gt; (α, β, γ)) -&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> δ (α, β, γ)</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> δ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.modifyElemAt">ArrayElem.modifyElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_l_cc_r.newArray">newArray</a> :: <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> γ (<a class="tref" href="#JArray">JArray</a> (α, β, δ))<br><b>native </b>new[]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.newArray">ArrayElem.newArray</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_l_cc_r.newArrayM">newArrayM</a> :: <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> γ (<a class="tref" href="#JArray">JArray</a> (<a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> γ (α, β, δ)))</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElement.newArrayM">ArrayElement.newArrayM</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_l_cc_r.setAt">setAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> γ (α, β, δ)</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α, β, δ)</b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.setAt">ArrayElem.setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_l_cc_r.setElemAt">setElemAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> γ (α, β, δ)</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b>(α, β, δ)</b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name="ArrayElement__minus_gt"> </a> <a class="tref" href="#ArrayElement">ArrayElement</a> a -&gt; b</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement__minus_gt.elemAt">elemAt</a> :: <b><a class="tref" href="#JArray">JArray</a> (α-&gt;β)</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; α-&gt;β<br><b>pure </b><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.elemAt">ArrayElem.elemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement__minus_gt.getAt">getAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> γ (α-&gt;β)</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α-&gt;β))<br><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.getAt">ArrayElem.getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement__minus_gt.getElemAt">getElemAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> γ (α-&gt;β)</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ (α-&gt;β)<br><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.getElemAt">ArrayElem.getElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement__minus_gt.itemAt">itemAt</a> :: <b><a class="tref" href="#JArray">JArray</a> (α-&gt;β)</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α-&gt;β)<br><b>pure </b><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.itemAt">ArrayElem.itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement__minus_gt.javaClass">javaClass</a> :: <a class="tref" href="./PreludeBase.html#Class">Class</a> (α-&gt;β)<br><b>native </b>frege.runtime.Lambda.class</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement__minus_gt.modifyAt">modifyAt</a> :: ((α-&gt;β) -&gt; α-&gt;β) -&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> γ (α-&gt;β)</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.modifyAt">ArrayElem.modifyAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement__minus_gt.modifyElemAt">modifyElemAt</a> :: ((α-&gt;β) -&gt; α-&gt;β) -&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> γ (α-&gt;β)</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.modifyElemAt">ArrayElem.modifyElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement__minus_gt.newArray">newArray</a> :: <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> γ (<a class="tref" href="#JArray">JArray</a> (α-&gt;β))<br><b>native </b>new[]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.newArray">ArrayElem.newArray</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement__minus_gt.newArrayM">newArrayM</a> :: <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> γ (<a class="tref" href="#JArray">JArray</a> (<a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> γ (α-&gt;β)))</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElement.newArrayM">ArrayElement.newArrayM</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement__minus_gt.setAt">setAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> γ (α-&gt;β)</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α-&gt;β)</b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.setAt">ArrayElem.setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement__minus_gt.setElemAt">setElemAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> γ (α-&gt;β)</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; (<b>α-&gt;β</b>) -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name="ArrayElement_Integer"> </a> <a class="tref" href="#ArrayElement">ArrayElement</a> <a class="tref" href="./PreludeBase.html#Integer">Integer</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_Integer.elemAt">elemAt</a> :: <b><a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Integer">Integer</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#Integer">Integer</a><br><b>pure </b><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.elemAt">ArrayElem.elemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_Integer.getAt">getAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Integer">Integer</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Integer">Integer</a>)<br><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.getAt">ArrayElem.getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_Integer.getElemAt">getElemAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Integer">Integer</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Integer">Integer</a><br><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.getElemAt">ArrayElem.getElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_Integer.itemAt">itemAt</a> :: <b><a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Integer">Integer</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Integer">Integer</a><br><b>pure </b><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.itemAt">ArrayElem.itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_Integer.javaClass">javaClass</a> :: <a class="tref" href="./PreludeBase.html#Class">Class</a> <a class="tref" href="./PreludeBase.html#Integer">Integer</a><br><b>pure </b><b>native </b>java.math.BigInteger.class</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_Integer.modifyAt">modifyAt</a> :: (<a class="tref" href="./PreludeBase.html#Integer">Integer</a> -&gt; <a class="tref" href="./PreludeBase.html#Integer">Integer</a>) -&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Integer">Integer</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.modifyAt">ArrayElem.modifyAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_Integer.modifyElemAt">modifyElemAt</a> :: (<a class="tref" href="./PreludeBase.html#Integer">Integer</a> -&gt; <a class="tref" href="./PreludeBase.html#Integer">Integer</a>) -&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Integer">Integer</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.modifyElemAt">ArrayElem.modifyElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_Integer.newArray">newArray</a> :: <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Integer">Integer</a>)<br><b>native </b>new[]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.newArray">ArrayElem.newArray</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_Integer.newArrayM">newArrayM</a> :: <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> (<a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> α <a class="tref" href="./PreludeBase.html#Integer">Integer</a>))</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElement.newArrayM">ArrayElement.newArrayM</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_Integer.setAt">setAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Integer">Integer</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Integer">Integer</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.setAt">ArrayElem.setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_Integer.setElemAt">setElemAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Integer">Integer</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Integer">Integer</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name="ArrayElement_String"> </a> <a class="tref" href="#ArrayElement">ArrayElement</a> <a class="tref" href="./PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_String.elemAt">elemAt</a> :: <b><a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#String">String</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#String">String</a><br><b>pure </b><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.elemAt">ArrayElem.elemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_String.getAt">getAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#String">String</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#String">String</a>)<br><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.getAt">ArrayElem.getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_String.getElemAt">getElemAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#String">String</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#String">String</a><br><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.getElemAt">ArrayElem.getElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_String.itemAt">itemAt</a> :: <b><a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#String">String</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#String">String</a><br><b>pure </b><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.itemAt">ArrayElem.itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_String.javaClass">javaClass</a> :: <a class="tref" href="./PreludeBase.html#Class">Class</a> <a class="tref" href="./PreludeBase.html#String">String</a><br><b>native </b>java.lang.String.class</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_String.modifyAt">modifyAt</a> :: (<a class="tref" href="./PreludeBase.html#String">String</a> -&gt; <a class="tref" href="./PreludeBase.html#String">String</a>) -&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#String">String</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.modifyAt">ArrayElem.modifyAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_String.modifyElemAt">modifyElemAt</a> :: (<a class="tref" href="./PreludeBase.html#String">String</a> -&gt; <a class="tref" href="./PreludeBase.html#String">String</a>) -&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#String">String</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.modifyElemAt">ArrayElem.modifyElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_String.newArray">newArray</a> :: <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#String">String</a>)<br><b>native </b>new[]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.newArray">ArrayElem.newArray</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_String.newArrayM">newArrayM</a> :: <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> (<a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> α <a class="tref" href="./PreludeBase.html#String">String</a>))</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElement.newArrayM">ArrayElement.newArrayM</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_String.setAt">setAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#String">String</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#String">String</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.setAt">ArrayElem.setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement_String.setElemAt">setElemAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#String">String</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#String">String</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name="ArrayElement__lbrack_rbrack"> </a> <a class="tref" href="#ArrayElement">ArrayElement</a> [a]</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement__lbrack_rbrack.elemAt">elemAt</a> :: <b><a class="tref" href="#JArray">JArray</a> [α]</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; [α]<br><b>pure </b><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.elemAt">ArrayElem.elemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement__lbrack_rbrack.getAt">getAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α [β]</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> [β])<br><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.getAt">ArrayElem.getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement__lbrack_rbrack.getElemAt">getElemAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α [β]</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α [β]<br><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.getElemAt">ArrayElem.getElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement__lbrack_rbrack.itemAt">itemAt</a> :: <b><a class="tref" href="#JArray">JArray</a> [α]</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> [α]<br><b>pure </b><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.itemAt">ArrayElem.itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement__lbrack_rbrack.javaClass">javaClass</a> :: <a class="tref" href="./PreludeBase.html#Class">Class</a> [α]<br><b>pure </b><b>native </b>frege.prelude.PreludeBase.TList.class</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement__lbrack_rbrack.modifyAt">modifyAt</a> :: ([α] -&gt; [α]) -&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> β [α]</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.modifyAt">ArrayElem.modifyAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement__lbrack_rbrack.modifyElemAt">modifyElemAt</a> :: ([α] -&gt; [α]) -&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> β [α]</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.modifyElemAt">ArrayElem.modifyElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement__lbrack_rbrack.newArray">newArray</a> :: <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> [β])<br><b>native </b>new[]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.newArray">ArrayElem.newArray</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement__lbrack_rbrack.newArrayM">newArrayM</a> :: <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> (<a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> α [β]))</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElement.newArrayM">ArrayElement.newArrayM</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement__lbrack_rbrack.setAt">setAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α [β]</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> [β]</b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.setAt">ArrayElem.setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayElement__lbrack_rbrack.setElemAt">setElemAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α [β]</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b>[β]</b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name="ListSource_JArray"> </a> <a class="tref" href="./PreludeList.html#ListSource">ListSource</a> <a class="tref" href="#JArray">JArray</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="ListSource_JArray.toList">toList</a> :: <a class="tref" href="#JArray">JArray</a> α -&gt; [α]</SPAN></dt>
+<dd class="func">
+<p>
+Unload an immutable array to a list</p>
+<p>
+The resulting list consists of all the non null elements of the array argument.   </p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name="PrimitiveArrayElement_Bool"> </a> <a class="tref" href="#PrimitiveArrayElement">PrimitiveArrayElement</a> <a class="tref" href="./PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Bool.elemAt">elemAt</a> :: <b><a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Bool">Bool</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#Bool">Bool</a><br><b>pure </b><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.elemAt">ArrayElem.elemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Bool.getAt">getAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Bool">Bool</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Bool">Bool</a>)</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#PrimitiveArrayElement.getAt">PrimitiveArrayElement.getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Bool.getElemAt">getElemAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Bool">Bool</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Bool">Bool</a><br><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.getElemAt">ArrayElem.getElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Bool.itemAt">itemAt</a> :: <a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Bool">Bool</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#PrimitiveArrayElement.itemAt">PrimitiveArrayElement.itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Bool.javaClass">javaClass</a> :: <a class="tref" href="./PreludeBase.html#Class">Class</a> <a class="tref" href="./PreludeBase.html#Bool">Bool</a><br><b>native </b>boolean.class</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Bool.modifyAt">modifyAt</a> :: (<a class="tref" href="./PreludeBase.html#Bool">Bool</a> -&gt; <a class="tref" href="./PreludeBase.html#Bool">Bool</a>) -&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Bool">Bool</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.modifyAt">ArrayElem.modifyAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Bool.modifyElemAt">modifyElemAt</a> :: (<a class="tref" href="./PreludeBase.html#Bool">Bool</a> -&gt; <a class="tref" href="./PreludeBase.html#Bool">Bool</a>) -&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Bool">Bool</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.modifyElemAt">ArrayElem.modifyElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Bool.newArray">newArray</a> :: <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Bool">Bool</a>)<br><b>native </b>new[]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.newArray">ArrayElem.newArray</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Bool.setAt">setAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Bool">Bool</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Bool">Bool</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#PrimitiveArrayElement.setAt">PrimitiveArrayElement.setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Bool.setElemAt">setElemAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Bool">Bool</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Bool">Bool</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name="PrimitiveArrayElement_Char"> </a> <a class="tref" href="#PrimitiveArrayElement">PrimitiveArrayElement</a> <a class="tref" href="./PreludeBase.html#Char">Char</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Char.elemAt">elemAt</a> :: <b><a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Char">Char</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#Char">Char</a><br><b>pure </b><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.elemAt">ArrayElem.elemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Char.getAt">getAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Char">Char</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Char">Char</a>)</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#PrimitiveArrayElement.getAt">PrimitiveArrayElement.getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Char.getElemAt">getElemAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Char">Char</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Char">Char</a><br><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.getElemAt">ArrayElem.getElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Char.itemAt">itemAt</a> :: <a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Char">Char</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Char">Char</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#PrimitiveArrayElement.itemAt">PrimitiveArrayElement.itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Char.javaClass">javaClass</a> :: <a class="tref" href="./PreludeBase.html#Class">Class</a> <a class="tref" href="./PreludeBase.html#Char">Char</a><br><b>native </b>char.class</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Char.modifyAt">modifyAt</a> :: (<a class="tref" href="./PreludeBase.html#Char">Char</a> -&gt; <a class="tref" href="./PreludeBase.html#Char">Char</a>) -&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Char">Char</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.modifyAt">ArrayElem.modifyAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Char.modifyElemAt">modifyElemAt</a> :: (<a class="tref" href="./PreludeBase.html#Char">Char</a> -&gt; <a class="tref" href="./PreludeBase.html#Char">Char</a>) -&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Char">Char</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.modifyElemAt">ArrayElem.modifyElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Char.newArray">newArray</a> :: <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Char">Char</a>)<br><b>native </b>new[]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.newArray">ArrayElem.newArray</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Char.setAt">setAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Char">Char</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Char">Char</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#PrimitiveArrayElement.setAt">PrimitiveArrayElement.setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Char.setElemAt">setElemAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Char">Char</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Char">Char</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name="PrimitiveArrayElement_Double"> </a> <a class="tref" href="#PrimitiveArrayElement">PrimitiveArrayElement</a> <a class="tref" href="./PreludeBase.html#Double">Double</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Double.elemAt">elemAt</a> :: <b><a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Double">Double</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.elemAt">ArrayElem.elemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Double.getAt">getAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Double">Double</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Double">Double</a>)</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#PrimitiveArrayElement.getAt">PrimitiveArrayElement.getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Double.getElemAt">getElemAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Double">Double</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Double">Double</a><br><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.getElemAt">ArrayElem.getElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Double.itemAt">itemAt</a> :: <a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Double">Double</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Double">Double</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#PrimitiveArrayElement.itemAt">PrimitiveArrayElement.itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Double.javaClass">javaClass</a> :: <a class="tref" href="./PreludeBase.html#Class">Class</a> <a class="tref" href="./PreludeBase.html#Double">Double</a><br><b>native </b>double.class</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Double.modifyAt">modifyAt</a> :: (<a class="tref" href="./PreludeBase.html#Double">Double</a> -&gt; <a class="tref" href="./PreludeBase.html#Double">Double</a>) -&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Double">Double</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.modifyAt">ArrayElem.modifyAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Double.modifyElemAt">modifyElemAt</a> :: (<a class="tref" href="./PreludeBase.html#Double">Double</a> -&gt; <a class="tref" href="./PreludeBase.html#Double">Double</a>) -&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Double">Double</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.modifyElemAt">ArrayElem.modifyElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Double.newArray">newArray</a> :: <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Double">Double</a>)<br><b>native </b>new[]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.newArray">ArrayElem.newArray</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Double.setAt">setAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Double">Double</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Double">Double</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#PrimitiveArrayElement.setAt">PrimitiveArrayElement.setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Double.setElemAt">setElemAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Double">Double</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Double">Double</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name="PrimitiveArrayElement_Float"> </a> <a class="tref" href="#PrimitiveArrayElement">PrimitiveArrayElement</a> <a class="tref" href="./PreludeBase.html#Float">Float</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Float.elemAt">elemAt</a> :: <b><a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Float">Float</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#Float">Float</a><br><b>pure </b><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.elemAt">ArrayElem.elemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Float.getAt">getAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Float">Float</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Float">Float</a>)</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#PrimitiveArrayElement.getAt">PrimitiveArrayElement.getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Float.getElemAt">getElemAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Float">Float</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Float">Float</a><br><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.getElemAt">ArrayElem.getElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Float.itemAt">itemAt</a> :: <a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Float">Float</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Float">Float</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#PrimitiveArrayElement.itemAt">PrimitiveArrayElement.itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Float.javaClass">javaClass</a> :: <a class="tref" href="./PreludeBase.html#Class">Class</a> <a class="tref" href="./PreludeBase.html#Float">Float</a><br><b>native </b>float.class</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Float.modifyAt">modifyAt</a> :: (<a class="tref" href="./PreludeBase.html#Float">Float</a> -&gt; <a class="tref" href="./PreludeBase.html#Float">Float</a>) -&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Float">Float</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.modifyAt">ArrayElem.modifyAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Float.modifyElemAt">modifyElemAt</a> :: (<a class="tref" href="./PreludeBase.html#Float">Float</a> -&gt; <a class="tref" href="./PreludeBase.html#Float">Float</a>) -&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Float">Float</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.modifyElemAt">ArrayElem.modifyElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Float.newArray">newArray</a> :: <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Float">Float</a>)<br><b>native </b>new[]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.newArray">ArrayElem.newArray</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Float.setAt">setAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Float">Float</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Float">Float</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#PrimitiveArrayElement.setAt">PrimitiveArrayElement.setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Float.setElemAt">setElemAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Float">Float</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Float">Float</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name="PrimitiveArrayElement_Int"> </a> <a class="tref" href="#PrimitiveArrayElement">PrimitiveArrayElement</a> <a class="tref" href="./PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Int.elemAt">elemAt</a> :: <b><a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a><br><b>pure </b><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.elemAt">ArrayElem.elemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Int.getAt">getAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Int">Int</a>)</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#PrimitiveArrayElement.getAt">PrimitiveArrayElement.getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Int.getElemAt">getElemAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Int">Int</a><br><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.getElemAt">ArrayElem.getElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Int.itemAt">itemAt</a> :: <a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#PrimitiveArrayElement.itemAt">PrimitiveArrayElement.itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Int.javaClass">javaClass</a> :: <a class="tref" href="./PreludeBase.html#Class">Class</a> <a class="tref" href="./PreludeBase.html#Int">Int</a><br><b>native </b>int.class</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Int.modifyAt">modifyAt</a> :: (<a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a>) -&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.modifyAt">ArrayElem.modifyAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Int.modifyElemAt">modifyElemAt</a> :: (<a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a>) -&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.modifyElemAt">ArrayElem.modifyElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Int.newArray">newArray</a> :: <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Int">Int</a>)<br><b>native </b>new[]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.newArray">ArrayElem.newArray</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Int.setAt">setAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#PrimitiveArrayElement.setAt">PrimitiveArrayElement.setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Int.setElemAt">setElemAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name="PrimitiveArrayElement_Long"> </a> <a class="tref" href="#PrimitiveArrayElement">PrimitiveArrayElement</a> <a class="tref" href="./PreludeBase.html#Long">Long</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Long.elemAt">elemAt</a> :: <b><a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Long">Long</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#Long">Long</a><br><b>pure </b><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.elemAt">ArrayElem.elemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Long.getAt">getAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Long">Long</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Long">Long</a>)</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#PrimitiveArrayElement.getAt">PrimitiveArrayElement.getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Long.getElemAt">getElemAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Long">Long</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Long">Long</a><br><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.getElemAt">ArrayElem.getElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Long.itemAt">itemAt</a> :: <a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Long">Long</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Long">Long</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#PrimitiveArrayElement.itemAt">PrimitiveArrayElement.itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Long.javaClass">javaClass</a> :: <a class="tref" href="./PreludeBase.html#Class">Class</a> <a class="tref" href="./PreludeBase.html#Long">Long</a><br><b>native </b>long.class</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Long.modifyAt">modifyAt</a> :: (<a class="tref" href="./PreludeBase.html#Long">Long</a> -&gt; <a class="tref" href="./PreludeBase.html#Long">Long</a>) -&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Long">Long</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.modifyAt">ArrayElem.modifyAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Long.modifyElemAt">modifyElemAt</a> :: (<a class="tref" href="./PreludeBase.html#Long">Long</a> -&gt; <a class="tref" href="./PreludeBase.html#Long">Long</a>) -&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Long">Long</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.modifyElemAt">ArrayElem.modifyElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Long.newArray">newArray</a> :: <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Long">Long</a>)<br><b>native </b>new[]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.newArray">ArrayElem.newArray</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Long.setAt">setAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Long">Long</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Long">Long</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#PrimitiveArrayElement.setAt">PrimitiveArrayElement.setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="PrimitiveArrayElement_Long.setElemAt">setElemAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Long">Long</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Long">Long</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</a></p>
+</dd>
+</dl>
+</dd>
+</dl>
+<h2>
+<a name="data">Data Types</a></h2>
+<dl class="data">
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name="JArray"> </a> <a class="tref" href="#JArray">JArray</a> a = <b>native </b>java.lang.reflect.Array</SPAN></dt>
+<dd class="data">
+<p>
+The type <SPAN CLASS="code">JArray X</SPAN> corresponds to Java's <SPAN CLASS="code">J[]</SPAN> for any type <SPAN CLASS="code">X</SPAN> where <SPAN CLASS="code">J</SPAN> is the corresponding java type of <SPAN CLASS="code">X</SPAN>, but note that Java does not really have generic arrays.</p>
+<p>
+We can use arrays generically inside Frege, but native code that expects or returns arrays will not be generic.</p>
+<p>
+The native interface will take every occurence of</p>
+<PRE>
+ JArray X</PRE>
+<p>
+or</p>
+<PRE>
+ Mutable s (JArray X)</PRE>
+<p>
+in native declarations to denote the corresponding Java array type. But when the type argument is variable, it will be just <SPAN CLASS="code">Object</SPAN>. This corresponds to the usage in <a HREF="http://docs.oracle.com/javase/7/docs/api/index.html?java/lang/reflect/Array.html">the array reflection API</a>.</p>
+<p>
+Multi-dimensional arrays are not very well supported out of the box. If one needs more than 1 dimensions, the type will get quite complex, as of course arrays are mutable and so one will have multiple levels of <a class="tref" href="#JArray">JArray</a> nested in <a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> nested in <a class="tref" href="#JArray">JArray</a> and so forth. Moreover, multi-dimensional arrays cannot be generic at all.</p>
+<p>
+Note that there are really 2 different APIs:</p>
+<ol>
+<LI>
+ With the <a class="fref" href="#JArray.getElemAt">JArray.getElemAt</a>, <a class="fref" href="#JArray.getAt">JArray.getAt</a>, <a class="fref" href="#JArray.setAt">JArray.setAt</a>, <a class="fref" href="#JArray.setElemAt">JArray.setElemAt</a>, <a class="fref" href="#JArray.itemAt">JArray.itemAt</a> and <a class="fref" href="#JArray.elemAt">JArray.elemAt</a> it is possible to work on Java objects with java compile time type <SPAN CLASS="code">java.lang.Object</SPAN> <b>or</b> <SPAN CLASS="code">X[]</SPAN> for some java type <SPAN CLASS="code">X</SPAN> <b>or</b> <SPAN CLASS="code">java.lang.Object[]</SPAN>, but the run time type is always <SPAN CLASS="code">java.lang.Object[]</SPAN>.</LI>
+<LI>
+ With the <a class="fref" href="#ArrayElem.newArray">ArrayElem.newArray</a>, <a class="fref" href="#ArrayElem.getElemAt">ArrayElem.getElemAt</a>, <a class="fref" href="#ArrayElem.getAt">ArrayElem.getAt</a>, <a class="fref" href="#ArrayElem.setAt">ArrayElem.setAt</a>, <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</a>, <a class="fref" href="#ArrayElem.itemAt">ArrayElem.itemAt</a> and <a class="fref" href="#ArrayElem.elemAt">ArrayElem.elemAt</a> functions of the <a class="tref" href="#ArrayElem">ArrayElem</a> class for some type <SPAN CLASS="code">F</SPAN> that is an instance of <a class="tref" href="#ArrayElem">ArrayElem</a>, we can work on Java objects with java compile time type <SPAN CLASS="code">X[]</SPAN>, where <SPAN CLASS="code">X</SPAN> is the Java type corresponding to <SPAN CLASS="code">F</SPAN>, but the run time type is always <SPAN CLASS="code">X[]</SPAN>.</LI>
+</ol>
+<p>
+The former ones are usable only in polymorphic functions where the type argument for <a class="tref" href="#JArray">JArray</a> is a variable and we don't (want to) have <a class="tref" href="#ArrayElem">ArrayElem</a> constraints. They are not good for interfacing native methods that take or return arrays of a certain type. Run time type errors are possible because native methods could put anything there. However, when used in Frege only, the typing is safe.</p>
+<p>
+The latter ones are truely type safe, because their frege type corresponds to the expected Java compile time type, which is also the actual run time type.</p>
+<p>
+Here is a cheet sheet for the different array get and set methods:</p>
+<PRE>
+             Array type            Argument/    Description
+                                   Result</PRE>
+<PRE>
+ setAt       Mutable (JArray s X)  Maybe X     set @null@  or data element
+ setElemAt   Mutable (JArray s X)  X           set data element
+ getAt       Mutable (JArray s X)  Maybe X     get @null@  or data element
+ getElemAt   Mutable (JArray s X)  X           get data element (unsafe)
+ itemAt      JArray s X            Maybe X     get @null@  or data element (pure)
+ elemAt      JArray s X            X           get data element (pure, unsafe)</PRE>
+<p>
+"unsafe" in this contect means that the function may fail with a <SPAN CLASS="code">NullPointerException</SPAN>.</p>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="JArray.cache">cache</a> :: <a class="tref" href="#ArrayElem">ArrayElem</a> α =&gt; (<a class="tref" href="./PreludeBase.html#Int">Int</a>-&gt;<a class="tref" href="#JArray">JArray</a> α-&gt;α) -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> β (<a class="tref" href="#JArray">JArray</a> α)</SPAN></dt>
+<dd class="func">
+<p>
+Create a mutable array of a given size and compute the values of its elements by some function. The function gets the current index and the already computed values in  the form of an immutable array, where it can access elements with a <b>smaller</b> index than the current one.</p>
+<p>
+The restriction to smaller indexes is because array elements are strict in Frege. For example, we can't store unevaluated values in an <SPAN CLASS="code">int[]</SPAN> array, because the Java type of unevaluated values is not <SPAN CLASS="code">int</SPAN>.</p>
+<p>
+To create an array of 1000 fibonacchi numbers, one could write:</p>
+<PRE>
+ cache fib 1000 where
+   fib 0 _ = 1n
+   fib 1 _ = 1n
+   fib n a = a.[n-1] + a.[n-2]</PRE>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="JArray.elemAt">elemAt</a> :: <b><a class="tref" href="#JArray">JArray</a> a</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; a<br><b>pure </b><b>native </b>java.lang.reflect.Array.get</SPAN></dt>
+<dd class="func">
+<p>
+Like <a class="fref" href="#JArray.itemAt">JArray.itemAt</a> but the result is not wrapped in <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a>.</p>
+<p>
+This is appropriate for arrays of primitive values. For all other arrays, the user is expected to prove that the element cannot be <SPAN CLASS="code">null</SPAN> or else risk a <SPAN CLASS="code">NullPointerException</SPAN>.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="JArray.fold">fold</a> :: <a class="tref" href="#ArrayElem">ArrayElem</a> α =&gt; (β -&gt; α -&gt; β) -&gt; β -&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> γ α</b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ β</SPAN></dt>
+<dd class="func">
+<p>
+Equivalent of <a class="fref" href="./PreludeList.html#fold">fold</a> for mutable arrays.    </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="JArray.fromIndexList">fromIndexList</a> :: <a class="tref" href="#ArrayElem">ArrayElem</a> α =&gt; <b>[(<a class="tref" href="./PreludeBase.html#Int">Int</a>, α)]</b> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> β (<a class="tref" href="#JArray">JArray</a> α)</SPAN></dt>
+<dd class="func">
+<p>
+Create a mutable array from a finite index/value list.</p>
+<p>
+Indexes not mentioned in the list remain <SPAN CLASS="code">null</SPAN> for non primitive array elements and 0 otherwise.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="JArray.fromList">fromList</a> :: <a class="tref" href="#ArrayElem">ArrayElem</a> α =&gt; [α] -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> β (<a class="tref" href="#JArray">JArray</a> α)</SPAN></dt>
+<dd class="func">
+<p>
+Create a mutable array from a finite list.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="JArray.getAt">getAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> s a</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> s (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> a)<br><b>native </b>java.lang.reflect.Array.get</SPAN></dt>
+<dd class="func">
+<p>
+Get the array element at a certain index of a mutable array and return it in the <a class="tref" href="./PreludeBase.html#ST">ST</a> monad.</p>
+<p>
+This will throw an <a class="tref" href="../java/Lang.html#IndexOutOfBoundsException">IndexOutOfBoundsException</a> if the index is lower than 0 or greater or equal to the length of the array.</p>
+<p>
+Because in general, array elements may be <SPAN CLASS="code">null</SPAN>, the return value is wrapped in <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a>, as usual.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="JArray.getElemAt">getElemAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> s a</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> s a<br><b>native </b>java.lang.reflect.Array.get</SPAN></dt>
+<dd class="func">
+<p>
+Get the array element at a certain index of a mutable array and return it in the <a class="tref" href="./PreludeBase.html#ST">ST</a> monad.</p>
+<p>
+This will throw an <a class="tref" href="../java/Lang.html#IndexOutOfBoundsException">IndexOutOfBoundsException</a> if the index is lower than 0 or greater or equal to the length of the array.</p>
+<p>
+Unlike with <a class="fref" href="#JArray.getAt">JArray.getAt</a> the element <b>must not be <SPAN CLASS="code">null</SPAN></b>.</p>
+<p>
+This is appropriate for arrays of primitive values. For all other arrays, the user is expected to prove that the element cannot be <SPAN CLASS="code">null</SPAN> or else risk a <SPAN CLASS="code">NullPointerException</SPAN>.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="JArray.getLength">getLength</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> α β</b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+Return the length of a mutable array in the <a class="tref" href="./PreludeBase.html#ST">ST</a> monad.   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="JArray.itemAt">itemAt</a> :: <b><a class="tref" href="#JArray">JArray</a> a</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> a<br><b>pure </b><b>native </b>java.lang.reflect.Array.get</SPAN></dt>
+<dd class="func">
+<p>
+Get the array element at a given index. This will throw an <a class="tref" href="../java/Lang.html#IndexOutOfBoundsException">IndexOutOfBoundsException</a> if the index is lower than 0 or greater or equal to the length of the array.</p>
+<p>
+Because in general, array elements may be <SPAN CLASS="code">null</SPAN>, the return value is wrapped in <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a>, as usual.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="JArray.length">length</a> :: <b><a class="tref" href="#JArray">JArray</a> a</b> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a><br><b>pure </b><b>native </b>java.lang.reflect.Array.getLength</SPAN></dt>
+<dd class="func">
+<p>
+Tell the length of an immutable Java array.</p>
+<p>
+Because the length of an array cannot change, it is safe to use this function with <a class="fref" href="./PreludeIO.html#Mutable.readonly">Mutable.readonly</a>.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="JArray.map">map</a> :: (<a class="tref" href="#ArrayElem">ArrayElem</a> α, <a class="tref" href="#ArrayElem">ArrayElem</a> β) =&gt; (α -&gt; β) -&gt; <a class="tref" href="#JArray">JArray</a> α -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> γ (<a class="tref" href="#JArray">JArray</a> β)</SPAN></dt>
+<dd class="func">
+<p>
+Map a function over the elements of an immutable array.</p>
+<p>
+The results will be collected in a new mutable array of the same length.</p>
+<p>
+If the target element type is a primitive one, no <b>null</b> elements are allowed in the source array.   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="JArray.mapElem">mapElem</a> :: (<a class="tref" href="#ArrayElem">ArrayElem</a> γ, <a class="tref" href="#ArrayElem">ArrayElem</a> α) =&gt; (γ -&gt; α) -&gt; <b><a class="tref" href="#JArray">JArray</a> γ</b> -&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> β α</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+Apply a function to an array element and write the result to another array at the same index.</p>
+<p>
+If the target array is a primitive one, there must be no null elements in the source array.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="JArray.modify">modify</a> :: <a class="tref" href="#ArrayElem">ArrayElem</a> α =&gt; (α -&gt; α) -&gt; <b><a class="tref" href="#ArrayOf">ArrayOf</a> β α</b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+Modify a mutable array by applying a function to all its elements.   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="JArray._new">new</a> :: <b><a class="tref" href="./PreludeBase.html#Class">Class</a> a</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> s (<a class="tref" href="#JArray">JArray</a> a)<br><b>native </b>java.lang.reflect.Array.newInstance</SPAN></dt>
+<dd class="func">
+<p>
+create a one dimensional Java array    </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="JArray.newM">newM</a> :: <b><a class="tref" href="./PreludeBase.html#Class">Class</a> a</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> s (<a class="tref" href="#JArray">JArray</a> (<a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> s a))<br><b>native </b>java.lang.reflect.Array.newInstance</SPAN></dt>
+<dd class="func">
+<p>
+create a one dimensional Java array that holds <a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> data   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="JArray.setAt">setAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> s a</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> a</b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> s <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>java.lang.reflect.Array.set</SPAN></dt>
+<dd class="func">
+<p>
+Set the element at a certain index of a mutable array to a value that is wrapped in <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a>. This won't work for primitive element types.</p>
+<p>
+This will throw an <a class="tref" href="../java/Lang.html#IndexOutOfBoundsException">IndexOutOfBoundsException</a> if the index is lower than 0 or greater or equal to the length of the array.</p>
+<p>
+To set the corresponding array element to <SPAN CLASS="code">null</SPAN>, pass <a class="fref" href="./PreludeBase.html#Maybe.Nothing">Maybe.Nothing</a>, otherwise pass a <a class="fref" href="./PreludeBase.html#Maybe.Just">Maybe.Just</a> value.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="JArray.setElemAt">setElemAt</a> :: <b><a class="tref" href="#ArrayOf">ArrayOf</a> s a</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b>a</b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> s <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>java.lang.reflect.Array.set</SPAN></dt>
+<dd class="func">
+<p>
+Set the element at a certain index of a mutable array.</p>
+<p>
+This will throw an <a class="tref" href="../java/Lang.html#IndexOutOfBoundsException">IndexOutOfBoundsException</a> if the index is lower than 0 or greater or equal to the length of the array.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<h2>
+<a name="let">Functions and Values</a></h2>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="arrayCache">arrayCache</a> :: <a class="tref" href="#ArrayElem">ArrayElem</a> α =&gt; (<a class="tref" href="./PreludeBase.html#Int">Int</a>-&gt;<a class="tref" href="#JArray">JArray</a> α-&gt;α) -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="#JArray">JArray</a> α</SPAN></dt>
+<dd class="func">
+<p>
+Memoize a number of results from a function that maps <a class="tref" href="./PreludeBase.html#Int">Int</a> to the array element.</p>
+<p>
+Uses <a class="fref" href="#JArray.cache">JArray.cache</a> and makes it immutable</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="arrayFold">arrayFold</a> :: (α -&gt; β -&gt; α) -&gt; <b>α</b> -&gt; <a class="tref" href="#JArray">JArray</a> β -&gt; α</SPAN></dt>
+<dd class="func">
+<p>
+Left fold an immutable array</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="arrayFromIndexList">arrayFromIndexList</a> :: <a class="tref" href="#ArrayElem">ArrayElem</a> α =&gt; <b>[(<a class="tref" href="./PreludeBase.html#Int">Int</a>, α)]</b> -&gt; <a class="tref" href="#JArray">JArray</a> α</SPAN></dt>
+<dd class="func">
+<p>
+Create an immutable array from a finite index/value list.</p>
+<p>
+Uses <a class="fref" href="#JArray.fromIndexList">JArray.fromIndexList</a> and makes it read-only.       </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="arrayFromList">arrayFromList</a> :: <a class="tref" href="#ArrayElem">ArrayElem</a> α =&gt; [α] -&gt; <a class="tref" href="#JArray">JArray</a> α</SPAN></dt>
+<dd class="func">
+<p>
+Create an immutable array from a finite list whose elements are 'ArrayElem`</p>
+<p>
+Uses <a class="fref" href="#JArray.fromList">JArray.fromList</a> and makes it read-only.   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="arrayMap">arrayMap</a> :: (<a class="tref" href="#ArrayElem">ArrayElem</a> α, <a class="tref" href="#ArrayElem">ArrayElem</a> β) =&gt; (α -&gt; β) -&gt; <a class="tref" href="#JArray">JArray</a> α -&gt; <a class="tref" href="#JArray">JArray</a> β</SPAN></dt>
+<dd class="func">
+<p>
+Map a function over the elements of an immutable array, and collect the results in another immutable array.</p>
+<p>
+Uses <a class="fref" href="#JArray.map">JArray.map</a> and makes result read-only.</p>
+</dd>
+</dl>
+<h2>
+<a name="case">Functions and Values by Type</a></h2>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#String">String</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_String.itemAt">ArrayElement_String.itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#String">String</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_String.elemAt">ArrayElement_String.elemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Bool">Bool</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Bool.itemAt">PrimitiveArrayElement_Bool.itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Bool">Bool</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Bool.elemAt">PrimitiveArrayElement_Bool.elemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Char">Char</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Char">Char</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Char.itemAt">PrimitiveArrayElement_Char.itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Char">Char</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Char">Char</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Char.elemAt">PrimitiveArrayElement_Char.elemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Double">Double</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Double">Double</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Double.itemAt">PrimitiveArrayElement_Double.itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Double">Double</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Double">Double</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Double.elemAt">PrimitiveArrayElement_Double.elemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Float">Float</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Float">Float</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Float.itemAt">PrimitiveArrayElement_Float.itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Float">Float</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Float">Float</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Float.elemAt">PrimitiveArrayElement_Float.elemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Int.itemAt">PrimitiveArrayElement_Int.itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Int.elemAt">PrimitiveArrayElement_Int.elemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Integer">Integer</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Integer">Integer</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_Integer.itemAt">ArrayElement_Integer.itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Integer">Integer</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Integer">Integer</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_Integer.elemAt">ArrayElement_Integer.elemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Long">Long</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Long">Long</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Long.itemAt">PrimitiveArrayElement_Long.itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Long">Long</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Long">Long</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Long.elemAt">PrimitiveArrayElement_Long.elemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Class">Class</a> <a class="tref" href="./PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_String.javaClass">ArrayElement_String.javaClass</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Class">Class</a> <a class="tref" href="./PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Bool.javaClass">PrimitiveArrayElement_Bool.javaClass</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Class">Class</a> <a class="tref" href="./PreludeBase.html#Char">Char</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Char.javaClass">PrimitiveArrayElement_Char.javaClass</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Class">Class</a> <a class="tref" href="./PreludeBase.html#Double">Double</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Double.javaClass">PrimitiveArrayElement_Double.javaClass</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Class">Class</a> <a class="tref" href="./PreludeBase.html#Float">Float</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Float.javaClass">PrimitiveArrayElement_Float.javaClass</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Class">Class</a> <a class="tref" href="./PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Int.javaClass">PrimitiveArrayElement_Int.javaClass</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Class">Class</a> <a class="tref" href="./PreludeBase.html#Integer">Integer</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_Integer.javaClass">ArrayElement_Integer.javaClass</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Class">Class</a> <a class="tref" href="./PreludeBase.html#Long">Long</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Long.javaClass">PrimitiveArrayElement_Long.javaClass</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="./PreludeBase.html#String">String</a> -&gt; <a class="tref" href="./PreludeBase.html#String">String</a>) -&gt; <a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#String">String</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_String.modifyAt">ArrayElement_String.modifyAt</a>, <a class="fref" href="#ArrayElement_String.modifyElemAt">ArrayElement_String.modifyElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="./PreludeBase.html#Bool">Bool</a> -&gt; <a class="tref" href="./PreludeBase.html#Bool">Bool</a>) -&gt; <a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Bool">Bool</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Bool.modifyAt">PrimitiveArrayElement_Bool.modifyAt</a>, <a class="fref" href="#PrimitiveArrayElement_Bool.modifyElemAt">PrimitiveArrayElement_Bool.modifyElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="./PreludeBase.html#Char">Char</a> -&gt; <a class="tref" href="./PreludeBase.html#Char">Char</a>) -&gt; <a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Char">Char</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Char.modifyAt">PrimitiveArrayElement_Char.modifyAt</a>, <a class="fref" href="#PrimitiveArrayElement_Char.modifyElemAt">PrimitiveArrayElement_Char.modifyElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="./PreludeBase.html#Double">Double</a> -&gt; <a class="tref" href="./PreludeBase.html#Double">Double</a>) -&gt; <a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Double">Double</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Double.modifyAt">PrimitiveArrayElement_Double.modifyAt</a>, <a class="fref" href="#PrimitiveArrayElement_Double.modifyElemAt">PrimitiveArrayElement_Double.modifyElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="./PreludeBase.html#Float">Float</a> -&gt; <a class="tref" href="./PreludeBase.html#Float">Float</a>) -&gt; <a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Float">Float</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Float.modifyAt">PrimitiveArrayElement_Float.modifyAt</a>, <a class="fref" href="#PrimitiveArrayElement_Float.modifyElemAt">PrimitiveArrayElement_Float.modifyElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a>) -&gt; <a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Int.modifyAt">PrimitiveArrayElement_Int.modifyAt</a>, <a class="fref" href="#PrimitiveArrayElement_Int.modifyElemAt">PrimitiveArrayElement_Int.modifyElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="./PreludeBase.html#Integer">Integer</a> -&gt; <a class="tref" href="./PreludeBase.html#Integer">Integer</a>) -&gt; <a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Integer">Integer</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_Integer.modifyAt">ArrayElement_Integer.modifyAt</a>, <a class="fref" href="#ArrayElement_Integer.modifyElemAt">ArrayElement_Integer.modifyElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="./PreludeBase.html#Long">Long</a> -&gt; <a class="tref" href="./PreludeBase.html#Long">Long</a>) -&gt; <a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Long">Long</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Long.modifyAt">PrimitiveArrayElement_Long.modifyAt</a>, <a class="fref" href="#PrimitiveArrayElement_Long.modifyElemAt">PrimitiveArrayElement_Long.modifyElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#String">String</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#String">String</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_String.setAt">ArrayElement_String.setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#String">String</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#String">String</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_String.setElemAt">ArrayElement_String.setElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#String">String</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_String.getAt">ArrayElement_String.getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#String">String</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_String.getElemAt">ArrayElement_String.getElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Bool">Bool</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Bool">Bool</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Bool.setAt">PrimitiveArrayElement_Bool.setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Bool">Bool</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Bool">Bool</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Bool.setElemAt">PrimitiveArrayElement_Bool.setElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Bool">Bool</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Bool">Bool</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Bool.getAt">PrimitiveArrayElement_Bool.getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Bool">Bool</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Bool.getElemAt">PrimitiveArrayElement_Bool.getElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Char">Char</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Char">Char</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Char.setAt">PrimitiveArrayElement_Char.setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Char">Char</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Char">Char</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Char.setElemAt">PrimitiveArrayElement_Char.setElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Char">Char</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Char">Char</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Char.getAt">PrimitiveArrayElement_Char.getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Char">Char</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Char">Char</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Char.getElemAt">PrimitiveArrayElement_Char.getElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Double">Double</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Double">Double</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Double.setAt">PrimitiveArrayElement_Double.setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Double">Double</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Double">Double</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Double.setElemAt">PrimitiveArrayElement_Double.setElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Double">Double</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Double">Double</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Double.getAt">PrimitiveArrayElement_Double.getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Double">Double</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Double">Double</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Double.getElemAt">PrimitiveArrayElement_Double.getElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Float">Float</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Float">Float</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Float.setAt">PrimitiveArrayElement_Float.setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Float">Float</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Float">Float</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Float.setElemAt">PrimitiveArrayElement_Float.setElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Float">Float</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Float">Float</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Float.getAt">PrimitiveArrayElement_Float.getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Float">Float</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Float">Float</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Float.getElemAt">PrimitiveArrayElement_Float.getElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Int.setAt">PrimitiveArrayElement_Int.setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Int.setElemAt">PrimitiveArrayElement_Int.setElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Int">Int</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Int.getAt">PrimitiveArrayElement_Int.getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Int.getElemAt">PrimitiveArrayElement_Int.getElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Integer">Integer</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Integer">Integer</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_Integer.setAt">ArrayElement_Integer.setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Integer">Integer</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Integer">Integer</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_Integer.setElemAt">ArrayElement_Integer.setElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Integer">Integer</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Integer">Integer</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_Integer.getAt">ArrayElement_Integer.getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Integer">Integer</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Integer">Integer</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_Integer.getElemAt">ArrayElement_Integer.getElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Long">Long</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Long">Long</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Long.setAt">PrimitiveArrayElement_Long.setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Long">Long</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Long">Long</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Long.setElemAt">PrimitiveArrayElement_Long.setElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Long">Long</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#Long">Long</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Long.getAt">PrimitiveArrayElement_Long.getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Long">Long</a> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Long">Long</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Long.getElemAt">PrimitiveArrayElement_Long.getElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> [α] -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> [α]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement__lbrack_rbrack.itemAt">ArrayElement_[].itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> [α] -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; [α]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement__lbrack_rbrack.elemAt">ArrayElement_[].elemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> a -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> a</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JArray.itemAt">JArray.itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> a -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; a</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JArray.elemAt">JArray.elemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> a -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JArray.length">JArray.length</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> α -&gt; [α]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ListSource_JArray.toList">ListSource_JArray.toList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> (<a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> α <a class="tref" href="./PreludeBase.html#String">String</a>))</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_String.newArrayM">ArrayElement_String.newArrayM</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> (<a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> α <a class="tref" href="./PreludeBase.html#Integer">Integer</a>))</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_Integer.newArrayM">ArrayElement_Integer.newArrayM</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_String.newArray">ArrayElement_String.newArray</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Bool">Bool</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Bool.newArray">PrimitiveArrayElement_Bool.newArray</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Char">Char</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Char.newArray">PrimitiveArrayElement_Char.newArray</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Double">Double</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Double.newArray">PrimitiveArrayElement_Double.newArray</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Float">Float</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Float.newArray">PrimitiveArrayElement_Float.newArray</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Int">Int</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Int.newArray">PrimitiveArrayElement_Int.newArray</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Integer">Integer</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_Integer.newArray">ArrayElement_Integer.newArray</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> <a class="tref" href="./PreludeBase.html#Long">Long</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement_Long.newArray">PrimitiveArrayElement_Long.newArray</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayElem">ArrayElem</a> a =&gt; <a class="tref" href="#JArray">JArray</a> a -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> a</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElem.itemAt">ArrayElem.itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayElem">ArrayElem</a> a =&gt; <a class="tref" href="#JArray">JArray</a> a -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; a</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElem.elemAt">ArrayElem.elemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayElem">ArrayElem</a> α =&gt; (<a class="tref" href="./PreludeBase.html#Int">Int</a>-&gt;<a class="tref" href="#JArray">JArray</a> α-&gt;α) -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="#JArray">JArray</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#arrayCache">arrayCache</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayElem">ArrayElem</a> α =&gt; [(<a class="tref" href="./PreludeBase.html#Int">Int</a>, α)] -&gt; <a class="tref" href="#JArray">JArray</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#arrayFromIndexList">arrayFromIndexList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayElem">ArrayElem</a> α =&gt; [α] -&gt; <a class="tref" href="#JArray">JArray</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#arrayFromList">arrayFromList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#PrimitiveArrayElement">PrimitiveArrayElement</a> a =&gt; <a class="tref" href="#JArray">JArray</a> a -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> a</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement.itemAt">PrimitiveArrayElement.itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Class">Class</a> [α]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement__lbrack_rbrack.javaClass">ArrayElement_[].javaClass</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">([α] -&gt; [α]) -&gt; <a class="tref" href="#ArrayOf">ArrayOf</a> β [α] -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement__lbrack_rbrack.modifyAt">ArrayElement_[].modifyAt</a>, <a class="fref" href="#ArrayElement__lbrack_rbrack.modifyElemAt">ArrayElement_[].modifyElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(α -&gt; β -&gt; α) -&gt; α -&gt; <a class="tref" href="#JArray">JArray</a> β -&gt; α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#arrayFold">arrayFold</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> s a -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> a -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> s <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JArray.setAt">JArray.setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> s a -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; a -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> s <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JArray.setElemAt">JArray.setElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> s a -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> s (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> a)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JArray.getAt">JArray.getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> s a -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> s a</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JArray.getElemAt">JArray.getElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α [β] -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> [β] -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement__lbrack_rbrack.setAt">ArrayElement_[].setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α [β] -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; [β] -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement__lbrack_rbrack.setElemAt">ArrayElement_[].setElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α [β] -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> [β])</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement__lbrack_rbrack.getAt">ArrayElement_[].getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α [β] -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α [β]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement__lbrack_rbrack.getElemAt">ArrayElement_[].getElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α β -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JArray.getLength">JArray.getLength</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> (α, β) -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; (α, β)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_l_c_r.elemAt">ArrayElement_(,).elemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> (α, β) -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α, β)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_l_c_r.itemAt">ArrayElement_(,).itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> (α-&gt;β) -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; α-&gt;β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement__minus_gt.elemAt">ArrayElement_-&gt;.elemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> (α-&gt;β) -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α-&gt;β)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement__minus_gt.itemAt">ArrayElement_-&gt;.itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Class">Class</a> a -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> s (<a class="tref" href="#JArray">JArray</a> (<a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> s a))</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JArray.newM">JArray.newM</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Class">Class</a> a -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> s (<a class="tref" href="#JArray">JArray</a> a)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JArray._new">JArray.new</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> (<a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> α [β]))</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement__lbrack_rbrack.newArrayM">ArrayElement_[].newArrayM</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> [β])</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement__lbrack_rbrack.newArray">ArrayElement_[].newArray</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayElem">ArrayElem</a> a =&gt; (a -&gt; a) -&gt; <a class="tref" href="#ArrayOf">ArrayOf</a> s a -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> s <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElem.modifyElemAt">ArrayElem.modifyElemAt</a>, <a class="fref" href="#ArrayElem.modifyAt">ArrayElem.modifyAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayElem">ArrayElem</a> a =&gt; <a class="tref" href="#ArrayOf">ArrayOf</a> s a -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> a -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> s <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElem.setAt">ArrayElem.setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayElem">ArrayElem</a> a =&gt; <a class="tref" href="#ArrayOf">ArrayOf</a> s a -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; a -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> s <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayElem">ArrayElem</a> a =&gt; <a class="tref" href="#ArrayOf">ArrayOf</a> s a -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> s (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> a)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElem.getAt">ArrayElem.getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayElem">ArrayElem</a> a =&gt; <a class="tref" href="#ArrayOf">ArrayOf</a> s a -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> s a</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElem.getElemAt">ArrayElem.getElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayElem">ArrayElem</a> a =&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> s (<a class="tref" href="#JArray">JArray</a> a)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElem.newArray">ArrayElem.newArray</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayElem">ArrayElem</a> α =&gt; (α -&gt; α) -&gt; <a class="tref" href="#ArrayOf">ArrayOf</a> β α -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JArray.modify">JArray.modify</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayElem">ArrayElem</a> α =&gt; (<a class="tref" href="./PreludeBase.html#Int">Int</a>-&gt;<a class="tref" href="#JArray">JArray</a> α-&gt;α) -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> β (<a class="tref" href="#JArray">JArray</a> α)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JArray.cache">JArray.cache</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayElem">ArrayElem</a> α =&gt; [(<a class="tref" href="./PreludeBase.html#Int">Int</a>, α)] -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> β (<a class="tref" href="#JArray">JArray</a> α)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JArray.fromIndexList">JArray.fromIndexList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayElem">ArrayElem</a> α =&gt; [α] -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> β (<a class="tref" href="#JArray">JArray</a> α)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JArray.fromList">JArray.fromList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="#ArrayElem">ArrayElem</a> α, <a class="tref" href="#ArrayElem">ArrayElem</a> β) =&gt; (α -&gt; β) -&gt; <a class="tref" href="#JArray">JArray</a> α -&gt; <a class="tref" href="#JArray">JArray</a> β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#arrayMap">arrayMap</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayElement">ArrayElement</a> a =&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> s (<a class="tref" href="#JArray">JArray</a> (<a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> s a))</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement.newArrayM">ArrayElement.newArrayM</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#PrimitiveArrayElement">PrimitiveArrayElement</a> a =&gt; <a class="tref" href="#ArrayOf">ArrayOf</a> s a -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> a -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> s <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement.setAt">PrimitiveArrayElement.setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#PrimitiveArrayElement">PrimitiveArrayElement</a> a =&gt; <a class="tref" href="#ArrayOf">ArrayOf</a> s a -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> s (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> a)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#PrimitiveArrayElement.getAt">PrimitiveArrayElement.getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Class">Class</a> (α, β)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_l_c_r.javaClass">ArrayElement_(,).javaClass</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Class">Class</a> (α-&gt;β)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement__minus_gt.javaClass">ArrayElement_-&gt;.javaClass</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">((β, α) -&gt; (β, α)) -&gt; <a class="tref" href="#ArrayOf">ArrayOf</a> γ (β, α) -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_l_c_r.modifyAt">ArrayElement_(,).modifyAt</a>, <a class="fref" href="#ArrayElement_l_c_r.modifyElemAt">ArrayElement_(,).modifyElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">((α-&gt;β) -&gt; α-&gt;β) -&gt; <a class="tref" href="#ArrayOf">ArrayOf</a> γ (α-&gt;β) -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement__minus_gt.modifyAt">ArrayElement_-&gt;.modifyAt</a>, <a class="fref" href="#ArrayElement__minus_gt.modifyElemAt">ArrayElement_-&gt;.modifyElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> γ (β, α) -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; (β, α) -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_l_c_r.setElemAt">ArrayElement_(,).setElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> γ (β, α) -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (β, α) -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_l_c_r.setAt">ArrayElement_(,).setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> γ (β, α) -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ (β, α)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_l_c_r.getElemAt">ArrayElement_(,).getElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> γ (β, α) -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (β, α))</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_l_c_r.getAt">ArrayElement_(,).getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> γ (α-&gt;β) -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; (α-&gt;β) -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement__minus_gt.setElemAt">ArrayElement_-&gt;.setElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> γ (α-&gt;β) -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α-&gt;β) -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement__minus_gt.setAt">ArrayElement_-&gt;.setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> γ (α-&gt;β) -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ (α-&gt;β)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement__minus_gt.getElemAt">ArrayElement_-&gt;.getElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> γ (α-&gt;β) -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α-&gt;β))</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement__minus_gt.getAt">ArrayElement_-&gt;.getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> (α, β, γ) -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; (α, β, γ)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_l_cc_r.elemAt">ArrayElement_(,,).elemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> (α, β, γ) -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α, β, γ)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_l_cc_r.itemAt">ArrayElement_(,,).itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> γ (<a class="tref" href="#JArray">JArray</a> (β, α))</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_l_c_r.newArray">ArrayElement_(,).newArray</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> γ (<a class="tref" href="#JArray">JArray</a> (α-&gt;β))</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement__minus_gt.newArray">ArrayElement_-&gt;.newArray</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> γ (<a class="tref" href="#JArray">JArray</a> (<a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> γ (β, α)))</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_l_c_r.newArrayM">ArrayElement_(,).newArrayM</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> γ (<a class="tref" href="#JArray">JArray</a> (<a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> γ (α-&gt;β)))</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement__minus_gt.newArrayM">ArrayElement_-&gt;.newArrayM</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayElem">ArrayElem</a> α =&gt; (β -&gt; α -&gt; β) -&gt; β -&gt; <a class="tref" href="#ArrayOf">ArrayOf</a> γ α -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JArray.fold">JArray.fold</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="#ArrayElem">ArrayElem</a> α, <a class="tref" href="#ArrayElem">ArrayElem</a> β) =&gt; (α -&gt; β) -&gt; <a class="tref" href="#JArray">JArray</a> α -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> γ (<a class="tref" href="#JArray">JArray</a> β)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JArray.map">JArray.map</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="#ArrayElem">ArrayElem</a> γ, <a class="tref" href="#ArrayElem">ArrayElem</a> α) =&gt; (γ -&gt; α) -&gt; <a class="tref" href="#JArray">JArray</a> γ -&gt; <a class="tref" href="#ArrayOf">ArrayOf</a> β α -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JArray.mapElem">JArray.mapElem</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Class">Class</a> (α, β, γ)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_l_cc_r.javaClass">ArrayElement_(,,).javaClass</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">((α, β, γ) -&gt; (α, β, γ)) -&gt; <a class="tref" href="#ArrayOf">ArrayOf</a> δ (α, β, γ) -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> δ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_l_cc_r.modifyAt">ArrayElement_(,,).modifyAt</a>, <a class="fref" href="#ArrayElement_l_cc_r.modifyElemAt">ArrayElement_(,,).modifyElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> γ (α, β, δ) -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; (α, β, δ) -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_l_cc_r.setElemAt">ArrayElement_(,,).setElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> γ (α, β, δ) -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α, β, δ) -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_l_cc_r.setAt">ArrayElement_(,,).setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> γ (α, β, δ) -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ (α, β, δ)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_l_cc_r.getElemAt">ArrayElement_(,,).getElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> γ (α, β, δ) -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α, β, δ))</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_l_cc_r.getAt">ArrayElement_(,,).getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> γ (<a class="tref" href="#JArray">JArray</a> (α, β, δ))</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_l_cc_r.newArray">ArrayElement_(,,).newArray</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> γ (<a class="tref" href="#JArray">JArray</a> (<a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> γ (α, β, δ)))</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_l_cc_r.newArrayM">ArrayElement_(,,).newArrayM</a></p>
+</dd>
+</dl>
+<p>
+<a HREF="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Strict" height="31" width="88"></a></p>
+</BODY>
+</HTML>
