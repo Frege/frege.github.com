@@ -19,7 +19,7 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 <h1>
 <a name="package">Package <SPAN CLASS="code">frege.prelude.PreludeNative</SPAN></a></h1>
 <p>
-Compiled: Wed Feb 19 08:51:29 CET 2014 from source file: <SPAN CLASS="code">frege/prelude/PreludeNative.fr</SPAN></p>
+Compiled: Wed Feb 19 20:16:23 CET 2014 from source file: <SPAN CLASS="code">frege/prelude/PreludeNative.fr</SPAN></p>
 <h3>
 Package Documentation</h3>
 <p>
@@ -163,7 +163,7 @@ If the match was successful but the group specified failed to match any part of 
 <p>
 Note that some groups, for example <SPAN CLASS="code">(a?)</SPAN>, match the empty string. This functon will return <SPAN CLASS="code">Just ""</SPAN> when such a group successfully matches the empty string in the input.</p>
 <p>
-The result will also be <a class="fref" href="./PreludeBase.html#Maybe.Nothing">Maybe.Nothing</a> when the specified group does not exist, that is, when the <a class="tref" href="./PreludeBase.html#Int">Int</a> argument is outside the range <SPAN CLASS="code">[0..m.</SPAN><SPAN CLASS="unknown">Regex.groupCount</SPAN><SPAN CLASS="code">]</SPAN></p>
+The result will also be <a class="fref" href="./PreludeBase.html#Maybe.Nothing">Maybe.Nothing</a> when the specified group does not exist, that is, when the <a class="tref" href="./PreludeBase.html#Int">Int</a> argument is outside the range <SPAN CLASS="code">[0..m.</SPAN><a class="fref" href="#Matcher.groupCount">Matcher.groupCount</a><SPAN CLASS="code">]</SPAN></p>
 <p>
 The folloing property holds for a <a class="tref" href="#Matcher">Matcher</a> <i>m</i> with input sequence <i>s</i> and valid group index /g/:</p>
 <PRE>
@@ -319,7 +319,7 @@ Frege <a class="tref" href="#Regex">Regex</a> literals will always be parsed wit
 <p>
 Enables case-insensitive matching.</p>
 <p>
-By default, case-insensitive matching assumes that only characters in the US-ASCII charset are being matched. Unicode-aware case-insensitive matching can be enabled by specifying the <SPAN CLASS="unknown">unicode_case</SPAN> flag in conjunction with this flag.</p>
+By default, case-insensitive matching assumes that only characters in the US-ASCII charset are being matched. Unicode-aware case-insensitive matching can be enabled by specifying the <a class="fref" href="#Regex.unicode_case">Regex.unicode_case</a> flag in conjunction with this flag.</p>
 <p>
 Case-insensitive matching can also be enabled via the embedded flag expression (?i).</p>
 <p>
@@ -415,7 +415,7 @@ return the source of this <a class="tref" href="#Regex">Regex</a>   </p>
 <p>
 <SPAN CLASS="code">java.util.regex.Pattern.split</SPAN> method</p>
 <p>
-As this returns a <a class="tref" href="./PreludeBase.html#String">String</a> array, one usually uses <SPAN CLASS="unknown">splitted</SPAN>    </p>
+As this returns a <a class="tref" href="./PreludeBase.html#String">String</a> array, one usually uses <a class="fref" href="#Regex.splitted">Regex.splitted</a>    </p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="Regex.splitted">splitted</a> :: <a class="tref" href="#Regex">Regex</a> -&gt; <a class="tref" href="./PreludeBase.html#String">String</a> -&gt; [<a class="tref" href="./PreludeBase.html#String">String</a>]</SPAN></dt>
@@ -433,7 +433,7 @@ Empty strings on the start of the string are preserved, but not those on the end
 <p>
 Returns the string representation of this pattern.</p>
 <p>
-This is the regular expression from which this pattern was <SPAN CLASS="unknown">compile</SPAN>d.   </p>
+This is the regular expression from which this pattern was <a class="fref" href="#Regex.compile">Regex.compile</a>d.   </p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="Regex.unicode_case">unicode_case</a> :: <a class="tref" href="./PreludeBase.html#Int">Int</a><br><b>pure </b><b>native </b>java.util.regex.Pattern.UNICODE_CASE</SPAN></dt>
@@ -441,7 +441,7 @@ This is the regular expression from which this pattern was <SPAN CLASS="unknown"
 <p>
 Enables Unicode-aware case folding.</p>
 <p>
-When this flag is specified then case-insensitive matching, when enabled by the <SPAN CLASS="unknown">case_insensitive</SPAN> flag, is done in a manner consistent with the Unicode Standard. By default, case-insensitive matching assumes that only characters in the US-ASCII charset are being matched.</p>
+When this flag is specified then case-insensitive matching, when enabled by the <a class="fref" href="#Regex.case_insensitive">Regex.case_insensitive</a> flag, is done in a manner consistent with the Unicode Standard. By default, case-insensitive matching assumes that only characters in the US-ASCII charset are being matched.</p>
 <p>
 Unicode-aware case folding can also be enabled via the embedded flag expression <SPAN CLASS="code">(?u)</SPAN>.</p>
 <p>
