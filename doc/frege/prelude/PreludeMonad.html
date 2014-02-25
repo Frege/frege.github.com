@@ -19,7 +19,7 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 <h1>
 <a name="package">Package <SPAN CLASS="code">frege.prelude.PreludeMonad</SPAN></a></h1>
 <p>
-Compiled: Wed Feb 19 20:16:15 CET 2014 from source file: <SPAN CLASS="code">frege/prelude/PreludeMonad.fr</SPAN></p>
+ Source file: <SPAN CLASS="code">frege/prelude/PreludeMonad.fr</SPAN></p>
 <h3>
 Package Documentation</h3>
 <p>
@@ -813,7 +813,7 @@ is equivalent to</p>
 <SPAN CLASS="code">forM xs f</SPAN> = <SPAN CLASS="code">mapM_ f xs</SPAN>    </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="forM_">forM_</a> :: <a class="tref" href="#Monad">Monad</a> β =&gt; [γ] -&gt; (γ-&gt;β α) -&gt; β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name="forM_">forM_</a> :: <a class="tref" href="#Monad">Monad</a> α =&gt; [γ] -&gt; (γ-&gt;α β) -&gt; α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
@@ -897,7 +897,7 @@ The <a class="fref" href="#mapAndUnzipM">mapAndUnzipM</a> function maps its firs
 <SPAN CLASS="code">mapM f</SPAN> is equivalent to <SPAN CLASS="code">sequence • map f</SPAN>   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="mapM_">mapM_</a> :: <a class="tref" href="#Monad">Monad</a> β =&gt; (γ-&gt;β α) -&gt; [γ] -&gt; β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name="mapM_">mapM_</a> :: <a class="tref" href="#Monad">Monad</a> α =&gt; (γ-&gt;α β) -&gt; [γ] -&gt; α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <SPAN CLASS="code">mapM_ f</SPAN> is equivalent to <SPAN CLASS="code">sequence_ • map f</SPAN>   </p>
@@ -939,7 +939,7 @@ Turn a list of monadic values <SPAN CLASS="code">[m a]</SPAN> into a monadic val
 This version of <a class="fref" href="#sequence">sequence</a> runs in constant stack space, but needs heap space proportional to the size of the input list.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="sequence_">sequence_</a> :: (<a class="tref" href="./PreludeList.html#ListSource">ListSource</a> γ, <a class="tref" href="#Monad">Monad</a> β) =&gt; γ (β α) -&gt; β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name="sequence_">sequence_</a> :: (<a class="tref" href="./PreludeList.html#ListSource">ListSource</a> γ, <a class="tref" href="#Monad">Monad</a> α) =&gt; γ (α β) -&gt; α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 foldr (<a class="fref" href="#Monad._gt_gt">Monad.&gt;&gt;</a>) over a list of monadic values for side effects      </p>
@@ -1289,6 +1289,12 @@ The <a class="fref" href="#zipWithM">zipWithM</a> function generalizes <a class=
 <a class="fref" href="#Monad_ST._lt_star">Monad_ST.&lt;*</a></p>
 </dd>
 <dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="./PreludeList.html#ListSource">ListSource</a> γ, <a class="tref" href="#Monad">Monad</a> α) =&gt; γ (α β) -&gt; α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#sequence_">sequence_</a></p>
+</dd>
+<dt class="func">
 <SPAN CLASS="code">(<a class="tref" href="./PreludeList.html#ListSource">ListSource</a> γ, <a class="tref" href="#Monad">Monad</a> β) =&gt; (α-&gt;β <a class="tref" href="./PreludeBase.html#Bool">Bool</a>) -&gt; γ α -&gt; β [α]</SPAN></dt>
 <dd class="func">
 <p>
@@ -1299,12 +1305,6 @@ The <a class="fref" href="#zipWithM">zipWithM</a> function generalizes <a class=
 <dd class="func">
 <p>
 <a class="fref" href="#sequence">sequence</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="./PreludeList.html#ListSource">ListSource</a> γ, <a class="tref" href="#Monad">Monad</a> β) =&gt; γ (β α) -&gt; β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#sequence_">sequence_</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#Applicative">Applicative</a> f =&gt; (a -&gt; b) -&gt; f a -&gt; f b</SPAN></dt>
@@ -1385,6 +1385,18 @@ The <a class="fref" href="#zipWithM">zipWithM</a> function generalizes <a class=
 <a class="fref" href="#foldM">foldM</a></p>
 </dd>
 <dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> α =&gt; (γ-&gt;α β) -&gt; [γ] -&gt; α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#mapM_">mapM_</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> α =&gt; [γ] -&gt; (γ-&gt;α β) -&gt; α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#forM_">forM_</a></p>
+</dd>
+<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> α =&gt; α (γ-&gt;β) -&gt; α γ -&gt; α β</SPAN></dt>
 <dd class="func">
 <p>
@@ -1397,22 +1409,10 @@ The <a class="fref" href="#zipWithM">zipWithM</a> function generalizes <a class=
 <a class="fref" href="#mapM">mapM</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> β =&gt; (γ-&gt;β α) -&gt; [γ] -&gt; β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#mapM_">mapM_</a></p>
-</dd>
-<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> β =&gt; [γ] -&gt; (γ-&gt;β α) -&gt; β [α]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#forM">forM</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> β =&gt; [γ] -&gt; (γ-&gt;β α) -&gt; β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#forM_">forM_</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> γ =&gt; γ α -&gt; γ β</SPAN></dt>
