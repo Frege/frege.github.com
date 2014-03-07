@@ -123,7 +123,9 @@ Type class for basic <a class="tref" href="#JArray">JArray</a> operations. The <
 <p>
 The operations are mostly overloaded on return type and provide the appropriate <SPAN CLASS="code">java.lang.Class</SPAN> object when needed.</p>
 <p>
-This supports one dimensional and two dimensional arrays. Note that <a class="tref" href="#JArray">JArray</a> cannot be an instance of <a class="tref" href="#ArrayElem">ArrayElem</a> itself, because it has no fixed <SPAN CLASS="code">java.lang.Class</SPAN> instance.</p>
+This supports one dimensional arrays, though more dimensions would be poossible with some extra effort.</p>
+<p>
+Note that <a class="tref" href="#JArray">JArray</a> cannot be an instance of <a class="tref" href="#ArrayElem">ArrayElem</a> itself, because it has no fixed <SPAN CLASS="code">java.lang.Class</SPAN> instance.</p>
 <h3>
 Known Instances</h3>
 <p>
@@ -1138,26 +1140,28 @@ Note that there are really 2 different APIs:</p>
 <LI>
  With the <a class="fref" href="#JArray.getElemAt">JArray.getElemAt</a>, <a class="fref" href="#JArray.getAt">JArray.getAt</a>, <a class="fref" href="#JArray.setAt">JArray.setAt</a>, <a class="fref" href="#JArray.setElemAt">JArray.setElemAt</a>, <a class="fref" href="#JArray.itemAt">JArray.itemAt</a> and <a class="fref" href="#JArray.elemAt">JArray.elemAt</a> it is possible to work on Java objects with java compile time type <SPAN CLASS="code">java.lang.Object</SPAN> <b>or</b> <SPAN CLASS="code">X[]</SPAN> for some java type <SPAN CLASS="code">X</SPAN> <b>or</b> <SPAN CLASS="code">java.lang.Object[]</SPAN>, but the run time type is always <SPAN CLASS="code">java.lang.Object[]</SPAN>.</LI>
 <LI>
- With the <a class="fref" href="#ArrayElem.newArray">ArrayElem.newArray</a>, <a class="fref" href="#ArrayElem.getElemAt">ArrayElem.getElemAt</a>, <a class="fref" href="#ArrayElem.getAt">ArrayElem.getAt</a>, <a class="fref" href="#ArrayElem.setAt">ArrayElem.setAt</a>, <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</a>, <a class="fref" href="#ArrayElem.itemAt">ArrayElem.itemAt</a> and <a class="fref" href="#ArrayElem.elemAt">ArrayElem.elemAt</a> functions of the <a class="tref" href="#ArrayElem">ArrayElem</a> class for some type <SPAN CLASS="code">F</SPAN> that is an instance of <a class="tref" href="#ArrayElem">ArrayElem</a>, we can work on Java objects with java compile time type <SPAN CLASS="code">X[]</SPAN>, where <SPAN CLASS="code">X</SPAN> is the Java type corresponding to <SPAN CLASS="code">F</SPAN>, but the run time type is always <SPAN CLASS="code">X[]</SPAN>.</LI>
+ With the <a class="fref" href="#ArrayElem.newArray">ArrayElem.newArray</a>, <a class="fref" href="#ArrayElem.getElemAt">ArrayElem.getElemAt</a>, <a class="fref" href="#ArrayElem.getAt">ArrayElem.getAt</a>, <a class="fref" href="#ArrayElem.setAt">ArrayElem.setAt</a>, <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</a>, <a class="fref" href="#ArrayElem.itemAt">ArrayElem.itemAt</a> and <a class="fref" href="#ArrayElem.elemAt">ArrayElem.elemAt</a> functions of the <a class="tref" href="#ArrayElem">ArrayElem</a> class for some type <SPAN CLASS="code">F</SPAN> that is an instance of <a class="tref" href="#ArrayElem">ArrayElem</a>, we can work on Java objects with Java compile time type <SPAN CLASS="code">X[]</SPAN>, where <SPAN CLASS="code">X</SPAN> is the Java type corresponding to <SPAN CLASS="code">F</SPAN>, but the run time type is always <SPAN CLASS="code">X[]</SPAN>.</LI>
 </ol>
 <p>
 The former ones are usable only in polymorphic functions where the type argument for <a class="tref" href="#JArray">JArray</a> is a variable and we don't (want to) have <a class="tref" href="#ArrayElem">ArrayElem</a> constraints. They are not good for interfacing native methods that take or return arrays of a certain type. Run time type errors are possible because native methods could put anything there. However, when used in Frege only, the typing is safe.</p>
 <p>
-The latter ones are truely type safe, because their frege type corresponds to the expected Java compile time type, which is also the actual run time type.</p>
+The latter ones are truely type safe, because their Frege type corresponds to the expected Java compile time type, which is also the actual run time type.</p>
 <p>
 Here is a cheet sheet for the different array get and set methods:</p>
 <PRE>
              Array type            Argument/    Description
                                    Result</PRE>
 <PRE>
- setAt       Mutable (JArray s X)  Maybe X     set @null@  or data element
+ setAt       Mutable (JArray s X)  Maybe X     set null or data element
  setElemAt   Mutable (JArray s X)  X           set data element
- getAt       Mutable (JArray s X)  Maybe X     get @null@  or data element
+ getAt       Mutable (JArray s X)  Maybe X     get null or data element
  getElemAt   Mutable (JArray s X)  X           get data element (unsafe)
- itemAt      JArray s X            Maybe X     get @null@  or data element (pure)
+ itemAt      JArray s X            Maybe X     get null or data element (pure)
  elemAt      JArray s X            X           get data element (pure, unsafe)</PRE>
 <p>
-"unsafe" in this contect means that the function may fail with a <SPAN CLASS="code">NullPointerException</SPAN>.</p>
+"unsafe" in this context applies only to non-primitive types and means that the function will fail with a <SPAN CLASS="code">NullPointerException</SPAN> if the value accessed is a Java <SPAN CLASS="code">null</SPAN>.</p>
+<p>
+In addition, every array accessed</p>
 <h3>
 Member Functions</h3>
 <dl class="func">
@@ -1364,7 +1368,7 @@ Uses <a class="fref" href="#JArray.map">JArray.map</a> and makes result read-onl
 <p>
 Create an immutable generic array from a finite index/value list.</p>
 <p>
-Uses <a class="fref" href="#JArray.genericFromIndexList">JArray.genericFromIndexList</a> and makes it read-only.       </p>
+Uses <a class="fref" href="#JArray.genericFromIndexList">JArray.genericFromIndexList</a> and makes it read-only.      </p>
 </dd>
 </dl>
 <h2>

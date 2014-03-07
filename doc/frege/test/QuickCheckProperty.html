@@ -128,6 +128,8 @@ import <a HREF="../java/util/Regex.html">frege.java.util.Regex</a> as Regexp</di
 <dt class="clas">
 <SPAN CLASS="code"><b>type </b><a name="Property">Property</a>  = <a class="tref" href="./QuickCheckGen.html#Gen">Gen</a> <a class="tref" href="#Prop">Prop</a></SPAN></dt>
 <dd class="clas">
+<p>
+The things  quick check is testing   </p>
 </dd>
 </dl>
 <h2>
@@ -314,16 +316,22 @@ Member Functions</h3>
 <dt class="data">
 <SPAN CLASS="code"><b>data </b><a name="Callback"> </a> <a class="tref" href="#Callback">Callback</a></SPAN></dt>
 <dd class="data">
+<p>
+Different kinds of callbacks   </p>
 <h3>
 Constructors</h3>
 <dl class="func">
 <dt class="func">
 <SPAN CLASS="code"><a name="Callback.PostFinalFailure">PostFinalFailure</a> <a class="tref" href="#CallbackKind">CallbackKind</a>&nbsp;&nbsp; (<a class="tref" href="./QuickCheckState.html#State">State</a> -&gt; <a class="tref" href="#Result">Result</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a>)</SPAN></dt>
 <dd class="func">
+<p>
+Called with the final failing test-case   </p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="Callback.PostTest">PostTest</a> <a class="tref" href="#CallbackKind">CallbackKind</a>&nbsp;&nbsp; (<a class="tref" href="./QuickCheckState.html#State">State</a> -&gt; <a class="tref" href="#Result">Result</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a>)</SPAN></dt>
 <dd class="func">
+<p>
+Called just after a test   </p>
 </dd>
 </dl>
 </dd>
@@ -336,10 +344,14 @@ Constructors</h3>
 <dt class="func">
 <SPAN CLASS="code"><a name="CallbackKind.Counterexample">Counterexample</a> </SPAN></dt>
 <dd class="func">
+<p>
+Affected by the <a class="fref" href="#verbose">verbose</a> combinator   </p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="CallbackKind.NotCounterexample">NotCounterexample</a> </SPAN></dt>
 <dd class="func">
+<p>
+Not affected by the <a class="fref" href="#verbose">verbose</a> combinator   </p>
 </dd>
 </dl>
 </dd>
@@ -450,14 +462,20 @@ Constructors</h3>
 <dt class="func">
 <SPAN CLASS="code"><a name="_dot_amp_amp_dot">.&amp;&amp;.</a> :: (<a class="tref" href="#Testable">Testable</a> prop1, <a class="tref" href="#Testable">Testable</a> prop2) =&gt; prop1 -&gt; prop2 -&gt; <a class="tref" href="#Property">Property</a></SPAN></dt>
 <dd class="func">
+<p>
+Conjunction: <SPAN CLASS="code">p1 .&amp;&amp;. p2</SPAN> passes if both <SPAN CLASS="code">p1</SPAN> and <SPAN CLASS="code">p2</SPAN> pass.   </p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="_dot_amp_dot">.&amp;.</a> :: (<a class="tref" href="#Testable">Testable</a> prop1, <a class="tref" href="#Testable">Testable</a> prop2) =&gt; prop1 -&gt; prop2 -&gt; <a class="tref" href="#Property">Property</a></SPAN></dt>
 <dd class="func">
+<p>
+Nondeterministic choice: <SPAN CLASS="code">p1 .&amp;. p2</SPAN> picks randomly one of <SPAN CLASS="code">p1</SPAN> and <SPAN CLASS="code">p2</SPAN> to test. If you test the property 100 times it makes 100 random choices.</p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="_dot_bar_bar_dot">.||.</a> :: (<a class="tref" href="#Testable">Testable</a> prop1, <a class="tref" href="#Testable">Testable</a> prop2) =&gt; prop1 -&gt; prop2 -&gt; <a class="tref" href="#Property">Property</a></SPAN></dt>
 <dd class="func">
+<p>
+Disjunction: <SPAN CLASS="code">p1 .||. p2</SPAN> passes unless <SPAN CLASS="code">p1</SPAN> and <SPAN CLASS="code">p2</SPAN> simultaneously fail.   </p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="_eq_eq_gt">==&gt;</a> :: <a class="tref" href="#Testable">Testable</a> prop =&gt; <b><a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></b> -&gt; prop -&gt; <a class="tref" href="#Property">Property</a></SPAN></dt>
@@ -488,6 +506,8 @@ Labels a property with a value:</p>
 <dt class="func">
 <SPAN CLASS="code"><a name="conjoin">conjoin</a> :: <a class="tref" href="#Testable">Testable</a> prop =&gt; [prop] -&gt; <a class="tref" href="#Property">Property</a></SPAN></dt>
 <dd class="func">
+<p>
+Take the conjunction of several properties.   </p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="cover">cover</a> :: <a class="tref" href="#Testable">Testable</a> prop =&gt; <b><a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></b> -&gt; <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> -&gt; prop -&gt; <a class="tref" href="#Property">Property</a></SPAN></dt>
@@ -498,6 +518,8 @@ Checks that at least the given proportion of the test cases belong to the given 
 <dt class="func">
 <SPAN CLASS="code"><a name="disjoin">disjoin</a> :: <a class="tref" href="#Testable">Testable</a> prop =&gt; [prop] -&gt; <a class="tref" href="#Property">Property</a></SPAN></dt>
 <dd class="func">
+<p>
+Take the disjunction of several properties.   </p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="exception">exception</a> :: <a class="tref" href="../prelude/PreludeBase.html#String">String</a> -&gt; <b><a class="tref" href="../prelude/PreludeIO.html#Exception">Exception</a></b> -&gt; <a class="tref" href="#Result">Result</a></SPAN></dt>
@@ -516,10 +538,14 @@ Modifies a property so that it is expected to fail for some test cases.   </p>
 <dt class="func">
 <SPAN CLASS="code"><a name="forAll">forAll</a> :: (<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> a, <a class="tref" href="#Testable">Testable</a> prop) =&gt; <b><a class="tref" href="./QuickCheckGen.html#Gen">Gen</a> a</b> -&gt; (a -&gt; prop) -&gt; <a class="tref" href="#Property">Property</a></SPAN></dt>
 <dd class="func">
+<p>
+Explicit universal quantification: uses an explicitly given test case generator.</p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="forAllShrink">forAllShrink</a> :: (<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> a, <a class="tref" href="#Testable">Testable</a> prop) =&gt; <b><a class="tref" href="./QuickCheckGen.html#Gen">Gen</a> a</b> -&gt; (a -&gt; [a]) -&gt; (a -&gt; prop) -&gt; <a class="tref" href="#Property">Property</a></SPAN></dt>
 <dd class="func">
+<p>
+Like <a class="fref" href="#forAll">forAll</a>, but tries to shrink the argument for failing test cases.   </p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="formatException">formatException</a> :: <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> -&gt; <b><a class="tref" href="../prelude/PreludeIO.html#Exception">Exception</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
@@ -560,10 +586,6 @@ This is used for reporting test case distribution.   </p>
 <dt class="func">
 <SPAN CLASS="code"><a name="mapSize">mapSize</a> :: <a class="tref" href="#Testable">Testable</a> prop =&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>) -&gt; prop -&gt; <a class="tref" href="#Property">Property</a></SPAN></dt>
 <dd class="func">
-<ul>
-<LI>
----------------------------------------------------------------------- </LI>
-</ul>
 <p>
 Changes the maximum test case size for a property.   </p>
 </dd>
@@ -610,10 +632,14 @@ Prints a message to the terminal as part of the counterexample.   </p>
 <dt class="func">
 <SPAN CLASS="code"><a name="protectResults">protectResults</a> :: <b><a class="tref" href="#Rose">Rose</a> <a class="tref" href="#Result">Result</a></b> -&gt; <a class="tref" href="#Rose">Rose</a> <a class="tref" href="#Result">Result</a></SPAN></dt>
 <dd class="func">
+<p>
+Wrap all the Results in a rose tree in exception handlers.   </p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="protectRose">protectRose</a> :: <b><a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="#Rose">Rose</a> <a class="tref" href="#Result">Result</a>)</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="#Rose">Rose</a> <a class="tref" href="#Result">Result</a>)</SPAN></dt>
 <dd class="func">
+<p>
+Wrap a rose tree in an exception handler.   </p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="reduceRose">reduceRose</a> :: <b><a class="tref" href="#Rose">Rose</a> <a class="tref" href="#Result">Result</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="#Rose">Rose</a> <a class="tref" href="#Result">Result</a>)</SPAN></dt>
@@ -630,6 +656,8 @@ Prints a message to the terminal as part of the counterexample.   </p>
 <dt class="func">
 <SPAN CLASS="code"><a name="shrinking">shrinking</a> :: <a class="tref" href="#Testable">Testable</a> prop =&gt; (a -&gt; [a]) -&gt; a -&gt; (a -&gt; prop) -&gt; <a class="tref" href="#Property">Property</a></SPAN></dt>
 <dd class="func">
+<p>
+Shrinks the argument to property if it fails. Shrinking is done automatically for most types. This is only needed when you want to override the default behavior.      </p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="succeeded">succeeded</a> :: <a class="tref" href="#Result">Result</a></SPAN></dt>

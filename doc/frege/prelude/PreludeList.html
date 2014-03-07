@@ -543,9 +543,9 @@ is the same as</p>
 <PRE>
  x1 `f` (x2 `f` (x3 `f` a))</PRE>
 <p>
-Note that, if /f/ is strict in the second argument, <SPAN CLASS="code">foldr f</SPAN> will need stack space proportional to the length of the list. But if /f/ is lazy in it's second argument, <a class="fref" href="#foldr">foldr</a> works on infinite lists.</p>
+Note that, if <i>f</i> is strict in the second argument, <SPAN CLASS="code">foldr f</SPAN> will need stack space proportional to the length of the list. But if <i>f</i> is lazy in it's second argument, <a class="fref" href="#foldr">foldr</a> works on infinite lists.</p>
 <p>
-If /f/ is commutative, the list finite and lazyness not an issue, <a class="fref" href="#fold">fold</a> may be the better choice since it runs with constant stack space. Otherwise, if /f/ is not commutative, <a class="fref" href="#foldrs">foldrs</a> will trade time and heap space for stack space by <a class="fref" href="#fold">fold</a>ing the <a class="fref" href="./PreludeBase.html#flip">flip</a>ped /f/ over the <a class="fref" href="#reverse">reverse</a>d list.</p>
+If <i>f</i> is commutative, the list finite and lazyness not an issue, <a class="fref" href="#fold">fold</a> may be the better choice since it runs with constant stack space. Otherwise, if <i>f</i> is not commutative, <a class="fref" href="#foldrs">foldrs</a> will trade time and heap space for stack space by <a class="fref" href="#fold">fold</a>ing the <a class="fref" href="./PreludeBase.html#flip">flip</a>ped <i>f</i> over the <a class="fref" href="#reverse">reverse</a>d list.</p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="foldr1">foldr1</a> :: (α-&gt;α-&gt;α) -&gt; <b>[α]</b> -&gt; α</SPAN></dt>
@@ -561,13 +561,13 @@ This function may be used in place of</p>
 <PRE>
  foldr f z xs</PRE>
 <p>
-if /f/ is strict in its right operand and /xs/ is a finite list, in cases where <a class="fref" href="#foldr">foldr</a> exceeds the stack size, which is usually quite limited in the JVM.</p>
+if <i>f</i> is strict in its right operand and <i>xs</i> is a finite list, in cases where <a class="fref" href="#foldr">foldr</a> exceeds the stack size, which is usually quite limited in the JVM.</p>
 <p>
-<a class="fref" href="#foldrs">foldrs</a> will need extra CPU cycles and maybe (temporary) heap space for <a class="fref" href="#reverse">reverse</a>-ing its list argument, before <a class="fref" href="#fold">fold</a>ing the <a class="fref" href="./PreludeBase.html#flip">flip</a>ped /f/ over it.</p>
+<a class="fref" href="#foldrs">foldrs</a> will need extra CPU cycles and maybe (temporary) heap space for <a class="fref" href="#reverse">reverse</a>-ing its list argument, before <a class="fref" href="#fold">fold</a>ing the <a class="fref" href="./PreludeBase.html#flip">flip</a>ped <i>f</i> over it.</p>
 <p>
-If /f/ is commutative, you may simply use <a class="fref" href="#fold">fold</a> instead.</p>
+If <i>f</i> is commutative, you may simply use <a class="fref" href="#fold">fold</a> instead.</p>
 <p>
-The following property holds for all finite lists /xs/:</p>
+The following property holds for all finite lists <i>xs</i>:</p>
 <PRE>
  foldr f z xs == foldrs f z xs</PRE>
 </dd>
@@ -607,7 +607,7 @@ See also <a class="fref" href="#init">init</a>   </p>
 <SPAN CLASS="code"><a name="map">map</a> :: (α-&gt;β) -&gt; <b>[α]</b> -&gt; [β]</SPAN></dt>
 <dd class="func">
 <p>
-<SPAN CLASS="code">map f xs</SPAN> applies /f/ to each element of /xs/ and builds a new list from the results.</p>
+<SPAN CLASS="code">map f xs</SPAN> applies <i>f</i> to each element of <i>xs</i> and builds a new list from the results.</p>
 <p>
 Usage of <a class="fref" href="#map">map</a> is safe on infinite lists, it delivers the result list one by one as it is demanded.</p>
 </dd>
@@ -675,7 +675,7 @@ reverses a list</p>
 <PRE>
  scanl f z [x1, x2, ...] = [z, z `f` x1, (z `f` x1) `f` x2, ... ]</PRE>
 <p>
-The follwoing property holds for all finite lists /xs/:</p>
+The follwoing property holds for all finite lists <i>xs</i>:</p>
 <PRE>
  last (scanl f z xs) == fold f z xs</PRE>
 <p>
@@ -735,11 +735,11 @@ The sum of the numbers in a list, same as (<a class="fref" href="#fold">fold</a>
 <SPAN CLASS="code"><a name="take">take</a> :: <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; [α] -&gt; [α]</SPAN></dt>
 <dd class="func">
 <p>
-<SPAN CLASS="code">take n xs</SPAN> returns the starting sequence of /xs/ with at most /n/ elements. If /n/ is greater than the <a class="fref" href="#ListLike.length">ListLike.length</a> of /xs/, the result is /xs/.</p>
+<SPAN CLASS="code">take n xs</SPAN> returns the starting sequence of <i>xs</i> with at most <i>n</i> elements. If <i>n</i> is greater than the <a class="fref" href="#ListLike.length">ListLike.length</a> of <i>xs</i>, the result is <i>xs</i>.</p>
 <p>
-For negative /n/, the result is undefined.</p>
+For negative <i>n</i>, the result is undefined.</p>
 <p>
-The following property holds for all lists /xs/ and non negative /n/:</p>
+The following property holds for all lists <i>xs</i> and non negative <i>n</i>:</p>
 <PRE>
  take n xs ++ drop n xs == xs</PRE>
 </dd>

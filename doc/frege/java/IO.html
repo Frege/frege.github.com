@@ -71,11 +71,11 @@ import <a HREF="./Lang.html">frege.java.Lang</a> as Lang</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/Arrays.html">frege.prelude.Arrays</a> as Arrays</div>
+import <a HREF="../prelude/PreludeBase.html">frege.prelude.PreludeBase</a> as PreludeBase</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeBase.html">frege.prelude.PreludeBase</a> as PreludeBase</div>
+import <a HREF="../prelude/PreludeArrays.html">frege.prelude.PreludeArrays</a> as PreludeArrays</div>
 </li>
 <li>
 <div>
@@ -326,7 +326,7 @@ Member Functions</h3>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="File.list">list</a> :: <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#File">File</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../prelude/Arrays.html#StringArr">StringArr</a>))<br><b>native </b>list</SPAN></dt>
+<SPAN CLASS="code"><a name="File.list">list</a> :: <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#File">File</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a>))<br><b>native </b>list</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
@@ -670,16 +670,22 @@ Convenience function to open a file for writing through an UTF-8 encoding <a cla
 May throw <a class="tref" href="#FileNotFoundException">FileNotFoundException</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="stderr">stderr</a> :: <a class="tref" href="#PrintWriter">PrintWriter</a><br><b>native </b>frege.runtime.Runtime.stderr</SPAN></dt>
+<SPAN CLASS="code"><a name="stderr">stderr</a> :: <a class="tref" href="#PrintWriter">PrintWriter</a><br><b>native </b>frege.runtime.Runtime.stderr.get()</SPAN></dt>
 <dd class="func">
+<p>
+The standard error <a class="tref" href="#PrintWriter">PrintWriter</a>   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="stdin">stdin</a> :: <a class="tref" href="#BufferedReader">BufferedReader</a><br><b>native </b>frege.runtime.Runtime.stdin</SPAN></dt>
+<SPAN CLASS="code"><a name="stdin">stdin</a> :: <a class="tref" href="#BufferedReader">BufferedReader</a><br><b>native </b>frege.runtime.Runtime.stdin.get()</SPAN></dt>
 <dd class="func">
+<p>
+The standard input <a class="tref" href="#BufferedReader">BufferedReader</a>   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="stdout">stdout</a> :: <a class="tref" href="#PrintWriter">PrintWriter</a><br><b>native </b>frege.runtime.Runtime.stdout</SPAN></dt>
+<SPAN CLASS="code"><a name="stdout">stdout</a> :: <a class="tref" href="#PrintWriter">PrintWriter</a><br><b>native </b>frege.runtime.Runtime.stdout.get()</SPAN></dt>
 <dd class="func">
+<p>
+The standard output <a class="tref" href="#PrintWriter">PrintWriter</a>   </p>
 </dd>
 </dl>
 <h2>
@@ -704,16 +710,16 @@ May throw <a class="tref" href="#FileNotFoundException">FileNotFoundException</a
 <a class="fref" href="#FileOutputStream.newβ">FileOutputStream.newβ</a></p>
 </dd>
 <dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#File">File</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a>))</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#File.list">File.list</a></p>
+</dd>
+<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#File">File</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#File">File</a>))</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#File.getParentFile">File.getParentFile</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#File">File</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../prelude/Arrays.html#StringArr">StringArr</a>))</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#File.list">File.list</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#File">File</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
