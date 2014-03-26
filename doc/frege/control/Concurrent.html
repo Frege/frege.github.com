@@ -41,13 +41,13 @@ Table of Content</h3>
 <div>
 <a HREF="#let">Functions and Values (alphabetically)</a></div>
 <div>
-<a class="fref" href="#forkIO">forkIO</a></div>
+<a class="fref" href="#async">async</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#forkIO">forkIO</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#forkOS">forkOS</a></div>
 </li>
 <li>
 <div>
 <a HREF="#case">Functions and Values (by type)</a></div>
 <div>
-<a class="fref" href="#forkIO">forkIO</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MVar.offer">MVar.offer</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MVar._new">MVar.new</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MVar.MV">MVar.MV</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MVar.newEmpty">MVar.newEmpty</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MVar.put">MVar.put</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MVar.poll">MVar.poll</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MVar.take">MVar.take</a></div>
+<a class="fref" href="#async">async</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#forkIO">forkIO</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#forkOS">forkOS</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MVar.offer">MVar.offer</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MVar._new">MVar.new</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MVar.MV">MVar.MV</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MVar.newEmpty">MVar.newEmpty</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MVar.put">MVar.put</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MVar.poll">MVar.poll</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MVar.take">MVar.take</a></div>
 </li>
 </ul>
 <h3>
@@ -154,18 +154,26 @@ take a value from a <a class="tref" href="#MVar">MVar</a>, blocks if empty      
 <a name="let">Functions and Values</a></h2>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="forkIO">forkIO</a> :: <b><a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../java/Lang.html#Thread">Thread</a></SPAN></dt>
+<SPAN CLASS="code"><a name="async">async</a> :: <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> a -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="#MVar">MVar</a> (<a class="tref" href="../prelude/PreludeIO.html#Exception">Exception</a> | a))</SPAN></dt>
 <dd class="func">
 <p>
-Create and start a new OS <a class="tref" href="../java/Lang.html#Thread">Thread</a> that runs an <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> action.</p>
+Run a <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> action asynchronously and return the result in a <a class="tref" href="#MVar">MVar</a>   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="forkIO">forkIO</a> :: <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
 <p>
-In Frege, there is no difference between <a class="fref" href="#forkIO">forkIO</a> and <a HREF="./Concurrent.html#forkOS">forkOS</a> at this time.    </p>
+Run the <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> action asynchronously in an <a class="tref" href="../java/util/Concurrent.html#ExecutorService">ExecutorService</a></p>
+<p>
+This is not suitable for not-ending processes!</p>
+<p>
+The executor service may manage a fixed small number of threads only.   </p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="forkOS">forkOS</a> :: <b><a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../java/Lang.html#Thread">Thread</a></SPAN></dt>
 <dd class="func">
 <p>
-Alias for <a class="fref" href="#forkIO">forkIO</a></p>
+Create and start a new OS <a class="tref" href="../java/Lang.html#Thread">Thread</a> that runs an <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> action.    </p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="newEmptyMVar">newEmptyMVar</a> :: <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="#MVar">MVar</a> α)</SPAN></dt>
@@ -199,7 +207,19 @@ Alias for <a class="fref" href="#MVar.poll">MVar.poll</a></p>
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../java/Lang.html#Thread">Thread</a></SPAN></dt>
 <dd class="func">
 <p>
+<a class="fref" href="#forkOS">forkOS</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
 <a class="fref" href="#forkIO">forkIO</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> a -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="#MVar">MVar</a> (<a class="tref" href="../prelude/PreludeIO.html#Exception">Exception</a> | a))</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#async">async</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#MVar">MVar</a> α -&gt; α -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>

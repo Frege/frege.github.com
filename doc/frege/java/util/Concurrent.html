@@ -29,15 +29,21 @@ Table of Content</h3>
 <ul>
 <li>
 <div>
+<a HREF="#instance">Instances</a></div>
+<div>
+<a class="tref" href="#Exceptional_RejectedExecutionException">Exceptional_RejectedExecutionException</a></div>
+</li>
+<li>
+<div>
 <a HREF="#data">Data Types</a></div>
 <div>
-<a class="tref" href="#ArrayBlockingQueue">ArrayBlockingQueue</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#BlockingQueue">BlockingQueue</a></div>
+<a class="tref" href="#ArrayBlockingQueue">ArrayBlockingQueue</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#BlockingQueue">BlockingQueue</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ExecutorService">ExecutorService</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#RejectedExecutionException">RejectedExecutionException</a></div>
 </li>
 <li>
 <div>
 <a HREF="#case">Functions and Values (by type)</a></div>
 <div>
-<a class="fref" href="#ArrayBlockingQueue.newα">ArrayBlockingQueue.newα</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayBlockingQueue._new">ArrayBlockingQueue.new</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayBlockingQueue.newβ">ArrayBlockingQueue.newβ</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BlockingQueue.put">BlockingQueue.put</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BlockingQueue.offer">BlockingQueue.offer</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BlockingQueue.add">BlockingQueue.add</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BlockingQueue.poll">BlockingQueue.poll</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BlockingQueue.remove">BlockingQueue.remove</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BlockingQueue.take">BlockingQueue.take</a></div>
+<a class="fref" href="#Exceptional_RejectedExecutionException.javaClass">Exceptional_RejectedExecutionException.javaClass</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayBlockingQueue.newα">ArrayBlockingQueue.newα</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayBlockingQueue._new">ArrayBlockingQueue.new</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayBlockingQueue.newβ">ArrayBlockingQueue.newβ</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BlockingQueue.put">BlockingQueue.put</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BlockingQueue.offer">BlockingQueue.offer</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BlockingQueue.add">BlockingQueue.add</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BlockingQueue.poll">BlockingQueue.poll</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BlockingQueue.remove">BlockingQueue.remove</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BlockingQueue.take">BlockingQueue.take</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ExecutorService.isShutdown">ExecutorService.isShutdown</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ExecutorService.executorService">ExecutorService.executorService</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ExecutorService.shutdown">ExecutorService.shutdown</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ExecutorService.isTerminated">ExecutorService.isTerminated</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ExecutorService.submit">ExecutorService.submit</a></div>
 </li>
 </ul>
 <h3>
@@ -81,6 +87,22 @@ import <a HREF="../Util.html">frege.java.Util</a> as Util</div>
 </li>
 </ul>
 <h2>
+<a name="instance">Instances</a></h2>
+<dl class="inst">
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name="Exceptional_RejectedExecutionException"> </a> <a class="tref" href="../../prelude/PreludeIO.html#Exceptional">Exceptional</a> <a class="tref" href="#RejectedExecutionException">RejectedExecutionException</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="Exceptional_RejectedExecutionException.javaClass">javaClass</a> :: <a class="tref" href="../../prelude/PreludeBase.html#Class">Class</a> <a class="tref" href="#RejectedExecutionException">RejectedExecutionException</a><br><b>pure </b><b>native </b>java.util.concurrent.RejectedExecutionException.class</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+</dl>
+<h2>
 <a name="data">Data Types</a></h2>
 <dl class="data">
 <dt class="data">
@@ -92,14 +114,32 @@ Member Functions</h3>
 <dt class="func">
 <SPAN CLASS="code"><a name="ArrayBlockingQueue._new">new</a> :: <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="#ArrayBlockingQueue">ArrayBlockingQueue</a> e)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="#ArrayBlockingQueue">ArrayBlockingQueue</a> e)<br><b>native </b>new</SPAN></dt>
 <dd class="func">
+<p>
+Creates an ArrayBlockingQueue with the given (fixed) capacity and the specified access policy.</p>
+<p>
+If the <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a> argument is missing, the default access policy is used. If it is <SPAN CLASS="code">true</SPAN> then queue accesses for threads blocked on insertion or removal, are processed in FIFO order; otherwise the access order is unspecified.</p>
+<p>
+The capacity must be greater than 0, otherwise an <a class="tref" href="../Lang.html#IllegalArgumentException">IllegalArgumentException</a> is thrown.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="ArrayBlockingQueue.newα">newα</a> :: <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="#ArrayBlockingQueue">ArrayBlockingQueue</a> e)<br><b>native </b>new&nbsp;&nbsp;overloads <a class="fref" href="#ArrayBlockingQueue._new">new</a></SPAN></dt>
+<SPAN CLASS="code"><a name="ArrayBlockingQueue.newα">newα</a> :: <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="#ArrayBlockingQueue">ArrayBlockingQueue</a> e)<br><b>native </b>new&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ArrayBlockingQueue._new">new</a></SPAN></dt>
 <dd class="func">
+<p>
+Creates an ArrayBlockingQueue with the given (fixed) capacity and the specified access policy.</p>
+<p>
+If the <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a> argument is missing, the default access policy is used. If it is <SPAN CLASS="code">true</SPAN> then queue accesses for threads blocked on insertion or removal, are processed in FIFO order; otherwise the access order is unspecified.</p>
+<p>
+The capacity must be greater than 0, otherwise an <a class="tref" href="../Lang.html#IllegalArgumentException">IllegalArgumentException</a> is thrown.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="ArrayBlockingQueue.newβ">newβ</a> :: <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="#ArrayBlockingQueue">ArrayBlockingQueue</a> e)<br><b>native </b>new&nbsp;&nbsp;overloads <a class="fref" href="#ArrayBlockingQueue._new">new</a></SPAN></dt>
+<SPAN CLASS="code"><a name="ArrayBlockingQueue.newβ">newβ</a> :: <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="#ArrayBlockingQueue">ArrayBlockingQueue</a> e)<br><b>native </b>new&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ArrayBlockingQueue._new">new</a></SPAN></dt>
 <dd class="func">
+<p>
+Creates an ArrayBlockingQueue with the given (fixed) capacity and the specified access policy.</p>
+<p>
+If the <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a> argument is missing, the default access policy is used. If it is <SPAN CLASS="code">true</SPAN> then queue accesses for threads blocked on insertion or removal, are processed in FIFO order; otherwise the access order is unspecified.</p>
+<p>
+The capacity must be greater than 0, otherwise an <a class="tref" href="../Lang.html#IllegalArgumentException">IllegalArgumentException</a> is thrown.</p>
 </dd>
 </dl>
 </dd>
@@ -147,10 +187,88 @@ get and remove element from blocking queue, block until something is available  
 </dd>
 </dl>
 </dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name="ExecutorService"> </a> <a class="tref" href="#ExecutorService">ExecutorService</a> = <b>mutable </b><b>native </b>java.util.concurrent.ExecutorService</SPAN></dt>
+<dd class="data">
+<p>
+The Java <a HREF="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ExecutorService.html">executor service</a> interface.   </p>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="ExecutorService.executorService">executorService</a> :: <b><a class="tref" href="../../prelude/PreludeBase.html#Unit">()</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ExecutorService">ExecutorService</a><br><b>native </b>frege.runtime.Concurrent.executorService</SPAN></dt>
+<dd class="func">
+<p>
+The default executor service of the Frege runtime   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ExecutorService.isShutdown">isShutdown</a> :: <b><a class="tref" href="#ExecutorService">ExecutorService</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>native </b>isShutdown</SPAN></dt>
+<dd class="func">
+<p>
+Tells if this executor has been shut down.   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ExecutorService.isTerminated">isTerminated</a> :: <b><a class="tref" href="#ExecutorService">ExecutorService</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>native </b>isTerminated</SPAN></dt>
+<dd class="func">
+<p>
+Tells if all tasks have completed after <a class="fref" href="#ExecutorService.shutdown">ExecutorService.shutdown</a>.   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ExecutorService.shutdown">shutdown</a> :: <b><a class="tref" href="#ExecutorService">ExecutorService</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../../prelude/PreludeBase.html#Unit">()</a><br><b>native </b>shutdown</SPAN></dt>
+<dd class="func">
+<p>
+Initiates an orderly shutdown in which previously submitted tasks are executed, but no new tasks will be accepted.   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ExecutorService.submit">submit</a> :: <b><a class="tref" href="#ExecutorService">ExecutorService</a></b> -&gt; <b><a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../Lang.html#Runnable">Runnable</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../../prelude/PreludeBase.html#Unit">()</a><br><b>native </b>submit&nbsp;&nbsp;<b>throws </b><a class="tref" href="#RejectedExecutionException">RejectedExecutionException</a></SPAN></dt>
+<dd class="func">
+<p>
+Submit a <a class="tref" href="../Lang.html#Runnable">Runnable</a> for execution.</p>
+<p>
+Note that unlike in Java, no Future is returned.   </p>
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name="RejectedExecutionException"> </a> <a class="tref" href="#RejectedExecutionException">RejectedExecutionException</a> = <b>pure </b><b>native </b>java.util.concurrent.RejectedExecutionException</SPAN></dt>
+<dd class="data">
+<p>
+Thrown when a task is submitted to an <a class="tref" href="#ExecutorService">ExecutorService</a> who was shut down or whose queue is full.   </p>
+</dd>
 </dl>
 <h2>
 <a name="case">Functions and Values by Type</a></h2>
 <dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ExecutorService">ExecutorService</a> -&gt; <a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../Lang.html#Runnable">Runnable</a> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ExecutorService.submit">ExecutorService.submit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ExecutorService">ExecutorService</a> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ExecutorService.shutdown">ExecutorService.shutdown</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ExecutorService">ExecutorService</a> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ExecutorService.isShutdown">ExecutorService.isShutdown</a>, <a class="fref" href="#ExecutorService.isTerminated">ExecutorService.isTerminated</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeBase.html#Unit">()</a> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ExecutorService">ExecutorService</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ExecutorService.executorService">ExecutorService.executorService</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeBase.html#Class">Class</a> <a class="tref" href="#RejectedExecutionException">RejectedExecutionException</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Exceptional_RejectedExecutionException.javaClass">Exceptional_RejectedExecutionException.javaClass</a></p>
+</dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#BlockingQueue">BlockingQueue</a> e -&gt; e -&gt; <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">

@@ -171,7 +171,7 @@ The <a class="fref" href="#findIndices">findIndices</a> function extends <a clas
 <SPAN CLASS="code"><a name="genericDrop">genericDrop</a> :: <a class="tref" href="../prelude/PreludeBase.html#Integral">Integral</a> i =&gt; i -&gt; <b>[a]</b> -&gt; [a]</SPAN></dt>
 <dd class="func">
 <p>
-The <a class="fref" href="#genericDrop">genericDrop</a> function is an overloaded version of <a class="fref" href="../prelude/PreludeList.html#drop">drop</a>, which accepts any <a class="tref" href="../prelude/PreludeBase.html#Integral">Integral</a> value as the number of elements to drop.</p>
+The <a class="fref" href="#genericDrop">genericDrop</a> function is an overloaded version of <a class="fref" href="../prelude/PreludeList.html#ListView.drop">ListView.drop</a>, which accepts any <a class="tref" href="../prelude/PreludeBase.html#Integral">Integral</a> value as the number of elements to drop.</p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="genericIndex">genericIndex</a> :: <a class="tref" href="../prelude/PreludeBase.html#Integral">Integral</a> a =&gt; <b>[b]</b> -&gt; a -&gt; b</SPAN></dt>
@@ -183,7 +183,7 @@ The <a class="fref" href="#genericIndex">genericIndex</a> function is an overloa
 <SPAN CLASS="code"><a name="genericLength">genericLength</a> :: <a class="tref" href="../prelude/PreludeBase.html#Num">Num</a> i =&gt; <b>[b]</b> -&gt; i</SPAN></dt>
 <dd class="func">
 <p>
-The <a class="fref" href="#genericLength">genericLength</a> function is an overloaded version of <a class="fref" href="../prelude/PreludeList.html#ListLike.length">ListLike.length</a>.  In particular, instead of returning an <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, it returns any type which is an instance of <a class="tref" href="../prelude/PreludeBase.html#Num">Num</a>.  It is, however, less efficient than <a class="fref" href="../prelude/PreludeList.html#ListLike.length">ListLike.length</a>.</p>
+The <a class="fref" href="#genericLength">genericLength</a> function is an overloaded version of <a class="fref" href="../prelude/PreludeList.html#ListView.length">ListView.length</a>.  In particular, instead of returning an <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, it returns any type which is an instance of <a class="tref" href="../prelude/PreludeBase.html#Num">Num</a>.  It is, however, less efficient than <a class="fref" href="../prelude/PreludeList.html#ListView.length">ListView.length</a>.</p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="genericReplicate">genericReplicate</a> :: <a class="tref" href="../prelude/PreludeBase.html#Integral">Integral</a> i =&gt; i -&gt; a -&gt; [a]</SPAN></dt>
@@ -201,7 +201,7 @@ The <a class="fref" href="#genericSplitAt">genericSplitAt</a> function is an ove
 <SPAN CLASS="code"><a name="genericTake">genericTake</a> :: <a class="tref" href="../prelude/PreludeBase.html#Integral">Integral</a> i =&gt; i -&gt; [a] -&gt; [a]</SPAN></dt>
 <dd class="func">
 <p>
-The <a class="fref" href="#genericTake">genericTake</a> function is an overloaded version of <a class="fref" href="../prelude/PreludeList.html#take">take</a>, which accepts any <a class="tref" href="../prelude/PreludeBase.html#Integral">Integral</a> value as the number of elements to take.</p>
+The <a class="fref" href="#genericTake">genericTake</a> function is an overloaded version of <a class="fref" href="../prelude/PreludeList.html#ListView.take">ListView.take</a>, which accepts any <a class="tref" href="../prelude/PreludeBase.html#Integral">Integral</a> value as the number of elements to take.</p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="group">group</a> :: <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α =&gt; <b>[α]</b> -&gt; [[α]]</SPAN></dt>
@@ -234,7 +234,7 @@ The <a class="fref" href="#inits">inits</a> function returns all initial segment
 The non-overloaded version of <a class="fref" href="#insert">insert</a>.   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="intercalate">intercalate</a> :: <a class="tref" href="../prelude/PreludeList.html#ListLike">ListLike</a> α =&gt; α β -&gt; <b>[α β]</b> -&gt; α β</SPAN></dt>
+<SPAN CLASS="code"><a name="intercalate">intercalate</a> :: (<a class="tref" href="../prelude/PreludeList.html#ListEmpty">ListEmpty</a> α, <a class="tref" href="../prelude/PreludeList.html#ListSemigroup">ListSemigroup</a> α) =&gt; α β -&gt; <b>[α β]</b> -&gt; α β</SPAN></dt>
 <dd class="func">
 <p>
 <SPAN CLASS="code">intercalate xs xss</SPAN> is equivalent to <SPAN CLASS="code">concat (intersperse xs xss)</SPAN></p>
@@ -798,7 +798,7 @@ Alias for <a class="fref" href="#uniqueBy">uniqueBy</a></p>
 <a class="fref" href="#sort">sort</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeList.html#ListLike">ListLike</a> α =&gt; α β -&gt; [α β] -&gt; α β</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeList.html#ListEmpty">ListEmpty</a> α, <a class="tref" href="../prelude/PreludeList.html#ListSemigroup">ListSemigroup</a> α) =&gt; α β -&gt; [α β] -&gt; α β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#intercalate">intercalate</a></p>

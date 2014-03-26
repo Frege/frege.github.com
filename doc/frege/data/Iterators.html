@@ -1,0 +1,496 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<META http-equiv="Content-Type" content="text/html;charset=utf-8">
+<TITLE>frege.data.Iterators - frege documentation</TITLE>
+<style TYPE="text/css">
+body { font-family: helvetica, arial, sans-serif }
+pre { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
+h3  { font-weight: lighter }
+dt.func { background: rgb(95%, 95%, 80%); margin-top: 10px }
+dt.clas { background: rgb(80%, 95%, 95%); margin-top: 10px }
+dt.inst { background: rgb(95%, 90%, 95%); margin-top: 10px }
+dt.data { background: rgb(95%, 95%, 95%); margin-top: 10px }
+span.code { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
+span.unknown { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: red }
+a.fref { text-decoration: none; font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(30%, 30%, 0%) }
+a.tref { text-decoration: none; font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(40%, 0%,  40%) }
+</style>
+<BODY>
+<h1>
+<a name="package">Package <SPAN CLASS="code">frege.data.Iterators</SPAN></a></h1>
+<p>
+ Source file: <SPAN CLASS="code">./frege/data/Iterators.fr</SPAN></p>
+<h3>
+Package Documentation</h3>
+<p>
+Provide Iterators for <a class="tref" href="../prelude/PreludeBase.html#String">String</a> and <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a>   </p>
+<h3>
+Table of Content</h3>
+<ul>
+<li>
+<div>
+<a HREF="#instance">Instances</a></div>
+<div>
+<a class="tref" href="#ListMonoid_StringIterator">ListMonoid_StringIterator</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ListView_ArrayIterator">ListView_ArrayIterator</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ListView_StringIterator">ListView_StringIterator</a></div>
+</li>
+<li>
+<div>
+<a HREF="#data">Data Types</a></div>
+<div>
+<a class="tref" href="#ArrayIterator">ArrayIterator</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#StringIterator">StringIterator</a></div>
+</li>
+<li>
+<div>
+<a HREF="#case">Functions and Values (by type)</a></div>
+<div>
+<a class="fref" href="#ListMonoid_StringIterator._plus_plus">ListMonoid_StringIterator.++</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView_ArrayIterator.length">ListView_ArrayIterator.length</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView_ArrayIterator.drop">ListView_ArrayIterator.drop</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView_ArrayIterator.empty">ListView_ArrayIterator.empty</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView_ArrayIterator.take">ListView_ArrayIterator.take</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView_ArrayIterator._null">ListView_ArrayIterator.null</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView_ArrayIterator.toList">ListView_ArrayIterator.toList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView_ArrayIterator.uncons">ListView_ArrayIterator.uncons</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView_StringIterator.length">ListView_StringIterator.length</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView_StringIterator.drop">ListView_StringIterator.drop</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView_StringIterator.empty">ListView_StringIterator.empty</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView_StringIterator.take">ListView_StringIterator.take</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView_StringIterator._null">ListView_StringIterator.null</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView_StringIterator.toList">ListView_StringIterator.toList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView_StringIterator.uncons">ListView_StringIterator.uncons</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayIterator.from">ArrayIterator.from</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayIterator.chg$array">ArrayIterator.chg$array</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayIterator.array">ArrayIterator.array</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayIterator.AI">ArrayIterator.AI</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayIterator.at">ArrayIterator.at</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayIterator.chg$limit">ArrayIterator.chg$limit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayIterator.chg$at">ArrayIterator.chg$at</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayIterator.limit">ArrayIterator.limit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayIterator.has$at">ArrayIterator.has$at</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayIterator.has$array">ArrayIterator.has$array</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayIterator.has$limit">ArrayIterator.has$limit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayIterator.upd$array">ArrayIterator.upd$array</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayIterator.to">ArrayIterator.to</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayIterator.upd$at">ArrayIterator.upd$at</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ArrayIterator.upd$limit">ArrayIterator.upd$limit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#StringIterator.from">StringIterator.from</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#StringIterator.chg$at">StringIterator.chg$at</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#StringIterator.SI">StringIterator.SI</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#StringIterator.at">StringIterator.at</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#StringIterator.chg$string">StringIterator.chg$string</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#StringIterator.chg$limit">StringIterator.chg$limit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#StringIterator.string">StringIterator.string</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#StringIterator.has$string">StringIterator.has$string</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#StringIterator.has$at">StringIterator.has$at</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#StringIterator.has$limit">StringIterator.has$limit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#StringIterator.limit">StringIterator.limit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#StringIterator.upd$at">StringIterator.upd$at</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#StringIterator.to">StringIterator.to</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#StringIterator.upd$limit">StringIterator.upd$limit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#StringIterator.upd$string">StringIterator.upd$string</a></div>
+</li>
+</ul>
+<h3>
+Imports</h3>
+<ul>
+<li>
+<div>
+import <a HREF="../prelude/PreludeList.html">frege.prelude.PreludeList</a> as PreludeList</div>
+</li>
+<li>
+<div>
+import <a HREF="../Prelude.html">frege.Prelude</a> as Prelude</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeBase.html">frege.prelude.PreludeBase</a> as PreludeBase</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeArrays.html">frege.prelude.PreludeArrays</a> as PreludeArrays</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeIO.html">frege.prelude.PreludeIO</a> as PreludeIO</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeText.html">frege.prelude.PreludeText</a> as PreludeText</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeMonad.html">frege.prelude.PreludeMonad</a> as PreludeMonad</div>
+</li>
+<li>
+<div>
+import <a HREF="../java/util/Regex.html">frege.java.util.Regex</a> as Regexp</div>
+</li>
+</ul>
+<h2>
+<a name="instance">Instances</a></h2>
+<dl class="inst">
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name="ListMonoid_StringIterator"> </a> <a class="tref" href="../prelude/PreludeList.html#ListMonoid">ListMonoid</a> <a class="tref" href="#StringIterator">StringIterator</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="ListMonoid_StringIterator._plus_plus">++</a> :: <b><a class="tref" href="#StringIterator">StringIterator</a> α</b> -&gt; <b><a class="tref" href="#StringIterator">StringIterator</a> α</b> -&gt; <a class="tref" href="#StringIterator">StringIterator</a> α</SPAN></dt>
+<dd class="func">
+<p>
+concatenate the strings described by two iterators   </p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name="ListView_ArrayIterator"> </a> <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> <a class="tref" href="#ArrayIterator">ArrayIterator</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView_ArrayIterator.drop">drop</a> :: <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="#ArrayIterator">ArrayIterator</a> α</b> -&gt; <a class="tref" href="#ArrayIterator">ArrayIterator</a> α</SPAN></dt>
+<dd class="func">
+<p>
+drop at most n characters by advancing the start index.</p>
+<p>
+Can be abused to "go back" towards the beginning of the <a class="tref" href="../prelude/PreludeBase.html#String">String</a>   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView_ArrayIterator.empty">empty</a> :: <a class="tref" href="#ArrayIterator">ArrayIterator</a> α</SPAN></dt>
+<dd class="func">
+<p>
+create an empty ArrayIterator   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView_ArrayIterator.length">length</a> :: <b><a class="tref" href="#ArrayIterator">ArrayIterator</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+length    </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView_ArrayIterator._null">null</a> :: <b><a class="tref" href="#ArrayIterator">ArrayIterator</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+is it null?   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView_ArrayIterator.take">take</a> :: <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="#ArrayIterator">ArrayIterator</a> α</b> -&gt; <a class="tref" href="#ArrayIterator">ArrayIterator</a> α</SPAN></dt>
+<dd class="func">
+<p>
+sets the <a class="fref" href="../prelude/PreludeList.html#ListView.length">ListView.length</a> of the projection to n or 0, if n is negative.   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView_ArrayIterator.toList">toList</a> :: <b><a class="tref" href="#ArrayIterator">ArrayIterator</a> α</b> -&gt; [α]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeList.html#ListView.toList">ListView.toList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView_ArrayIterator.uncons">uncons</a> :: <b><a class="tref" href="#ArrayIterator">ArrayIterator</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (α, <a class="tref" href="#ArrayIterator">ArrayIterator</a> α)</SPAN></dt>
+<dd class="func">
+<p>
+deconstruct   </p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name="ListView_StringIterator"> </a> <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> <a class="tref" href="#StringIterator">StringIterator</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView_StringIterator.drop">drop</a> :: <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="#StringIterator">StringIterator</a> α</b> -&gt; <a class="tref" href="#StringIterator">StringIterator</a> α</SPAN></dt>
+<dd class="func">
+<p>
+drop at most n characters by advancing the start index.</p>
+<p>
+Can be abused to "go back" towards the beginning of the <a class="tref" href="../prelude/PreludeBase.html#String">String</a>   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView_StringIterator.empty">empty</a> :: <a class="tref" href="#StringIterator">StringIterator</a> α</SPAN></dt>
+<dd class="func">
+<p>
+empty <a class="tref" href="#StringIterator">StringIterator</a>   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView_StringIterator.length">length</a> :: <b><a class="tref" href="#StringIterator">StringIterator</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+length    </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView_StringIterator._null">null</a> :: <b><a class="tref" href="#StringIterator">StringIterator</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+is it null?   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView_StringIterator.take">take</a> :: <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="#StringIterator">StringIterator</a> α</b> -&gt; <a class="tref" href="#StringIterator">StringIterator</a> α</SPAN></dt>
+<dd class="func">
+<p>
+sets the <a class="fref" href="../prelude/PreludeList.html#ListView.length">ListView.length</a> of the projection to n or 0, if n is negative.   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView_StringIterator.toList">toList</a> :: <b><a class="tref" href="#StringIterator">StringIterator</a> α</b> -&gt; [α]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeList.html#ListView.toList">ListView.toList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView_StringIterator.uncons">uncons</a> :: <b><a class="tref" href="#StringIterator">StringIterator</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (α, <a class="tref" href="#StringIterator">StringIterator</a> α)</SPAN></dt>
+<dd class="func">
+<p>
+deconstruct   </p>
+</dd>
+</dl>
+</dd>
+</dl>
+<h2>
+<a name="data">Data Types</a></h2>
+<dl class="data">
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name="ArrayIterator"> </a> <a class="tref" href="#ArrayIterator">ArrayIterator</a> a</SPAN></dt>
+<dd class="data">
+<p>
+A <a class="tref" href="#ArrayIterator">ArrayIterator</a> is a data structure that lets us view a part of a <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> as a list.</p>
+<p>
+With large <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a>s, doing <a class="fref" href="../prelude/PreludeList.html#ListSource.toList">ListSource.toList</a> and iterating through the list can get expensive memory-wise.</p>
+<p>
+Construction, <a class="fref" href="../prelude/PreludeList.html#ListView.drop">ListView.drop</a>, <a class="fref" href="../prelude/PreludeList.html#ListView.take">ListView.take</a>, <a class="fref" href="../prelude/PreludeList.html#head">head</a> and <a class="fref" href="../prelude/PreludeList.html#tail">tail</a> on a <a class="tref" href="#ArrayIterator">ArrayIterator</a> are O(1) operations with a minimal memory overhead. The drawback is that it holds on to the underlying <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a>.</p>
+<h3>
+Constructors</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><b>private</b> <a name="ArrayIterator.AI">AI</a> {array :: <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> a, at :: <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, limit :: <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>}</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayIterator.array">array</a> :: <b><a class="tref" href="#ArrayIterator">ArrayIterator</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> α</SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">array</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayIterator.at">at</a> :: <b><a class="tref" href="#ArrayIterator">ArrayIterator</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">at</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayIterator.from">from</a> :: <b><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> α</b> -&gt; <a class="tref" href="#ArrayIterator">ArrayIterator</a> α</SPAN></dt>
+<dd class="func">
+<p>
+make iterator from <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a>   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayIterator.limit">limit</a> :: <b><a class="tref" href="#ArrayIterator">ArrayIterator</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">limit</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ArrayIterator.to">to</a> :: <a class="tref" href="../prelude/PreludeArrays.html#ArrayElem">ArrayElem</a> a =&gt; <a class="tref" href="#ArrayIterator">ArrayIterator</a> a -&gt; <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> a</SPAN></dt>
+<dd class="func">
+<p>
+realize the subarray indicated by this iterator   </p>
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name="StringIterator"> </a> <a class="tref" href="#StringIterator">StringIterator</a> a</SPAN></dt>
+<dd class="data">
+<p>
+A <a class="tref" href="#StringIterator">StringIterator</a> is a data structure that lets us view a part of a <a class="tref" href="../prelude/PreludeBase.html#String">String</a> as a list.</p>
+<p>
+With large <a class="tref" href="../prelude/PreludeBase.html#String">String</a>s, performing list work on <a class="tref" href="../prelude/PreludeBase.html#String">String</a>s can be expensive, because more recent JVMs implement the <SPAN CLASS="code">substring</SPAN> operation via copying.</p>
+<p>
+Construction, <a class="fref" href="../prelude/PreludeList.html#ListView.drop">ListView.drop</a>, <a class="fref" href="../prelude/PreludeList.html#ListView.take">ListView.take</a>, <a class="fref" href="../prelude/PreludeList.html#head">head</a> and <a class="fref" href="../prelude/PreludeList.html#tail">tail</a> on a <a class="tref" href="#StringIterator">StringIterator</a> are O(1) operations. The drawback is that it holds on to the underlying <a class="tref" href="../prelude/PreludeBase.html#String">String</a>.</p>
+<h3>
+Constructors</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><b>private</b> <a name="StringIterator.SI">SI</a> {string :: <a class="tref" href="../prelude/PreludeBase.html#StringJ">StringJ</a> a, at :: <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, limit :: <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>}</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="StringIterator.at">at</a> :: <b><a class="tref" href="#StringIterator">StringIterator</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">at</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="StringIterator.from">from</a> :: <b><a class="tref" href="../prelude/PreludeBase.html#StringJ">StringJ</a> α</b> -&gt; <a class="tref" href="#StringIterator">StringIterator</a> α</SPAN></dt>
+<dd class="func">
+<p>
+Construct a <a class="tref" href="#StringIterator">StringIterator</a> from a <a class="tref" href="../prelude/PreludeBase.html#String">String</a>   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="StringIterator.limit">limit</a> :: <b><a class="tref" href="#StringIterator">StringIterator</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">limit</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="StringIterator.string">string</a> :: <b><a class="tref" href="#StringIterator">StringIterator</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#StringJ">StringJ</a> α</SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">string</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="StringIterator.to">to</a> :: <b><a class="tref" href="#StringIterator">StringIterator</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#StringJ">StringJ</a> α</SPAN></dt>
+<dd class="func">
+<p>
+realize the substring indicated by this iterator   </p>
+</dd>
+</dl>
+</dd>
+</dl>
+<h2>
+<a name="case">Functions and Values by Type</a></h2>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayIterator">ArrayIterator</a> α -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>-&gt;<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>) -&gt; <a class="tref" href="#ArrayIterator">ArrayIterator</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayIterator.chg$limit">ArrayIterator.chg$limit</a>, <a class="fref" href="#ArrayIterator.chg$at">ArrayIterator.chg$at</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayIterator">ArrayIterator</a> α -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="#ArrayIterator">ArrayIterator</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayIterator.upd$at">ArrayIterator.upd$at</a>, <a class="fref" href="#ArrayIterator.upd$limit">ArrayIterator.upd$limit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayIterator">ArrayIterator</a> α -&gt; <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayIterator.array">ArrayIterator.array</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayIterator">ArrayIterator</a> α -&gt; <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (α, <a class="tref" href="#ArrayIterator">ArrayIterator</a> α)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ListView_ArrayIterator.uncons">ListView_ArrayIterator.uncons</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayIterator">ArrayIterator</a> α -&gt; [α]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ListView_ArrayIterator.toList">ListView_ArrayIterator.toList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayIterator">ArrayIterator</a> α -&gt; <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ListView_ArrayIterator._null">ListView_ArrayIterator.null</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayIterator">ArrayIterator</a> α -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ListView_ArrayIterator.length">ListView_ArrayIterator.length</a>, <a class="fref" href="#ArrayIterator.at">ArrayIterator.at</a>, <a class="fref" href="#ArrayIterator.limit">ArrayIterator.limit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#StringIterator">StringIterator</a> α -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>-&gt;<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>) -&gt; <a class="tref" href="#StringIterator">StringIterator</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#StringIterator.chg$at">StringIterator.chg$at</a>, <a class="fref" href="#StringIterator.chg$limit">StringIterator.chg$limit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#StringIterator">StringIterator</a> α -&gt; <a class="tref" href="#StringIterator">StringIterator</a> α -&gt; <a class="tref" href="#StringIterator">StringIterator</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ListMonoid_StringIterator._plus_plus">ListMonoid_StringIterator.++</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#StringIterator">StringIterator</a> α -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="#StringIterator">StringIterator</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#StringIterator.upd$at">StringIterator.upd$at</a>, <a class="fref" href="#StringIterator.upd$limit">StringIterator.upd$limit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#StringIterator">StringIterator</a> α -&gt; <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (α, <a class="tref" href="#StringIterator">StringIterator</a> α)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ListView_StringIterator.uncons">ListView_StringIterator.uncons</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#StringIterator">StringIterator</a> α -&gt; <a class="tref" href="../prelude/PreludeBase.html#StringJ">StringJ</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#StringIterator.string">StringIterator.string</a>, <a class="fref" href="#StringIterator.to">StringIterator.to</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#StringIterator">StringIterator</a> α -&gt; [α]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ListView_StringIterator.toList">ListView_StringIterator.toList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#StringIterator">StringIterator</a> α -&gt; <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ListView_StringIterator._null">ListView_StringIterator.null</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#StringIterator">StringIterator</a> α -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ListView_StringIterator.length">ListView_StringIterator.length</a>, <a class="fref" href="#StringIterator.at">StringIterator.at</a>, <a class="fref" href="#StringIterator.limit">StringIterator.limit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> a -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="#ArrayIterator">ArrayIterator</a> a</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayIterator.AI">ArrayIterator.AI</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> α -&gt; <a class="tref" href="#ArrayIterator">ArrayIterator</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayIterator.from">ArrayIterator.from</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#StringJ">StringJ</a> a -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="#StringIterator">StringIterator</a> a</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#StringIterator.SI">StringIterator.SI</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#StringJ">StringJ</a> α -&gt; <a class="tref" href="#StringIterator">StringIterator</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#StringIterator.from">StringIterator.from</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="#ArrayIterator">ArrayIterator</a> α -&gt; <a class="tref" href="#ArrayIterator">ArrayIterator</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ListView_ArrayIterator.drop">ListView_ArrayIterator.drop</a>, <a class="fref" href="#ListView_ArrayIterator.take">ListView_ArrayIterator.take</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="#StringIterator">StringIterator</a> α -&gt; <a class="tref" href="#StringIterator">StringIterator</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ListView_StringIterator.drop">ListView_StringIterator.drop</a>, <a class="fref" href="#ListView_StringIterator.take">ListView_StringIterator.take</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">α -&gt; <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayIterator.has$at">ArrayIterator.has$at</a>, <a class="fref" href="#ArrayIterator.has$array">ArrayIterator.has$array</a>, <a class="fref" href="#ArrayIterator.has$limit">ArrayIterator.has$limit</a>, <a class="fref" href="#StringIterator.has$string">StringIterator.has$string</a>, <a class="fref" href="#StringIterator.has$at">StringIterator.has$at</a>, <a class="fref" href="#StringIterator.has$limit">StringIterator.has$limit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#ArrayElem">ArrayElem</a> a =&gt; <a class="tref" href="#ArrayIterator">ArrayIterator</a> a -&gt; <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> a</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayIterator.to">ArrayIterator.to</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayIterator">ArrayIterator</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ListView_ArrayIterator.empty">ListView_ArrayIterator.empty</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#StringIterator">StringIterator</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ListView_StringIterator.empty">ListView_StringIterator.empty</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayIterator">ArrayIterator</a> α -&gt; (<a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> α-&gt;<a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> β) -&gt; <a class="tref" href="#ArrayIterator">ArrayIterator</a> β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayIterator.chg$array">ArrayIterator.chg$array</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayIterator">ArrayIterator</a> α -&gt; <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> β -&gt; <a class="tref" href="#ArrayIterator">ArrayIterator</a> β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayIterator.upd$array">ArrayIterator.upd$array</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#StringIterator">StringIterator</a> α -&gt; (<a class="tref" href="../prelude/PreludeBase.html#StringJ">StringJ</a> α-&gt;<a class="tref" href="../prelude/PreludeBase.html#StringJ">StringJ</a> β) -&gt; <a class="tref" href="#StringIterator">StringIterator</a> β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#StringIterator.chg$string">StringIterator.chg$string</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#StringIterator">StringIterator</a> α -&gt; <a class="tref" href="../prelude/PreludeBase.html#StringJ">StringJ</a> β -&gt; <a class="tref" href="#StringIterator">StringIterator</a> β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#StringIterator.upd$string">StringIterator.upd$string</a></p>
+</dd>
+</dl>
+<p>
+<a HREF="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Strict" height="31" width="88"></a></p>
+</BODY>
+</HTML>

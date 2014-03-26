@@ -30,16 +30,16 @@ It contains all functions described in section 9.1 of the <i>Haskell 2010 Langua
 In addition to the common list functions, three type classes capture common properties of types that are like ordinary lists:</p>
 <dl>
 <dt>
-<a class="tref" href="#Empty">Empty</a></dt>
+<SPAN CLASS="unknown">Empty</SPAN></dt>
 <dd>
 <div>
- provides <a class="fref" href="#Empty._null">Empty.null</a> to test for empty containers and <a class="fref" href="#Empty.empty">Empty.empty</a> to create one. </div>
+ provides <a class="fref" href="#ListEmpty._null">ListEmpty.null</a> to test for empty containers and <a class="fref" href="#ListEmpty.empty">ListEmpty.empty</a> to create one. </div>
 </dd>
 <dt>
-<a class="tref" href="#ListLike">ListLike</a></dt>
+<SPAN CLASS="unknown">ListLike</SPAN></dt>
 <dd>
 <div>
- provides <a class="fref" href="#ListLike.length">ListLike.length</a>, <a class="fref" href="#ListLike.head">ListLike.head</a>, <a class="fref" href="#ListLike.tail">ListLike.tail</a> and <a class="fref" href="#ListLike._plus_plus">ListLike.++</a> </div>
+ provides <a class="fref" href="#ListView.length">ListView.length</a>, <a class="fref" href="#head">head</a>, <a class="fref" href="#tail">tail</a> and <a class="fref" href="#ListSemigroup._plus_plus">ListSemigroup.++</a> </div>
 </dd>
 <dt>
 <a class="tref" href="#ListSource">ListSource</a></dt>
@@ -61,25 +61,25 @@ Table of Content</h3>
 <div>
 <a HREF="#class">Classes</a></div>
 <div>
-<a class="tref" href="#Empty">Empty</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ListLike">ListLike</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ListSource">ListSource</a></div>
+<a class="tref" href="#ListEmpty">ListEmpty</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ListMonoid">ListMonoid</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ListSemigroup">ListSemigroup</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ListSource">ListSource</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ListView">ListView</a></div>
 </li>
 <li>
 <div>
 <a HREF="#instance">Instances</a></div>
 <div>
-<a class="tref" href="#ListLike_StringJ">ListLike_StringJ</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ListLike__lbrack_rbrack">ListLike_[]</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ListSource_Either">ListSource_Either</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ListSource_Maybe">ListSource_Maybe</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ListSource_StringJ">ListSource_StringJ</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ListSource__lbrack_rbrack">ListSource_[]</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Ord__lbrack_rbrack">Ord_[]</a></div>
+<a class="tref" href="#ListMonoid_StringJ">ListMonoid_StringJ</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ListMonoid__lbrack_rbrack">ListMonoid_[]</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ListSource_Either">ListSource_Either</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ListSource_Maybe">ListSource_Maybe</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ListSource__lbrack_rbrack">ListSource_[]</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ListView_StringJ">ListView_StringJ</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ListView__lbrack_rbrack">ListView_[]</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Ord__lbrack_rbrack">Ord_[]</a></div>
 </li>
 <li>
 <div>
 <a HREF="#let">Functions and Values (alphabetically)</a></div>
 <div>
-<a class="fref" href="#_excl_excl">!!</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#all">all</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#and">and</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#any">any</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_break">break</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#concat">concat</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#concatMap">concatMap</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#cycle">cycle</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#drop">drop</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#dropWhile">dropWhile</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#elem">elem</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#filter">filter</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#fold">fold</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#foldl">foldl</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#foldl1">foldl1</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#foldr">foldr</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#foldr1">foldr1</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#foldrs">foldrs</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#init">init</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#intersperse">intersperse</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#iterate">iterate</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#last">last</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#map">map</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#maximum">maximum</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#minimum">minimum</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#notElem">notElem</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#or">or</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#packed">packed</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#product">product</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#repeat">repeat</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#replicate">replicate</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#reverse">reverse</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#scanl">scanl</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#scanl1">scanl1</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#scanr">scanr</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#scanr1">scanr1</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#span">span</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#splitAt">splitAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#strhead">strhead</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#sum">sum</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#take">take</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#takeWhile">takeWhile</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#unpacked">unpacked</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#unzip">unzip</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#unzip3">unzip3</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#zip">zip</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#zip3">zip3</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#zipWith">zipWith</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#zipWith3">zipWith3</a></div>
+<a class="fref" href="#_excl_excl">!!</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#all">all</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#and">and</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#any">any</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_break">break</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#chunked">chunked</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#concat">concat</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#concatMap">concatMap</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#cycle">cycle</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#dropWhile">dropWhile</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#elem">elem</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#filter">filter</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#fold">fold</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#foldl">foldl</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#foldl1">foldl1</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#foldr">foldr</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#foldr1">foldr1</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#foldrs">foldrs</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#head">head</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#init">init</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#intersperse">intersperse</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#iterate">iterate</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#last">last</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#map">map</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#maximum">maximum</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#minimum">minimum</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#notElem">notElem</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#or">or</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#packed">packed</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#product">product</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#repeat">repeat</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#replicate">replicate</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#reverse">reverse</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#scanl">scanl</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#scanl1">scanl1</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#scanr">scanr</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#scanr1">scanr1</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#span">span</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#splitAt">splitAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#strhead">strhead</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#sum">sum</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#tail">tail</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#takeWhile">takeWhile</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#unpacked">unpacked</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#unzip">unzip</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#unzip3">unzip3</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#zip">zip</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#zip3">zip3</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#zipWith">zipWith</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#zipWith3">zipWith3</a></div>
 </li>
 <li>
 <div>
 <a HREF="#case">Functions and Values (by type)</a></div>
 <div>
-<a class="fref" href="#_excl_excl">!!</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#all">all</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#and">and</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#any">any</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_break">break</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#concat">concat</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#concatMap">concatMap</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#cycle">cycle</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#drop">drop</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#dropWhile">dropWhile</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#elem">elem</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#filter">filter</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#fold">fold</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#foldl">foldl</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#foldl1">foldl1</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#foldr">foldr</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#foldr1">foldr1</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#foldrs">foldrs</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#init">init</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#intersperse">intersperse</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#iterate">iterate</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#last">last</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#map">map</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#maximum">maximum</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#minimum">minimum</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#notElem">notElem</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#or">or</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#packed">packed</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#product">product</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#repeat">repeat</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#replicate">replicate</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#reverse">reverse</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#scanl">scanl</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#scanl1">scanl1</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#scanr">scanr</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#scanr1">scanr1</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#span">span</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#splitAt">splitAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#strhead">strhead</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#sum">sum</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#take">take</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#takeWhile">takeWhile</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#unpacked">unpacked</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#unzip">unzip</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#unzip3">unzip3</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#zip">zip</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#zip3">zip3</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#zipWith">zipWith</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#zipWith3">zipWith3</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Empty._null">Empty.null</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Empty.empty">Empty.empty</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListLike.head">ListLike.head</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListLike._plus_plus">ListLike.++</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListLike.length">ListLike.length</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListLike.tail">ListLike.tail</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListSource.toList">ListSource.toList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListLike_StringJ.head">ListLike_StringJ.head</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListLike_StringJ.empty">ListLike_StringJ.empty</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListLike_StringJ._null">ListLike_StringJ.null</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListLike_StringJ.tail">ListLike_StringJ.tail</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListLike__lbrack_rbrack.length">ListLike_[].length</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListLike__lbrack_rbrack.empty">ListLike_[].empty</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListLike__lbrack_rbrack._plus_plus">ListLike_[].++</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListLike__lbrack_rbrack.head">ListLike_[].head</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListLike__lbrack_rbrack.tail">ListLike_[].tail</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListLike__lbrack_rbrack._null">ListLike_[].null</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListSource_Either.toList">ListSource_Either.toList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListSource_Maybe.toList">ListSource_Maybe.toList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListSource_StringJ.toList">ListSource_StringJ.toList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListSource__lbrack_rbrack.toList">ListSource_[].toList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord__lbrack_rbrack._gt">Ord_[].&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord__lbrack_rbrack._lt_eq">Ord_[].&lt;=</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord__lbrack_rbrack._lt">Ord_[].&lt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord__lbrack_rbrack._lt_eq_gt">Ord_[].&lt;=&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord__lbrack_rbrack.compare">Ord_[].compare</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord__lbrack_rbrack._gt_eq">Ord_[].&gt;=</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord__lbrack_rbrack.max">Ord_[].max</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord__lbrack_rbrack.min">Ord_[].min</a></div>
+<a class="fref" href="#_excl_excl">!!</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#all">all</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#and">and</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#any">any</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_break">break</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#chunked">chunked</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#concat">concat</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#concatMap">concatMap</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#cycle">cycle</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#dropWhile">dropWhile</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#elem">elem</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#filter">filter</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#fold">fold</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#foldl">foldl</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#foldl1">foldl1</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#foldr">foldr</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#foldr1">foldr1</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#foldrs">foldrs</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#head">head</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#init">init</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#intersperse">intersperse</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#iterate">iterate</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#last">last</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#map">map</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#maximum">maximum</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#minimum">minimum</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#notElem">notElem</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#or">or</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#packed">packed</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#product">product</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#repeat">repeat</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#replicate">replicate</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#reverse">reverse</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#scanl">scanl</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#scanl1">scanl1</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#scanr">scanr</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#scanr1">scanr1</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#span">span</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#splitAt">splitAt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#strhead">strhead</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#sum">sum</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#tail">tail</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#takeWhile">takeWhile</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#unpacked">unpacked</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#unzip">unzip</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#unzip3">unzip3</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#zip">zip</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#zip3">zip3</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#zipWith">zipWith</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#zipWith3">zipWith3</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListEmpty._null">ListEmpty.null</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListEmpty.empty">ListEmpty.empty</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListSemigroup._plus_plus">ListSemigroup.++</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListSource.toList">ListSource.toList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView.length">ListView.length</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView.drop">ListView.drop</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView.toList">ListView.toList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView.take">ListView.take</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView.uncons">ListView.uncons</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListMonoid__lbrack_rbrack._plus_plus">ListMonoid_[].++</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListSource_Either.toList">ListSource_Either.toList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListSource_Maybe.toList">ListSource_Maybe.toList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListSource__lbrack_rbrack.toList">ListSource_[].toList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView_StringJ.take">ListView_StringJ.take</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView_StringJ.empty">ListView_StringJ.empty</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView_StringJ.drop">ListView_StringJ.drop</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView_StringJ._null">ListView_StringJ.null</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView_StringJ.toList">ListView_StringJ.toList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView_StringJ.uncons">ListView_StringJ.uncons</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView__lbrack_rbrack._null">ListView_[].null</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView__lbrack_rbrack.empty">ListView_[].empty</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView__lbrack_rbrack.drop">ListView_[].drop</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView__lbrack_rbrack.length">ListView_[].length</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView__lbrack_rbrack.uncons">ListView_[].uncons</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListView__lbrack_rbrack.take">ListView_[].take</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord__lbrack_rbrack._gt">Ord_[].&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord__lbrack_rbrack._lt_eq">Ord_[].&lt;=</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord__lbrack_rbrack._lt">Ord_[].&lt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord__lbrack_rbrack._lt_eq_gt">Ord_[].&lt;=&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord__lbrack_rbrack.compare">Ord_[].compare</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord__lbrack_rbrack._gt_eq">Ord_[].&gt;=</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord__lbrack_rbrack.max">Ord_[].max</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord__lbrack_rbrack.min">Ord_[].min</a></div>
 </li>
 </ul>
 <h3>
@@ -98,72 +98,60 @@ import <a HREF="../control/Semigroupoid.html">frege.control.Semigroupoid</a> as 
 <a name="class">Classes</a></h2>
 <dl class="clas">
 <dt class="clas">
-<SPAN CLASS="code"><b>class </b><a name="Empty">Empty</a>  c</SPAN></dt>
+<SPAN CLASS="code"><b>class </b><a name="ListEmpty">ListEmpty</a>  c</SPAN></dt>
 <dd class="clas">
 <p>
 A class for containers/collections that have an empty value.</p>
 <h3>
 Known Instances</h3>
 <p>
-<a class="tref" href="#ListLike_StringJ">StringJ</a>, <a class="tref" href="#ListLike__lbrack_rbrack">[]</a></p>
+<a class="tref" href="#ListView__lbrack_rbrack">[]</a>, <a class="tref" href="#ListView_StringJ">StringJ</a></p>
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Empty.empty">empty</a> :: <a class="tref" href="#Empty">Empty</a> c =&gt; c e</SPAN></dt>
+<SPAN CLASS="code"><a name="ListEmpty.empty">empty</a> :: <a class="tref" href="#ListEmpty">ListEmpty</a> c =&gt; c e</SPAN></dt>
 <dd class="func">
 <p>
 the empty container   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Empty._null">null</a> :: <a class="tref" href="#Empty">Empty</a> c =&gt; c e -&gt; <a class="tref" href="./PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a name="ListEmpty._null">null</a> :: <a class="tref" href="#ListEmpty">ListEmpty</a> c =&gt; c e -&gt; <a class="tref" href="./PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
-<b>true</b> if and only if the container is <a class="fref" href="#Empty.empty">Empty.empty</a>   </p>
+<b>true</b> if and only if the container is <a class="fref" href="#ListEmpty.empty">ListEmpty.empty</a>   </p>
 </dd>
 </dl>
 </dd>
 <dt class="clas">
-<SPAN CLASS="code"><b>class </b><a name="ListLike">ListLike</a> <a class="tref" href="#Empty">Empty</a> list =&gt;  list</SPAN></dt>
+<SPAN CLASS="code"><b>class </b><a name="ListMonoid">ListMonoid</a> (<a class="tref" href="#ListSemigroup">ListSemigroup</a> lm, <a class="tref" href="#ListEmpty">ListEmpty</a> lm) =&gt;  lm</SPAN></dt>
 <dd class="clas">
 <p>
-A class for data types that can be viewed as list.</p>
-<p>
-Such data types are instances of <a class="tref" href="#Empty">Empty</a> and support <a class="fref" href="#ListLike.head">ListLike.head</a>, <a class="fref" href="#ListLike.tail">ListLike.tail</a>, <a class="fref" href="#ListLike.length">ListLike.length</a> and concatenation (<a class="fref" href="#ListLike._plus_plus">ListLike.++</a>)</p>
-<p>
-This class provides no means to construct a list.</p>
+A class for types that support the (++) operator.   </p>
 <h3>
 Known Instances</h3>
 <p>
-<a class="tref" href="#ListLike_StringJ">StringJ</a>, <a class="tref" href="#ListLike__lbrack_rbrack">[]</a></p>
+<a class="tref" href="#ListMonoid__lbrack_rbrack">[]</a>, <a class="tref" href="#ListMonoid_StringJ">StringJ</a></p>
+</dd>
+<dt class="clas">
+<SPAN CLASS="code"><b>class </b><a name="ListSemigroup">ListSemigroup</a>  lm</SPAN></dt>
+<dd class="clas">
+<p>
+A class for types that support <a class="fref" href="#concat">concat</a>   </p>
+<h3>
+Known Instances</h3>
+<p>
+<a class="tref" href="#ListMonoid__lbrack_rbrack">[]</a>, <a class="tref" href="#ListMonoid_StringJ">StringJ</a></p>
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="ListLike._plus_plus">++</a> :: <a class="tref" href="#ListLike">ListLike</a> list =&gt; list e -&gt; list e -&gt; list e</SPAN></dt>
+<SPAN CLASS="code"><a name="ListSemigroup._plus_plus">++</a> :: <a class="tref" href="#ListSemigroup">ListSemigroup</a> lm =&gt; lm e -&gt; lm e -&gt; lm e</SPAN></dt>
 <dd class="func">
 <p>
 concatenate two lists, strings or whatever</p>
 <PRE>
  empty ++ x == x &amp;&amp; x ++ empty == x   </PRE>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="ListLike.head">head</a> :: <a class="tref" href="#ListLike">ListLike</a> list =&gt; list elem -&gt; elem</SPAN></dt>
-<dd class="func">
-<p>
-Get the element at the head of a non empty list, otherwise <a class="fref" href="./PreludeBase.html#undefined">undefined</a>   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="ListLike.length">length</a> :: <a class="tref" href="#ListLike">ListLike</a> list =&gt; list elem -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a></SPAN></dt>
-<dd class="func">
-<p>
-computes the length of a list in a type dependend way   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="ListLike.tail">tail</a> :: <a class="tref" href="#ListLike">ListLike</a> list =&gt; list elem -&gt; list elem</SPAN></dt>
-<dd class="func">
-<p>
-Get the tail elements. This is <a class="fref" href="./PreludeBase.html#undefined">undefined</a> if the list is empty.   </p>
 </dd>
 </dl>
 </dd>
@@ -171,11 +159,11 @@ Get the tail elements. This is <a class="fref" href="./PreludeBase.html#undefine
 <SPAN CLASS="code"><b>class </b><a name="ListSource">ListSource</a>  t</SPAN></dt>
 <dd class="clas">
 <p>
-A class for things we can make a list from</p>
+A class of things we can make a list from</p>
 <h3>
 Known Instances</h3>
 <p>
-<a class="tref" href="#ListSource_StringJ">StringJ</a>, <a class="tref" href="#ListSource_Either">Either</a>, <a class="tref" href="#ListSource_Maybe">Maybe</a>, <a class="tref" href="#ListSource__lbrack_rbrack">[]</a></p>
+<a class="tref" href="#ListView_StringJ">StringJ</a>, <a class="tref" href="#ListSource__lbrack_rbrack">[]</a>, <a class="tref" href="#ListSource_Either">Either</a>, <a class="tref" href="#ListSource_Maybe">Maybe</a></p>
 <h3>
 Member Functions</h3>
 <dl class="func">
@@ -187,97 +175,83 @@ converts the value to a list   </p>
 </dd>
 </dl>
 </dd>
+<dt class="clas">
+<SPAN CLASS="code"><b>class </b><a name="ListView">ListView</a> (<a class="tref" href="#ListSource">ListSource</a> lv, <a class="tref" href="#ListEmpty">ListEmpty</a> lv) =&gt;  lv</SPAN></dt>
+<dd class="clas">
+<p>
+A class for things we can view as a list</p>
+<p>
+Such data types are instances of <a class="tref" href="#ListMonoid">ListMonoid</a> and support <a class="fref" href="#head">head</a>, <a class="fref" href="#tail">tail</a>, <a class="fref" href="#ListView.length">ListView.length</a> and concatenation (<a class="fref" href="#ListSemigroup._plus_plus">ListSemigroup.++</a>)</p>
+<p>
+This class provides no means to construct a list.</p>
+<h3>
+Known Instances</h3>
+<p>
+<a class="tref" href="#ListView__lbrack_rbrack">[]</a>, <a class="tref" href="#ListView_StringJ">StringJ</a></p>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView.drop">drop</a> :: <a class="tref" href="#ListView">ListView</a> lv =&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; lv e -&gt; lv e</SPAN></dt>
+<dd class="func">
+<p>
+drop a number of initial elements   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView.length">length</a> :: <a class="tref" href="#ListView">ListView</a> lv =&gt; lv e -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+computes the length of the conatiner in a type dependend way   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView.take">take</a> :: <a class="tref" href="#ListView">ListView</a> lv =&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; lv e -&gt; lv e</SPAN></dt>
+<dd class="func">
+<p>
+take a number of initial elements   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView.toList">toList</a> :: <a class="tref" href="#ListView">ListView</a> lv =&gt; lv e -&gt; [e]</SPAN></dt>
+<dd class="func">
+<p>
+converts the value to a list   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView.uncons">uncons</a> :: <a class="tref" href="#ListView">ListView</a> lv =&gt; lv e -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (e, lv e)</SPAN></dt>
+<dd class="func">
+<p>
+split the input stream in head and tail   </p>
+</dd>
+</dl>
+</dd>
 </dl>
 <h2>
 <a name="instance">Instances</a></h2>
 <dl class="inst">
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="ListLike_StringJ"> </a> <a class="tref" href="#ListLike">ListLike</a> <a class="tref" href="./PreludeBase.html#StringJ">StringJ</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name="ListMonoid_StringJ"> </a> <a class="tref" href="#ListMonoid">ListMonoid</a> <a class="tref" href="./PreludeBase.html#StringJ">StringJ</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="ListLike_StringJ._plus_plus">++</a> :: <b><a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> a</b> -&gt; <b><a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> a</b> -&gt; <a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> a<br><b>pure </b><b>native </b>+</SPAN></dt>
+<SPAN CLASS="code"><a name="ListMonoid_StringJ._plus_plus">++</a> :: <b><a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> a</b> -&gt; <b><a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> a</b> -&gt; <a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> a<br><b>pure </b><b>native </b>+</SPAN></dt>
 <dd class="func">
 <p>
-Alias for <a class="fref" href="#ListLike._plus_plus">ListLike.++</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="ListLike_StringJ.empty">empty</a> :: <a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> α<br><b>pure </b><b>native </b>frege.runtime.Runtime.emptyString</SPAN></dt>
-<dd class="func">
-<p>
-A polymorphic empty string.</p>
-<p>
-This is the only string value whose type is not <a class="tref" href="./PreludeBase.html#String">String</a> that must ever exist.   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="ListLike_StringJ.head">head</a> :: <b><a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> α</b> -&gt; α</SPAN></dt>
-<dd class="func">
-<p>
-The first element of a <a class="tref" href="./PreludeBase.html#String">String</a> or <a class="fref" href="./PreludeBase.html#undefined">undefined</a> if the string is empty.   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="ListLike_StringJ.length">length</a> :: <b><a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> a</b> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a><br><b>pure </b><b>native </b>length</SPAN></dt>
-<dd class="func">
-<p>
-Alias for <a class="fref" href="#ListLike.length">ListLike.length</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="ListLike_StringJ._null">null</a> :: <b><a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> α</b> -&gt; <a class="tref" href="./PreludeBase.html#Bool">Bool</a></SPAN></dt>
-<dd class="func">
-<p>
-<SPAN CLASS="code">true</SPAN> if and only if the length of the string is 0   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="ListLike_StringJ.tail">tail</a> :: <b><a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> α</b> -&gt; <a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> α</SPAN></dt>
-<dd class="func">
-<p>
-The tail of a <a class="tref" href="./PreludeBase.html#String">String</a> or undefined if it is empty   </p>
+Alias for <a class="fref" href="#ListSemigroup._plus_plus">ListSemigroup.++</a></p>
 </dd>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="ListLike__lbrack_rbrack"> </a> <a class="tref" href="#ListLike">ListLike</a> <a class="tref" href="./PreludeBase.html#List">[]</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name="ListMonoid__lbrack_rbrack"> </a> <a class="tref" href="#ListMonoid">ListMonoid</a> <a class="tref" href="./PreludeBase.html#List">[]</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="ListLike__lbrack_rbrack._plus_plus">++</a> :: <b>[α]</b> -&gt; [α] -&gt; [α]</SPAN></dt>
+<SPAN CLASS="code"><a name="ListMonoid__lbrack_rbrack._plus_plus">++</a> :: <b>[α]</b> -&gt; [α] -&gt; [α]</SPAN></dt>
 <dd class="func">
 <p>
-Concatenation of 2 lists   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="ListLike__lbrack_rbrack.empty">empty</a> :: [α]</SPAN></dt>
-<dd class="func">
-<p>
-the empty list   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="ListLike__lbrack_rbrack.head">head</a> :: <b>[α]</b> -&gt; α</SPAN></dt>
-<dd class="func">
-<p>
-The first element of a list or <a class="fref" href="./PreludeBase.html#undefined">undefined</a> if it is empty.   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="ListLike__lbrack_rbrack.length">length</a> :: <b>[α]</b> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a></SPAN></dt>
-<dd class="func">
-<p>
-Get the length of a list   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="ListLike__lbrack_rbrack._null">null</a> :: <b>[α]</b> -&gt; <a class="tref" href="./PreludeBase.html#Bool">Bool</a></SPAN></dt>
-<dd class="func">
-<p>
-<b>true</b> for the empty list, false otherwise   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="ListLike__lbrack_rbrack.tail">tail</a> :: <b>[α]</b> -&gt; [α]</SPAN></dt>
-<dd class="func">
-<p>
-The tail of a list or undefined if it is empty   </p>
+Concatenation of two lists   </p>
 </dd>
 </dl>
 </dd>
@@ -310,20 +284,6 @@ Singleton with element from <a class="fref" href="./PreludeBase.html#Maybe.Just"
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="ListSource_StringJ"> </a> <a class="tref" href="#ListSource">ListSource</a> <a class="tref" href="./PreludeBase.html#StringJ">StringJ</a></SPAN></dt>
-<dd class="inst">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="ListSource_StringJ.toList">toList</a> :: <b><a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> α</b> -&gt; [α]</SPAN></dt>
-<dd class="func">
-<p>
-List of characters, computed lazily in contrast to <a class="fref" href="#unpacked">unpacked</a>   </p>
-</dd>
-</dl>
-</dd>
-<dt class="inst">
 <SPAN CLASS="code"><b>instance </b><a name="ListSource__lbrack_rbrack"> </a> <a class="tref" href="#ListSource">ListSource</a> <a class="tref" href="./PreludeBase.html#List">[]</a></SPAN></dt>
 <dd class="inst">
 <h3>
@@ -334,6 +294,114 @@ Member Functions</h3>
 <dd class="func">
 <p>
 The list itself.   </p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name="ListView_StringJ"> </a> <a class="tref" href="#ListView">ListView</a> <a class="tref" href="./PreludeBase.html#StringJ">StringJ</a></SPAN></dt>
+<dd class="inst">
+<p>
+<a class="tref" href="./PreludeBase.html#String">String</a> viewed as list of <a class="tref" href="./PreludeBase.html#Char">Char</a>s.</p>
+<p>
+List functions on <a class="tref" href="./PreludeBase.html#String">String</a>s can get quite expensive when the JVM implements <SPAN CLASS="code">substring</SPAN> via copying.</p>
+<p>
+Consider <a HREF="../data/Iterators.html#StringIterator">StringIterator</a> for an alternative   </p>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView_StringJ.drop">drop</a> :: <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> α</b> -&gt; <a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> α</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView_StringJ.empty">empty</a> :: <a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> α<br><b>pure </b><b>native </b>frege.runtime.Runtime.emptyString</SPAN></dt>
+<dd class="func">
+<p>
+A polymorphic empty string.</p>
+<p>
+This is the only string value whose type is not <a class="tref" href="./PreludeBase.html#String">String</a> that must ever exist.   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView_StringJ.length">length</a> :: <b><a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> a</b> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a><br><b>pure </b><b>native </b>length</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <a class="fref" href="#ListView.length">ListView.length</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView_StringJ._null">null</a> :: <b><a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> α</b> -&gt; <a class="tref" href="./PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<SPAN CLASS="code">true</SPAN> if and only if the length of the string is 0   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView_StringJ.take">take</a> :: <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b><a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> α</b> -&gt; <a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> α</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView_StringJ.toList">toList</a> :: <b><a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> α</b> -&gt; [α]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#ListView.toList">ListView.toList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView_StringJ.uncons">uncons</a> :: <b><a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> α</b> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α, <a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> α)</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name="ListView__lbrack_rbrack"> </a> <a class="tref" href="#ListView">ListView</a> <a class="tref" href="./PreludeBase.html#List">[]</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView__lbrack_rbrack.drop">drop</a> :: <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; [α] -&gt; [α]</SPAN></dt>
+<dd class="func">
+<p>
+<SPAN CLASS="code">drop n xs</SPAN> returns what remains from /xs/ after the /n/ leading elements have been dropped. If /n/ is greater than the <a class="fref" href="#ListView.length">ListView.length</a> of /xs/, the result is the empty list.</p>
+<p>
+For negative /n/, the result is undefined.</p>
+<p>
+The following property holds for all lists /xs/ and non negative /n/:</p>
+<PRE>
+ take n xs ++ drop n xs == xs</PRE>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView__lbrack_rbrack.empty">empty</a> :: [α]</SPAN></dt>
+<dd class="func">
+<p>
+the empty list   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView__lbrack_rbrack.length">length</a> :: <b>[α]</b> -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+Get the length of a list   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView__lbrack_rbrack._null">null</a> :: <b>[α]</b> -&gt; <a class="tref" href="./PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<b>true</b> for the empty list, false otherwise   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView__lbrack_rbrack.take">take</a> :: <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; [α] -&gt; [α]</SPAN></dt>
+<dd class="func">
+<p>
+<SPAN CLASS="code">take n xs</SPAN> returns the starting sequence of <i>xs</i> with at most <i>n</i> elements. If <i>n</i> is greater than the <a class="fref" href="#ListView.length">ListView.length</a> of <i>xs</i>, the result is <i>xs</i>.</p>
+<p>
+For negative <i>n</i>, the result is undefined.</p>
+<p>
+The following property holds for all lists <i>xs</i> and non negative <i>n</i>:</p>
+<PRE>
+ take n xs ++ drop n xs == xs</PRE>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="ListView__lbrack_rbrack.uncons">uncons</a> :: <b>[α]</b> -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α, [α])</SPAN></dt>
+<dd class="func">
+<p>
+Access head and tail   </p>
 </dd>
 </dl>
 </dd>
@@ -434,13 +502,25 @@ Note that, according to the identity above,  <SPAN CLASS="code">any p []</SPAN> 
 <SPAN CLASS="code">break p</SPAN> is equivalent to <SPAN CLASS="code">span (not • p)</SPAN>.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="concat">concat</a> :: <a class="tref" href="#ListLike">ListLike</a> α =&gt; <b>[α β]</b> -&gt; α β</SPAN></dt>
+<SPAN CLASS="code"><a name="chunked">chunked</a> :: <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <b>[α]</b> -&gt; [[α]]</SPAN></dt>
+<dd class="func">
+<p>
+<SPAN CLASS="code">chunked n xs</SPAN> makes a list of chunks of <i>xs</i> with size <i>n</i></p>
+<p>
+<i>n</i> must be positive, otherwise an infinite list of <SPAN CLASS="code">[]</SPAN> is returned.</p>
+<p>
+The following should hold:</p>
+<PRE>
+ n &gt; 0 ==&gt; concat (chunked n xs) == xs   </PRE>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="concat">concat</a> :: (<a class="tref" href="#ListEmpty">ListEmpty</a> α, <a class="tref" href="#ListSemigroup">ListSemigroup</a> α) =&gt; <b>[α β]</b> -&gt; α β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#concat">concat</a> concatenates the subitems of the argument which is a list of list or a list of strings. It is ok if the argument is an infinite list or any of the sublists is infinite. In either case, the result will also be infinite.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="concatMap">concatMap</a> :: <a class="tref" href="#ListLike">ListLike</a> β =&gt; (γ-&gt;β α) -&gt; <b>[γ]</b> -&gt; β α</SPAN></dt>
+<SPAN CLASS="code"><a name="concatMap">concatMap</a> :: (<a class="tref" href="#ListEmpty">ListEmpty</a> β, <a class="tref" href="#ListSemigroup">ListSemigroup</a> β) =&gt; (γ-&gt;β α) -&gt; <b>[γ]</b> -&gt; β α</SPAN></dt>
 <dd class="func">
 <p>
 Map a function over a list and concatenate the list or string results.</p>
@@ -449,27 +529,15 @@ Map a function over a list and concatenate the list or string results.</p>
 <SPAN CLASS="code"><a name="cycle">cycle</a> :: <b>[a]</b> -&gt; [a]</SPAN></dt>
 <dd class="func">
 <p>
-<SPAN CLASS="code">cycle xs</SPAN> builds a value that is an infinite repetition of /xs/, which must not be empty.</p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="drop">drop</a> :: <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; [α] -&gt; [α]</SPAN></dt>
-<dd class="func">
-<p>
-<SPAN CLASS="code">drop n xs</SPAN> returns what remains from /xs/ after the /n/ leading elements have been dropped. If /n/ is greater than the <a class="fref" href="#ListLike.length">ListLike.length</a> of /xs/, the result is the empty list.</p>
-<p>
-For negative /n/, the result is undefined.</p>
-<p>
-The following property holds for all lists /xs/ and non negative /n/:</p>
-<PRE>
- take n xs ++ drop n xs == xs</PRE>
+<SPAN CLASS="code">cycle xs</SPAN> builds a value that is an infinite repetition of <i>xs</i>, which must not be empty.</p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="dropWhile">dropWhile</a> :: (α-&gt;<a class="tref" href="./PreludeBase.html#Bool">Bool</a>) -&gt; <b>[α]</b> -&gt; [α]</SPAN></dt>
 <dd class="func">
 <p>
-<SPAN CLASS="code">dropWhile p xs</SPAN> drops leading elements from /xs/ that satisfy the predicate /p/.</p>
+<SPAN CLASS="code">dropWhile p xs</SPAN> drops leading elements from <i>xs</i> that satisfy the predicate <i>p</i>.</p>
 <p>
-The following holds for all lists /xs/</p>
+The following holds for all lists <i>xs</i></p>
 <PRE>
  takeWhile p xs ++ dropWhile p xs == xs</PRE>
 </dd>
@@ -572,6 +640,12 @@ The following property holds for all finite lists <i>xs</i>:</p>
  foldr f z xs == foldrs f z xs</PRE>
 </dd>
 <dt class="func">
+<SPAN CLASS="code"><a name="head">head</a> :: <a class="tref" href="#ListView">ListView</a> α =&gt; α β -&gt; β</SPAN></dt>
+<dd class="func">
+<p>
+The first element of a list-like value, or <a class="fref" href="./PreludeBase.html#undefined">undefined</a> if <a class="fref" href="#ListEmpty.empty">ListEmpty.empty</a>   </p>
+</dd>
+<dt class="func">
 <SPAN CLASS="code"><a name="init">init</a> :: <b>[α]</b> -&gt; [α]</SPAN></dt>
 <dd class="func">
 <p>
@@ -596,10 +670,10 @@ The following property holds for all non-empty finite lists /xs/:</p>
 <SPAN CLASS="code">iterate f a</SPAN> builds the infinite list <SPAN CLASS="code">[a, f a, f (f a), ...]</SPAN></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="last">last</a> :: <b>[α]</b> -&gt; α</SPAN></dt>
+<SPAN CLASS="code"><a name="last">last</a> :: [α] -&gt; α</SPAN></dt>
 <dd class="func">
 <p>
-Returns the last element of a list by taking the <a class="fref" href="#ListLike.head">ListLike.head</a> of the <a class="fref" href="#reverse">reverse</a>d list.</p>
+Returns the last element of a list by taking the <a class="fref" href="#head">head</a> of the <a class="fref" href="#reverse">reverse</a>d list.</p>
 <p>
 See also <a class="fref" href="#init">init</a>   </p>
 </dd>
@@ -685,7 +759,7 @@ In contrast to <a class="fref" href="#fold">fold</a>, <a class="fref" href="#sca
 <SPAN CLASS="code"><a name="scanl1">scanl1</a> :: (α-&gt;α-&gt;α) -&gt; <b>[α]</b> -&gt; [α]</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#scanl1">scanl1</a> is similar to <a class="fref" href="#scanl">scanl</a>, but takes the <a class="fref" href="#ListLike.head">ListLike.head</a> of the list as starting element and is thus only applicable to non-empty lists.</p>
+<a class="fref" href="#scanl1">scanl1</a> is similar to <a class="fref" href="#scanl">scanl</a>, but takes the <a class="fref" href="#head">head</a> of the list as starting element and is thus only applicable to non-empty lists.</p>
 <PRE>
  scanl1 f [x1, x2, ...] = [x1, x1 `f` x2, (x1 `f` x2) `f` ...]</PRE>
 </dd>
@@ -709,21 +783,21 @@ Note that</p>
 <SPAN CLASS="code"><a name="span">span</a> :: (α-&gt;<a class="tref" href="./PreludeBase.html#Bool">Bool</a>) -&gt; [α] -&gt; ([α], [α])</SPAN></dt>
 <dd class="func">
 <p>
-<SPAN CLASS="code">span p xs</SPAN> returns a tuple whose first element is the longest prefix of <SPAN CLASS="code">xs</SPAN> elements that satisfy <SPAN CLASS="code">p</SPAN> and whose second element is the remainder of the list.</p>
+<SPAN CLASS="code">span p xs</SPAN> returns a tuple whose first element is the longest prefix of <i>xs</i> elements that satisfy <i>p</i> and whose second element is the remainder of the list.</p>
 <PRE>
  span p xs == (takeWhile p xs, dropWhile p xs)</PRE>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="splitAt">splitAt</a> :: <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; [α] -&gt; ([α], [α])</SPAN></dt>
+<SPAN CLASS="code"><a name="splitAt">splitAt</a> :: <a class="tref" href="#ListView">ListView</a> α =&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; α β -&gt; (α β, α β)</SPAN></dt>
 <dd class="func">
 <p>
-<SPAN CLASS="code">splitAt n xs</SPAN> returns a tuple where first element is /xs/ prefix of length /n/ and the second element is the remainder of the list.</p>
+<SPAN CLASS="code">splitAt n xs</SPAN> returns a tuple where first element is <i>xs</i> prefix of length <i>n</i> and the second element is the remainder of the list.</p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="strhead">strhead</a> :: <b><a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> α</b> -&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> α</SPAN></dt>
 <dd class="func">
 <p>
-<SPAN CLASS="code">strhead s n</SPAN> returns the initial portion of s with at most n characters. if s.<a class="fref" href="#ListLike.length">ListLike.length</a> is lower than n, only so much characters are returned.</p>
+<SPAN CLASS="code">strhead s n</SPAN> returns the initial portion of s with at most n characters. if s.<a class="fref" href="#ListView.length">ListView.length</a> is lower than n, only so much characters are returned.</p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="sum">sum</a> :: <a class="tref" href="./PreludeBase.html#Num">Num</a> α =&gt; <b>[α]</b> -&gt; α</SPAN></dt>
@@ -732,16 +806,10 @@ Note that</p>
 The sum of the numbers in a list, same as (<a class="fref" href="#fold">fold</a> (<a class="fref" href="./PreludeBase.html#Num._plus">Num.+</a>) <a class="fref" href="./PreludeBase.html#Num.zero">Num.zero</a>)   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="take">take</a> :: <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; [α] -&gt; [α]</SPAN></dt>
+<SPAN CLASS="code"><a name="tail">tail</a> :: <a class="tref" href="#ListView">ListView</a> α =&gt; α β -&gt; α β</SPAN></dt>
 <dd class="func">
 <p>
-<SPAN CLASS="code">take n xs</SPAN> returns the starting sequence of <i>xs</i> with at most <i>n</i> elements. If <i>n</i> is greater than the <a class="fref" href="#ListLike.length">ListLike.length</a> of <i>xs</i>, the result is <i>xs</i>.</p>
-<p>
-For negative <i>n</i>, the result is undefined.</p>
-<p>
-The following property holds for all lists <i>xs</i> and non negative <i>n</i>:</p>
-<PRE>
- take n xs ++ drop n xs == xs</PRE>
+The tail of a list-like value, or <a class="fref" href="./PreludeBase.html#undefined">undefined</a> if <a class="fref" href="#ListEmpty.empty">ListEmpty.empty</a>   </p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="takeWhile">takeWhile</a> :: (α-&gt;<a class="tref" href="./PreludeBase.html#Bool">Bool</a>) -&gt; <b>[α]</b> -&gt; [α]</SPAN></dt>
@@ -876,28 +944,22 @@ will only hold if <SPAN CLASS="code">length as == length bs</SPAN></p>
 <a class="fref" href="#strhead">strhead</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> α -&gt; <a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> α -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α, <a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> α)</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#ListLike_StringJ.tail">ListLike_StringJ.tail</a></p>
+<a class="fref" href="#ListView_StringJ.uncons">ListView_StringJ.uncons</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> α -&gt; [α]</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#ListSource_StringJ.toList">ListSource_StringJ.toList</a></p>
+<a class="fref" href="#ListView_StringJ.toList">ListView_StringJ.toList</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> α -&gt; <a class="tref" href="./PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#ListLike_StringJ._null">ListLike_StringJ.null</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> α -&gt; α</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#ListLike_StringJ.head">ListLike_StringJ.head</a></p>
+<a class="fref" href="#ListView_StringJ._null">ListView_StringJ.null</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">[a] -&gt; [a]</SPAN></dt>
@@ -909,7 +971,7 @@ will only hold if <SPAN CLASS="code">length as == length bs</SPAN></p>
 <SPAN CLASS="code">[α] -&gt; [α] -&gt; [α]</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#ListLike__lbrack_rbrack._plus_plus">ListLike_[].++</a></p>
+<a class="fref" href="#ListMonoid__lbrack_rbrack._plus_plus">ListMonoid_[].++</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">[α] -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; α</SPAN></dt>
@@ -918,40 +980,52 @@ will only hold if <SPAN CLASS="code">length as == length bs</SPAN></p>
 <a class="fref" href="#_excl_excl">!!</a></p>
 </dd>
 <dt class="func">
+<SPAN CLASS="code">[α] -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α, [α])</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ListView__lbrack_rbrack.uncons">ListView_[].uncons</a></p>
+</dd>
+<dt class="func">
 <SPAN CLASS="code">[α] -&gt; [α]</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#init">init</a>, <a class="fref" href="#reverse">reverse</a>, <a class="fref" href="#ListLike__lbrack_rbrack.tail">ListLike_[].tail</a>, <a class="fref" href="#ListSource__lbrack_rbrack.toList">ListSource_[].toList</a></p>
+<a class="fref" href="#init">init</a>, <a class="fref" href="#reverse">reverse</a>, <a class="fref" href="#ListSource__lbrack_rbrack.toList">ListSource_[].toList</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">[α] -&gt; <a class="tref" href="./PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#ListLike__lbrack_rbrack._null">ListLike_[].null</a></p>
+<a class="fref" href="#ListView__lbrack_rbrack._null">ListView_[].null</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">[α] -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#ListLike__lbrack_rbrack.length">ListLike_[].length</a></p>
+<a class="fref" href="#ListView__lbrack_rbrack.length">ListView_[].length</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">[α] -&gt; α</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#last">last</a>, <a class="fref" href="#ListLike__lbrack_rbrack.head">ListLike_[].head</a></p>
+<a class="fref" href="#last">last</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; [α] -&gt; ([α], [α])</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> α -&gt; <a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> α</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#splitAt">splitAt</a></p>
+<a class="fref" href="#ListView_StringJ.take">ListView_StringJ.take</a>, <a class="fref" href="#ListView_StringJ.drop">ListView_StringJ.drop</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; [α] -&gt; [[α]]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#chunked">chunked</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; [α] -&gt; [α]</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#drop">drop</a>, <a class="fref" href="#take">take</a></p>
+<a class="fref" href="#ListView__lbrack_rbrack.drop">ListView_[].drop</a>, <a class="fref" href="#ListView__lbrack_rbrack.take">ListView_[].take</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; α -&gt; [α]</SPAN></dt>
@@ -1011,13 +1085,13 @@ will only hold if <SPAN CLASS="code">length as == length bs</SPAN></p>
 <SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#StringJ">StringJ</a> α</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#ListLike_StringJ.empty">ListLike_StringJ.empty</a></p>
+<a class="fref" href="#ListView_StringJ.empty">ListView_StringJ.empty</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">[α]</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#ListLike__lbrack_rbrack.empty">ListLike_[].empty</a></p>
+<a class="fref" href="#ListView__lbrack_rbrack.empty">ListView_[].empty</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">(α -&gt; β -&gt; β) -&gt; β -&gt; [α] -&gt; [β]</SPAN></dt>
@@ -1068,40 +1142,22 @@ will only hold if <SPAN CLASS="code">length as == length bs</SPAN></p>
 <a class="fref" href="#zip">zip</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Empty">Empty</a> c =&gt; c e -&gt; <a class="tref" href="./PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#ListEmpty">ListEmpty</a> c =&gt; c e -&gt; <a class="tref" href="./PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Empty._null">Empty.null</a></p>
+<a class="fref" href="#ListEmpty._null">ListEmpty.null</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#ListLike">ListLike</a> list =&gt; list e -&gt; list e -&gt; list e</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#ListLike._plus_plus">ListLike.++</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#ListLike">ListLike</a> list =&gt; list elem -&gt; list elem</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#ListLike.tail">ListLike.tail</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#ListLike">ListLike</a> list =&gt; list elem -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#ListLike.length">ListLike.length</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#ListLike">ListLike</a> list =&gt; list elem -&gt; elem</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#ListLike.head">ListLike.head</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#ListLike">ListLike</a> α =&gt; [α β] -&gt; α β</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="#ListEmpty">ListEmpty</a> α, <a class="tref" href="#ListSemigroup">ListSemigroup</a> α) =&gt; [α β] -&gt; α β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#concat">concat</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ListSemigroup">ListSemigroup</a> lm =&gt; lm e -&gt; lm e -&gt; lm e</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ListSemigroup._plus_plus">ListSemigroup.++</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#ListSource">ListSource</a> t =&gt; t e -&gt; [e]</SPAN></dt>
@@ -1110,10 +1166,52 @@ will only hold if <SPAN CLASS="code">length as == length bs</SPAN></p>
 <a class="fref" href="#ListSource.toList">ListSource.toList</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Empty">Empty</a> c =&gt; c e</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#ListView">ListView</a> lv =&gt; lv e -&gt; <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (e, lv e)</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Empty.empty">Empty.empty</a></p>
+<a class="fref" href="#ListView.uncons">ListView.uncons</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ListView">ListView</a> lv =&gt; lv e -&gt; [e]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ListView.toList">ListView.toList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ListView">ListView</a> lv =&gt; lv e -&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ListView.length">ListView.length</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ListView">ListView</a> lv =&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; lv e -&gt; lv e</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ListView.drop">ListView.drop</a>, <a class="fref" href="#ListView.take">ListView.take</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ListView">ListView</a> α =&gt; α β -&gt; α β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#tail">tail</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ListView">ListView</a> α =&gt; α β -&gt; β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#head">head</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ListView">ListView</a> α =&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; α β -&gt; (α β, α β)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#splitAt">splitAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ListEmpty">ListEmpty</a> c =&gt; c e</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ListEmpty.empty">ListEmpty.empty</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">(α-&gt;γ-&gt;β) -&gt; [α] -&gt; [γ] -&gt; [β]</SPAN></dt>
@@ -1134,7 +1232,7 @@ will only hold if <SPAN CLASS="code">length as == length bs</SPAN></p>
 <a class="fref" href="#zip3">zip3</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#ListLike">ListLike</a> β =&gt; (γ-&gt;β α) -&gt; [γ] -&gt; β α</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="#ListEmpty">ListEmpty</a> β, <a class="tref" href="#ListSemigroup">ListSemigroup</a> β) =&gt; (γ-&gt;β α) -&gt; [γ] -&gt; β α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#concatMap">concatMap</a></p>

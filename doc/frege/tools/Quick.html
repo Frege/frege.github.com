@@ -52,7 +52,7 @@ Ways to specify modules:</p>
 <LI>
  module  the module name (e.g. my.great.Module), will be lookup up in the current class path.</LI>
 <LI>
- dir/    A directory path. The directory is searched for class files, and for each class files an attempt is made to load it as if the given directory was in the class path.</LI>
+ dir/    A directory path. The directory is searched for class files, and for each class files an attempt is made to load it as if the given directory was in the class path. The directory must be the root of the classes contained therein, otherwise the classes won't get loaded.</LI>
 <LI>
  path-to.jar A jar or zip file is searched for class files, and for each class file found an attempt is made to load it as if the jar was in the class path.</LI>
 </ul>
@@ -79,13 +79,13 @@ Table of Content</h3>
 <div>
 <a HREF="#let">Functions and Values (alphabetically)</a></div>
 <div>
-<a class="fref" href="#async">async</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#asyncCheckField">asyncCheckField</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#asyncCheckModule">asyncCheckModule</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#asyncCounter">asyncCounter</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#checkArch">checkArch</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#checkDir">checkDir</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#checkDirEntry">checkDirEntry</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#checkField">checkField</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#checkModule">checkModule</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#checkProps">checkProps</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#checkThing">checkThing</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#counterMconcat">counterMconcat</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#defaultOptions">defaultOptions</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#genName">genName</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#getOpt">getOpt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#getProps">getProps</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_main">main</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#propName">propName</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#testAborted">testAborted</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#testFailed">testFailed</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#testPassed">testPassed</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#toLambda">toLambda</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#unAborted">unAborted</a></div>
+<a class="fref" href="#checkField">checkField</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#checkModule">checkModule</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#checkProps">checkProps</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#checkThing">checkThing</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#counterMconcat">counterMconcat</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#defaultOptions">defaultOptions</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#genName">genName</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#getOpt">getOpt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#getProps">getProps</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_main">main</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#propName">propName</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#testAborted">testAborted</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#testFailed">testFailed</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#testPassed">testPassed</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#toLambda">toLambda</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#unAborted">unAborted</a></div>
 </li>
 <li>
 <div>
 <a HREF="#case">Functions and Values (by type)</a></div>
 <div>
-<a class="fref" href="#async">async</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#asyncCheckField">asyncCheckField</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#asyncCheckModule">asyncCheckModule</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#asyncCounter">asyncCounter</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#checkArch">checkArch</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#checkDir">checkDir</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#checkDirEntry">checkDirEntry</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#checkField">checkField</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#checkModule">checkModule</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#checkProps">checkProps</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#checkThing">checkThing</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#counterMconcat">counterMconcat</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#defaultOptions">defaultOptions</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#genName">genName</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#getOpt">getOpt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#getProps">getProps</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_main">main</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#propName">propName</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#testAborted">testAborted</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#testFailed">testFailed</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#testPassed">testPassed</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#toLambda">toLambda</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#unAborted">unAborted</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Eq_Counter._eq_eq">Eq_Counter.==</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Eq_Counter._excl_eq">Eq_Counter.!=</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Eq_Counter.hashCode">Eq_Counter.hashCode</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_Counter.mtimes">Monoid_Counter.mtimes</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_Counter.mconcat">Monoid_Counter.mconcat</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_Counter.mappend">Monoid_Counter.mappend</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_Counter.mempty">Monoid_Counter.mempty</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_Counter.sconcat">Monoid_Counter.sconcat</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_Counter.stimes">Monoid_Counter.stimes</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Counter.has$aborted">Counter.has$aborted</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Counter.chg$aborted">Counter.chg$aborted</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Counter.Counter">Counter.Counter</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Counter.aborted">Counter.aborted</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Counter.chg$passed">Counter.chg$passed</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Counter.chg$failed">Counter.chg$failed</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Counter.failed">Counter.failed</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Counter.has$passed">Counter.has$passed</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Counter.has$failed">Counter.has$failed</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Counter.upd$aborted">Counter.upd$aborted</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Counter.passed">Counter.passed</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Counter.upd$failed">Counter.upd$failed</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Counter.upd$passed">Counter.upd$passed</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.has$props">Options.has$props</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.excluded">Options.excluded</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.chg$list">Options.chg$list</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.chg$excluded">Options.chg$excluded</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.Opt">Options.Opt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.chg$global">Options.chg$global</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.chg$props">Options.chg$props</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.chg$ntimes">Options.chg$ntimes</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.chg$verbose">Options.chg$verbose</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.has$global">Options.has$global</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.has$excluded">Options.has$excluded</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.global">Options.global</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.has$ntimes">Options.has$ntimes</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.has$list">Options.has$list</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.upd$list">Options.upd$list</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.props">Options.props</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.list">Options.list</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.has$verbose">Options.has$verbose</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.ntimes">Options.ntimes</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.upd$excluded">Options.upd$excluded</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.upd$global">Options.upd$global</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.upd$props">Options.upd$props</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.upd$ntimes">Options.upd$ntimes</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.verbose">Options.verbose</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.upd$verbose">Options.upd$verbose</a></div>
+<a class="fref" href="#checkField">checkField</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#checkModule">checkModule</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#checkProps">checkProps</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#checkThing">checkThing</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#counterMconcat">counterMconcat</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#defaultOptions">defaultOptions</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#genName">genName</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#getOpt">getOpt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#getProps">getProps</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_main">main</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#propName">propName</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#testAborted">testAborted</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#testFailed">testFailed</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#testPassed">testPassed</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#toLambda">toLambda</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#unAborted">unAborted</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Eq_Counter._eq_eq">Eq_Counter.==</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Eq_Counter._excl_eq">Eq_Counter.!=</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Eq_Counter.hashCode">Eq_Counter.hashCode</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_Counter.mtimes">Monoid_Counter.mtimes</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_Counter.mconcat">Monoid_Counter.mconcat</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_Counter.mappend">Monoid_Counter.mappend</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_Counter.mempty">Monoid_Counter.mempty</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_Counter.sconcat">Monoid_Counter.sconcat</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_Counter.stimes">Monoid_Counter.stimes</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Counter.has$aborted">Counter.has$aborted</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Counter.chg$aborted">Counter.chg$aborted</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Counter.Counter">Counter.Counter</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Counter.aborted">Counter.aborted</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Counter.chg$passed">Counter.chg$passed</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Counter.chg$failed">Counter.chg$failed</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Counter.failed">Counter.failed</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Counter.has$passed">Counter.has$passed</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Counter.has$failed">Counter.has$failed</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Counter.upd$aborted">Counter.upd$aborted</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Counter.passed">Counter.passed</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Counter.upd$failed">Counter.upd$failed</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Counter.upd$passed">Counter.upd$passed</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.has$props">Options.has$props</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.excluded">Options.excluded</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.chg$list">Options.chg$list</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.chg$excluded">Options.chg$excluded</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.Opt">Options.Opt</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.chg$global">Options.chg$global</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.chg$props">Options.chg$props</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.chg$ntimes">Options.chg$ntimes</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.chg$verbose">Options.chg$verbose</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.has$global">Options.has$global</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.has$excluded">Options.has$excluded</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.global">Options.global</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.has$ntimes">Options.has$ntimes</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.has$list">Options.has$list</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.upd$list">Options.upd$list</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.props">Options.props</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.list">Options.list</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.has$verbose">Options.has$verbose</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.ntimes">Options.ntimes</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.upd$excluded">Options.upd$excluded</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.upd$global">Options.upd$global</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.upd$props">Options.upd$props</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.upd$ntimes">Options.upd$ntimes</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.verbose">Options.verbose</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Options.upd$verbose">Options.upd$verbose</a></div>
 </li>
 </ul>
 <h3>
@@ -97,7 +97,7 @@ import <a HREF="../prelude/PreludeList.html">frege.prelude.PreludeList</a> as Pr
 </li>
 <li>
 <div>
-import <a HREF="../compiler/Import.html">frege.compiler.Import</a> as Import</div>
+import <a HREF="../compiler/Main.html">frege.compiler.Main</a> as Main</div>
 </li>
 <li>
 <div>
@@ -113,7 +113,15 @@ import <a HREF="../control/Concurrent.html">frege.control.Concurrent</a> as Conc
 </li>
 <li>
 <div>
+import <a HREF="../compiler/Import.html">frege.compiler.Import</a> as Import</div>
+</li>
+<li>
+<div>
 import <a HREF="../compiler/Data.html">frege.compiler.Data</a> as Data</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/Javatypes.html">frege.compiler.Javatypes</a> as Javatypes</div>
 </li>
 <li>
 <div>
@@ -121,11 +129,7 @@ import <a HREF="../Prelude.html">frege.Prelude</a> as Prelude</div>
 </li>
 <li>
 <div>
-import <a HREF="../compiler/Main.html">frege.compiler.Main</a> as Main</div>
-</li>
-<li>
-<div>
-import <a HREF="../compiler/Javatypes.html">frege.compiler.Javatypes</a> as Javatypes</div>
+import <a HREF="../lib/Modules.html">frege.lib.Modules</a> as Modules</div>
 </li>
 <li>
 <div>
@@ -236,7 +240,7 @@ inherited from <a class="fref" href="../data/Monoid.html#Monoid.mconcat">Monoid.
 inherited from <a class="fref" href="../data/Monoid.html#Monoid.mtimes">Monoid.mtimes</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monoid_Counter.sconcat">sconcat</a> :: <b>[<a class="tref" href="#Counter">Counter</a>]</b> -&gt; <a class="tref" href="#Counter">Counter</a></SPAN></dt>
+<SPAN CLASS="code"><a name="Monoid_Counter.sconcat">sconcat</a> :: [<a class="tref" href="#Counter">Counter</a>] -&gt; <a class="tref" href="#Counter">Counter</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../data/Monoid.html#Semigroup.sconcat">Semigroup.sconcat</a></p>
@@ -344,34 +348,6 @@ access field <SPAN CLASS="code">verbose</SPAN></p>
 <a name="let">Functions and Values</a></h2>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="async">async</a> :: (<a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a>) -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> a -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../control/Concurrent.html#MVar">MVar</a> (<a class="tref" href="../prelude/PreludeBase.html#CatchAll">CatchAll</a> a))</SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="asyncCheckField">asyncCheckField</a> :: <a class="tref" href="#Options">Options</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Class">Class</a> α -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../control/Concurrent.html#MVar">MVar</a> <a class="tref" href="#Counter">Counter</a>)</SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="asyncCheckModule">asyncCheckModule</a> :: <a class="tref" href="#Options">Options</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../control/Concurrent.html#MVar">MVar</a> <a class="tref" href="#Counter">Counter</a>)</SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="asyncCounter">asyncCounter</a> :: (<a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a>-&gt;<a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> α) -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Counter">Counter</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../control/Concurrent.html#MVar">MVar</a> <a class="tref" href="#Counter">Counter</a>)</SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="checkArch">checkArch</a> :: <a class="tref" href="#Options">Options</a> -&gt; <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#File">File</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Counter">Counter</a></SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="checkDir">checkDir</a> :: <a class="tref" href="#Options">Options</a> -&gt; <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#File">File</a></b> -&gt; [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>] -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Counter">Counter</a></SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="checkDirEntry">checkDirEntry</a> :: <a class="tref" href="#Options">Options</a> -&gt; <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#File">File</a></b> -&gt; [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>] -&gt; <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../control/Concurrent.html#MVar">MVar</a> <a class="tref" href="#Counter">Counter</a>)</SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
 <SPAN CLASS="code"><a name="checkField">checkField</a> :: <b><a class="tref" href="#Options">Options</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Class">Class</a> a -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Counter">Counter</a></SPAN></dt>
 <dd class="func">
 </dd>
@@ -410,7 +386,7 @@ access field <SPAN CLASS="code">verbose</SPAN></p>
 import a package and extract all toplevel properties   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="_main">main</a> :: <b>[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name="_main">main</a> :: <b>[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
@@ -442,7 +418,7 @@ We know that the type of the item is <a class="tref" href="../test/QuickCheckPro
 Hence the cast is a no-op, and the native interface will believe our claim that the Lambda is a Property and will allow us to use it just like any other <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a>.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="unAborted">unAborted</a> :: <b><a class="tref" href="#Counter">Counter</a></b> -&gt; <a class="tref" href="../data/Monoid.html#Monoid">Monoid</a> <a class="tref" href="#Counter">Counter</a> =&gt; <a class="tref" href="#Counter">Counter</a></SPAN></dt>
+<SPAN CLASS="code"><a name="unAborted">unAborted</a> :: <b><a class="tref" href="#Counter">Counter</a></b> -&gt; <a class="tref" href="#Counter">Counter</a></SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -456,7 +432,7 @@ Hence the cast is a no-op, and the native interface will believe our claim that 
 <a class="fref" href="#getProps">getProps</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>] -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code">[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>] -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#_main">main</a></p>
@@ -540,7 +516,7 @@ Hence the cast is a no-op, and the native interface will believe our claim that 
 <a class="fref" href="#Eq_Counter.hashCode">Eq_Counter.hashCode</a>, <a class="fref" href="#Counter.failed">Counter.failed</a>, <a class="fref" href="#Counter.passed">Counter.passed</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Counter">Counter</a> -&gt; <a class="tref" href="../data/Monoid.html#Monoid">Monoid</a> <a class="tref" href="#Counter">Counter</a> =&gt; <a class="tref" href="#Counter">Counter</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Counter">Counter</a> -&gt; <a class="tref" href="#Counter">Counter</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#unAborted">unAborted</a></p>
@@ -570,34 +546,10 @@ Hence the cast is a no-op, and the native interface will believe our claim that 
 <a class="fref" href="#Options.chg$ntimes">Options.chg$ntimes</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Options">Options</a> -&gt; <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#File">File</a> -&gt; [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>] -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../control/Concurrent.html#MVar">MVar</a> <a class="tref" href="#Counter">Counter</a>)</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#checkDirEntry">checkDirEntry</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Options">Options</a> -&gt; <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#File">File</a> -&gt; [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>] -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Counter">Counter</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#checkDir">checkDir</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Options">Options</a> -&gt; <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#File">File</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Counter">Counter</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#checkArch">checkArch</a></p>
-</dd>
-<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#Options">Options</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a> -&gt; [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>] -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Counter">Counter</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#checkProps">checkProps</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Options">Options</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../control/Concurrent.html#MVar">MVar</a> <a class="tref" href="#Counter">Counter</a>)</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#asyncCheckModule">asyncCheckModule</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#Options">Options</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Counter">Counter</a></SPAN></dt>
@@ -684,28 +636,10 @@ Hence the cast is a no-op, and the native interface will believe our claim that 
 <a class="fref" href="#defaultOptions">defaultOptions</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a>) -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> a -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../control/Concurrent.html#MVar">MVar</a> (<a class="tref" href="../prelude/PreludeBase.html#CatchAll">CatchAll</a> a))</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#async">async</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a>-&gt;<a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> α) -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Counter">Counter</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../control/Concurrent.html#MVar">MVar</a> <a class="tref" href="#Counter">Counter</a>)</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#asyncCounter">asyncCounter</a></p>
-</dd>
-<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#Options">Options</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Class">Class</a> a -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Counter">Counter</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#checkField">checkField</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Options">Options</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Class">Class</a> α -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../control/Concurrent.html#MVar">MVar</a> <a class="tref" href="#Counter">Counter</a>)</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#asyncCheckField">asyncCheckField</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">α -&gt; <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
