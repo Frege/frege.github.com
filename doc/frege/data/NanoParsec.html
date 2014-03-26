@@ -131,7 +131,7 @@ Parser Monad</p>
 <p>
 is the type of parsers that reads tokens of type <i>t</i> from a stream <i>s</i> and returns either an error message string or a result <i>r</i>.</p>
 <p>
-This does work very much like a combination of <SPAN CLASS="unknown">State</SPAN> and <a class="tref" href="../prelude/PreludeBase.html#Either">Either</a> monad, in that the monad bind operations (&gt;&gt;) and (&gt;&gt;=) stop going further if the left hand side signalled an error.</p>
+This does work very much like a combination of <a HREF="../control/monad/State.html#State">State</a> and <a class="tref" href="../prelude/PreludeBase.html#Either">Either</a> monad, in that the monad bind operations (&gt;&gt;) and (&gt;&gt;=) stop going further if the left hand side signalled an error.</p>
 <p>
 See also <a class="tref" href="#ParserT">ParserT</a></p>
 </dd>
@@ -177,7 +177,7 @@ The result is that of the first parser, if it succeeds, otherwise that of the se
 <PRE>
  expect 'c' &lt;|&gt; expect 'd'</PRE>
 <p>
-would succeed if the input starts with <SPAN CLASS="unknown">c</SPAN> or <SPAN CLASS="unknown">d</SPAN>.</p>
+would succeed if the input starts with 'c' or 'd'.</p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="MonadAlt_ParserT._gt_gt">&gt;&gt;</a> :: <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α =&gt; <b><a class="tref" href="#ParserT">ParserT</a> β δ α ε</b> -&gt; <a class="tref" href="#ParserT">ParserT</a> β δ α γ -&gt; <a class="tref" href="#ParserT">ParserT</a> β δ α γ</SPAN></dt>
@@ -266,11 +266,11 @@ Parser Monad Transformer</p>
 <p>
 is the type of parsers that reads tokens of type <i>t</i> from a stream <i>s t</i> and returns either an error message string or a result <i>r</i> in monad <i>m</i>.</p>
 <p>
-Works in principle like a combination of <SPAN CLASS="unknown">StateT</SPAN> and <SPAN CLASS="unknown">EitherT</SPAN>, where the state is the current input to get parsed, and the bind operations will stop on the first <a class="fref" href="../prelude/PreludeBase.html#Either.Left">Either.Left</a> result, which signals a syntax error.</p>
+Works in principle like a combination of <a HREF="../control/monad/State.html#StateT">StateT</a> and <a HREF="../control/monad/trans/EitherT.html#EitherT">EitherT</a>, where the state is the current input to get parsed, and the bind operations will stop on the first <a class="fref" href="../prelude/PreludeBase.html#Either.Left">Either.Left</a> result, which signals a syntax error.</p>
 <p>
 <a class="tref" href="#ParserT">ParserT</a> is also an instance of <a class="tref" href="../prelude/PreludeMonad.html#MonadAlt">MonadAlt</a>. The operations <a class="fref" href="../prelude/PreludeMonad.html#MonadAlt._lt_plus_gt">MonadAlt.&lt;+&gt;</a> and <a class="fref" href="../prelude/PreludeMonad.html#Alt._lt_bar_gt">Alt.&lt;|&gt;</a> can be used to implement choice, i.e. they allow to continue on failure.</p>
 <p>
-The input for a <a class="tref" href="#ParserT">ParserT</a> must be something that is an instance of <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a>. Ordinary lists, <SPAN CLASS="unknown">Strings</SPAN>, <a HREF="./Iterators.html#StringIterator">StringIterator</a> and <a HREF="./Iterators.html#ArrayIterator">ArrayIterator</a> are such types. The parser combinators use only the <a class="fref" href="../prelude/PreludeList.html#ListView.uncons">ListView.uncons</a> and <a class="fref" href="../prelude/PreludeList.html#ListEmpty._null">ListEmpty.null</a> operations.</p>
+The input for a <a class="tref" href="#ParserT">ParserT</a> must be something that is an instance of <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a>. Ordinary lists, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>s, <a HREF="./Iterators.html#StringIterator">StringIterator</a> and <a HREF="./Iterators.html#ArrayIterator">ArrayIterator</a> are such types. The parser combinators use only the <a class="fref" href="../prelude/PreludeList.html#ListView.uncons">ListView.uncons</a> and <a class="fref" href="../prelude/PreludeList.html#ListEmpty._null">ListEmpty.null</a> operations.</p>
 <h3>
 Constructors</h3>
 <dl class="func">
@@ -577,7 +577,7 @@ consumes nothing on failure of <i>p</i>   </p>
 <SPAN CLASS="code"><a name="prop_failure">prop_failure</a> :: <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
 <dd class="func">
 <p>
-<SPAN CLASS="unknown">Parser.failure</SPAN> fails   </p>
+<a class="fref" href="#failure">failure</a> fails   </p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="prop_many">prop_many</a> :: <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
