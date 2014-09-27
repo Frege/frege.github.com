@@ -23,7 +23,7 @@ Frege is thought as a substitute for this missing GHC port. While not derived fr
 Project State
 -------------
 
-The compiler, an Eclipse plugin and a provisional version of the documentation can be [downloaded](https://github.com/Frege/frege/downloads). Note that Frege requires JDK 7 to compile and run programs.
+The compiler, an Eclipse plugin and a provisional version of the documentation can be [downloaded](https://github.com/Frege/frege/releases). Note that Frege requires JDK 7 to compile and run programs.
 
 The compiler and the documentation tool are quite stable, the documentation provisional and the library is evolving. It already supports important parts of the Haskell 2010 standard library.
 
@@ -60,10 +60,8 @@ Links
 
 [Author's Blog](http://fregepl.blogspot.com/)
 
-[Nightly Builds](http://jenkins.jamestastic.com/job/frege/)
-
 [Online REPL](http://try.frege-lang.org/)
 
-[Online Docs (Runtime Javadoc)](http://frege.github.com/doc/index.html)
+[Online Docs (Runtime Javadoc)](http://www.frege-lang.org/doc/index.html)
 
-[Online Docs (Frege)](http://frege.github.com/doc/frege/)
+[Online Docs (Frege)](http://www.frege-lang.org/doc/frege/)
