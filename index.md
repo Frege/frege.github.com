@@ -64,4 +64,4 @@ Links
 
 [Online Docs (Runtime Javadoc)](http://www.frege-lang.org/doc/index.html)
 
-[Online Docs (Frege)](http://www.frege-lang.org/doc/frege/)
+[Online Docs (Frege)](http://www.frege-lang.org/doc/frege/Prelude.html)
