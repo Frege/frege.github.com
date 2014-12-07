@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
 <META http-equiv="Content-Type" content="text/html;charset=utf-8">
-<TITLE>frege.java.util.Regex - frege documentation</TITLE>
+<TITLE>Java.util.Regex - frege documentation</TITLE>
 <style TYPE="text/css">
 body { font-family: helvetica, arial, sans-serif }
 pre { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
@@ -17,7 +17,7 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 </style>
 <BODY>
 <h1>
-<a name="package">Package <SPAN CLASS="code">frege.java.util.Regex</SPAN></a></h1>
+<a name="package">Package <SPAN CLASS="code">Java.util.Regex</SPAN></a></h1>
 <p>
  Source file: <SPAN CLASS="code">frege/java/util/Regex.fr</SPAN></p>
 <h3>
@@ -37,19 +37,19 @@ Table of Content</h3>
 <div>
 <a HREF="#data">Data Types</a></div>
 <div>
-<a class="tref" href="#Matcher">Matcher</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#PatternSyntaxException">PatternSyntaxException</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Regex">Regex</a></div>
+<a class="tref" href="#MatchResult">MatchResult</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Matcher">Matcher</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#PatternSyntaxException">PatternSyntaxException</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Regex">Regex</a></div>
 </li>
 <li>
 <div>
 <a HREF="#let">Functions and Values (alphabetically)</a></div>
 <div>
-<a class="fref" href="#_excl_tilde">!~</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_div_tilde">/~</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_eq_tilde">=~</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_eq_tilde_tilde">=~~</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_qm_tilde">?~</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#regforce">regforce</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#regforceα">regforceα</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#regforceβ">regforceβ</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_tilde">~</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_tilde_tilde">~~</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_tilde_tilde_tilde">~~~</a></div>
+<a class="fref" href="#_excl_tilde">!~</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_div_tilde">/~</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_eq_tilde">=~</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_eq_tilde_tilde">=~~</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_qm_tilde">?~</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#regforce">regforce</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#regforceα">regforceα</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#regforceβ">regforceβ</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_tilde">~</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_tilde_tilde">~~</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_tilde_tilde_star">~~*</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_tilde_tilde_tilde">~~~</a></div>
 </li>
 <li>
 <div>
 <a HREF="#case">Functions and Values (by type)</a></div>
 <div>
-<a class="fref" href="#_excl_tilde">!~</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_div_tilde">/~</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_eq_tilde">=~</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_eq_tilde_tilde">=~~</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_qm_tilde">?~</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#regforce">regforce</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#regforceα">regforceα</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#regforceβ">regforceβ</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_tilde">~</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_tilde_tilde">~~</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_tilde_tilde_tilde">~~~</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Exceptional_PatternSyntaxException.javaClass">Exceptional_PatternSyntaxException.javaClass</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.groups">Matcher.groups</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.find">Matcher.find</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.clone">Matcher.clone</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.end">Matcher.end</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.groupCount">Matcher.groupCount</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.group">Matcher.group</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.groupPrim">Matcher.groupPrim</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.replaceFirst">Matcher.replaceFirst</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.matches">Matcher.matches</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.match">Matcher.match</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.replaceAll">Matcher.replaceAll</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.toString">Matcher.toString</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.start">Matcher.start</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.usePattern">Matcher.usePattern</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.useAnchoringBounds">Matcher.useAnchoringBounds</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.usePatternAndFind">Matcher.usePatternAndFind</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.matcher">Regex.matcher</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.dotall">Regex.dotall</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.comments">Regex.comments</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.case_insensitive">Regex.case_insensitive</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.canon_eq">Regex.canon_eq</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.compileα">Regex.compileα</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.compile">Regex.compile</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.compileβ">Regex.compileβ</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.literal">Regex.literal</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.flags">Regex.flags</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.splitted">Regex.splitted</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.pattern">Regex.pattern</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.multiline">Regex.multiline</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.split">Regex.split</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.unicode_case">Regex.unicode_case</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.toString">Regex.toString</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.unix_lines">Regex.unix_lines</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.unicode_character_class">Regex.unicode_character_class</a></div>
+<a class="fref" href="#_excl_tilde">!~</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_div_tilde">/~</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_eq_tilde">=~</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_eq_tilde_tilde">=~~</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_qm_tilde">?~</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#regforce">regforce</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#regforceα">regforceα</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#regforceβ">regforceβ</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_tilde">~</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_tilde_tilde">~~</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_tilde_tilde_star">~~*</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_tilde_tilde_tilde">~~~</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Exceptional_PatternSyntaxException.javaClass">Exceptional_PatternSyntaxException.javaClass</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MatchResult.group">MatchResult.group</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MatchResult.endα">MatchResult.endα</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MatchResult.end">MatchResult.end</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MatchResult.endβ">MatchResult.endβ</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MatchResult.start">MatchResult.start</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MatchResult.groupα">MatchResult.groupα</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MatchResult.groupCount">MatchResult.groupCount</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MatchResult.groupβ">MatchResult.groupβ</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MatchResult.startα">MatchResult.startα</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MatchResult.startβ">MatchResult.startβ</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.groups">Matcher.groups</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.find">Matcher.find</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.clone">Matcher.clone</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.end">Matcher.end</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.groupCount">Matcher.groupCount</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.group">Matcher.group</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.groupPrim">Matcher.groupPrim</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.replaceFirst">Matcher.replaceFirst</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.matches">Matcher.matches</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.match">Matcher.match</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.replaceAll">Matcher.replaceAll</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.toString">Matcher.toString</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.start">Matcher.start</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.usePattern">Matcher.usePattern</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.useAnchoringBounds">Matcher.useAnchoringBounds</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Matcher.usePatternAndFind">Matcher.usePatternAndFind</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.matcher">Regex.matcher</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.dotall">Regex.dotall</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.comments">Regex.comments</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.case_insensitive">Regex.case_insensitive</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.canon_eq">Regex.canon_eq</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.compileα">Regex.compileα</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.compile">Regex.compile</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.compileβ">Regex.compileβ</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.literal">Regex.literal</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.flags">Regex.flags</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.splitted">Regex.splitted</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.pattern">Regex.pattern</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.multiline">Regex.multiline</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.split">Regex.split</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.unicode_case">Regex.unicode_case</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.toString">Regex.toString</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.unix_lines">Regex.unix_lines</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Regex.unicode_character_class">Regex.unicode_character_class</a></div>
 </li>
 </ul>
 <h3>
@@ -57,27 +57,27 @@ Imports</h3>
 <ul>
 <li>
 <div>
-import <a HREF="../../prelude/PreludeBase.html">frege.prelude.PreludeBase</a> as PreludeBase</div>
+import <a HREF="../../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
 </li>
 <li>
 <div>
-import <a HREF="../Lang.html">frege.java.Lang</a> as Lang</div>
+import <a HREF="../Lang.html">Java.Lang</a> as Lang</div>
 </li>
 <li>
 <div>
-import <a HREF="../../prelude/PreludeArrays.html">frege.prelude.PreludeArrays</a> as PreludeArrays</div>
+import <a HREF="../../prelude/PreludeArrays.html">Prelude.PreludeArrays</a> as PreludeArrays</div>
 </li>
 <li>
 <div>
-import <a HREF="../../prelude/PreludeIO.html">frege.prelude.PreludeIO</a> as PreludeIO</div>
+import <a HREF="../../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
 </li>
 <li>
 <div>
-import <a HREF="../../prelude/PreludeList.html">frege.prelude.PreludeList</a> as PreludeList</div>
+import <a HREF="../../prelude/PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
 </li>
 <li>
 <div>
-import <a HREF="../../control/Semigroupoid.html">frege.control.Semigroupoid</a> as Semigroupoid</div>
+import <a HREF="../../control/Semigroupoid.html">Control.Semigroupoid</a> as Semigroupoid</div>
 </li>
 </ul>
 <h2>
@@ -99,6 +99,58 @@ Member Functions</h3>
 <h2>
 <a name="data">Data Types</a></h2>
 <dl class="data">
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name="MatchResult"> </a> <a class="tref" href="#MatchResult">MatchResult</a> = <b>pure </b><b>native </b>java.util.regex.MatchResult</SPAN></dt>
+<dd class="data">
+<p>
+This interface contains query methods used to determine the results of a match against a regular expression.</p>
+<p>
+More: <a HREF="https://docs.oracle.com/javase/7/docs/api/java/util/regex/MatchResult.html">JavaDoc</a></p>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="MatchResult.end">end</a> :: <a class="tref" href="#MatchResult">MatchResult</a> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="#MatchResult">MatchResult</a> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a><br><b>pure </b><b>native </b>end</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="MatchResult.endα">endα</a> :: <b><a class="tref" href="#MatchResult">MatchResult</a></b> -&gt; <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a><br><b>pure </b><b>native </b>end&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#MatchResult.end">end</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="MatchResult.endβ">endβ</a> :: <b><a class="tref" href="#MatchResult">MatchResult</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a><br><b>pure </b><b>native </b>end&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#MatchResult.end">end</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="MatchResult.group">group</a> :: <a class="tref" href="#MatchResult">MatchResult</a> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#String">String</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="#MatchResult">MatchResult</a> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#String">String</a><br><b>pure </b><b>native </b>group</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="MatchResult.groupCount">groupCount</a> :: <b><a class="tref" href="#MatchResult">MatchResult</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a><br><b>pure </b><b>native </b>groupCount</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="MatchResult.groupα">groupα</a> :: <b><a class="tref" href="#MatchResult">MatchResult</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#String">String</a><br><b>pure </b><b>native </b>group&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#MatchResult.group">group</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="MatchResult.groupβ">groupβ</a> :: <b><a class="tref" href="#MatchResult">MatchResult</a></b> -&gt; <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#String">String</a><br><b>pure </b><b>native </b>group&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#MatchResult.group">group</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="MatchResult.start">start</a> :: <a class="tref" href="#MatchResult">MatchResult</a> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="#MatchResult">MatchResult</a> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a><br><b>pure </b><b>native </b>start</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="MatchResult.startα">startα</a> :: <b><a class="tref" href="#MatchResult">MatchResult</a></b> -&gt; <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a><br><b>pure </b><b>native </b>start&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#MatchResult.start">start</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="MatchResult.startβ">startβ</a> :: <b><a class="tref" href="#MatchResult">MatchResult</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a><br><b>pure </b><b>native </b>start&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#MatchResult.start">start</a></SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
 <dt class="data">
 <SPAN CLASS="code"><b>data </b><a name="Matcher"> </a> <a class="tref" href="#Matcher">Matcher</a> = <b>pure </b><b>native </b>java.util.regex.Matcher</SPAN></dt>
 <dd class="data">
@@ -123,7 +175,7 @@ Returns the offset after the last character of the subsequence captured by the g
 <p>
 If the specified capturing group failed to match, the return value will be -1.</p>
 <p>
-The follwoing property holds:</p>
+The following property holds:</p>
 <PRE>
  (m.group n == Nothing) ==&gt; (m.end n &lt; 0)</PRE>
 </dd>
@@ -141,7 +193,7 @@ The following java fragment appends all matched substrings of a string:</p>
  Matcher m = p.matcher(s);
  while (m.find()) result += m.group(0);  // "catdogcat"</PRE>
 <p>
-The follwoing frege fragment computes the same result:</p>
+The following frege fragment computes the same result:</p>
 <PRE>
  result = loop m.find "" where
       s = "cats and dogs are not concatenated."
@@ -149,7 +201,11 @@ The follwoing frege fragment computes the same result:</p>
       m = p.matcher s
       loop :: Just Matcher -&gt; String -&gt; String
       loop (Just m) r = loop m.find (r++m.match)
-      loop Nothing    = r</PRE>
+      loop Nothing  r = r</PRE>
+<p>
+See also <a class="fref" href="#_tilde_tilde_star">~~*</a>, which allows the above to be written:</p>
+<PRE>
+ concat ("cats and dogs are not concatenated." ~~* ´cat|dog´)</PRE>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="Matcher.group">group</a> :: <b><a class="tref" href="#Matcher">Matcher</a></b> -&gt; <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
@@ -163,11 +219,11 @@ Capturing groups are indexed from left to right, starting at one. Group zero den
 <p>
 If the match was successful but the group specified failed to match any part of the input sequence, then <a class="fref" href="../../prelude/PreludeBase.html#Maybe.Nothing">Maybe.Nothing</a> is returned.</p>
 <p>
-Note that some groups, for example <SPAN CLASS="code">(a?)</SPAN>, match the empty string. This functon will return <SPAN CLASS="code">Just ""</SPAN> when such a group successfully matches the empty string in the input.</p>
+Note that some groups, for example <SPAN CLASS="code">(a?)</SPAN>, match the empty string. This function will return <SPAN CLASS="code">Just ""</SPAN> when such a group successfully matches the empty string in the input.</p>
 <p>
 The result will also be <a class="fref" href="../../prelude/PreludeBase.html#Maybe.Nothing">Maybe.Nothing</a> when the specified group does not exist, that is, when the <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> argument is outside the range <SPAN CLASS="code">[0..</SPAN><a class="fref" href="#Matcher.groupCount">Matcher.groupCount</a> <SPAN CLASS="code">m]</SPAN></p>
 <p>
-The folloing property holds for a <a class="tref" href="#Matcher">Matcher</a> <i>m</i> with input sequence <i>s</i> and valid group index /g/:</p>
+The following property holds for a <a class="tref" href="#Matcher">Matcher</a> <i>m</i> with input sequence <i>s</i> and valid group index /g/:</p>
 <PRE>
  isJust (m.group g) ==&gt; (m.group g) == Just (s.substr (m.start g) (m.end g))</PRE>
 </dd>
@@ -241,7 +297,7 @@ Returns the start index of the subsequence captured by the given group during th
 <p>
 If the specified capturing group failed to match, the return value will be -1.</p>
 <p>
-The follwoing property holds:</p>
+The following property holds:</p>
 <PRE>
  (m.group n == Nothing) ==&gt; (m.start n &lt; 0)</PRE>
 </dd>
@@ -422,7 +478,7 @@ return the source of this <a class="tref" href="#Regex">Regex</a>   </p>
 As this returns a <a class="tref" href="../../prelude/PreludeBase.html#String">String</a> array, one usually uses <a class="fref" href="#Regex.splitted">Regex.splitted</a>    </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Regex.splitted">splitted</a> :: <a class="tref" href="#Regex">Regex</a> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#String">String</a> -&gt; [<a class="tref" href="../../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
+<SPAN CLASS="code"><a name="Regex.splitted">splitted</a> :: <b><a class="tref" href="#Regex">Regex</a></b> -&gt; <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> -&gt; [<a class="tref" href="../../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
 <dd class="func">
 <p>
 Split a string around matches of a regular expression and return the result as list of strings.</p>
@@ -488,13 +544,13 @@ Unix lines mode can also be enabled via the embedded flag expression <SPAN CLASS
 <a name="let">Functions and Values</a></h2>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="_excl_tilde">!~</a> :: <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> -&gt; <b><a class="tref" href="#Regex">Regex</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a name="_excl_tilde">!~</a> :: <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> -&gt; <b><a class="tref" href="#Regex">Regex</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;15</SPAN></dt>
 <dd class="func">
 <PRE>
  s !~ p == !(s ~ p)</PRE>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="_div_tilde">/~</a> :: <b><a class="tref" href="#Matcher">Matcher</a></b> -&gt; <b><a class="tref" href="#Regex">Regex</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a name="_div_tilde">/~</a> :: <b><a class="tref" href="#Matcher">Matcher</a></b> -&gt; <b><a class="tref" href="#Regex">Regex</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a><br><b>infix</b>&nbsp;&nbsp;15</SPAN></dt>
 <dd class="func">
 <PRE>
  m /~ p</PRE>
@@ -506,7 +562,7 @@ is like</p>
 but instead of the matcher it returns the matched string, if any.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="_eq_tilde">=~</a> :: <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> -&gt; <b><a class="tref" href="#Regex">Regex</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="#Matcher">Matcher</a></SPAN></dt>
+<SPAN CLASS="code"><a name="_eq_tilde">=~</a> :: <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> -&gt; <b><a class="tref" href="#Regex">Regex</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="#Matcher">Matcher</a><br><b>infix</b>&nbsp;&nbsp;15</SPAN></dt>
 <dd class="func">
 <PRE>
  string =~ regex</PRE>
@@ -514,7 +570,7 @@ but instead of the matcher it returns the matched string, if any.</p>
 tries to match <i>string</i> against <i>regex</i> and returns <SPAN CLASS="code">Just matcher</SPAN> if it succeeds, <SPAN CLASS="code">Nothing</SPAN> otherwise.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="_eq_tilde_tilde">=~~</a> :: <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> -&gt; <b><a class="tref" href="#Regex">Regex</a></b> -&gt; [<a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
+<SPAN CLASS="code"><a name="_eq_tilde_tilde">=~~</a> :: <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> -&gt; <b><a class="tref" href="#Regex">Regex</a></b> -&gt; [<a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a>]<br><b>infix</b>&nbsp;&nbsp;15</SPAN></dt>
 <dd class="func">
 <PRE>
  string =~~ regex</PRE>
@@ -528,14 +584,14 @@ Example:</p>
     baddate -&gt; ....</PRE>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="_qm_tilde">?~</a> :: <b><a class="tref" href="#Matcher">Matcher</a></b> -&gt; <b><a class="tref" href="#Regex">Regex</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="#Matcher">Matcher</a></SPAN></dt>
+<SPAN CLASS="code"><a name="_qm_tilde">?~</a> :: <b><a class="tref" href="#Matcher">Matcher</a></b> -&gt; <b><a class="tref" href="#Regex">Regex</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="#Matcher">Matcher</a><br><b>infix</b>&nbsp;&nbsp;15</SPAN></dt>
 <dd class="func">
 <p>
 <SPAN CLASS="code">m ?~ p</SPAN> binds pattern <i>p</i> to the matcher <i>m</i> and tries a match. There must have been a successful match on <i>m</i> before.</p>
 <p>
 Returns <a class="fref" href="../../prelude/PreludeBase.html#Maybe.Nothing">Maybe.Nothing</a> if match fails, else (<a class="fref" href="../../prelude/PreludeBase.html#Maybe.Just">Maybe.Just</a> <SPAN CLASS="code">m</SPAN>).</p>
 <p>
-This function is most usefull in conjunction with patterns that use the G-anchor when one wants to extract multiple differnt adjacent items from a string.</p>
+This function is most useful in conjunction with patterns that use the G-anchor when one wants to extract multiple different adjacent items from a string.</p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name="regforce">regforce</a> :: <a class="tref" href="../../prelude/PreludeBase.html#String">String</a> -&gt; <a class="tref" href="#Regex">Regex</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#String">String</a> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="#Regex">Regex</a><br><b>pure </b><b>native </b>java.util.regex.Pattern.compile</SPAN></dt>
@@ -568,7 +624,7 @@ This will throw <a class="tref" href="#PatternSyntaxException">PatternSyntaxExce
 Use this only if you're sure that pattern compilation will not throw an exception, or if you don't care.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="_tilde">~</a> :: <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> -&gt; <b><a class="tref" href="#Regex">Regex</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a name="_tilde">~</a> :: <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> -&gt; <b><a class="tref" href="#Regex">Regex</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;15</SPAN></dt>
 <dd class="func">
 <PRE>
 string ~ regex</PRE>
@@ -576,22 +632,32 @@ string ~ regex</PRE>
 <SPAN CLASS="code">true</SPAN> if <i>string</i> matches <i>regex</i>, <SPAN CLASS="code">false</SPAN> otherwise</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="_tilde_tilde">~~</a> :: <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> -&gt; <b><a class="tref" href="#Regex">Regex</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a name="_tilde_tilde">~~</a> :: <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> -&gt; <b><a class="tref" href="#Regex">Regex</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a><br><b>infix</b>&nbsp;&nbsp;15</SPAN></dt>
 <dd class="func">
 <PRE>
- ("string" ~~ #r??#) == Just "rin"</PRE>
+ ("string" ~~ ´r..´) == Just "rin"</PRE>
 <p>
 Tries a match and returns <SPAN CLASS="code">Just x</SPAN> where <i>x</i> is the matched substring or <SPAN CLASS="code">Nothing</SPAN> if there was no match.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="_tilde_tilde_tilde">~~~</a> :: <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> -&gt; <b><a class="tref" href="#Regex">Regex</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a name="_tilde_tilde_star">~~*</a> :: <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> -&gt; <b><a class="tref" href="#Regex">Regex</a></b> -&gt; [<a class="tref" href="../../prelude/PreludeBase.html#String">String</a>]<br><b>infix</b>&nbsp;&nbsp;15</SPAN></dt>
+<dd class="func">
+<PRE>
+ "cats and dogs are not concatenated." ~~* ´cat|dog´</PRE>
+<p>
+Matches the string with the regex and returns a list of all matches. The example gives:</p>
+<PRE>
+ ["cat", "dog", "cat"]</PRE>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="_tilde_tilde_tilde">~~~</a> :: <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> -&gt; <b><a class="tref" href="#Regex">Regex</a></b> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a><br><b>infix</b>&nbsp;&nbsp;15</SPAN></dt>
 <dd class="func">
 <PRE>
  string ~~~ regex</PRE>
 <p>
 Matches <i>string</i> with <i>regex</i> and returns a function that can be used to extract the matched part of the string and the captured substrings.</p>
 <PRE>
-   let f = "frege" ~~~ #(..).(..)#
+   let f = "frege" ~~~ ´(..).(..)´
    in [ f i | i &lt;- 0..3 ]</PRE>
 <p>
 yields</p>
@@ -639,6 +705,12 @@ Alias for <a class="fref" href="#Regex.compile">Regex.compile</a></p>
 <a class="fref" href="#_eq_tilde_tilde">=~~</a></p>
 </dd>
 <dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeBase.html#String">String</a> -&gt; <a class="tref" href="#Regex">Regex</a> -&gt; [<a class="tref" href="../../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#_tilde_tilde_star">~~*</a></p>
+</dd>
+<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeBase.html#String">String</a> -&gt; <a class="tref" href="#Regex">Regex</a> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
@@ -667,6 +739,30 @@ Alias for <a class="fref" href="#Regex.compile">Regex.compile</a></p>
 <dd class="func">
 <p>
 <a class="fref" href="#regforceα">regforceα</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#MatchResult">MatchResult</a> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#MatchResult.groupβ">MatchResult.groupβ</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#MatchResult">MatchResult</a> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#MatchResult.endα">MatchResult.endα</a>, <a class="fref" href="#MatchResult.startα">MatchResult.startα</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#MatchResult">MatchResult</a> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#MatchResult.groupα">MatchResult.groupα</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#MatchResult">MatchResult</a> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#MatchResult.endβ">MatchResult.endβ</a>, <a class="fref" href="#MatchResult.groupCount">MatchResult.groupCount</a>, <a class="fref" href="#MatchResult.startβ">MatchResult.startβ</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#Matcher">Matcher</a> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#String">String</a> -&gt; <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
@@ -786,7 +882,7 @@ Alias for <a class="fref" href="#Regex.compile">Regex.compile</a></p>
 <SPAN CLASS="code">ω</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#regforce">regforce</a>, <a class="fref" href="#Regex.compile">Regex.compile</a></p>
+<a class="fref" href="#regforce">regforce</a>, <a class="fref" href="#MatchResult.group">MatchResult.group</a>, <a class="fref" href="#MatchResult.end">MatchResult.end</a>, <a class="fref" href="#MatchResult.start">MatchResult.start</a>, <a class="fref" href="#Regex.compile">Regex.compile</a></p>
 </dd>
 </dl>
 <p>
