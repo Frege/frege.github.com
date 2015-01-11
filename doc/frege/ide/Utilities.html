@@ -1,0 +1,676 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<META http-equiv="Content-Type" content="text/html;charset=utf-8">
+<TITLE>Ide.Utilities - frege documentation</TITLE>
+<style TYPE="text/css">
+body { font-family: helvetica, arial, sans-serif }
+pre { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
+h3  { font-weight: lighter }
+dt.func { background: rgb(95%, 95%, 80%); margin-top: 10px }
+dt.clas { background: rgb(80%, 95%, 95%); margin-top: 10px }
+dt.inst { background: rgb(95%, 90%, 95%); margin-top: 10px }
+dt.data { background: rgb(95%, 95%, 95%); margin-top: 10px }
+span.code { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
+span.unknown { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: red }
+a.fref { text-decoration: none; font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(30%, 30%, 0%) }
+a.tref { text-decoration: none; font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(40%, 0%,  40%) }
+</style>
+<BODY>
+<h1>
+<a name="package">Package <SPAN CLASS="code">Ide.Utilities</SPAN></a></h1>
+<p>
+ Source file: <SPAN CLASS="code">./frege/ide/Utilities.fr</SPAN></p>
+<h3>
+Package Documentation</h3>
+<p>
+Provide functions for use in the fregIDE</p>
+<h3>
+Table of Content</h3>
+<ul>
+<li>
+<div>
+<a HREF="#instance">Instances</a></div>
+<div>
+<a class="tref" href="#Show_Proposal">Show_Proposal</a></div>
+</li>
+<li>
+<div>
+<a HREF="#data">Data Types</a></div>
+<div>
+<a class="tref" href="#Proposal">Proposal</a></div>
+</li>
+<li>
+<div>
+<a HREF="#let">Functions and Values (alphabetically)</a></div>
+<div>
+<a class="fref" href="#backwards">backwards</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#correctDependenciesFor">correctDependenciesFor</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#exprSymbols">exprSymbols</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#getDependencies">getDependencies</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#htmlDocumentation">htmlDocumentation</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#htmlify">htmlify</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#imports">imports</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#initRoot">initRoot</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#justCompiled">justCompiled</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#label">label</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#lexPassIDE">lexPassIDE</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#magicPNs">magicPNs</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#newLoader">newLoader</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#packDocumentation">packDocumentation</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#passDone">passDone</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#proposeContent">proposeContent</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#refreshPackages">refreshPackages</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#symbolDocumentation">symbolDocumentation</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#symbols">symbols</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#thisTab">thisTab</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#updateCache">updateCache</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#verbose">verbose</a></div>
+</li>
+<li>
+<div>
+<a HREF="#case">Functions and Values (by type)</a></div>
+<div>
+<a class="fref" href="#backwards">backwards</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#correctDependenciesFor">correctDependenciesFor</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#exprSymbols">exprSymbols</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#getDependencies">getDependencies</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#htmlDocumentation">htmlDocumentation</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#htmlify">htmlify</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#imports">imports</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#initRoot">initRoot</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#justCompiled">justCompiled</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#label">label</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#lexPassIDE">lexPassIDE</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#magicPNs">magicPNs</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#newLoader">newLoader</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#packDocumentation">packDocumentation</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#passDone">passDone</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#proposeContent">proposeContent</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#refreshPackages">refreshPackages</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#symbolDocumentation">symbolDocumentation</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#symbols">symbols</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#thisTab">thisTab</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#updateCache">updateCache</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#verbose">verbose</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_Proposal.showList">Show_Proposal.showList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_Proposal.show">Show_Proposal.show</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_Proposal.display">Show_Proposal.display</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_Proposal.showChars">Show_Proposal.showChars</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_Proposal.showsPrec">Show_Proposal.showsPrec</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_Proposal.showsub">Show_Proposal.showsub</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Proposal.has$off">Proposal.has$off</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Proposal.chg$off">Proposal.chg$off</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Proposal.chg$additional">Proposal.chg$additional</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Proposal.additional">Proposal.additional</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Proposal.Proposal">Proposal.Proposal</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Proposal.chg$len">Proposal.chg$len</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Proposal.chg$cursor">Proposal.chg$cursor</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Proposal.chg$newText">Proposal.chg$newText</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Proposal.has$additional">Proposal.has$additional</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Proposal.chg$proposal">Proposal.chg$proposal</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Proposal.chg$prefix">Proposal.chg$prefix</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Proposal.cursor">Proposal.cursor</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Proposal.has$len">Proposal.has$len</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Proposal.has$cursor">Proposal.has$cursor</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Proposal.has$newText">Proposal.has$newText</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Proposal.proposal">Proposal.proposal</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Proposal.len">Proposal.len</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Proposal.has$prefix">Proposal.has$prefix</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Proposal.has$proposal">Proposal.has$proposal</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Proposal.off">Proposal.off</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Proposal.newText">Proposal.newText</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Proposal.prefix">Proposal.prefix</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Proposal.upd$len">Proposal.upd$len</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Proposal.upd$additional">Proposal.upd$additional</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Proposal.upd$cursor">Proposal.upd$cursor</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Proposal.upd$off">Proposal.upd$off</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Proposal.upd$newText">Proposal.upd$newText</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Proposal.upd$prefix">Proposal.upd$prefix</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Proposal.upd$proposal">Proposal.upd$proposal</a></div>
+</li>
+<li>
+<div>
+<a HREF="#of">Re-Exported Items</a></div>
+<div>
+<a class="fref" href="../tools/doc/Utilities.html#symDcolon">dcolon</a></div>
+</li>
+</ul>
+<h3>
+Imports</h3>
+<ul>
+<li>
+<div>
+import <a HREF="../prelude/PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/passes/Imp.html">Compiler.passes.Imp</a> as I</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/types/Expression.html">Compiler.types.Expression</a> as Expression</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/types/ConstructorField.html">Compiler.types.ConstructorField</a> as ConstructorField</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/common/CompilerOptions.html">Compiler.common.CompilerOptions</a> as CompilerOptions</div>
+</li>
+<li>
+<div>
+import <a HREF="../data/List.html">Data.List</a> as DL</div>
+</li>
+<li>
+<div>
+import <a HREF="../tools/doc/Utilities.html">Tools.doc.Utilities</a> as DU</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/enums/Flags.html">Compiler.enums.Flags</a> as Flags</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/types/Global.html">Compiler.types.Global</a> as G</div>
+</li>
+<li>
+<div>
+import <a HREF="../Prelude.html">frege.Prelude</a> as Prelude</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/types/NSNames.html">Compiler.types.NSNames</a> as NSNames</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/Main.html">Compiler.Main</a> as M</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/grammar/Lexer.html">Compiler.grammar.Lexer</a> as Lex</div>
+</li>
+<li>
+<div>
+import <a HREF="../lib/Modules.html">Lib.Modules</a> as Modules</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/types/Packs.html">Compiler.types.Packs</a> as Packs</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/classes/Nice.html">Compiler.classes.Nice</a> as Nice</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/types/Positions.html">Compiler.types.Positions</a> as Positions</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeArrays.html">Prelude.PreludeArrays</a> as PreludeArrays</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/Typecheck.html">Compiler.Typecheck</a> as TY</div>
+</li>
+<li>
+<div>
+import <a HREF="../java/util/Regex.html">Java.util.Regex</a> as Regexp</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeText.html">Prelude.PreludeText</a> as PreludeText</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as PreludeMonad</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/types/QNames.html">Compiler.types.QNames</a> as QNames</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/tc/Util.html">Compiler.tc.Util</a> as TC</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/types/Symbols.html">Compiler.types.Symbols</a> as Symbols</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/Utilities.html">Compiler.Utilities</a> as U</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/types/Tokens.html">Compiler.types.Tokens</a> as Tokens</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/enums/TokenID.html">Compiler.enums.TokenID</a> as TokenID</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/types/Types.html">Compiler.types.Types</a> as Types</div>
+</li>
+<li>
+<div>
+import <a HREF="../data/TreeMap.html">Data.TreeMap</a> as TreeMap</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/enums/Visibility.html">Compiler.enums.Visibility</a> as Visibility</div>
+</li>
+</ul>
+<h2>
+<a name="instance">Instances</a></h2>
+<dl class="inst">
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name="Show_Proposal"> </a> <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> <a class="tref" href="#Proposal">Proposal</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="Show_Proposal.display">display</a> ∷ <b><a class="tref" href="#Proposal">Proposal</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.display">Show.display</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Show_Proposal.show">show</a> ∷ <b><a class="tref" href="#Proposal">Proposal</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Show_Proposal.showChars">showChars</a> ∷ <b><a class="tref" href="#Proposal">Proposal</a></b> → [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showChars">Show.showChars</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Show_Proposal.showList">showList</a> ∷ <b>[<a class="tref" href="#Proposal">Proposal</a>]</b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showList">Show.showList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Show_Proposal.showsPrec">showsPrec</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <b><a class="tref" href="#Proposal">Proposal</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsPrec">Show.showsPrec</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Show_Proposal.showsub">showsub</a> ∷ <b><a class="tref" href="#Proposal">Proposal</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsub">Show.showsub</a></p>
+</dd>
+</dl>
+</dd>
+</dl>
+<h2>
+<a name="data">Data Types</a></h2>
+<dl class="data">
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name="Proposal"> </a> <a class="tref" href="#Proposal">Proposal</a></SPAN></dt>
+<dd class="data">
+<p>
+This resembles the SourceProposal class. The additional information must be lazy!</p>
+<h3>
+Constructors</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="Proposal.Proposal">Proposal</a> {proposal ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a>, newText ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a>, prefix ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a>, off ∷ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, len ∷ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, cursor ∷ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, additional ∷ <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a>}</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="Proposal.additional">additional</a> ∷ <b><a class="tref" href="#Proposal">Proposal</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+Additional information displayed in the pop-up view to the right of the main proposal list view when this proposal is selected.      </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Proposal.cursor">cursor</a> ∷ <b><a class="tref" href="#Proposal">Proposal</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+The offset at which the insertion point should be placed after completing using this proposal, relative to the end of the inserted text.      </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Proposal.len">len</a> ∷ <b><a class="tref" href="#Proposal">Proposal</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+The range of text being replaced.   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Proposal.newText">newText</a> ∷ <b><a class="tref" href="#Proposal">Proposal</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+The new text being added/substituted if the user accepts this proposal   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Proposal.off">off</a> ∷ <b><a class="tref" href="#Proposal">Proposal</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+The range of text being replaced.   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Proposal.prefix">prefix</a> ∷ <b><a class="tref" href="#Proposal">Proposal</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+The prefix being completed.   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Proposal.proposal">proposal</a> ∷ <b><a class="tref" href="#Proposal">Proposal</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+The text shown to the user in the popup view   </p>
+</dd>
+</dl>
+</dd>
+</dl>
+<h2>
+<a name="let">Functions and Values</a></h2>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="backwards">backwards</a> ∷ <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> <a class="tref" href="../compiler/types/Tokens.html#Token">Token</a> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → [<a class="tref" href="../compiler/types/Tokens.html#Token">Token</a>]</SPAN></dt>
+<dd class="func">
+<p>
+create a <a class="tref" href="../compiler/types/Tokens.html#Token">Token</a> list from an <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> backwards   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="correctDependenciesFor">correctDependenciesFor</a> ∷ <b>[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
+<dd class="func">
+<p>
+Correct the result of <SPAN CLASS="unknown">frege.compiler.Scanner.dependencies</SPAN>, which returns a singleton list with one element <SPAN CLASS="code">"frege.prelude.PreludeBase"</SPAN> for source files that don't have any import clauses. Yet, unless this is a prelude package itself, <SPAN CLASS="code">"frege.Prelude"</SPAN> will be imported.</p>
+<p>
+This discrepancy leads to files not compiling in the FregIDE builder because they are queued before <SPAN CLASS="code">"frege/Prelude.fr"</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="exprSymbols">exprSymbols</a> ∷ <a class="tref" href="../compiler/types/Expression.html#ExprT">ExprT</a> → <a class="tref" href="../compiler/types/Global.html#StG">StG</a> [<a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a>]</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="getDependencies">getDependencies</a> ∷ <a class="tref" href="../java/Lang.html#CharSequence">CharSequence</a> → <a class="tref" href="../compiler/types/Global.html#StG">StG</a> [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
+<dd class="func">
+<p>
+Get all the dependencies from a source text</p>
+<p>
+This will be done on a fresh <a class="tref" href="../compiler/types/Global.html#Global">Global</a>   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="htmlDocumentation">htmlDocumentation</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="htmlify">htmlify</a> ∷ <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="imports">imports</a> ∷ <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → [(<a class="tref" href="../compiler/types/Positions.html#Position">Position</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</SPAN></dt>
+<dd class="func">
+<p>
+Create a list of triples with  position, namespace and package for every import except the automatic ones.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="initRoot">initRoot</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../lib/Modules.html#Y">Y</a> <a class="tref" href="../lib/Modules.html#RTree">RTree</a>)</SPAN></dt>
+<dd class="func">
+<p>
+initialize the root of the package tree   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="justCompiled">justCompiled</a> ∷ <b><a class="tref" href="../compiler/types/Global.html#Global">Global</a></b> → <a class="tref" href="../lib/Modules.html#Y">Y</a> <a class="tref" href="../lib/Modules.html#RTree">RTree</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../lib/Modules.html#Y">Y</a> <a class="tref" href="../lib/Modules.html#RTree">RTree</a>)</SPAN></dt>
+<dd class="func">
+<p>
+add a new module   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="label">label</a> ∷ <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <b><a class="tref" href="../compiler/types/Symbols.html#SymbolT">SymbolT</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+Make a label for a symbol</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="lexPassIDE">lexPassIDE</a> ∷ <b><a class="tref" href="../java/Lang.html#CharSequence">CharSequence</a></b> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</SPAN></dt>
+<dd class="func">
+<p>
+lexical analysis from the IDE does not read files, but takes the content directly   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="magicPNs">magicPNs</a> ∷ <b>[([<a class="tref" href="../prelude/PreludeBase.html#String">String</a>], α)]</b> → [([<a class="tref" href="../prelude/PreludeBase.html#String">String</a>], α)]</SPAN></dt>
+<dd class="func">
+<p>
+add magic package names   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="newLoader">newLoader</a> ∷ <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+Make a new loader for operation in the IDE. The rationale is that <i>not</i> making a new loader for every character typed will save time and space.</p>
+<p>
+The IDE code must decide when to make a new loader. For instance, this could be appropriate when the editor is re-activated, because in the meantime other modules could have been rebuild.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="packDocumentation">packDocumentation</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="passDone">passDone</a> ∷ <a class="tref" href="../compiler/types/Global.html#StG">StG</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+Increment the pass number in the state</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="proposeContent">proposeContent</a> ∷ <b><a class="tref" href="../compiler/types/Global.html#Global">Global</a></b> → <a class="tref" href="../lib/Modules.html#Y">Y</a> <a class="tref" href="../lib/Modules.html#RTree">RTree</a> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> <a class="tref" href="../compiler/types/Tokens.html#Token">Token</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → [<a class="tref" href="#Proposal">Proposal</a>]</SPAN></dt>
+<dd class="func">
+<p>
+Called by Eclipse Content Proposer to make proposals.</p>
+<p>
+Usage: <SPAN CLASS="code">proposeContent global offset tokens index</SPAN></p>
+<dl>
+<dt>
+global</dt>
+<dd>
+<div>
+ a symbol table, preferably with type information </div>
+</dd>
+<dt>
+offset</dt>
+<dd>
+<div>
+ position of the caret </div>
+</dd>
+<dt>
+tokens</dt>
+<dd>
+<div>
+ array of tokens </div>
+</dd>
+<dt>
+index</dt>
+<dd>
+<div>
+  index into the array, points to the token that starts before  the caret </div>
+</dd>
+</dl>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="refreshPackages">refreshPackages</a> ∷ <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+Force the import to re-create packages next time   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="symbolDocumentation">symbolDocumentation</a> ∷ <a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="symbols">symbols</a> ∷ <a class="tref" href="../compiler/types/Global.html#Symtab">Symtab</a> → [<a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a>]</SPAN></dt>
+<dd class="func">
+<p>
+Create the list of symbols ordered by position</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="thisTab">thisTab</a> ∷ <b><a class="tref" href="../compiler/types/Global.html#Global">Global</a></b> → <a class="tref" href="../compiler/types/Global.html#Symtab">Symtab</a></SPAN></dt>
+<dd class="func">
+<p>
+Failure tolerant version of <a class="fref" href="../compiler/types/Global.html#Global.thisTab">Global.thisTab</a> for use in TreeModelBuilder. In case of syntax errors, there is no symtab yet, hence Global.thisTab is undefined. This, in turn, causes an exception in Eclipse. We can avoid this by just pretending the symbol table was empty.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="updateCache">updateCache</a> ∷ <b><a class="tref" href="../compiler/types/Global.html#Global">Global</a></b> → <a class="tref" href="../compiler/Classtools.html#FregePackage">Classtools.FregePackage</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+Remove this package from the package cache   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="verbose">verbose</a> ∷ (<a class="tref" href="../compiler/classes/Nice.html#Nice">Nice</a> α, <a class="tref" href="../compiler/classes/QNameMatcher.html#QNameMatcher">QNameMatcher.QNameMatcher</a> α) ⇒ <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <b><a class="tref" href="../compiler/types/Types.html#SigmaT">SigmaT</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+<h2>
+<a name="case">Functions and Values by Type</a></h2>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/Global.html#Symtab">Symtab</a> → [<a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#symbols">symbols</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#symbolDocumentation">symbolDocumentation</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> <a class="tref" href="../compiler/types/Tokens.html#Token">Token</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → [<a class="tref" href="../compiler/types/Tokens.html#Token">Token</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#backwards">backwards</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Proposal">Proposal</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Proposal.Proposal">Proposal.Proposal</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#htmlDocumentation">htmlDocumentation</a>, <a class="fref" href="#packDocumentation">packDocumentation</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../lib/Modules.html#Y">Y</a> <a class="tref" href="../lib/Modules.html#RTree">RTree</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#initRoot">initRoot</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>] → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#correctDependenciesFor">correctDependenciesFor</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">[<a class="tref" href="#Proposal">Proposal</a>] → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_Proposal.showList">Show_Proposal.showList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/Expression.html#ExprT">ExprT</a> → <a class="tref" href="../compiler/types/Global.html#StG">StG</a> [<a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#exprSymbols">exprSymbols</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="../lib/Modules.html#Y">Y</a> <a class="tref" href="../lib/Modules.html#RTree">RTree</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> <a class="tref" href="../compiler/types/Tokens.html#Token">Token</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → [<a class="tref" href="#Proposal">Proposal</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#proposeContent">proposeContent</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="../lib/Modules.html#Y">Y</a> <a class="tref" href="../lib/Modules.html#RTree">RTree</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../lib/Modules.html#Y">Y</a> <a class="tref" href="../lib/Modules.html#RTree">RTree</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#justCompiled">justCompiled</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#htmlify">htmlify</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="../compiler/Classtools.html#FregePackage">Classtools.FregePackage</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#updateCache">updateCache</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="../compiler/types/Global.html#Symtab">Symtab</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#thisTab">thisTab</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/Global.html#Global">Global</a> → [(<a class="tref" href="../compiler/types/Positions.html#Position">Position</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#imports">imports</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Proposal">Proposal</a> → (<a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a>→<a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a>) → <a class="tref" href="#Proposal">Proposal</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Proposal.chg$additional">Proposal.chg$additional</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Proposal">Proposal</a> → (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>→<a class="tref" href="../prelude/PreludeBase.html#String">String</a>) → <a class="tref" href="#Proposal">Proposal</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Proposal.chg$newText">Proposal.chg$newText</a>, <a class="fref" href="#Proposal.chg$proposal">Proposal.chg$proposal</a>, <a class="fref" href="#Proposal.chg$prefix">Proposal.chg$prefix</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Proposal">Proposal</a> → (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>→<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>) → <a class="tref" href="#Proposal">Proposal</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Proposal.chg$off">Proposal.chg$off</a>, <a class="fref" href="#Proposal.chg$len">Proposal.chg$len</a>, <a class="fref" href="#Proposal.chg$cursor">Proposal.chg$cursor</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Proposal">Proposal</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Proposal">Proposal</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Proposal.upd$additional">Proposal.upd$additional</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Proposal">Proposal</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Proposal">Proposal</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Proposal.upd$newText">Proposal.upd$newText</a>, <a class="fref" href="#Proposal.upd$prefix">Proposal.upd$prefix</a>, <a class="fref" href="#Proposal.upd$proposal">Proposal.upd$proposal</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Proposal">Proposal</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#Proposal">Proposal</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Proposal.upd$len">Proposal.upd$len</a>, <a class="fref" href="#Proposal.upd$cursor">Proposal.upd$cursor</a>, <a class="fref" href="#Proposal.upd$off">Proposal.upd$off</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Proposal">Proposal</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Proposal.additional">Proposal.additional</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Proposal">Proposal</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_Proposal.show">Show_Proposal.show</a>, <a class="fref" href="#Show_Proposal.display">Show_Proposal.display</a>, <a class="fref" href="#Show_Proposal.showsub">Show_Proposal.showsub</a>, <a class="fref" href="#Proposal.proposal">Proposal.proposal</a>, <a class="fref" href="#Proposal.newText">Proposal.newText</a>, <a class="fref" href="#Proposal.prefix">Proposal.prefix</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Proposal">Proposal</a> → [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_Proposal.showChars">Show_Proposal.showChars</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Proposal">Proposal</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Proposal.cursor">Proposal.cursor</a>, <a class="fref" href="#Proposal.len">Proposal.len</a>, <a class="fref" href="#Proposal.off">Proposal.off</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../java/Lang.html#CharSequence">CharSequence</a> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#lexPassIDE">lexPassIDE</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../java/Lang.html#CharSequence">CharSequence</a> → <a class="tref" href="../compiler/types/Global.html#StG">StG</a> [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#getDependencies">getDependencies</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#Proposal">Proposal</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_Proposal.showsPrec">Show_Proposal.showsPrec</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#newLoader">newLoader</a>, <a class="fref" href="#refreshPackages">refreshPackages</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/Global.html#StG">StG</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#passDone">passDone</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">[([<a class="tref" href="../prelude/PreludeBase.html#String">String</a>], α)] → [([<a class="tref" href="../prelude/PreludeBase.html#String">String</a>], α)]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#magicPNs">magicPNs</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="../compiler/types/Symbols.html#SymbolT">SymbolT</a> α → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#label">label</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">α → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Proposal.has$off">Proposal.has$off</a>, <a class="fref" href="#Proposal.has$additional">Proposal.has$additional</a>, <a class="fref" href="#Proposal.has$len">Proposal.has$len</a>, <a class="fref" href="#Proposal.has$cursor">Proposal.has$cursor</a>, <a class="fref" href="#Proposal.has$newText">Proposal.has$newText</a>, <a class="fref" href="#Proposal.has$prefix">Proposal.has$prefix</a>, <a class="fref" href="#Proposal.has$proposal">Proposal.has$proposal</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="../compiler/classes/Nice.html#Nice">Nice</a> α, <a class="tref" href="../compiler/classes/QNameMatcher.html#QNameMatcher">QNameMatcher.QNameMatcher</a> α) ⇒ <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="../compiler/types/Types.html#SigmaT">SigmaT</a> α → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#verbose">verbose</a></p>
+</dd>
+</dl>
+<p>
+<a HREF="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Strict" height="31" width="88"></a></p>
+</BODY>
+</HTML>

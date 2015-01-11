@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
 <META http-equiv="Content-Type" content="text/html;charset=utf-8">
-<TITLE>frege.data.wrapper.Endo - frege documentation</TITLE>
+<TITLE>Data.wrapper.Endo - frege documentation</TITLE>
 <style TYPE="text/css">
 body { font-family: helvetica, arial, sans-serif }
 pre { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
@@ -17,7 +17,7 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 </style>
 <BODY>
 <h1>
-<a name="package">Package <SPAN CLASS="code">frege.data.wrapper.Endo</SPAN></a></h1>
+<a name="package">Package <SPAN CLASS="code">Data.wrapper.Endo</SPAN></a></h1>
 <p>
  Source file: <SPAN CLASS="code">./frege/data/wrapper/Endo.fr</SPAN></p>
 <h3>
@@ -51,7 +51,7 @@ Imports</h3>
 <ul>
 <li>
 <div>
-import <a HREF="../../prelude/PreludeList.html">frege.prelude.PreludeList</a> as PreludeList</div>
+import <a HREF="../../prelude/PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
 </li>
 <li>
 <div>
@@ -59,31 +59,31 @@ import <a HREF="../../Prelude.html">frege.Prelude</a> as Prelude</div>
 </li>
 <li>
 <div>
-import <a HREF="../Monoid.html">frege.data.Monoid</a> as Monoid</div>
+import <a HREF="../Monoid.html">Data.Monoid</a> as Monoid</div>
 </li>
 <li>
 <div>
-import <a HREF="../../prelude/PreludeBase.html">frege.prelude.PreludeBase</a> as PreludeBase</div>
+import <a HREF="../../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
 </li>
 <li>
 <div>
-import <a HREF="../../prelude/PreludeArrays.html">frege.prelude.PreludeArrays</a> as PreludeArrays</div>
+import <a HREF="../../prelude/PreludeArrays.html">Prelude.PreludeArrays</a> as PreludeArrays</div>
 </li>
 <li>
 <div>
-import <a HREF="../../prelude/PreludeIO.html">frege.prelude.PreludeIO</a> as PreludeIO</div>
+import <a HREF="../../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
 </li>
 <li>
 <div>
-import <a HREF="../../prelude/PreludeText.html">frege.prelude.PreludeText</a> as PreludeText</div>
+import <a HREF="../../prelude/PreludeText.html">Prelude.PreludeText</a> as PreludeText</div>
 </li>
 <li>
 <div>
-import <a HREF="../../prelude/PreludeMonad.html">frege.prelude.PreludeMonad</a> as PreludeMonad</div>
+import <a HREF="../../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as PreludeMonad</div>
 </li>
 <li>
 <div>
-import <a HREF="../../java/util/Regex.html">frege.java.util.Regex</a> as Regexp</div>
+import <a HREF="../../java/util/Regex.html">Java.util.Regex</a> as Regexp</div>
 </li>
 </ul>
 <h2>
@@ -98,37 +98,37 @@ The <a class="tref" href="../Monoid.html#Monoid">Monoid</a> instance for <a clas
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Monoid_Endo.mappend">mappend</a> :: <b><a class="tref" href="#Endo">Endo</a> α</b> -&gt; <b><a class="tref" href="#Endo">Endo</a> α</b> -&gt; <a class="tref" href="#Endo">Endo</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name="Monoid_Endo.mappend">mappend</a> ∷ <b><a class="tref" href="#Endo">Endo</a> α</b> → <b><a class="tref" href="#Endo">Endo</a> α</b> → <a class="tref" href="#Endo">Endo</a> α<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
 <dd class="func">
 <PRE>
  Endo f &lt;&gt; Endo g = Endo (f . g)   </PRE>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monoid_Endo.mconcat">mconcat</a> :: <b>[<a class="tref" href="#Endo">Endo</a> α]</b> -&gt; <a class="tref" href="#Endo">Endo</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name="Monoid_Endo.mconcat">mconcat</a> ∷ <b>[<a class="tref" href="#Endo">Endo</a> α]</b> → <a class="tref" href="#Endo">Endo</a> α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../Monoid.html#Monoid.mconcat">Monoid.mconcat</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monoid_Endo.mempty">mempty</a> :: <a class="tref" href="#Endo">Endo</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name="Monoid_Endo.mempty">mempty</a> ∷ <a class="tref" href="#Endo">Endo</a> α</SPAN></dt>
 <dd class="func">
 <PRE>
  Endo id   </PRE>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monoid_Endo.mtimes">mtimes</a> :: <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="#Endo">Endo</a> α -&gt; <a class="tref" href="#Endo">Endo</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name="Monoid_Endo.mtimes">mtimes</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#Endo">Endo</a> α → <a class="tref" href="#Endo">Endo</a> α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../Monoid.html#Monoid.mtimes">Monoid.mtimes</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monoid_Endo.sconcat">sconcat</a> :: [<a class="tref" href="#Endo">Endo</a> α] -&gt; <a class="tref" href="#Endo">Endo</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name="Monoid_Endo.sconcat">sconcat</a> ∷ <b>[<a class="tref" href="#Endo">Endo</a> α]</b> → <a class="tref" href="#Endo">Endo</a> α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../Monoid.html#Semigroup.sconcat">Semigroup.sconcat</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monoid_Endo.stimes">stimes</a> :: <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="#Endo">Endo</a> α -&gt; <a class="tref" href="#Endo">Endo</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name="Monoid_Endo.stimes">stimes</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#Endo">Endo</a> α → <a class="tref" href="#Endo">Endo</a> α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../Monoid.html#Semigroup.stimes">Semigroup.stimes</a></p>
@@ -148,7 +148,7 @@ The monoid of endomorphisms under composition.   </p>
 Constructors</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Endo.Endo">Endo</a> {unwrap :: a -&gt; a}</SPAN></dt>
+<SPAN CLASS="code"><a name="Endo.Endo">Endo</a> {unwrap ∷ a → a}</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -156,7 +156,7 @@ Constructors</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Endo.unwrap">unwrap</a> :: <b><a class="tref" href="#Endo">Endo</a> α</b> -&gt; α -&gt; α</SPAN></dt>
+<SPAN CLASS="code"><a name="Endo.unwrap">unwrap</a> ∷ <b><a class="tref" href="#Endo">Endo</a> α</b> → α → α</SPAN></dt>
 <dd class="func">
 <p>
 access field <SPAN CLASS="code">unwrap</SPAN></p>
@@ -168,7 +168,7 @@ access field <SPAN CLASS="code">unwrap</SPAN></p>
 <a name="let">Functions and Values</a></h2>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="appEndo">appEndo</a> :: <b><a class="tref" href="#Endo">Endo</a> α</b> -&gt; α -&gt; α</SPAN></dt>
+<SPAN CLASS="code"><a name="appEndo">appEndo</a> ∷ <b><a class="tref" href="#Endo">Endo</a> α</b> → α → α</SPAN></dt>
 <dd class="func">
 <p>
 Alias for <a class="fref" href="#Endo.unwrap">Endo.unwrap</a></p>
@@ -178,37 +178,37 @@ Alias for <a class="fref" href="#Endo.unwrap">Endo.unwrap</a></p>
 <a name="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code">(a -&gt; a) -&gt; <a class="tref" href="#Endo">Endo</a> a</SPAN></dt>
+<SPAN CLASS="code">(a → a) → <a class="tref" href="#Endo">Endo</a> a</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Endo.Endo">Endo.Endo</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Endo">Endo</a> α -&gt; <a class="tref" href="#Endo">Endo</a> α -&gt; <a class="tref" href="#Endo">Endo</a> α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Endo">Endo</a> α → <a class="tref" href="#Endo">Endo</a> α → <a class="tref" href="#Endo">Endo</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monoid_Endo.mappend">Monoid_Endo.mappend</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Endo">Endo</a> α -&gt; α -&gt; α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Endo">Endo</a> α → α → α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Endo.unwrap">Endo.unwrap</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">[<a class="tref" href="#Endo">Endo</a> α] -&gt; <a class="tref" href="#Endo">Endo</a> α</SPAN></dt>
+<SPAN CLASS="code">[<a class="tref" href="#Endo">Endo</a> α] → <a class="tref" href="#Endo">Endo</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monoid_Endo.mconcat">Monoid_Endo.mconcat</a>, <a class="fref" href="#Monoid_Endo.sconcat">Monoid_Endo.sconcat</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="#Endo">Endo</a> α -&gt; <a class="tref" href="#Endo">Endo</a> α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#Endo">Endo</a> α → <a class="tref" href="#Endo">Endo</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monoid_Endo.mtimes">Monoid_Endo.mtimes</a>, <a class="fref" href="#Monoid_Endo.stimes">Monoid_Endo.stimes</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">α -&gt; <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code">α → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Endo.has$unwrap">Endo.has$unwrap</a></p>
@@ -220,13 +220,13 @@ Alias for <a class="fref" href="#Endo.unwrap">Endo.unwrap</a></p>
 <a class="fref" href="#Monoid_Endo.mempty">Monoid_Endo.mempty</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Endo">Endo</a> α -&gt; (<a class="tref" href="../../prelude/PreludeBase.html#Function">-&gt;</a> α α-&gt;β-&gt;β) -&gt; <a class="tref" href="#Endo">Endo</a> β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Endo">Endo</a> α → (<a class="tref" href="../../prelude/PreludeBase.html#Function">-&gt;</a> α α→β→β) → <a class="tref" href="#Endo">Endo</a> β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Endo.chg$unwrap">Endo.chg$unwrap</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Endo">Endo</a> α -&gt; (β-&gt;β) -&gt; <a class="tref" href="#Endo">Endo</a> β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Endo">Endo</a> α → (β→β) → <a class="tref" href="#Endo">Endo</a> β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Endo.upd$unwrap">Endo.upd$unwrap</a></p>

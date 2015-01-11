@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
 <META http-equiv="Content-Type" content="text/html;charset=utf-8">
-<TITLE>frege.data.Bits - frege documentation</TITLE>
+<TITLE>Data.Bits - frege documentation</TITLE>
 <style TYPE="text/css">
 body { font-family: helvetica, arial, sans-serif }
 pre { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
@@ -17,19 +17,27 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 </style>
 <BODY>
 <h1>
-<a name="package">Package <SPAN CLASS="code">frege.data.Bits</SPAN></a></h1>
+<a name="package">Package <SPAN CLASS="code">Data.Bits</SPAN></a></h1>
 <p>
  Source file: <SPAN CLASS="code">./frege/data/Bits.fr</SPAN></p>
 <h3>
 Package Documentation</h3>
+<p>
+Fast sets for small integers and enumerations, implemented as bit operations on <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a> There may be at most 64 elements, due to the bit size of <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>.   </p>
 <h3>
 Table of Content</h3>
 <ul>
 <li>
 <div>
+<a HREF="#class">Classes</a></div>
+<div>
+<a class="tref" href="#Bits">Bits</a></div>
+</li>
+<li>
+<div>
 <a HREF="#instance">Instances</a></div>
 <div>
-<a class="tref" href="#Eq_BitSet">Eq_BitSet</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ListEmpty_BitSet">ListEmpty_BitSet</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Monoid_BitSet">Monoid_BitSet</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Ord_BitSet">Ord_BitSet</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Show_BitSet">Show_BitSet</a></div>
+<a class="tref" href="#Bits_Int">Bits_Int</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Bits_Integer">Bits_Integer</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Bits_Long">Bits_Long</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Eq_BitSet">Eq_BitSet</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ListEmpty_BitSet">ListEmpty_BitSet</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Monoid_BitSet">Monoid_BitSet</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Ord_BitSet">Ord_BitSet</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Show_BitSet">Show_BitSet</a></div>
 </li>
 <li>
 <div>
@@ -41,7 +49,7 @@ Table of Content</h3>
 <div>
 <a HREF="#case">Functions and Values (by type)</a></div>
 <div>
-<a class="fref" href="#Eq_BitSet._eq_eq">Eq_BitSet.==</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Eq_BitSet._excl_eq">Eq_BitSet.!=</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Eq_BitSet.hashCode">Eq_BitSet.hashCode</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListEmpty_BitSet._null">ListEmpty_BitSet.null</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListEmpty_BitSet.empty">ListEmpty_BitSet.empty</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_BitSet.mtimes">Monoid_BitSet.mtimes</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_BitSet.mconcat">Monoid_BitSet.mconcat</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_BitSet.mappend">Monoid_BitSet.mappend</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_BitSet.mempty">Monoid_BitSet.mempty</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_BitSet.sconcat">Monoid_BitSet.sconcat</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_BitSet.stimes">Monoid_BitSet.stimes</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_BitSet._gt">Ord_BitSet.&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_BitSet._lt_eq">Ord_BitSet.&lt;=</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_BitSet._lt">Ord_BitSet.&lt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_BitSet._lt_eq_gt">Ord_BitSet.&lt;=&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_BitSet.compare">Ord_BitSet.compare</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_BitSet._gt_eq">Ord_BitSet.&gt;=</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_BitSet.max">Ord_BitSet.max</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_BitSet.min">Ord_BitSet.min</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_BitSet.showList">Show_BitSet.showList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_BitSet.show">Show_BitSet.show</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_BitSet.display">Show_BitSet.display</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_BitSet.showChars">Show_BitSet.showChars</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_BitSet.showsPrec">Show_BitSet.showsPrec</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_BitSet.showsub">Show_BitSet.showsub</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.intersection">BitSet.intersection</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.BitSet">BitSet.BitSet</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.difference">BitSet.difference</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.chg$set">BitSet.chg$set</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.fromList">BitSet.fromList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.differenceE">BitSet.differenceE</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.has$set">BitSet.has$set</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.set">BitSet.set</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.intersectionE">BitSet.intersectionE</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.member">BitSet.member</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.singleton">BitSet.singleton</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.union">BitSet.union</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.subset">BitSet.subset</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.size">BitSet.size</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.toList">BitSet.toList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.universal">BitSet.universal</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.unionE">BitSet.unionE</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.upd$set">BitSet.upd$set</a></div>
+<a class="fref" href="#Bits.clearBit">Bits.clearBit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits._dot_bar_dot">Bits..|.</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits._dot_caret_dot">Bits..^.</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits._dot_amp_dot">Bits..&amp;.</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits.bit">Bits.bit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits.bitSize">Bits.bitSize</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits.setBit">Bits.setBit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits.rotate">Bits.rotate</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits.complementBit">Bits.complementBit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits.complement">Bits.complement</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits.isSigned">Bits.isSigned</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits.rotateR">Bits.rotateR</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits.rotateL">Bits.rotateL</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits.testBit">Bits.testBit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits.shiftL">Bits.shiftL</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits.shift">Bits.shift</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits.shiftR">Bits.shiftR</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits.xor">Bits.xor</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits.ushiftR">Bits.ushiftR</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Int.clearBit">Bits_Int.clearBit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Int.bit">Bits_Int.bit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Int.bitSize">Bits_Int.bitSize</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Int.setBit">Bits_Int.setBit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Int.isSigned">Bits_Int.isSigned</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Int.complementBit">Bits_Int.complementBit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Int.rotate">Bits_Int.rotate</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Int.testBit">Bits_Int.testBit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Int.shift">Bits_Int.shift</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Int.xor">Bits_Int.xor</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Integer.rotateL">Bits_Integer.rotateL</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Integer.clearBit">Bits_Integer.clearBit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Integer.bit">Bits_Integer.bit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Integer.bitSize">Bits_Integer.bitSize</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Integer.isSigned">Bits_Integer.isSigned</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Integer.complementBit">Bits_Integer.complementBit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Integer.rotate">Bits_Integer.rotate</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Integer.shift">Bits_Integer.shift</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Integer.setBit">Bits_Integer.setBit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Integer.rotateR">Bits_Integer.rotateR</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Integer.testBit">Bits_Integer.testBit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Integer.xor">Bits_Integer.xor</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Long.clearBit">Bits_Long.clearBit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Long.bit">Bits_Long.bit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Long.bitSize">Bits_Long.bitSize</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Long.setBit">Bits_Long.setBit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Long.isSigned">Bits_Long.isSigned</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Long.complementBit">Bits_Long.complementBit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Long.rotate">Bits_Long.rotate</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Long.testBit">Bits_Long.testBit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Long.shift">Bits_Long.shift</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Bits_Long.xor">Bits_Long.xor</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Eq_BitSet._eq_eq">Eq_BitSet.==</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Eq_BitSet._excl_eq">Eq_BitSet.!=</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Eq_BitSet.hashCode">Eq_BitSet.hashCode</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListEmpty_BitSet._null">ListEmpty_BitSet.null</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ListEmpty_BitSet.empty">ListEmpty_BitSet.empty</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_BitSet.mtimes">Monoid_BitSet.mtimes</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_BitSet.mconcat">Monoid_BitSet.mconcat</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_BitSet.mappend">Monoid_BitSet.mappend</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_BitSet.mempty">Monoid_BitSet.mempty</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_BitSet.sconcat">Monoid_BitSet.sconcat</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_BitSet.stimes">Monoid_BitSet.stimes</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_BitSet._gt">Ord_BitSet.&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_BitSet._lt_eq">Ord_BitSet.&lt;=</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_BitSet._lt">Ord_BitSet.&lt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_BitSet._lt_eq_gt">Ord_BitSet.&lt;=&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_BitSet.compare">Ord_BitSet.compare</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_BitSet._gt_eq">Ord_BitSet.&gt;=</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_BitSet.max">Ord_BitSet.max</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_BitSet.min">Ord_BitSet.min</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_BitSet.showList">Show_BitSet.showList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_BitSet.show">Show_BitSet.show</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_BitSet.display">Show_BitSet.display</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_BitSet.showChars">Show_BitSet.showChars</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_BitSet.showsPrec">Show_BitSet.showsPrec</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_BitSet.showsub">Show_BitSet.showsub</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.intersection">BitSet.intersection</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.BitSet">BitSet.BitSet</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.difference">BitSet.difference</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.chg$set">BitSet.chg$set</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.fromList">BitSet.fromList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.differenceE">BitSet.differenceE</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.has$set">BitSet.has$set</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.set">BitSet.set</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.intersectionE">BitSet.intersectionE</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.member">BitSet.member</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.singleton">BitSet.singleton</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.union">BitSet.union</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.subset">BitSet.subset</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.size">BitSet.size</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.toList">BitSet.toList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.universal">BitSet.universal</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.unionE">BitSet.unionE</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#BitSet.upd$set">BitSet.upd$set</a></div>
 </li>
 </ul>
 <h3>
@@ -49,7 +57,7 @@ Imports</h3>
 <ul>
 <li>
 <div>
-import <a HREF="../prelude/PreludeList.html">frege.prelude.PreludeList</a> as PreludeList</div>
+import <a HREF="../prelude/PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
 </li>
 <li>
 <div>
@@ -57,36 +65,538 @@ import <a HREF="../Prelude.html">frege.Prelude</a> as Prelude</div>
 </li>
 <li>
 <div>
-import <a HREF="./Monoid.html">frege.data.Monoid</a> as Monoid</div>
+import <a HREF="./Monoid.html">Data.Monoid</a> as Monoid</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeBase.html">frege.prelude.PreludeBase</a> as PreludeBase</div>
+import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeArrays.html">frege.prelude.PreludeArrays</a> as PreludeArrays</div>
+import <a HREF="../prelude/PreludeArrays.html">Prelude.PreludeArrays</a> as PreludeArrays</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeIO.html">frege.prelude.PreludeIO</a> as PreludeIO</div>
+import <a HREF="../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeText.html">frege.prelude.PreludeText</a> as PreludeText</div>
+import <a HREF="../prelude/PreludeText.html">Prelude.PreludeText</a> as PreludeText</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeMonad.html">frege.prelude.PreludeMonad</a> as PreludeMonad</div>
+import <a HREF="../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as PreludeMonad</div>
 </li>
 <li>
 <div>
-import <a HREF="../java/util/Regex.html">frege.java.util.Regex</a> as Regexp</div>
+import <a HREF="../java/util/Regex.html">Java.util.Regex</a> as Regexp</div>
 </li>
 </ul>
 <h2>
+<a name="class">Classes</a></h2>
+<dl class="clas">
+<dt class="clas">
+<SPAN CLASS="code"><b>class </b><a name="Bits">Bits</a> (<a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> a, <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> a, <a class="tref" href="../prelude/PreludeBase.html#Num">Num</a> a) ⇒  a</SPAN></dt>
+<dd class="clas">
+<p>
+The <a class="tref" href="#Bits">Bits</a> class defines bitwise operations over integral types.</p>
+<p>
+Bits are numbered from 0 with bit 0 being the least significant bit.</p>
+<p>
+Minimal complete definition: <SPAN CLASS="unknown">.&amp;.</SPAN>, <SPAN CLASS="unknown">.|.</SPAN>, <SPAN CLASS="unknown">.^.</SPAN>, <a class="fref" href="#Bits.complement">Bits.complement</a>, (<a class="fref" href="#Bits.shift">Bits.shift</a> or (<a class="fref" href="#Bits.shiftL">Bits.shiftL</a> and <a class="fref" href="#Bits.shiftR">Bits.shiftR</a>)), (<a class="fref" href="#Bits.rotate">Bits.rotate</a> or (<a class="fref" href="#Bits.rotateL">Bits.rotateL</a> and <a class="fref" href="#Bits.rotateR">Bits.rotateR</a>)), <a class="fref" href="#Bits.bitSize">Bits.bitSize</a> and <a class="fref" href="#Bits.isSigned">Bits.isSigned</a>.</p>
+<h3>
+Known Instances</h3>
+<p>
+<a class="tref" href="#Bits_Integer">Integer</a>, <a class="tref" href="#Bits_Long">Long</a>, <a class="tref" href="#Bits_Int">Int</a></p>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits._dot_amp_dot">.&amp;.</a> ∷ <a class="tref" href="#Bits">Bits</a> a ⇒ a → a → a<br><b>infixl</b>&nbsp;&nbsp;11</SPAN></dt>
+<dd class="func">
+<p>
+Bitwise \"and\"   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits._dot_caret_dot">.^.</a> ∷ <a class="tref" href="#Bits">Bits</a> a ⇒ a → a → a<br><b>infixl</b>&nbsp;&nbsp;10</SPAN></dt>
+<dd class="func">
+<p>
+Bitwise \"xor\"   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits._dot_bar_dot">.|.</a> ∷ <a class="tref" href="#Bits">Bits</a> a ⇒ a → a → a<br><b>infixl</b>&nbsp;&nbsp;10</SPAN></dt>
+<dd class="func">
+<p>
+Bitwise \"or\"   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits.bit">bit</a> ∷ <a class="tref" href="#Bits">Bits</a> a ⇒ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → a</SPAN></dt>
+<dd class="func">
+<p>
+<SPAN CLASS="code">bit i</SPAN> is a value with the <SPAN CLASS="code">i</SPAN>th bit set   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits.bitSize">bitSize</a> ∷ <a class="tref" href="#Bits">Bits</a> a ⇒ a → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+Return the number of bits in the type of the argument.  The actual value of the argument is ignored.  The function <a class="fref" href="#Bits.bitSize">Bits.bitSize</a> is undefined for types that do not have a fixed bitsize, like <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a>.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits.clearBit">clearBit</a> ∷ <a class="tref" href="#Bits">Bits</a> a ⇒ a → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → a</SPAN></dt>
+<dd class="func">
+<p>
+<SPAN CLASS="code">x \`clearBit\` i</SPAN> is the same as <SPAN CLASS="code">x .&amp;. complement (bit i)</SPAN>   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits.complement">complement</a> ∷ <a class="tref" href="#Bits">Bits</a> a ⇒ a → a</SPAN></dt>
+<dd class="func">
+<p>
+Reverse all the bits in the argument      </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits.complementBit">complementBit</a> ∷ <a class="tref" href="#Bits">Bits</a> a ⇒ a → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → a</SPAN></dt>
+<dd class="func">
+<p>
+<SPAN CLASS="code">x \`complementBit\` i</SPAN> is the same as <SPAN CLASS="code">x \`.^.\` bit i</SPAN>   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits.isSigned">isSigned</a> ∷ <a class="tref" href="#Bits">Bits</a> a ⇒ a → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+Return <SPAN CLASS="unknown">true</SPAN> if the argument is a signed type.  The actual value of the argument is ignored      </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits.rotate">rotate</a> ∷ <a class="tref" href="#Bits">Bits</a> a ⇒ <b>a</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → a<br><b>infixl</b>&nbsp;&nbsp;12</SPAN></dt>
+<dd class="func">
+<p>
+<SPAN CLASS="code"><a class="fref" href="#Bits.rotate">Bits.rotate</a> x i</SPAN> rotates <SPAN CLASS="code">x</SPAN> left by <SPAN CLASS="code">i</SPAN> bits if <SPAN CLASS="code">i</SPAN> is positive, or right by <SPAN CLASS="code">-i</SPAN> bits otherwise.</p>
+<p>
+For unbounded types like <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a>, <a class="fref" href="#Bits.rotate">Bits.rotate</a> is equivalent to <a class="fref" href="#Bits.shift">Bits.shift</a>.</p>
+<p>
+An instance can define either this unified <a class="fref" href="#Bits.rotate">Bits.rotate</a> or <a class="fref" href="#Bits.rotateL">Bits.rotateL</a> and <a class="fref" href="#Bits.rotateR">Bits.rotateR</a>, depending on which is more convenient for the type in question.      </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits.rotateL">rotateL</a> ∷ <a class="tref" href="#Bits">Bits</a> a ⇒ <b>a</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → a<br><b>infixl</b>&nbsp;&nbsp;12</SPAN></dt>
+<dd class="func">
+<p>
+Rotate the argument left by the specified number of bits (which must be non-negative).</p>
+<p>
+An instance can define either this and <a class="fref" href="#Bits.rotateR">Bits.rotateR</a> or the unified <a class="fref" href="#Bits.rotate">Bits.rotate</a>, depending on which is more convenient for the type in question.      </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits.rotateR">rotateR</a> ∷ <a class="tref" href="#Bits">Bits</a> a ⇒ <b>a</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → a<br><b>infixl</b>&nbsp;&nbsp;12</SPAN></dt>
+<dd class="func">
+<p>
+Rotate the argument right by the specified number of bits (which must be non-negative).</p>
+<p>
+An instance can define either this and <a class="fref" href="#Bits.rotateL">Bits.rotateL</a> or the unified <a class="fref" href="#Bits.rotate">Bits.rotate</a>, depending on which is more convenient for the type in question.      </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits.setBit">setBit</a> ∷ <a class="tref" href="#Bits">Bits</a> a ⇒ a → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → a</SPAN></dt>
+<dd class="func">
+<p>
+<SPAN CLASS="code">x \`setBit\` i</SPAN> is the same as <SPAN CLASS="code">x .|. bit i</SPAN>   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits.shift">shift</a> ∷ <a class="tref" href="#Bits">Bits</a> a ⇒ <b>a</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → a<br><b>infixl</b>&nbsp;&nbsp;12</SPAN></dt>
+<dd class="func">
+<p>
+<SPAN CLASS="code"><a class="fref" href="#Bits.shift">Bits.shift</a> x i</SPAN> shifts <SPAN CLASS="code">x</SPAN> left by <SPAN CLASS="code">i</SPAN> bits if <SPAN CLASS="code">i</SPAN> is positive, or right by <SPAN CLASS="code">-i</SPAN> bits otherwise. Right shifts perform sign extension on signed number types; i.e. they fill the top bits with 1 if the <SPAN CLASS="code">x</SPAN> is negative and with 0 otherwise.</p>
+<p>
+An instance can define either this unified <a class="fref" href="#Bits.shift">Bits.shift</a> or <a class="fref" href="#Bits.shiftL">Bits.shiftL</a> and <a class="fref" href="#Bits.shiftR">Bits.shiftR</a>, depending on which is more convenient for the type in question.      </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits.shiftL">shiftL</a> ∷ <a class="tref" href="#Bits">Bits</a> a ⇒ <b>a</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → a<br><b>infixl</b>&nbsp;&nbsp;12</SPAN></dt>
+<dd class="func">
+<p>
+Shift the argument left by the specified number of bits (which must be non-negative).</p>
+<p>
+An instance can define either this and <a class="fref" href="#Bits.shiftR">Bits.shiftR</a> or the unified <a class="fref" href="#Bits.shift">Bits.shift</a>, depending on which is more convenient for the type in question.      </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits.shiftR">shiftR</a> ∷ <a class="tref" href="#Bits">Bits</a> a ⇒ <b>a</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → a<br><b>infixl</b>&nbsp;&nbsp;12</SPAN></dt>
+<dd class="func">
+<p>
+Shift the first argument right by the specified number of bits (which must be non-negative). Right shifts perform sign extension on signed number types; i.e. they fill the top bits with 1 if the <SPAN CLASS="code">x</SPAN> is negative and with 0 otherwise.</p>
+<p>
+An instance can define either this and <a class="fref" href="#Bits.shiftL">Bits.shiftL</a> or the unified <a class="fref" href="#Bits.shift">Bits.shift</a>, depending on which is more convenient for the type in question.      </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits.testBit">testBit</a> ∷ <a class="tref" href="#Bits">Bits</a> a ⇒ a → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+Return <SPAN CLASS="unknown">true</SPAN> if the <SPAN CLASS="code">n</SPAN>th bit of the argument is 1   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits.ushiftR">ushiftR</a> ∷ <a class="tref" href="#Bits">Bits</a> a ⇒ a → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → a<br><b>infixl</b>&nbsp;&nbsp;12</SPAN></dt>
+<dd class="func">
+<p>
+Unsigned shift right   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits.xor">xor</a> ∷ <a class="tref" href="#Bits">Bits</a> a ⇒ a → a → a<br><b>infixl</b>&nbsp;&nbsp;10</SPAN></dt>
+<dd class="func">
+<p>
+Haskell compatibility. Same as `.^.`   </p>
+</dd>
+</dl>
+</dd>
+</dl>
+<h2>
 <a name="instance">Instances</a></h2>
 <dl class="inst">
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name="Bits_Int"> </a> <a class="tref" href="#Bits">Bits</a> <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Int._dot_amp_dot">.&amp;.</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a><br><b>pure </b><b>native </b>&amp;<br><b>infixl</b>&nbsp;&nbsp;11</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <SPAN CLASS="unknown">.&amp;.</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Int._dot_caret_dot">.^.</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a><br><b>pure </b><b>native </b>^<br><b>infixl</b>&nbsp;&nbsp;10</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <SPAN CLASS="unknown">.^.</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Int._dot_bar_dot">.|.</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a><br><b>pure </b><b>native </b>|<br><b>infixl</b>&nbsp;&nbsp;10</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <SPAN CLASS="unknown">.|.</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Int.bit">bit</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#Bits.bit">Bits.bit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Int.bitSize">bitSize</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Int.clearBit">clearBit</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#Bits.clearBit">Bits.clearBit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Int.complement">complement</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a><br><b>pure </b><b>native </b>~</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <a class="fref" href="#Bits.complement">Bits.complement</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Int.complementBit">complementBit</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#Bits.complementBit">Bits.complementBit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Int.isSigned">isSigned</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Int.rotate">rotate</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a><br><b>infixl</b>&nbsp;&nbsp;12</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#Bits.rotate">Bits.rotate</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Int.rotateL">rotateL</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a><br><b>pure </b><b>native </b>java.lang.Integer.rotateLeft<br><b>infixl</b>&nbsp;&nbsp;12</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <a class="fref" href="#Bits.rotateL">Bits.rotateL</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Int.rotateR">rotateR</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a><br><b>pure </b><b>native </b>java.lang.Integer.rotateRight<br><b>infixl</b>&nbsp;&nbsp;12</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <a class="fref" href="#Bits.rotateR">Bits.rotateR</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Int.setBit">setBit</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#Bits.setBit">Bits.setBit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Int.shift">shift</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a><br><b>infixl</b>&nbsp;&nbsp;12</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#Bits.shift">Bits.shift</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Int.shiftL">shiftL</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a><br><b>pure </b><b>native </b>&lt;&lt;<br><b>infixl</b>&nbsp;&nbsp;12</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <a class="fref" href="#Bits.shiftL">Bits.shiftL</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Int.shiftR">shiftR</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a><br><b>pure </b><b>native </b>&gt;&gt;<br><b>infixl</b>&nbsp;&nbsp;12</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <a class="fref" href="#Bits.shiftR">Bits.shiftR</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Int.testBit">testBit</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#Bits.testBit">Bits.testBit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Int.ushiftR">ushiftR</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a><br><b>pure </b><b>native </b>&gt;&gt;&gt;<br><b>infixl</b>&nbsp;&nbsp;12</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <a class="fref" href="#Bits.ushiftR">Bits.ushiftR</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Int.xor">xor</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a><br><b>infixl</b>&nbsp;&nbsp;10</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#Bits.xor">Bits.xor</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name="Bits_Integer"> </a> <a class="tref" href="#Bits">Bits</a> <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Integer._dot_amp_dot">.&amp;.</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a><br><b>pure </b><b>native </b>and<br><b>infixl</b>&nbsp;&nbsp;11</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <SPAN CLASS="unknown">.&amp;.</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Integer._dot_caret_dot">.^.</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a><br><b>pure </b><b>native </b>xor<br><b>infixl</b>&nbsp;&nbsp;10</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <SPAN CLASS="unknown">.^.</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Integer._dot_bar_dot">.|.</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a><br><b>pure </b><b>native </b>or<br><b>infixl</b>&nbsp;&nbsp;10</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <SPAN CLASS="unknown">.|.</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Integer.bit">bit</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#Bits.bit">Bits.bit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Integer.bitSize">bitSize</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Integer.clearBit">clearBit</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#Bits.clearBit">Bits.clearBit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Integer.complement">complement</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a><br><b>pure </b><b>native </b>not</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <a class="fref" href="#Bits.complement">Bits.complement</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Integer.complementBit">complementBit</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#Bits.complementBit">Bits.complementBit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Integer.isSigned">isSigned</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Integer.rotate">rotate</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a><br><b>infixl</b>&nbsp;&nbsp;12</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Integer.rotateL">rotateL</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a><br><b>infixl</b>&nbsp;&nbsp;12</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#Bits.rotateL">Bits.rotateL</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Integer.rotateR">rotateR</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a><br><b>infixl</b>&nbsp;&nbsp;12</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#Bits.rotateR">Bits.rotateR</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Integer.setBit">setBit</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#Bits.setBit">Bits.setBit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Integer.shift">shift</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a><br><b>infixl</b>&nbsp;&nbsp;12</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#Bits.shift">Bits.shift</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Integer.shiftL">shiftL</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a><br><b>pure </b><b>native </b>shiftLeft<br><b>infixl</b>&nbsp;&nbsp;12</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <a class="fref" href="#Bits.shiftL">Bits.shiftL</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Integer.shiftR">shiftR</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a><br><b>pure </b><b>native </b>shiftRight<br><b>infixl</b>&nbsp;&nbsp;12</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <a class="fref" href="#Bits.shiftR">Bits.shiftR</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Integer.testBit">testBit</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#Bits.testBit">Bits.testBit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Integer.ushiftR">ushiftR</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a><br><b>infixl</b>&nbsp;&nbsp;12</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <a class="fref" href="#Bits.ushiftR">Bits.ushiftR</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Integer.xor">xor</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a> → <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a> → <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a><br><b>infixl</b>&nbsp;&nbsp;10</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#Bits.xor">Bits.xor</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name="Bits_Long"> </a> <a class="tref" href="#Bits">Bits</a> <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Long._dot_amp_dot">.&amp;.</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a><br><b>pure </b><b>native </b>&amp;<br><b>infixl</b>&nbsp;&nbsp;11</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <SPAN CLASS="unknown">.&amp;.</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Long._dot_caret_dot">.^.</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a><br><b>pure </b><b>native </b>^<br><b>infixl</b>&nbsp;&nbsp;10</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <SPAN CLASS="unknown">.^.</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Long._dot_bar_dot">.|.</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a><br><b>pure </b><b>native </b>|<br><b>infixl</b>&nbsp;&nbsp;10</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <SPAN CLASS="unknown">.|.</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Long.bit">bit</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#Bits.bit">Bits.bit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Long.bitSize">bitSize</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Long.clearBit">clearBit</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#Bits.clearBit">Bits.clearBit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Long.complement">complement</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a><br><b>pure </b><b>native </b>~</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <a class="fref" href="#Bits.complement">Bits.complement</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Long.complementBit">complementBit</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#Bits.complementBit">Bits.complementBit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Long.isSigned">isSigned</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Long.rotate">rotate</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a><br><b>infixl</b>&nbsp;&nbsp;12</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#Bits.rotate">Bits.rotate</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Long.rotateL">rotateL</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a><br><b>pure </b><b>native </b>java.lang.Long.rotateLeft<br><b>infixl</b>&nbsp;&nbsp;12</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <a class="fref" href="#Bits.rotateL">Bits.rotateL</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Long.rotateR">rotateR</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a><br><b>pure </b><b>native </b>java.lang.Long.rotateRight<br><b>infixl</b>&nbsp;&nbsp;12</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <a class="fref" href="#Bits.rotateR">Bits.rotateR</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Long.setBit">setBit</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#Bits.setBit">Bits.setBit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Long.shift">shift</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a><br><b>infixl</b>&nbsp;&nbsp;12</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#Bits.shift">Bits.shift</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Long.shiftL">shiftL</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a><br><b>pure </b><b>native </b>&lt;&lt;<br><b>infixl</b>&nbsp;&nbsp;12</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <a class="fref" href="#Bits.shiftL">Bits.shiftL</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Long.shiftR">shiftR</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a><br><b>pure </b><b>native </b>&gt;&gt;<br><b>infixl</b>&nbsp;&nbsp;12</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <a class="fref" href="#Bits.shiftR">Bits.shiftR</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Long.testBit">testBit</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#Bits.testBit">Bits.testBit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Long.ushiftR">ushiftR</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a><br><b>pure </b><b>native </b>&gt;&gt;&gt;<br><b>infixl</b>&nbsp;&nbsp;12</SPAN></dt>
+<dd class="func">
+<p>
+Alias for <a class="fref" href="#Bits.ushiftR">Bits.ushiftR</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name="Bits_Long.xor">xor</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a> → <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a> → <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a><br><b>infixl</b>&nbsp;&nbsp;10</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#Bits.xor">Bits.xor</a></p>
+</dd>
+</dl>
+</dd>
 <dt class="inst">
 <SPAN CLASS="code"><b>instance </b><a name="Eq_BitSet"> </a> <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> <a class="tref" href="#BitSet">BitSet</a> a</SPAN></dt>
 <dd class="inst">
@@ -94,17 +604,17 @@ import <a HREF="../java/util/Regex.html">frege.java.util.Regex</a> as Regexp</di
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Eq_BitSet._excl_eq">!=</a> :: <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a name="Eq_BitSet._excl_eq">!=</a> ∷ <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeBase.html#Eq._excl_eq">Eq.!=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Eq_BitSet._eq_eq">==</a> :: <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a name="Eq_BitSet._eq_eq">==</a> ∷ <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Eq_BitSet.hashCode">hashCode</a> :: <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><a name="Eq_BitSet.hashCode">hashCode</a> ∷ <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -116,13 +626,13 @@ inherited from <a class="fref" href="../prelude/PreludeBase.html#Eq._excl_eq">Eq
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="ListEmpty_BitSet.empty">empty</a> :: <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name="ListEmpty_BitSet.empty">empty</a> ∷ <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
 <dd class="func">
 <p>
 The empty set   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="ListEmpty_BitSet._null">null</a> :: <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a name="ListEmpty_BitSet._null">null</a> ∷ <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
 Predicate to tell if the set is empty   </p>
@@ -136,33 +646,33 @@ Predicate to tell if the set is empty   </p>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Monoid_BitSet.mappend">mappend</a> :: <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name="Monoid_BitSet.mappend">mappend</a> ∷ <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <a class="tref" href="#BitSet">BitSet</a> α<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monoid_BitSet.mconcat">mconcat</a> :: <b>[<a class="tref" href="#BitSet">BitSet</a> α]</b> -&gt; <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name="Monoid_BitSet.mconcat">mconcat</a> ∷ <b>[<a class="tref" href="#BitSet">BitSet</a> α]</b> → <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./Monoid.html#Monoid.mconcat">Monoid.mconcat</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monoid_BitSet.mempty">mempty</a> :: <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name="Monoid_BitSet.mempty">mempty</a> ∷ <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monoid_BitSet.mtimes">mtimes</a> :: <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="#BitSet">BitSet</a> α -&gt; <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name="Monoid_BitSet.mtimes">mtimes</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#BitSet">BitSet</a> α → <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./Monoid.html#Monoid.mtimes">Monoid.mtimes</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monoid_BitSet.sconcat">sconcat</a> :: [<a class="tref" href="#BitSet">BitSet</a> α] -&gt; <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name="Monoid_BitSet.sconcat">sconcat</a> ∷ <b>[<a class="tref" href="#BitSet">BitSet</a> α]</b> → <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./Monoid.html#Semigroup.sconcat">Semigroup.sconcat</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monoid_BitSet.stimes">stimes</a> :: <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> -&gt; <a class="tref" href="#BitSet">BitSet</a> α -&gt; <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name="Monoid_BitSet.stimes">stimes</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#BitSet">BitSet</a> α → <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./Monoid.html#Semigroup.stimes">Semigroup.stimes</a></p>
@@ -176,47 +686,47 @@ inherited from <a class="fref" href="./Monoid.html#Semigroup.stimes">Semigroup.s
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Ord_BitSet._lt">&lt;</a> :: <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a name="Ord_BitSet._lt">&lt;</a> ∷ <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeBase.html#Ord._lt">Ord.&lt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Ord_BitSet._lt_eq">&lt;=</a> :: <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a name="Ord_BitSet._lt_eq">&lt;=</a> ∷ <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeBase.html#Ord._lt_eq">Ord.&lt;=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Ord_BitSet._lt_eq_gt">&lt;=&gt;</a> :: <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Ordering">Ordering</a></SPAN></dt>
+<SPAN CLASS="code"><a name="Ord_BitSet._lt_eq_gt">&lt;=&gt;</a> ∷ <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#Ordering">Ordering</a><br><b>infix</b>&nbsp;&nbsp;8</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Ord_BitSet._gt">&gt;</a> :: <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a name="Ord_BitSet._gt">&gt;</a> ∷ <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeBase.html#Ord._gt">Ord.&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Ord_BitSet._gt_eq">&gt;=</a> :: <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a name="Ord_BitSet._gt_eq">&gt;=</a> ∷ <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeBase.html#Ord._gt_eq">Ord.&gt;=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Ord_BitSet.compare">compare</a> :: <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Ordering">Ordering</a></SPAN></dt>
+<SPAN CLASS="code"><a name="Ord_BitSet.compare">compare</a> ∷ <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#Ordering">Ordering</a><br><b>infix</b>&nbsp;&nbsp;8</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeBase.html#Ord.compare">Ord.compare</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Ord_BitSet.max">max</a> :: <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name="Ord_BitSet.max">max</a> ∷ <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeBase.html#Ord.max">Ord.max</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Ord_BitSet.min">min</a> :: <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name="Ord_BitSet.min">min</a> ∷ <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeBase.html#Ord.min">Ord.min</a></p>
@@ -224,41 +734,41 @@ inherited from <a class="fref" href="../prelude/PreludeBase.html#Ord.min">Ord.mi
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="Show_BitSet"> </a> <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> (<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> a, <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> a) =&gt; <a class="tref" href="#BitSet">BitSet</a> a</SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name="Show_BitSet"> </a> <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> (<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> a, <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> a) ⇒ <a class="tref" href="#BitSet">BitSet</a> a</SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Show_BitSet.display">display</a> :: (<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α) =&gt; <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a name="Show_BitSet.display">display</a> ∷ (<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α) ⇒ <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeText.html#Show.display">Show.display</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Show_BitSet.show">show</a> :: (<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α) =&gt; <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a name="Show_BitSet.show">show</a> ∷ (<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α) ⇒ <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Show_BitSet.showChars">showChars</a> :: (<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α) =&gt; <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
+<SPAN CLASS="code"><a name="Show_BitSet.showChars">showChars</a> ∷ (<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α) ⇒ <b><a class="tref" href="#BitSet">BitSet</a> α</b> → [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showChars">Show.showChars</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Show_BitSet.showList">showList</a> :: (<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α) =&gt; <b>[<a class="tref" href="#BitSet">BitSet</a> α]</b> -&gt; <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a name="Show_BitSet.showList">showList</a> ∷ (<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α) ⇒ <b>[<a class="tref" href="#BitSet">BitSet</a> α]</b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showList">Show.showList</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Show_BitSet.showsPrec">showsPrec</a> :: (<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α) =&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a name="Show_BitSet.showsPrec">showsPrec</a> ∷ (<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α) ⇒ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsPrec">Show.showsPrec</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Show_BitSet.showsub">showsub</a> :: (<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α) =&gt; <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a name="Show_BitSet.showsub">showsub</a> ∷ (<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α) ⇒ <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsub">Show.showsub</a></p>
@@ -276,7 +786,7 @@ inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsub">S
 Constructors</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="BitSet.BitSet">BitSet</a> {set :: <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>}</SPAN></dt>
+<SPAN CLASS="code"><a name="BitSet.BitSet">BitSet</a> {set ∷ <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>}</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -284,85 +794,85 @@ Constructors</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="BitSet.difference">difference</a> :: <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name="BitSet.difference">difference</a> ∷ <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <SPAN CLASS="code">a `difference` b</SPAN> -- a set with all elements that are members of a and not members of b   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="BitSet.differenceE">differenceE</a> :: <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α =&gt; <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <b>α</b> -&gt; <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name="BitSet.differenceE">differenceE</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α ⇒ <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <b>α</b> → <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <SPAN CLASS="code">a `differenceE` e</SPAN> = <SPAN CLASS="code">a `difference` {e}</SPAN>   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="BitSet.fromList">fromList</a> :: <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α =&gt; <b>[α]</b> -&gt; <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name="BitSet.fromList">fromList</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α ⇒ <b>[α]</b> → <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
 <dd class="func">
 <p>
 convert a list to a <a class="tref" href="#BitSet">BitSet</a>   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="BitSet.intersection">intersection</a> :: <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name="BitSet.intersection">intersection</a> ∷ <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <SPAN CLASS="code">a `intersection` b</SPAN> -- a set with all elements that are members of a and members of b   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="BitSet.intersectionE">intersectionE</a> :: <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α =&gt; <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <b>α</b> -&gt; <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name="BitSet.intersectionE">intersectionE</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α ⇒ <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <b>α</b> → <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <SPAN CLASS="code">a `intersectionE` e</SPAN> = <SPAN CLASS="code">a `intersection` {e}</SPAN>   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="BitSet.member">member</a> :: <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α =&gt; <b>α</b> -&gt; <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a name="BitSet.member">member</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α ⇒ <b>α</b> → <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
 Predicate to tell if an element is a member of a set   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="BitSet.set">set</a> :: <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></SPAN></dt>
+<SPAN CLASS="code"><a name="BitSet.set">set</a> ∷ <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></SPAN></dt>
 <dd class="func">
 <p>
 access field <SPAN CLASS="code">set</SPAN></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="BitSet.singleton">singleton</a> :: <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α =&gt; <b>α</b> -&gt; <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name="BitSet.singleton">singleton</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α ⇒ <b>α</b> → <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
 <dd class="func">
 <p>
 A set with one argument   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="BitSet.size">size</a> :: <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><a name="BitSet.size">size</a> ∷ <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
 tell the number of elements in a <a class="tref" href="#BitSet">BitSet</a>   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="BitSet.subset">subset</a> :: <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a name="BitSet.subset">subset</a> ∷ <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
 Predicate that tells if one set is a subset of another   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="BitSet.toList">toList</a> :: <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α =&gt; <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; [α]</SPAN></dt>
+<SPAN CLASS="code"><a name="BitSet.toList">toList</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α ⇒ <b><a class="tref" href="#BitSet">BitSet</a> α</b> → [α]</SPAN></dt>
 <dd class="func">
 <p>
 convert a <a class="tref" href="#BitSet">BitSet</a> to a list   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="BitSet.union">union</a> :: <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name="BitSet.union">union</a> ∷ <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <SPAN CLASS="code">a `union` b</SPAN> -- a set with all elements that are members of a or members of b   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="BitSet.unionE">unionE</a> :: <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α =&gt; <b><a class="tref" href="#BitSet">BitSet</a> α</b> -&gt; <b>α</b> -&gt; <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name="BitSet.unionE">unionE</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α ⇒ <b><a class="tref" href="#BitSet">BitSet</a> α</b> → <b>α</b> → <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <SPAN CLASS="code">a `unionE` e</SPAN> = <SPAN CLASS="code">a `union` {e}</SPAN>   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="BitSet.universal">universal</a> :: (<a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α, <a class="tref" href="../prelude/PreludeBase.html#Bounded">Bounded</a> α) =&gt; <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name="BitSet.universal">universal</a> ∷ (<a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α, <a class="tref" href="../prelude/PreludeBase.html#Bounded">Bounded</a> α) ⇒ <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
 <dd class="func">
 <p>
 The universal set   </p>
@@ -374,115 +884,253 @@ The universal set   </p>
 <a name="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#BitSet">BitSet</a> α -&gt; <a class="tref" href="#BitSet">BitSet</a> α -&gt; <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Bits_Int.testBit">Bits_Int.testBit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Bits_Int.clearBit">Bits_Int.clearBit</a>, <a class="fref" href="#Bits_Int.setBit">Bits_Int.setBit</a>, <a class="fref" href="#Bits_Int.complementBit">Bits_Int.complementBit</a>, <a class="fref" href="#Bits_Int.rotate">Bits_Int.rotate</a>, <a class="fref" href="#Bits_Int.shift">Bits_Int.shift</a>, <a class="fref" href="#Bits_Int.xor">Bits_Int.xor</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Bits_Int.isSigned">Bits_Int.isSigned</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Bits_Int.bit">Bits_Int.bit</a>, <a class="fref" href="#Bits_Int.bitSize">Bits_Int.bitSize</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Bits_Integer.bit">Bits_Integer.bit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Bits_Long.bit">Bits_Long.bit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Bits_Integer.testBit">Bits_Integer.testBit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Bits_Integer.rotateL">Bits_Integer.rotateL</a>, <a class="fref" href="#Bits_Integer.clearBit">Bits_Integer.clearBit</a>, <a class="fref" href="#Bits_Integer.complementBit">Bits_Integer.complementBit</a>, <a class="fref" href="#Bits_Integer.rotate">Bits_Integer.rotate</a>, <a class="fref" href="#Bits_Integer.shift">Bits_Integer.shift</a>, <a class="fref" href="#Bits_Integer.setBit">Bits_Integer.setBit</a>, <a class="fref" href="#Bits_Integer.rotateR">Bits_Integer.rotateR</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a> → <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a> → <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Bits_Integer.xor">Bits_Integer.xor</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Bits_Integer.isSigned">Bits_Integer.isSigned</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Bits_Integer.bitSize">Bits_Integer.bitSize</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Bits_Long.testBit">Bits_Long.testBit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Bits_Long.clearBit">Bits_Long.clearBit</a>, <a class="fref" href="#Bits_Long.setBit">Bits_Long.setBit</a>, <a class="fref" href="#Bits_Long.complementBit">Bits_Long.complementBit</a>, <a class="fref" href="#Bits_Long.rotate">Bits_Long.rotate</a>, <a class="fref" href="#Bits_Long.shift">Bits_Long.shift</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a> → <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a> → <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Bits_Long.xor">Bits_Long.xor</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Bits_Long.isSigned">Bits_Long.isSigned</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Bits_Long.bitSize">Bits_Long.bitSize</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#BitSet">BitSet</a> α → <a class="tref" href="#BitSet">BitSet</a> α → <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monoid_BitSet.mappend">Monoid_BitSet.mappend</a>, <a class="fref" href="#Ord_BitSet.max">Ord_BitSet.max</a>, <a class="fref" href="#Ord_BitSet.min">Ord_BitSet.min</a>, <a class="fref" href="#BitSet.intersection">BitSet.intersection</a>, <a class="fref" href="#BitSet.difference">BitSet.difference</a>, <a class="fref" href="#BitSet.union">BitSet.union</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#BitSet">BitSet</a> α -&gt; <a class="tref" href="#BitSet">BitSet</a> α -&gt; <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#BitSet">BitSet</a> α → <a class="tref" href="#BitSet">BitSet</a> α → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Eq_BitSet._eq_eq">Eq_BitSet.==</a>, <a class="fref" href="#Eq_BitSet._excl_eq">Eq_BitSet.!=</a>, <a class="fref" href="#Ord_BitSet._gt">Ord_BitSet.&gt;</a>, <a class="fref" href="#Ord_BitSet._lt_eq">Ord_BitSet.&lt;=</a>, <a class="fref" href="#Ord_BitSet._lt">Ord_BitSet.&lt;</a>, <a class="fref" href="#Ord_BitSet._gt_eq">Ord_BitSet.&gt;=</a>, <a class="fref" href="#BitSet.subset">BitSet.subset</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#BitSet">BitSet</a> α -&gt; <a class="tref" href="#BitSet">BitSet</a> α -&gt; <a class="tref" href="../prelude/PreludeBase.html#Ordering">Ordering</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#BitSet">BitSet</a> α → <a class="tref" href="#BitSet">BitSet</a> α → <a class="tref" href="../prelude/PreludeBase.html#Ordering">Ordering</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Ord_BitSet._lt_eq_gt">Ord_BitSet.&lt;=&gt;</a>, <a class="fref" href="#Ord_BitSet.compare">Ord_BitSet.compare</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#BitSet">BitSet</a> α -&gt; <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#BitSet">BitSet</a> α → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ListEmpty_BitSet._null">ListEmpty_BitSet.null</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#BitSet">BitSet</a> α -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#BitSet">BitSet</a> α → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Eq_BitSet.hashCode">Eq_BitSet.hashCode</a>, <a class="fref" href="#BitSet.size">BitSet.size</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#BitSet">BitSet</a> α -&gt; <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#BitSet">BitSet</a> α → <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#BitSet.set">BitSet.set</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">[<a class="tref" href="#BitSet">BitSet</a> α] -&gt; <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
+<SPAN CLASS="code">[<a class="tref" href="#BitSet">BitSet</a> α] → <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monoid_BitSet.mconcat">Monoid_BitSet.mconcat</a>, <a class="fref" href="#Monoid_BitSet.sconcat">Monoid_BitSet.sconcat</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="#BitSet">BitSet</a> α -&gt; <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#BitSet">BitSet</a> α → <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monoid_BitSet.mtimes">Monoid_BitSet.mtimes</a>, <a class="fref" href="#Monoid_BitSet.stimes">Monoid_BitSet.stimes</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a> -&gt; <a class="tref" href="#BitSet">BitSet</a> e</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a> → <a class="tref" href="#BitSet">BitSet</a> e</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#BitSet.BitSet">BitSet.BitSet</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">α -&gt; <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code">α → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#BitSet.has$set">BitSet.has$set</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α =&gt; <a class="tref" href="#BitSet">BitSet</a> α -&gt; α -&gt; <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Bits">Bits</a> a ⇒ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → a</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Bits.bit">Bits.bit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Bits">Bits</a> a ⇒ a → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Bits.testBit">Bits.testBit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Bits">Bits</a> a ⇒ a → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → a</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Bits.clearBit">Bits.clearBit</a>, <a class="fref" href="#Bits.setBit">Bits.setBit</a>, <a class="fref" href="#Bits.rotate">Bits.rotate</a>, <a class="fref" href="#Bits.complementBit">Bits.complementBit</a>, <a class="fref" href="#Bits.rotateR">Bits.rotateR</a>, <a class="fref" href="#Bits.rotateL">Bits.rotateL</a>, <a class="fref" href="#Bits.shiftL">Bits.shiftL</a>, <a class="fref" href="#Bits.shift">Bits.shift</a>, <a class="fref" href="#Bits.shiftR">Bits.shiftR</a>, <a class="fref" href="#Bits.ushiftR">Bits.ushiftR</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Bits">Bits</a> a ⇒ a → a → a</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Bits._dot_bar_dot">Bits..|.</a>, <a class="fref" href="#Bits._dot_caret_dot">Bits..^.</a>, <a class="fref" href="#Bits._dot_amp_dot">Bits..&amp;.</a>, <a class="fref" href="#Bits.xor">Bits.xor</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Bits">Bits</a> a ⇒ a → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Bits.isSigned">Bits.isSigned</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Bits">Bits</a> a ⇒ a → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Bits.bitSize">Bits.bitSize</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Bits">Bits</a> a ⇒ a → a</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Bits.complement">Bits.complement</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α ⇒ <a class="tref" href="#BitSet">BitSet</a> α → α → <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#BitSet.differenceE">BitSet.differenceE</a>, <a class="fref" href="#BitSet.intersectionE">BitSet.intersectionE</a>, <a class="fref" href="#BitSet.unionE">BitSet.unionE</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α =&gt; <a class="tref" href="#BitSet">BitSet</a> α -&gt; [α]</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α ⇒ <a class="tref" href="#BitSet">BitSet</a> α → [α]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#BitSet.toList">BitSet.toList</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α =&gt; [α] -&gt; <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α ⇒ [α] → <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#BitSet.fromList">BitSet.fromList</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α =&gt; α -&gt; <a class="tref" href="#BitSet">BitSet</a> α -&gt; <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α ⇒ α → <a class="tref" href="#BitSet">BitSet</a> α → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#BitSet.member">BitSet.member</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α =&gt; α -&gt; <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α ⇒ α → <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#BitSet.singleton">BitSet.singleton</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α) =&gt; <a class="tref" href="#BitSet">BitSet</a> α -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α) ⇒ <a class="tref" href="#BitSet">BitSet</a> α → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Show_BitSet.show">Show_BitSet.show</a>, <a class="fref" href="#Show_BitSet.display">Show_BitSet.display</a>, <a class="fref" href="#Show_BitSet.showsub">Show_BitSet.showsub</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α) =&gt; <a class="tref" href="#BitSet">BitSet</a> α -&gt; [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α) ⇒ <a class="tref" href="#BitSet">BitSet</a> α → [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Show_BitSet.showChars">Show_BitSet.showChars</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α) =&gt; [<a class="tref" href="#BitSet">BitSet</a> α] -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α) ⇒ [<a class="tref" href="#BitSet">BitSet</a> α] → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Show_BitSet.showList">Show_BitSet.showList</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α) =&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="#BitSet">BitSet</a> α -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α) ⇒ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#BitSet">BitSet</a> α → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Show_BitSet.showsPrec">Show_BitSet.showsPrec</a></p>
@@ -494,19 +1142,19 @@ The universal set   </p>
 <a class="fref" href="#ListEmpty_BitSet.empty">ListEmpty_BitSet.empty</a>, <a class="fref" href="#Monoid_BitSet.mempty">Monoid_BitSet.mempty</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α, <a class="tref" href="../prelude/PreludeBase.html#Bounded">Bounded</a> α) =&gt; <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeBase.html#Enum">Enum</a> α, <a class="tref" href="../prelude/PreludeBase.html#Bounded">Bounded</a> α) ⇒ <a class="tref" href="#BitSet">BitSet</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#BitSet.universal">BitSet.universal</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#BitSet">BitSet</a> α -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>-&gt;<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>) -&gt; <a class="tref" href="#BitSet">BitSet</a> β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#BitSet">BitSet</a> α → (<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>→<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>) → <a class="tref" href="#BitSet">BitSet</a> β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#BitSet.chg$set">BitSet.chg$set</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#BitSet">BitSet</a> α -&gt; <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a> -&gt; <a class="tref" href="#BitSet">BitSet</a> β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#BitSet">BitSet</a> α → <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a> → <a class="tref" href="#BitSet">BitSet</a> β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#BitSet.upd$set">BitSet.upd$set</a></p>

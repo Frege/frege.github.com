@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
 <META http-equiv="Content-Type" content="text/html;charset=utf-8">
-<TITLE>frege.data.Tree - frege documentation</TITLE>
+<TITLE>Data.Tree - frege documentation</TITLE>
 <style TYPE="text/css">
 body { font-family: helvetica, arial, sans-serif }
 pre { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
@@ -17,15 +17,13 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 </style>
 <BODY>
 <h1>
-<a name="package">Package <SPAN CLASS="code">frege.data.Tree</SPAN></a></h1>
+<a name="package">Package <SPAN CLASS="code">Data.Tree</SPAN></a></h1>
 <p>
  Source file: <SPAN CLASS="code">./frege/data/Tree.fr</SPAN></p>
 <h3>
 Package Documentation</h3>
-<ul>
-<LI>
-- | </LI>
-</ul>
+<p>
+Multi-way trees (<i>aka</i> rose trees) and forests.</p>
 <dl>
 <dt>
 Module</dt>
@@ -46,8 +44,6 @@ License</dt>
    BSD-style (see the file libraries/base/LICENSE) </div>
 </dd>
 </dl>
-<p>
-Multi-way trees (/aka/ rose trees) and forests.</p>
 <p>
 This is a port of Haskell library code.</p>
 <h3>
@@ -89,7 +85,7 @@ Imports</h3>
 <ul>
 <li>
 <div>
-import <a HREF="../prelude/PreludeList.html">frege.prelude.PreludeList</a> as PreludeList</div>
+import <a HREF="../prelude/PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
 </li>
 <li>
 <div>
@@ -97,39 +93,39 @@ import <a HREF="../Prelude.html">frege.Prelude</a> as Prelude</div>
 </li>
 <li>
 <div>
-import <a HREF="./Monoid.html">frege.data.Monoid</a> as Monoid</div>
+import <a HREF="./Monoid.html">Data.Monoid</a> as Monoid</div>
 </li>
 <li>
 <div>
-import <a HREF="./Foldable.html">frege.data.Foldable</a> as Foldable</div>
+import <a HREF="./Foldable.html">Data.Foldable</a> as Foldable</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeBase.html">frege.prelude.PreludeBase</a> as PreludeBase</div>
+import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeArrays.html">frege.prelude.PreludeArrays</a> as PreludeArrays</div>
+import <a HREF="../prelude/PreludeArrays.html">Prelude.PreludeArrays</a> as PreludeArrays</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeIO.html">frege.prelude.PreludeIO</a> as PreludeIO</div>
+import <a HREF="../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeText.html">frege.prelude.PreludeText</a> as PreludeText</div>
+import <a HREF="../prelude/PreludeText.html">Prelude.PreludeText</a> as PreludeText</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeMonad.html">frege.prelude.PreludeMonad</a> as PreludeMonad</div>
+import <a HREF="../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as PreludeMonad</div>
 </li>
 <li>
 <div>
-import <a HREF="./Traversable.html">frege.data.Traversable</a> as Traversable</div>
+import <a HREF="./Traversable.html">Data.Traversable</a> as Traversable</div>
 </li>
 <li>
 <div>
-import <a HREF="../java/util/Regex.html">frege.java.util.Regex</a> as Regexp</div>
+import <a HREF="../java/util/Regex.html">Java.util.Regex</a> as Regexp</div>
 </li>
 </ul>
 <h2>
@@ -150,47 +146,47 @@ import <a HREF="../java/util/Regex.html">frege.java.util.Regex</a> as Regexp</di
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Applicative_Tree._star_gt">*&gt;</a> :: <b><a class="tref" href="#Tree">Tree</a> α</b> -&gt; <b><a class="tref" href="#Tree">Tree</a> β</b> -&gt; <a class="tref" href="#Tree">Tree</a> β</SPAN></dt>
+<SPAN CLASS="code"><a name="Applicative_Tree._star_gt">*&gt;</a> ∷ <b><a class="tref" href="#Tree">Tree</a> α</b> → <b><a class="tref" href="#Tree">Tree</a> β</b> → <a class="tref" href="#Tree">Tree</a> β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeMonad.html#Applicative._star_gt">Applicative.*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Applicative_Tree._lt_star">&lt;*</a> :: <b><a class="tref" href="#Tree">Tree</a> α</b> -&gt; <b><a class="tref" href="#Tree">Tree</a> β</b> -&gt; <a class="tref" href="#Tree">Tree</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name="Applicative_Tree._lt_star">&lt;*</a> ∷ <b><a class="tref" href="#Tree">Tree</a> α</b> → <b><a class="tref" href="#Tree">Tree</a> β</b> → <a class="tref" href="#Tree">Tree</a> α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeMonad.html#Applicative._lt_star">Applicative.&lt;*</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Applicative_Tree._lt_star_gt">&lt;*&gt;</a> :: <b><a class="tref" href="#Tree">Tree</a> (α-&gt;β)</b> -&gt; <b><a class="tref" href="#Tree">Tree</a> α</b> -&gt; <a class="tref" href="#Tree">Tree</a> β</SPAN></dt>
+<SPAN CLASS="code"><a name="Applicative_Tree._lt_star_gt">&lt;*&gt;</a> ∷ <b><a class="tref" href="#Tree">Tree</a> (α→β)</b> → <b><a class="tref" href="#Tree">Tree</a> α</b> → <a class="tref" href="#Tree">Tree</a> β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Applicative_Tree.pure">pure</a> :: α -&gt; <a class="tref" href="#Tree">Tree</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name="Applicative_Tree.pure">pure</a> ∷ α → <a class="tref" href="#Tree">Tree</a> α</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="Eq_Tree"> </a> <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> a =&gt; <a class="tref" href="#Tree">Tree</a> a</SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name="Eq_Tree"> </a> <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> a ⇒ <a class="tref" href="#Tree">Tree</a> a</SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Eq_Tree._excl_eq">!=</a> :: <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α =&gt; <b><a class="tref" href="#Tree">Tree</a> α</b> -&gt; <b><a class="tref" href="#Tree">Tree</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a name="Eq_Tree._excl_eq">!=</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b><a class="tref" href="#Tree">Tree</a> α</b> → <b><a class="tref" href="#Tree">Tree</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeBase.html#Eq._excl_eq">Eq.!=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Eq_Tree._eq_eq">==</a> :: <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α =&gt; <b><a class="tref" href="#Tree">Tree</a> α</b> -&gt; <b><a class="tref" href="#Tree">Tree</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a name="Eq_Tree._eq_eq">==</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b><a class="tref" href="#Tree">Tree</a> α</b> → <b><a class="tref" href="#Tree">Tree</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
 <dd class="func">
 <p>
 Function generated for derived istance.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Eq_Tree.hashCode">hashCode</a> :: <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α =&gt; <b><a class="tref" href="#Tree">Tree</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><a name="Eq_Tree.hashCode">hashCode</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b><a class="tref" href="#Tree">Tree</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
 Function generated for derived istance.</p>
@@ -204,47 +200,47 @@ Function generated for derived istance.</p>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Foldable_Tree.fold">fold</a> :: <a class="tref" href="./Monoid.html#Monoid">Monoid</a> α =&gt; <b><a class="tref" href="#Tree">Tree</a> α</b> -&gt; α</SPAN></dt>
+<SPAN CLASS="code"><a name="Foldable_Tree.fold">fold</a> ∷ <a class="tref" href="./Monoid.html#Monoid">Monoid</a> α ⇒ <b><a class="tref" href="#Tree">Tree</a> α</b> → α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./Foldable.html#Foldable.fold">Foldable.fold</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Foldable_Tree.fold1">fold1</a> :: <a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> α =&gt; <b><a class="tref" href="#Tree">Tree</a> α</b> -&gt; α</SPAN></dt>
+<SPAN CLASS="code"><a name="Foldable_Tree.fold1">fold1</a> ∷ <a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> α ⇒ <b><a class="tref" href="#Tree">Tree</a> α</b> → α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./Foldable.html#Foldable.fold1">Foldable.fold1</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Foldable_Tree.foldMap">foldMap</a> :: <a class="tref" href="./Monoid.html#Monoid">Monoid</a> β =&gt; (α -&gt; β) -&gt; <b><a class="tref" href="#Tree">Tree</a> α</b> -&gt; β</SPAN></dt>
+<SPAN CLASS="code"><a name="Foldable_Tree.foldMap">foldMap</a> ∷ <a class="tref" href="./Monoid.html#Monoid">Monoid</a> β ⇒ (α → β) → <b><a class="tref" href="#Tree">Tree</a> α</b> → β</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Foldable_Tree.foldMap1">foldMap1</a> :: <a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> β =&gt; (α -&gt; β) -&gt; <b><a class="tref" href="#Tree">Tree</a> α</b> -&gt; β</SPAN></dt>
+<SPAN CLASS="code"><a name="Foldable_Tree.foldMap1">foldMap1</a> ∷ <a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> β ⇒ (α → β) → <b><a class="tref" href="#Tree">Tree</a> α</b> → β</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./Foldable.html#Foldable.foldMap1">Foldable.foldMap1</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Foldable_Tree.foldl">foldl</a> :: (α -&gt; β -&gt; α) -&gt; α -&gt; <b><a class="tref" href="#Tree">Tree</a> β</b> -&gt; α</SPAN></dt>
+<SPAN CLASS="code"><a name="Foldable_Tree.foldl">foldl</a> ∷ (α → β → α) → α → <b><a class="tref" href="#Tree">Tree</a> β</b> → α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./Foldable.html#Foldable.foldl">Foldable.foldl</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Foldable_Tree.foldl1">foldl1</a> :: (α -&gt; α -&gt; α) -&gt; <b><a class="tref" href="#Tree">Tree</a> α</b> -&gt; α</SPAN></dt>
+<SPAN CLASS="code"><a name="Foldable_Tree.foldl1">foldl1</a> ∷ (α → α → α) → <b><a class="tref" href="#Tree">Tree</a> α</b> → α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./Foldable.html#Foldable.foldl1">Foldable.foldl1</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Foldable_Tree.foldr">foldr</a> :: (α -&gt; β -&gt; β) -&gt; β -&gt; <b><a class="tref" href="#Tree">Tree</a> α</b> -&gt; β</SPAN></dt>
+<SPAN CLASS="code"><a name="Foldable_Tree.foldr">foldr</a> ∷ (α → β → β) → β → <b><a class="tref" href="#Tree">Tree</a> α</b> → β</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./Foldable.html#Foldable.foldr">Foldable.foldr</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Foldable_Tree.foldr1">foldr1</a> :: (α -&gt; α -&gt; α) -&gt; <b><a class="tref" href="#Tree">Tree</a> α</b> -&gt; α</SPAN></dt>
+<SPAN CLASS="code"><a name="Foldable_Tree.foldr1">foldr1</a> ∷ (α → α → α) → <b><a class="tref" href="#Tree">Tree</a> α</b> → α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./Foldable.html#Foldable.foldr1">Foldable.foldr1</a></p>
@@ -258,7 +254,7 @@ inherited from <a class="fref" href="./Foldable.html#Foldable.foldr1">Foldable.f
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Functor_Tree.fmap">fmap</a> :: (α -&gt; β) -&gt; <b><a class="tref" href="#Tree">Tree</a> α</b> -&gt; <a class="tref" href="#Tree">Tree</a> β</SPAN></dt>
+<SPAN CLASS="code"><a name="Functor_Tree.fmap">fmap</a> ∷ (α → β) → <b><a class="tref" href="#Tree">Tree</a> α</b> → <a class="tref" href="#Tree">Tree</a> β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -270,65 +266,65 @@ Member Functions</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad_Tree._gt_gt">&gt;&gt;</a> :: <b><a class="tref" href="#Tree">Tree</a> α</b> -&gt; <a class="tref" href="#Tree">Tree</a> β -&gt; <a class="tref" href="#Tree">Tree</a> β</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad_Tree._gt_gt">&gt;&gt;</a> ∷ <b><a class="tref" href="#Tree">Tree</a> α</b> → <a class="tref" href="#Tree">Tree</a> β → <a class="tref" href="#Tree">Tree</a> β<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad._gt_gt">Monad.&gt;&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad_Tree._gt_gt_eq">&gt;&gt;=</a> :: <b><a class="tref" href="#Tree">Tree</a> α</b> -&gt; (α -&gt; <a class="tref" href="#Tree">Tree</a> β) -&gt; <a class="tref" href="#Tree">Tree</a> β</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad_Tree._gt_gt_eq">&gt;&gt;=</a> ∷ <b><a class="tref" href="#Tree">Tree</a> α</b> → (α → <a class="tref" href="#Tree">Tree</a> β) → <a class="tref" href="#Tree">Tree</a> β<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad_Tree.join">join</a> :: <b><a class="tref" href="#Tree">Tree</a> (<a class="tref" href="#Tree">Tree</a> α)</b> -&gt; <a class="tref" href="#Tree">Tree</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad_Tree.join">join</a> ∷ <b><a class="tref" href="#Tree">Tree</a> (<a class="tref" href="#Tree">Tree</a> α)</b> → <a class="tref" href="#Tree">Tree</a> α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad.join">Monad.join</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad_Tree._return">return</a> :: α -&gt; <a class="tref" href="#Tree">Tree</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad_Tree._return">return</a> ∷ α → <a class="tref" href="#Tree">Tree</a> α</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="Show_Tree"> </a> <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> a =&gt; <a class="tref" href="#Tree">Tree</a> a</SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name="Show_Tree"> </a> <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> a ⇒ <a class="tref" href="#Tree">Tree</a> a</SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Show_Tree.display">display</a> :: <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α =&gt; <b><a class="tref" href="#Tree">Tree</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a name="Show_Tree.display">display</a> ∷ <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α ⇒ <b><a class="tref" href="#Tree">Tree</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeText.html#Show.display">Show.display</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Show_Tree.show">show</a> :: <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α =&gt; <b><a class="tref" href="#Tree">Tree</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a name="Show_Tree.show">show</a> ∷ <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α ⇒ <b><a class="tref" href="#Tree">Tree</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
 Function generated for derived istance.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Show_Tree.showChars">showChars</a> :: <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α =&gt; <b><a class="tref" href="#Tree">Tree</a> α</b> -&gt; [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
+<SPAN CLASS="code"><a name="Show_Tree.showChars">showChars</a> ∷ <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α ⇒ <b><a class="tref" href="#Tree">Tree</a> α</b> → [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showChars">Show.showChars</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Show_Tree.showList">showList</a> :: <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α =&gt; <b><a class="tref" href="#Forest">Forest</a> α</b> -&gt; <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a name="Show_Tree.showList">showList</a> ∷ <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α ⇒ <b><a class="tref" href="#Forest">Forest</a> α</b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showList">Show.showList</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Show_Tree.showsPrec">showsPrec</a> :: <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α =&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <b><a class="tref" href="#Tree">Tree</a> α</b> -&gt; <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a name="Show_Tree.showsPrec">showsPrec</a> ∷ <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α ⇒ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <b><a class="tref" href="#Tree">Tree</a> α</b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsPrec">Show.showsPrec</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Show_Tree.showsub">showsub</a> :: <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α =&gt; <b><a class="tref" href="#Tree">Tree</a> α</b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a name="Show_Tree.showsub">showsub</a> ∷ <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α ⇒ <b><a class="tref" href="#Tree">Tree</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
 Function generated for derived istance.</p>
@@ -342,25 +338,25 @@ Function generated for derived istance.</p>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Traversable_Tree.mapM">mapM</a> :: <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ =&gt; (α -&gt; γ β) -&gt; <b><a class="tref" href="#Tree">Tree</a> α</b> -&gt; γ (<a class="tref" href="#Tree">Tree</a> β)</SPAN></dt>
+<SPAN CLASS="code"><a name="Traversable_Tree.mapM">mapM</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ (β → γ α) → <b><a class="tref" href="#Tree">Tree</a> β</b> → γ (<a class="tref" href="#Tree">Tree</a> α)</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./Traversable.html#Traversable.mapM">Traversable.mapM</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Traversable_Tree.sequence">sequence</a> :: <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α =&gt; <b><a class="tref" href="#Tree">Tree</a> (α β)</b> -&gt; α (<a class="tref" href="#Tree">Tree</a> β)</SPAN></dt>
+<SPAN CLASS="code"><a name="Traversable_Tree.sequence">sequence</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <b><a class="tref" href="#Tree">Tree</a> (α β)</b> → α (<a class="tref" href="#Tree">Tree</a> β)</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./Traversable.html#Traversable.sequence">Traversable.sequence</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Traversable_Tree.sequenceA">sequenceA</a> :: <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α =&gt; <b><a class="tref" href="#Tree">Tree</a> (α β)</b> -&gt; α (<a class="tref" href="#Tree">Tree</a> β)</SPAN></dt>
+<SPAN CLASS="code"><a name="Traversable_Tree.sequenceA">sequenceA</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α ⇒ <b><a class="tref" href="#Tree">Tree</a> (α β)</b> → α (<a class="tref" href="#Tree">Tree</a> β)</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./Traversable.html#Traversable.sequenceA">Traversable.sequenceA</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Traversable_Tree.traverse">traverse</a> :: <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> γ =&gt; (α -&gt; γ β) -&gt; <b><a class="tref" href="#Tree">Tree</a> α</b> -&gt; γ (<a class="tref" href="#Tree">Tree</a> β)</SPAN></dt>
+<SPAN CLASS="code"><a name="Traversable_Tree.traverse">traverse</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> β ⇒ (α → β γ) → <b><a class="tref" href="#Tree">Tree</a> α</b> → β (<a class="tref" href="#Tree">Tree</a> γ)</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -373,12 +369,12 @@ inherited from <a class="fref" href="./Traversable.html#Traversable.sequenceA">T
 <SPAN CLASS="code"><b>data </b><a name="Tree"> </a> <a class="tref" href="#Tree">Tree</a> a</SPAN></dt>
 <dd class="data">
 <p>
-Multi-way trees, also known as /rose trees/.   </p>
+Multi-way trees, also known as <i>rose trees</i>.   </p>
 <h3>
 Constructors</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Tree.Node">Node</a> {rootLabel :: a, subForest :: <a class="tref" href="#Forest">Forest</a> a}</SPAN></dt>
+<SPAN CLASS="code"><a name="Tree.Node">Node</a> {rootLabel ∷ a, subForest ∷ <a class="tref" href="#Forest">Forest</a> a}</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -386,16 +382,16 @@ Constructors</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Tree.rootLabel">rootLabel</a> :: <b><a class="tref" href="#Tree">Tree</a> α</b> -&gt; α</SPAN></dt>
+<SPAN CLASS="code"><a name="Tree.rootLabel">rootLabel</a> ∷ <b><a class="tref" href="#Tree">Tree</a> α</b> → α</SPAN></dt>
 <dd class="func">
 <p>
 access field <SPAN CLASS="code">rootLabel</SPAN></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Tree.subForest">subForest</a> :: <b><a class="tref" href="#Tree">Tree</a> α</b> -&gt; <a class="tref" href="#Forest">Forest</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name="Tree.subForest">subForest</a> ∷ <b><a class="tref" href="#Tree">Tree</a> α</b> → <a class="tref" href="#Forest">Forest</a> α</SPAN></dt>
 <dd class="func">
 <p>
-access field <SPAN CLASS="code">subForest</SPAN></p>
+label value zero or more child trees   </p>
 </dd>
 </dl>
 </dd>
@@ -404,53 +400,53 @@ access field <SPAN CLASS="code">subForest</SPAN></p>
 <a name="let">Functions and Values</a></h2>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="draw">draw</a> :: <b><a class="tref" href="#Tree">Tree</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> -&gt; [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
+<SPAN CLASS="code"><a name="draw">draw</a> ∷ <b><a class="tref" href="#Tree">Tree</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="drawForest">drawForest</a> :: <b><a class="tref" href="#Forest">Forest</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a name="drawForest">drawForest</a> ∷ <b><a class="tref" href="#Forest">Forest</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
 Neat 2-dimensional drawing of a forest.   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="drawTree">drawTree</a> :: <b><a class="tref" href="#Tree">Tree</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a name="drawTree">drawTree</a> ∷ <b><a class="tref" href="#Tree">Tree</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
 Neat 2-dimensional drawing of a tree.   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="flatten">flatten</a> :: <b><a class="tref" href="#Tree">Tree</a> a</b> -&gt; [a]</SPAN></dt>
+<SPAN CLASS="code"><a name="flatten">flatten</a> ∷ <b><a class="tref" href="#Tree">Tree</a> a</b> → [a]</SPAN></dt>
 <dd class="func">
 <p>
 The elements of a tree in pre-order.   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="levels">levels</a> :: <a class="tref" href="#Tree">Tree</a> a -&gt; [[a]]</SPAN></dt>
+<SPAN CLASS="code"><a name="levels">levels</a> ∷ <a class="tref" href="#Tree">Tree</a> a → [[a]]</SPAN></dt>
 <dd class="func">
 <p>
 Lists of nodes at each level of the tree.   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="unfoldForest">unfoldForest</a> :: (b -&gt; (a, [b])) -&gt; <b>[b]</b> -&gt; <a class="tref" href="#Forest">Forest</a> a</SPAN></dt>
+<SPAN CLASS="code"><a name="unfoldForest">unfoldForest</a> ∷ (b → (a, [b])) → <b>[b]</b> → <a class="tref" href="#Forest">Forest</a> a</SPAN></dt>
 <dd class="func">
 <p>
 Build a forest from a list of seed values   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="unfoldForestM">unfoldForestM</a> :: <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m =&gt; (b -&gt; m (a, [b])) -&gt; <b>[b]</b> -&gt; m (<a class="tref" href="#Forest">Forest</a> a)</SPAN></dt>
+<SPAN CLASS="code"><a name="unfoldForestM">unfoldForestM</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m ⇒ (b → m (a, [b])) → <b>[b]</b> → m (<a class="tref" href="#Forest">Forest</a> a)</SPAN></dt>
 <dd class="func">
 <p>
 Monadic forest builder, in depth-first order   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="unfoldTree">unfoldTree</a> :: (b -&gt; (a, [b])) -&gt; b -&gt; <a class="tref" href="#Tree">Tree</a> a</SPAN></dt>
+<SPAN CLASS="code"><a name="unfoldTree">unfoldTree</a> ∷ (b → (a, [b])) → b → <a class="tref" href="#Tree">Tree</a> a</SPAN></dt>
 <dd class="func">
 <p>
 Build a tree from a seed value   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="unfoldTreeM">unfoldTreeM</a> :: <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m =&gt; (b -&gt; m (a, [b])) -&gt; b -&gt; m (<a class="tref" href="#Tree">Tree</a> a)</SPAN></dt>
+<SPAN CLASS="code"><a name="unfoldTreeM">unfoldTreeM</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m ⇒ (b → m (a, [b])) → b → m (<a class="tref" href="#Tree">Tree</a> a)</SPAN></dt>
 <dd class="func">
 <p>
 Monadic tree builder, in depth-first order   </p>
@@ -460,247 +456,247 @@ Monadic tree builder, in depth-first order   </p>
 <a name="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Tree">Tree</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Tree">Tree</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#drawTree">drawTree</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Tree">Tree</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a> -&gt; [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Tree">Tree</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#draw">draw</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Forest">Forest</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Forest">Forest</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#drawForest">drawForest</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α -&gt; α -&gt; α) -&gt; <a class="tref" href="#Tree">Tree</a> α -&gt; α</SPAN></dt>
+<SPAN CLASS="code">(α → α → α) → <a class="tref" href="#Tree">Tree</a> α → α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Foldable_Tree.foldl1">Foldable_Tree.foldl1</a>, <a class="fref" href="#Foldable_Tree.foldr1">Foldable_Tree.foldr1</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Tree">Tree</a> (<a class="tref" href="#Tree">Tree</a> α) -&gt; <a class="tref" href="#Tree">Tree</a> α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Tree">Tree</a> (<a class="tref" href="#Tree">Tree</a> α) → <a class="tref" href="#Tree">Tree</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_Tree.join">Monad_Tree.join</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Tree">Tree</a> a -&gt; [[a]]</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Tree">Tree</a> a → [[a]]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#levels">levels</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Tree">Tree</a> a -&gt; [a]</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Tree">Tree</a> a → [a]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#flatten">flatten</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Tree">Tree</a> α -&gt; (<a class="tref" href="#Forest">Forest</a> α-&gt;<a class="tref" href="#Forest">Forest</a> α) -&gt; <a class="tref" href="#Tree">Tree</a> α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Tree">Tree</a> α → (<a class="tref" href="#Forest">Forest</a> α→<a class="tref" href="#Forest">Forest</a> α) → <a class="tref" href="#Tree">Tree</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Tree.chg$subForest">Tree.chg$subForest</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Tree">Tree</a> α -&gt; (α-&gt;α) -&gt; <a class="tref" href="#Tree">Tree</a> α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Tree">Tree</a> α → (α→α) → <a class="tref" href="#Tree">Tree</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Tree.chg$rootLabel">Tree.chg$rootLabel</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Tree">Tree</a> α -&gt; <a class="tref" href="#Forest">Forest</a> α -&gt; <a class="tref" href="#Tree">Tree</a> α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Tree">Tree</a> α → <a class="tref" href="#Forest">Forest</a> α → <a class="tref" href="#Tree">Tree</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Tree.upd$subForest">Tree.upd$subForest</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Tree">Tree</a> α -&gt; α -&gt; <a class="tref" href="#Tree">Tree</a> α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Tree">Tree</a> α → α → <a class="tref" href="#Tree">Tree</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Tree.upd$rootLabel">Tree.upd$rootLabel</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Tree">Tree</a> α -&gt; <a class="tref" href="#Forest">Forest</a> α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Tree">Tree</a> α → <a class="tref" href="#Forest">Forest</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Tree.subForest">Tree.subForest</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Tree">Tree</a> α -&gt; α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Tree">Tree</a> α → α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Tree.rootLabel">Tree.rootLabel</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">a -&gt; <a class="tref" href="#Forest">Forest</a> a -&gt; <a class="tref" href="#Tree">Tree</a> a</SPAN></dt>
+<SPAN CLASS="code">a → <a class="tref" href="#Forest">Forest</a> a → <a class="tref" href="#Tree">Tree</a> a</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Tree.Node">Tree.Node</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">α -&gt; <a class="tref" href="#Tree">Tree</a> α</SPAN></dt>
+<SPAN CLASS="code">α → <a class="tref" href="#Tree">Tree</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Applicative_Tree.pure">Applicative_Tree.pure</a>, <a class="fref" href="#Monad_Tree._return">Monad_Tree.return</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">α -&gt; <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code">α → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Tree.has$rootLabel">Tree.has$rootLabel</a>, <a class="fref" href="#Tree.has$subForest">Tree.has$subForest</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./Monoid.html#Monoid">Monoid</a> α =&gt; <a class="tref" href="#Tree">Tree</a> α -&gt; α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./Monoid.html#Monoid">Monoid</a> α ⇒ <a class="tref" href="#Tree">Tree</a> α → α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Foldable_Tree.fold">Foldable_Tree.fold</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> α =&gt; <a class="tref" href="#Tree">Tree</a> α -&gt; α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> α ⇒ <a class="tref" href="#Tree">Tree</a> α → α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Foldable_Tree.fold1">Foldable_Tree.fold1</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α =&gt; <a class="tref" href="#Tree">Tree</a> α -&gt; <a class="tref" href="#Tree">Tree</a> α -&gt; <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <a class="tref" href="#Tree">Tree</a> α → <a class="tref" href="#Tree">Tree</a> α → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Eq_Tree._eq_eq">Eq_Tree.==</a>, <a class="fref" href="#Eq_Tree._excl_eq">Eq_Tree.!=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α =&gt; <a class="tref" href="#Tree">Tree</a> α -&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <a class="tref" href="#Tree">Tree</a> α → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Eq_Tree.hashCode">Eq_Tree.hashCode</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α =&gt; <a class="tref" href="#Tree">Tree</a> α -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α ⇒ <a class="tref" href="#Tree">Tree</a> α → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Show_Tree.show">Show_Tree.show</a>, <a class="fref" href="#Show_Tree.display">Show_Tree.display</a>, <a class="fref" href="#Show_Tree.showsub">Show_Tree.showsub</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α =&gt; <a class="tref" href="#Tree">Tree</a> α -&gt; [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α ⇒ <a class="tref" href="#Tree">Tree</a> α → [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Show_Tree.showChars">Show_Tree.showChars</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α =&gt; <a class="tref" href="#Forest">Forest</a> α -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α ⇒ <a class="tref" href="#Forest">Forest</a> α → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Show_Tree.showList">Show_Tree.showList</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α =&gt; <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> -&gt; <a class="tref" href="#Tree">Tree</a> α -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a> -&gt; <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α ⇒ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#Tree">Tree</a> α → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Show_Tree.showsPrec">Show_Tree.showsPrec</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(b -&gt; (a, [b])) -&gt; [b] -&gt; <a class="tref" href="#Forest">Forest</a> a</SPAN></dt>
+<SPAN CLASS="code">(b → (a, [b])) → [b] → <a class="tref" href="#Forest">Forest</a> a</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#unfoldForest">unfoldForest</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(b -&gt; (a, [b])) -&gt; b -&gt; <a class="tref" href="#Tree">Tree</a> a</SPAN></dt>
+<SPAN CLASS="code">(b → (a, [b])) → b → <a class="tref" href="#Tree">Tree</a> a</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#unfoldTree">unfoldTree</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α -&gt; β -&gt; α) -&gt; α -&gt; <a class="tref" href="#Tree">Tree</a> β -&gt; α</SPAN></dt>
+<SPAN CLASS="code">(α → β → α) → α → <a class="tref" href="#Tree">Tree</a> β → α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Foldable_Tree.foldl">Foldable_Tree.foldl</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α -&gt; β -&gt; β) -&gt; β -&gt; <a class="tref" href="#Tree">Tree</a> α -&gt; β</SPAN></dt>
+<SPAN CLASS="code">(α → β → β) → β → <a class="tref" href="#Tree">Tree</a> α → β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Foldable_Tree.foldr">Foldable_Tree.foldr</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α -&gt; β) -&gt; <a class="tref" href="#Tree">Tree</a> α -&gt; <a class="tref" href="#Tree">Tree</a> β</SPAN></dt>
+<SPAN CLASS="code">(α → β) → <a class="tref" href="#Tree">Tree</a> α → <a class="tref" href="#Tree">Tree</a> β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Functor_Tree.fmap">Functor_Tree.fmap</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Tree">Tree</a> (α-&gt;β) -&gt; <a class="tref" href="#Tree">Tree</a> α -&gt; <a class="tref" href="#Tree">Tree</a> β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Tree">Tree</a> (α→β) → <a class="tref" href="#Tree">Tree</a> α → <a class="tref" href="#Tree">Tree</a> β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Applicative_Tree._lt_star_gt">Applicative_Tree.&lt;*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Tree">Tree</a> α -&gt; (α -&gt; <a class="tref" href="#Tree">Tree</a> β) -&gt; <a class="tref" href="#Tree">Tree</a> β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Tree">Tree</a> α → (α → <a class="tref" href="#Tree">Tree</a> β) → <a class="tref" href="#Tree">Tree</a> β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_Tree._gt_gt_eq">Monad_Tree.&gt;&gt;=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Tree">Tree</a> α -&gt; <a class="tref" href="#Tree">Tree</a> β -&gt; <a class="tref" href="#Tree">Tree</a> α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Tree">Tree</a> α → <a class="tref" href="#Tree">Tree</a> β → <a class="tref" href="#Tree">Tree</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Applicative_Tree._lt_star">Applicative_Tree.&lt;*</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Tree">Tree</a> α -&gt; <a class="tref" href="#Tree">Tree</a> β -&gt; <a class="tref" href="#Tree">Tree</a> β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Tree">Tree</a> α → <a class="tref" href="#Tree">Tree</a> β → <a class="tref" href="#Tree">Tree</a> β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Applicative_Tree._star_gt">Applicative_Tree.*&gt;</a>, <a class="fref" href="#Monad_Tree._gt_gt">Monad_Tree.&gt;&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./Monoid.html#Monoid">Monoid</a> β =&gt; (α -&gt; β) -&gt; <a class="tref" href="#Tree">Tree</a> α -&gt; β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./Monoid.html#Monoid">Monoid</a> β ⇒ (α → β) → <a class="tref" href="#Tree">Tree</a> α → β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Foldable_Tree.foldMap">Foldable_Tree.foldMap</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> β =&gt; (α -&gt; β) -&gt; <a class="tref" href="#Tree">Tree</a> α -&gt; β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> β ⇒ (α → β) → <a class="tref" href="#Tree">Tree</a> α → β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Foldable_Tree.foldMap1">Foldable_Tree.foldMap1</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α =&gt; <a class="tref" href="#Tree">Tree</a> (α β) -&gt; α (<a class="tref" href="#Tree">Tree</a> β)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α ⇒ <a class="tref" href="#Tree">Tree</a> (α β) → α (<a class="tref" href="#Tree">Tree</a> β)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable_Tree.sequenceA">Traversable_Tree.sequenceA</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α =&gt; <a class="tref" href="#Tree">Tree</a> (α β) -&gt; α (<a class="tref" href="#Tree">Tree</a> β)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#Tree">Tree</a> (α β) → α (<a class="tref" href="#Tree">Tree</a> β)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable_Tree.sequence">Traversable_Tree.sequence</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> γ =&gt; (α -&gt; γ β) -&gt; <a class="tref" href="#Tree">Tree</a> α -&gt; γ (<a class="tref" href="#Tree">Tree</a> β)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> β ⇒ (α → β γ) → <a class="tref" href="#Tree">Tree</a> α → β (<a class="tref" href="#Tree">Tree</a> γ)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable_Tree.traverse">Traversable_Tree.traverse</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m =&gt; (b -&gt; m (a, [b])) -&gt; [b] -&gt; m (<a class="tref" href="#Forest">Forest</a> a)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m ⇒ (b → m (a, [b])) → [b] → m (<a class="tref" href="#Forest">Forest</a> a)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#unfoldForestM">unfoldForestM</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m =&gt; (b -&gt; m (a, [b])) -&gt; b -&gt; m (<a class="tref" href="#Tree">Tree</a> a)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m ⇒ (b → m (a, [b])) → b → m (<a class="tref" href="#Tree">Tree</a> a)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#unfoldTreeM">unfoldTreeM</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ =&gt; (α -&gt; γ β) -&gt; <a class="tref" href="#Tree">Tree</a> α -&gt; γ (<a class="tref" href="#Tree">Tree</a> β)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ (β → γ α) → <a class="tref" href="#Tree">Tree</a> β → γ (<a class="tref" href="#Tree">Tree</a> α)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable_Tree.mapM">Traversable_Tree.mapM</a></p>

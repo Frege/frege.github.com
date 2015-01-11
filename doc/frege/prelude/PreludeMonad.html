@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
 <META http-equiv="Content-Type" content="text/html;charset=utf-8">
-<TITLE>frege.prelude.PreludeMonad - frege documentation</TITLE>
+<TITLE>Prelude.PreludeMonad - frege documentation</TITLE>
 <style TYPE="text/css">
 body { font-family: helvetica, arial, sans-serif }
 pre { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
@@ -17,9 +17,9 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 </style>
 <BODY>
 <h1>
-<a name="package">Package <SPAN CLASS="code">frege.prelude.PreludeMonad</SPAN></a></h1>
+<a name="package">Package <SPAN CLASS="code">Prelude.PreludeMonad</SPAN></a></h1>
 <p>
- Source file: <SPAN CLASS="code">frege/prelude/PreludeMonad.fr</SPAN></p>
+ Source file: <SPAN CLASS="code">./frege/prelude/PreludeMonad.fr</SPAN></p>
 <h3>
 Package Documentation</h3>
 <p>
@@ -54,7 +54,7 @@ This package is <i>implementation specific</i> insofar as the compiler may assum
 <p>
 In particular, desugared <b><SPAN CLASS="code">do</SPAN></b> expressions will reference <a class="tref" href="#Monad">Monad</a>, <a class="fref" href="#Bind._gt_gt_eq">Bind.&gt;&gt;=</a> and <a class="fref" href="#Monad._gt_gt">Monad.&gt;&gt;</a>.</p>
 <p>
-This package is implicitly imported and besides the additional stuff covers most of what one would get by importing <i>Control.Monad</i> and <i>Control.Applicative</i> in Hasekll.</p>
+This package is implicitly imported and besides the additional stuff covers most of what one would get by importing <i>Control.Monad</i> and <i>Control.Applicative</i> in Haskell.</p>
 <h3>
 Table of Content</h3>
 <ul>
@@ -94,19 +94,19 @@ Imports</h3>
 <ul>
 <li>
 <div>
-import <a HREF="./PreludeList.html">frege.prelude.PreludeList</a> as PreludeList</div>
+import <a HREF="./PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
 </li>
 <li>
 <div>
-import <a HREF="./PreludeBase.html">frege.prelude.PreludeBase</a> as PreludeBase</div>
+import <a HREF="./PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
 </li>
 <li>
 <div>
-import <a HREF="../control/Category.html">frege.control.Category</a> as Category</div>
+import <a HREF="../control/Category.html">Control.Category</a> as Category</div>
 </li>
 <li>
 <div>
-import <a HREF="../control/Semigroupoid.html">frege.control.Semigroupoid</a> as Semigroupoid</div>
+import <a HREF="../control/Semigroupoid.html">Control.Semigroupoid</a> as Semigroupoid</div>
 </li>
 </ul>
 <h2>
@@ -121,19 +121,19 @@ import <a HREF="../control/Semigroupoid.html">frege.control.Semigroupoid</a> as 
 <a name="class">Classes</a></h2>
 <dl class="clas">
 <dt class="clas">
-<SPAN CLASS="code"><b>class </b><a name="Alt">Alt</a> <a class="tref" href="#Functor">Functor</a> f =&gt;  f</SPAN></dt>
+<SPAN CLASS="code"><b>class </b><a name="Alt">Alt</a> <a class="tref" href="#Functor">Functor</a> f ⇒  f</SPAN></dt>
 <dd class="clas">
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Alt._lt_bar_gt">&lt;|&gt;</a> :: <a class="tref" href="#Alt">Alt</a> f =&gt; f a -&gt; f a -&gt; f a</SPAN></dt>
+<SPAN CLASS="code"><a name="Alt._lt_bar_gt">&lt;|&gt;</a> ∷ <a class="tref" href="#Alt">Alt</a> f ⇒ f a → f a → f a<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
 </dd>
 <dt class="clas">
-<SPAN CLASS="code"><b>class </b><a name="Applicative">Applicative</a> (<a class="tref" href="#Functor">Functor</a> p, <a class="tref" href="#Apply">Apply</a> p) =&gt;  p</SPAN></dt>
+<SPAN CLASS="code"><b>class </b><a name="Applicative">Applicative</a> (<a class="tref" href="#Functor">Functor</a> p, <a class="tref" href="#Apply">Apply</a> p) ⇒  p</SPAN></dt>
 <dd class="clas">
 <p>
 A functor with application, providing operations to</p>
@@ -191,24 +191,24 @@ Minimal complete definition: <a class="fref" href="#Applicative.pure">Applicativ
 <h3>
 Known Instances</h3>
 <p>
-<a class="tref" href="#Monad__lbrack_rbrack">[]</a>, <a class="tref" href="#Monad_ST">ST</a>, <a class="tref" href="#Monad_Either">Either</a>, <a class="tref" href="#Applicative__minus_gt">-&gt;</a></p>
+<a class="tref" href="#Monad__lbrack_rbrack">[]</a>, <a class="tref" href="#Monad_Either">Either</a>, <a class="tref" href="#Monad_ST">ST</a>, <a class="tref" href="#Applicative__minus_gt">-&gt;</a></p>
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Applicative._star_gt">*&gt;</a> :: <a class="tref" href="#Applicative">Applicative</a> p =&gt; p a -&gt; p b -&gt; p b</SPAN></dt>
+<SPAN CLASS="code"><a name="Applicative._star_gt">*&gt;</a> ∷ <a class="tref" href="#Applicative">Applicative</a> p ⇒ p a → p b → p b<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 Sequence actions, discarding the value of the first argument.   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Applicative._lt_star">&lt;*</a> :: <a class="tref" href="#Applicative">Applicative</a> p =&gt; p a -&gt; p b -&gt; p a</SPAN></dt>
+<SPAN CLASS="code"><a name="Applicative._lt_star">&lt;*</a> ∷ <a class="tref" href="#Applicative">Applicative</a> p ⇒ p a → p b → p a<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 Sequence actions, discarding the value of the second argument.   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Applicative.pure">pure</a> :: <a class="tref" href="#Applicative">Applicative</a> p =&gt; a -&gt; p a</SPAN></dt>
+<SPAN CLASS="code"><a name="Applicative.pure">pure</a> ∷ <a class="tref" href="#Applicative">Applicative</a> p ⇒ a → p a</SPAN></dt>
 <dd class="func">
 <p>
 Lift a value   </p>
@@ -216,33 +216,33 @@ Lift a value   </p>
 </dl>
 </dd>
 <dt class="clas">
-<SPAN CLASS="code"><b>class </b><a name="Apply">Apply</a> <a class="tref" href="#Functor">Functor</a> f =&gt;  f</SPAN></dt>
+<SPAN CLASS="code"><b>class </b><a name="Apply">Apply</a> <a class="tref" href="#Functor">Functor</a> f ⇒  f</SPAN></dt>
 <dd class="clas">
 <h3>
 Known Instances</h3>
 <p>
-<a class="tref" href="#Monad__lbrack_rbrack">[]</a>, <a class="tref" href="#Monad_ST">ST</a>, <a class="tref" href="#Monad_Either">Either</a>, <a class="tref" href="#Applicative__minus_gt">-&gt;</a></p>
+<a class="tref" href="#Monad__lbrack_rbrack">[]</a>, <a class="tref" href="#Monad_Either">Either</a>, <a class="tref" href="#Monad_ST">ST</a>, <a class="tref" href="#Applicative__minus_gt">-&gt;</a></p>
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Apply._lt_star_gt">&lt;*&gt;</a> :: <a class="tref" href="#Apply">Apply</a> f =&gt; f (a-&gt;b) -&gt; f a -&gt; f b</SPAN></dt>
+<SPAN CLASS="code"><a name="Apply._lt_star_gt">&lt;*&gt;</a> ∷ <a class="tref" href="#Apply">Apply</a> f ⇒ f (a→b) → f a → f b<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
 </dd>
 <dt class="clas">
-<SPAN CLASS="code"><b>class </b><a name="Bind">Bind</a> (<a class="tref" href="#Functor">Functor</a> f, <a class="tref" href="#Apply">Apply</a> f) =&gt;  f</SPAN></dt>
+<SPAN CLASS="code"><b>class </b><a name="Bind">Bind</a> (<a class="tref" href="#Functor">Functor</a> f, <a class="tref" href="#Apply">Apply</a> f) ⇒  f</SPAN></dt>
 <dd class="clas">
 <h3>
 Known Instances</h3>
 <p>
-<a class="tref" href="#Monad__lbrack_rbrack">[]</a>, <a class="tref" href="#Monad_ST">ST</a>, <a class="tref" href="#Monad__minus_gt">-&gt;</a>, <a class="tref" href="#Monad_Either">Either</a></p>
+<a class="tref" href="#Monad__lbrack_rbrack">[]</a>, <a class="tref" href="#Monad__minus_gt">-&gt;</a>, <a class="tref" href="#Monad_Either">Either</a>, <a class="tref" href="#Monad_ST">ST</a></p>
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Bind._gt_gt_eq">&gt;&gt;=</a> :: <a class="tref" href="#Bind">Bind</a> f =&gt; f a -&gt; (a -&gt; f b) -&gt; f b</SPAN></dt>
+<SPAN CLASS="code"><a name="Bind._gt_gt_eq">&gt;&gt;=</a> ∷ <a class="tref" href="#Bind">Bind</a> f ⇒ f a → (a → f b) → f b<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 <p>
 Sequentially compose two actions, passing any value produced by the first as an argument to the second.   </p>
@@ -261,12 +261,12 @@ The <a class="tref" href="#Functor">Functor</a> class is used for types that can
 <h3>
 Known Instances</h3>
 <p>
-<a class="tref" href="#Monad_ST">ST</a>, <a class="tref" href="#Monad_Either">Either</a>, <a class="tref" href="#Applicative__minus_gt">-&gt;</a>, <a class="tref" href="#Functor_l_cc_r">(,,)</a>, <a class="tref" href="#Functor_l_c_r">(,)</a>, <a class="tref" href="#Functor__lbrack_rbrack">[]</a></p>
+<a class="tref" href="#Monad_Either">Either</a>, <a class="tref" href="#Monad_ST">ST</a>, <a class="tref" href="#Applicative__minus_gt">-&gt;</a>, <a class="tref" href="#Functor_l_cc_r">(,,)</a>, <a class="tref" href="#Functor_l_c_r">(,)</a>, <a class="tref" href="#Functor__lbrack_rbrack">[]</a></p>
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Functor.fmap">fmap</a> :: <a class="tref" href="#Functor">Functor</a> f =&gt; (a -&gt; b) -&gt; f a -&gt; f b</SPAN></dt>
+<SPAN CLASS="code"><a name="Functor.fmap">fmap</a> ∷ <a class="tref" href="#Functor">Functor</a> f ⇒ (a → b) → f a → f b<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 Map a function over a <a class="tref" href="#Functor">Functor</a>   </p>
@@ -274,7 +274,7 @@ Map a function over a <a class="tref" href="#Functor">Functor</a>   </p>
 </dl>
 </dd>
 <dt class="clas">
-<SPAN CLASS="code"><b>class </b><a name="Monad">Monad</a> (<a class="tref" href="#Functor">Functor</a> m, <a class="tref" href="#Apply">Apply</a> m, <a class="tref" href="#Bind">Bind</a> m, <a class="tref" href="#Applicative">Applicative</a> m) =&gt;  m</SPAN></dt>
+<SPAN CLASS="code"><b>class </b><a name="Monad">Monad</a> (<a class="tref" href="#Functor">Functor</a> m, <a class="tref" href="#Apply">Apply</a> m, <a class="tref" href="#Bind">Bind</a> m, <a class="tref" href="#Applicative">Applicative</a> m) ⇒  m</SPAN></dt>
 <dd class="clas">
 <p>
 The <a class="tref" href="#Monad">Monad</a> class defines the basic operations over a <i>monad</i>, a concept from a branch of mathematics known as <i>category theory</i>. From the perspective of a Frege programmer, however, it is best to think of a monad as an <i>abstract datatype</i> of actions.</p>
@@ -299,36 +299,36 @@ Minimal complete definition: <a class="fref" href="#Bind._gt_gt_eq">Bind.&gt;&gt
 <h3>
 Known Instances</h3>
 <p>
-<a class="tref" href="#Monad__lbrack_rbrack">[]</a>, <a class="tref" href="#Monad_ST">ST</a>, <a class="tref" href="#Monad__minus_gt">-&gt;</a>, <a class="tref" href="#Monad_Either">Either</a></p>
+<a class="tref" href="#Monad__lbrack_rbrack">[]</a>, <a class="tref" href="#Monad__minus_gt">-&gt;</a>, <a class="tref" href="#Monad_Either">Either</a>, <a class="tref" href="#Monad_ST">ST</a></p>
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad._lt_star_gt">&lt;*&gt;</a> :: <a class="tref" href="#Monad">Monad</a> m =&gt; m (a-&gt;b) -&gt; m a -&gt; m b</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad._lt_star_gt">&lt;*&gt;</a> ∷ <a class="tref" href="#Monad">Monad</a> m ⇒ m (a→b) → m a → m b<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad._gt_gt">&gt;&gt;</a> :: <a class="tref" href="#Monad">Monad</a> m =&gt; m a -&gt; m b -&gt; m b</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad._gt_gt">&gt;&gt;</a> ∷ <a class="tref" href="#Monad">Monad</a> m ⇒ m a → m b → m b<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 <p>
 Sequentially compose two actions, discarding any value produced by the first, this works like sequencing operators (such as the semicolon) in imperative languages.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad.fmap">fmap</a> :: <a class="tref" href="#Monad">Monad</a> m =&gt; (a -&gt; b) -&gt; m a -&gt; m b</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad.fmap">fmap</a> ∷ <a class="tref" href="#Monad">Monad</a> m ⇒ (a → b) → m a → m b<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad.join">join</a> :: <a class="tref" href="#Monad">Monad</a> m =&gt; m (m a) -&gt; m a</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad.join">join</a> ∷ <a class="tref" href="#Monad">Monad</a> m ⇒ m (m a) → m a</SPAN></dt>
 <dd class="func">
 <p>
 The <a class="fref" href="#Monad.join">Monad.join</a> function is the conventional monad <b>join</b> operator. It is used to remove one level of monadic structure, projecting its bound argument into the outer level.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad.pure">pure</a> :: <a class="tref" href="#Monad">Monad</a> m =&gt; <b>a</b> -&gt; m a</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad.pure">pure</a> ∷ <a class="tref" href="#Monad">Monad</a> m ⇒ <b>a</b> → m a</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad._return">return</a> :: <a class="tref" href="#Monad">Monad</a> m =&gt; <b>a</b> -&gt; m a</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad._return">return</a> ∷ <a class="tref" href="#Monad">Monad</a> m ⇒ <b>a</b> → m a</SPAN></dt>
 <dd class="func">
 <p>
 Inject a value into the <a class="tref" href="#Monad">Monad</a>. This is the same as <a class="fref" href="#Applicative.pure">Applicative.pure</a>.</p>
@@ -336,19 +336,19 @@ Inject a value into the <a class="tref" href="#Monad">Monad</a>. This is the sam
 </dl>
 </dd>
 <dt class="clas">
-<SPAN CLASS="code"><b>class </b><a name="MonadAlt">MonadAlt</a> (<a class="tref" href="#Functor">Functor</a> f, <a class="tref" href="#Apply">Apply</a> f, <a class="tref" href="#Bind">Bind</a> f, <a class="tref" href="#Applicative">Applicative</a> f, <a class="tref" href="#Monad">Monad</a> f, <a class="tref" href="#Alt">Alt</a> f, <a class="tref" href="#Plus">Plus</a> f) =&gt;  f</SPAN></dt>
+<SPAN CLASS="code"><b>class </b><a name="MonadAlt">MonadAlt</a> (<a class="tref" href="#Functor">Functor</a> f, <a class="tref" href="#Apply">Apply</a> f, <a class="tref" href="#Bind">Bind</a> f, <a class="tref" href="#Applicative">Applicative</a> f, <a class="tref" href="#Monad">Monad</a> f, <a class="tref" href="#Alt">Alt</a> f, <a class="tref" href="#Plus">Plus</a> f) ⇒  f</SPAN></dt>
 <dd class="clas">
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="MonadAlt._lt_plus_gt">&lt;+&gt;</a> :: <a class="tref" href="#MonadAlt">MonadAlt</a> f =&gt; f a -&gt; f a -&gt; f a</SPAN></dt>
+<SPAN CLASS="code"><a name="MonadAlt._lt_plus_gt">&lt;+&gt;</a> ∷ <a class="tref" href="#MonadAlt">MonadAlt</a> f ⇒ f a → f a → f a<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
 </dd>
 <dt class="clas">
-<SPAN CLASS="code"><b>class </b><a name="MonadFail">MonadFail</a> (<a class="tref" href="#Functor">Functor</a> m, <a class="tref" href="#Apply">Apply</a> m, <a class="tref" href="#Bind">Bind</a> m, <a class="tref" href="#Applicative">Applicative</a> m, <a class="tref" href="#Monad">Monad</a> m) =&gt;  m</SPAN></dt>
+<SPAN CLASS="code"><b>class </b><a name="MonadFail">MonadFail</a> (<a class="tref" href="#Functor">Functor</a> m, <a class="tref" href="#Apply">Apply</a> m, <a class="tref" href="#Bind">Bind</a> m, <a class="tref" href="#Applicative">Applicative</a> m, <a class="tref" href="#Monad">Monad</a> m) ⇒  m</SPAN></dt>
 <dd class="clas">
 <p>
 The <a class="tref" href="#MonadFail">MonadFail</a> class augments <a class="tref" href="#Monad">Monad</a> by adding the <a class="fref" href="#MonadFail.fail">MonadFail.fail</a> operation. This operation is not part of the mathematical definition of a monad.</p>
@@ -360,7 +360,7 @@ Known Instances</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="MonadFail.fail">fail</a> :: <a class="tref" href="#MonadFail">MonadFail</a> m =&gt; <b><a class="tref" href="./PreludeBase.html#String">String</a></b> -&gt; m a</SPAN></dt>
+<SPAN CLASS="code"><a name="MonadFail.fail">fail</a> ∷ <a class="tref" href="#MonadFail">MonadFail</a> m ⇒ <b><a class="tref" href="./PreludeBase.html#String">String</a></b> → m a</SPAN></dt>
 <dd class="func">
 <p>
 Fail with a message.    </p>
@@ -368,19 +368,19 @@ Fail with a message.    </p>
 </dl>
 </dd>
 <dt class="clas">
-<SPAN CLASS="code"><b>class </b><a name="MonadOr">MonadOr</a> (<a class="tref" href="#Functor">Functor</a> mo, <a class="tref" href="#Apply">Apply</a> mo, <a class="tref" href="#Bind">Bind</a> mo, <a class="tref" href="#Applicative">Applicative</a> mo, <a class="tref" href="#Monad">Monad</a> mo, <a class="tref" href="#MonadZero">MonadZero</a> mo) =&gt;  mo</SPAN></dt>
+<SPAN CLASS="code"><b>class </b><a name="MonadOr">MonadOr</a> (<a class="tref" href="#Functor">Functor</a> mo, <a class="tref" href="#Apply">Apply</a> mo, <a class="tref" href="#Bind">Bind</a> mo, <a class="tref" href="#Applicative">Applicative</a> mo, <a class="tref" href="#Monad">Monad</a> mo, <a class="tref" href="#MonadZero">MonadZero</a> mo) ⇒  mo</SPAN></dt>
 <dd class="clas">
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="MonadOr.orElse">orElse</a> :: <a class="tref" href="#MonadOr">MonadOr</a> mo =&gt; mo a -&gt; mo a -&gt; mo a</SPAN></dt>
+<SPAN CLASS="code"><a name="MonadOr.orElse">orElse</a> ∷ <a class="tref" href="#MonadOr">MonadOr</a> mo ⇒ mo a → mo a → mo a</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
 </dd>
 <dt class="clas">
-<SPAN CLASS="code"><b>class </b><a name="MonadPlus">MonadPlus</a> (<a class="tref" href="#Functor">Functor</a> mp, <a class="tref" href="#Apply">Apply</a> mp, <a class="tref" href="#Bind">Bind</a> mp, <a class="tref" href="#Applicative">Applicative</a> mp, <a class="tref" href="#Monad">Monad</a> mp, <a class="tref" href="#MonadZero">MonadZero</a> mp) =&gt;  mp</SPAN></dt>
+<SPAN CLASS="code"><b>class </b><a name="MonadPlus">MonadPlus</a> (<a class="tref" href="#Functor">Functor</a> mp, <a class="tref" href="#Apply">Apply</a> mp, <a class="tref" href="#Bind">Bind</a> mp, <a class="tref" href="#Applicative">Applicative</a> mp, <a class="tref" href="#Monad">Monad</a> mp, <a class="tref" href="#MonadZero">MonadZero</a> mp) ⇒  mp</SPAN></dt>
 <dd class="clas">
 <p>
 A <a class="tref" href="#Monad">Monad</a> that also supports choice and failure and observes the following laws:</p>
@@ -397,7 +397,7 @@ Known Instances</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="MonadPlus.mplus">mplus</a> :: <a class="tref" href="#MonadPlus">MonadPlus</a> mp =&gt; mp a -&gt; mp a -&gt; mp a</SPAN></dt>
+<SPAN CLASS="code"><a name="MonadPlus.mplus">mplus</a> ∷ <a class="tref" href="#MonadPlus">MonadPlus</a> mp ⇒ mp a → mp a → mp a<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
 <dd class="func">
 <p>
 an associative operation   </p>
@@ -405,7 +405,7 @@ an associative operation   </p>
 </dl>
 </dd>
 <dt class="clas">
-<SPAN CLASS="code"><b>class </b><a name="MonadZero">MonadZero</a> (<a class="tref" href="#Functor">Functor</a> mz, <a class="tref" href="#Apply">Apply</a> mz, <a class="tref" href="#Bind">Bind</a> mz, <a class="tref" href="#Applicative">Applicative</a> mz, <a class="tref" href="#Monad">Monad</a> mz) =&gt;  mz</SPAN></dt>
+<SPAN CLASS="code"><b>class </b><a name="MonadZero">MonadZero</a> (<a class="tref" href="#Functor">Functor</a> mz, <a class="tref" href="#Apply">Apply</a> mz, <a class="tref" href="#Bind">Bind</a> mz, <a class="tref" href="#Applicative">Applicative</a> mz, <a class="tref" href="#Monad">Monad</a> mz) ⇒  mz</SPAN></dt>
 <dd class="clas">
 <p>
 A <a class="tref" href="#Monad">Monad</a> with a left identity.</p>
@@ -417,7 +417,7 @@ Known Instances</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="MonadZero.mzero">mzero</a> :: <a class="tref" href="#MonadZero">MonadZero</a> mz =&gt; mz a</SPAN></dt>
+<SPAN CLASS="code"><a name="MonadZero.mzero">mzero</a> ∷ <a class="tref" href="#MonadZero">MonadZero</a> mz ⇒ mz a</SPAN></dt>
 <dd class="func">
 <p>
 This value should satisfy /left zero/:</p>
@@ -427,13 +427,13 @@ This value should satisfy /left zero/:</p>
 </dl>
 </dd>
 <dt class="clas">
-<SPAN CLASS="code"><b>class </b><a name="Plus">Plus</a> (<a class="tref" href="#Functor">Functor</a> f, <a class="tref" href="#Alt">Alt</a> f) =&gt;  f</SPAN></dt>
+<SPAN CLASS="code"><b>class </b><a name="Plus">Plus</a> (<a class="tref" href="#Functor">Functor</a> f, <a class="tref" href="#Alt">Alt</a> f) ⇒  f</SPAN></dt>
 <dd class="clas">
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Plus.pzero">pzero</a> :: <a class="tref" href="#Plus">Plus</a> f =&gt; f a</SPAN></dt>
+<SPAN CLASS="code"><a name="Plus.pzero">pzero</a> ∷ <a class="tref" href="#Plus">Plus</a> f ⇒ f a</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -449,27 +449,27 @@ Member Functions</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Applicative__minus_gt._star_gt">*&gt;</a> :: (β-&gt;γ) -&gt; (β-&gt;α) -&gt; β -&gt; α</SPAN></dt>
+<SPAN CLASS="code"><a name="Applicative__minus_gt._star_gt">*&gt;</a> ∷ (α→γ) → (α→β) → α → β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Applicative._star_gt">Applicative.*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Applicative__minus_gt._lt_star">&lt;*</a> :: (<b>β-&gt;γ</b>) -&gt; (β-&gt;α) -&gt; β -&gt; γ</SPAN></dt>
+<SPAN CLASS="code"><a name="Applicative__minus_gt._lt_star">&lt;*</a> ∷ (<b>β→α</b>) → (β→γ) → β → α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Applicative._lt_star">Applicative.&lt;*</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Applicative__minus_gt._lt_star_gt">&lt;*&gt;</a> :: (<b>β-&gt;γ-&gt;α</b>) -&gt; (β-&gt;γ) -&gt; β -&gt; α</SPAN></dt>
+<SPAN CLASS="code"><a name="Applicative__minus_gt._lt_star_gt">&lt;*&gt;</a> ∷ (<b>γ→β→α</b>) → (γ→β) → γ → α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Applicative__minus_gt.fmap">fmap</a> :: (γ -&gt; α) -&gt; (β-&gt;γ) -&gt; β -&gt; α</SPAN></dt>
+<SPAN CLASS="code"><a name="Applicative__minus_gt.fmap">fmap</a> ∷ (β → α) → (γ→β) → γ → α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Applicative__minus_gt.pure">pure</a> :: <b>α</b> -&gt; β -&gt; α</SPAN></dt>
+<SPAN CLASS="code"><a name="Applicative__minus_gt.pure">pure</a> ∷ <b>α</b> → β → α</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -481,7 +481,7 @@ inherited from <a class="fref" href="#Applicative._lt_star">Applicative.&lt;*</a
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Functor_l_c_r.fmap">fmap</a> :: (γ -&gt; α) -&gt; <b>(β, γ)</b> -&gt; (β, α)</SPAN></dt>
+<SPAN CLASS="code"><a name="Functor_l_c_r.fmap">fmap</a> ∷ (β → α) → <b>(γ, β)</b> → (γ, α)<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -493,7 +493,7 @@ Member Functions</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Functor_l_cc_r.fmap">fmap</a> :: (δ -&gt; α) -&gt; <b>(γ, β, δ)</b> -&gt; (γ, β, α)</SPAN></dt>
+<SPAN CLASS="code"><a name="Functor_l_cc_r.fmap">fmap</a> ∷ (α → δ) → <b>(β, γ, α)</b> → (β, γ, δ)<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -505,7 +505,7 @@ Member Functions</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Functor__lbrack_rbrack.fmap">fmap</a> :: (α -&gt; β) -&gt; <b>[α]</b> -&gt; [β]</SPAN></dt>
+<SPAN CLASS="code"><a name="Functor__lbrack_rbrack.fmap">fmap</a> ∷ (α → β) → <b>[α]</b> → [β]<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -517,7 +517,7 @@ Member Functions</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="MonadFail_Either.fail">fail</a> :: <a class="tref" href="./PreludeBase.html#String">String</a> -&gt; (<a class="tref" href="./PreludeBase.html#String">String</a> | α)</SPAN></dt>
+<SPAN CLASS="code"><a name="MonadFail_Either.fail">fail</a> ∷ <a class="tref" href="./PreludeBase.html#String">String</a> → (<a class="tref" href="./PreludeBase.html#String">String</a> | α)</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -529,7 +529,7 @@ Member Functions</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="MonadFail__lbrack_rbrack.fail">fail</a> :: <a class="tref" href="./PreludeBase.html#String">String</a> -&gt; [α]</SPAN></dt>
+<SPAN CLASS="code"><a name="MonadFail__lbrack_rbrack.fail">fail</a> ∷ <a class="tref" href="./PreludeBase.html#String">String</a> → [α]</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -541,11 +541,11 @@ Member Functions</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="MonadPlus__lbrack_rbrack.mplus">mplus</a> :: <b>[α]</b> -&gt; [α] -&gt; [α]</SPAN></dt>
+<SPAN CLASS="code"><a name="MonadPlus__lbrack_rbrack.mplus">mplus</a> ∷ <b>[α]</b> → [α] → [α]<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="MonadPlus__lbrack_rbrack.mzero">mzero</a> :: [α]</SPAN></dt>
+<SPAN CLASS="code"><a name="MonadPlus__lbrack_rbrack.mzero">mzero</a> ∷ [α]</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -557,21 +557,21 @@ Member Functions</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad__minus_gt._gt_gt">&gt;&gt;</a> :: (β-&gt;γ) -&gt; (<b>β-&gt;α</b>) -&gt; β -&gt; α</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad__minus_gt._gt_gt">&gt;&gt;</a> ∷ (γ→β) → (<b>γ→α</b>) → γ → α<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad__minus_gt._gt_gt_eq">&gt;&gt;=</a> :: (β-&gt;γ) -&gt; (<b>γ -&gt; β-&gt;α</b>) -&gt; β -&gt; α</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad__minus_gt._gt_gt_eq">&gt;&gt;=</a> ∷ (γ→β) → (<b>β → γ→α</b>) → γ → α<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad__minus_gt.join">join</a> :: (<b>α-&gt;α-&gt;β</b>) -&gt; α -&gt; β</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad__minus_gt.join">join</a> ∷ (<b>α→α→β</b>) → α → β</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Monad.join">Monad.join</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad__minus_gt._return">return</a> :: <b>α</b> -&gt; β -&gt; α</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad__minus_gt._return">return</a> ∷ <b>α</b> → β → α</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -583,51 +583,51 @@ inherited from <a class="fref" href="#Monad.join">Monad.join</a></p>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad_Either._star_gt">*&gt;</a> :: (β | γ) -&gt; (β | α) -&gt; (β | α)</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad_Either._star_gt">*&gt;</a> ∷ (β | α) → (β | γ) → (β | γ)<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Applicative._star_gt">Applicative.*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad_Either._lt_star">&lt;*</a> :: (β | γ) -&gt; (β | α) -&gt; (β | γ)</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad_Either._lt_star">&lt;*</a> ∷ (α | γ) → (α | β) → (α | γ)<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Applicative._lt_star">Applicative.&lt;*</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad_Either._lt_star_gt">&lt;*&gt;</a> :: (β | γ-&gt;α) -&gt; (β | γ) -&gt; (β | α)</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad_Either._lt_star_gt">&lt;*&gt;</a> ∷ (γ | β→α) → (γ | β) → (γ | α)<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Monad._lt_star_gt">Monad.&lt;*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad_Either._gt_gt">&gt;&gt;</a> :: <b>(β | γ)</b> -&gt; (β | α) -&gt; (β | α)</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad_Either._gt_gt">&gt;&gt;</a> ∷ <b>(β | α)</b> → (β | γ) → (β | γ)<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Monad._gt_gt">Monad.&gt;&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad_Either._gt_gt_eq">&gt;&gt;=</a> :: <b>(β | γ)</b> -&gt; (γ -&gt; (β | α)) -&gt; (β | α)</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad_Either._gt_gt_eq">&gt;&gt;=</a> ∷ <b>(β | α)</b> → (α → (β | γ)) → (β | γ)<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad_Either.fmap">fmap</a> :: (γ -&gt; α) -&gt; <b>(β | γ)</b> -&gt; (β | α)</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad_Either.fmap">fmap</a> ∷ (β → α) → <b>(γ | β)</b> → (γ | α)<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad_Either.join">join</a> :: <b>(α | (α | β))</b> -&gt; (α | β)</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad_Either.join">join</a> ∷ <b>(α | (α | β))</b> → (α | β)</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Monad.join">Monad.join</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad_Either.pure">pure</a> :: <b>α</b> -&gt; (β | α)</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad_Either.pure">pure</a> ∷ <b>α</b> → (β | α)</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Monad.pure">Monad.pure</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad_Either._return">return</a> :: α -&gt; (β | α)</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad_Either._return">return</a> ∷ α → (β | α)</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -639,53 +639,53 @@ inherited from <a class="fref" href="#Monad.pure">Monad.pure</a></p>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad_ST._star_gt">*&gt;</a> :: <a class="tref" href="./PreludeBase.html#ST">ST</a> β γ -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> β α -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> β α</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad_ST._star_gt">*&gt;</a> ∷ <a class="tref" href="./PreludeBase.html#ST">ST</a> β α → <a class="tref" href="./PreludeBase.html#ST">ST</a> β γ → <a class="tref" href="./PreludeBase.html#ST">ST</a> β γ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Applicative._star_gt">Applicative.*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad_ST._lt_star">&lt;*</a> :: <a class="tref" href="./PreludeBase.html#ST">ST</a> β γ -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> β α -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> β γ</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad_ST._lt_star">&lt;*</a> ∷ <a class="tref" href="./PreludeBase.html#ST">ST</a> γ β → <a class="tref" href="./PreludeBase.html#ST">ST</a> γ α → <a class="tref" href="./PreludeBase.html#ST">ST</a> γ β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Applicative._lt_star">Applicative.&lt;*</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad_ST._lt_star_gt">&lt;*&gt;</a> :: <a class="tref" href="./PreludeBase.html#ST">ST</a> β (γ-&gt;α) -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> β γ -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> β α</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad_ST._lt_star_gt">&lt;*&gt;</a> ∷ <a class="tref" href="./PreludeBase.html#ST">ST</a> α (γ→β) → <a class="tref" href="./PreludeBase.html#ST">ST</a> α γ → <a class="tref" href="./PreludeBase.html#ST">ST</a> α β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Monad._lt_star_gt">Monad.&lt;*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad_ST._gt_gt">&gt;&gt;</a> :: <b><a class="tref" href="./PreludeBase.html#ST">ST</a> β γ</b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> β α -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> β α</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad_ST._gt_gt">&gt;&gt;</a> ∷ <b><a class="tref" href="./PreludeBase.html#ST">ST</a> β α</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> β γ → <a class="tref" href="./PreludeBase.html#ST">ST</a> β γ<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad_ST._gt_gt_eq">&gt;&gt;=</a> :: <b><a class="tref" href="./PreludeBase.html#ST">ST</a> γ α</b> -&gt; (α-&gt;<a class="tref" href="./PreludeBase.html#ST">ST</a> γ β) -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> γ β</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad_ST._gt_gt_eq">&gt;&gt;=</a> ∷ <b><a class="tref" href="./PreludeBase.html#ST">ST</a> γ α</b> → (α→<a class="tref" href="./PreludeBase.html#ST">ST</a> γ β) → <a class="tref" href="./PreludeBase.html#ST">ST</a> γ β<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 <p>
 Alias for <a class="fref" href="#Bind._gt_gt_eq">Bind.&gt;&gt;=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad_ST.fmap">fmap</a> :: (γ -&gt; α) -&gt; <b><a class="tref" href="./PreludeBase.html#ST">ST</a> β γ</b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> β α</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad_ST.fmap">fmap</a> ∷ (β → α) → <b><a class="tref" href="./PreludeBase.html#ST">ST</a> γ β</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> γ α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Monad.fmap">Monad.fmap</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad_ST.join">join</a> :: <b><a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="./PreludeBase.html#ST">ST</a> α β)</b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α β</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad_ST.join">join</a> ∷ <b><a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="./PreludeBase.html#ST">ST</a> α β)</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α β</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Monad.join">Monad.join</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad_ST.pure">pure</a> :: <b>α</b> -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> β α</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad_ST.pure">pure</a> ∷ <b>α</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> β α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Monad.pure">Monad.pure</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad_ST._return">return</a> :: α -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> β α</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad_ST._return">return</a> ∷ α → <a class="tref" href="./PreludeBase.html#ST">ST</a> β α</SPAN></dt>
 <dd class="func">
 <p>
 Alias for <a class="fref" href="#Monad._return">Monad.return</a></p>
@@ -699,47 +699,47 @@ Alias for <a class="fref" href="#Monad._return">Monad.return</a></p>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad__lbrack_rbrack._star_gt">*&gt;</a> :: [α] -&gt; [β] -&gt; [β]</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad__lbrack_rbrack._star_gt">*&gt;</a> ∷ [α] → [β] → [β]<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Applicative._star_gt">Applicative.*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad__lbrack_rbrack._lt_star">&lt;*</a> :: [α] -&gt; [β] -&gt; [α]</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad__lbrack_rbrack._lt_star">&lt;*</a> ∷ [α] → [β] → [α]<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Applicative._lt_star">Applicative.&lt;*</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad__lbrack_rbrack._lt_star_gt">&lt;*&gt;</a> :: [α-&gt;β] -&gt; [α] -&gt; [β]</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad__lbrack_rbrack._lt_star_gt">&lt;*&gt;</a> ∷ [α→β] → [α] → [β]<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Monad._lt_star_gt">Monad.&lt;*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad__lbrack_rbrack._gt_gt">&gt;&gt;</a> :: <b>[α]</b> -&gt; [β] -&gt; [β]</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad__lbrack_rbrack._gt_gt">&gt;&gt;</a> ∷ <b>[α]</b> → [β] → [β]<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Monad._gt_gt">Monad.&gt;&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad__lbrack_rbrack._gt_gt_eq">&gt;&gt;=</a> :: <b>[α]</b> -&gt; (α -&gt; [β]) -&gt; [β]</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad__lbrack_rbrack._gt_gt_eq">&gt;&gt;=</a> ∷ <b>[α]</b> → (α → [β]) → [β]<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad__lbrack_rbrack.join">join</a> :: <b>[[α]]</b> -&gt; [α]</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad__lbrack_rbrack.join">join</a> ∷ <b>[[α]]</b> → [α]</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Monad.join">Monad.join</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad__lbrack_rbrack.pure">pure</a> :: <b>α</b> -&gt; [α]</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad__lbrack_rbrack.pure">pure</a> ∷ <b>α</b> → [α]</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Monad.pure">Monad.pure</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad__lbrack_rbrack._return">return</a> :: α -&gt; [α]</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad__lbrack_rbrack._return">return</a> ∷ α → [α]</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -749,31 +749,31 @@ inherited from <a class="fref" href="#Monad.pure">Monad.pure</a></p>
 <a name="let">Functions and Values</a></h2>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="_lt$_gt">&lt;$&gt;</a> :: <a class="tref" href="#Functor">Functor</a> f =&gt; (a -&gt; b) -&gt; f a -&gt; f b</SPAN></dt>
+<SPAN CLASS="code"><a name="_lt$_gt">&lt;$&gt;</a> ∷ <a class="tref" href="#Functor">Functor</a> f ⇒ (a → b) → f a → f b<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 An infix synonym for <a class="fref" href="#Functor.fmap">Functor.fmap</a>. Left associative with precedence 4.   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="_lt_eq_lt">&lt;=&lt;</a> :: <a class="tref" href="#Bind">Bind</a> β =&gt; (δ-&gt;β α) -&gt; (γ-&gt;β δ) -&gt; γ -&gt; β α</SPAN></dt>
+<SPAN CLASS="code"><a name="_lt_eq_lt">&lt;=&lt;</a> ∷ <a class="tref" href="#Bind">Bind</a> δ ⇒ (β→δ α) → (γ→δ β) → γ → δ α<br><b>infixr</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 <p>
 Right-to-left Kleisli composition of monads. (<a class="fref" href="#_gt_eq_gt">&gt;=&gt;</a>), with the arguments flipped   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="_eq_lt_lt">=&lt;&lt;</a> :: <a class="tref" href="#Bind">Bind</a> α =&gt; (γ-&gt;α β) -&gt; α γ -&gt; α β</SPAN></dt>
+<SPAN CLASS="code"><a name="_eq_lt_lt">=&lt;&lt;</a> ∷ <a class="tref" href="#Bind">Bind</a> γ ⇒ (α→γ β) → γ α → γ β<br><b>infixr</b>&nbsp;&nbsp;2</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#_eq_lt_lt">=&lt;&lt;</a> is the same as <a class="fref" href="#Bind._gt_gt_eq">Bind.&gt;&gt;=</a> with the arguments flipped       </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="_gt_eq_gt">&gt;=&gt;</a> :: <a class="tref" href="#Bind">Bind</a> β =&gt; (α-&gt;β δ) -&gt; (δ-&gt;β γ) -&gt; α -&gt; β γ</SPAN></dt>
+<SPAN CLASS="code"><a name="_gt_eq_gt">&gt;=&gt;</a> ∷ <a class="tref" href="#Bind">Bind</a> γ ⇒ (β→γ α) → (α→γ δ) → β → γ δ<br><b>infixr</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 <p>
 left to right Kleisli composition of monads   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="ap">ap</a> :: <a class="tref" href="#Monad">Monad</a> α =&gt; α (γ-&gt;β) -&gt; α γ -&gt; α β</SPAN></dt>
+<SPAN CLASS="code"><a name="ap">ap</a> ∷ <a class="tref" href="#Monad">Monad</a> α ⇒ α (γ→β) → α γ → α β</SPAN></dt>
 <dd class="func">
 <p>
 In many situations, the <a class="fref" href="#liftM">liftM</a> operations can be replaced by uses of <a class="fref" href="#ap">ap</a>, which promotes function application.</p>
@@ -785,39 +785,39 @@ is equivalent to</p>
        liftMn f x1 x2 ... xn</PRE>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="apply">apply</a> :: <a class="tref" href="#Apply">Apply</a> p =&gt; p (a-&gt;b) -&gt; p a -&gt; p b</SPAN></dt>
+<SPAN CLASS="code"><a name="apply">apply</a> ∷ <a class="tref" href="#Apply">Apply</a> p ⇒ p (a→b) → p a → p b</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="filterM">filterM</a> :: <a class="tref" href="#Monad">Monad</a> β =&gt; (α-&gt;β <a class="tref" href="./PreludeBase.html#Bool">Bool</a>) -&gt; <b>[α]</b> -&gt; β [α]</SPAN></dt>
+<SPAN CLASS="code"><a name="filterM">filterM</a> ∷ <a class="tref" href="#Monad">Monad</a> β ⇒ (α→β <a class="tref" href="./PreludeBase.html#Bool">Bool</a>) → <b>[α]</b> → β [α]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#filterM">filterM</a> generalizes the list-based <a class="fref" href="./PreludeList.html#filter">filter</a> function.   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="foldM">foldM</a> :: <a class="tref" href="#Monad">Monad</a> α =&gt; (β-&gt;γ-&gt;α β) -&gt; <b>β</b> -&gt; <b>[γ]</b> -&gt; α β</SPAN></dt>
+<SPAN CLASS="code"><a name="foldM">foldM</a> ∷ <a class="tref" href="#Monad">Monad</a> α ⇒ (β→γ→α β) → <b>β</b> → <b>[γ]</b> → α β</SPAN></dt>
 <dd class="func">
 <p>
 <SPAN CLASS="code">foldM f a xs</SPAN> folds a monadic function <i>f</i> over the list <i>xs</i>.   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="foldM_">foldM_</a> :: <a class="tref" href="#Monad">Monad</a> α =&gt; (β-&gt;γ-&gt;α β) -&gt; β -&gt; [γ] -&gt; α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name="foldM_">foldM_</a> ∷ <a class="tref" href="#Monad">Monad</a> α ⇒ (β→γ→α β) → β → [γ] → α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <SPAN CLASS="code">foldM_</SPAN> is the same as <a class="fref" href="#foldM">foldM</a>, but discards the result   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="forM">forM</a> :: <a class="tref" href="#Monad">Monad</a> β =&gt; <b>[γ]</b> -&gt; (γ-&gt;β α) -&gt; β [α]</SPAN></dt>
+<SPAN CLASS="code"><a name="forM">forM</a> ∷ <a class="tref" href="#Monad">Monad</a> α ⇒ <b>[γ]</b> → (γ→α β) → α [β]</SPAN></dt>
 <dd class="func">
 <p>
 <SPAN CLASS="code">forM xs f</SPAN> = <SPAN CLASS="code">mapM_ f xs</SPAN>    </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="forM_">forM_</a> :: <a class="tref" href="#Monad">Monad</a> β =&gt; <b>[γ]</b> -&gt; (γ-&gt;β α) -&gt; β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name="forM_">forM_</a> ∷ <a class="tref" href="#Monad">Monad</a> γ ⇒ <b>[β]</b> → (β→γ α) → γ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="forever">forever</a> :: <a class="tref" href="#Monad">Monad</a> γ =&gt; γ α -&gt; γ β</SPAN></dt>
+<SPAN CLASS="code"><a name="forever">forever</a> ∷ <a class="tref" href="#Monad">Monad</a> γ ⇒ γ β → γ α</SPAN></dt>
 <dd class="func">
 <p>
 nowarn: deep recursion possible</p>
@@ -825,39 +825,39 @@ nowarn: deep recursion possible</p>
 repeat action forever   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="guard">guard</a> :: <a class="tref" href="#MonadZero">MonadZero</a> α =&gt; <b><a class="tref" href="./PreludeBase.html#Bool">Bool</a></b> -&gt; α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name="guard">guard</a> ∷ <a class="tref" href="#MonadZero">MonadZero</a> α ⇒ <b><a class="tref" href="./PreludeBase.html#Bool">Bool</a></b> → α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <SPAN CLASS="code">guard b</SPAN> is <SPAN CLASS="code">return ()</SPAN> if <SPAN CLASS="code">b</SPAN> is <b><SPAN CLASS="code">true</SPAN></b>, and <a class="fref" href="#MonadZero.mzero">MonadZero.mzero</a> otherwise.   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="liftA">liftA</a> :: <a class="tref" href="#Applicative">Applicative</a> f =&gt; (a -&gt; b) -&gt; f a -&gt; f b</SPAN></dt>
+<SPAN CLASS="code"><a name="liftA">liftA</a> ∷ <a class="tref" href="#Applicative">Applicative</a> f ⇒ (a → b) → f a → f b</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="liftA2">liftA2</a> :: <a class="tref" href="#Applicative">Applicative</a> f =&gt; (a -&gt; b -&gt; c) -&gt; f a -&gt; f b -&gt; f c</SPAN></dt>
+<SPAN CLASS="code"><a name="liftA2">liftA2</a> ∷ <a class="tref" href="#Applicative">Applicative</a> f ⇒ (a → b → c) → f a → f b → f c</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="liftA3">liftA3</a> :: <a class="tref" href="#Applicative">Applicative</a> f =&gt; (a -&gt; b -&gt; c -&gt; d) -&gt; f a -&gt; f b -&gt; f c -&gt; f d</SPAN></dt>
+<SPAN CLASS="code"><a name="liftA3">liftA3</a> ∷ <a class="tref" href="#Applicative">Applicative</a> f ⇒ (a → b → c → d) → f a → f b → f c → f d</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="liftA4">liftA4</a> :: <a class="tref" href="#Applicative">Applicative</a> f =&gt; (a -&gt; b -&gt; c -&gt; d -&gt; e) -&gt; f a -&gt; f b -&gt; f c -&gt; f d -&gt; f e</SPAN></dt>
+<SPAN CLASS="code"><a name="liftA4">liftA4</a> ∷ <a class="tref" href="#Applicative">Applicative</a> f ⇒ (a → b → c → d → e) → f a → f b → f c → f d → f e</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="liftA5">liftA5</a> :: <a class="tref" href="#Applicative">Applicative</a> f =&gt; (a -&gt; b -&gt; c -&gt; d -&gt; e -&gt; g) -&gt; f a -&gt; f b -&gt; f c -&gt; f d -&gt; f e -&gt; f g</SPAN></dt>
+<SPAN CLASS="code"><a name="liftA5">liftA5</a> ∷ <a class="tref" href="#Applicative">Applicative</a> f ⇒ (a → b → c → d → e → g) → f a → f b → f c → f d → f e → f g</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="liftM">liftM</a> :: <a class="tref" href="#Monad">Monad</a> m =&gt; (a -&gt; b) -&gt; m a -&gt; m b</SPAN></dt>
+<SPAN CLASS="code"><a name="liftM">liftM</a> ∷ <a class="tref" href="#Monad">Monad</a> m ⇒ (a → b) → m a → m b</SPAN></dt>
 <dd class="func">
 <p>
 Promote a function to a monad.   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="liftM2">liftM2</a> :: <a class="tref" href="#Monad">Monad</a> γ =&gt; (α-&gt;δ-&gt;β) -&gt; γ α -&gt; γ δ -&gt; γ β</SPAN></dt>
+<SPAN CLASS="code"><a name="liftM2">liftM2</a> ∷ <a class="tref" href="#Monad">Monad</a> γ ⇒ (δ→β→α) → γ δ → γ β → γ α</SPAN></dt>
 <dd class="func">
 <p>
 Promote a function to a monad, scanning the monadic arguments from left to right.  For example,</p>
@@ -867,69 +867,69 @@ Promote a function to a monad, scanning the monadic arguments from left to right
     liftM2 (+) (Just 1) Nothing = Nothing   </PRE>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="liftM3">liftM3</a> :: <a class="tref" href="#Monad">Monad</a> β =&gt; (δ-&gt;α-&gt;ε-&gt;γ) -&gt; β δ -&gt; β α -&gt; β ε -&gt; β γ</SPAN></dt>
+<SPAN CLASS="code"><a name="liftM3">liftM3</a> ∷ <a class="tref" href="#Monad">Monad</a> γ ⇒ (δ→α→ε→β) → γ δ → γ α → γ ε → γ β</SPAN></dt>
 <dd class="func">
 <p>
 Promote a function to a monad, scanning the monadic arguments from left to right (cf. <a class="fref" href="#liftM2">liftM2</a>).   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="liftM4">liftM4</a> :: <a class="tref" href="#Monad">Monad</a> β =&gt; (δ-&gt;α-&gt;ε-&gt;ζ-&gt;γ) -&gt; β δ -&gt; β α -&gt; β ε -&gt; β ζ -&gt; β γ</SPAN></dt>
+<SPAN CLASS="code"><a name="liftM4">liftM4</a> ∷ <a class="tref" href="#Monad">Monad</a> ζ ⇒ (γ→β→δ→α→ε) → ζ γ → ζ β → ζ δ → ζ α → ζ ε</SPAN></dt>
 <dd class="func">
 <p>
 Promote a function to a monad, scanning the monadic arguments from left to right (cf. <a class="fref" href="#liftM2">liftM2</a>).   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="liftM5">liftM5</a> :: <a class="tref" href="#Monad">Monad</a> β =&gt; (δ-&gt;α-&gt;ζ-&gt;ε-&gt;η-&gt;γ) -&gt; β δ -&gt; β α -&gt; β ζ -&gt; β ε -&gt; β η -&gt; β γ</SPAN></dt>
+<SPAN CLASS="code"><a name="liftM5">liftM5</a> ∷ <a class="tref" href="#Monad">Monad</a> η ⇒ (α→ε→β→γ→δ→ζ) → η α → η ε → η β → η γ → η δ → η ζ</SPAN></dt>
 <dd class="func">
 <p>
 Promote a function to a monad, scanning the monadic arguments from left to right (cf. <a class="fref" href="#liftM2">liftM2</a>).   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="mapAndUnzipM">mapAndUnzipM</a> :: <a class="tref" href="#Monad">Monad</a> β =&gt; (α-&gt;β (γ, δ)) -&gt; [α] -&gt; β ([γ], [δ])</SPAN></dt>
+<SPAN CLASS="code"><a name="mapAndUnzipM">mapAndUnzipM</a> ∷ <a class="tref" href="#Monad">Monad</a> δ ⇒ (α→δ (β, γ)) → [α] → δ ([β], [γ])</SPAN></dt>
 <dd class="func">
 <p>
 The <a class="fref" href="#mapAndUnzipM">mapAndUnzipM</a> function maps its first argument over a list, returning the result as a pair of lists. This function is mainly used with complicated data structures or a state-transforming monad.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="mapM">mapM</a> :: <a class="tref" href="#Monad">Monad</a> β =&gt; (γ-&gt;β α) -&gt; <b>[γ]</b> -&gt; β [α]</SPAN></dt>
+<SPAN CLASS="code"><a name="mapM">mapM</a> ∷ <a class="tref" href="#Monad">Monad</a> γ ⇒ (α→γ β) → <b>[α]</b> → γ [β]</SPAN></dt>
 <dd class="func">
 <p>
 <SPAN CLASS="code">mapM f</SPAN> is equivalent to <SPAN CLASS="code">sequence • map f</SPAN>   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="mapM_">mapM_</a> :: <a class="tref" href="#Monad">Monad</a> β =&gt; (γ-&gt;β α) -&gt; <b>[γ]</b> -&gt; β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name="mapM_">mapM_</a> ∷ <a class="tref" href="#Monad">Monad</a> γ ⇒ (β→γ α) → <b>[β]</b> → γ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <SPAN CLASS="code">mapM_ f</SPAN> is equivalent to <SPAN CLASS="code">sequence_ • map f</SPAN>   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="mapReader">mapReader</a> :: (<b>a -&gt; b</b>) -&gt; (r -&gt; a) -&gt; r -&gt; b</SPAN></dt>
+<SPAN CLASS="code"><a name="mapReader">mapReader</a> ∷ (<b>a → b</b>) → (r → a) → r → b</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="msum">msum</a> :: <a class="tref" href="#MonadPlus">MonadPlus</a> α =&gt; <b>[α β]</b> -&gt; α β</SPAN></dt>
+<SPAN CLASS="code"><a name="msum">msum</a> ∷ <a class="tref" href="#MonadPlus">MonadPlus</a> α ⇒ <b>[α β]</b> → α β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#msum">msum</a> generalizes the list-based <a class="fref" href="./PreludeList.html#concat">concat</a> function.   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="replicateM">replicateM</a> :: <a class="tref" href="#Monad">Monad</a> m =&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; m a -&gt; m [a]</SPAN></dt>
+<SPAN CLASS="code"><a name="replicateM">replicateM</a> ∷ <a class="tref" href="#Monad">Monad</a> m ⇒ <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → m a → m [a]</SPAN></dt>
 <dd class="func">
 <p>
 <SPAN CLASS="code">replicateM n act</SPAN> performs the action <SPAN CLASS="code">n</SPAN> times, gathering the results.   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="replicateM_">replicateM_</a> :: <a class="tref" href="#Monad">Monad</a> m =&gt; <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> -&gt; m a -&gt; m <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name="replicateM_">replicateM_</a> ∷ <a class="tref" href="#Monad">Monad</a> m ⇒ <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → m a → m <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 Like <a class="fref" href="#replicateM">replicateM</a>, but discards the result.   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="runReader">runReader</a> :: (<b>r -&gt; a</b>) -&gt; r -&gt; a</SPAN></dt>
+<SPAN CLASS="code"><a name="runReader">runReader</a> ∷ (<b>r → a</b>) → r → a</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="sequence">sequence</a> :: <a class="tref" href="#Monad">Monad</a> α =&gt; <b>[α β]</b> -&gt; α [β]</SPAN></dt>
+<SPAN CLASS="code"><a name="sequence">sequence</a> ∷ <a class="tref" href="#Monad">Monad</a> α ⇒ <b>[α β]</b> → α [β]</SPAN></dt>
 <dd class="func">
 <p>
 Turn a list of monadic values <SPAN CLASS="code">[m a]</SPAN> into a monadic value with a list <SPAN CLASS="code">m [a]</SPAN></p>
@@ -939,13 +939,13 @@ Turn a list of monadic values <SPAN CLASS="code">[m a]</SPAN> into a monadic val
 This version of <a class="fref" href="#sequence">sequence</a> runs in constant stack space, but needs heap space proportional to the size of the input list.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="sequence_">sequence_</a> :: <a class="tref" href="#Monad">Monad</a> α =&gt; <b>[α β]</b> -&gt; α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name="sequence_">sequence_</a> ∷ <a class="tref" href="#Monad">Monad</a> α ⇒ <b>[α β]</b> → α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 fold (<a class="fref" href="#Monad._gt_gt">Monad.&gt;&gt;</a>) over a list of monadic values for side effects      </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="shortFilterM">shortFilterM</a> :: <a class="tref" href="#Monad">Monad</a> β =&gt; (<b>α-&gt;β <a class="tref" href="./PreludeBase.html#Bool">Bool</a></b>) -&gt; <b>[α]</b> -&gt; β [α]</SPAN></dt>
+<SPAN CLASS="code"><a name="shortFilterM">shortFilterM</a> ∷ <a class="tref" href="#Monad">Monad</a> β ⇒ (<b>α→β <a class="tref" href="./PreludeBase.html#Bool">Bool</a></b>) → <b>[α]</b> → β [α]</SPAN></dt>
 <dd class="func">
 <p>
 Version of <a class="fref" href="#filterM">filterM</a> that works on small lists with length &lt; 1000 only.</p>
@@ -953,7 +953,7 @@ Version of <a class="fref" href="#filterM">filterM</a> that works on small lists
 Beware of stack overflow, and use <a class="fref" href="#filterM">filterM</a>, when in doubt.   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="shortFoldM">shortFoldM</a> :: <a class="tref" href="#Monad">Monad</a> α =&gt; (β-&gt;γ-&gt;α β) -&gt; β -&gt; <b>[γ]</b> -&gt; α β</SPAN></dt>
+<SPAN CLASS="code"><a name="shortFoldM">shortFoldM</a> ∷ <a class="tref" href="#Monad">Monad</a> α ⇒ (β→γ→α β) → β → <b>[γ]</b> → α β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#shortFoldM">shortFoldM</a> is suitable only for lists with a length way below 1000.</p>
@@ -961,7 +961,7 @@ Beware of stack overflow, and use <a class="fref" href="#filterM">filterM</a>, w
 Beware of stack overflow and use <a class="fref" href="#foldM">foldM</a> instead.   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="shortSequence">shortSequence</a> :: <a class="tref" href="#Monad">Monad</a> α =&gt; <b>[α β]</b> -&gt; α [β]</SPAN></dt>
+<SPAN CLASS="code"><a name="shortSequence">shortSequence</a> ∷ <a class="tref" href="#Monad">Monad</a> α ⇒ <b>[α β]</b> → α [β]</SPAN></dt>
 <dd class="func">
 <p>
 A version of <a class="fref" href="#sequence">sequence</a> that uses the stack and may overflow with longer lists.</p>
@@ -969,35 +969,35 @@ A version of <a class="fref" href="#sequence">sequence</a> that uses the stack a
 A length of about 500 should be ok in most cases.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="unless">unless</a> :: <a class="tref" href="#Monad">Monad</a> α =&gt; <b><a class="tref" href="./PreludeBase.html#Bool">Bool</a></b> -&gt; α <a class="tref" href="./PreludeBase.html#Unit">()</a> -&gt; α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name="unless">unless</a> ∷ <a class="tref" href="#Monad">Monad</a> α ⇒ <b><a class="tref" href="./PreludeBase.html#Bool">Bool</a></b> → α <a class="tref" href="./PreludeBase.html#Unit">()</a> → α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 opposite of <a class="fref" href="#when">when</a>      </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="_void">void</a> :: <a class="tref" href="#Functor">Functor</a> α =&gt; α β -&gt; α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name="_void">void</a> ∷ <a class="tref" href="#Functor">Functor</a> α ⇒ α β → α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 discard or ignore result of evaluation, such as the return value of an <a class="tref" href="./PreludeBase.html#IO">IO</a> action.   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="when">when</a> :: <a class="tref" href="#Monad">Monad</a> α =&gt; <b><a class="tref" href="./PreludeBase.html#Bool">Bool</a></b> -&gt; α <a class="tref" href="./PreludeBase.html#Unit">()</a> -&gt; α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name="when">when</a> ∷ <a class="tref" href="#Monad">Monad</a> α ⇒ <b><a class="tref" href="./PreludeBase.html#Bool">Bool</a></b> → α <a class="tref" href="./PreludeBase.html#Unit">()</a> → α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <SPAN CLASS="code">when condition monadic</SPAN> returns /action/ of type <SPAN CLASS="code">Monad m =&gt; m ()</SPAN> if /condition/ is true, otherwise <a class="fref" href="#Monad._return">Monad.return</a> <a class="tref" href="./PreludeBase.html#Unit">()</a>.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="withReader">withReader</a> :: (e -&gt; r) -&gt; (<b>r -&gt; a</b>) -&gt; e -&gt; a</SPAN></dt>
+<SPAN CLASS="code"><a name="withReader">withReader</a> ∷ (e → r) → (<b>r → a</b>) → e → a</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="zipWithM">zipWithM</a> :: <a class="tref" href="#Monad">Monad</a> β =&gt; (α-&gt;δ-&gt;β γ) -&gt; <b>[α]</b> -&gt; <b>[δ]</b> -&gt; β [γ]</SPAN></dt>
+<SPAN CLASS="code"><a name="zipWithM">zipWithM</a> ∷ <a class="tref" href="#Monad">Monad</a> β ⇒ (δ→α→β γ) → <b>[δ]</b> → <b>[α]</b> → β [γ]</SPAN></dt>
 <dd class="func">
 <p>
 The <a class="fref" href="#zipWithM">zipWithM</a> function generalizes <a class="fref" href="./PreludeList.html#zipWith">zipWith</a> to arbitrary monads.   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="zipWithM_">zipWithM_</a> :: <a class="tref" href="#Monad">Monad</a> β =&gt; (α-&gt;δ-&gt;β γ) -&gt; <b>[α]</b> -&gt; <b>[δ]</b> -&gt; β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name="zipWithM_">zipWithM_</a> ∷ <a class="tref" href="#Monad">Monad</a> γ ⇒ (β→α→γ δ) → <b>[β]</b> → <b>[α]</b> → γ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#zipWithM_">zipWithM_</a> is the extension of <a class="fref" href="#zipWithM">zipWithM</a> which ignores the final result.   </p>
@@ -1007,43 +1007,43 @@ The <a class="fref" href="#zipWithM">zipWithM</a> function generalizes <a class=
 <a name="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#String">String</a> -&gt; (<a class="tref" href="./PreludeBase.html#String">String</a> | α)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#String">String</a> → (<a class="tref" href="./PreludeBase.html#String">String</a> | α)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#MonadFail_Either.fail">MonadFail_Either.fail</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#String">String</a> -&gt; [α]</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#String">String</a> → [α]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#MonadFail__lbrack_rbrack.fail">MonadFail_[].fail</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">[[α]] -&gt; [α]</SPAN></dt>
+<SPAN CLASS="code">[[α]] → [α]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad__lbrack_rbrack.join">Monad_[].join</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">[α] -&gt; [α] -&gt; [α]</SPAN></dt>
+<SPAN CLASS="code">[α] → [α] → [α]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#MonadPlus__lbrack_rbrack.mplus">MonadPlus_[].mplus</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">α -&gt; [α]</SPAN></dt>
+<SPAN CLASS="code">α → [α]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad__lbrack_rbrack._return">Monad_[].return</a>, <a class="fref" href="#Monad__lbrack_rbrack.pure">Monad_[].pure</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> α =&gt; <a class="tref" href="./PreludeBase.html#Bool">Bool</a> -&gt; α <a class="tref" href="./PreludeBase.html#Unit">()</a> -&gt; α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> α ⇒ <a class="tref" href="./PreludeBase.html#Bool">Bool</a> → α <a class="tref" href="./PreludeBase.html#Unit">()</a> → α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#unless">unless</a>, <a class="fref" href="#when">when</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#MonadZero">MonadZero</a> α =&gt; <a class="tref" href="./PreludeBase.html#Bool">Bool</a> -&gt; α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#MonadZero">MonadZero</a> α ⇒ <a class="tref" href="./PreludeBase.html#Bool">Bool</a> → α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#guard">guard</a></p>
@@ -1055,475 +1055,481 @@ The <a class="fref" href="#zipWithM">zipWithM</a> function generalizes <a class=
 <a class="fref" href="#MonadPlus__lbrack_rbrack.mzero">MonadPlus_[].mzero</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(r -&gt; a) -&gt; r -&gt; a</SPAN></dt>
+<SPAN CLASS="code">(r → a) → r → a</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#runReader">runReader</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α -&gt; β) -&gt; [α] -&gt; [β]</SPAN></dt>
+<SPAN CLASS="code">(α → β) → [α] → [β]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Functor__lbrack_rbrack.fmap">Functor_[].fmap</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α-&gt;α-&gt;β) -&gt; α -&gt; β</SPAN></dt>
+<SPAN CLASS="code">(α→α→β) → α → β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad__minus_gt.join">Monad_-&gt;.join</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α | (α | β)) -&gt; (α | β)</SPAN></dt>
+<SPAN CLASS="code">(α | (α | β)) → (α | β)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_Either.join">Monad_Either.join</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="./PreludeBase.html#ST">ST</a> α β) -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> α β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="./PreludeBase.html#ST">ST</a> α β) → <a class="tref" href="./PreludeBase.html#ST">ST</a> α β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_ST.join">Monad_ST.join</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">[α-&gt;β] -&gt; [α] -&gt; [β]</SPAN></dt>
+<SPAN CLASS="code">[α→β] → [α] → [β]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad__lbrack_rbrack._lt_star_gt">Monad_[].&lt;*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">[α] -&gt; (α -&gt; [β]) -&gt; [β]</SPAN></dt>
+<SPAN CLASS="code">[α] → (α → [β]) → [β]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad__lbrack_rbrack._gt_gt_eq">Monad_[].&gt;&gt;=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">[α] -&gt; [β] -&gt; [α]</SPAN></dt>
+<SPAN CLASS="code">[α] → [β] → [α]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad__lbrack_rbrack._lt_star">Monad_[].&lt;*</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">[α] -&gt; [β] -&gt; [β]</SPAN></dt>
+<SPAN CLASS="code">[α] → [β] → [β]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad__lbrack_rbrack._gt_gt">Monad_[].&gt;&gt;</a>, <a class="fref" href="#Monad__lbrack_rbrack._star_gt">Monad_[].*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">α -&gt; β -&gt; α</SPAN></dt>
+<SPAN CLASS="code">α → β → α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Applicative__minus_gt.pure">Applicative_-&gt;.pure</a>, <a class="fref" href="#Monad__minus_gt._return">Monad_-&gt;.return</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">α -&gt; (β | α)</SPAN></dt>
+<SPAN CLASS="code">α → (β | α)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_Either.pure">Monad_Either.pure</a>, <a class="fref" href="#Monad_Either._return">Monad_Either.return</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">α -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> β α</SPAN></dt>
+<SPAN CLASS="code">α → <a class="tref" href="./PreludeBase.html#ST">ST</a> β α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_ST.pure">Monad_ST.pure</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Alt">Alt</a> f =&gt; f a -&gt; f a -&gt; f a</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Alt">Alt</a> f ⇒ f a → f a → f a</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Alt._lt_bar_gt">Alt.&lt;|&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Applicative">Applicative</a> p =&gt; a -&gt; p a</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Applicative">Applicative</a> p ⇒ a → p a</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Applicative.pure">Applicative.pure</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Functor">Functor</a> α =&gt; α β -&gt; α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Functor">Functor</a> α ⇒ α β → α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#_void">void</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> m =&gt; m (m a) -&gt; m a</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> m ⇒ m (m a) → m a</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad.join">Monad.join</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> m =&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; m a -&gt; m [a]</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> m ⇒ <a class="tref" href="./PreludeBase.html#Int">Int</a> → m a → m [a]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#replicateM">replicateM</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> m =&gt; <a class="tref" href="./PreludeBase.html#Int">Int</a> -&gt; m a -&gt; m <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> m ⇒ <a class="tref" href="./PreludeBase.html#Int">Int</a> → m a → m <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#replicateM_">replicateM_</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> m =&gt; a -&gt; m a</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> m ⇒ a → m a</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad._return">Monad.return</a>, <a class="fref" href="#Monad.pure">Monad.pure</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> α =&gt; [α β] -&gt; α [β]</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> α ⇒ [α β] → α [β]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#sequence">sequence</a>, <a class="fref" href="#shortSequence">shortSequence</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> α =&gt; [α β] -&gt; α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> α ⇒ [α β] → α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#sequence_">sequence_</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> β =&gt; (α-&gt;β <a class="tref" href="./PreludeBase.html#Bool">Bool</a>) -&gt; [α] -&gt; β [α]</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> β ⇒ (α→β <a class="tref" href="./PreludeBase.html#Bool">Bool</a>) → [α] → β [α]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#filterM">filterM</a>, <a class="fref" href="#shortFilterM">shortFilterM</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#MonadAlt">MonadAlt</a> f =&gt; f a -&gt; f a -&gt; f a</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#MonadAlt">MonadAlt</a> f ⇒ f a → f a → f a</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#MonadAlt._lt_plus_gt">MonadAlt.&lt;+&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#MonadFail">MonadFail</a> m =&gt; <a class="tref" href="./PreludeBase.html#String">String</a> -&gt; m a</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#MonadFail">MonadFail</a> m ⇒ <a class="tref" href="./PreludeBase.html#String">String</a> → m a</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#MonadFail.fail">MonadFail.fail</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#MonadOr">MonadOr</a> mo =&gt; mo a -&gt; mo a -&gt; mo a</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#MonadOr">MonadOr</a> mo ⇒ mo a → mo a → mo a</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#MonadOr.orElse">MonadOr.orElse</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#MonadPlus">MonadPlus</a> mp =&gt; mp a -&gt; mp a -&gt; mp a</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#MonadPlus">MonadPlus</a> mp ⇒ mp a → mp a → mp a</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#MonadPlus.mplus">MonadPlus.mplus</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#MonadPlus">MonadPlus</a> α =&gt; [α β] -&gt; α β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#MonadPlus">MonadPlus</a> α ⇒ [α β] → α β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#msum">msum</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#MonadZero">MonadZero</a> mz =&gt; mz a</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#MonadZero">MonadZero</a> mz ⇒ mz a</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#MonadZero.mzero">MonadZero.mzero</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Plus">Plus</a> f =&gt; f a</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Plus">Plus</a> f ⇒ f a</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Plus.pzero">Plus.pzero</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(a -&gt; b) -&gt; (r -&gt; a) -&gt; r -&gt; b</SPAN></dt>
+<SPAN CLASS="code">(a → b) → (r → a) → r → b</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#mapReader">mapReader</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(e -&gt; r) -&gt; (r -&gt; a) -&gt; e -&gt; a</SPAN></dt>
+<SPAN CLASS="code">(e → r) → (r → a) → e → a</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#withReader">withReader</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(γ -&gt; α) -&gt; (β, γ) -&gt; (β, α)</SPAN></dt>
+<SPAN CLASS="code">(β → α) → (γ, β) → (γ, α)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Functor_l_c_r.fmap">Functor_(,).fmap</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(γ -&gt; α) -&gt; (β-&gt;γ) -&gt; β -&gt; α</SPAN></dt>
+<SPAN CLASS="code">(β → α) → (γ→β) → γ → α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Applicative__minus_gt.fmap">Applicative_-&gt;.fmap</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(γ -&gt; α) -&gt; (β | γ) -&gt; (β | α)</SPAN></dt>
+<SPAN CLASS="code">(β → α) → (γ | β) → (γ | α)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_Either.fmap">Monad_Either.fmap</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(γ -&gt; α) -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> β γ -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> β α</SPAN></dt>
+<SPAN CLASS="code">(β → α) → <a class="tref" href="./PreludeBase.html#ST">ST</a> γ β → <a class="tref" href="./PreludeBase.html#ST">ST</a> γ α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_ST.fmap">Monad_ST.fmap</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(β-&gt;γ-&gt;α) -&gt; (β-&gt;γ) -&gt; β -&gt; α</SPAN></dt>
+<SPAN CLASS="code">(α→γ) → (α→β) → α → β</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Applicative__minus_gt._lt_star_gt">Applicative_-&gt;.&lt;*&gt;</a></p>
+<a class="fref" href="#Applicative__minus_gt._star_gt">Applicative_-&gt;.*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(β-&gt;γ) -&gt; (γ -&gt; β-&gt;α) -&gt; β -&gt; α</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Monad__minus_gt._gt_gt_eq">Monad_-&gt;.&gt;&gt;=</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code">(β-&gt;γ) -&gt; (β-&gt;α) -&gt; β -&gt; α</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Applicative__minus_gt._star_gt">Applicative_-&gt;.*&gt;</a>, <a class="fref" href="#Monad__minus_gt._gt_gt">Monad_-&gt;.&gt;&gt;</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code">(β-&gt;γ) -&gt; (β-&gt;α) -&gt; β -&gt; γ</SPAN></dt>
+<SPAN CLASS="code">(β→α) → (β→γ) → β → α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Applicative__minus_gt._lt_star">Applicative_-&gt;.&lt;*</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(β | γ-&gt;α) -&gt; (β | γ) -&gt; (β | α)</SPAN></dt>
+<SPAN CLASS="code">(γ→β→α) → (γ→β) → γ → α</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Monad_Either._lt_star_gt">Monad_Either.&lt;*&gt;</a></p>
+<a class="fref" href="#Applicative__minus_gt._lt_star_gt">Applicative_-&gt;.&lt;*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(β | γ) -&gt; (γ -&gt; (β | α)) -&gt; (β | α)</SPAN></dt>
+<SPAN CLASS="code">(γ→β) → (β → γ→α) → γ → α</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Monad_Either._gt_gt_eq">Monad_Either.&gt;&gt;=</a></p>
+<a class="fref" href="#Monad__minus_gt._gt_gt_eq">Monad_-&gt;.&gt;&gt;=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(β | γ) -&gt; (β | α) -&gt; (β | α)</SPAN></dt>
+<SPAN CLASS="code">(γ→β) → (γ→α) → γ → α</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Monad_Either._gt_gt">Monad_Either.&gt;&gt;</a>, <a class="fref" href="#Monad_Either._star_gt">Monad_Either.*&gt;</a></p>
+<a class="fref" href="#Monad__minus_gt._gt_gt">Monad_-&gt;.&gt;&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(β | γ) -&gt; (β | α) -&gt; (β | γ)</SPAN></dt>
+<SPAN CLASS="code">(α | γ) → (α | β) → (α | γ)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_Either._lt_star">Monad_Either.&lt;*</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#ST">ST</a> β (γ-&gt;α) -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> β γ -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> β α</SPAN></dt>
+<SPAN CLASS="code">(β | α) → (α → (β | γ)) → (β | γ)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_Either._gt_gt_eq">Monad_Either.&gt;&gt;=</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(β | α) → (β | γ) → (β | γ)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_Either._gt_gt">Monad_Either.&gt;&gt;</a>, <a class="fref" href="#Monad_Either._star_gt">Monad_Either.*&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(γ | β→α) → (γ | β) → (γ | α)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_Either._lt_star_gt">Monad_Either.&lt;*&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#ST">ST</a> α (γ→β) → <a class="tref" href="./PreludeBase.html#ST">ST</a> α γ → <a class="tref" href="./PreludeBase.html#ST">ST</a> α β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_ST._lt_star_gt">Monad_ST.&lt;*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#ST">ST</a> β γ -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> β α -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> β α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#ST">ST</a> β α → <a class="tref" href="./PreludeBase.html#ST">ST</a> β γ → <a class="tref" href="./PreludeBase.html#ST">ST</a> β γ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_ST._gt_gt">Monad_ST.&gt;&gt;</a>, <a class="fref" href="#Monad_ST._star_gt">Monad_ST.*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#ST">ST</a> β γ -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> β α -&gt; <a class="tref" href="./PreludeBase.html#ST">ST</a> β γ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#ST">ST</a> γ β → <a class="tref" href="./PreludeBase.html#ST">ST</a> γ α → <a class="tref" href="./PreludeBase.html#ST">ST</a> γ β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_ST._lt_star">Monad_ST.&lt;*</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Applicative">Applicative</a> f =&gt; (a -&gt; b) -&gt; f a -&gt; f b</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Applicative">Applicative</a> f ⇒ (a → b) → f a → f b</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#liftA">liftA</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Applicative">Applicative</a> p =&gt; p a -&gt; p b -&gt; p a</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Applicative">Applicative</a> p ⇒ p a → p b → p a</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Applicative._lt_star">Applicative.&lt;*</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Applicative">Applicative</a> p =&gt; p a -&gt; p b -&gt; p b</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Applicative">Applicative</a> p ⇒ p a → p b → p b</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Applicative._star_gt">Applicative.*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Apply">Apply</a> f =&gt; f (a-&gt;b) -&gt; f a -&gt; f b</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Apply">Apply</a> f ⇒ f (a→b) → f a → f b</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Apply._lt_star_gt">Apply.&lt;*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Apply">Apply</a> p =&gt; p (a-&gt;b) -&gt; p a -&gt; p b</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Apply">Apply</a> p ⇒ p (a→b) → p a → p b</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#apply">apply</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Bind">Bind</a> f =&gt; f a -&gt; (a -&gt; f b) -&gt; f b</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Bind">Bind</a> f ⇒ f a → (a → f b) → f b</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Bind._gt_gt_eq">Bind.&gt;&gt;=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Bind">Bind</a> α =&gt; (γ-&gt;α β) -&gt; α γ -&gt; α β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Bind">Bind</a> γ ⇒ (α→γ β) → γ α → γ β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#_eq_lt_lt">=&lt;&lt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Functor">Functor</a> f =&gt; (a -&gt; b) -&gt; f a -&gt; f b</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Functor">Functor</a> f ⇒ (a → b) → f a → f b</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#_lt$_gt">&lt;$&gt;</a>, <a class="fref" href="#Functor.fmap">Functor.fmap</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> m =&gt; (a -&gt; b) -&gt; m a -&gt; m b</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> m ⇒ (a → b) → m a → m b</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#liftM">liftM</a>, <a class="fref" href="#Monad.fmap">Monad.fmap</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> m =&gt; m (a-&gt;b) -&gt; m a -&gt; m b</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> m ⇒ m (a→b) → m a → m b</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad._lt_star_gt">Monad.&lt;*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> m =&gt; m a -&gt; m b -&gt; m b</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> m ⇒ m a → m b → m b</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad._gt_gt">Monad.&gt;&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> α =&gt; (β-&gt;γ-&gt;α β) -&gt; β -&gt; [γ] -&gt; α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> α ⇒ (β→γ→α β) → β → [γ] → α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#foldM_">foldM_</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> α =&gt; (β-&gt;γ-&gt;α β) -&gt; β -&gt; [γ] -&gt; α β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> α ⇒ (β→γ→α β) → β → [γ] → α β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#foldM">foldM</a>, <a class="fref" href="#shortFoldM">shortFoldM</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> α =&gt; α (γ-&gt;β) -&gt; α γ -&gt; α β</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#ap">ap</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> β =&gt; (γ-&gt;β α) -&gt; [γ] -&gt; β [α]</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#mapM">mapM</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> β =&gt; (γ-&gt;β α) -&gt; [γ] -&gt; β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#mapM_">mapM_</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> β =&gt; [γ] -&gt; (γ-&gt;β α) -&gt; β [α]</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> α ⇒ [γ] → (γ→α β) → α [β]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#forM">forM</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> β =&gt; [γ] -&gt; (γ-&gt;β α) -&gt; β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> α ⇒ α (γ→β) → α γ → α β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ap">ap</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> γ ⇒ (α→γ β) → [α] → γ [β]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#mapM">mapM</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> γ ⇒ (β→γ α) → [β] → γ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#mapM_">mapM_</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> γ ⇒ [β] → (β→γ α) → γ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#forM_">forM_</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> γ =&gt; γ α -&gt; γ β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> γ ⇒ γ β → γ α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#forever">forever</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(δ -&gt; α) -&gt; (γ, β, δ) -&gt; (γ, β, α)</SPAN></dt>
+<SPAN CLASS="code">(α → δ) → (β, γ, α) → (β, γ, δ)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Functor_l_cc_r.fmap">Functor_(,,).fmap</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Applicative">Applicative</a> f =&gt; (a -&gt; b -&gt; c) -&gt; f a -&gt; f b -&gt; f c</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Applicative">Applicative</a> f ⇒ (a → b → c) → f a → f b → f c</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#liftA2">liftA2</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Bind">Bind</a> β =&gt; (α-&gt;β δ) -&gt; (δ-&gt;β γ) -&gt; α -&gt; β γ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Bind">Bind</a> γ ⇒ (β→γ α) → (α→γ δ) → β → γ δ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#_gt_eq_gt">&gt;=&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Bind">Bind</a> β =&gt; (δ-&gt;β α) -&gt; (γ-&gt;β δ) -&gt; γ -&gt; β α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Bind">Bind</a> δ ⇒ (β→δ α) → (γ→δ β) → γ → δ α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#_lt_eq_lt">&lt;=&lt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> β =&gt; (α-&gt;δ-&gt;β γ) -&gt; [α] -&gt; [δ] -&gt; β [γ]</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> β ⇒ (δ→α→β γ) → [δ] → [α] → β [γ]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#zipWithM">zipWithM</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> β =&gt; (α-&gt;δ-&gt;β γ) -&gt; [α] -&gt; [δ] -&gt; β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> γ ⇒ (β→α→γ δ) → [β] → [α] → γ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#zipWithM_">zipWithM_</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> β =&gt; (α-&gt;β (γ, δ)) -&gt; [α] -&gt; β ([γ], [δ])</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#mapAndUnzipM">mapAndUnzipM</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> γ =&gt; (α-&gt;δ-&gt;β) -&gt; γ α -&gt; γ δ -&gt; γ β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> γ ⇒ (δ→β→α) → γ δ → γ β → γ α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#liftM2">liftM2</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Applicative">Applicative</a> f =&gt; (a -&gt; b -&gt; c -&gt; d) -&gt; f a -&gt; f b -&gt; f c -&gt; f d</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> δ ⇒ (α→δ (β, γ)) → [α] → δ ([β], [γ])</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#mapAndUnzipM">mapAndUnzipM</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Applicative">Applicative</a> f ⇒ (a → b → c → d) → f a → f b → f c → f d</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#liftA3">liftA3</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> β =&gt; (δ-&gt;α-&gt;ε-&gt;γ) -&gt; β δ -&gt; β α -&gt; β ε -&gt; β γ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> γ ⇒ (δ→α→ε→β) → γ δ → γ α → γ ε → γ β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#liftM3">liftM3</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Applicative">Applicative</a> f =&gt; (a -&gt; b -&gt; c -&gt; d -&gt; e) -&gt; f a -&gt; f b -&gt; f c -&gt; f d -&gt; f e</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Applicative">Applicative</a> f ⇒ (a → b → c → d → e) → f a → f b → f c → f d → f e</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#liftA4">liftA4</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> β =&gt; (δ-&gt;α-&gt;ε-&gt;ζ-&gt;γ) -&gt; β δ -&gt; β α -&gt; β ε -&gt; β ζ -&gt; β γ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> ζ ⇒ (γ→β→δ→α→ε) → ζ γ → ζ β → ζ δ → ζ α → ζ ε</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#liftM4">liftM4</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Applicative">Applicative</a> f =&gt; (a -&gt; b -&gt; c -&gt; d -&gt; e -&gt; g) -&gt; f a -&gt; f b -&gt; f c -&gt; f d -&gt; f e -&gt; f g</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Applicative">Applicative</a> f ⇒ (a → b → c → d → e → g) → f a → f b → f c → f d → f e → f g</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#liftA5">liftA5</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> β =&gt; (δ-&gt;α-&gt;ζ-&gt;ε-&gt;η-&gt;γ) -&gt; β δ -&gt; β α -&gt; β ζ -&gt; β ε -&gt; β η -&gt; β γ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Monad">Monad</a> η ⇒ (α→ε→β→γ→δ→ζ) → η α → η ε → η β → η γ → η δ → η ζ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#liftM5">liftM5</a></p>

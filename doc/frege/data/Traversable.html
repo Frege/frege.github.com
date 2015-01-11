@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
 <META http-equiv="Content-Type" content="text/html;charset=utf-8">
-<TITLE>frege.data.Traversable - frege documentation</TITLE>
+<TITLE>Data.Traversable - frege documentation</TITLE>
 <style TYPE="text/css">
 body { font-family: helvetica, arial, sans-serif }
 pre { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
@@ -17,11 +17,13 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 </style>
 <BODY>
 <h1>
-<a name="package">Package <SPAN CLASS="code">frege.data.Traversable</SPAN></a></h1>
+<a name="package">Package <SPAN CLASS="code">Data.Traversable</SPAN></a></h1>
 <p>
  Source file: <SPAN CLASS="code">./frege/data/Traversable.fr</SPAN></p>
 <h3>
 Package Documentation</h3>
+<p>
+Functors representing data structures that can be traversed from left to right.   </p>
 <h3>
 Table of Content</h3>
 <ul>
@@ -61,7 +63,7 @@ Imports</h3>
 <ul>
 <li>
 <div>
-import <a HREF="../prelude/PreludeList.html">frege.prelude.PreludeList</a> as PreludeList</div>
+import <a HREF="../prelude/PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
 </li>
 <li>
 <div>
@@ -69,50 +71,50 @@ import <a HREF="../Prelude.html">frege.Prelude</a> as Prelude</div>
 </li>
 <li>
 <div>
-import <a HREF="./wrapper/Identity.html">frege.data.wrapper.Identity</a> as Identity</div>
+import <a HREF="./wrapper/Identity.html">Data.wrapper.Identity</a> as Identity</div>
 </li>
 <li>
 <div>
-import <a HREF="./Foldable.html">frege.data.Foldable</a> as Foldable</div>
+import <a HREF="./Foldable.html">Data.Foldable</a> as Foldable</div>
 </li>
 <li>
 <div>
-import <a HREF="./wrapper/Const.html">frege.data.wrapper.Const</a> as Const</div>
+import <a HREF="./wrapper/Const.html">Data.wrapper.Const</a> as Const</div>
 </li>
 <li>
 <div>
-import <a HREF="./Monoid.html">frege.data.Monoid</a> as Monoid</div>
+import <a HREF="./Monoid.html">Data.Monoid</a> as Monoid</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeBase.html">frege.prelude.PreludeBase</a> as PreludeBase</div>
+import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeArrays.html">frege.prelude.PreludeArrays</a> as PreludeArrays</div>
+import <a HREF="../prelude/PreludeArrays.html">Prelude.PreludeArrays</a> as PreludeArrays</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeIO.html">frege.prelude.PreludeIO</a> as PreludeIO</div>
+import <a HREF="../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeText.html">frege.prelude.PreludeText</a> as PreludeText</div>
+import <a HREF="../prelude/PreludeText.html">Prelude.PreludeText</a> as PreludeText</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeMonad.html">frege.prelude.PreludeMonad</a> as PreludeMonad</div>
+import <a HREF="../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as PreludeMonad</div>
 </li>
 <li>
 <div>
-import <a HREF="../java/util/Regex.html">frege.java.util.Regex</a> as Regexp</div>
+import <a HREF="../java/util/Regex.html">Java.util.Regex</a> as Regexp</div>
 </li>
 </ul>
 <h2>
 <a name="class">Classes</a></h2>
 <dl class="clas">
 <dt class="clas">
-<SPAN CLASS="code"><b>class </b><a name="Traversable">Traversable</a> (<a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> t, <a class="tref" href="./Foldable.html#Foldable">Foldable</a> t) =&gt;  t</SPAN></dt>
+<SPAN CLASS="code"><b>class </b><a name="Traversable">Traversable</a> (<a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> t, <a class="tref" href="./Foldable.html#Foldable">Foldable</a> t) ⇒  t</SPAN></dt>
 <dd class="clas">
 <p>
 Functors representing data structures that can be traversed from left to right.</p>
@@ -134,25 +136,25 @@ Known Instances</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Traversable.mapM">mapM</a> :: (<a class="tref" href="#Traversable">Traversable</a> t, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m) =&gt; (a -&gt; m b) -&gt; t a -&gt; m (t b)</SPAN></dt>
+<SPAN CLASS="code"><a name="Traversable.mapM">mapM</a> ∷ (<a class="tref" href="#Traversable">Traversable</a> t, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m) ⇒ (a → m b) → t a → m (t b)</SPAN></dt>
 <dd class="func">
 <p>
 Map each element of a structure to a monadic action, evaluate these actions from left to right, and collect the results. This function exists for Haskell compatibility only.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Traversable.sequence">sequence</a> :: (<a class="tref" href="#Traversable">Traversable</a> t, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m) =&gt; t (m a) -&gt; m (t a)</SPAN></dt>
+<SPAN CLASS="code"><a name="Traversable.sequence">sequence</a> ∷ (<a class="tref" href="#Traversable">Traversable</a> t, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m) ⇒ t (m a) → m (t a)</SPAN></dt>
 <dd class="func">
 <p>
 Evaluate each monadic action in the structure from left to right, and collect the results. This function exists for Haskell compatibility only.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Traversable.sequenceA">sequenceA</a> :: (<a class="tref" href="#Traversable">Traversable</a> t, <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> f) =&gt; t (f a) -&gt; f (t a)</SPAN></dt>
+<SPAN CLASS="code"><a name="Traversable.sequenceA">sequenceA</a> ∷ (<a class="tref" href="#Traversable">Traversable</a> t, <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> f) ⇒ t (f a) → f (t a)</SPAN></dt>
 <dd class="func">
 <p>
 Evaluate each action in the structure from left to right, and collect the results.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Traversable.traverse">traverse</a> :: (<a class="tref" href="#Traversable">Traversable</a> t, <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> f) =&gt; (a -&gt; f b) -&gt; t a -&gt; f (t b)</SPAN></dt>
+<SPAN CLASS="code"><a name="Traversable.traverse">traverse</a> ∷ (<a class="tref" href="#Traversable">Traversable</a> t, <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> f) ⇒ (a → f b) → t a → f (t b)</SPAN></dt>
 <dd class="func">
 <p>
 Map each element of a structure to an action, evaluate these actions from left to right, and collect the results.</p>
@@ -170,23 +172,23 @@ Map each element of a structure to an action, evaluate these actions from left t
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Applicative_StateL._star_gt">*&gt;</a> :: <b><a class="tref" href="#StateL">StateL</a> β γ</b> -&gt; <b><a class="tref" href="#StateL">StateL</a> β α</b> -&gt; <a class="tref" href="#StateL">StateL</a> β α</SPAN></dt>
+<SPAN CLASS="code"><a name="Applicative_StateL._star_gt">*&gt;</a> ∷ <b><a class="tref" href="#StateL">StateL</a> α γ</b> → <b><a class="tref" href="#StateL">StateL</a> α β</b> → <a class="tref" href="#StateL">StateL</a> α β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeMonad.html#Applicative._star_gt">Applicative.*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Applicative_StateL._lt_star">&lt;*</a> :: <b><a class="tref" href="#StateL">StateL</a> β γ</b> -&gt; <b><a class="tref" href="#StateL">StateL</a> β α</b> -&gt; <a class="tref" href="#StateL">StateL</a> β γ</SPAN></dt>
+<SPAN CLASS="code"><a name="Applicative_StateL._lt_star">&lt;*</a> ∷ <b><a class="tref" href="#StateL">StateL</a> γ β</b> → <b><a class="tref" href="#StateL">StateL</a> γ α</b> → <a class="tref" href="#StateL">StateL</a> γ β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeMonad.html#Applicative._lt_star">Applicative.&lt;*</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Applicative_StateL._lt_star_gt">&lt;*&gt;</a> :: <b><a class="tref" href="#StateL">StateL</a> β (γ-&gt;α)</b> -&gt; <b><a class="tref" href="#StateL">StateL</a> β γ</b> -&gt; <a class="tref" href="#StateL">StateL</a> β α</SPAN></dt>
+<SPAN CLASS="code"><a name="Applicative_StateL._lt_star_gt">&lt;*&gt;</a> ∷ <b><a class="tref" href="#StateL">StateL</a> α (γ→β)</b> → <b><a class="tref" href="#StateL">StateL</a> α γ</b> → <a class="tref" href="#StateL">StateL</a> α β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Applicative_StateL.pure">pure</a> :: α -&gt; <a class="tref" href="#StateL">StateL</a> β α</SPAN></dt>
+<SPAN CLASS="code"><a name="Applicative_StateL.pure">pure</a> ∷ α → <a class="tref" href="#StateL">StateL</a> β α</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -198,23 +200,23 @@ inherited from <a class="fref" href="../prelude/PreludeMonad.html#Applicative._l
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Applicative_StateR._star_gt">*&gt;</a> :: <b><a class="tref" href="#StateR">StateR</a> β γ</b> -&gt; <b><a class="tref" href="#StateR">StateR</a> β α</b> -&gt; <a class="tref" href="#StateR">StateR</a> β α</SPAN></dt>
+<SPAN CLASS="code"><a name="Applicative_StateR._star_gt">*&gt;</a> ∷ <b><a class="tref" href="#StateR">StateR</a> β α</b> → <b><a class="tref" href="#StateR">StateR</a> β γ</b> → <a class="tref" href="#StateR">StateR</a> β γ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeMonad.html#Applicative._star_gt">Applicative.*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Applicative_StateR._lt_star">&lt;*</a> :: <b><a class="tref" href="#StateR">StateR</a> β γ</b> -&gt; <b><a class="tref" href="#StateR">StateR</a> β α</b> -&gt; <a class="tref" href="#StateR">StateR</a> β γ</SPAN></dt>
+<SPAN CLASS="code"><a name="Applicative_StateR._lt_star">&lt;*</a> ∷ <b><a class="tref" href="#StateR">StateR</a> α γ</b> → <b><a class="tref" href="#StateR">StateR</a> α β</b> → <a class="tref" href="#StateR">StateR</a> α γ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeMonad.html#Applicative._lt_star">Applicative.&lt;*</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Applicative_StateR._lt_star_gt">&lt;*&gt;</a> :: <b><a class="tref" href="#StateR">StateR</a> β (γ-&gt;α)</b> -&gt; <b><a class="tref" href="#StateR">StateR</a> β γ</b> -&gt; <a class="tref" href="#StateR">StateR</a> β α</SPAN></dt>
+<SPAN CLASS="code"><a name="Applicative_StateR._lt_star_gt">&lt;*&gt;</a> ∷ <b><a class="tref" href="#StateR">StateR</a> β (α→γ)</b> → <b><a class="tref" href="#StateR">StateR</a> β α</b> → <a class="tref" href="#StateR">StateR</a> β γ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Applicative_StateR.pure">pure</a> :: α -&gt; <a class="tref" href="#StateR">StateR</a> β α</SPAN></dt>
+<SPAN CLASS="code"><a name="Applicative_StateR.pure">pure</a> ∷ α → <a class="tref" href="#StateR">StateR</a> β α</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -226,7 +228,7 @@ inherited from <a class="fref" href="../prelude/PreludeMonad.html#Applicative._l
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Functor_StateL.fmap">fmap</a> :: (γ -&gt; α) -&gt; <b><a class="tref" href="#StateL">StateL</a> β γ</b> -&gt; <a class="tref" href="#StateL">StateL</a> β α</SPAN></dt>
+<SPAN CLASS="code"><a name="Functor_StateL.fmap">fmap</a> ∷ (β → α) → <b><a class="tref" href="#StateL">StateL</a> γ β</b> → <a class="tref" href="#StateL">StateL</a> γ α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -238,7 +240,7 @@ Member Functions</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Functor_StateR.fmap">fmap</a> :: (γ -&gt; α) -&gt; <b><a class="tref" href="#StateR">StateR</a> β γ</b> -&gt; <a class="tref" href="#StateR">StateR</a> β α</SPAN></dt>
+<SPAN CLASS="code"><a name="Functor_StateR.fmap">fmap</a> ∷ (γ → β) → <b><a class="tref" href="#StateR">StateR</a> α γ</b> → <a class="tref" href="#StateR">StateR</a> α β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -250,25 +252,25 @@ Member Functions</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Traversable_Identity.mapM">mapM</a> :: <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ =&gt; (α -&gt; γ β) -&gt; <b><a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> α</b> -&gt; γ (<a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> β)</SPAN></dt>
+<SPAN CLASS="code"><a name="Traversable_Identity.mapM">mapM</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ (β → γ α) → <b><a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> β</b> → γ (<a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> α)</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Traversable.mapM">Traversable.mapM</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Traversable_Identity.sequence">sequence</a> :: <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α =&gt; <b><a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> (α β)</b> -&gt; α (<a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> β)</SPAN></dt>
+<SPAN CLASS="code"><a name="Traversable_Identity.sequence">sequence</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <b><a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> (α β)</b> → α (<a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> β)</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Traversable.sequence">Traversable.sequence</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Traversable_Identity.sequenceA">sequenceA</a> :: <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α =&gt; <b><a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> (α β)</b> -&gt; α (<a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> β)</SPAN></dt>
+<SPAN CLASS="code"><a name="Traversable_Identity.sequenceA">sequenceA</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α ⇒ <b><a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> (α β)</b> → α (<a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> β)</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Traversable.sequenceA">Traversable.sequenceA</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Traversable_Identity.traverse">traverse</a> :: <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> γ =&gt; (α -&gt; γ β) -&gt; <b><a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> α</b> -&gt; γ (<a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> β)</SPAN></dt>
+<SPAN CLASS="code"><a name="Traversable_Identity.traverse">traverse</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α ⇒ (γ → α β) → <b><a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> γ</b> → α (<a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> β)</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -280,25 +282,25 @@ inherited from <a class="fref" href="#Traversable.sequenceA">Traversable.sequenc
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Traversable_Maybe.mapM">mapM</a> :: <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ =&gt; (α -&gt; γ β) -&gt; <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α</b> -&gt; γ (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> β)</SPAN></dt>
+<SPAN CLASS="code"><a name="Traversable_Maybe.mapM">mapM</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ (β → γ α) → <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> β</b> → γ (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α)</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Traversable.mapM">Traversable.mapM</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Traversable_Maybe.sequence">sequence</a> :: <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α =&gt; <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (α β)</b> -&gt; α (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> β)</SPAN></dt>
+<SPAN CLASS="code"><a name="Traversable_Maybe.sequence">sequence</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (α β)</b> → α (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> β)</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Traversable.sequence">Traversable.sequence</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Traversable_Maybe.sequenceA">sequenceA</a> :: <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α =&gt; <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (α β)</b> -&gt; α (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> β)</SPAN></dt>
+<SPAN CLASS="code"><a name="Traversable_Maybe.sequenceA">sequenceA</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α ⇒ <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (α β)</b> → α (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> β)</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Traversable.sequenceA">Traversable.sequenceA</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Traversable_Maybe.traverse">traverse</a> :: <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> γ =&gt; (α -&gt; γ β) -&gt; <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α</b> -&gt; γ (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> β)</SPAN></dt>
+<SPAN CLASS="code"><a name="Traversable_Maybe.traverse">traverse</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α ⇒ (γ → α β) → <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> γ</b> → α (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> β)</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -310,23 +312,23 @@ inherited from <a class="fref" href="#Traversable.sequenceA">Traversable.sequenc
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Traversable__lbrack_rbrack.mapM">mapM</a> :: <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ =&gt; (α -&gt; γ β) -&gt; <b>[α]</b> -&gt; γ [β]</SPAN></dt>
+<SPAN CLASS="code"><a name="Traversable__lbrack_rbrack.mapM">mapM</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ (β → γ α) → <b>[β]</b> → γ [α]</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Traversable__lbrack_rbrack.sequence">sequence</a> :: <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α =&gt; <b>[α β]</b> -&gt; α [β]</SPAN></dt>
+<SPAN CLASS="code"><a name="Traversable__lbrack_rbrack.sequence">sequence</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <b>[α β]</b> → α [β]</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Traversable.sequence">Traversable.sequence</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Traversable__lbrack_rbrack.sequenceA">sequenceA</a> :: <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α =&gt; <b>[α β]</b> -&gt; α [β]</SPAN></dt>
+<SPAN CLASS="code"><a name="Traversable__lbrack_rbrack.sequenceA">sequenceA</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α ⇒ <b>[α β]</b> → α [β]</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Traversable.sequenceA">Traversable.sequenceA</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Traversable__lbrack_rbrack.traverse">traverse</a> :: <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> γ =&gt; (α -&gt; γ β) -&gt; <b>[α]</b> -&gt; γ [β]</SPAN></dt>
+<SPAN CLASS="code"><a name="Traversable__lbrack_rbrack.traverse">traverse</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α ⇒ (γ → α β) → <b>[γ]</b> → α [β]</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -342,7 +344,7 @@ inherited from <a class="fref" href="#Traversable.sequenceA">Traversable.sequenc
 Constructors</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="StateL.StateL">StateL</a> {run :: s -&gt; (s, a)}</SPAN></dt>
+<SPAN CLASS="code"><a name="StateL.StateL">StateL</a> {run ∷ s → (s, a)}</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -350,7 +352,7 @@ Constructors</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="StateL.run">run</a> :: <b><a class="tref" href="#StateL">StateL</a> α β</b> -&gt; α -&gt; (α, β)</SPAN></dt>
+<SPAN CLASS="code"><a name="StateL.run">run</a> ∷ <b><a class="tref" href="#StateL">StateL</a> α β</b> → α → (α, β)</SPAN></dt>
 <dd class="func">
 <p>
 access field <SPAN CLASS="code">run</SPAN></p>
@@ -364,7 +366,7 @@ access field <SPAN CLASS="code">run</SPAN></p>
 Constructors</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="StateR.StateR">StateR</a> {run :: s -&gt; (s, a)}</SPAN></dt>
+<SPAN CLASS="code"><a name="StateR.StateR">StateR</a> {run ∷ s → (s, a)}</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -372,7 +374,7 @@ Constructors</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="StateR.run">run</a> :: <b><a class="tref" href="#StateR">StateR</a> α β</b> -&gt; α -&gt; (α, β)</SPAN></dt>
+<SPAN CLASS="code"><a name="StateR.run">run</a> ∷ <b><a class="tref" href="#StateR">StateR</a> α β</b> → α → (α, β)</SPAN></dt>
 <dd class="func">
 <p>
 access field <SPAN CLASS="code">run</SPAN></p>
@@ -384,25 +386,25 @@ access field <SPAN CLASS="code">run</SPAN></p>
 <a name="let">Functions and Values</a></h2>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="fmapDefault">fmapDefault</a> :: <a class="tref" href="#Traversable">Traversable</a> t =&gt; (a -&gt; b) -&gt; t a -&gt; t b</SPAN></dt>
+<SPAN CLASS="code"><a name="fmapDefault">fmapDefault</a> ∷ <a class="tref" href="#Traversable">Traversable</a> t ⇒ (a → b) → t a → t b</SPAN></dt>
 <dd class="func">
 <p>
 This function may be used as a value for `fmap` in a `Functor` instance, provided that <a class="fref" href="#Traversable.traverse">Traversable.traverse</a> is defined. (Using <a class="fref" href="#fmapDefault">fmapDefault</a> with a <a class="tref" href="#Traversable">Traversable</a> instance defined only by <a class="fref" href="#Traversable.sequenceA">Traversable.sequenceA</a> will result in infinite recursion.)</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="foldMapDefault">foldMapDefault</a> :: (<a class="tref" href="#Traversable">Traversable</a> t, <a class="tref" href="./Monoid.html#Monoid">Monoid</a> m) =&gt; (a -&gt; m) -&gt; t a -&gt; m</SPAN></dt>
+<SPAN CLASS="code"><a name="foldMapDefault">foldMapDefault</a> ∷ (<a class="tref" href="#Traversable">Traversable</a> t, <a class="tref" href="./Monoid.html#Monoid">Monoid</a> m) ⇒ (a → m) → t a → m</SPAN></dt>
 <dd class="func">
 <p>
 This function may be used as a value for `Data.Foldable.foldMap` in a `Foldable` instance.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="_for">for</a> :: (<a class="tref" href="#Traversable">Traversable</a> t, <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> f) =&gt; t a -&gt; (a -&gt; f b) -&gt; f (t b)</SPAN></dt>
+<SPAN CLASS="code"><a name="_for">for</a> ∷ (<a class="tref" href="#Traversable">Traversable</a> t, <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> f) ⇒ t a → (a → f b) → f (t b)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#_for">for</a> is <a class="fref" href="#Traversable.traverse">Traversable.traverse</a> with its arguments flipped.   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="forM">forM</a> :: (<a class="tref" href="#Traversable">Traversable</a> t, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m) =&gt; t a -&gt; (a -&gt; m b) -&gt; m (t b)</SPAN></dt>
+<SPAN CLASS="code"><a name="forM">forM</a> ∷ (<a class="tref" href="#Traversable">Traversable</a> t, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m) ⇒ t a → (a → m b) → m (t b)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#forM">forM</a> is <a class="fref" href="#Traversable.mapM">Traversable.mapM</a> with its arguments flipped.</p>
@@ -410,13 +412,13 @@ This function may be used as a value for `Data.Foldable.foldMap` in a `Foldable`
 This function exists for Haskell compatibility only.   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="mapAccumL">mapAccumL</a> :: <a class="tref" href="#Traversable">Traversable</a> t =&gt; (a -&gt; b -&gt; (a, c)) -&gt; a -&gt; t b -&gt; (a, t c)</SPAN></dt>
+<SPAN CLASS="code"><a name="mapAccumL">mapAccumL</a> ∷ <a class="tref" href="#Traversable">Traversable</a> t ⇒ (a → b → (a, c)) → a → t b → (a, t c)</SPAN></dt>
 <dd class="func">
 <p>
 The <a class="fref" href="#mapAccumL">mapAccumL</a> function behaves like a combination of <a class="fref" href="../prelude/PreludeMonad.html#Functor.fmap">Functor.fmap</a> and <a class="fref" href="./Foldable.html#Foldable.fold">Foldable.fold</a>; it applies a function to each element of a structure, passing an accumulating parameter from left to right, and returning a final value of this accumulator together with the new structure.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="mapAccumR">mapAccumR</a> :: <a class="tref" href="#Traversable">Traversable</a> t =&gt; (a -&gt; b -&gt; (a, c)) -&gt; a -&gt; t b -&gt; (a, t c)</SPAN></dt>
+<SPAN CLASS="code"><a name="mapAccumR">mapAccumR</a> ∷ <a class="tref" href="#Traversable">Traversable</a> t ⇒ (a → b → (a, c)) → a → t b → (a, t c)</SPAN></dt>
 <dd class="func">
 <p>
 The <a class="fref" href="#mapAccumR">mapAccumR</a> function behaves like a combination of <a class="fref" href="../prelude/PreludeMonad.html#Functor.fmap">Functor.fmap</a> and <a class="fref" href="./Foldable.html#Foldable.foldr">Foldable.foldr</a>; it applies a function to each element of a structure, passing an accumulating parameter from right to left, and returning a final value of this accumulator together with the new structure.</p>
@@ -426,241 +428,241 @@ The <a class="fref" href="#mapAccumR">mapAccumR</a> function behaves like a comb
 <a name="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code">α -&gt; <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code">α → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#StateL.has$run">StateL.has$run</a>, <a class="fref" href="#StateR.has$run">StateR.has$run</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(s -&gt; (s, a)) -&gt; <a class="tref" href="#StateL">StateL</a> s a</SPAN></dt>
+<SPAN CLASS="code">(s → (s, a)) → <a class="tref" href="#StateL">StateL</a> s a</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#StateL.StateL">StateL.StateL</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(s -&gt; (s, a)) -&gt; <a class="tref" href="#StateR">StateR</a> s a</SPAN></dt>
+<SPAN CLASS="code">(s → (s, a)) → <a class="tref" href="#StateR">StateR</a> s a</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#StateR.StateR">StateR.StateR</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#StateL">StateL</a> α β -&gt; α -&gt; (α, β)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#StateL">StateL</a> α β → α → (α, β)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#StateL.run">StateL.run</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#StateR">StateR</a> α β -&gt; α -&gt; (α, β)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#StateR">StateR</a> α β → α → (α, β)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#StateR.run">StateR.run</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">α -&gt; <a class="tref" href="#StateL">StateL</a> β α</SPAN></dt>
+<SPAN CLASS="code">α → <a class="tref" href="#StateL">StateL</a> β α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Applicative_StateL.pure">Applicative_StateL.pure</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">α -&gt; <a class="tref" href="#StateR">StateR</a> β α</SPAN></dt>
+<SPAN CLASS="code">α → <a class="tref" href="#StateR">StateR</a> β α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Applicative_StateR.pure">Applicative_StateR.pure</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α =&gt; <a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> (α β) -&gt; α (<a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> β)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α ⇒ <a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> (α β) → α (<a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> β)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable_Identity.sequenceA">Traversable_Identity.sequenceA</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α =&gt; <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (α β) -&gt; α (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> β)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α ⇒ <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (α β) → α (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> β)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable_Maybe.sequenceA">Traversable_Maybe.sequenceA</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α =&gt; [α β] -&gt; α [β]</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α ⇒ [α β] → α [β]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable__lbrack_rbrack.sequenceA">Traversable_[].sequenceA</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α =&gt; <a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> (α β) -&gt; α (<a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> β)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> (α β) → α (<a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> β)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable_Identity.sequence">Traversable_Identity.sequence</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α =&gt; <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (α β) -&gt; α (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> β)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (α β) → α (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> β)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable_Maybe.sequence">Traversable_Maybe.sequence</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α =&gt; [α β] -&gt; α [β]</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ [α β] → α [β]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable__lbrack_rbrack.sequence">Traversable_[].sequence</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(γ -&gt; α) -&gt; <a class="tref" href="#StateL">StateL</a> β γ -&gt; <a class="tref" href="#StateL">StateL</a> β α</SPAN></dt>
+<SPAN CLASS="code">(β → α) → <a class="tref" href="#StateL">StateL</a> γ β → <a class="tref" href="#StateL">StateL</a> γ α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Functor_StateL.fmap">Functor_StateL.fmap</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(γ -&gt; α) -&gt; <a class="tref" href="#StateR">StateR</a> β γ -&gt; <a class="tref" href="#StateR">StateR</a> β α</SPAN></dt>
+<SPAN CLASS="code">(γ → β) → <a class="tref" href="#StateR">StateR</a> α γ → <a class="tref" href="#StateR">StateR</a> α β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Functor_StateR.fmap">Functor_StateR.fmap</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#StateL">StateL</a> β (γ-&gt;α) -&gt; <a class="tref" href="#StateL">StateL</a> β γ -&gt; <a class="tref" href="#StateL">StateL</a> β α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#StateL">StateL</a> α (γ→β) → <a class="tref" href="#StateL">StateL</a> α γ → <a class="tref" href="#StateL">StateL</a> α β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Applicative_StateL._lt_star_gt">Applicative_StateL.&lt;*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#StateL">StateL</a> β γ -&gt; <a class="tref" href="#StateL">StateL</a> β α -&gt; <a class="tref" href="#StateL">StateL</a> β α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#StateL">StateL</a> α γ → <a class="tref" href="#StateL">StateL</a> α β → <a class="tref" href="#StateL">StateL</a> α β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Applicative_StateL._star_gt">Applicative_StateL.*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#StateL">StateL</a> β γ -&gt; <a class="tref" href="#StateL">StateL</a> β α -&gt; <a class="tref" href="#StateL">StateL</a> β γ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#StateL">StateL</a> γ β → <a class="tref" href="#StateL">StateL</a> γ α → <a class="tref" href="#StateL">StateL</a> γ β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Applicative_StateL._lt_star">Applicative_StateL.&lt;*</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#StateR">StateR</a> β (γ-&gt;α) -&gt; <a class="tref" href="#StateR">StateR</a> β γ -&gt; <a class="tref" href="#StateR">StateR</a> β α</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Applicative_StateR._lt_star_gt">Applicative_StateR.&lt;*&gt;</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#StateR">StateR</a> β γ -&gt; <a class="tref" href="#StateR">StateR</a> β α -&gt; <a class="tref" href="#StateR">StateR</a> β α</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Applicative_StateR._star_gt">Applicative_StateR.*&gt;</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#StateR">StateR</a> β γ -&gt; <a class="tref" href="#StateR">StateR</a> β α -&gt; <a class="tref" href="#StateR">StateR</a> β γ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#StateR">StateR</a> α γ → <a class="tref" href="#StateR">StateR</a> α β → <a class="tref" href="#StateR">StateR</a> α γ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Applicative_StateR._lt_star">Applicative_StateR.&lt;*</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Traversable">Traversable</a> t =&gt; (a -&gt; b) -&gt; t a -&gt; t b</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#StateR">StateR</a> β (α→γ) → <a class="tref" href="#StateR">StateR</a> β α → <a class="tref" href="#StateR">StateR</a> β γ</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Applicative_StateR._lt_star_gt">Applicative_StateR.&lt;*&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#StateR">StateR</a> β α → <a class="tref" href="#StateR">StateR</a> β γ → <a class="tref" href="#StateR">StateR</a> β γ</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Applicative_StateR._star_gt">Applicative_StateR.*&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Traversable">Traversable</a> t ⇒ (a → b) → t a → t b</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#fmapDefault">fmapDefault</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="#Traversable">Traversable</a> t, <a class="tref" href="./Monoid.html#Monoid">Monoid</a> m) =&gt; (a -&gt; m) -&gt; t a -&gt; m</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="#Traversable">Traversable</a> t, <a class="tref" href="./Monoid.html#Monoid">Monoid</a> m) ⇒ (a → m) → t a → m</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#foldMapDefault">foldMapDefault</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="#Traversable">Traversable</a> t, <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> f) =&gt; t (f a) -&gt; f (t a)</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="#Traversable">Traversable</a> t, <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> f) ⇒ t (f a) → f (t a)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable.sequenceA">Traversable.sequenceA</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="#Traversable">Traversable</a> t, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m) =&gt; t (m a) -&gt; m (t a)</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="#Traversable">Traversable</a> t, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m) ⇒ t (m a) → m (t a)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable.sequence">Traversable.sequence</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> γ =&gt; (α -&gt; γ β) -&gt; <a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> α -&gt; γ (<a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> β)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α ⇒ (γ → α β) → <a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> γ → α (<a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> β)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable_Identity.traverse">Traversable_Identity.traverse</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> γ =&gt; (α -&gt; γ β) -&gt; <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α -&gt; γ (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> β)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α ⇒ (γ → α β) → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> γ → α (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> β)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable_Maybe.traverse">Traversable_Maybe.traverse</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> γ =&gt; (α -&gt; γ β) -&gt; [α] -&gt; γ [β]</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α ⇒ (γ → α β) → [γ] → α [β]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable__lbrack_rbrack.traverse">Traversable_[].traverse</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ =&gt; (α -&gt; γ β) -&gt; <a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> α -&gt; γ (<a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> β)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ (β → γ α) → <a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> β → γ (<a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> α)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable_Identity.mapM">Traversable_Identity.mapM</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ =&gt; (α -&gt; γ β) -&gt; <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α -&gt; γ (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> β)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ (β → γ α) → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> β → γ (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable_Maybe.mapM">Traversable_Maybe.mapM</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ =&gt; (α -&gt; γ β) -&gt; [α] -&gt; γ [β]</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ (β → γ α) → [β] → γ [α]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable__lbrack_rbrack.mapM">Traversable_[].mapM</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#StateL">StateL</a> β α -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Function">-&gt;</a> β (β, α)-&gt;γ-&gt;(γ, δ)) -&gt; <a class="tref" href="#StateL">StateL</a> γ δ</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#StateL.chg$run">StateL.chg$run</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#StateL">StateL</a> β α -&gt; (γ-&gt;(γ, δ)) -&gt; <a class="tref" href="#StateL">StateL</a> γ δ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#StateL">StateL</a> α β → (γ→(γ, δ)) → <a class="tref" href="#StateL">StateL</a> γ δ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#StateL.upd$run">StateL.upd$run</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#StateR">StateR</a> β α -&gt; (<a class="tref" href="../prelude/PreludeBase.html#Function">-&gt;</a> β (β, α)-&gt;γ-&gt;(γ, δ)) -&gt; <a class="tref" href="#StateR">StateR</a> γ δ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#StateL">StateL</a> γ α → (<a class="tref" href="../prelude/PreludeBase.html#Function">-&gt;</a> γ (γ, α)→δ→(δ, β)) → <a class="tref" href="#StateL">StateL</a> δ β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#StateL.chg$run">StateL.chg$run</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#StateR">StateR</a> δ α → (<a class="tref" href="../prelude/PreludeBase.html#Function">-&gt;</a> δ (δ, α)→β→(β, γ)) → <a class="tref" href="#StateR">StateR</a> β γ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#StateR.chg$run">StateR.chg$run</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#StateR">StateR</a> β α -&gt; (γ-&gt;(γ, δ)) -&gt; <a class="tref" href="#StateR">StateR</a> γ δ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#StateR">StateR</a> δ α → (β→(β, γ)) → <a class="tref" href="#StateR">StateR</a> β γ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#StateR.upd$run">StateR.upd$run</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Traversable">Traversable</a> t =&gt; (a -&gt; b -&gt; (a, c)) -&gt; a -&gt; t b -&gt; (a, t c)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Traversable">Traversable</a> t ⇒ (a → b → (a, c)) → a → t b → (a, t c)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#mapAccumL">mapAccumL</a>, <a class="fref" href="#mapAccumR">mapAccumR</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="#Traversable">Traversable</a> t, <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> f) =&gt; (a -&gt; f b) -&gt; t a -&gt; f (t b)</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="#Traversable">Traversable</a> t, <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> f) ⇒ (a → f b) → t a → f (t b)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable.traverse">Traversable.traverse</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="#Traversable">Traversable</a> t, <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> f) =&gt; t a -&gt; (a -&gt; f b) -&gt; f (t b)</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="#Traversable">Traversable</a> t, <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> f) ⇒ t a → (a → f b) → f (t b)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#_for">for</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="#Traversable">Traversable</a> t, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m) =&gt; (a -&gt; m b) -&gt; t a -&gt; m (t b)</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="#Traversable">Traversable</a> t, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m) ⇒ (a → m b) → t a → m (t b)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable.mapM">Traversable.mapM</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="#Traversable">Traversable</a> t, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m) =&gt; t a -&gt; (a -&gt; m b) -&gt; m (t b)</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="#Traversable">Traversable</a> t, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m) ⇒ t a → (a → m b) → m (t b)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#forM">forM</a></p>

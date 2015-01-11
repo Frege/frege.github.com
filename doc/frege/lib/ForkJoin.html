@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
 <META http-equiv="Content-Type" content="text/html;charset=utf-8">
-<TITLE>frege.lib.ForkJoin - frege documentation</TITLE>
+<TITLE>Lib.ForkJoin - frege documentation</TITLE>
 <style TYPE="text/css">
 body { font-family: helvetica, arial, sans-serif }
 pre { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
@@ -17,25 +17,11 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 </style>
 <BODY>
 <h1>
-<a name="package">Package <SPAN CLASS="code">frege.lib.ForkJoin</SPAN></a></h1>
+<a name="package">Package <SPAN CLASS="code">Lib.ForkJoin</SPAN></a></h1>
 <p>
  Source file: <SPAN CLASS="code">./frege/lib/ForkJoin.fr</SPAN></p>
 <h3>
 Package Documentation</h3>
-<p>
-Copyright © 2011, Ingo Wechsung</p>
-<p>
-All rights reserved.</p>
-<p>
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:</p>
-<ul>
-<LI>
-   Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.</LI>
-<LI>
-   Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.</LI>
-</ul>
-<p>
-<b>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</b></p>
 <p>
 Support for ad hoc parallelism in Frege through java's ForkJoin mechanism</p>
 <h3>
@@ -59,7 +45,7 @@ Imports</h3>
 <ul>
 <li>
 <div>
-import <a HREF="../prelude/PreludeList.html">frege.prelude.PreludeList</a> as PreludeList</div>
+import <a HREF="../prelude/PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
 </li>
 <li>
 <div>
@@ -67,34 +53,34 @@ import <a HREF="../Prelude.html">frege.Prelude</a> as Prelude</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeBase.html">frege.prelude.PreludeBase</a> as PreludeBase</div>
+import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeArrays.html">frege.prelude.PreludeArrays</a> as PreludeArrays</div>
+import <a HREF="../prelude/PreludeArrays.html">Prelude.PreludeArrays</a> as PreludeArrays</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeIO.html">frege.prelude.PreludeIO</a> as PreludeIO</div>
+import <a HREF="../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeText.html">frege.prelude.PreludeText</a> as PreludeText</div>
+import <a HREF="../prelude/PreludeText.html">Prelude.PreludeText</a> as PreludeText</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeMonad.html">frege.prelude.PreludeMonad</a> as PreludeMonad</div>
+import <a HREF="../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as PreludeMonad</div>
 </li>
 <li>
 <div>
-import <a HREF="../java/util/Regex.html">frege.java.util.Regex</a> as Regexp</div>
+import <a HREF="../java/util/Regex.html">Java.util.Regex</a> as Regexp</div>
 </li>
 </ul>
 <h2>
 <a name="let">Functions and Values</a></h2>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="$_bar">$|</a> :: (α-&gt;β) -&gt; α -&gt; β</SPAN></dt>
+<SPAN CLASS="code"><a name="$_bar">$|</a> ∷ (α→β) → α → β<br><b>infixr</b>&nbsp;&nbsp;1</SPAN></dt>
 <dd class="func">
 <dl>
 <dt>
@@ -108,7 +94,7 @@ usage</dt>
 Equivalent to <SPAN CLASS="code">a `par` f a</SPAN></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="_colon_bar">:|</a> :: α -&gt; [α] -&gt; [α]</SPAN></dt>
+<SPAN CLASS="code"><a name="_colon_bar">:|</a> ∷ α → [α] → [α]<br><b>infixr</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <dl>
 <dt>
@@ -122,7 +108,7 @@ usage</dt>
 Equivalent to <SPAN CLASS="code">parOp (:) a as</SPAN></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="mapP">mapP</a> :: (α-&gt;β) -&gt; <b>[α]</b> -&gt; [β]</SPAN></dt>
+<SPAN CLASS="code"><a name="mapP">mapP</a> ∷ (α→β) → <b>[α]</b> → [β]</SPAN></dt>
 <dd class="func">
 <dl>
 <dt>
@@ -136,7 +122,7 @@ usage</dt>
 Like <a class="fref" href="../prelude/PreludeList.html#map">map</a>, but applies the function parallel to mapping the rest of the list. It does therefore not work with infinite lists.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="par">par</a> :: α -&gt; β -&gt; β</SPAN></dt>
+<SPAN CLASS="code"><a name="par">par</a> ∷ α → β → β<br><b>infixr</b>&nbsp;&nbsp;2</SPAN></dt>
 <dd class="func">
 <dl>
 <dt>
@@ -150,7 +136,7 @@ usage</dt>
 Fork evaluation of <SPAN CLASS="code">a</SPAN> and return <SPAN CLASS="code">b</SPAN>.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="parOp">parOp</a> :: (α-&gt;γ-&gt;β) -&gt; α -&gt; γ -&gt; β</SPAN></dt>
+<SPAN CLASS="code"><a name="parOp">parOp</a> ∷ (α→γ→β) → α → γ → β</SPAN></dt>
 <dd class="func">
 <dl>
 <dt>
@@ -168,31 +154,31 @@ Equivalent to <SPAN CLASS="code">a `par` b `par` f a b</SPAN></p>
 <a name="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code">α -&gt; [α] -&gt; [α]</SPAN></dt>
+<SPAN CLASS="code">α → [α] → [α]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#_colon_bar">:|</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α-&gt;β) -&gt; [α] -&gt; [β]</SPAN></dt>
+<SPAN CLASS="code">(α→β) → [α] → [β]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#mapP">mapP</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α-&gt;β) -&gt; α -&gt; β</SPAN></dt>
+<SPAN CLASS="code">(α→β) → α → β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#$_bar">$|</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">α -&gt; β -&gt; β</SPAN></dt>
+<SPAN CLASS="code">α → β → β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#par">par</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α-&gt;γ-&gt;β) -&gt; α -&gt; γ -&gt; β</SPAN></dt>
+<SPAN CLASS="code">(α→γ→β) → α → γ → β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#parOp">parOp</a></p>

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
 <META http-equiv="Content-Type" content="text/html;charset=utf-8">
-<TITLE>frege.control.Arrow - frege documentation</TITLE>
+<TITLE>Control.Arrow - frege documentation</TITLE>
 <style TYPE="text/css">
 body { font-family: helvetica, arial, sans-serif }
 pre { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
@@ -17,11 +17,13 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 </style>
 <BODY>
 <h1>
-<a name="package">Package <SPAN CLASS="code">frege.control.Arrow</SPAN></a></h1>
+<a name="package">Package <SPAN CLASS="code">Control.Arrow</SPAN></a></h1>
 <p>
  Source file: <SPAN CLASS="code">./frege/control/Arrow.fr</SPAN></p>
 <h3>
 Package Documentation</h3>
+<p>
+type class for <a class="tref" href="#Arrow">Arrow</a>s   </p>
 <h3>
 Table of Content</h3>
 <ul>
@@ -49,7 +51,7 @@ Imports</h3>
 <ul>
 <li>
 <div>
-import <a HREF="../prelude/PreludeList.html">frege.prelude.PreludeList</a> as PreludeList</div>
+import <a HREF="../prelude/PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
 </li>
 <li>
 <div>
@@ -57,53 +59,53 @@ import <a HREF="../Prelude.html">frege.Prelude</a> as Prelude</div>
 </li>
 <li>
 <div>
-import <a HREF="./Category.html">frege.control.Category</a> as Category</div>
+import <a HREF="./Category.html">Control.Category</a> as Category</div>
 </li>
 <li>
 <div>
-import <a HREF="./First.html">frege.control.First</a> as First</div>
+import <a HREF="./First.html">Control.First</a> as First</div>
 </li>
 <li>
 <div>
-import <a HREF="./CombineIn.html">frege.control.CombineIn</a> as CombineIn</div>
+import <a HREF="./CombineIn.html">Control.CombineIn</a> as CombineIn</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeBase.html">frege.prelude.PreludeBase</a> as PreludeBase</div>
+import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeArrays.html">frege.prelude.PreludeArrays</a> as PreludeArrays</div>
+import <a HREF="../prelude/PreludeArrays.html">Prelude.PreludeArrays</a> as PreludeArrays</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeIO.html">frege.prelude.PreludeIO</a> as PreludeIO</div>
+import <a HREF="../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeText.html">frege.prelude.PreludeText</a> as PreludeText</div>
+import <a HREF="../prelude/PreludeText.html">Prelude.PreludeText</a> as PreludeText</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeMonad.html">frege.prelude.PreludeMonad</a> as PreludeMonad</div>
+import <a HREF="../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as PreludeMonad</div>
 </li>
 <li>
 <div>
-import <a HREF="../java/util/Regex.html">frege.java.util.Regex</a> as Regexp</div>
+import <a HREF="../java/util/Regex.html">Java.util.Regex</a> as Regexp</div>
 </li>
 <li>
 <div>
-import <a HREF="./Second.html">frege.control.Second</a> as Second</div>
+import <a HREF="./Second.html">Control.Second</a> as Second</div>
 </li>
 </ul>
 <h2>
 <a name="class">Classes</a></h2>
 <dl class="clas">
 <dt class="clas">
-<SPAN CLASS="code"><b>class </b><a name="Arrow">Arrow</a> (<a class="tref" href="./Semigroupoid.html#Semigroupoid">Semigroupoid.Semigroupoid</a> a, <a class="tref" href="./Tensor.html#Tensor">Tensor.Tensor</a> a, <a class="tref" href="./Second.html#Second">Second</a> a, <a class="tref" href="./First.html#First">First</a> a, <a class="tref" href="./CombineIn.html#CombineIn">CombineIn</a> a, <a class="tref" href="./Category.html#Category">Category</a> a) =&gt;  a</SPAN></dt>
+<SPAN CLASS="code"><b>class </b><a name="Arrow">Arrow</a> (<a class="tref" href="./Semigroupoid.html#Semigroupoid">Semigroupoid.Semigroupoid</a> a, <a class="tref" href="./Tensor.html#Tensor">Tensor.Tensor</a> a, <a class="tref" href="./Second.html#Second">Second</a> a, <a class="tref" href="./First.html#First">First</a> a, <a class="tref" href="./CombineIn.html#CombineIn">CombineIn</a> a, <a class="tref" href="./Category.html#Category">Category</a> a) ⇒  a</SPAN></dt>
 <dd class="clas">
 <p>
-Basic arrow definitions, based on Generalising Monads to Arrows, by John Hughes, Science of Computer Programming/ 37, pp67-111, May 2000.</p>
+Basic arrow definitions, based on Generalising Monads to Arrows, by John Hughes, Science of Computer Programming, pp67-111, May 2000.</p>
 <h3>
 Known Instances</h3>
 <p>
@@ -112,7 +114,7 @@ Known Instances</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Arrow.arr">arr</a> :: <a class="tref" href="#Arrow">Arrow</a> a =&gt; (b -&gt; c) -&gt; a b c</SPAN></dt>
+<SPAN CLASS="code"><a name="Arrow.arr">arr</a> ∷ <a class="tref" href="#Arrow">Arrow</a> a ⇒ (b → c) → a b c</SPAN></dt>
 <dd class="func">
 <p>
 Lift a function to an arrow.   </p>
@@ -130,7 +132,7 @@ Lift a function to an arrow.   </p>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Arrow__minus_gt.arr">arr</a> :: (α -&gt; β) -&gt; α -&gt; β</SPAN></dt>
+<SPAN CLASS="code"><a name="Arrow__minus_gt.arr">arr</a> ∷ (α → β) → α → β</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -140,13 +142,13 @@ Member Functions</h3>
 <a name="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code">(α -&gt; β) -&gt; α -&gt; β</SPAN></dt>
+<SPAN CLASS="code">(α → β) → α → β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Arrow__minus_gt.arr">Arrow_-&gt;.arr</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Arrow">Arrow</a> a =&gt; (b -&gt; c) -&gt; a b c</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Arrow">Arrow</a> a ⇒ (b → c) → a b c</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Arrow.arr">Arrow.arr</a></p>

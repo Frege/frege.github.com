@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
 <META http-equiv="Content-Type" content="text/html;charset=utf-8">
-<TITLE>frege.control.Tensor - frege documentation</TITLE>
+<TITLE>Control.Tensor - frege documentation</TITLE>
 <style TYPE="text/css">
 body { font-family: helvetica, arial, sans-serif }
 pre { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
@@ -17,11 +17,13 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 </style>
 <BODY>
 <h1>
-<a name="package">Package <SPAN CLASS="code">frege.control.Tensor</SPAN></a></h1>
+<a name="package">Package <SPAN CLASS="code">Control.Tensor</SPAN></a></h1>
 <p>
  Source file: <SPAN CLASS="code">./frege/control/Tensor.fr</SPAN></p>
 <h3>
 Package Documentation</h3>
+<p>
+The <a class="tref" href="#Tensor">Tensor</a> type class with <a class="fref" href="#Tensor._star_star_star">Tensor.***</a> operation.   </p>
 <h3>
 Table of Content</h3>
 <ul>
@@ -49,11 +51,11 @@ Imports</h3>
 <ul>
 <li>
 <div>
-import <a HREF="../prelude/PreludeList.html">frege.prelude.PreludeList</a> as PreludeList</div>
+import <a HREF="../prelude/PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeBase.html">frege.prelude.PreludeBase</a> as PreludeBase</div>
+import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
 </li>
 <li>
 <div>
@@ -61,34 +63,34 @@ import <a HREF="../Prelude.html">frege.Prelude</a> as Prelude</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeArrays.html">frege.prelude.PreludeArrays</a> as PreludeArrays</div>
+import <a HREF="../prelude/PreludeArrays.html">Prelude.PreludeArrays</a> as PreludeArrays</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeIO.html">frege.prelude.PreludeIO</a> as PreludeIO</div>
+import <a HREF="../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeText.html">frege.prelude.PreludeText</a> as PreludeText</div>
+import <a HREF="../prelude/PreludeText.html">Prelude.PreludeText</a> as PreludeText</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeMonad.html">frege.prelude.PreludeMonad</a> as PreludeMonad</div>
+import <a HREF="../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as PreludeMonad</div>
 </li>
 <li>
 <div>
-import <a HREF="./Semigroupoid.html">frege.control.Semigroupoid</a> as Semigroupoid</div>
+import <a HREF="./Semigroupoid.html">Control.Semigroupoid</a> as Semigroupoid</div>
 </li>
 <li>
 <div>
-import <a HREF="../java/util/Regex.html">frege.java.util.Regex</a> as Regexp</div>
+import <a HREF="../java/util/Regex.html">Java.util.Regex</a> as Regexp</div>
 </li>
 </ul>
 <h2>
 <a name="class">Classes</a></h2>
 <dl class="clas">
 <dt class="clas">
-<SPAN CLASS="code"><b>class </b><a name="Tensor">Tensor</a> <a class="tref" href="./Semigroupoid.html#Semigroupoid">Semigroupoid</a> f =&gt;  f</SPAN></dt>
+<SPAN CLASS="code"><b>class </b><a name="Tensor">Tensor</a> <a class="tref" href="./Semigroupoid.html#Semigroupoid">Semigroupoid</a> f ⇒  f</SPAN></dt>
 <dd class="clas">
 <h3>
 Known Instances</h3>
@@ -98,7 +100,7 @@ Known Instances</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Tensor._star_star_star">***</a> :: <a class="tref" href="#Tensor">Tensor</a> f =&gt; f a b -&gt; f c d -&gt; f (a, c) (b, d)</SPAN></dt>
+<SPAN CLASS="code"><a name="Tensor._star_star_star">***</a> ∷ <a class="tref" href="#Tensor">Tensor</a> f ⇒ f a b → f c d → f (a, c) (b, d)<br><b>infixr</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 <p>
 Split the input between the two argument semigroupoids and combine their output.  Note that this is in general not a functor.</p>
@@ -116,7 +118,7 @@ Split the input between the two argument semigroupoids and combine their output.
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Tensor__minus_gt._star_star_star">***</a> :: (α-&gt;β) -&gt; (δ-&gt;γ) -&gt; <b>(α, δ)</b> -&gt; (β, γ)</SPAN></dt>
+<SPAN CLASS="code"><a name="Tensor__minus_gt._star_star_star">***</a> ∷ (α→γ) → (δ→β) → <b>(α, δ)</b> → (γ, β)<br><b>infixr</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -126,13 +128,13 @@ Member Functions</h3>
 <a name="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code">(α-&gt;β) -&gt; (δ-&gt;γ) -&gt; (α, δ) -&gt; (β, γ)</SPAN></dt>
+<SPAN CLASS="code">(α→γ) → (δ→β) → (α, δ) → (γ, β)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Tensor__minus_gt._star_star_star">Tensor_-&gt;.***</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Tensor">Tensor</a> f =&gt; f a b -&gt; f c d -&gt; f (a, c) (b, d)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Tensor">Tensor</a> f ⇒ f a b → f c d → f (a, c) (b, d)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Tensor._star_star_star">Tensor.***</a></p>

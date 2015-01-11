@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
 <META http-equiv="Content-Type" content="text/html;charset=utf-8">
-<TITLE>frege.control.monad.trans.MonadIO - frege documentation</TITLE>
+<TITLE>Control.monad.trans.MonadIO - frege documentation</TITLE>
 <style TYPE="text/css">
 body { font-family: helvetica, arial, sans-serif }
 pre { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
@@ -17,7 +17,7 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 </style>
 <BODY>
 <h1>
-<a name="package">Package <SPAN CLASS="code">frege.control.monad.trans.MonadIO</SPAN></a></h1>
+<a name="package">Package <SPAN CLASS="code">Control.monad.trans.MonadIO</SPAN></a></h1>
 <p>
  Source file: <SPAN CLASS="code">./frege/control/monad/trans/MonadIO.fr</SPAN></p>
 <h3>
@@ -51,7 +51,7 @@ Imports</h3>
 <ul>
 <li>
 <div>
-import <a HREF="../../../prelude/PreludeList.html">frege.prelude.PreludeList</a> as PreludeList</div>
+import <a HREF="../../../prelude/PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
 </li>
 <li>
 <div>
@@ -59,34 +59,34 @@ import <a HREF="../../../Prelude.html">frege.Prelude</a> as Prelude</div>
 </li>
 <li>
 <div>
-import <a HREF="../../../prelude/PreludeBase.html">frege.prelude.PreludeBase</a> as PreludeBase</div>
+import <a HREF="../../../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
 </li>
 <li>
 <div>
-import <a HREF="../../../prelude/PreludeArrays.html">frege.prelude.PreludeArrays</a> as PreludeArrays</div>
+import <a HREF="../../../prelude/PreludeArrays.html">Prelude.PreludeArrays</a> as PreludeArrays</div>
 </li>
 <li>
 <div>
-import <a HREF="../../../prelude/PreludeIO.html">frege.prelude.PreludeIO</a> as PreludeIO</div>
+import <a HREF="../../../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
 </li>
 <li>
 <div>
-import <a HREF="../../../prelude/PreludeText.html">frege.prelude.PreludeText</a> as PreludeText</div>
+import <a HREF="../../../prelude/PreludeText.html">Prelude.PreludeText</a> as PreludeText</div>
 </li>
 <li>
 <div>
-import <a HREF="../../../prelude/PreludeMonad.html">frege.prelude.PreludeMonad</a> as PreludeMonad</div>
+import <a HREF="../../../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as PreludeMonad</div>
 </li>
 <li>
 <div>
-import <a HREF="../../../java/util/Regex.html">frege.java.util.Regex</a> as Regexp</div>
+import <a HREF="../../../java/util/Regex.html">Java.util.Regex</a> as Regexp</div>
 </li>
 </ul>
 <h2>
 <a name="class">Classes</a></h2>
 <dl class="clas">
 <dt class="clas">
-<SPAN CLASS="code"><b>class </b><a name="MonadIO">MonadIO</a> (<a class="tref" href="../../../prelude/PreludeMonad.html#Functor">Functor</a> m, <a class="tref" href="../../../prelude/PreludeMonad.html#Apply">Apply</a> m, <a class="tref" href="../../../prelude/PreludeMonad.html#Bind">Bind</a> m, <a class="tref" href="../../../prelude/PreludeMonad.html#Applicative">Applicative</a> m, <a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> m) =&gt;  m</SPAN></dt>
+<SPAN CLASS="code"><b>class </b><a name="MonadIO">MonadIO</a> (<a class="tref" href="../../../prelude/PreludeMonad.html#Functor">Functor</a> m, <a class="tref" href="../../../prelude/PreludeMonad.html#Apply">Apply</a> m, <a class="tref" href="../../../prelude/PreludeMonad.html#Bind">Bind</a> m, <a class="tref" href="../../../prelude/PreludeMonad.html#Applicative">Applicative</a> m, <a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> m) ⇒  m</SPAN></dt>
 <dd class="clas">
 <p>
 Monads in which <a class="tref" href="../../../prelude/PreludeBase.html#IO">IO</a> computations may be embedded.</p>
@@ -106,7 +106,7 @@ Known Instances</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="MonadIO.liftIO">liftIO</a> :: <a class="tref" href="#MonadIO">MonadIO</a> m =&gt; <a class="tref" href="../../../prelude/PreludeBase.html#IO">IO</a> a -&gt; m a</SPAN></dt>
+<SPAN CLASS="code"><a name="MonadIO.liftIO">liftIO</a> ∷ <a class="tref" href="#MonadIO">MonadIO</a> m ⇒ <a class="tref" href="../../../prelude/PreludeBase.html#IO">IO</a> a → m a</SPAN></dt>
 <dd class="func">
 <p>
 Lift a computation from the <a class="tref" href="../../../prelude/PreludeBase.html#IO">IO</a> monad.   </p>
@@ -124,7 +124,7 @@ Lift a computation from the <a class="tref" href="../../../prelude/PreludeBase.h
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="MonadIO_IO.liftIO">liftIO</a> :: <a class="tref" href="../../../prelude/PreludeBase.html#IO">IO</a> α -&gt; <a class="tref" href="../../../prelude/PreludeBase.html#IO">IO</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name="MonadIO_IO.liftIO">liftIO</a> ∷ <a class="tref" href="../../../prelude/PreludeBase.html#IO">IO</a> α → <a class="tref" href="../../../prelude/PreludeBase.html#IO">IO</a> α</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -134,13 +134,13 @@ Member Functions</h3>
 <a name="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../../prelude/PreludeBase.html#IO">IO</a> α -&gt; <a class="tref" href="../../../prelude/PreludeBase.html#IO">IO</a> α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../../../prelude/PreludeBase.html#IO">IO</a> α → <a class="tref" href="../../../prelude/PreludeBase.html#IO">IO</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#MonadIO_IO.liftIO">MonadIO_IO.liftIO</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#MonadIO">MonadIO</a> m =&gt; <a class="tref" href="../../../prelude/PreludeBase.html#IO">IO</a> a -&gt; m a</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#MonadIO">MonadIO</a> m ⇒ <a class="tref" href="../../../prelude/PreludeBase.html#IO">IO</a> a → m a</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#MonadIO.liftIO">MonadIO.liftIO</a></p>
