@@ -110,7 +110,7 @@ import <a HREF="../../../java/util/Regex.html">Java.util.Regex</a> as Regexp</di
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Functor_EitherT.fmap">fmap</a> ∷ <a class="tref" href="../../../prelude/PreludeMonad.html#Functor">Functor</a> δ ⇒ (β → α) → <a class="tref" href="#EitherT">EitherT</a> γ δ β → <a class="tref" href="#EitherT">EitherT</a> γ δ α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name="Functor_EitherT.fmap">fmap</a> ∷ <a class="tref" href="../../../prelude/PreludeMonad.html#Functor">Functor</a> α ⇒ (β → γ) → <a class="tref" href="#EitherT">EitherT</a> δ α β → <a class="tref" href="#EitherT">EitherT</a> δ α γ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -122,11 +122,11 @@ Member Functions</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="MonadAlt_EitherT._lt_plus_gt">&lt;+&gt;</a> ∷ <a class="tref" href="../../../prelude/PreludeMonad.html#MonadAlt">MonadAlt</a> α ⇒ <a class="tref" href="#EitherT">EitherT</a> β α γ → <a class="tref" href="#EitherT">EitherT</a> β α γ → <a class="tref" href="#EitherT">EitherT</a> β α γ<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
+<SPAN CLASS="code"><a name="MonadAlt_EitherT._lt_plus_gt">&lt;+&gt;</a> ∷ <a class="tref" href="../../../prelude/PreludeMonad.html#MonadAlt">MonadAlt</a> γ ⇒ <a class="tref" href="#EitherT">EitherT</a> α γ β → <a class="tref" href="#EitherT">EitherT</a> α γ β → <a class="tref" href="#EitherT">EitherT</a> α γ β<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="MonadAlt_EitherT._lt_bar_gt">&lt;|&gt;</a> ∷ <a class="tref" href="../../../prelude/PreludeMonad.html#MonadAlt">MonadAlt</a> β ⇒ <a class="tref" href="#EitherT">EitherT</a> γ β α → <a class="tref" href="#EitherT">EitherT</a> γ β α → <a class="tref" href="#EitherT">EitherT</a> γ β α<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
+<SPAN CLASS="code"><a name="MonadAlt_EitherT._lt_bar_gt">&lt;|&gt;</a> ∷ <a class="tref" href="../../../prelude/PreludeMonad.html#MonadAlt">MonadAlt</a> α ⇒ <a class="tref" href="#EitherT">EitherT</a> β α γ → <a class="tref" href="#EitherT">EitherT</a> β α γ → <a class="tref" href="#EitherT">EitherT</a> β α γ<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
@@ -142,7 +142,7 @@ Member Functions</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="MonadIO_EitherT.liftIO">liftIO</a> ∷ <a class="tref" href="./MonadIO.html#MonadIO">MonadIO</a> β ⇒ <a class="tref" href="../../../prelude/PreludeBase.html#IO">IO</a> α → <a class="tref" href="#EitherT">EitherT</a> γ β α</SPAN></dt>
+<SPAN CLASS="code"><a name="MonadIO_EitherT.liftIO">liftIO</a> ∷ <a class="tref" href="./MonadIO.html#MonadIO">MonadIO</a> α ⇒ <a class="tref" href="../../../prelude/PreludeBase.html#IO">IO</a> γ → <a class="tref" href="#EitherT">EitherT</a> β α γ</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -154,7 +154,7 @@ Member Functions</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="MonadPlus_EitherT.mplus">mplus</a> ∷ <a class="tref" href="../../../prelude/PreludeMonad.html#MonadPlus">MonadPlus</a> γ ⇒ <a class="tref" href="#EitherT">EitherT</a> α γ β → <a class="tref" href="#EitherT">EitherT</a> α γ β → <a class="tref" href="#EitherT">EitherT</a> α γ β<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
+<SPAN CLASS="code"><a name="MonadPlus_EitherT.mplus">mplus</a> ∷ <a class="tref" href="../../../prelude/PreludeMonad.html#MonadPlus">MonadPlus</a> β ⇒ <a class="tref" href="#EitherT">EitherT</a> γ β α → <a class="tref" href="#EitherT">EitherT</a> γ β α → <a class="tref" href="#EitherT">EitherT</a> γ β α<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
@@ -170,7 +170,7 @@ Member Functions</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="MonadTrans_EitherT.lift">lift</a> ∷ <a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ α β → <a class="tref" href="#EitherT">EitherT</a> γ α β</SPAN></dt>
+<SPAN CLASS="code"><a name="MonadTrans_EitherT.lift">lift</a> ∷ <a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ γ α → <a class="tref" href="#EitherT">EitherT</a> β γ α</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -182,47 +182,47 @@ Member Functions</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad_EitherT._star_gt">*&gt;</a> ∷ <a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#EitherT">EitherT</a> α β δ → <a class="tref" href="#EitherT">EitherT</a> α β γ → <a class="tref" href="#EitherT">EitherT</a> α β γ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad_EitherT._star_gt">*&gt;</a> ∷ <a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#EitherT">EitherT</a> β α γ → <a class="tref" href="#EitherT">EitherT</a> β α δ → <a class="tref" href="#EitherT">EitherT</a> β α δ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../../../prelude/PreludeMonad.html#Applicative._star_gt">Applicative.*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad_EitherT._lt_star">&lt;*</a> ∷ <a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#EitherT">EitherT</a> γ α β → <a class="tref" href="#EitherT">EitherT</a> γ α δ → <a class="tref" href="#EitherT">EitherT</a> γ α β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad_EitherT._lt_star">&lt;*</a> ∷ <a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#EitherT">EitherT</a> β α γ → <a class="tref" href="#EitherT">EitherT</a> β α δ → <a class="tref" href="#EitherT">EitherT</a> β α γ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../../../prelude/PreludeMonad.html#Applicative._lt_star">Applicative.&lt;*</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad_EitherT._lt_star_gt">&lt;*&gt;</a> ∷ <a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#EitherT">EitherT</a> γ α (β→δ) → <a class="tref" href="#EitherT">EitherT</a> γ α β → <a class="tref" href="#EitherT">EitherT</a> γ α δ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad_EitherT._lt_star_gt">&lt;*&gt;</a> ∷ <a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#EitherT">EitherT</a> β α (γ→δ) → <a class="tref" href="#EitherT">EitherT</a> β α γ → <a class="tref" href="#EitherT">EitherT</a> β α δ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../../../prelude/PreludeMonad.html#Monad._lt_star_gt">Monad.&lt;*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad_EitherT._gt_gt">&gt;&gt;</a> ∷ <a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <b><a class="tref" href="#EitherT">EitherT</a> α β δ</b> → <a class="tref" href="#EitherT">EitherT</a> α β γ → <a class="tref" href="#EitherT">EitherT</a> α β γ<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad_EitherT._gt_gt">&gt;&gt;</a> ∷ <a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <b><a class="tref" href="#EitherT">EitherT</a> β α γ</b> → <a class="tref" href="#EitherT">EitherT</a> β α δ → <a class="tref" href="#EitherT">EitherT</a> β α δ<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../../../prelude/PreludeMonad.html#Monad._gt_gt">Monad.&gt;&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad_EitherT._gt_gt_eq">&gt;&gt;=</a> ∷ <a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <b><a class="tref" href="#EitherT">EitherT</a> γ α β</b> → (β → <a class="tref" href="#EitherT">EitherT</a> γ α δ) → <a class="tref" href="#EitherT">EitherT</a> γ α δ<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad_EitherT._gt_gt_eq">&gt;&gt;=</a> ∷ <a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <b><a class="tref" href="#EitherT">EitherT</a> β α γ</b> → (γ → <a class="tref" href="#EitherT">EitherT</a> β α δ) → <a class="tref" href="#EitherT">EitherT</a> β α δ<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad_EitherT.join">join</a> ∷ <a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ <b><a class="tref" href="#EitherT">EitherT</a> α γ (<a class="tref" href="#EitherT">EitherT</a> α γ β)</b> → <a class="tref" href="#EitherT">EitherT</a> α γ β</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad_EitherT.join">join</a> ∷ <a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <b><a class="tref" href="#EitherT">EitherT</a> γ β (<a class="tref" href="#EitherT">EitherT</a> γ β α)</b> → <a class="tref" href="#EitherT">EitherT</a> γ β α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../../../prelude/PreludeMonad.html#Monad.join">Monad.join</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad_EitherT.pure">pure</a> ∷ <a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ γ → <a class="tref" href="#EitherT">EitherT</a> β α γ</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad_EitherT.pure">pure</a> ∷ <a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ β → <a class="tref" href="#EitherT">EitherT</a> α γ β</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../../../prelude/PreludeMonad.html#Monad.pure">Monad.pure</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monad_EitherT._return">return</a> ∷ <a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ α → <a class="tref" href="#EitherT">EitherT</a> γ β α</SPAN></dt>
+<SPAN CLASS="code"><a name="Monad_EitherT._return">return</a> ∷ <a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ γ → <a class="tref" href="#EitherT">EitherT</a> β α γ</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -234,7 +234,7 @@ inherited from <a class="fref" href="../../../prelude/PreludeMonad.html#Monad.pu
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Monoid_EitherT.mappend">mappend</a> ∷ (<a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> γ, <a class="tref" href="../../../data/Monoid.html#Monoid">Monoid</a> β) ⇒ <a class="tref" href="#EitherT">EitherT</a> α γ β → <a class="tref" href="#EitherT">EitherT</a> α γ β → <a class="tref" href="#EitherT">EitherT</a> α γ β<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
+<SPAN CLASS="code"><a name="Monoid_EitherT.mappend">mappend</a> ∷ (<a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> α, <a class="tref" href="../../../data/Monoid.html#Monoid">Monoid</a> γ) ⇒ <a class="tref" href="#EitherT">EitherT</a> β α γ → <a class="tref" href="#EitherT">EitherT</a> β α γ → <a class="tref" href="#EitherT">EitherT</a> β α γ<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
@@ -244,23 +244,23 @@ Member Functions</h3>
 inherited from <a class="fref" href="../../../data/Monoid.html#Monoid.mconcat">Monoid.mconcat</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monoid_EitherT.mempty">mempty</a> ∷ (<a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> α, <a class="tref" href="../../../data/Monoid.html#Monoid">Monoid</a> γ) ⇒ <a class="tref" href="#EitherT">EitherT</a> β α γ</SPAN></dt>
+<SPAN CLASS="code"><a name="Monoid_EitherT.mempty">mempty</a> ∷ (<a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> γ, <a class="tref" href="../../../data/Monoid.html#Monoid">Monoid</a> β) ⇒ <a class="tref" href="#EitherT">EitherT</a> α γ β</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monoid_EitherT.mtimes">mtimes</a> ∷ (<a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> γ, <a class="tref" href="../../../data/Monoid.html#Monoid">Monoid</a> β) ⇒ <b><a class="tref" href="../../../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#EitherT">EitherT</a> α γ β → <a class="tref" href="#EitherT">EitherT</a> α γ β</SPAN></dt>
+<SPAN CLASS="code"><a name="Monoid_EitherT.mtimes">mtimes</a> ∷ (<a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> α, <a class="tref" href="../../../data/Monoid.html#Monoid">Monoid</a> γ) ⇒ <b><a class="tref" href="../../../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#EitherT">EitherT</a> β α γ → <a class="tref" href="#EitherT">EitherT</a> β α γ</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../../../data/Monoid.html#Monoid.mtimes">Monoid.mtimes</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monoid_EitherT.sconcat">sconcat</a> ∷ (<a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> γ, <a class="tref" href="../../../data/Monoid.html#Monoid">Monoid</a> β) ⇒ <b>[<a class="tref" href="#EitherT">EitherT</a> α γ β]</b> → <a class="tref" href="#EitherT">EitherT</a> α γ β</SPAN></dt>
+<SPAN CLASS="code"><a name="Monoid_EitherT.sconcat">sconcat</a> ∷ (<a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> β, <a class="tref" href="../../../data/Monoid.html#Monoid">Monoid</a> α) ⇒ <b>[<a class="tref" href="#EitherT">EitherT</a> γ β α]</b> → <a class="tref" href="#EitherT">EitherT</a> γ β α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../../../data/Monoid.html#Semigroup.sconcat">Semigroup.sconcat</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monoid_EitherT.stimes">stimes</a> ∷ (<a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> β, <a class="tref" href="../../../data/Monoid.html#Monoid">Monoid</a> α) ⇒ <b><a class="tref" href="../../../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#EitherT">EitherT</a> γ β α → <a class="tref" href="#EitherT">EitherT</a> γ β α</SPAN></dt>
+<SPAN CLASS="code"><a name="Monoid_EitherT.stimes">stimes</a> ∷ (<a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> γ, <a class="tref" href="../../../data/Monoid.html#Monoid">Monoid</a> β) ⇒ <b><a class="tref" href="../../../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#EitherT">EitherT</a> α γ β → <a class="tref" href="#EitherT">EitherT</a> α γ β</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../../../data/Monoid.html#Semigroup.stimes">Semigroup.stimes</a></p>
@@ -286,7 +286,7 @@ Constructors</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="EitherT.run">run</a> ∷ <b><a class="tref" href="#EitherT">EitherT</a> α γ β</b> → γ (α | β)</SPAN></dt>
+<SPAN CLASS="code"><a name="EitherT.run">run</a> ∷ <b><a class="tref" href="#EitherT">EitherT</a> γ β α</b> → β (γ | α)</SPAN></dt>
 <dd class="func">
 <p>
 access field <SPAN CLASS="code">run</SPAN></p>
@@ -312,7 +312,7 @@ access field <SPAN CLASS="code">run</SPAN></p>
 <a class="fref" href="#EitherT.has$run">EitherT.has$run</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#EitherT">EitherT</a> α γ β → γ (α | β)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#EitherT">EitherT</a> γ β α → β (γ | α)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#EitherT.run">EitherT.run</a></p>
@@ -324,7 +324,7 @@ access field <SPAN CLASS="code">run</SPAN></p>
 <a class="fref" href="#EitherT.EitherT">EitherT.EitherT</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./MonadIO.html#MonadIO">MonadIO</a> β ⇒ <a class="tref" href="../../../prelude/PreludeBase.html#IO">IO</a> α → <a class="tref" href="#EitherT">EitherT</a> γ β α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./MonadIO.html#MonadIO">MonadIO</a> α ⇒ <a class="tref" href="../../../prelude/PreludeBase.html#IO">IO</a> γ → <a class="tref" href="#EitherT">EitherT</a> β α γ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#MonadIO_EitherT.liftIO">MonadIO_EitherT.liftIO</a></p>
@@ -336,79 +336,73 @@ access field <SPAN CLASS="code">run</SPAN></p>
 <a class="fref" href="#left">left</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ α β → <a class="tref" href="#EitherT">EitherT</a> γ α β</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#MonadTrans_EitherT.lift">MonadTrans_EitherT.lift</a></p>
-</dd>
-<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ γ → <a class="tref" href="#EitherT">EitherT</a> β α γ</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Monad_EitherT.pure">Monad_EitherT.pure</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ α → <a class="tref" href="#EitherT">EitherT</a> γ β α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_EitherT._return">Monad_EitherT.return</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> β, <a class="tref" href="../../../data/Monoid.html#Monoid">Monoid</a> α) ⇒ [<a class="tref" href="#EitherT">EitherT</a> γ β α] → <a class="tref" href="#EitherT">EitherT</a> γ β α</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Monoid_EitherT.mconcat">Monoid_EitherT.mconcat</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> β, <a class="tref" href="../../../data/Monoid.html#Monoid">Monoid</a> α) ⇒ <a class="tref" href="../../../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#EitherT">EitherT</a> γ β α → <a class="tref" href="#EitherT">EitherT</a> γ β α</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Monoid_EitherT.stimes">Monoid_EitherT.stimes</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ <a class="tref" href="#EitherT">EitherT</a> α γ (<a class="tref" href="#EitherT">EitherT</a> α γ β) → <a class="tref" href="#EitherT">EitherT</a> α γ β</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Monad_EitherT.join">Monad_EitherT.join</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> γ, <a class="tref" href="../../../data/Monoid.html#Monoid">Monoid</a> β) ⇒ <a class="tref" href="#EitherT">EitherT</a> α γ β → <a class="tref" href="#EitherT">EitherT</a> α γ β → <a class="tref" href="#EitherT">EitherT</a> α γ β</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> α, <a class="tref" href="../../../data/Monoid.html#Monoid">Monoid</a> γ) ⇒ <a class="tref" href="#EitherT">EitherT</a> β α γ → <a class="tref" href="#EitherT">EitherT</a> β α γ → <a class="tref" href="#EitherT">EitherT</a> β α γ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monoid_EitherT.mappend">Monoid_EitherT.mappend</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> γ, <a class="tref" href="../../../data/Monoid.html#Monoid">Monoid</a> β) ⇒ [<a class="tref" href="#EitherT">EitherT</a> α γ β] → <a class="tref" href="#EitherT">EitherT</a> α γ β</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Monoid_EitherT.sconcat">Monoid_EitherT.sconcat</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> γ, <a class="tref" href="../../../data/Monoid.html#Monoid">Monoid</a> β) ⇒ <a class="tref" href="../../../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#EitherT">EitherT</a> α γ β → <a class="tref" href="#EitherT">EitherT</a> α γ β</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> α, <a class="tref" href="../../../data/Monoid.html#Monoid">Monoid</a> γ) ⇒ <a class="tref" href="../../../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#EitherT">EitherT</a> β α γ → <a class="tref" href="#EitherT">EitherT</a> β α γ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monoid_EitherT.mtimes">Monoid_EitherT.mtimes</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../../prelude/PreludeMonad.html#MonadAlt">MonadAlt</a> α ⇒ <a class="tref" href="#EitherT">EitherT</a> β α γ → <a class="tref" href="#EitherT">EitherT</a> β α γ → <a class="tref" href="#EitherT">EitherT</a> β α γ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#EitherT">EitherT</a> γ β (<a class="tref" href="#EitherT">EitherT</a> γ β α) → <a class="tref" href="#EitherT">EitherT</a> γ β α</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#MonadAlt_EitherT._lt_plus_gt">MonadAlt_EitherT.&lt;+&gt;</a></p>
+<a class="fref" href="#Monad_EitherT.join">Monad_EitherT.join</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../../prelude/PreludeMonad.html#MonadAlt">MonadAlt</a> β ⇒ <a class="tref" href="#EitherT">EitherT</a> γ β α → <a class="tref" href="#EitherT">EitherT</a> γ β α → <a class="tref" href="#EitherT">EitherT</a> γ β α</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> β, <a class="tref" href="../../../data/Monoid.html#Monoid">Monoid</a> α) ⇒ [<a class="tref" href="#EitherT">EitherT</a> γ β α] → <a class="tref" href="#EitherT">EitherT</a> γ β α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monoid_EitherT.mconcat">Monoid_EitherT.mconcat</a>, <a class="fref" href="#Monoid_EitherT.sconcat">Monoid_EitherT.sconcat</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ γ α → <a class="tref" href="#EitherT">EitherT</a> β γ α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#MonadTrans_EitherT.lift">MonadTrans_EitherT.lift</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ β → <a class="tref" href="#EitherT">EitherT</a> α γ β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_EitherT.pure">Monad_EitherT.pure</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> γ, <a class="tref" href="../../../data/Monoid.html#Monoid">Monoid</a> β) ⇒ <a class="tref" href="../../../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#EitherT">EitherT</a> α γ β → <a class="tref" href="#EitherT">EitherT</a> α γ β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monoid_EitherT.stimes">Monoid_EitherT.stimes</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../../prelude/PreludeMonad.html#MonadAlt">MonadAlt</a> α ⇒ <a class="tref" href="#EitherT">EitherT</a> β α γ → <a class="tref" href="#EitherT">EitherT</a> β α γ → <a class="tref" href="#EitherT">EitherT</a> β α γ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#MonadAlt_EitherT._lt_bar_gt">MonadAlt_EitherT.&lt;|&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../../prelude/PreludeMonad.html#MonadPlus">MonadPlus</a> γ ⇒ <a class="tref" href="#EitherT">EitherT</a> α γ β → <a class="tref" href="#EitherT">EitherT</a> α γ β → <a class="tref" href="#EitherT">EitherT</a> α γ β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../../../prelude/PreludeMonad.html#MonadAlt">MonadAlt</a> γ ⇒ <a class="tref" href="#EitherT">EitherT</a> α γ β → <a class="tref" href="#EitherT">EitherT</a> α γ β → <a class="tref" href="#EitherT">EitherT</a> α γ β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#MonadAlt_EitherT._lt_plus_gt">MonadAlt_EitherT.&lt;+&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../../prelude/PreludeMonad.html#MonadPlus">MonadPlus</a> β ⇒ <a class="tref" href="#EitherT">EitherT</a> γ β α → <a class="tref" href="#EitherT">EitherT</a> γ β α → <a class="tref" href="#EitherT">EitherT</a> γ β α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#MonadPlus_EitherT.mplus">MonadPlus_EitherT.mplus</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> α, <a class="tref" href="../../../data/Monoid.html#Monoid">Monoid</a> γ) ⇒ <a class="tref" href="#EitherT">EitherT</a> β α γ</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> γ, <a class="tref" href="../../../data/Monoid.html#Monoid">Monoid</a> β) ⇒ <a class="tref" href="#EitherT">EitherT</a> α γ β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monoid_EitherT.mempty">Monoid_EitherT.mempty</a></p>
@@ -426,46 +420,46 @@ access field <SPAN CLASS="code">run</SPAN></p>
 <a class="fref" href="#MonadPlus_EitherT.mzero">MonadPlus_EitherT.mzero</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../../prelude/PreludeMonad.html#Functor">Functor</a> δ ⇒ (β → α) → <a class="tref" href="#EitherT">EitherT</a> γ δ β → <a class="tref" href="#EitherT">EitherT</a> γ δ α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../../../prelude/PreludeMonad.html#Functor">Functor</a> α ⇒ (β → γ) → <a class="tref" href="#EitherT">EitherT</a> δ α β → <a class="tref" href="#EitherT">EitherT</a> δ α γ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Functor_EitherT.fmap">Functor_EitherT.fmap</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#EitherT">EitherT</a> γ α (β→δ) → <a class="tref" href="#EitherT">EitherT</a> γ α β → <a class="tref" href="#EitherT">EitherT</a> γ α δ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#EitherT">EitherT</a> β α (γ→δ) → <a class="tref" href="#EitherT">EitherT</a> β α γ → <a class="tref" href="#EitherT">EitherT</a> β α δ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_EitherT._lt_star_gt">Monad_EitherT.&lt;*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#EitherT">EitherT</a> γ α β → (β → <a class="tref" href="#EitherT">EitherT</a> γ α δ) → <a class="tref" href="#EitherT">EitherT</a> γ α δ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#EitherT">EitherT</a> β α γ → (γ → <a class="tref" href="#EitherT">EitherT</a> β α δ) → <a class="tref" href="#EitherT">EitherT</a> β α δ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_EitherT._gt_gt_eq">Monad_EitherT.&gt;&gt;=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#EitherT">EitherT</a> γ α β → <a class="tref" href="#EitherT">EitherT</a> γ α δ → <a class="tref" href="#EitherT">EitherT</a> γ α β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#EitherT">EitherT</a> β α γ → <a class="tref" href="#EitherT">EitherT</a> β α δ → <a class="tref" href="#EitherT">EitherT</a> β α γ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_EitherT._lt_star">Monad_EitherT.&lt;*</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#EitherT">EitherT</a> α β δ → <a class="tref" href="#EitherT">EitherT</a> α β γ → <a class="tref" href="#EitherT">EitherT</a> α β γ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#EitherT">EitherT</a> β α γ → <a class="tref" href="#EitherT">EitherT</a> β α δ → <a class="tref" href="#EitherT">EitherT</a> β α δ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_EitherT._gt_gt">Monad_EitherT.&gt;&gt;</a>, <a class="fref" href="#Monad_EitherT._star_gt">Monad_EitherT.*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#EitherT">EitherT</a> β α γ → δ (ζ | ε) → <a class="tref" href="#EitherT">EitherT</a> ζ δ ε</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#EitherT.upd$run">EitherT.upd$run</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#EitherT">EitherT</a> ε γ α → (γ (ε | α)→ζ (δ | β)) → <a class="tref" href="#EitherT">EitherT</a> δ ζ β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#EitherT">EitherT</a> α ε ζ → (ε (α | ζ)→β (γ | δ)) → <a class="tref" href="#EitherT">EitherT</a> γ β δ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#EitherT.chg$run">EitherT.chg$run</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#EitherT">EitherT</a> γ β δ → ε (α | ζ) → <a class="tref" href="#EitherT">EitherT</a> α ε ζ</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#EitherT.upd$run">EitherT.upd$run</a></p>
 </dd>
 </dl>
 <p>

@@ -98,7 +98,7 @@ import <a HREF="../java/util/Regex.html">Java.util.Regex</a> as Regexp</div>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Functor_Product.fmap">fmap</a> ∷ (<a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> β, <a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> γ) ⇒ (α → δ) → <b><a class="tref" href="#Product">Product</a> β γ α</b> → <a class="tref" href="#Product">Product</a> β γ δ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name="Functor_Product.fmap">fmap</a> ∷ (<a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> δ, <a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> α) ⇒ (γ → β) → <b><a class="tref" href="#Product">Product</a> δ α γ</b> → <a class="tref" href="#Product">Product</a> δ α β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -124,13 +124,13 @@ Constructors</h3>
 <a name="let">Functions and Values</a></h2>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="product">product</a> ∷ <b>(β γ, α γ)</b> → <a class="tref" href="#Product">Product</a> β α γ</SPAN></dt>
+<SPAN CLASS="code"><a name="product">product</a> ∷ <b>(α β, γ β)</b> → <a class="tref" href="#Product">Product</a> α γ β</SPAN></dt>
 <dd class="func">
 <p>
 view a tuple as <a class="tref" href="#Product">Product</a>   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="unproduct">unproduct</a> ∷ <b><a class="tref" href="#Product">Product</a> α γ β</b> → (α β, γ β)</SPAN></dt>
+<SPAN CLASS="code"><a name="unproduct">unproduct</a> ∷ <b><a class="tref" href="#Product">Product</a> β α γ</b> → (β γ, α γ)</SPAN></dt>
 <dd class="func">
 <p>
 make a tuple from a <a class="tref" href="#Product">Product</a>   </p>
@@ -140,13 +140,13 @@ make a tuple from a <a class="tref" href="#Product">Product</a>   </p>
 <a name="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Product">Product</a> α γ β → (α β, γ β)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Product">Product</a> β α γ → (β γ, α γ)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#unproduct">unproduct</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(β γ, α γ) → <a class="tref" href="#Product">Product</a> β α γ</SPAN></dt>
+<SPAN CLASS="code">(α β, γ β) → <a class="tref" href="#Product">Product</a> α γ β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#product">product</a></p>
@@ -158,7 +158,7 @@ make a tuple from a <a class="tref" href="#Product">Product</a>   </p>
 <a class="fref" href="#Product.Prod">Product.Prod</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> β, <a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> γ) ⇒ (α → δ) → <a class="tref" href="#Product">Product</a> β γ α → <a class="tref" href="#Product">Product</a> β γ δ</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> δ, <a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> α) ⇒ (γ → β) → <a class="tref" href="#Product">Product</a> δ α γ → <a class="tref" href="#Product">Product</a> δ α β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Functor_Product.fmap">Functor_Product.fmap</a></p>
