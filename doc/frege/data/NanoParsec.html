@@ -17,47 +17,9 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 </style>
 <BODY>
 <h1>
-<a name="package">Package <SPAN CLASS="code">Data.NanoParsec</SPAN></a></h1>
-<p>
- Source file: <SPAN CLASS="code">./frege/data/NanoParsec.fr</SPAN></p>
-<h3>
-Package Documentation</h3>
+Module <SPAN CLASS="code">Data.NanoParsec</SPAN></h1>
 <p>
 Small parser, inspired by Parsec, but much less versatile   </p>
-<h3>
-Table of Content</h3>
-<ul>
-<li>
-<div>
-<a HREF="#type">Type Aliases</a></div>
-<div>
-<a class="tref" href="#Parser">Parser</a></div>
-</li>
-<li>
-<div>
-<a HREF="#instance">Instances</a></div>
-<div>
-<a class="tref" href="#MonadAlt_ParserT">MonadAlt_ParserT</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#MonadIO_ParserT">MonadIO_ParserT</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#MonadTrans_ParserT">MonadTrans_ParserT</a></div>
-</li>
-<li>
-<div>
-<a HREF="#data">Data Types</a></div>
-<div>
-<a class="tref" href="#ParserT">ParserT</a></div>
-</li>
-<li>
-<div>
-<a HREF="#let">Functions and Values (alphabetically)</a></div>
-<div>
-<a class="fref" href="#_lt_qm_gt">&lt;?&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#agree">agree</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#allParsers">allParsers</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ascii">ascii</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#between">between</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#choice">choice</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#cond">cond</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#consumeTheSame">consumeTheSame</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#consumesNotOnFailure">consumesNotOnFailure</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#count">count</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#digit">digit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#disagree">disagree</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#endBy">endBy</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#endBy1">endBy1</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#eos">eos</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#exceptWhen">exceptWhen</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#expect">expect</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#fails">fails</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#failure">failure</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#getPos">getPos</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#inputs">inputs</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#label">label</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#letter">letter</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#many">many</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#manyWhile">manyWhile</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#match">match</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#modifyPos">modifyPos</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#option">option</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#optional">optional</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#pany">pany</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#parse">parse</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#parseTest">parseTest</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#parsers">parsers</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_alt_pzero_no_consume">prop_alt_pzero_no_consume</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_any_eos">prop_any_eos</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_choice_0">prop_choice_0</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_choice_1">prop_choice_1</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_choice_2">prop_choice_2</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_count_0">prop_count_0</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_count_1">prop_count_1</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_failure">prop_failure</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_many">prop_many</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_option">prop_option</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_optional">prop_optional</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_p_agrees_p_or_pzero">prop_p_agrees_p_or_pzero</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_p_or_zero_same_p">prop_p_or_zero_same_p</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_pzero_1">prop_pzero_1</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_pzero_2">prop_pzero_2</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_return">prop_return</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_sat_except">prop_sat_except</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_skip">prop_skip</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_skip_fast_many">prop_skip_fast_many</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_skip_many_agree">prop_skip_many_agree</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_skip_many_consume_the_same">prop_skip_many_consume_the_same</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#putPos">putPos</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#reporterror">reporterror</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#runid">runid</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#same">same</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#satisfy">satisfy</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#select">select</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#sepBy">sepBy</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#sepBy1">sepBy1</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#sepEndBy">sepEndBy</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#sepEndBy1">sepEndBy1</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#skip">skip</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#skipUntil">skipUntil</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#skipWhile">skipWhile</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#some">some</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#space">space</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#spaces">spaces</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#string">string</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#succeeds">succeeds</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#symbol">symbol</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#uppercase">uppercase</a></div>
-</li>
-<li>
-<div>
-<a HREF="#case">Functions and Values (by type)</a></div>
-<div>
-<a class="fref" href="#_lt_qm_gt">&lt;?&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#agree">agree</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#allParsers">allParsers</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ascii">ascii</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#between">between</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#choice">choice</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#cond">cond</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#consumeTheSame">consumeTheSame</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#consumesNotOnFailure">consumesNotOnFailure</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#count">count</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#digit">digit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#disagree">disagree</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#endBy">endBy</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#endBy1">endBy1</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#eos">eos</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#exceptWhen">exceptWhen</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#expect">expect</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#fails">fails</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#failure">failure</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#getPos">getPos</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#inputs">inputs</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#label">label</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#letter">letter</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#many">many</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#manyWhile">manyWhile</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#match">match</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#modifyPos">modifyPos</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#option">option</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#optional">optional</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#pany">pany</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#parse">parse</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#parseTest">parseTest</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#parsers">parsers</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_alt_pzero_no_consume">prop_alt_pzero_no_consume</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_any_eos">prop_any_eos</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_choice_0">prop_choice_0</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_choice_1">prop_choice_1</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_choice_2">prop_choice_2</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_count_0">prop_count_0</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_count_1">prop_count_1</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_failure">prop_failure</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_many">prop_many</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_option">prop_option</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_optional">prop_optional</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_p_agrees_p_or_pzero">prop_p_agrees_p_or_pzero</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_p_or_zero_same_p">prop_p_or_zero_same_p</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_pzero_1">prop_pzero_1</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_pzero_2">prop_pzero_2</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_return">prop_return</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_sat_except">prop_sat_except</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_skip">prop_skip</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_skip_fast_many">prop_skip_fast_many</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_skip_many_agree">prop_skip_many_agree</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prop_skip_many_consume_the_same">prop_skip_many_consume_the_same</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#putPos">putPos</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#reporterror">reporterror</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#runid">runid</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#same">same</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#satisfy">satisfy</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#select">select</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#sepBy">sepBy</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#sepBy1">sepBy1</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#sepEndBy">sepEndBy</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#sepEndBy1">sepEndBy1</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#skip">skip</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#skipUntil">skipUntil</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#skipWhile">skipWhile</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#some">some</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#space">space</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#spaces">spaces</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#string">string</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#succeeds">succeeds</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#symbol">symbol</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#uppercase">uppercase</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MonadAlt_ParserT._gt_gt_eq">MonadAlt_ParserT.&gt;&gt;=</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MonadAlt_ParserT._lt_plus_gt">MonadAlt_ParserT.&lt;+&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MonadAlt_ParserT._lt_star">MonadAlt_ParserT.&lt;*</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MonadAlt_ParserT._star_gt">MonadAlt_ParserT.*&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MonadAlt_ParserT._lt_star_gt">MonadAlt_ParserT.&lt;*&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MonadAlt_ParserT._lt_bar_gt">MonadAlt_ParserT.&lt;|&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MonadAlt_ParserT._gt_gt">MonadAlt_ParserT.&gt;&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MonadAlt_ParserT.join">MonadAlt_ParserT.join</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MonadAlt_ParserT.fmap">MonadAlt_ParserT.fmap</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MonadAlt_ParserT.pzero">MonadAlt_ParserT.pzero</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MonadAlt_ParserT.pure">MonadAlt_ParserT.pure</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MonadAlt_ParserT._return">MonadAlt_ParserT.return</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MonadIO_ParserT.liftIO">MonadIO_ParserT.liftIO</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MonadTrans_ParserT.lift">MonadTrans_ParserT.lift</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ParserT.has$run">ParserT.has$run</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ParserT.chg$run">ParserT.chg$run</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ParserT.P">ParserT.P</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ParserT.run">ParserT.run</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ParserT.upd$run">ParserT.upd$run</a></div>
-</li>
-</ul>
 <h3>
 Imports</h3>
 <ul>
@@ -105,17 +67,225 @@ import <a HREF="../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as Prelud
 <div>
 import <a HREF="../java/util/Regex.html">Java.util.Regex</a> as Regexp</div>
 </li>
+</ul>
+<h3>
+Table of Content</h3>
+<ul class="data">
 <li>
 <div>
-import <a HREF="../test/QuickCheck.html">Test.QuickCheck</a> as Q</div>
+<a HREF="#data">Definitions</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><b>type </b><a class="tref" href="#Parser">Parser</a> s t r = <a class="tref" href="#ParserT">ParserT</a> s t <a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> r</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#ParserT"> </a> <a class="tref" href="#ParserT">ParserT</a> s t m r</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#getPos">getPos</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#ParserT">ParserT</a> α γ β (α γ)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#putPos">putPos</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ α γ → <a class="tref" href="#ParserT">ParserT</a> α γ β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#modifyPos">modifyPos</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ (γ β→γ β) → <a class="tref" href="#ParserT">ParserT</a> γ β α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#failure">failure</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#ParserT">ParserT</a> δ γ α β</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#runid">runid</a> ∷ <b><a class="tref" href="#Parser">Parser</a> γ β α</b> → γ β → ((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | α), γ β)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#parse">parse</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> β ⇒ <a class="tref" href="#ParserT">ParserT</a> α γ β δ → α γ → β (<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | δ)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#parseTest">parseTest</a> ∷ (<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> r, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> t, <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> s) ⇒ <b><a class="tref" href="#Parser">Parser</a> s t r</b> → s t → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#reporterror">reporterror</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListSource">ListSource</a> α, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> β) ⇒ α β → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#label">label</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <b><a class="tref" href="#ParserT">ParserT</a> α γ δ β</b> → <a class="tref" href="#ParserT">ParserT</a> α γ δ β</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#_lt_qm_gt">&lt;?&gt;</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <b><a class="tref" href="#ParserT">ParserT</a> α γ β δ</b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#ParserT">ParserT</a> α γ β δ&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#expect">expect</a> ∷ (<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> β, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α, <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β, <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> γ) ⇒ β → <a class="tref" href="#ParserT">ParserT</a> γ β α β</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#eos">eos</a> ∷ (<a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ, <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> β) ⇒ <a class="tref" href="#ParserT">ParserT</a> β α γ <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#satisfy">satisfy</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> s, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m) ⇒ (t → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="#ParserT">ParserT</a> s t m t</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#exceptWhen">exceptWhen</a> ∷ (<a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β, <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α) ⇒ (γ→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="#ParserT">ParserT</a> α γ β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#pany">pany</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β) ⇒ <a class="tref" href="#ParserT">ParserT</a> α γ β γ</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#symbol">symbol</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> γ, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α) ⇒ <b><a class="tref" href="#ParserT">ParserT</a> γ <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> α β</b> → <a class="tref" href="#ParserT">ParserT</a> γ <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> α β</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#space">space</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β) ⇒ <a class="tref" href="#ParserT">ParserT</a> α <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> β <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#digit">digit</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β) ⇒ <a class="tref" href="#ParserT">ParserT</a> α <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> β <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#letter">letter</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β) ⇒ <a class="tref" href="#ParserT">ParserT</a> α <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> β <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#uppercase">uppercase</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β) ⇒ <a class="tref" href="#ParserT">ParserT</a> α <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> β <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#spaces">spaces</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β) ⇒ <a class="tref" href="#ParserT">ParserT</a> α <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#string">string</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m ⇒ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#ParserT">ParserT</a> <a class="tref" href="../prelude/PreludeBase.html#StringJ">StringJ</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> m <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#match">match</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="../java/util/Regex.html#Regex">Regex</a> → <a class="tref" href="#ParserT">ParserT</a> <a class="tref" href="../prelude/PreludeBase.html#StringJ">StringJ</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> α <a class="tref" href="../java/util/Regex.html#Matcher">Matcher</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#optional">optional</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m ⇒ <a class="tref" href="#ParserT">ParserT</a> s t m r → <a class="tref" href="#ParserT">ParserT</a> s t m (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> r)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#many">many</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#ParserT">ParserT</a> δ β α γ → <a class="tref" href="#ParserT">ParserT</a> δ β α [γ]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#some">some</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <b><a class="tref" href="#ParserT">ParserT</a> δ β α γ</b> → <a class="tref" href="#ParserT">ParserT</a> δ β α [γ]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#many1">many1</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <b><a class="tref" href="#ParserT">ParserT</a> δ β α γ</b> → <a class="tref" href="#ParserT">ParserT</a> δ β α [γ]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#skip">skip</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#ParserT">ParserT</a> β δ α γ → <a class="tref" href="#ParserT">ParserT</a> β δ α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#manyWhile">manyWhile</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> β, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ) ⇒ (α→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="#ParserT">ParserT</a> β α γ [α]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#skipWhile">skipWhile</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β) ⇒ (γ→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="#ParserT">ParserT</a> α γ β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#skipUntil">skipUntil</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β) ⇒ (γ→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="#ParserT">ParserT</a> α γ β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#cond">cond</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Bind">Bind</a> α ⇒ <a class="tref" href="#ParserT">ParserT</a> γ β α ε → <a class="tref" href="#ParserT">ParserT</a> γ β α δ → <a class="tref" href="#ParserT">ParserT</a> γ β α δ → <a class="tref" href="#ParserT">ParserT</a> γ β α δ</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#select">select</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Bind">Bind</a> δ ⇒ <b>[(<a class="tref" href="#ParserT">ParserT</a> β α δ γ, <a class="tref" href="#ParserT">ParserT</a> β α δ ε)]</b> → <a class="tref" href="#ParserT">ParserT</a> β α δ ε → <a class="tref" href="#ParserT">ParserT</a> β α δ ε</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#choice">choice</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Plus">Plus</a> α ⇒ <b>[α β]</b> → α β</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#count">count</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → α β → α [β]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#between">between</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ γ β → γ δ → γ α → γ α</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#option">option</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ β → <b><a class="tref" href="#ParserT">ParserT</a> α γ δ β</b> → <a class="tref" href="#ParserT">ParserT</a> α γ δ β</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#sepBy1">sepBy1</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> ε ⇒ <b><a class="tref" href="#ParserT">ParserT</a> β α ε δ</b> → <a class="tref" href="#ParserT">ParserT</a> β α ε γ → <a class="tref" href="#ParserT">ParserT</a> β α ε [δ]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#sepBy">sepBy</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> ε ⇒ <b><a class="tref" href="#ParserT">ParserT</a> δ α ε β</b> → <a class="tref" href="#ParserT">ParserT</a> δ α ε γ → <a class="tref" href="#ParserT">ParserT</a> δ α ε [β]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#endBy">endBy</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#ParserT">ParserT</a> γ β α ε → <a class="tref" href="#ParserT">ParserT</a> γ β α δ → <a class="tref" href="#ParserT">ParserT</a> γ β α [ε]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#endBy1">endBy1</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <b><a class="tref" href="#ParserT">ParserT</a> δ β α γ</b> → <a class="tref" href="#ParserT">ParserT</a> δ β α ε → <a class="tref" href="#ParserT">ParserT</a> δ β α [γ]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#sepEndBy">sepEndBy</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <b><a class="tref" href="#ParserT">ParserT</a> α δ β γ</b> → <a class="tref" href="#ParserT">ParserT</a> α δ β ε → <a class="tref" href="#ParserT">ParserT</a> α δ β [γ]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#sepEndBy1">sepEndBy1</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <b><a class="tref" href="#ParserT">ParserT</a> δ β α γ</b> → <a class="tref" href="#ParserT">ParserT</a> δ β α ε → <a class="tref" href="#ParserT">ParserT</a> δ β α [γ]</SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#instance">Instances</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#MonadAlt_ParserT"> </a> <a class="tref" href="../prelude/PreludeMonad.html#MonadAlt">MonadAlt</a> <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m ⇒ <a class="tref" href="#ParserT">ParserT</a> s t m</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#MonadIO_ParserT"> </a> <a class="tref" href="../control/monad/trans/MonadIO.html#MonadIO">MonadIO</a> <a class="tref" href="../control/monad/trans/MonadIO.html#MonadIO">MonadIO</a> m ⇒ <a class="tref" href="#ParserT">ParserT</a> s t m</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#MonadTrans_ParserT"> </a> <a class="tref" href="../control/monad/trans/MonadTrans.html#MonadTrans">MonadTrans</a> <a class="tref" href="#ParserT">ParserT</a> s t</SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#case">Functions and Values by Type</a></div>
 </li>
 </ul>
 <h2>
-<a name="type">Type Aliases</a></h2>
-<dl class="clas">
-<dt class="clas">
-<SPAN CLASS="code"><b>type </b><a name="Parser">Parser</a> s t r = <a class="tref" href="#ParserT">ParserT</a> s t <a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> r</SPAN></dt>
-<dd class="clas">
+<a NAME="data">Definitions</a></h2>
+<dl class="data">
+<dt class="data">
+<SPAN CLASS="code"><b>type </b><a name=Parser>Parser</a> s t r = <a class="tref" href="#ParserT">ParserT</a> s t <a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> r</SPAN></dt>
+<dd class="data">
 <p>
 Parser Monad</p>
 <PRE>
@@ -127,129 +297,8 @@ This does work very much like a combination of <a HREF="../control/monad/State.h
 <p>
 See also <a class="tref" href="#ParserT">ParserT</a></p>
 </dd>
-</dl>
-<h2>
-<a name="instance">Instances</a></h2>
-<dl class="inst">
-<dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="MonadAlt_ParserT"> </a> <a class="tref" href="../prelude/PreludeMonad.html#MonadAlt">MonadAlt</a> <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m ⇒ <a class="tref" href="#ParserT">ParserT</a> s t m</SPAN></dt>
-<dd class="inst">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="MonadAlt_ParserT._star_gt">*&gt;</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ <b><a class="tref" href="#ParserT">ParserT</a> β α δ γ</b> → <a class="tref" href="#ParserT">ParserT</a> β α δ ε → <a class="tref" href="#ParserT">ParserT</a> β α δ ε<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="MonadAlt_ParserT._lt_star">&lt;*</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <b><a class="tref" href="#ParserT">ParserT</a> ε β α δ</b> → <a class="tref" href="#ParserT">ParserT</a> ε β α γ → <a class="tref" href="#ParserT">ParserT</a> ε β α δ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="MonadAlt_ParserT._lt_star_gt">&lt;*&gt;</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#ParserT">ParserT</a> α δ β (γ→ε) → <a class="tref" href="#ParserT">ParserT</a> α δ β γ → <a class="tref" href="#ParserT">ParserT</a> α δ β ε<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad._lt_star_gt">Monad.&lt;*&gt;</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="MonadAlt_ParserT._lt_plus_gt">&lt;+&gt;</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <b><a class="tref" href="#ParserT">ParserT</a> α γ β δ</b> → <a class="tref" href="#ParserT">ParserT</a> α γ β δ → <a class="tref" href="#ParserT">ParserT</a> α γ β δ<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
-<dd class="func">
-<PRE>
- p &lt;+&gt; q</PRE>
-<p>
-The result is that of the first parser, if it succeeds, otherwise that of the second one, which is applied to the input left over by <i>p</i></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="MonadAlt_ParserT._lt_bar_gt">&lt;|&gt;</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <b><a class="tref" href="#ParserT">ParserT</a> α γ β δ</b> → <a class="tref" href="#ParserT">ParserT</a> α γ β δ → <a class="tref" href="#ParserT">ParserT</a> α γ β δ<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
-<dd class="func">
-<PRE>
- p &lt;|&gt; q</PRE>
-<p>
-The result is that of the first parser, if it succeeds, otherwise that of the second one. Note that <SPAN CLASS="code">q</SPAN> is run on the same input as <SPAN CLASS="code">p</SPAN>, even if <SPAN CLASS="code">p</SPAN> already consumed something.</p>
-<PRE>
- expect 'c' &lt;|&gt; expect 'd'</PRE>
-<p>
-would succeed if the input starts with 'c' or 'd'.</p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="MonadAlt_ParserT._gt_gt">&gt;&gt;</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <b><a class="tref" href="#ParserT">ParserT</a> ε β α δ</b> → <a class="tref" href="#ParserT">ParserT</a> ε β α γ → <a class="tref" href="#ParserT">ParserT</a> ε β α γ<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad._gt_gt">Monad.&gt;&gt;</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="MonadAlt_ParserT._gt_gt_eq">&gt;&gt;=</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> ε ⇒ <b><a class="tref" href="#ParserT">ParserT</a> δ α ε γ</b> → (γ → <a class="tref" href="#ParserT">ParserT</a> δ α ε β) → <a class="tref" href="#ParserT">ParserT</a> δ α ε β<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
-<dd class="func">
-<PRE>
- p &gt;&gt;= (r -&gt; q)
- p &gt;&gt; q</PRE>
-<p>
-If <SPAN CLASS="code">p</SPAN> succeeds, the overall result is that of <SPAN CLASS="code">q</SPAN> Otherwise, the overall result is failure.</p>
-<p>
-Could be read as <i>p followed by q</i>.</p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="MonadAlt_ParserT.fmap">fmap</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ (α → δ) → <b><a class="tref" href="#ParserT">ParserT</a> ε γ β α</b> → <a class="tref" href="#ParserT">ParserT</a> ε γ β δ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad.fmap">Monad.fmap</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="MonadAlt_ParserT.join">join</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ <b><a class="tref" href="#ParserT">ParserT</a> β α γ (<a class="tref" href="#ParserT">ParserT</a> β α γ δ)</b> → <a class="tref" href="#ParserT">ParserT</a> β α γ δ</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad.join">Monad.join</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="MonadAlt_ParserT.pure">pure</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ γ → <a class="tref" href="#ParserT">ParserT</a> α δ β γ</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad.pure">Monad.pure</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="MonadAlt_ParserT.pzero">pzero</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#ParserT">ParserT</a> α γ β δ</SPAN></dt>
-<dd class="func">
-<p>
-generic failure   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="MonadAlt_ParserT._return">return</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ γ → <a class="tref" href="#ParserT">ParserT</a> α δ β γ</SPAN></dt>
-<dd class="func">
-<p>
-generic success   </p>
-</dd>
-</dl>
-</dd>
-<dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="MonadIO_ParserT"> </a> <a class="tref" href="../control/monad/trans/MonadIO.html#MonadIO">MonadIO</a> <a class="tref" href="../control/monad/trans/MonadIO.html#MonadIO">MonadIO</a> m ⇒ <a class="tref" href="#ParserT">ParserT</a> s t m</SPAN></dt>
-<dd class="inst">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="MonadIO_ParserT.liftIO">liftIO</a> ∷ <a class="tref" href="../control/monad/trans/MonadIO.html#MonadIO">MonadIO</a> β ⇒ <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> γ → <a class="tref" href="#ParserT">ParserT</a> α δ β γ</SPAN></dt>
-<dd class="func">
-</dd>
-</dl>
-</dd>
-<dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="MonadTrans_ParserT"> </a> <a class="tref" href="../control/monad/trans/MonadTrans.html#MonadTrans">MonadTrans</a> <a class="tref" href="#ParserT">ParserT</a> s t</SPAN></dt>
-<dd class="inst">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="MonadTrans_ParserT.lift">lift</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ δ α → <a class="tref" href="#ParserT">ParserT</a> β γ δ α</SPAN></dt>
-<dd class="func">
-</dd>
-</dl>
-</dd>
-</dl>
-<h2>
-<a name="data">Data Types</a></h2>
-<dl class="data">
 <dt class="data">
-<SPAN CLASS="code"><b>data </b><a name="ParserT"> </a> <a class="tref" href="#ParserT">ParserT</a> s t m r</SPAN></dt>
+<SPAN CLASS="code"><b>data </b><a name=ParserT> </a> <a class="tref" href="#ParserT">ParserT</a> s t m r</SPAN></dt>
 <dd class="data">
 <p>
 Parser Monad Transformer</p>
@@ -267,7 +316,7 @@ The input for a <a class="tref" href="#ParserT">ParserT</a> must be something th
 Constructors</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><b>private</b> <a name="ParserT.P">P</a> {run ∷ s t → m ((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | r), s t)}</SPAN></dt>
+<SPAN CLASS="code"><b>private</b> <a name=ParserT.P>P</a> {run ∷ s t → m ((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | r), s t)}</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -275,166 +324,64 @@ Constructors</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="ParserT.run">run</a> ∷ <b><a class="tref" href="#ParserT">ParserT</a> α γ β δ</b> → α γ → β ((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | δ), α γ)</SPAN></dt>
+<SPAN CLASS="code"><a name=ParserT.run>run</a> ∷ <b><a class="tref" href="#ParserT">ParserT</a> δ β α γ</b> → δ β → α ((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | γ), δ β)</SPAN></dt>
 <dd class="func">
 <p>
 access field <SPAN CLASS="code">run</SPAN></p>
 </dd>
 </dl>
 </dd>
-</dl>
-<h2>
-<a name="let">Functions and Values</a></h2>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="_lt_qm_gt">&lt;?&gt;</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <b><a class="tref" href="#ParserT">ParserT</a> α γ β δ</b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#ParserT">ParserT</a> α γ β δ<br><b>infix</b>&nbsp;&nbsp;14</SPAN></dt>
-<dd class="func">
-<PRE>
- p &lt;?&gt; msg</PRE>
-<p>
-Causes the error message to be <i>msg</i> when <i>p</i> fails.</p>
-<p>
-The error will be reported at the position where <i>p</i> failed.</p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="agree">agree</a> ∷ <a class="tref" href="#Parser">Parser</a> <a class="tref" href="../prelude/PreludeBase.html#List">[]</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> α → <a class="tref" href="#Parser">Parser</a> <a class="tref" href="../prelude/PreludeBase.html#List">[]</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> β → <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<p>
-p succeeds if and only if q succeeds   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="allParsers">allParsers</a> ∷ <a class="tref" href="../test/QuickCheckProperty.html#Testable">Testable</a> α ⇒ (<a class="tref" href="#Parser">Parser</a> <a class="tref" href="../prelude/PreludeBase.html#List">[]</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>→α) → <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="ascii">ascii</a> ∷ <a class="tref" href="../test/QuickCheckGen.html#Gen">Gen</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a></SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="between">between</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ δ β → δ γ → δ α → δ α</SPAN></dt>
-<dd class="func">
-<PRE>
- between left right p</PRE>
-<p>
-Parses <i>left</i>, then <i>p</i> and finally <i>right</i> and returns the result of <i>p</i>   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="choice">choice</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Plus">Plus</a> α ⇒ <b>[α β]</b> → α β</SPAN></dt>
-<dd class="func">
-<PRE>
- choice ps</PRE>
-<p>
-Tries the parsers in the list from left to right, until success.    </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="cond">cond</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Bind">Bind</a> β ⇒ <a class="tref" href="#ParserT">ParserT</a> δ α β ε → <a class="tref" href="#ParserT">ParserT</a> δ α β γ → <a class="tref" href="#ParserT">ParserT</a> δ α β γ → <a class="tref" href="#ParserT">ParserT</a> δ α β γ</SPAN></dt>
-<dd class="func">
-<PRE>
- cond pcond pthen pelse</PRE>
-<p>
-if <i>pcond</i> succeeds, then <i>pthen</i> is run, else <i>pelse</i></p>
-<p>
-To both <i>pthen</i> and <i>pelse</i> it will appear as if <i>pcond</i> didn't consume any tokens.   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="consumeTheSame">consumeTheSame</a> ∷ <a class="tref" href="#Parser">Parser</a> <a class="tref" href="../prelude/PreludeBase.html#List">[]</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> α → <a class="tref" href="#Parser">Parser</a> <a class="tref" href="../prelude/PreludeBase.html#List">[]</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> β → <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<p>
-p and q consume the same input   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="consumesNotOnFailure">consumesNotOnFailure</a> ∷ <a class="tref" href="#Parser">Parser</a> <a class="tref" href="../prelude/PreludeBase.html#List">[]</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> α → <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<p>
-p consumes no input on failure   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="count">count</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → α β → α [β]</SPAN></dt>
-<dd class="func">
-<PRE>
- count n p</PRE>
-<p>
-Applies <i>p</i> <i>n</i> times and returns a list of the results   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="digit">digit</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β) ⇒ <a class="tref" href="#ParserT">ParserT</a> α <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> β <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a></SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="disagree">disagree</a> ∷ <a class="tref" href="#Parser">Parser</a> <a class="tref" href="../prelude/PreludeBase.html#List">[]</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> α → <a class="tref" href="#Parser">Parser</a> <a class="tref" href="../prelude/PreludeBase.html#List">[]</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> β → <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<p>
-p succeeds if and only if q fails   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="endBy">endBy</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ <a class="tref" href="#ParserT">ParserT</a> β α δ γ → <a class="tref" href="#ParserT">ParserT</a> β α δ ε → <a class="tref" href="#ParserT">ParserT</a> β α δ [γ]</SPAN></dt>
-<dd class="func">
-<PRE>
- p `endBy` q</PRE>
-<p>
-Parses zero or more occurrences of <i>p</i> separated and ended by <i>q</i>   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="endBy1">endBy1</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ <b><a class="tref" href="#ParserT">ParserT</a> β α δ γ</b> → <a class="tref" href="#ParserT">ParserT</a> β α δ ε → <a class="tref" href="#ParserT">ParserT</a> β α δ [γ]</SPAN></dt>
-<dd class="func">
-<PRE>
- p `endBy1` q</PRE>
-<p>
-Parses one or more occurrences of <i>p</i> separated and ended by <i>q</i>   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="eos">eos</a> ∷ (<a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β, <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α) ⇒ <a class="tref" href="#ParserT">ParserT</a> α γ β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
-<dd class="func">
-<p>
-The <a class="fref" href="#eos">eos</a> parser succeeds if the input is empty.   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="exceptWhen">exceptWhen</a> ∷ (<a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ, <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> β) ⇒ (α→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="#ParserT">ParserT</a> β α γ <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
-<dd class="func">
-<PRE>
- exceptWhen prop</PRE>
-<p>
-Fails if and only if there is a next token <i>t</i> and <i>prop t</i> is true.</p>
-<p>
-Succeeds on end of stream or when the token does not satisfy the property.</p>
-<p>
-In other words, <SPAN CLASS="code">exceptWhen p</SPAN> succeeds if and only if <SPAN CLASS="code">satisfy p</SPAN> fails.   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="expect">expect</a> ∷ (<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> γ, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α, <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> γ, <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> β) ⇒ γ → <a class="tref" href="#ParserT">ParserT</a> β γ α γ</SPAN></dt>
-<dd class="func">
-<PRE>
- expect t</PRE>
-<p>
-This parser succeeds if the input is not empty and the head of the input equals <i>t</i>.</p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="fails">fails</a> ∷ <a class="tref" href="#Parser">Parser</a> <a class="tref" href="../prelude/PreludeBase.html#List">[]</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> α → <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<p>
-p always fails   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="failure">failure</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#ParserT">ParserT</a> β δ γ α</SPAN></dt>
-<dd class="func">
-<p>
-fail with given error message   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="getPos">getPos</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#ParserT">ParserT</a> γ β α (γ β)</SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><a name=getPos>getPos</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#ParserT">ParserT</a> α γ β (α γ)</SPAN></dt>
+<dd class="data">
 <p>
 Remember the current state of the input stream.</p>
 <p>
 <a class="fref" href="#getPos">getPos</a> always succeeds.   </p>
 </dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="inputs">inputs</a> ∷ <a class="tref" href="../test/QuickCheckGen.html#Gen">Gen</a> [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><a name=putPos>putPos</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ α γ → <a class="tref" href="#ParserT">ParserT</a> α γ β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="data">
+<p>
+Resume parsing with the given input stream.</p>
+<p>
+<a class="fref" href="#putPos">putPos</a> always succeeds.    </p>
 </dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="label">label</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <b><a class="tref" href="#ParserT">ParserT</a> γ β α δ</b> → <a class="tref" href="#ParserT">ParserT</a> γ β α δ</SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><a name=modifyPos>modifyPos</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ (γ β→γ β) → <a class="tref" href="#ParserT">ParserT</a> γ β α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=failure>failure</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#ParserT">ParserT</a> δ γ α β</SPAN></dt>
+<dd class="data">
+<p>
+fail with given error message   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=runid>runid</a> ∷ <b><a class="tref" href="#Parser">Parser</a> γ β α</b> → γ β → ((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | α), γ β)</SPAN></dt>
+<dd class="data">
+<p>
+run a <a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> parser   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=parse>parse</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> β ⇒ <a class="tref" href="#ParserT">ParserT</a> α γ β δ → α γ → β (<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | δ)</SPAN></dt>
+<dd class="data">
+<p>
+run a Parser, return just the result/error   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=parseTest>parseTest</a> ∷ (<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> r, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> t, <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> s) ⇒ <b><a class="tref" href="#Parser">Parser</a> s t r</b> → s t → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="data">
+<p>
+run a <a class="tref" href="#Parser">Parser</a> on some input and report   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=reporterror>reporterror</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListSource">ListSource</a> α, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> β) ⇒ α β → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=label>label</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <b><a class="tref" href="#ParserT">ParserT</a> α γ δ β</b> → <a class="tref" href="#ParserT">ParserT</a> α γ δ β</SPAN></dt>
+<dd class="data">
 <p>
 Causes the error message to be <i>msg</i> when <i>p</i> fails.</p>
 <p>
@@ -445,13 +392,107 @@ The error will be reported at the position where <i>p</i> was attempted, not nec
  Parser.run (label "id expected" $ letter &gt;&gt; digit) "a?"
  id expected, found a?</PRE>
 </dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="letter">letter</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β) ⇒ <a class="tref" href="#ParserT">ParserT</a> α <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> β <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a></SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><a name=_lt_qm_gt>&lt;?&gt;</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <b><a class="tref" href="#ParserT">ParserT</a> α γ β δ</b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#ParserT">ParserT</a> α γ β δ<br><b>infix</b>&nbsp;&nbsp;14</SPAN></dt>
+<dd class="data">
+<PRE>
+ p &lt;?&gt; msg</PRE>
+<p>
+Causes the error message to be <i>msg</i> when <i>p</i> fails.</p>
+<p>
+The error will be reported at the position where <i>p</i> failed.</p>
 </dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="many">many</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#ParserT">ParserT</a> α γ β δ → <a class="tref" href="#ParserT">ParserT</a> α γ β [δ]</SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><a name=expect>expect</a> ∷ (<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> β, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α, <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β, <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> γ) ⇒ β → <a class="tref" href="#ParserT">ParserT</a> γ β α β</SPAN></dt>
+<dd class="data">
+<PRE>
+ expect t</PRE>
+<p>
+This parser succeeds if the input is not empty and the head of the input equals <i>t</i>.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=eos>eos</a> ∷ (<a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ, <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> β) ⇒ <a class="tref" href="#ParserT">ParserT</a> β α γ <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="data">
+<p>
+The <a class="fref" href="#eos">eos</a> parser succeeds if the input is empty.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=satisfy>satisfy</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> s, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m) ⇒ (t → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="#ParserT">ParserT</a> s t m t</SPAN></dt>
+<dd class="data">
+<PRE>
+ satisfy property</PRE>
+<p>
+Succeeds if there is a next token <i>t</i> and  <i>property</i> <i>t</i> is true.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=exceptWhen>exceptWhen</a> ∷ (<a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β, <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α) ⇒ (γ→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="#ParserT">ParserT</a> α γ β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="data">
+<PRE>
+ exceptWhen prop</PRE>
+<p>
+Fails if and only if there is a next token <i>t</i> and <i>prop t</i> is true.</p>
+<p>
+Succeeds on end of stream or when the token does not satisfy the property.</p>
+<p>
+In other words, <SPAN CLASS="code">exceptWhen p</SPAN> succeeds if and only if <SPAN CLASS="code">satisfy p</SPAN> fails.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=pany>pany</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β) ⇒ <a class="tref" href="#ParserT">ParserT</a> α γ β γ</SPAN></dt>
+<dd class="data">
+<PRE>
+ pany</PRE>
+<p>
+Fails if and only if <a class="fref" href="#eos">eos</a> succeeds, otherwise returns the next token.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=symbol>symbol</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> γ, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α) ⇒ <b><a class="tref" href="#ParserT">ParserT</a> γ <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> α β</b> → <a class="tref" href="#ParserT">ParserT</a> γ <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> α β</SPAN></dt>
+<dd class="data">
+<PRE>
+ symbol p</PRE>
+<p>
+Is the same parser as <i>p</i>, but skips spaces afterwards   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=space>space</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β) ⇒ <a class="tref" href="#ParserT">ParserT</a> α <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> β <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=digit>digit</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β) ⇒ <a class="tref" href="#ParserT">ParserT</a> α <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> β <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=letter>letter</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β) ⇒ <a class="tref" href="#ParserT">ParserT</a> α <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> β <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=uppercase>uppercase</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β) ⇒ <a class="tref" href="#ParserT">ParserT</a> α <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> β <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=spaces>spaces</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β) ⇒ <a class="tref" href="#ParserT">ParserT</a> α <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=string>string</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m ⇒ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#ParserT">ParserT</a> <a class="tref" href="../prelude/PreludeBase.html#StringJ">StringJ</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> m <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=match>match</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="../java/util/Regex.html#Regex">Regex</a> → <a class="tref" href="#ParserT">ParserT</a> <a class="tref" href="../prelude/PreludeBase.html#StringJ">StringJ</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> α <a class="tref" href="../java/util/Regex.html#Matcher">Matcher</a></SPAN></dt>
+<dd class="data">
+<p>
+This parser succeeds if the pattern matches the beginning of the string.</p>
+<p>
+For efficiency reasons, the pattern should start with <SPAN CLASS="code">^</SPAN>   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=optional>optional</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m ⇒ <a class="tref" href="#ParserT">ParserT</a> s t m r → <a class="tref" href="#ParserT">ParserT</a> s t m (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> r)</SPAN></dt>
+<dd class="data">
+<p>
+The optional parser always succeeds and returns its result wrapped in <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a>   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=many>many</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#ParserT">ParserT</a> δ β α γ → <a class="tref" href="#ParserT">ParserT</a> δ β α [γ]</SPAN></dt>
+<dd class="data">
 <PRE>
  many p</PRE>
 <p>
@@ -461,271 +502,25 @@ Succeeds also when <i>p</i> fails the first time, in that case the result is an 
 <p>
 Must not be applied to a parser that always succeeds!   </p>
 </dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="manyWhile">manyWhile</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> β, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α) ⇒ (γ→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="#ParserT">ParserT</a> β γ α [γ]</SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><a name=some>some</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <b><a class="tref" href="#ParserT">ParserT</a> δ β α γ</b> → <a class="tref" href="#ParserT">ParserT</a> δ β α [γ]</SPAN></dt>
+<dd class="data">
 <PRE>
- manyWhile p</PRE>
+ some p</PRE>
 <p>
-Collect tokens as long as they satisfy <i>p</i>   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="match">match</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="../java/util/Regex.html#Regex">Regex</a> → <a class="tref" href="#ParserT">ParserT</a> <a class="tref" href="../prelude/PreludeBase.html#StringJ">StringJ</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> α <a class="tref" href="../java/util/Regex.html#Matcher">Matcher</a></SPAN></dt>
-<dd class="func">
+Like <a class="fref" href="#many">many</a>, except there must be at least one <i>p</i></p>
 <p>
-This parser succeeds if the pattern matches the beginning of the string.</p>
+Must not be applied to a parser that always succeeds!   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=many1>many1</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <b><a class="tref" href="#ParserT">ParserT</a> δ β α γ</b> → <a class="tref" href="#ParserT">ParserT</a> δ β α [γ]</SPAN></dt>
+<dd class="data">
 <p>
-For efficiency reasons, the pattern should start with <SPAN CLASS="code">^</SPAN>   </p>
+Alias for <a class="fref" href="#some">some</a></p>
 </dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="modifyPos">modifyPos</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ (α γ→α γ) → <a class="tref" href="#ParserT">ParserT</a> α γ β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="option">option</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ α → <b><a class="tref" href="#ParserT">ParserT</a> β γ δ α</b> → <a class="tref" href="#ParserT">ParserT</a> β γ δ α</SPAN></dt>
-<dd class="func">
-<PRE>
- option v p</PRE>
-<p>
-Applies <i>p</i>, and returns <i>v</i> when it fails.</p>
-<p>
-Always succeeds.   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="optional">optional</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m ⇒ <a class="tref" href="#ParserT">ParserT</a> s t m r → <a class="tref" href="#ParserT">ParserT</a> s t m (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> r)</SPAN></dt>
-<dd class="func">
-<p>
-The optional parser always succeeds and returns its result wrapped in <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a>   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="pany">pany</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ) ⇒ <a class="tref" href="#ParserT">ParserT</a> α β γ β</SPAN></dt>
-<dd class="func">
-<PRE>
- pany</PRE>
-<p>
-Fails if and only if <a class="fref" href="#eos">eos</a> succeeds, otherwise returns the next token.   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="parse">parse</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> β ⇒ <a class="tref" href="#ParserT">ParserT</a> α γ β δ → α γ → β (<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | δ)</SPAN></dt>
-<dd class="func">
-<p>
-run a Parser, return just the result/error   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="parseTest">parseTest</a> ∷ (<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> r, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> t, <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> s) ⇒ <b><a class="tref" href="#Parser">Parser</a> s t r</b> → s t → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
-<dd class="func">
-<p>
-run a <a class="tref" href="#Parser">Parser</a> on some input and report   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="parsers">parsers</a> ∷ <a class="tref" href="../test/QuickCheckGen.html#Gen">Gen</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="#Parser">Parser</a> <a class="tref" href="../prelude/PreludeBase.html#List">[]</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>)</SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="prop_alt_pzero_no_consume">prop_alt_pzero_no_consume</a> ∷ <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<PRE>
- p &lt;|&gt; pzero</PRE>
-<p>
-consumes nothing on failure of <i>p</i>   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="prop_any_eos">prop_any_eos</a> ∷ <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<p>
-<SPAN CLASS="code">any</SPAN> and <SPAN CLASS="code">eos</SPAN> disagree   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="prop_choice_0">prop_choice_0</a> ∷ <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<p>
-<SPAN CLASS="code">choice []</SPAN> is the same as <SPAN CLASS="code">pzero</SPAN>       </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="prop_choice_1">prop_choice_1</a> ∷ <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<p>
-<SPAN CLASS="code">choice [p]</SPAN> is the same as <SPAN CLASS="code">p</SPAN>       </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="prop_choice_2">prop_choice_2</a> ∷ <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<p>
-<SPAN CLASS="code">choice [p,q]</SPAN> is the same as <SPAN CLASS="code">p &lt;|&gt; q</SPAN>       </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="prop_count_0">prop_count_0</a> ∷ <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<p>
-<SPAN CLASS="code">count 0</SPAN> is the same as <SPAN CLASS="code">return []</SPAN>   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="prop_count_1">prop_count_1</a> ∷ <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<p>
-<SPAN CLASS="code">count 0</SPAN> is the same as <SPAN CLASS="code">p</SPAN>   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="prop_failure">prop_failure</a> ∷ <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#failure">failure</a> fails   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="prop_many">prop_many</a> ∷ <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#many">many</a> always succeeds   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="prop_option">prop_option</a> ∷ <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#option">option</a> always succeeds   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="prop_optional">prop_optional</a> ∷ <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#optional">optional</a> always succeeds   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="prop_p_agrees_p_or_pzero">prop_p_agrees_p_or_pzero</a> ∷ <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<p>
-<SPAN CLASS="code">p</SPAN> and <SPAN CLASS="code">p &lt;|&gt; pzero</SPAN> agree   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="prop_p_or_zero_same_p">prop_p_or_zero_same_p</a> ∷ <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<p>
-<SPAN CLASS="code">pzero &lt;|&gt; p</SPAN> is the same as <SPAN CLASS="code">p</SPAN>   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="prop_pzero_1">prop_pzero_1</a> ∷ <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="../prelude/PreludeMonad.html#Plus.pzero">Plus.pzero</a> fails   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="prop_pzero_2">prop_pzero_2</a> ∷ <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="../prelude/PreludeMonad.html#Plus.pzero">Plus.pzero</a> consumes not   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="prop_return">prop_return</a> ∷ <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="../prelude/PreludeMonad.html#Monad._return">Monad.return</a> <i>a</i> always succeeds   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="prop_sat_except">prop_sat_except</a> ∷ <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#satisfy">satisfy</a> and <a class="fref" href="#exceptWhen">exceptWhen</a> disagree   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="prop_skip">prop_skip</a> ∷ <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#skip">skip</a> always succeeds   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="prop_skip_fast_many">prop_skip_fast_many</a> ∷ <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#skip">skip</a> is <a class="fref" href="#many">many</a> followed by return ()   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="prop_skip_many_agree">prop_skip_many_agree</a> ∷ <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#many">many</a> and <a class="fref" href="#skip">skip</a> agree   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="prop_skip_many_consume_the_same">prop_skip_many_consume_the_same</a> ∷ <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#many">many</a> and <a class="fref" href="#skip">skip</a> consume the same amount of tokens   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="putPos">putPos</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ α γ → <a class="tref" href="#ParserT">ParserT</a> α γ β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
-<dd class="func">
-<p>
-Resume parsing with the given input stream.</p>
-<p>
-<a class="fref" href="#putPos">putPos</a> always succeeds.    </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="reporterror">reporterror</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListSource">ListSource</a> α, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> β) ⇒ α β → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="runid">runid</a> ∷ <b><a class="tref" href="#Parser">Parser</a> α β γ</b> → α β → ((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | γ), α β)</SPAN></dt>
-<dd class="func">
-<p>
-run a <a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> parser   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="same">same</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> (α ((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | β), [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>])) ⇒ <a class="tref" href="#ParserT">ParserT</a> <a class="tref" href="../prelude/PreludeBase.html#List">[]</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> α β → <a class="tref" href="#ParserT">ParserT</a> <a class="tref" href="../prelude/PreludeBase.html#List">[]</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> α β → <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<p>
-p and q are the same parsers       </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="satisfy">satisfy</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> s, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m) ⇒ (t → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="#ParserT">ParserT</a> s t m t</SPAN></dt>
-<dd class="func">
-<PRE>
- satisfy property</PRE>
-<p>
-Succeeds if there is a next token <i>t</i> and  <i>property</i> <i>t</i> is true.   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="select">select</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Bind">Bind</a> δ ⇒ <b>[(<a class="tref" href="#ParserT">ParserT</a> β α δ γ, <a class="tref" href="#ParserT">ParserT</a> β α δ ε)]</b> → <a class="tref" href="#ParserT">ParserT</a> β α δ ε → <a class="tref" href="#ParserT">ParserT</a> β α δ ε</SPAN></dt>
-<dd class="func">
-<PRE>
- select [(if1, t1), (if2, t2), ..., (ifn, tn)] e</PRE>
-<p>
-unfolds as</p>
-<PRE>
- cond if1 t1 (cond if2 t2 (... (cond ifn tn e)))    </PRE>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="sepBy">sepBy</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <b><a class="tref" href="#ParserT">ParserT</a> γ β α ε</b> → <a class="tref" href="#ParserT">ParserT</a> γ β α δ → <a class="tref" href="#ParserT">ParserT</a> γ β α [ε]</SPAN></dt>
-<dd class="func">
-<PRE>
- p `sepBy` q</PRE>
-<p>
-Like <a class="fref" href="#sepBy1">sepBy1</a>, but allows zero <i>p</i> elements   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="sepBy1">sepBy1</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ <b><a class="tref" href="#ParserT">ParserT</a> β α δ ε</b> → <a class="tref" href="#ParserT">ParserT</a> β α δ γ → <a class="tref" href="#ParserT">ParserT</a> β α δ [ε]</SPAN></dt>
-<dd class="func">
-<PRE>
- p `sepBy1` q</PRE>
-<p>
-Parses p and many q followed by p   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="sepEndBy">sepEndBy</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <b><a class="tref" href="#ParserT">ParserT</a> α ε β δ</b> → <a class="tref" href="#ParserT">ParserT</a> α ε β γ → <a class="tref" href="#ParserT">ParserT</a> α ε β [δ]</SPAN></dt>
-<dd class="func">
-<PRE>
- p `sepEndBy` q</PRE>
-<p>
-Parses zero or more occurrences of <i>p</i>, separated and optionally ended by <i>q</i>   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="sepEndBy1">sepEndBy1</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ <b><a class="tref" href="#ParserT">ParserT</a> α ε δ β</b> → <a class="tref" href="#ParserT">ParserT</a> α ε δ γ → <a class="tref" href="#ParserT">ParserT</a> α ε δ [β]</SPAN></dt>
-<dd class="func">
-<PRE>
- p `sepEndBy1` q</PRE>
-<p>
-Parses one or more occurrences of <i>p</i>, separated and optionally ended by <i>q</i>   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="skip">skip</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#ParserT">ParserT</a> β δ α γ → <a class="tref" href="#ParserT">ParserT</a> β δ α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><a name=skip>skip</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#ParserT">ParserT</a> β δ α γ → <a class="tref" href="#ParserT">ParserT</a> β δ α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="data">
 <PRE>
  skip p</PRE>
 <p>
@@ -737,19 +532,17 @@ but faster, because it does not build up lists.</p>
 <p>
 Must not be applied to a parser that always succeeds!   </p>
 </dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="skipUntil">skipUntil</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β) ⇒ (γ→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="#ParserT">ParserT</a> α γ β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><a name=manyWhile>manyWhile</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> β, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ) ⇒ (α→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="#ParserT">ParserT</a> β α γ [α]</SPAN></dt>
+<dd class="data">
 <PRE>
- skipUntil p</PRE>
+ manyWhile p</PRE>
 <p>
-Skip tokens as long as they do not satisfy p</p>
-<p>
-When this succeeds, the next token will satisfy p or the stream is exhausted.   </p>
+Collect tokens as long as they satisfy <i>p</i>   </p>
 </dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="skipWhile">skipWhile</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> γ, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α) ⇒ (β→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="#ParserT">ParserT</a> γ β α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><a name=skipWhile>skipWhile</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β) ⇒ (γ→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="#ParserT">ParserT</a> α γ β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="data">
 <PRE>
  skipWhile p</PRE>
 <p>
@@ -763,86 +556,239 @@ This will loop forever if there is no <SPAN CLASS="code">'a'</SPAN> in the input
 <PRE>
  skipUntil (== 'a')</PRE>
 </dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="some">some</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ <b><a class="tref" href="#ParserT">ParserT</a> β α γ δ</b> → <a class="tref" href="#ParserT">ParserT</a> β α γ [δ]</SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><a name=skipUntil>skipUntil</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β) ⇒ (γ→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="#ParserT">ParserT</a> α γ β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="data">
 <PRE>
- some p</PRE>
+ skipUntil p</PRE>
 <p>
-Like <a class="fref" href="#many">many</a>, except there must be at least one <i>p</i></p>
+Skip tokens as long as they do not satisfy p</p>
 <p>
-Must not be applied to a parser that always succeeds!   </p>
+When this succeeds, the next token will satisfy p or the stream is exhausted.   </p>
 </dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="space">space</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β) ⇒ <a class="tref" href="#ParserT">ParserT</a> α <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> β <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a></SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="spaces">spaces</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β) ⇒ <a class="tref" href="#ParserT">ParserT</a> α <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="string">string</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m ⇒ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#ParserT">ParserT</a> <a class="tref" href="../prelude/PreludeBase.html#StringJ">StringJ</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> m <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="succeeds">succeeds</a> ∷ <a class="tref" href="#Parser">Parser</a> <a class="tref" href="../prelude/PreludeBase.html#List">[]</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> α → <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<p>
-p always succeeds   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="symbol">symbol</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β) ⇒ <b><a class="tref" href="#ParserT">ParserT</a> α <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> β γ</b> → <a class="tref" href="#ParserT">ParserT</a> α <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> β γ</SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><a name=cond>cond</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Bind">Bind</a> α ⇒ <a class="tref" href="#ParserT">ParserT</a> γ β α ε → <a class="tref" href="#ParserT">ParserT</a> γ β α δ → <a class="tref" href="#ParserT">ParserT</a> γ β α δ → <a class="tref" href="#ParserT">ParserT</a> γ β α δ</SPAN></dt>
+<dd class="data">
 <PRE>
- symbol p</PRE>
+ cond pcond pthen pelse</PRE>
 <p>
-Is the same parser as <i>p</i>, but skips spaces afterwards   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="uppercase">uppercase</a> ∷ (<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β) ⇒ <a class="tref" href="#ParserT">ParserT</a> α <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> β <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a></SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="many1">many1</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ <b><a class="tref" href="#ParserT">ParserT</a> β α γ δ</b> → <a class="tref" href="#ParserT">ParserT</a> β α γ [δ]</SPAN></dt>
-<dd class="func">
+if <i>pcond</i> succeeds, then <i>pthen</i> is run, else <i>pelse</i></p>
 <p>
-Alias for <a class="fref" href="#some">some</a></p>
+To both <i>pthen</i> and <i>pelse</i> it will appear as if <i>pcond</i> didn't consume any tokens.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=select>select</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Bind">Bind</a> δ ⇒ <b>[(<a class="tref" href="#ParserT">ParserT</a> β α δ γ, <a class="tref" href="#ParserT">ParserT</a> β α δ ε)]</b> → <a class="tref" href="#ParserT">ParserT</a> β α δ ε → <a class="tref" href="#ParserT">ParserT</a> β α δ ε</SPAN></dt>
+<dd class="data">
+<PRE>
+ select [(if1, t1), (if2, t2), ..., (ifn, tn)] e</PRE>
+<p>
+unfolds as</p>
+<PRE>
+ cond if1 t1 (cond if2 t2 (... (cond ifn tn e)))    </PRE>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=choice>choice</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Plus">Plus</a> α ⇒ <b>[α β]</b> → α β</SPAN></dt>
+<dd class="data">
+<PRE>
+ choice ps</PRE>
+<p>
+Tries the parsers in the list from left to right, until success.    </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=count>count</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → α β → α [β]</SPAN></dt>
+<dd class="data">
+<PRE>
+ count n p</PRE>
+<p>
+Applies <i>p</i> <i>n</i> times and returns a list of the results   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=between>between</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ γ β → γ δ → γ α → γ α</SPAN></dt>
+<dd class="data">
+<PRE>
+ between left right p</PRE>
+<p>
+Parses <i>left</i>, then <i>p</i> and finally <i>right</i> and returns the result of <i>p</i>   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=option>option</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ β → <b><a class="tref" href="#ParserT">ParserT</a> α γ δ β</b> → <a class="tref" href="#ParserT">ParserT</a> α γ δ β</SPAN></dt>
+<dd class="data">
+<PRE>
+ option v p</PRE>
+<p>
+Applies <i>p</i>, and returns <i>v</i> when it fails.</p>
+<p>
+Always succeeds.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=sepBy1>sepBy1</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> ε ⇒ <b><a class="tref" href="#ParserT">ParserT</a> β α ε δ</b> → <a class="tref" href="#ParserT">ParserT</a> β α ε γ → <a class="tref" href="#ParserT">ParserT</a> β α ε [δ]</SPAN></dt>
+<dd class="data">
+<PRE>
+ p `sepBy1` q</PRE>
+<p>
+Parses p and many q followed by p   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=sepBy>sepBy</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> ε ⇒ <b><a class="tref" href="#ParserT">ParserT</a> δ α ε β</b> → <a class="tref" href="#ParserT">ParserT</a> δ α ε γ → <a class="tref" href="#ParserT">ParserT</a> δ α ε [β]</SPAN></dt>
+<dd class="data">
+<PRE>
+ p `sepBy` q</PRE>
+<p>
+Like <a class="fref" href="#sepBy1">sepBy1</a>, but allows zero <i>p</i> elements   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=endBy>endBy</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#ParserT">ParserT</a> γ β α ε → <a class="tref" href="#ParserT">ParserT</a> γ β α δ → <a class="tref" href="#ParserT">ParserT</a> γ β α [ε]</SPAN></dt>
+<dd class="data">
+<PRE>
+ p `endBy` q</PRE>
+<p>
+Parses zero or more occurrences of <i>p</i> separated and ended by <i>q</i>   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=endBy1>endBy1</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <b><a class="tref" href="#ParserT">ParserT</a> δ β α γ</b> → <a class="tref" href="#ParserT">ParserT</a> δ β α ε → <a class="tref" href="#ParserT">ParserT</a> δ β α [γ]</SPAN></dt>
+<dd class="data">
+<PRE>
+ p `endBy1` q</PRE>
+<p>
+Parses one or more occurrences of <i>p</i> separated and ended by <i>q</i>   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=sepEndBy>sepEndBy</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <b><a class="tref" href="#ParserT">ParserT</a> α δ β γ</b> → <a class="tref" href="#ParserT">ParserT</a> α δ β ε → <a class="tref" href="#ParserT">ParserT</a> α δ β [γ]</SPAN></dt>
+<dd class="data">
+<PRE>
+ p `sepEndBy` q</PRE>
+<p>
+Parses zero or more occurrences of <i>p</i>, separated and optionally ended by <i>q</i>   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=sepEndBy1>sepEndBy1</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <b><a class="tref" href="#ParserT">ParserT</a> δ β α γ</b> → <a class="tref" href="#ParserT">ParserT</a> δ β α ε → <a class="tref" href="#ParserT">ParserT</a> δ β α [γ]</SPAN></dt>
+<dd class="data">
+<PRE>
+ p `sepEndBy1` q</PRE>
+<p>
+Parses one or more occurrences of <i>p</i>, separated and optionally ended by <i>q</i>   </p>
 </dd>
 </dl>
 <h2>
-<a name="case">Functions and Values by Type</a></h2>
+<a NAME="instance">Instances</a></h2>
+<dl class="inst">
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=MonadAlt_ParserT> </a> <a class="tref" href="../prelude/PreludeMonad.html#MonadAlt">MonadAlt</a> <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> m ⇒ <a class="tref" href="#ParserT">ParserT</a> s t m</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../test/QuickCheckGen.html#Gen">Gen</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="#Parser">Parser</a> <a class="tref" href="../prelude/PreludeBase.html#List">[]</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>)</SPAN></dt>
+<SPAN CLASS="code"><a name=MonadAlt_ParserT._star_gt>*&gt;</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ <b><a class="tref" href="#ParserT">ParserT</a> β α δ γ</b> → <a class="tref" href="#ParserT">ParserT</a> β α δ ε → <a class="tref" href="#ParserT">ParserT</a> β α δ ε<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
-<p>
-<a class="fref" href="#parsers">parsers</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../test/QuickCheckGen.html#Gen">Gen</a> [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
+<SPAN CLASS="code"><a name=MonadAlt_ParserT._lt_star>&lt;*</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <b><a class="tref" href="#ParserT">ParserT</a> α δ β γ</b> → <a class="tref" href="#ParserT">ParserT</a> α δ β ε → <a class="tref" href="#ParserT">ParserT</a> α δ β γ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
-<p>
-<a class="fref" href="#inputs">inputs</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../test/QuickCheckGen.html#Gen">Gen</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a></SPAN></dt>
+<SPAN CLASS="code"><a name=MonadAlt_ParserT._lt_star_gt>&lt;*&gt;</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#ParserT">ParserT</a> α γ β (ε→δ) → <a class="tref" href="#ParserT">ParserT</a> α γ β ε → <a class="tref" href="#ParserT">ParserT</a> α γ β δ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#ascii">ascii</a></p>
+inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad._lt_star_gt">Monad.&lt;*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
+<SPAN CLASS="code"><a name=MonadAlt_ParserT._lt_plus_gt>&lt;+&gt;</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <b><a class="tref" href="#ParserT">ParserT</a> δ β α γ</b> → <a class="tref" href="#ParserT">ParserT</a> δ β α γ → <a class="tref" href="#ParserT">ParserT</a> δ β α γ<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
 <dd class="func">
+<PRE>
+ p &lt;+&gt; q</PRE>
 <p>
-<a class="fref" href="#prop_alt_pzero_no_consume">prop_alt_pzero_no_consume</a>, <a class="fref" href="#prop_any_eos">prop_any_eos</a>, <a class="fref" href="#prop_choice_0">prop_choice_0</a>, <a class="fref" href="#prop_choice_1">prop_choice_1</a>, <a class="fref" href="#prop_choice_2">prop_choice_2</a>, <a class="fref" href="#prop_count_0">prop_count_0</a>, <a class="fref" href="#prop_count_1">prop_count_1</a>, <a class="fref" href="#prop_failure">prop_failure</a>, <a class="fref" href="#prop_many">prop_many</a>, <a class="fref" href="#prop_option">prop_option</a>, <a class="fref" href="#prop_optional">prop_optional</a>, <a class="fref" href="#prop_p_agrees_p_or_pzero">prop_p_agrees_p_or_pzero</a>, <a class="fref" href="#prop_p_or_zero_same_p">prop_p_or_zero_same_p</a>, <a class="fref" href="#prop_pzero_1">prop_pzero_1</a>, <a class="fref" href="#prop_pzero_2">prop_pzero_2</a>, <a class="fref" href="#prop_return">prop_return</a>, <a class="fref" href="#prop_sat_except">prop_sat_except</a>, <a class="fref" href="#prop_skip">prop_skip</a>, <a class="fref" href="#prop_skip_fast_many">prop_skip_fast_many</a>, <a class="fref" href="#prop_skip_many_agree">prop_skip_many_agree</a>, <a class="fref" href="#prop_skip_many_consume_the_same">prop_skip_many_consume_the_same</a></p>
+The result is that of the first parser, if it succeeds, otherwise that of the second one, which is applied to the input left over by <i>p</i></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> <a class="tref" href="../prelude/PreludeBase.html#List">[]</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> α → <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
+<SPAN CLASS="code"><a name=MonadAlt_ParserT._lt_bar_gt>&lt;|&gt;</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <b><a class="tref" href="#ParserT">ParserT</a> α γ β δ</b> → <a class="tref" href="#ParserT">ParserT</a> α γ β δ → <a class="tref" href="#ParserT">ParserT</a> α γ β δ<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
+<dd class="func">
+<PRE>
+ p &lt;|&gt; q</PRE>
+<p>
+The result is that of the first parser, if it succeeds, otherwise that of the second one. Note that <SPAN CLASS="code">q</SPAN> is run on the same input as <SPAN CLASS="code">p</SPAN>, even if <SPAN CLASS="code">p</SPAN> already consumed something.</p>
+<PRE>
+ expect 'c' &lt;|&gt; expect 'd'</PRE>
+<p>
+would succeed if the input starts with 'c' or 'd'.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=MonadAlt_ParserT._gt_gt>&gt;&gt;</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <b><a class="tref" href="#ParserT">ParserT</a> α γ β ε</b> → <a class="tref" href="#ParserT">ParserT</a> α γ β δ → <a class="tref" href="#ParserT">ParserT</a> α γ β δ<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#consumesNotOnFailure">consumesNotOnFailure</a>, <a class="fref" href="#fails">fails</a>, <a class="fref" href="#succeeds">succeeds</a></p>
+inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad._gt_gt">Monad.&gt;&gt;</a></p>
 </dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=MonadAlt_ParserT._gt_gt_eq>&gt;&gt;=</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <b><a class="tref" href="#ParserT">ParserT</a> ε β α δ</b> → (δ → <a class="tref" href="#ParserT">ParserT</a> ε β α γ) → <a class="tref" href="#ParserT">ParserT</a> ε β α γ<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
+<dd class="func">
+<PRE>
+ p &gt;&gt;= (r -&gt; q)
+ p &gt;&gt; q</PRE>
+<p>
+If <SPAN CLASS="code">p</SPAN> succeeds, the overall result is that of <SPAN CLASS="code">q</SPAN> Otherwise, the overall result is failure.</p>
+<p>
+Could be read as <i>p followed by q</i>.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=MonadAlt_ParserT.fmap>fmap</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> ε ⇒ (β → α) → <b><a class="tref" href="#ParserT">ParserT</a> δ γ ε β</b> → <a class="tref" href="#ParserT">ParserT</a> δ γ ε α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad.fmap">Monad.fmap</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=MonadAlt_ParserT.join>join</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <b><a class="tref" href="#ParserT">ParserT</a> γ β α (<a class="tref" href="#ParserT">ParserT</a> γ β α δ)</b> → <a class="tref" href="#ParserT">ParserT</a> γ β α δ</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad.join">Monad.join</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=MonadAlt_ParserT.pure>pure</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ β → <a class="tref" href="#ParserT">ParserT</a> δ α γ β</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad.pure">Monad.pure</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=MonadAlt_ParserT.pzero>pzero</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#ParserT">ParserT</a> α γ β δ</SPAN></dt>
+<dd class="func">
+<p>
+generic failure   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=MonadAlt_ParserT._return>return</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ γ → <a class="tref" href="#ParserT">ParserT</a> α δ β γ</SPAN></dt>
+<dd class="func">
+<p>
+generic success   </p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=MonadIO_ParserT> </a> <a class="tref" href="../control/monad/trans/MonadIO.html#MonadIO">MonadIO</a> <a class="tref" href="../control/monad/trans/MonadIO.html#MonadIO">MonadIO</a> m ⇒ <a class="tref" href="#ParserT">ParserT</a> s t m</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=MonadIO_ParserT.liftIO>liftIO</a> ∷ <a class="tref" href="../control/monad/trans/MonadIO.html#MonadIO">MonadIO</a> β ⇒ <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> γ → <a class="tref" href="#ParserT">ParserT</a> α δ β γ</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=MonadTrans_ParserT> </a> <a class="tref" href="../control/monad/trans/MonadTrans.html#MonadTrans">MonadTrans</a> <a class="tref" href="#ParserT">ParserT</a> s t</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=MonadTrans_ParserT.lift>lift</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ α β → <a class="tref" href="#ParserT">ParserT</a> δ γ α β</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+</dl>
+<h2>
+<a NAME="case">Functions and Values by Type</a></h2>
+<dl class="func">
 <dt class="func">
 <SPAN CLASS="code">α → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
@@ -860,24 +806,6 @@ Alias for <a class="fref" href="#some">some</a></p>
 <dd class="func">
 <p>
 <a class="fref" href="#match">match</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../test/QuickCheckProperty.html#Testable">Testable</a> α ⇒ (<a class="tref" href="#Parser">Parser</a> <a class="tref" href="../prelude/PreludeBase.html#List">[]</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>→α) → <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#allParsers">allParsers</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> <a class="tref" href="../prelude/PreludeBase.html#List">[]</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> α → <a class="tref" href="#Parser">Parser</a> <a class="tref" href="../prelude/PreludeBase.html#List">[]</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> β → <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#agree">agree</a>, <a class="fref" href="#consumeTheSame">consumeTheSame</a>, <a class="fref" href="#disagree">disagree</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> (α ((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | β), [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>])) ⇒ <a class="tref" href="#ParserT">ParserT</a> <a class="tref" href="../prelude/PreludeBase.html#List">[]</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> α β → <a class="tref" href="#ParserT">ParserT</a> <a class="tref" href="../prelude/PreludeBase.html#List">[]</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> α β → <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#same">same</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeList.html#ListSource">ListSource</a> α, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> β) ⇒ α β → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
@@ -910,7 +838,7 @@ Alias for <a class="fref" href="#some">some</a></p>
 <a class="fref" href="#digit">digit</a>, <a class="fref" href="#letter">letter</a>, <a class="fref" href="#space">space</a>, <a class="fref" href="#uppercase">uppercase</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> α β γ → α β → ((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | γ), α β)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> γ β α → γ β → ((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | α), γ β)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#runid">runid</a></p>
@@ -922,31 +850,25 @@ Alias for <a class="fref" href="#some">some</a></p>
 <a class="fref" href="#satisfy">satisfy</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β) ⇒ <a class="tref" href="#ParserT">ParserT</a> α <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> β γ → <a class="tref" href="#ParserT">ParserT</a> α <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> β γ</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#symbol">symbol</a></p>
-</dd>
-<dt class="func">
 <SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β) ⇒ (γ→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="#ParserT">ParserT</a> α γ β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#skipUntil">skipUntil</a></p>
+<a class="fref" href="#skipUntil">skipUntil</a>, <a class="fref" href="#skipWhile">skipWhile</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> β, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α) ⇒ (γ→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="#ParserT">ParserT</a> β γ α [γ]</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> β, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ) ⇒ (α→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="#ParserT">ParserT</a> β α γ [α]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#manyWhile">manyWhile</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> γ, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α) ⇒ (β→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="#ParserT">ParserT</a> γ β α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> γ, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α) ⇒ <a class="tref" href="#ParserT">ParserT</a> γ <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> α β → <a class="tref" href="#ParserT">ParserT</a> γ <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> α β</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#skipWhile">skipWhile</a></p>
+<a class="fref" href="#symbol">symbol</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ (α γ→α γ) → <a class="tref" href="#ParserT">ParserT</a> α γ β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ (γ β→γ β) → <a class="tref" href="#ParserT">ParserT</a> γ β α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#modifyPos">modifyPos</a></p>
@@ -958,7 +880,7 @@ Alias for <a class="fref" href="#some">some</a></p>
 <a class="fref" href="#putPos">putPos</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ, <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> β) ⇒ (α→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="#ParserT">ParserT</a> β α γ <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β, <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α) ⇒ (γ→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="#ParserT">ParserT</a> α γ β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#exceptWhen">exceptWhen</a></p>
@@ -970,25 +892,25 @@ Alias for <a class="fref" href="#some">some</a></p>
 <a class="fref" href="#parseTest">parseTest</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> γ, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α, <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> γ, <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> β) ⇒ γ → <a class="tref" href="#ParserT">ParserT</a> β γ α γ</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> β, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α, <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β, <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> γ) ⇒ β → <a class="tref" href="#ParserT">ParserT</a> γ β α β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#expect">expect</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ) ⇒ <a class="tref" href="#ParserT">ParserT</a> α β γ β</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β) ⇒ <a class="tref" href="#ParserT">ParserT</a> α γ β γ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#pany">pany</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#ParserT">ParserT</a> γ β α (γ β)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#ParserT">ParserT</a> α γ β (α γ)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#getPos">getPos</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β, <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α) ⇒ <a class="tref" href="#ParserT">ParserT</a> α γ β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ, <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> β) ⇒ <a class="tref" href="#ParserT">ParserT</a> β α γ <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#eos">eos</a></p>
@@ -1000,7 +922,7 @@ Alias for <a class="fref" href="#some">some</a></p>
 <a class="fref" href="#ParserT.P">ParserT.P</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#ParserT">ParserT</a> α γ β δ → α γ → β ((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | δ), α γ)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#ParserT">ParserT</a> δ β α γ → δ β → α ((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | γ), δ β)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ParserT.run">ParserT.run</a></p>
@@ -1030,16 +952,40 @@ Alias for <a class="fref" href="#some">some</a></p>
 <a class="fref" href="#skip">skip</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#ParserT">ParserT</a> γ β α δ → <a class="tref" href="#ParserT">ParserT</a> γ β α δ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#ParserT">ParserT</a> γ β α (<a class="tref" href="#ParserT">ParserT</a> γ β α δ) → <a class="tref" href="#ParserT">ParserT</a> γ β α δ</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#label">label</a></p>
+<a class="fref" href="#MonadAlt_ParserT.join">MonadAlt_ParserT.join</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#ParserT">ParserT</a> δ β α γ → <a class="tref" href="#ParserT">ParserT</a> δ β α γ → <a class="tref" href="#ParserT">ParserT</a> δ β α γ</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#MonadAlt_ParserT._lt_plus_gt">MonadAlt_ParserT.&lt;+&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#ParserT">ParserT</a> δ β α γ → <a class="tref" href="#ParserT">ParserT</a> δ β α [γ]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#many">many</a>, <a class="fref" href="#some">some</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#ParserT">ParserT</a> δ γ α β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#failure">failure</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ α β → <a class="tref" href="#ParserT">ParserT</a> δ γ α β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#MonadTrans_ParserT.lift">MonadTrans_ParserT.lift</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#ParserT">ParserT</a> α γ β δ → <a class="tref" href="#ParserT">ParserT</a> α γ β δ → <a class="tref" href="#ParserT">ParserT</a> α γ β δ</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#MonadAlt_ParserT._lt_plus_gt">MonadAlt_ParserT.&lt;+&gt;</a>, <a class="fref" href="#MonadAlt_ParserT._lt_bar_gt">MonadAlt_ParserT.&lt;|&gt;</a></p>
+<a class="fref" href="#MonadAlt_ParserT._lt_bar_gt">MonadAlt_ParserT.&lt;|&gt;</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#ParserT">ParserT</a> α γ β δ → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#ParserT">ParserT</a> α γ β δ</SPAN></dt>
@@ -1048,49 +994,31 @@ Alias for <a class="fref" href="#some">some</a></p>
 <a class="fref" href="#_lt_qm_gt">&lt;?&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#ParserT">ParserT</a> α γ β δ → <a class="tref" href="#ParserT">ParserT</a> α γ β [δ]</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#many">many</a></p>
-</dd>
-<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ γ → <a class="tref" href="#ParserT">ParserT</a> α δ β γ</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#MonadAlt_ParserT.pure">MonadAlt_ParserT.pure</a>, <a class="fref" href="#MonadAlt_ParserT._return">MonadAlt_ParserT.return</a></p>
+<a class="fref" href="#MonadAlt_ParserT._return">MonadAlt_ParserT.return</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ <a class="tref" href="#ParserT">ParserT</a> β α γ (<a class="tref" href="#ParserT">ParserT</a> β α γ δ) → <a class="tref" href="#ParserT">ParserT</a> β α γ δ</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#MonadAlt_ParserT.join">MonadAlt_ParserT.join</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ <a class="tref" href="#ParserT">ParserT</a> β α γ δ → <a class="tref" href="#ParserT">ParserT</a> β α γ [δ]</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#some">some</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#ParserT">ParserT</a> β δ γ α</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#failure">failure</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ δ α → <a class="tref" href="#ParserT">ParserT</a> β γ δ α</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#MonadTrans_ParserT.lift">MonadTrans_ParserT.lift</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ δ β → δ γ → δ α → δ α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ γ β → γ δ → γ α → γ α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#between">between</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ α → <a class="tref" href="#ParserT">ParserT</a> β γ δ α → <a class="tref" href="#ParserT">ParserT</a> β γ δ α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ β → <a class="tref" href="#ParserT">ParserT</a> δ α γ β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#MonadAlt_ParserT.pure">MonadAlt_ParserT.pure</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#ParserT">ParserT</a> α γ δ β → <a class="tref" href="#ParserT">ParserT</a> α γ δ β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#label">label</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ β → <a class="tref" href="#ParserT">ParserT</a> α γ δ β → <a class="tref" href="#ParserT">ParserT</a> α γ δ β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#option">option</a></p>
@@ -1102,7 +1030,7 @@ Alias for <a class="fref" href="#some">some</a></p>
 <a class="fref" href="#MonadAlt_ParserT.pzero">MonadAlt_ParserT.pzero</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Bind">Bind</a> β ⇒ <a class="tref" href="#ParserT">ParserT</a> δ α β ε → <a class="tref" href="#ParserT">ParserT</a> δ α β γ → <a class="tref" href="#ParserT">ParserT</a> δ α β γ → <a class="tref" href="#ParserT">ParserT</a> δ α β γ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Bind">Bind</a> α ⇒ <a class="tref" href="#ParserT">ParserT</a> γ β α ε → <a class="tref" href="#ParserT">ParserT</a> γ β α δ → <a class="tref" href="#ParserT">ParserT</a> γ β α δ → <a class="tref" href="#ParserT">ParserT</a> γ β α δ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#cond">cond</a></p>
@@ -1117,49 +1045,43 @@ Alias for <a class="fref" href="#some">some</a></p>
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#ParserT">ParserT</a> γ β α ε → <a class="tref" href="#ParserT">ParserT</a> γ β α δ → <a class="tref" href="#ParserT">ParserT</a> γ β α [ε]</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#sepBy">sepBy</a></p>
+<a class="fref" href="#endBy">endBy</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#ParserT">ParserT</a> ε β α δ → <a class="tref" href="#ParserT">ParserT</a> ε β α γ → <a class="tref" href="#ParserT">ParserT</a> ε β α γ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#ParserT">ParserT</a> δ β α γ → <a class="tref" href="#ParserT">ParserT</a> δ β α ε → <a class="tref" href="#ParserT">ParserT</a> δ β α [γ]</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#MonadAlt_ParserT._gt_gt">MonadAlt_ParserT.&gt;&gt;</a></p>
+<a class="fref" href="#endBy1">endBy1</a>, <a class="fref" href="#sepEndBy1">sepEndBy1</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#ParserT">ParserT</a> ε β α δ → <a class="tref" href="#ParserT">ParserT</a> ε β α γ → <a class="tref" href="#ParserT">ParserT</a> ε β α δ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#ParserT">ParserT</a> ε β α δ → (δ → <a class="tref" href="#ParserT">ParserT</a> ε β α γ) → <a class="tref" href="#ParserT">ParserT</a> ε β α γ</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#MonadAlt_ParserT._lt_star">MonadAlt_ParserT.&lt;*</a></p>
+<a class="fref" href="#MonadAlt_ParserT._gt_gt_eq">MonadAlt_ParserT.&gt;&gt;=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ (α → δ) → <a class="tref" href="#ParserT">ParserT</a> ε γ β α → <a class="tref" href="#ParserT">ParserT</a> ε γ β δ</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#MonadAlt_ParserT.fmap">MonadAlt_ParserT.fmap</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#ParserT">ParserT</a> α δ β (γ→ε) → <a class="tref" href="#ParserT">ParserT</a> α δ β γ → <a class="tref" href="#ParserT">ParserT</a> α δ β ε</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#ParserT">ParserT</a> α γ β (ε→δ) → <a class="tref" href="#ParserT">ParserT</a> α γ β ε → <a class="tref" href="#ParserT">ParserT</a> α γ β δ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#MonadAlt_ParserT._lt_star_gt">MonadAlt_ParserT.&lt;*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#ParserT">ParserT</a> α ε β δ → <a class="tref" href="#ParserT">ParserT</a> α ε β γ → <a class="tref" href="#ParserT">ParserT</a> α ε β [δ]</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#ParserT">ParserT</a> α γ β ε → <a class="tref" href="#ParserT">ParserT</a> α γ β δ → <a class="tref" href="#ParserT">ParserT</a> α γ β δ</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#MonadAlt_ParserT._gt_gt">MonadAlt_ParserT.&gt;&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#ParserT">ParserT</a> α δ β γ → <a class="tref" href="#ParserT">ParserT</a> α δ β ε → <a class="tref" href="#ParserT">ParserT</a> α δ β [γ]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#sepEndBy">sepEndBy</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ <a class="tref" href="#ParserT">ParserT</a> α ε δ β → <a class="tref" href="#ParserT">ParserT</a> α ε δ γ → <a class="tref" href="#ParserT">ParserT</a> α ε δ [β]</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#ParserT">ParserT</a> α δ β γ → <a class="tref" href="#ParserT">ParserT</a> α δ β ε → <a class="tref" href="#ParserT">ParserT</a> α δ β γ</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#sepEndBy1">sepEndBy1</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ <a class="tref" href="#ParserT">ParserT</a> β α δ γ → <a class="tref" href="#ParserT">ParserT</a> β α δ ε → <a class="tref" href="#ParserT">ParserT</a> β α δ [γ]</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#endBy">endBy</a>, <a class="fref" href="#endBy1">endBy1</a></p>
+<a class="fref" href="#MonadAlt_ParserT._lt_star">MonadAlt_ParserT.&lt;*</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ <a class="tref" href="#ParserT">ParserT</a> β α δ γ → <a class="tref" href="#ParserT">ParserT</a> β α δ ε → <a class="tref" href="#ParserT">ParserT</a> β α δ ε</SPAN></dt>
@@ -1168,28 +1090,34 @@ Alias for <a class="fref" href="#some">some</a></p>
 <a class="fref" href="#MonadAlt_ParserT._star_gt">MonadAlt_ParserT.*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ <a class="tref" href="#ParserT">ParserT</a> β α δ ε → <a class="tref" href="#ParserT">ParserT</a> β α δ γ → <a class="tref" href="#ParserT">ParserT</a> β α δ [ε]</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> ε ⇒ (β → α) → <a class="tref" href="#ParserT">ParserT</a> δ γ ε β → <a class="tref" href="#ParserT">ParserT</a> δ γ ε α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#MonadAlt_ParserT.fmap">MonadAlt_ParserT.fmap</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> ε ⇒ <a class="tref" href="#ParserT">ParserT</a> β α ε δ → <a class="tref" href="#ParserT">ParserT</a> β α ε γ → <a class="tref" href="#ParserT">ParserT</a> β α ε [δ]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#sepBy1">sepBy1</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> ε ⇒ <a class="tref" href="#ParserT">ParserT</a> δ α ε γ → (γ → <a class="tref" href="#ParserT">ParserT</a> δ α ε β) → <a class="tref" href="#ParserT">ParserT</a> δ α ε β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> ε ⇒ <a class="tref" href="#ParserT">ParserT</a> δ α ε β → <a class="tref" href="#ParserT">ParserT</a> δ α ε γ → <a class="tref" href="#ParserT">ParserT</a> δ α ε [β]</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#MonadAlt_ParserT._gt_gt_eq">MonadAlt_ParserT.&gt;&gt;=</a></p>
+<a class="fref" href="#sepBy">sepBy</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#ParserT">ParserT</a> α η ε ζ → (<a class="tref" href="../prelude/PreludeBase.html#Function">-&gt;</a> (α η) (ε ((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | ζ), α η))→γ θ→β ((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | δ), γ θ)) → <a class="tref" href="#ParserT">ParserT</a> γ θ β δ</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#ParserT.chg$run">ParserT.chg$run</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#ParserT">ParserT</a> β η γ ζ → (θ α→δ ((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | ε), θ α)) → <a class="tref" href="#ParserT">ParserT</a> θ α δ ε</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#ParserT">ParserT</a> β δ γ α → (ε ζ→η ((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | θ), ε ζ)) → <a class="tref" href="#ParserT">ParserT</a> ε ζ η θ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ParserT.upd$run">ParserT.upd$run</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ParserT">ParserT</a> θ α ε ζ → (<a class="tref" href="../prelude/PreludeBase.html#Function">-&gt;</a> (θ α) (ε ((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | ζ), θ α))→η δ→β ((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | γ), η δ)) → <a class="tref" href="#ParserT">ParserT</a> η δ β γ</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ParserT.chg$run">ParserT.chg$run</a></p>
 </dd>
 </dl>
 <p>

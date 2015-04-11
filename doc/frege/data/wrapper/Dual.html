@@ -17,41 +17,9 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 </style>
 <BODY>
 <h1>
-<a name="package">Package <SPAN CLASS="code">Data.wrapper.Dual</SPAN></a></h1>
-<p>
- Source file: <SPAN CLASS="code">./frege/data/wrapper/Dual.fr</SPAN></p>
-<h3>
-Package Documentation</h3>
+Module <SPAN CLASS="code">Data.wrapper.Dual</SPAN></h1>
 <p>
 Provides a wrapper for a <a class="tref" href="../Monoid.html#Monoid">Monoid</a> that works in reverse   </p>
-<h3>
-Table of Content</h3>
-<ul>
-<li>
-<div>
-<a HREF="#instance">Instances</a></div>
-<div>
-<a class="tref" href="#Eq_Dual">Eq_Dual</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Monoid_Dual">Monoid_Dual</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Ord_Dual">Ord_Dual</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Semigroup_Dual">Semigroup_Dual</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Show_Dual">Show_Dual</a></div>
-</li>
-<li>
-<div>
-<a HREF="#data">Data Types</a></div>
-<div>
-<a class="tref" href="#Dual">Dual</a></div>
-</li>
-<li>
-<div>
-<a HREF="#let">Functions and Values (alphabetically)</a></div>
-<div>
-<a class="fref" href="#prop_dual">prop_dual</a></div>
-</li>
-<li>
-<div>
-<a HREF="#case">Functions and Values (by type)</a></div>
-<div>
-<a class="fref" href="#prop_dual">prop_dual</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Eq_Dual._eq_eq">Eq_Dual.==</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Eq_Dual._excl_eq">Eq_Dual.!=</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Eq_Dual.hashCode">Eq_Dual.hashCode</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_Dual.mempty">Monoid_Dual.mempty</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_Dual.mconcat">Monoid_Dual.mconcat</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_Dual.mtimes">Monoid_Dual.mtimes</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_Dual._gt">Ord_Dual.&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_Dual._lt_eq">Ord_Dual.&lt;=</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_Dual._lt">Ord_Dual.&lt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_Dual._lt_eq_gt">Ord_Dual.&lt;=&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_Dual.compare">Ord_Dual.compare</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_Dual._gt_eq">Ord_Dual.&gt;=</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_Dual.max">Ord_Dual.max</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_Dual.min">Ord_Dual.min</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Semigroup_Dual.sconcat">Semigroup_Dual.sconcat</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Semigroup_Dual.mappend">Semigroup_Dual.mappend</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Semigroup_Dual.stimes">Semigroup_Dual.stimes</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_Dual.showList">Show_Dual.showList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_Dual.show">Show_Dual.show</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_Dual.display">Show_Dual.display</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_Dual.showChars">Show_Dual.showChars</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_Dual.showsub">Show_Dual.showsub</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_Dual.showsPrec">Show_Dual.showsPrec</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Dual.has$unwrap">Dual.has$unwrap</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Dual.chg$unwrap">Dual.chg$unwrap</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Dual.Dual">Dual.Dual</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Dual.unwrap">Dual.unwrap</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Dual.upd$unwrap">Dual.upd$unwrap</a></div>
-</li>
-</ul>
 <h3>
 Imports</h3>
 <ul>
@@ -91,198 +59,60 @@ import <a HREF="../../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as Pre
 <div>
 import <a HREF="../../java/util/Regex.html">Java.util.Regex</a> as Regexp</div>
 </li>
+</ul>
+<h3>
+Table of Content</h3>
+<ul class="data">
 <li>
 <div>
-import <a HREF="../../test/QuickCheck.html">Test.QuickCheck</a> as QuickCheck</div>
+<a HREF="#data">Definitions</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#Dual"> </a> <a class="tref" href="#Dual">Dual</a> a</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#getDual">getDual</a> ∷ <b><a class="tref" href="#Dual">Dual</a> α</b> → α</SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#instance">Instances</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Eq_Dual"> </a> <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> a ⇒ <a class="tref" href="#Dual">Dual</a> a</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Monoid_Dual"> </a> <a class="tref" href="../Monoid.html#Monoid">Monoid</a> <a class="tref" href="../Monoid.html#Monoid">Monoid</a> a ⇒ <a class="tref" href="#Dual">Dual</a> a</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Ord_Dual"> </a> <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> a ⇒ <a class="tref" href="#Dual">Dual</a> a</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Semigroup_Dual"> </a> <a class="tref" href="../Monoid.html#Semigroup">Semigroup</a> <a class="tref" href="../Monoid.html#Semigroup">Semigroup</a> a ⇒ <a class="tref" href="#Dual">Dual</a> a</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Show_Dual"> </a> <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> a ⇒ <a class="tref" href="#Dual">Dual</a> a</SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#case">Functions and Values by Type</a></div>
 </li>
 </ul>
 <h2>
-<a name="instance">Instances</a></h2>
-<dl class="inst">
-<dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="Eq_Dual"> </a> <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> a ⇒ <a class="tref" href="#Dual">Dual</a> a</SPAN></dt>
-<dd class="inst">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="Eq_Dual._excl_eq">!=</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → <b><a class="tref" href="#Dual">Dual</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeBase.html#Eq._excl_eq">Eq.!=</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Eq_Dual._eq_eq">==</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → <b><a class="tref" href="#Dual">Dual</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
-<dd class="func">
-<p>
-Function generated for derived instance.</p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Eq_Dual.hashCode">hashCode</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
-<dd class="func">
-<p>
-Function generated for derived instance.</p>
-</dd>
-</dl>
-</dd>
-<dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="Monoid_Dual"> </a> <a class="tref" href="../Monoid.html#Monoid">Monoid</a> <a class="tref" href="../Monoid.html#Monoid">Monoid</a> a ⇒ <a class="tref" href="#Dual">Dual</a> a</SPAN></dt>
-<dd class="inst">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="Monoid_Dual.mconcat">mconcat</a> ∷ <a class="tref" href="../Monoid.html#Monoid">Monoid</a> α ⇒ <b>[<a class="tref" href="#Dual">Dual</a> α]</b> → <a class="tref" href="#Dual">Dual</a> α</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../Monoid.html#Monoid.mconcat">Monoid.mconcat</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Monoid_Dual.mempty">mempty</a> ∷ <a class="tref" href="../Monoid.html#Monoid">Monoid</a> α ⇒ <a class="tref" href="#Dual">Dual</a> α</SPAN></dt>
-<dd class="func">
-<p>
-<SPAN CLASS="code">Dual e</SPAN> where <SPAN CLASS="code">e</SPAN> is the idendity of the wrapped value.   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Monoid_Dual.mtimes">mtimes</a> ∷ <a class="tref" href="../Monoid.html#Monoid">Monoid</a> α ⇒ <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#Dual">Dual</a> α → <a class="tref" href="#Dual">Dual</a> α</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../Monoid.html#Monoid.mtimes">Monoid.mtimes</a></p>
-</dd>
-</dl>
-</dd>
-<dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="Ord_Dual"> </a> <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> a ⇒ <a class="tref" href="#Dual">Dual</a> a</SPAN></dt>
-<dd class="inst">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="Ord_Dual._lt">&lt;</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → <b><a class="tref" href="#Dual">Dual</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord._lt">Ord.&lt;</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Ord_Dual._lt_eq">&lt;=</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → <b><a class="tref" href="#Dual">Dual</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord._lt_eq">Ord.&lt;=</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Ord_Dual._lt_eq_gt">&lt;=&gt;</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → <b><a class="tref" href="#Dual">Dual</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Ordering">Ordering</a><br><b>infix</b>&nbsp;&nbsp;8</SPAN></dt>
-<dd class="func">
-<p>
-Function generated for derived instance.</p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Ord_Dual._gt">&gt;</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → <b><a class="tref" href="#Dual">Dual</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord._gt">Ord.&gt;</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Ord_Dual._gt_eq">&gt;=</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → <b><a class="tref" href="#Dual">Dual</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord._gt_eq">Ord.&gt;=</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Ord_Dual.compare">compare</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → <b><a class="tref" href="#Dual">Dual</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Ordering">Ordering</a><br><b>infix</b>&nbsp;&nbsp;8</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord.compare">Ord.compare</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Ord_Dual.max">max</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → <b><a class="tref" href="#Dual">Dual</a> α</b> → <a class="tref" href="#Dual">Dual</a> α</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord.max">Ord.max</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Ord_Dual.min">min</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → <b><a class="tref" href="#Dual">Dual</a> α</b> → <a class="tref" href="#Dual">Dual</a> α</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord.min">Ord.min</a></p>
-</dd>
-</dl>
-</dd>
-<dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="Semigroup_Dual"> </a> <a class="tref" href="../Monoid.html#Semigroup">Semigroup</a> <a class="tref" href="../Monoid.html#Semigroup">Semigroup</a> a ⇒ <a class="tref" href="#Dual">Dual</a> a</SPAN></dt>
-<dd class="inst">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="Semigroup_Dual.mappend">mappend</a> ∷ <a class="tref" href="../Monoid.html#Semigroup">Semigroup</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → <b><a class="tref" href="#Dual">Dual</a> α</b> → <a class="tref" href="#Dual">Dual</a> α<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
-<dd class="func">
-<PRE>
- Dual "foo" &lt;&gt; Dual "bar" == Dual "barfoo"   </PRE>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Semigroup_Dual.sconcat">sconcat</a> ∷ <a class="tref" href="../Monoid.html#Semigroup">Semigroup</a> α ⇒ <b>[<a class="tref" href="#Dual">Dual</a> α]</b> → <a class="tref" href="#Dual">Dual</a> α</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../Monoid.html#Semigroup.sconcat">Semigroup.sconcat</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Semigroup_Dual.stimes">stimes</a> ∷ <a class="tref" href="../Monoid.html#Semigroup">Semigroup</a> α ⇒ <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#Dual">Dual</a> α → <a class="tref" href="#Dual">Dual</a> α</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../Monoid.html#Semigroup.stimes">Semigroup.stimes</a></p>
-</dd>
-</dl>
-</dd>
-<dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="Show_Dual"> </a> <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> a ⇒ <a class="tref" href="#Dual">Dual</a> a</SPAN></dt>
-<dd class="inst">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="Show_Dual.display">display</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.display">Show.display</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Show_Dual.show">show</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
-<dd class="func">
-<p>
-Function generated for derived instance.</p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Show_Dual.showChars">showChars</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → [<a class="tref" href="../../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.showChars">Show.showChars</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Show_Dual.showList">showList</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <b>[<a class="tref" href="#Dual">Dual</a> α]</b> → <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.showList">Show.showList</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Show_Dual.showsPrec">showsPrec</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> → <b><a class="tref" href="#Dual">Dual</a> α</b> → <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.showsPrec">Show.showsPrec</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Show_Dual.showsub">showsub</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
-<dd class="func">
-<p>
-Function generated for derived instance.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<h2>
-<a name="data">Data Types</a></h2>
+<a NAME="data">Definitions</a></h2>
 <dl class="data">
 <dt class="data">
-<SPAN CLASS="code"><b>data </b><a name="Dual"> </a> <a class="tref" href="#Dual">Dual</a> a</SPAN></dt>
+<SPAN CLASS="code"><b>data </b><a name=Dual> </a> <a class="tref" href="#Dual">Dual</a> a</SPAN></dt>
 <dd class="data">
 <p>
 Provides a <a class="tref" href="../Monoid.html#Monoid">Monoid</a> where <a class="fref" href="../Monoid.html#Semigroup.mappend">Semigroup.mappend</a> appears flipped.   </p>
@@ -290,7 +120,7 @@ Provides a <a class="tref" href="../Monoid.html#Monoid">Monoid</a> where <a clas
 Constructors</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Dual.Dual">Dual</a> {unwrap ∷ a}</SPAN></dt>
+<SPAN CLASS="code"><a name=Dual.Dual>Dual</a> {unwrap ∷ a}</SPAN></dt>
 <dd class="func">
 <p>
 wrap a value to give a <a class="tref" href="#Dual">Dual</a>   </p>
@@ -300,37 +130,205 @@ wrap a value to give a <a class="tref" href="#Dual">Dual</a>   </p>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Dual.unwrap">unwrap</a> ∷ <b><a class="tref" href="#Dual">Dual</a> α</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a name=Dual.unwrap>unwrap</a> ∷ <b><a class="tref" href="#Dual">Dual</a> α</b> → α</SPAN></dt>
 <dd class="func">
 <p>
 access field <SPAN CLASS="code">unwrap</SPAN></p>
 </dd>
 </dl>
 </dd>
-</dl>
-<h2>
-<a name="let">Functions and Values</a></h2>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="prop_dual">prop_dual</a> ∷ <a class="tref" href="../../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="getDual">getDual</a> ∷ <b><a class="tref" href="#Dual">Dual</a> α</b> → α</SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><a name=getDual>getDual</a> ∷ <b><a class="tref" href="#Dual">Dual</a> α</b> → α</SPAN></dt>
+<dd class="data">
 <p>
 Alias for <a class="fref" href="#Dual.unwrap">Dual.unwrap</a></p>
 </dd>
 </dl>
 <h2>
-<a name="case">Functions and Values by Type</a></h2>
+<a NAME="instance">Instances</a></h2>
+<dl class="inst">
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Eq_Dual> </a> <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> a ⇒ <a class="tref" href="#Dual">Dual</a> a</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Eq_Dual._excl_eq>!=</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → <b><a class="tref" href="#Dual">Dual</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#prop_dual">prop_dual</a></p>
+inherited from <a class="fref" href="../../prelude/PreludeBase.html#Eq._excl_eq">Eq.!=</a></p>
 </dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Eq_Dual._eq_eq>==</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → <b><a class="tref" href="#Dual">Dual</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
+<dd class="func">
+<p>
+Function generated for derived instance.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Eq_Dual.hashCode>hashCode</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+Function generated for derived instance.</p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Monoid_Dual> </a> <a class="tref" href="../Monoid.html#Monoid">Monoid</a> <a class="tref" href="../Monoid.html#Monoid">Monoid</a> a ⇒ <a class="tref" href="#Dual">Dual</a> a</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Monoid_Dual.mconcat>mconcat</a> ∷ <a class="tref" href="../Monoid.html#Monoid">Monoid</a> α ⇒ <b>[<a class="tref" href="#Dual">Dual</a> α]</b> → <a class="tref" href="#Dual">Dual</a> α</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../Monoid.html#Monoid.mconcat">Monoid.mconcat</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monoid_Dual.mempty>mempty</a> ∷ <a class="tref" href="../Monoid.html#Monoid">Monoid</a> α ⇒ <a class="tref" href="#Dual">Dual</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<SPAN CLASS="code">Dual e</SPAN> where <SPAN CLASS="code">e</SPAN> is the idendity of the wrapped value.   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monoid_Dual.mtimes>mtimes</a> ∷ <a class="tref" href="../Monoid.html#Monoid">Monoid</a> α ⇒ <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#Dual">Dual</a> α → <a class="tref" href="#Dual">Dual</a> α</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../Monoid.html#Monoid.mtimes">Monoid.mtimes</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Ord_Dual> </a> <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> a ⇒ <a class="tref" href="#Dual">Dual</a> a</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Ord_Dual._lt>&lt;</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → <b><a class="tref" href="#Dual">Dual</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord._lt">Ord.&lt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Ord_Dual._lt_eq>&lt;=</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → <b><a class="tref" href="#Dual">Dual</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord._lt_eq">Ord.&lt;=</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Ord_Dual._lt_eq_gt>&lt;=&gt;</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → <b><a class="tref" href="#Dual">Dual</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Ordering">Ordering</a><br><b>infix</b>&nbsp;&nbsp;8</SPAN></dt>
+<dd class="func">
+<p>
+Function generated for derived instance.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Ord_Dual._gt>&gt;</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → <b><a class="tref" href="#Dual">Dual</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord._gt">Ord.&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Ord_Dual._gt_eq>&gt;=</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → <b><a class="tref" href="#Dual">Dual</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord._gt_eq">Ord.&gt;=</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Ord_Dual.compare>compare</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → <b><a class="tref" href="#Dual">Dual</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Ordering">Ordering</a><br><b>infix</b>&nbsp;&nbsp;8</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord.compare">Ord.compare</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Ord_Dual.max>max</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → <b><a class="tref" href="#Dual">Dual</a> α</b> → <a class="tref" href="#Dual">Dual</a> α</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord.max">Ord.max</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Ord_Dual.min>min</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → <b><a class="tref" href="#Dual">Dual</a> α</b> → <a class="tref" href="#Dual">Dual</a> α</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord.min">Ord.min</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Semigroup_Dual> </a> <a class="tref" href="../Monoid.html#Semigroup">Semigroup</a> <a class="tref" href="../Monoid.html#Semigroup">Semigroup</a> a ⇒ <a class="tref" href="#Dual">Dual</a> a</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Semigroup_Dual.mappend>mappend</a> ∷ <a class="tref" href="../Monoid.html#Semigroup">Semigroup</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → <b><a class="tref" href="#Dual">Dual</a> α</b> → <a class="tref" href="#Dual">Dual</a> α<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
+<dd class="func">
+<PRE>
+ Dual "foo" &lt;&gt; Dual "bar" == Dual "barfoo"   </PRE>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Semigroup_Dual.sconcat>sconcat</a> ∷ <a class="tref" href="../Monoid.html#Semigroup">Semigroup</a> α ⇒ <b>[<a class="tref" href="#Dual">Dual</a> α]</b> → <a class="tref" href="#Dual">Dual</a> α</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../Monoid.html#Semigroup.sconcat">Semigroup.sconcat</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Semigroup_Dual.stimes>stimes</a> ∷ <a class="tref" href="../Monoid.html#Semigroup">Semigroup</a> α ⇒ <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#Dual">Dual</a> α → <a class="tref" href="#Dual">Dual</a> α</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../Monoid.html#Semigroup.stimes">Semigroup.stimes</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Show_Dual> </a> <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> a ⇒ <a class="tref" href="#Dual">Dual</a> a</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Dual.display>display</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.display">Show.display</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Dual.show>show</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+Function generated for derived instance.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Dual.showChars>showChars</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → [<a class="tref" href="../../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.showChars">Show.showChars</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Dual.showList>showList</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <b>[<a class="tref" href="#Dual">Dual</a> α]</b> → <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.showList">Show.showList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Dual.showsPrec>showsPrec</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> → <b><a class="tref" href="#Dual">Dual</a> α</b> → <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.showsPrec">Show.showsPrec</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Dual.showsub>showsub</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <b><a class="tref" href="#Dual">Dual</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+Function generated for derived instance.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<h2>
+<a NAME="case">Functions and Values by Type</a></h2>
+<dl class="func">
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#Dual">Dual</a> α → α</SPAN></dt>
 <dd class="func">

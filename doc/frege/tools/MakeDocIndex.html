@@ -17,29 +17,9 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 </style>
 <BODY>
 <h1>
-<a name="package">Package <SPAN CLASS="code">Tools.MakeDocIndex</SPAN></a></h1>
-<p>
- Source file: <SPAN CLASS="code">./frege/tools/MakeDocIndex.fr</SPAN></p>
-<h3>
-Package Documentation</h3>
+Module <SPAN CLASS="code">Tools.MakeDocIndex</SPAN></h1>
 <p>
 Inspect a frege documentation directory and make files that enable framed HTML view.   </p>
-<h3>
-Table of Content</h3>
-<ul>
-<li>
-<div>
-<a HREF="#let">Functions and Values (alphabetically)</a></div>
-<div>
-<a class="fref" href="#fileIn">fileIn</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#findHtml">findHtml</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#frameElem">frameElem</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#htmlAtEnd">htmlAtEnd</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#isMeta">isMeta</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#linkElem">linkElem</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_main">main</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#makeFrame">makeFrame</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#makePrefixFrame">makePrefixFrame</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prefixFrame">prefixFrame</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prefixName">prefixName</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#printFregeDoc">printFregeDoc</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#separatorRE">separatorRE</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#unHtml">unHtml</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#wrap">wrap</a></div>
-</li>
-<li>
-<div>
-<a HREF="#case">Functions and Values (by type)</a></div>
-<div>
-<a class="fref" href="#fileIn">fileIn</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#findHtml">findHtml</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#frameElem">frameElem</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#htmlAtEnd">htmlAtEnd</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#isMeta">isMeta</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#linkElem">linkElem</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_main">main</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#makeFrame">makeFrame</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#makePrefixFrame">makePrefixFrame</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prefixFrame">prefixFrame</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#prefixName">prefixName</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#printFregeDoc">printFregeDoc</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#separatorRE">separatorRE</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#unHtml">unHtml</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#wrap">wrap</a></div>
-</li>
-</ul>
 <h3>
 Imports</h3>
 <ul>
@@ -84,48 +64,116 @@ import <a HREF="../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as Prelud
 import <a HREF="../java/util/Regex.html">Java.util.Regex</a> as Regexp</div>
 </li>
 </ul>
+<h3>
+Table of Content</h3>
+<ul class="data">
+<li>
+<div>
+<a HREF="#data">Definitions</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#separatorRE">separatorRE</a> ∷ <a class="tref" href="../java/util/Regex.html#Regex">Regex</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#htmlAtEnd">htmlAtEnd</a> ∷ <a class="tref" href="../java/util/Regex.html#Regex">Regex</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#unHtml">unHtml</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#isMeta">isMeta</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#findHtml">findHtml</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> [(<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#_main">main</a> ∷ <b>[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#printFregeDoc">printFregeDoc</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#fileIn">fileIn</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#makePrefixFrame">makePrefixFrame</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>] → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#makeFrame">makeFrame</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → [(<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)] → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#wrap">wrap</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#linkElem">linkElem</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#frameElem">frameElem</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#prefixName">prefixName</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#prefixFrame">prefixFrame</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#case">Functions and Values by Type</a></div>
+</li>
+</ul>
 <h2>
-<a name="let">Functions and Values</a></h2>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="fileIn">fileIn</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
-<dd class="func">
+<a NAME="data">Definitions</a></h2>
+<dl class="data">
+<dt class="data">
+<SPAN CLASS="code"><a name=separatorRE>separatorRE</a> ∷ <a class="tref" href="../java/util/Regex.html#Regex">Regex</a></SPAN></dt>
+<dd class="data">
 <p>
-compute the path of a file in a certain directory   </p>
+regular expression to split path names on <a class="fref" href="../java/IO.html#File.separator">File.separator</a>   </p>
 </dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="findHtml">findHtml</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> [(<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</SPAN></dt>
-<dd class="func">
-<p>
-walk a directory and get all HTML files   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="frameElem">frameElem</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
-<dd class="func">
-<p>
-make link to frame   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="htmlAtEnd">htmlAtEnd</a> ∷ <a class="tref" href="../java/util/Regex.html#Regex">Regex</a></SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><a name=htmlAtEnd>htmlAtEnd</a> ∷ <a class="tref" href="../java/util/Regex.html#Regex">Regex</a></SPAN></dt>
+<dd class="data">
 <p>
 regular expression to detect "*.html" files   </p>
 </dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="isMeta">isMeta</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><a name=unHtml>unHtml</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+<p>
+drop ".html" from the end of a name   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=isMeta>isMeta</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="data">
 <p>
 tell if this is the name of a meta file   </p>
 </dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="linkElem">linkElem</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><a name=findHtml>findHtml</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> [(<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</SPAN></dt>
+<dd class="data">
 <p>
-make link from a relative path and a HTML file name   </p>
+walk a directory and get all HTML files   </p>
 </dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="_main">main</a> ∷ <b>[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><a name=_main>main</a> ∷ <b>[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="data">
 <p>
 We will make the following files:</p>
 <p>
@@ -137,55 +185,61 @@ For each module prefix a file that lists the actual modules. This one is display
 <p>
 There will be a pseudo module prefix "<SPAN CLASS="code">All Modules</SPAN>" and a corresponding <SPAN CLASS="code">frame-All-Modules.html</SPAN> that contains links to all the modules.</p>
 </dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="makeFrame">makeFrame</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → [(<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)] → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="makePrefixFrame">makePrefixFrame</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>] → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
-<dd class="func">
-<p>
-make the <SPAN CLASS="code">prefix-frame.html</SPAN> file   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="prefixFrame">prefixFrame</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
-<dd class="func">
-<p>
-file name of a module prefix   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="prefixName">prefixName</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
-<dd class="func">
-<p>
-display name of a module prefix   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="printFregeDoc">printFregeDoc</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><a name=printFregeDoc>printFregeDoc</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="data">
 <p>
 Print the top file with the frameset   </p>
 </dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="separatorRE">separatorRE</a> ∷ <a class="tref" href="../java/util/Regex.html#Regex">Regex</a></SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><a name=fileIn>fileIn</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
 <p>
-regular expression to split path names on <a class="fref" href="../java/IO.html#File.separator">File.separator</a>   </p>
+compute the path of a file in a certain directory   </p>
 </dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="unHtml">unHtml</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><a name=makePrefixFrame>makePrefixFrame</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>] → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="data">
 <p>
-drop ".html" from the end of a name   </p>
+make the <SPAN CLASS="code">prefix-frame.html</SPAN> file   </p>
 </dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="wrap">wrap</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><a name=makeFrame>makeFrame</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → [(<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)] → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=wrap>wrap</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
 <p>
 wrap in html tags, i.e. @&lt;xx&gt;foo&lt;/xx&gt;𝖖   </p>
 </dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=linkElem>linkElem</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+<p>
+make link from a relative path and a HTML file name   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=frameElem>frameElem</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+<p>
+make link to frame   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=prefixName>prefixName</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+<p>
+display name of a module prefix   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=prefixFrame>prefixFrame</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+<p>
+file name of a module prefix   </p>
+</dd>
 </dl>
 <h2>
-<a name="case">Functions and Values by Type</a></h2>
+<a NAME="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → [(<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)] → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>

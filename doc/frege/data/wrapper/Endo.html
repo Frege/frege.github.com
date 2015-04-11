@@ -17,35 +17,9 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 </style>
 <BODY>
 <h1>
-<a name="package">Package <SPAN CLASS="code">Data.wrapper.Endo</SPAN></a></h1>
-<p>
- Source file: <SPAN CLASS="code">./frege/data/wrapper/Endo.fr</SPAN></p>
-<h3>
-Package Documentation</h3>
+Module <SPAN CLASS="code">Data.wrapper.Endo</SPAN></h1>
 <p>
 <a class="tref" href="../Monoid.html#Monoid">Monoid</a> instance for endofunctions   </p>
-<h3>
-Table of Content</h3>
-<ul>
-<li>
-<div>
-<a HREF="#instance">Instances</a></div>
-<div>
-<a class="tref" href="#Monoid_Endo">Monoid_Endo</a></div>
-</li>
-<li>
-<div>
-<a HREF="#data">Data Types</a></div>
-<div>
-<a class="tref" href="#Endo">Endo</a></div>
-</li>
-<li>
-<div>
-<a HREF="#case">Functions and Values (by type)</a></div>
-<div>
-<a class="fref" href="#Monoid_Endo.mtimes">Monoid_Endo.mtimes</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_Endo.mconcat">Monoid_Endo.mconcat</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_Endo.mappend">Monoid_Endo.mappend</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_Endo.mempty">Monoid_Endo.mempty</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_Endo.sconcat">Monoid_Endo.sconcat</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_Endo.stimes">Monoid_Endo.stimes</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Endo.has$unwrap">Endo.has$unwrap</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Endo.chg$unwrap">Endo.chg$unwrap</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Endo.Endo">Endo.Endo</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Endo.unwrap">Endo.unwrap</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Endo.upd$unwrap">Endo.upd$unwrap</a></div>
-</li>
-</ul>
 <h3>
 Imports</h3>
 <ul>
@@ -86,11 +60,77 @@ import <a HREF="../../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as Pre
 import <a HREF="../../java/util/Regex.html">Java.util.Regex</a> as Regexp</div>
 </li>
 </ul>
+<h3>
+Table of Content</h3>
+<ul class="data">
+<li>
+<div>
+<a HREF="#data">Definitions</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#Endo"> </a> <a class="tref" href="#Endo">Endo</a> a</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#appEndo">appEndo</a> ∷ <b><a class="tref" href="#Endo">Endo</a> α</b> → α → α</SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#instance">Instances</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Monoid_Endo"> </a> <a class="tref" href="../Monoid.html#Monoid">Monoid</a> <a class="tref" href="#Endo">Endo</a> a</SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#case">Functions and Values by Type</a></div>
+</li>
+</ul>
 <h2>
-<a name="instance">Instances</a></h2>
+<a NAME="data">Definitions</a></h2>
+<dl class="data">
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=Endo> </a> <a class="tref" href="#Endo">Endo</a> a</SPAN></dt>
+<dd class="data">
+<p>
+The monoid of endomorphisms under composition.   </p>
+<h3>
+Constructors</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Endo.Endo>Endo</a> {unwrap ∷ a → a}</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Endo.unwrap>unwrap</a> ∷ <b><a class="tref" href="#Endo">Endo</a> α</b> → α → α</SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">unwrap</SPAN></p>
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=appEndo>appEndo</a> ∷ <b><a class="tref" href="#Endo">Endo</a> α</b> → α → α</SPAN></dt>
+<dd class="data">
+<p>
+Alias for <a class="fref" href="#Endo.unwrap">Endo.unwrap</a></p>
+</dd>
+</dl>
+<h2>
+<a NAME="instance">Instances</a></h2>
 <dl class="inst">
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="Monoid_Endo"> </a> <a class="tref" href="../Monoid.html#Monoid">Monoid</a> <a class="tref" href="#Endo">Endo</a> a</SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Monoid_Endo> </a> <a class="tref" href="../Monoid.html#Monoid">Monoid</a> <a class="tref" href="#Endo">Endo</a> a</SPAN></dt>
 <dd class="inst">
 <p>
 The <a class="tref" href="../Monoid.html#Monoid">Monoid</a> instance for <a class="tref" href="#Endo">Endo</a> has functions as objects, uses <a class="fref" href="../../control/Semigroupoid.html#Semigroupoid._bullet">Semigroupoid.Semigroupoid.•</a> as operation and the identity is <a class="fref" href="../../control/Category.html#Category.id">Category.Category.id</a>.      </p>
@@ -98,37 +138,37 @@ The <a class="tref" href="../Monoid.html#Monoid">Monoid</a> instance for <a clas
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Monoid_Endo.mappend">mappend</a> ∷ <b><a class="tref" href="#Endo">Endo</a> α</b> → <b><a class="tref" href="#Endo">Endo</a> α</b> → <a class="tref" href="#Endo">Endo</a> α<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
+<SPAN CLASS="code"><a name=Monoid_Endo.mappend>mappend</a> ∷ <b><a class="tref" href="#Endo">Endo</a> α</b> → <b><a class="tref" href="#Endo">Endo</a> α</b> → <a class="tref" href="#Endo">Endo</a> α<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
 <dd class="func">
 <PRE>
  Endo f &lt;&gt; Endo g = Endo (f . g)   </PRE>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monoid_Endo.mconcat">mconcat</a> ∷ <b>[<a class="tref" href="#Endo">Endo</a> α]</b> → <a class="tref" href="#Endo">Endo</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name=Monoid_Endo.mconcat>mconcat</a> ∷ <b>[<a class="tref" href="#Endo">Endo</a> α]</b> → <a class="tref" href="#Endo">Endo</a> α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../Monoid.html#Monoid.mconcat">Monoid.mconcat</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monoid_Endo.mempty">mempty</a> ∷ <a class="tref" href="#Endo">Endo</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name=Monoid_Endo.mempty>mempty</a> ∷ <a class="tref" href="#Endo">Endo</a> α</SPAN></dt>
 <dd class="func">
 <PRE>
  Endo id   </PRE>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monoid_Endo.mtimes">mtimes</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#Endo">Endo</a> α → <a class="tref" href="#Endo">Endo</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name=Monoid_Endo.mtimes>mtimes</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#Endo">Endo</a> α → <a class="tref" href="#Endo">Endo</a> α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../Monoid.html#Monoid.mtimes">Monoid.mtimes</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monoid_Endo.sconcat">sconcat</a> ∷ <b>[<a class="tref" href="#Endo">Endo</a> α]</b> → <a class="tref" href="#Endo">Endo</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name=Monoid_Endo.sconcat>sconcat</a> ∷ <b>[<a class="tref" href="#Endo">Endo</a> α]</b> → <a class="tref" href="#Endo">Endo</a> α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../Monoid.html#Semigroup.sconcat">Semigroup.sconcat</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Monoid_Endo.stimes">stimes</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#Endo">Endo</a> α → <a class="tref" href="#Endo">Endo</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name=Monoid_Endo.stimes>stimes</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#Endo">Endo</a> α → <a class="tref" href="#Endo">Endo</a> α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../Monoid.html#Semigroup.stimes">Semigroup.stimes</a></p>
@@ -137,45 +177,7 @@ inherited from <a class="fref" href="../Monoid.html#Semigroup.stimes">Semigroup.
 </dd>
 </dl>
 <h2>
-<a name="data">Data Types</a></h2>
-<dl class="data">
-<dt class="data">
-<SPAN CLASS="code"><b>data </b><a name="Endo"> </a> <a class="tref" href="#Endo">Endo</a> a</SPAN></dt>
-<dd class="data">
-<p>
-The monoid of endomorphisms under composition.   </p>
-<h3>
-Constructors</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="Endo.Endo">Endo</a> {unwrap ∷ a → a}</SPAN></dt>
-<dd class="func">
-</dd>
-</dl>
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="Endo.unwrap">unwrap</a> ∷ <b><a class="tref" href="#Endo">Endo</a> α</b> → α → α</SPAN></dt>
-<dd class="func">
-<p>
-access field <SPAN CLASS="code">unwrap</SPAN></p>
-</dd>
-</dl>
-</dd>
-</dl>
-<h2>
-<a name="let">Functions and Values</a></h2>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="appEndo">appEndo</a> ∷ <b><a class="tref" href="#Endo">Endo</a> α</b> → α → α</SPAN></dt>
-<dd class="func">
-<p>
-Alias for <a class="fref" href="#Endo.unwrap">Endo.unwrap</a></p>
-</dd>
-</dl>
-<h2>
-<a name="case">Functions and Values by Type</a></h2>
+<a NAME="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
 <SPAN CLASS="code">(a → a) → <a class="tref" href="#Endo">Endo</a> a</SPAN></dt>

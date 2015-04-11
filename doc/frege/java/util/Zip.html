@@ -17,35 +17,9 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 </style>
 <BODY>
 <h1>
-<a name="package">Package <SPAN CLASS="code">Java.util.Zip</SPAN></a></h1>
-<p>
- Source file: <SPAN CLASS="code">./frege/java/util/Zip.fr</SPAN></p>
-<h3>
-Package Documentation</h3>
+Module <SPAN CLASS="code">Java.util.Zip</SPAN></h1>
 <p>
 Java classes from package <SPAN CLASS="code">java.util.zip</SPAN>   </p>
-<h3>
-Table of Content</h3>
-<ul>
-<li>
-<div>
-<a HREF="#instance">Instances</a></div>
-<div>
-<a class="tref" href="#Exceptional_ZipException">Exceptional_ZipException</a></div>
-</li>
-<li>
-<div>
-<a HREF="#data">Data Types</a></div>
-<div>
-<a class="tref" href="#ZipEntry">ZipEntry</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ZipException">ZipException</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ZipFile">ZipFile</a></div>
-</li>
-<li>
-<div>
-<a HREF="#case">Functions and Values (by type)</a></div>
-<div>
-<a class="fref" href="#Exceptional_ZipException.javaClass">Exceptional_ZipException.javaClass</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ZipEntry.getName">ZipEntry.getName</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ZipEntry.isDirectory">ZipEntry.isDirectory</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ZipFile.getInputStream">ZipFile.getInputStream</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ZipFile.entries">ZipFile.entries</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ZipFile._new">ZipFile.new</a></div>
-</li>
-</ul>
 <h3>
 Imports</h3>
 <ul>
@@ -86,68 +60,122 @@ import <a HREF="../Util.html">Java.Util</a> as Util</div>
 import <a HREF="./Regex.html">Java.util.Regex</a> as Regexp</div>
 </li>
 </ul>
+<h3>
+Table of Content</h3>
+<ul class="data">
+<li>
+<div>
+<a HREF="#data">Definitions</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#ZipEntry"> </a> <a class="tref" href="#ZipEntry">ZipEntry</a> = <b>mutable </b><b>native </b>java.util.zip.ZipEntry</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#ZipException"> </a> <a class="tref" href="#ZipException">ZipException</a> = <b>pure </b><b>native </b>java.util.zip.ZipException</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#ZipFile"> </a> <a class="tref" href="#ZipFile">ZipFile</a> = <b>mutable </b><b>native </b>java.util.zip.ZipFile</SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#instance">Instances</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Exceptional_ZipException"> </a> <a class="tref" href="../../prelude/PreludeIO.html#Exceptional">Exceptional</a> <a class="tref" href="#ZipException">ZipException</a></SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#case">Functions and Values by Type</a></div>
+</li>
+</ul>
 <h2>
-<a name="instance">Instances</a></h2>
+<a NAME="data">Definitions</a></h2>
+<dl class="data">
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=ZipException> </a> <a class="tref" href="#ZipException">ZipException</a> = <b>pure </b><b>native </b>java.util.zip.ZipException</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=ZipFile> </a> <a class="tref" href="#ZipFile">ZipFile</a> = <b>mutable </b><b>native </b>java.util.zip.ZipFile</SPAN></dt>
+<dd class="data">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=ZipFile.entries>entries</a> ∷ <b><a class="tref" href="#ZipFile">ZipFile</a></b> → <a class="tref" href="../../prelude/PreludeIO.html#IOMutable">IOMutable</a> (<a class="tref" href="../Util.html#Enumeration">Enumeration</a> <a class="tref" href="#ZipEntry">ZipEntry</a>)<br><b>native </b>entries</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ZipFile.getEntry>getEntry</a> ∷ <b><a class="tref" href="#ZipFile">ZipFile</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="#ZipEntry">ZipEntry</a>)<br><b>native </b>getEntry</SPAN></dt>
+<dd class="func">
+<p>
+get the <a class="tref" href="#ZipEntry">ZipEntry</a> for the specified name, or <a class="fref" href="../../prelude/PreludeBase.html#Maybe.Nothing">Maybe.Nothing</a> if not found.   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ZipFile.getInputStream>getInputStream</a> ∷ <b><a class="tref" href="#ZipFile">ZipFile</a></b> → <b><a class="tref" href="#ZipEntry">ZipEntry</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../IO.html#InputStream">InputStream</a><br><b>native </b>getInputStream&nbsp;&nbsp;<b>throws </b><a class="tref" href="../Lang.html#IOException">IOException</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ZipFile._new>new</a> ∷ <b><a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ZipFile">ZipFile</a><br><b>native </b>new&nbsp;&nbsp;<b>throws </b><a class="tref" href="#ZipException">ZipException</a>, <a class="tref" href="../Lang.html#IOException">IOException</a></SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=ZipEntry> </a> <a class="tref" href="#ZipEntry">ZipEntry</a> = <b>mutable </b><b>native </b>java.util.zip.ZipEntry</SPAN></dt>
+<dd class="data">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=ZipEntry.getName>getName</a> ∷ <b><a class="tref" href="#ZipEntry">ZipEntry</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a><br><b>native </b>getName</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ZipEntry.isDirectory>isDirectory</a> ∷ <b><a class="tref" href="#ZipEntry">ZipEntry</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>native </b>isDirectory</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ZipEntry._new>new</a> ∷ <a class="tref" href="#ZipEntry">ZipEntry</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ZipEntry">ZipEntry</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ZipEntry">ZipEntry</a><br><b>native </b>new</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ZipEntry.newα>newα</a> ∷ <b><a class="tref" href="#ZipEntry">ZipEntry</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ZipEntry">ZipEntry</a><br><b>native </b>new&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ZipEntry._new">new</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ZipEntry.newβ>newβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ZipEntry">ZipEntry</a><br><b>native </b>new&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ZipEntry._new">new</a></SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+</dl>
+<h2>
+<a NAME="instance">Instances</a></h2>
 <dl class="inst">
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="Exceptional_ZipException"> </a> <a class="tref" href="../../prelude/PreludeIO.html#Exceptional">Exceptional</a> <a class="tref" href="#ZipException">ZipException</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Exceptional_ZipException> </a> <a class="tref" href="../../prelude/PreludeIO.html#Exceptional">Exceptional</a> <a class="tref" href="#ZipException">ZipException</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Exceptional_ZipException.javaClass">javaClass</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Class">Class</a> <a class="tref" href="#ZipException">ZipException</a><br><b>pure </b><b>native </b>java.util.zip.ZipException.class</SPAN></dt>
+<SPAN CLASS="code"><a name=Exceptional_ZipException.javaClass>javaClass</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Class">Class</a> <a class="tref" href="#ZipException">ZipException</a><br><b>pure </b><b>native </b>java.util.zip.ZipException.class</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
 </dd>
 </dl>
 <h2>
-<a name="data">Data Types</a></h2>
-<dl class="data">
-<dt class="data">
-<SPAN CLASS="code"><b>data </b><a name="ZipEntry"> </a> <a class="tref" href="#ZipEntry">ZipEntry</a> = <b>mutable </b><b>native </b>java.util.zip.ZipEntry</SPAN></dt>
-<dd class="data">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="ZipEntry.getName">getName</a> ∷ <b><a class="tref" href="#ZipEntry">ZipEntry</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a><br><b>native </b>getName</SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="ZipEntry.isDirectory">isDirectory</a> ∷ <b><a class="tref" href="#ZipEntry">ZipEntry</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>native </b>isDirectory</SPAN></dt>
-<dd class="func">
-</dd>
-</dl>
-</dd>
-<dt class="data">
-<SPAN CLASS="code"><b>data </b><a name="ZipException"> </a> <a class="tref" href="#ZipException">ZipException</a> = <b>pure </b><b>native </b>java.util.zip.ZipException</SPAN></dt>
-<dd class="data">
-</dd>
-<dt class="data">
-<SPAN CLASS="code"><b>data </b><a name="ZipFile"> </a> <a class="tref" href="#ZipFile">ZipFile</a> = <b>mutable </b><b>native </b>java.util.zip.ZipFile</SPAN></dt>
-<dd class="data">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="ZipFile.entries">entries</a> ∷ <b><a class="tref" href="#ZipFile">ZipFile</a></b> → <a class="tref" href="../../prelude/PreludeIO.html#IOMutable">IOMutable</a> (<a class="tref" href="../Util.html#Enumeration">Enumeration</a> <a class="tref" href="#ZipEntry">ZipEntry</a>)<br><b>native </b>entries</SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="ZipFile.getInputStream">getInputStream</a> ∷ <b><a class="tref" href="#ZipFile">ZipFile</a></b> → <b><a class="tref" href="#ZipEntry">ZipEntry</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../IO.html#InputStream">InputStream</a><br><b>native </b>getInputStream&nbsp;&nbsp;<b>throws </b><a class="tref" href="../Lang.html#IOException">IOException</a></SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="ZipFile._new">new</a> ∷ <b><a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ZipFile">ZipFile</a><br><b>native </b>new&nbsp;&nbsp;<b>throws </b><a class="tref" href="#ZipException">ZipException</a>, <a class="tref" href="../Lang.html#IOException">IOException</a></SPAN></dt>
-<dd class="func">
-</dd>
-</dl>
-</dd>
-</dl>
-<h2>
-<a name="case">Functions and Values by Type</a></h2>
+<a NAME="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ZipFile">ZipFile</a></SPAN></dt>
@@ -156,16 +184,34 @@ Member Functions</h3>
 <a class="fref" href="#ZipFile._new">ZipFile.new</a></p>
 </dd>
 <dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ZipEntry">ZipEntry</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ZipEntry.newβ">ZipEntry.newβ</a></p>
+</dd>
+<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#ZipEntry">ZipEntry</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ZipEntry.getName">ZipEntry.getName</a></p>
 </dd>
 <dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ZipEntry">ZipEntry</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ZipEntry">ZipEntry</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ZipEntry.newα">ZipEntry.newα</a></p>
+</dd>
+<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#ZipEntry">ZipEntry</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ZipEntry.isDirectory">ZipEntry.isDirectory</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ZipFile">ZipFile</a> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="#ZipEntry">ZipEntry</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ZipFile.getEntry">ZipFile.getEntry</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#ZipFile">ZipFile</a> → <a class="tref" href="#ZipEntry">ZipEntry</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../IO.html#InputStream">InputStream</a></SPAN></dt>
@@ -184,6 +230,12 @@ Member Functions</h3>
 <dd class="func">
 <p>
 <a class="fref" href="#Exceptional_ZipException.javaClass">Exceptional_ZipException.javaClass</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">ω</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ZipEntry._new">ZipEntry.new</a></p>
 </dd>
 </dl>
 <p>

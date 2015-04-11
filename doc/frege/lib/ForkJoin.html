@@ -17,29 +17,9 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 </style>
 <BODY>
 <h1>
-<a name="package">Package <SPAN CLASS="code">Lib.ForkJoin</SPAN></a></h1>
-<p>
- Source file: <SPAN CLASS="code">./frege/lib/ForkJoin.fr</SPAN></p>
-<h3>
-Package Documentation</h3>
+Module <SPAN CLASS="code">Lib.ForkJoin</SPAN></h1>
 <p>
 Support for ad hoc parallelism in Frege through java's ForkJoin mechanism</p>
-<h3>
-Table of Content</h3>
-<ul>
-<li>
-<div>
-<a HREF="#let">Functions and Values (alphabetically)</a></div>
-<div>
-<a class="fref" href="#$_bar">$|</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_colon_bar">:|</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#mapP">mapP</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#par">par</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#parOp">parOp</a></div>
-</li>
-<li>
-<div>
-<a HREF="#case">Functions and Values (by type)</a></div>
-<div>
-<a class="fref" href="#$_bar">$|</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_colon_bar">:|</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#mapP">mapP</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#par">par</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#parOp">parOp</a></div>
-</li>
-</ul>
 <h3>
 Imports</h3>
 <ul>
@@ -76,54 +56,46 @@ import <a HREF="../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as Prelud
 import <a HREF="../java/util/Regex.html">Java.util.Regex</a> as Regexp</div>
 </li>
 </ul>
+<h3>
+Table of Content</h3>
+<ul class="data">
+<li>
+<div>
+<a HREF="#data">Definitions</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#par">par</a> ∷ α → β → β&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#$_bar">$|</a> ∷ (α→β) → α → β&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#parOp">parOp</a> ∷ (α→γ→β) → α → γ → β</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#_colon_bar">:|</a> ∷ α → [α] → [α]&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#mapP">mapP</a> ∷ (α→β) → <b>[α]</b> → [β]</SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#case">Functions and Values by Type</a></div>
+</li>
+</ul>
 <h2>
-<a name="let">Functions and Values</a></h2>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="$_bar">$|</a> ∷ (α→β) → α → β<br><b>infixr</b>&nbsp;&nbsp;1</SPAN></dt>
-<dd class="func">
-<dl>
-<dt>
-usage</dt>
-<dd>
-<div>
- <SPAN CLASS="code">f $| a</SPAN> </div>
-</dd>
-</dl>
-<p>
-Equivalent to <SPAN CLASS="code">a `par` f a</SPAN></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="_colon_bar">:|</a> ∷ α → [α] → [α]<br><b>infixr</b>&nbsp;&nbsp;4</SPAN></dt>
-<dd class="func">
-<dl>
-<dt>
-usage</dt>
-<dd>
-<div>
- <SPAN CLASS="code">a :| as</SPAN> </div>
-</dd>
-</dl>
-<p>
-Equivalent to <SPAN CLASS="code">parOp (:) a as</SPAN></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="mapP">mapP</a> ∷ (α→β) → <b>[α]</b> → [β]</SPAN></dt>
-<dd class="func">
-<dl>
-<dt>
-usage</dt>
-<dd>
-<div>
- <SPAN CLASS="code">mapP f xs</SPAN> </div>
-</dd>
-</dl>
-<p>
-Like <a class="fref" href="../prelude/PreludeList.html#map">map</a>, but applies the function parallel to mapping the rest of the list. It does therefore not work with infinite lists.</p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="par">par</a> ∷ α → β → β<br><b>infixr</b>&nbsp;&nbsp;2</SPAN></dt>
-<dd class="func">
+<a NAME="data">Definitions</a></h2>
+<dl class="data">
+<dt class="data">
+<SPAN CLASS="code"><a name=par>par</a> ∷ α → β → β<br><b>infixr</b>&nbsp;&nbsp;2</SPAN></dt>
+<dd class="data">
 <dl>
 <dt>
 usage</dt>
@@ -135,9 +107,23 @@ usage</dt>
 <p>
 Fork evaluation of <SPAN CLASS="code">a</SPAN> and return <SPAN CLASS="code">b</SPAN>.</p>
 </dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="parOp">parOp</a> ∷ (γ→β→α) → γ → β → α</SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><a name=$_bar>$|</a> ∷ (α→β) → α → β<br><b>infixr</b>&nbsp;&nbsp;1</SPAN></dt>
+<dd class="data">
+<dl>
+<dt>
+usage</dt>
+<dd>
+<div>
+ <SPAN CLASS="code">f $| a</SPAN> </div>
+</dd>
+</dl>
+<p>
+Equivalent to <SPAN CLASS="code">a `par` f a</SPAN></p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=parOp>parOp</a> ∷ (α→γ→β) → α → γ → β</SPAN></dt>
+<dd class="data">
 <dl>
 <dt>
 usage</dt>
@@ -149,9 +135,37 @@ usage</dt>
 <p>
 Equivalent to <SPAN CLASS="code">a `par` b `par` f a b</SPAN></p>
 </dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=_colon_bar>:|</a> ∷ α → [α] → [α]<br><b>infixr</b>&nbsp;&nbsp;4</SPAN></dt>
+<dd class="data">
+<dl>
+<dt>
+usage</dt>
+<dd>
+<div>
+ <SPAN CLASS="code">a :| as</SPAN> </div>
+</dd>
+</dl>
+<p>
+Equivalent to <SPAN CLASS="code">parOp (:) a as</SPAN></p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=mapP>mapP</a> ∷ (α→β) → <b>[α]</b> → [β]</SPAN></dt>
+<dd class="data">
+<dl>
+<dt>
+usage</dt>
+<dd>
+<div>
+ <SPAN CLASS="code">mapP f xs</SPAN> </div>
+</dd>
+</dl>
+<p>
+Like <a class="fref" href="../prelude/PreludeList.html#map">map</a>, but applies the function parallel to mapping the rest of the list. It does therefore not work with infinite lists.</p>
+</dd>
 </dl>
 <h2>
-<a name="case">Functions and Values by Type</a></h2>
+<a NAME="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
 <SPAN CLASS="code">α → [α] → [α]</SPAN></dt>
@@ -178,7 +192,7 @@ Equivalent to <SPAN CLASS="code">a `par` b `par` f a b</SPAN></p>
 <a class="fref" href="#par">par</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(γ→β→α) → γ → β → α</SPAN></dt>
+<SPAN CLASS="code">(α→γ→β) → α → γ → β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#parOp">parOp</a></p>

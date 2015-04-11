@@ -17,43 +17,11 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 </style>
 <BODY>
 <h1>
-<a name="package">Package <SPAN CLASS="code">Lib.PP</SPAN></a></h1>
-<p>
- Source file: <SPAN CLASS="code">./frege/lib/PP.fr</SPAN></p>
-<h3>
-Package Documentation</h3>
+Module <SPAN CLASS="code">Lib.PP</SPAN></h1>
 <p>
 Courtesy of Philip Wadler.</p>
 <p>
 This is a port of Prof. Philip Wadlers pretty printer library to Frege. For more info see "http://homepages.inf.ed.ac.uk/wadler/papers/prettier/prettier.pdf"</p>
-<h3>
-Table of Content</h3>
-<ul>
-<li>
-<div>
-<a HREF="#data">Data Types</a></div>
-<div>
-<a class="tref" href="#DOCUMENT">DOCUMENT</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Doc">Doc</a></div>
-</li>
-<li>
-<div>
-<a HREF="#let">Functions and Values (alphabetically)</a></div>
-<div>
-<a class="fref" href="#_lt_plus_div_gt">&lt;+/&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_lt_plus_gt">&lt;+&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_lt_div_gt">&lt;/&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_lt_gt">&lt;&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_lt_tilde_div_gt">&lt;~/&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#be">be</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#best">best</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#better">better</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#blanks64">blanks64</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#block">block</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#bracket">bracket</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_break">break</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#fill">fill</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#fits">fits</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#flatten">flatten</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#folddoc">folddoc</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#group">group</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#layout">layout</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#msgdoc">msgdoc</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#nest">nest</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#pretty">pretty</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#sep">sep</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#spread">spread</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#stack">stack</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#text">text</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#tight">tight</a></div>
-</li>
-<li>
-<div>
-<a HREF="#case">Functions and Values (by type)</a></div>
-<div>
-<a class="fref" href="#_lt_plus_div_gt">&lt;+/&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_lt_plus_gt">&lt;+&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_lt_div_gt">&lt;/&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_lt_gt">&lt;&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_lt_tilde_div_gt">&lt;~/&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#be">be</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#best">best</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#better">better</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#blanks64">blanks64</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#block">block</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#bracket">bracket</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_break">break</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#fill">fill</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#fits">fits</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#flatten">flatten</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#folddoc">folddoc</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#group">group</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#layout">layout</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#msgdoc">msgdoc</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#nest">nest</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#pretty">pretty</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#sep">sep</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#spread">spread</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#stack">stack</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#text">text</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#tight">tight</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#DOCUMENT.NEST">DOCUMENT.NEST</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#DOCUMENT.GROUP">DOCUMENT.GROUP</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#DOCUMENT.APPEND">DOCUMENT.APPEND</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#DOCUMENT.LINE">DOCUMENT.LINE</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#DOCUMENT.NONE">DOCUMENT.NONE</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#DOCUMENT.TEXT">DOCUMENT.TEXT</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Doc.doc">Doc.doc</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Doc.Text">Doc.Text</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Doc.None">Doc.None</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Doc.Line">Doc.Line</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Doc.chg$hd">Doc.chg$hd</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Doc.chg$doc">Doc.chg$doc</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Doc.chg$ind">Doc.chg$ind</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Doc.hd">Doc.hd</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Doc.has$hd">Doc.has$hd</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Doc.has$doc">Doc.has$doc</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Doc.has$ind">Doc.has$ind</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Doc.upd$doc">Doc.upd$doc</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Doc.ind">Doc.ind</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Doc.upd$hd">Doc.upd$hd</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Doc.upd$ind">Doc.upd$ind</a></div>
-</li>
-<li>
-<div>
-<a HREF="#of">Re-Exported Items</a></div>
-<div>
-<a class="fref" href="../prelude/PreludeList.html#ListSource_Maybe.toList">listFromMaybe</a></div>
-</li>
-</ul>
 <h3>
 Imports</h3>
 <ul>
@@ -90,57 +58,205 @@ import <a HREF="../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as Prelud
 import <a HREF="../java/util/Regex.html">Java.util.Regex</a> as Regexp</div>
 </li>
 </ul>
+<h3>
+Table of Content</h3>
+<ul class="data">
+<li>
+<div>
+<a HREF="#data">Definitions</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#DOCUMENT"> </a> <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#Doc"> </a> <a class="tref" href="#Doc">Doc</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#_lt_gt">&lt;&gt;</a> ∷ <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#nest">nest</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#text">text</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#group">group</a> ∷ <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#flatten">flatten</a> ∷ <b><a class="tref" href="#DOCUMENT">DOCUMENT</a></b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#layout_tick">layout'</a> ∷ <b><a class="tref" href="#Doc">Doc</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#layout">layout</a> ∷ <a class="tref" href="#Doc">Doc</a> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> α <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#appendableFromWriter">appendableFromWriter</a> ∷ <b><a class="tref" href="../java/IO.html#Writer">Writer</a></b> → <a class="tref" href="../prelude/PreludeIO.html#IOMutable">IOMutable</a> <a class="tref" href="../java/Lang.html#Appendable">Appendable</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#prettyIO">prettyIO</a> ∷ <b><a class="tref" href="../java/IO.html#Writer">Writer</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#blanks64">blanks64</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#best">best</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#Doc">Doc</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#be">be</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b>[(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="#DOCUMENT">DOCUMENT</a>)]</b> → <a class="tref" href="#Doc">Doc</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#better">better</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#Doc">Doc</a> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="#Doc">Doc</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#fits">fits</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#Doc">Doc</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#pretty">pretty</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#_lt_plus_gt">&lt;+&gt;</a> ∷ <b><a class="tref" href="#DOCUMENT">DOCUMENT</a></b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#_lt_div_gt">&lt;/&gt;</a> ∷ <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#folddoc">folddoc</a> ∷ (<a class="tref" href="#DOCUMENT">DOCUMENT</a>→<a class="tref" href="#DOCUMENT">DOCUMENT</a>→<a class="tref" href="#DOCUMENT">DOCUMENT</a>) → <b>[<a class="tref" href="#DOCUMENT">DOCUMENT</a>]</b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#spread">spread</a> ∷ <b>[<a class="tref" href="#DOCUMENT">DOCUMENT</a>]</b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#stack">stack</a> ∷ <b>[<a class="tref" href="#DOCUMENT">DOCUMENT</a>]</b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#bracket">bracket</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#block">block</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#_lt_tilde_div_gt">&lt;~/&gt;</a> ∷ <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#_lt_plus_div_gt">&lt;+/&gt;</a> ∷ <b><a class="tref" href="#DOCUMENT">DOCUMENT</a></b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#fill">fill</a> ∷ <b>[<a class="tref" href="#DOCUMENT">DOCUMENT</a>]</b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#sep">sep</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <b>[<a class="tref" href="#DOCUMENT">DOCUMENT</a>]</b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#tight">tight</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <b>[<a class="tref" href="#DOCUMENT">DOCUMENT</a>]</b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#_break">break</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → [<a class="tref" href="#DOCUMENT">DOCUMENT</a>]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#msgdoc">msgdoc</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#of">Re-Exported Items</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="../prelude/PreludeList.html#ListSource_Maybe.toList">toList</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α</b> → [α]</SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#case">Functions and Values by Type</a></div>
+</li>
+</ul>
 <h2>
-<a name="data">Data Types</a></h2>
+<a NAME="data">Definitions</a></h2>
 <dl class="data">
 <dt class="data">
-<SPAN CLASS="code"><b>data </b><a name="DOCUMENT"> </a> <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
+<SPAN CLASS="code"><b>data </b><a name=DOCUMENT> </a> <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
 <dd class="data">
 <h3>
 Constructors</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="DOCUMENT.APPEND">APPEND</a> <a class="tref" href="#DOCUMENT">DOCUMENT</a>&nbsp;&nbsp; <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
+<SPAN CLASS="code"><a name=DOCUMENT.APPEND>APPEND</a> <a class="tref" href="#DOCUMENT">DOCUMENT</a>&nbsp;&nbsp; <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="DOCUMENT.GROUP">GROUP</a> <a class="tref" href="#DOCUMENT">DOCUMENT</a>&nbsp;&nbsp; <a class="tref" href="#DOCUMENT">DOCUMENT</a><br><b>infixr</b>&nbsp;&nbsp;9</SPAN></dt>
+<SPAN CLASS="code"><a name=DOCUMENT.GROUP>GROUP</a> <a class="tref" href="#DOCUMENT">DOCUMENT</a>&nbsp;&nbsp; <a class="tref" href="#DOCUMENT">DOCUMENT</a><br><b>infixr</b>&nbsp;&nbsp;9</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="DOCUMENT.LINE">LINE</a> </SPAN></dt>
+<SPAN CLASS="code"><a name=DOCUMENT.LINE>LINE</a> </SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="DOCUMENT.NEST">NEST</a> <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>&nbsp;&nbsp; <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
+<SPAN CLASS="code"><a name=DOCUMENT.NEST>NEST</a> <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>&nbsp;&nbsp; <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="DOCUMENT.NONE">NONE</a> </SPAN></dt>
+<SPAN CLASS="code"><a name=DOCUMENT.NONE>NONE</a> </SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="DOCUMENT.TEXT">TEXT</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<SPAN CLASS="code"><a name=DOCUMENT.TEXT>TEXT</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><b>data </b><a name="Doc"> </a> <a class="tref" href="#Doc">Doc</a></SPAN></dt>
+<SPAN CLASS="code"><b>data </b><a name=Doc> </a> <a class="tref" href="#Doc">Doc</a></SPAN></dt>
 <dd class="data">
 <h3>
 Constructors</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Doc.Line">Line</a> {ind ∷ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, doc ∷ <a class="tref" href="#Doc">Doc</a>}</SPAN></dt>
+<SPAN CLASS="code"><a name=Doc.Line>Line</a> {ind ∷ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, doc ∷ <a class="tref" href="#Doc">Doc</a>}</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Doc.None">None</a> </SPAN></dt>
+<SPAN CLASS="code"><a name=Doc.None>None</a> </SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Doc.Text">Text</a> {hd ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a>, doc ∷ <a class="tref" href="#Doc">Doc</a>}</SPAN></dt>
+<SPAN CLASS="code"><a name=Doc.Text>Text</a> {hd ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a>, doc ∷ <a class="tref" href="#Doc">Doc</a>}</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -148,156 +264,164 @@ Constructors</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Doc.doc">doc</a> ∷ <b><a class="tref" href="#Doc">Doc</a></b> → <a class="tref" href="#Doc">Doc</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Doc.doc>doc</a> ∷ <b><a class="tref" href="#Doc">Doc</a></b> → <a class="tref" href="#Doc">Doc</a></SPAN></dt>
 <dd class="func">
 <p>
 access field <SPAN CLASS="code">doc</SPAN></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Doc.hd">hd</a> ∷ <b><a class="tref" href="#Doc">Doc</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Doc.hd>hd</a> ∷ <b><a class="tref" href="#Doc">Doc</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
 access field <SPAN CLASS="code">hd</SPAN></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Doc.ind">ind</a> ∷ <b><a class="tref" href="#Doc">Doc</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Doc.ind>ind</a> ∷ <b><a class="tref" href="#Doc">Doc</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
 access field <SPAN CLASS="code">ind</SPAN></p>
 </dd>
 </dl>
 </dd>
-</dl>
-<h2>
-<a name="let">Functions and Values</a></h2>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="_lt_plus_div_gt">&lt;+/&gt;</a> ∷ <b><a class="tref" href="#DOCUMENT">DOCUMENT</a></b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a><br><b>infixr</b>&nbsp;&nbsp;7</SPAN></dt>
-<dd class="func">
-<p>
-join two documents with intervening space or stack them   </p>
+<dt class="data">
+<SPAN CLASS="code"><a name=_lt_gt>&lt;&gt;</a> ∷ <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a><br><b>infixr</b>&nbsp;&nbsp;6</SPAN></dt>
+<dd class="data">
 </dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="_lt_plus_gt">&lt;+&gt;</a> ∷ <b><a class="tref" href="#DOCUMENT">DOCUMENT</a></b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a><br><b>infixr</b>&nbsp;&nbsp;8</SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><a name=nest>nest</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=text>text</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=group>group</a> ∷ <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=flatten>flatten</a> ∷ <b><a class="tref" href="#DOCUMENT">DOCUMENT</a></b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=layout_tick>layout'</a> ∷ <b><a class="tref" href="#Doc">Doc</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=layout>layout</a> ∷ <a class="tref" href="#Doc">Doc</a> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> α <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=appendableFromWriter>appendableFromWriter</a> ∷ <b><a class="tref" href="../java/IO.html#Writer">Writer</a></b> → <a class="tref" href="../prelude/PreludeIO.html#IOMutable">IOMutable</a> <a class="tref" href="../java/Lang.html#Appendable">Appendable</a><br><b>native </b>(Appendable)</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=prettyIO>prettyIO</a> ∷ <b><a class="tref" href="../java/IO.html#Writer">Writer</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=blanks64>blanks64</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=best>best</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#Doc">Doc</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=be>be</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b>[(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="#DOCUMENT">DOCUMENT</a>)]</b> → <a class="tref" href="#Doc">Doc</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=better>better</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#Doc">Doc</a> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="#Doc">Doc</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=fits>fits</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#Doc">Doc</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=pretty>pretty</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=_lt_plus_gt>&lt;+&gt;</a> ∷ <b><a class="tref" href="#DOCUMENT">DOCUMENT</a></b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a><br><b>infixr</b>&nbsp;&nbsp;8</SPAN></dt>
+<dd class="data">
 <p>
 two documents with intervening space   </p>
 </dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="_lt_div_gt">&lt;/&gt;</a> ∷ <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a><br><b>infixr</b>&nbsp;&nbsp;7</SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><a name=_lt_div_gt>&lt;/&gt;</a> ∷ <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a><br><b>infixr</b>&nbsp;&nbsp;7</SPAN></dt>
+<dd class="data">
 <p>
 two documents stacked   </p>
 </dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="_lt_gt">&lt;&gt;</a> ∷ <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a><br><b>infixr</b>&nbsp;&nbsp;6</SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><a name=folddoc>folddoc</a> ∷ (<a class="tref" href="#DOCUMENT">DOCUMENT</a>→<a class="tref" href="#DOCUMENT">DOCUMENT</a>→<a class="tref" href="#DOCUMENT">DOCUMENT</a>) → <b>[<a class="tref" href="#DOCUMENT">DOCUMENT</a>]</b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
+<dd class="data">
 </dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="_lt_tilde_div_gt">&lt;~/&gt;</a> ∷ <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a><br><b>infixr</b>&nbsp;&nbsp;7</SPAN></dt>
-<dd class="func">
-<p>
-join two documents without intervening space or stack them   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="be">be</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b>[(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="#DOCUMENT">DOCUMENT</a>)]</b> → <a class="tref" href="#Doc">Doc</a></SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="best">best</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#Doc">Doc</a></SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="better">better</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#Doc">Doc</a> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="#Doc">Doc</a></SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="blanks64">blanks64</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="block">block</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="bracket">bracket</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="_break">break</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → [<a class="tref" href="#DOCUMENT">DOCUMENT</a>]</SPAN></dt>
-<dd class="func">
-<p>
-fill words of a string   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="fill">fill</a> ∷ <b>[<a class="tref" href="#DOCUMENT">DOCUMENT</a>]</b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="fits">fits</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#Doc">Doc</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="flatten">flatten</a> ∷ <b><a class="tref" href="#DOCUMENT">DOCUMENT</a></b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="folddoc">folddoc</a> ∷ (<a class="tref" href="#DOCUMENT">DOCUMENT</a>→<a class="tref" href="#DOCUMENT">DOCUMENT</a>→<a class="tref" href="#DOCUMENT">DOCUMENT</a>) → <b>[<a class="tref" href="#DOCUMENT">DOCUMENT</a>]</b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="group">group</a> ∷ <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="layout">layout</a> ∷ <b><a class="tref" href="#Doc">Doc</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="msgdoc">msgdoc</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
-<dd class="func">
-<p>
-turn a string into a document by breaking on space and filling up   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="nest">nest</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="pretty">pretty</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="sep">sep</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <b>[<a class="tref" href="#DOCUMENT">DOCUMENT</a>]</b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
-<dd class="func">
-<p>
-like <a class="fref" href="#fill">fill</a>, but with separator between items      </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="spread">spread</a> ∷ <b>[<a class="tref" href="#DOCUMENT">DOCUMENT</a>]</b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><a name=spread>spread</a> ∷ <b>[<a class="tref" href="#DOCUMENT">DOCUMENT</a>]</b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
+<dd class="data">
 <p>
 some documents with space inbetween   </p>
 </dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="stack">stack</a> ∷ <b>[<a class="tref" href="#DOCUMENT">DOCUMENT</a>]</b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><a name=stack>stack</a> ∷ <b>[<a class="tref" href="#DOCUMENT">DOCUMENT</a>]</b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
+<dd class="data">
 <p>
 some documents stacked   </p>
 </dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="text">text</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><a name=bracket>bracket</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
+<dd class="data">
 </dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="tight">tight</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <b>[<a class="tref" href="#DOCUMENT">DOCUMENT</a>]</b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><a name=block>block</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=_lt_tilde_div_gt>&lt;~/&gt;</a> ∷ <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a><br><b>infixr</b>&nbsp;&nbsp;7</SPAN></dt>
+<dd class="data">
+<p>
+join two documents without intervening space or stack them   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=_lt_plus_div_gt>&lt;+/&gt;</a> ∷ <b><a class="tref" href="#DOCUMENT">DOCUMENT</a></b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a><br><b>infixr</b>&nbsp;&nbsp;7</SPAN></dt>
+<dd class="data">
+<p>
+join two documents with intervening space or stack them   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=fill>fill</a> ∷ <b>[<a class="tref" href="#DOCUMENT">DOCUMENT</a>]</b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=sep>sep</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <b>[<a class="tref" href="#DOCUMENT">DOCUMENT</a>]</b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
+<dd class="data">
+<p>
+like <a class="fref" href="#fill">fill</a>, but with separator between items      </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=tight>tight</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <b>[<a class="tref" href="#DOCUMENT">DOCUMENT</a>]</b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
+<dd class="data">
 <p>
 like <a class="fref" href="#sep">sep</a>, but no space after separator      </p>
 </dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=_break>break</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → [<a class="tref" href="#DOCUMENT">DOCUMENT</a>]</SPAN></dt>
+<dd class="data">
+<p>
+fill words of a string   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=msgdoc>msgdoc</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
+<dd class="data">
+<p>
+turn a string into a document by breaking on space and filling up   </p>
+</dd>
 </dl>
 <h2>
-<a name="case">Functions and Values by Type</a></h2>
+<a NAME="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
 <SPAN CLASS="code">(<a class="tref" href="#DOCUMENT">DOCUMENT</a>→<a class="tref" href="#DOCUMENT">DOCUMENT</a>→<a class="tref" href="#DOCUMENT">DOCUMENT</a>) → [<a class="tref" href="#DOCUMENT">DOCUMENT</a>] → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
@@ -340,6 +464,18 @@ like <a class="fref" href="#sep">sep</a>, but no space after separator      </p>
 <dd class="func">
 <p>
 <a class="fref" href="#fill">fill</a>, <a class="fref" href="#spread">spread</a>, <a class="fref" href="#stack">stack</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../java/IO.html#Writer">Writer</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#prettyIO">prettyIO</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../java/IO.html#Writer">Writer</a> → <a class="tref" href="../prelude/PreludeIO.html#IOMutable">IOMutable</a> <a class="tref" href="../java/Lang.html#Appendable">Appendable</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#appendableFromWriter">appendableFromWriter</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a> → <a class="tref" href="#DOCUMENT">DOCUMENT</a></SPAN></dt>
@@ -393,7 +529,7 @@ like <a class="fref" href="#sep">sep</a>, but no space after separator      </p>
 <SPAN CLASS="code"><a class="tref" href="#Doc">Doc</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#layout">layout</a>, <a class="fref" href="#Doc.hd">Doc.hd</a></p>
+<a class="fref" href="#layout_tick">layout'</a>, <a class="fref" href="#Doc.hd">Doc.hd</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#Doc">Doc</a> → <a class="tref" href="#Doc">Doc</a></SPAN></dt>
@@ -472,6 +608,12 @@ like <a class="fref" href="#sep">sep</a>, but no space after separator      </p>
 <dd class="func">
 <p>
 <a class="fref" href="#Doc.None">Doc.None</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Doc">Doc</a> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> α <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#layout">layout</a></p>
 </dd>
 </dl>
 <p>

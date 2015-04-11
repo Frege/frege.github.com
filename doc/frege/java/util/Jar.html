@@ -17,29 +17,9 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 </style>
 <BODY>
 <h1>
-<a name="package">Package <SPAN CLASS="code">Java.util.Jar</SPAN></a></h1>
-<p>
- Source file: <SPAN CLASS="code">./frege/java/util/Jar.fr</SPAN></p>
-<h3>
-Package Documentation</h3>
+Module <SPAN CLASS="code">Java.util.Jar</SPAN></h1>
 <p>
 Java classes from package <SPAN CLASS="code">java.util.jar</SPAN>   </p>
-<h3>
-Table of Content</h3>
-<ul>
-<li>
-<div>
-<a HREF="#data">Data Types</a></div>
-<div>
-<a class="tref" href="#JarEntry">JarEntry</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#JarFile">JarFile</a></div>
-</li>
-<li>
-<div>
-<a HREF="#case">Functions and Values (by type)</a></div>
-<div>
-<a class="fref" href="#JarEntry.getName">JarEntry.getName</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#JarEntry.isDirectory">JarEntry.isDirectory</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#JarFile.getInputStream">JarFile.getInputStream</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#JarFile.entries">JarFile.entries</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#JarFile._new">JarFile.new</a></div>
-</li>
-</ul>
 <h3>
 Imports</h3>
 <ul>
@@ -73,61 +53,307 @@ import <a HREF="../../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as Pre
 </li>
 <li>
 <div>
+import <a HREF="../Util.html">Java.Util</a> as Util</div>
+</li>
+<li>
+<div>
 import <a HREF="./Regex.html">Java.util.Regex</a> as Regexp</div>
 </li>
 <li>
 <div>
-import <a HREF="../Util.html">Java.Util</a> as Util</div>
+import <a HREF="./Zip.html">Java.util.Zip</a> as Zip</div>
+</li>
+</ul>
+<h3>
+Table of Content</h3>
+<ul class="data">
+<li>
+<div>
+<a HREF="#data">Definitions</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#Attributes"> </a> <a class="tref" href="#Attributes">Attributes</a> = <b>native </b>java.util.jar.Attributes</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#AttributesName"> </a> <a class="tref" href="#AttributesName">AttributesName</a> = <b>pure </b><b>native </b>java.util.jar.Attributes.Name</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#JarEntry"> </a> <a class="tref" href="#JarEntry">JarEntry</a> = <b>mutable </b><b>native </b>java.util.jar.JarEntry</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#JarFile"> </a> <a class="tref" href="#JarFile">JarFile</a> = <b>mutable </b><b>native </b>java.util.jar.JarFile</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#Manifest"> </a> <a class="tref" href="#Manifest">Manifest</a> = <b>native </b>java.util.jar.Manifest</SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#instance">Instances</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Cloneable_Manifest"> </a> <a class="tref" href="../../prelude/PreludeIO.html#Cloneable">Cloneable</a> <a class="tref" href="#Manifest">Manifest</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Show_AttributesName"> </a> <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> <a class="tref" href="#AttributesName">AttributesName</a></SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#case">Functions and Values by Type</a></div>
 </li>
 </ul>
 <h2>
-<a name="data">Data Types</a></h2>
+<a NAME="data">Definitions</a></h2>
 <dl class="data">
 <dt class="data">
-<SPAN CLASS="code"><b>data </b><a name="JarEntry"> </a> <a class="tref" href="#JarEntry">JarEntry</a> = <b>mutable </b><b>native </b>java.util.jar.JarEntry</SPAN></dt>
+<SPAN CLASS="code"><b>data </b><a name=JarFile> </a> <a class="tref" href="#JarFile">JarFile</a> = <b>mutable </b><b>native </b>java.util.jar.JarFile</SPAN></dt>
 <dd class="data">
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="JarEntry.getName">getName</a> ∷ <b><a class="tref" href="#JarEntry">JarEntry</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a><br><b>native </b>getName</SPAN></dt>
+<SPAN CLASS="code"><a name=JarFile.entries>entries</a> ∷ <b><a class="tref" href="#JarFile">JarFile</a></b> → <a class="tref" href="../../prelude/PreludeIO.html#IOMutable">IOMutable</a> (<a class="tref" href="../Util.html#Enumeration">Enumeration</a> <a class="tref" href="#JarEntry">JarEntry</a>)<br><b>native </b>entries</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="JarEntry.isDirectory">isDirectory</a> ∷ <b><a class="tref" href="#JarEntry">JarEntry</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>native </b>isDirectory</SPAN></dt>
+<SPAN CLASS="code"><a name=JarFile.getInputStream>getInputStream</a> ∷ <b><a class="tref" href="#JarFile">JarFile</a></b> → <b><a class="tref" href="./Zip.html#ZipEntry">ZipEntry</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../IO.html#InputStream">InputStream</a><br><b>native </b>getInputStream&nbsp;&nbsp;<b>throws </b><a class="tref" href="../Lang.html#IOException">IOException</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=JarFile.getJarEntry>getJarEntry</a> ∷ <b><a class="tref" href="#JarFile">JarFile</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="#JarEntry">JarEntry</a>)<br><b>native </b>getJarEntry</SPAN></dt>
+<dd class="func">
+<p>
+get the <a class="tref" href="#JarEntry">JarEntry</a> for the specified name, or <a class="fref" href="../../prelude/PreludeBase.html#Maybe.Nothing">Maybe.Nothing</a> if not found.   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=JarFile.getManifest>getManifest</a> ∷ <b><a class="tref" href="#JarFile">JarFile</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#Manifest">Manifest</a>))<br><b>native </b>getManifest&nbsp;&nbsp;<b>throws </b><a class="tref" href="../Lang.html#IOException">IOException</a></SPAN></dt>
+<dd class="func">
+<p>
+retrieve the <a class="tref" href="#Manifest">Manifest</a>, if there is one   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=JarFile._new>new</a> ∷ <b><a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#JarFile">JarFile</a><br><b>native </b>new&nbsp;&nbsp;<b>throws </b><a class="tref" href="../Lang.html#IOException">IOException</a></SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><b>data </b><a name="JarFile"> </a> <a class="tref" href="#JarFile">JarFile</a> = <b>mutable </b><b>native </b>java.util.jar.JarFile</SPAN></dt>
+<SPAN CLASS="code"><b>data </b><a name=JarEntry> </a> <a class="tref" href="#JarEntry">JarEntry</a> = <b>mutable </b><b>native </b>java.util.jar.JarEntry</SPAN></dt>
 <dd class="data">
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="JarFile.entries">entries</a> ∷ <b><a class="tref" href="#JarFile">JarFile</a></b> → <a class="tref" href="../../prelude/PreludeIO.html#IOMutable">IOMutable</a> (<a class="tref" href="../Util.html#Enumeration">Enumeration</a> <a class="tref" href="#JarEntry">JarEntry</a>)<br><b>native </b>entries</SPAN></dt>
+<SPAN CLASS="code"><a name=JarEntry.getName>getName</a> ∷ <b><a class="tref" href="#JarEntry">JarEntry</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a><br><b>native </b>getName</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="JarFile.getInputStream">getInputStream</a> ∷ <b><a class="tref" href="#JarFile">JarFile</a></b> → <b><a class="tref" href="#JarEntry">JarEntry</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../IO.html#InputStream">InputStream</a><br><b>native </b>getInputStream&nbsp;&nbsp;<b>throws </b><a class="tref" href="../Lang.html#IOException">IOException</a></SPAN></dt>
+<SPAN CLASS="code"><a name=JarEntry.isDirectory>isDirectory</a> ∷ <b><a class="tref" href="#JarEntry">JarEntry</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>native </b>isDirectory</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="JarFile._new">new</a> ∷ <b><a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#JarFile">JarFile</a><br><b>native </b>new&nbsp;&nbsp;<b>throws </b><a class="tref" href="../Lang.html#IOException">IOException</a></SPAN></dt>
+<SPAN CLASS="code"><a name=JarEntry._new>new</a> ∷ <a class="tref" href="./Zip.html#ZipEntry">ZipEntry</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#JarEntry">JarEntry</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#JarEntry">JarEntry</a><br><b>native </b>new</SPAN></dt>
 <dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=JarEntry.newα>newα</a> ∷ <b><a class="tref" href="./Zip.html#ZipEntry">ZipEntry</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#JarEntry">JarEntry</a><br><b>native </b>new&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#JarEntry._new">new</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=JarEntry.newβ>newβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#JarEntry">JarEntry</a><br><b>native </b>new&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#JarEntry._new">new</a></SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=Manifest> </a> <a class="tref" href="#Manifest">Manifest</a> = <b>native </b>java.util.jar.Manifest</SPAN></dt>
+<dd class="data">
+<p>
+The Manifest of a <a class="tref" href="#JarFile">JarFile</a></p>
+<p>
+see <a HREF="http://docs.oracle.com/javase/7/docs/api/java/util/jar/Manifest.html">java doc</a>   </p>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Manifest.getMainAttributes>getMainAttributes</a> ∷ <b><a class="tref" href="../../prelude/PreludeIO.html#Mutable">Mutable</a> 𝖘 <a class="tref" href="#Manifest">Manifest</a></b> → <a class="tref" href="../../prelude/PreludeIO.html#STMutable">STMutable</a> 𝖘 <a class="tref" href="#Attributes">Attributes</a><br><b>native </b>getMainAttributes</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=Attributes> </a> <a class="tref" href="#Attributes">Attributes</a> = <b>native </b>java.util.jar.Attributes</SPAN></dt>
+<dd class="data">
+<p>
+Attributes of a <a class="tref" href="#Manifest">Manifest</a></p>
+<p>
+see <a HREF="http://docs.oracle.com/javase/7/docs/api/java/util/jar/Attributes.html">java doc</a>   </p>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Attributes.getValue>getValue</a> ∷ <a class="tref" href="../../prelude/PreludeIO.html#Mutable">Mutable</a> 𝖘 <a class="tref" href="#Attributes">Attributes</a> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../../prelude/PreludeBase.html#ST">ST</a> 𝖘 (<a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeIO.html#Mutable">Mutable</a> 𝖘 <a class="tref" href="#Attributes">Attributes</a> → <a class="tref" href="#AttributesName">AttributesName</a> → <a class="tref" href="../../prelude/PreludeBase.html#ST">ST</a> 𝖘 (<a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>throws </b><a class="tref" href="../Lang.html#IllegalArgumentException">IllegalArgumentException</a><br><b>native </b>getValue</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Attributes.getValueα>getValueα</a> ∷ <b><a class="tref" href="../../prelude/PreludeIO.html#Mutable">Mutable</a> 𝖘 <a class="tref" href="#Attributes">Attributes</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#ST">ST</a> 𝖘 (<a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a>)<br><b>native </b>getValue&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#Attributes.getValue">getValue</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Attributes.getValueβ>getValueβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeIO.html#Mutable">Mutable</a> 𝖘 <a class="tref" href="#Attributes">Attributes</a></b> → <b><a class="tref" href="#AttributesName">AttributesName</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#ST">ST</a> 𝖘 (<a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a>)<br><b>native </b>getValue&nbsp;&nbsp;<b>throws </b><a class="tref" href="../Lang.html#IllegalArgumentException">IllegalArgumentException</a>&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#Attributes.getValue">getValue</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Attributes.keySet>keySet</a> ∷ <b><a class="tref" href="../../prelude/PreludeIO.html#Mutable">Mutable</a> 𝖘 <a class="tref" href="#Attributes">Attributes</a></b> → <a class="tref" href="../../prelude/PreludeIO.html#STMutable">STMutable</a> 𝖘 (<a class="tref" href="../Util.html#Set">Set</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a>)<br><b>native </b>keySet</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=AttributesName> </a> <a class="tref" href="#AttributesName">AttributesName</a> = <b>pure </b><b>native </b>java.util.jar.Attributes.Name</SPAN></dt>
+<dd class="data">
+<p>
+Predefined keys for <a class="tref" href="#Attributes">Attributes</a> maps.   </p>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=AttributesName.class_path>class_path</a> ∷ <a class="tref" href="#AttributesName">AttributesName</a><br><b>pure </b><b>native </b>java.util.jar.Attributes.Name.CLASS_PATH</SPAN></dt>
+<dd class="func">
+<p>
+Name object for <SPAN CLASS="code">Class-Path</SPAN> manifest attribute.</p>
+<p>
+Bundled extensions can use this attribute to find other JAR files containing needed classes.   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=AttributesName.main_class>main_class</a> ∷ <a class="tref" href="#AttributesName">AttributesName</a><br><b>pure </b><b>native </b>java.util.jar.Attributes.Name.MAIN_CLASS</SPAN></dt>
+<dd class="func">
+<p>
+Name object for <SPAN CLASS="code">Main-Class</SPAN> manifest attribute used for launching applications packaged in JAR files.   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=AttributesName.toString>toString</a> ∷ <b><a class="tref" href="#AttributesName">AttributesName</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a><br><b>pure </b><b>native </b>toString</SPAN></dt>
+<dd class="func">
+<p>
+Returns the attribute name as a <a class="tref" href="../../prelude/PreludeBase.html#String">String</a>.   </p>
 </dd>
 </dl>
 </dd>
 </dl>
 <h2>
-<a name="case">Functions and Values by Type</a></h2>
+<a NAME="instance">Instances</a></h2>
+<dl class="inst">
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Cloneable_Manifest> </a> <a class="tref" href="../../prelude/PreludeIO.html#Cloneable">Cloneable</a> <a class="tref" href="#Manifest">Manifest</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Cloneable_Manifest.clone>clone</a> ∷ <b><a class="tref" href="#Manifest">Manifest</a></b> → <a class="tref" href="#Manifest">Manifest</a><br><b>pure </b><b>native </b>clone</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeIO.html#Cloneable.clone">Cloneable.clone</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Cloneable_Manifest.freeze>freeze</a> ∷ <b><a class="tref" href="#Manifest">Manifest</a></b> → <a class="tref" href="#Manifest">Manifest</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeIO.html#Cloneable.freeze">Cloneable.freeze</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Cloneable_Manifest.thaw>thaw</a> ∷ <b><a class="tref" href="#Manifest">Manifest</a></b> → <a class="tref" href="#Manifest">Manifest</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeIO.html#Cloneable.thaw">Cloneable.thaw</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Show_AttributesName> </a> <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> <a class="tref" href="#AttributesName">AttributesName</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_AttributesName.display>display</a> ∷ <b><a class="tref" href="#AttributesName">AttributesName</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.display">Show.display</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_AttributesName.show>show</a> ∷ <b><a class="tref" href="#AttributesName">AttributesName</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_AttributesName.showChars>showChars</a> ∷ <b><a class="tref" href="#AttributesName">AttributesName</a></b> → [<a class="tref" href="../../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.showChars">Show.showChars</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_AttributesName.showList>showList</a> ∷ <b>[<a class="tref" href="#AttributesName">AttributesName</a>]</b> → <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.showList">Show.showList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_AttributesName.showsPrec>showsPrec</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> → <b><a class="tref" href="#AttributesName">AttributesName</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.showsPrec">Show.showsPrec</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_AttributesName.showsub>showsub</a> ∷ <b><a class="tref" href="#AttributesName">AttributesName</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.showsub">Show.showsub</a></p>
+</dd>
+</dl>
+</dd>
+</dl>
+<h2>
+<a NAME="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#JarFile">JarFile</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#JarFile._new">JarFile.new</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#JarEntry">JarEntry</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JarEntry.newβ">JarEntry.newβ</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">[<a class="tref" href="#AttributesName">AttributesName</a>] → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_AttributesName.showList">Show_AttributesName.showList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#AttributesName">AttributesName</a> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_AttributesName.show">Show_AttributesName.show</a>, <a class="fref" href="#Show_AttributesName.display">Show_AttributesName.display</a>, <a class="fref" href="#Show_AttributesName.showsub">Show_AttributesName.showsub</a>, <a class="fref" href="#AttributesName.toString">AttributesName.toString</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#AttributesName">AttributesName</a> → [<a class="tref" href="../../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_AttributesName.showChars">Show_AttributesName.showChars</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#JarEntry">JarEntry</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
@@ -142,7 +368,13 @@ Member Functions</h3>
 <a class="fref" href="#JarEntry.isDirectory">JarEntry.isDirectory</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#JarFile">JarFile</a> → <a class="tref" href="#JarEntry">JarEntry</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../IO.html#InputStream">InputStream</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#JarFile">JarFile</a> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="#JarEntry">JarEntry</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JarFile.getJarEntry">JarFile.getJarEntry</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JarFile">JarFile</a> → <a class="tref" href="./Zip.html#ZipEntry">ZipEntry</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../IO.html#InputStream">InputStream</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#JarFile.getInputStream">JarFile.getInputStream</a></p>
@@ -152,6 +384,66 @@ Member Functions</h3>
 <dd class="func">
 <p>
 <a class="fref" href="#JarFile.entries">JarFile.entries</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JarFile">JarFile</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#Manifest">Manifest</a>))</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JarFile.getManifest">JarFile.getManifest</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Manifest">Manifest</a> → <a class="tref" href="#Manifest">Manifest</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Cloneable_Manifest.freeze">Cloneable_Manifest.freeze</a>, <a class="fref" href="#Cloneable_Manifest.clone">Cloneable_Manifest.clone</a>, <a class="fref" href="#Cloneable_Manifest.thaw">Cloneable_Manifest.thaw</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./Zip.html#ZipEntry">ZipEntry</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#JarEntry">JarEntry</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JarEntry.newα">JarEntry.newα</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#AttributesName">AttributesName</a> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_AttributesName.showsPrec">Show_AttributesName.showsPrec</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#AttributesName">AttributesName</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#AttributesName.main_class">AttributesName.main_class</a>, <a class="fref" href="#AttributesName.class_path">AttributesName.class_path</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeIO.html#Mutable">Mutable</a> 𝖘 <a class="tref" href="#Attributes">Attributes</a> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../../prelude/PreludeBase.html#ST">ST</a> 𝖘 (<a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Attributes.getValueα">Attributes.getValueα</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeIO.html#Mutable">Mutable</a> 𝖘 <a class="tref" href="#Attributes">Attributes</a> → <a class="tref" href="#AttributesName">AttributesName</a> → <a class="tref" href="../../prelude/PreludeBase.html#ST">ST</a> 𝖘 (<a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Attributes.getValueβ">Attributes.getValueβ</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeIO.html#Mutable">Mutable</a> 𝖘 <a class="tref" href="#Attributes">Attributes</a> → <a class="tref" href="../../prelude/PreludeIO.html#STMutable">STMutable</a> 𝖘 (<a class="tref" href="../Util.html#Set">Set</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Attributes.keySet">Attributes.keySet</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeIO.html#Mutable">Mutable</a> 𝖘 <a class="tref" href="#Manifest">Manifest</a> → <a class="tref" href="../../prelude/PreludeIO.html#STMutable">STMutable</a> 𝖘 <a class="tref" href="#Attributes">Attributes</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Manifest.getMainAttributes">Manifest.getMainAttributes</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">ω</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Attributes.getValue">Attributes.getValue</a>, <a class="fref" href="#JarEntry._new">JarEntry.new</a></p>
 </dd>
 </dl>
 <p>

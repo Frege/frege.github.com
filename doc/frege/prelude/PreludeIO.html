@@ -17,57 +17,13 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 </style>
 <BODY>
 <h1>
-<a name="package">Package <SPAN CLASS="code">Prelude.PreludeIO</SPAN></a></h1>
-<p>
- Source file: <SPAN CLASS="code">./frege/prelude/PreludeIO.fr</SPAN></p>
-<h3>
-Package Documentation</h3>
+Module <SPAN CLASS="code">Prelude.PreludeIO</SPAN></h1>
 <p>
 This package provides classes and functions that deal with the lesser pure parts of Frege - Exceptions, Threads, mutable data.</p>
 <p>
 This package is <i>implementation specific</i> insofar as the compiler may assume that certain items are defined here in a certain way. Changes may thus lead to compiler crashes or java code that will be rejected by the java compiler.</p>
 <p>
 In particular, derived <a class="tref" href="#Exceptional">Exceptional</a> instances will reference type class <a class="tref" href="#Exceptional">Exceptional</a>.</p>
-<h3>
-Table of Content</h3>
-<ul>
-<li>
-<div>
-<a HREF="#type">Type Aliases</a></div>
-<div>
-<a class="tref" href="#IOMutable">IOMutable</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#IORef">IORef</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#MutableIO">MutableIO</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#STMutable">STMutable</a></div>
-</li>
-<li>
-<div>
-<a HREF="#class">Classes</a></div>
-<div>
-<a class="tref" href="#Cloneable">Cloneable</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Exceptional">Exceptional</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Freezable">Freezable</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#JavaType">JavaType</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Serializable">Serializable</a></div>
-</li>
-<li>
-<div>
-<a HREF="#instance">Instances</a></div>
-<div>
-<a class="tref" href="#Exceptional_Exception">Exceptional_Exception</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Exceptional_GuardFailed">Exceptional_GuardFailed</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Exceptional_NoMatch">Exceptional_NoMatch</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Exceptional_Undefined">Exceptional_Undefined</a></div>
-</li>
-<li>
-<div>
-<a HREF="#data">Data Types</a></div>
-<div>
-<a class="tref" href="#Exception">Exception</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Mutable">Mutable</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Ref">Ref</a></div>
-</li>
-<li>
-<div>
-<a HREF="#let">Functions and Values (alphabetically)</a></div>
-<div>
-<a class="fref" href="#_catch">catch</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#catchAll">catchAll</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#doCatch">doCatch</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_finally">finally</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#throwIO">throwIO</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#throwST">throwST</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_try">try</a></div>
-</li>
-<li>
-<div>
-<a HREF="#case">Functions and Values (by type)</a></div>
-<div>
-<a class="fref" href="#_catch">catch</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#catchAll">catchAll</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#doCatch">doCatch</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_finally">finally</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#throwIO">throwIO</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#throwST">throwST</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#_try">try</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Cloneable.freeze">Cloneable.freeze</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Cloneable.clone">Cloneable.clone</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Cloneable.thaw">Cloneable.thaw</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Freezable.freeze">Freezable.freeze</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Freezable.thaw">Freezable.thaw</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#JavaType.javaClass">JavaType.javaClass</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Serializable.freeze">Serializable.freeze</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Serializable.copySerializable">Serializable.copySerializable</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Serializable.thaw">Serializable.thaw</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Exceptional_Exception.javaClass">Exceptional_Exception.javaClass</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Exceptional_GuardFailed.javaClass">Exceptional_GuardFailed.javaClass</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Exceptional_NoMatch.javaClass">Exceptional_NoMatch.javaClass</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Exceptional_Undefined.javaClass">Exceptional_Undefined.javaClass</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Mutable.freeze">Mutable.freeze</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Mutable.Mutable">Mutable.Mutable</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Mutable.thaw">Mutable.thaw</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Mutable.readonly">Mutable.readonly</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ref.modify">Ref.modify</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ref.get">Ref.get</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ref._new">Ref.new</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ref.put">Ref.put</a></div>
-</li>
-</ul>
 <h3>
 Imports</h3>
 <ul>
@@ -84,126 +40,148 @@ import <a HREF="./PreludeMonad.html">Prelude.PreludeMonad</a> as PreludeMonad</d
 import <a HREF="../control/Semigroupoid.html">Control.Semigroupoid</a> as Semigroupoid</div>
 </li>
 </ul>
+<h3>
+Table of Content</h3>
+<ul class="data">
+<li>
+<div>
+<a HREF="#data">Definitions</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><b>type </b><a class="tref" href="#IOMutable">IOMutable</a> d = <a class="tref" href="./PreludeBase.html#ST">ST</a> <a class="tref" href="./PreludeBase.html#RealWorld">RealWorld</a> (<a class="tref" href="#Mutable">Mutable</a> <a class="tref" href="./PreludeBase.html#RealWorld">RealWorld</a> d)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>type </b><a class="tref" href="#IORef">IORef</a> a = <a class="tref" href="#Mutable">Mutable</a> <a class="tref" href="./PreludeBase.html#RealWorld">RealWorld</a> (<a class="tref" href="#Ref">Ref</a> a)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>type </b><a class="tref" href="#MutableIO">MutableIO</a>  = <a class="tref" href="#Mutable">Mutable</a> <a class="tref" href="./PreludeBase.html#RealWorld">RealWorld</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>type </b><a class="tref" href="#STMutable">STMutable</a> s d = <a class="tref" href="./PreludeBase.html#ST">ST</a> s (<a class="tref" href="#Mutable">Mutable</a> s d)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>class </b><a class="tref" href="#Cloneable">Cloneable</a> <a class="tref" href="#Freezable">Freezable</a> f ⇒  f</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>class </b><a class="tref" href="#Exceptional">Exceptional</a> <a class="tref" href="#JavaType">JavaType</a> e ⇒  e</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>class </b><a class="tref" href="#Freezable">Freezable</a>  f</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>class </b><a class="tref" href="#JavaType">JavaType</a>  e</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>class </b><a class="tref" href="#Serializable">Serializable</a> <a class="tref" href="#Freezable">Freezable</a> f ⇒  f</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#Exception"> </a> <a class="tref" href="#Exception">Exception</a> = <b>pure </b><b>native </b>java.lang.Exception</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#Mutable"> </a> <a class="tref" href="#Mutable">Mutable</a> s m</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#Ref"> </a> <a class="tref" href="#Ref">Ref</a> a = <b>native </b>frege.runtime.Ref</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#doCatch">doCatch</a> ∷ <b><a class="tref" href="./PreludeBase.html#Class">Class</a> b</b> → <b><a class="tref" href="./PreludeBase.html#ST">ST</a> s a</b> → (<b>b → <a class="tref" href="./PreludeBase.html#ST">ST</a> s a</b>) → <a class="tref" href="./PreludeBase.html#ST">ST</a> s a&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#_catch">catch</a> ∷ <a class="tref" href="#JavaType">JavaType</a> γ ⇒ <b><a class="tref" href="./PreludeBase.html#ST">ST</a> α β</b> → (<b>γ→<a class="tref" href="./PreludeBase.html#ST">ST</a> α β</b>) → <a class="tref" href="./PreludeBase.html#ST">ST</a> α β&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#_finally">finally</a> ∷ <b><a class="tref" href="./PreludeBase.html#IO">IO</a> a</b> → <b><a class="tref" href="./PreludeBase.html#IO">IO</a> b</b> → <a class="tref" href="./PreludeBase.html#IO">IO</a> a&nbsp;&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#throwST">throwST</a> ∷ <b><a class="tref" href="./PreludeBase.html#Throwable">Throwable</a></b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> s a</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#throwIO">throwIO</a> ∷ <b><a class="tref" href="./PreludeBase.html#Throwable">Throwable</a></b> → <a class="tref" href="./PreludeBase.html#IO">IO</a> a</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#_try">try</a> ∷ <a class="tref" href="./PreludeMonad.html#Monad">Monad</a> γ ⇒ (β→γ α) → β → γ α</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#catchAll">catchAll</a> ∷ <b><a class="tref" href="./PreludeBase.html#ST">ST</a> α β</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="#Exception">Exception</a> | β)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#readonly">readonly</a> ∷ (m → b) → <b><a class="tref" href="#Mutable">Mutable</a> s m</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> s b</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#mutable">mutable</a> ∷ α → <a class="tref" href="#Mutable">Mutable</a> β α</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#readIORef">readIORef</a> ∷ <b><a class="tref" href="#Mutable">Mutable</a> s (<a class="tref" href="#Ref">Ref</a> a)</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> s a&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#writeIORef">writeIORef</a> ∷ <b><a class="tref" href="#Mutable">Mutable</a> s (<a class="tref" href="#Ref">Ref</a> a)</b> → <b>a</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> s <a class="tref" href="./PreludeBase.html#Unit">()</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#modifyIORef">modifyIORef</a> ∷ <b><a class="tref" href="#Mutable">Mutable</a> α (<a class="tref" href="#Ref">Ref</a> β)</b> → (β→β) → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#newIORef">newIORef</a> ∷ <b>a</b> → <a class="tref" href="#STMutable">STMutable</a> s (<a class="tref" href="#Ref">Ref</a> a)&nbsp;</SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#instance">Instances</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Exceptional_Exception"> </a> <a class="tref" href="#Exceptional">Exceptional</a> <a class="tref" href="#Exception">Exception</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Exceptional_GuardFailed"> </a> <a class="tref" href="#Exceptional">Exceptional</a> <a class="tref" href="./PreludeBase.html#GuardFailed">GuardFailed</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Exceptional_NoMatch"> </a> <a class="tref" href="#Exceptional">Exceptional</a> <a class="tref" href="./PreludeBase.html#NoMatch">NoMatch</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Exceptional_Undefined"> </a> <a class="tref" href="#Exceptional">Exceptional</a> <a class="tref" href="./PreludeBase.html#Undefined">Undefined</a></SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#case">Functions and Values by Type</a></div>
+</li>
+</ul>
 <h2>
-<a name="type">Type Aliases</a></h2>
-<dl class="clas">
-<dt class="clas">
-<SPAN CLASS="code"><b>type </b><a name="IOMutable">IOMutable</a> d = <a class="tref" href="./PreludeBase.html#ST">ST</a> <a class="tref" href="./PreludeBase.html#RealWorld">RealWorld</a> (<a class="tref" href="#Mutable">Mutable</a> <a class="tref" href="./PreludeBase.html#RealWorld">RealWorld</a> d)</SPAN></dt>
-<dd class="clas">
-<p>
-They type of <a class="tref" href="./PreludeBase.html#IO">IO</a> actions that return a mutable value of type <i>d</i></p>
-<p>
-This is an abbreviation for <SPAN CLASS="code">ST RealWorld (Mutable RealWorld d)</SPAN>    </p>
-</dd>
-<dt class="clas">
-<SPAN CLASS="code"><b>type </b><a name="IORef">IORef</a> a = <a class="tref" href="#Mutable">Mutable</a> <a class="tref" href="./PreludeBase.html#RealWorld">RealWorld</a> (<a class="tref" href="#Ref">Ref</a> a)</SPAN></dt>
-<dd class="clas">
-<p>
-Haskell compatibility   </p>
-</dd>
-<dt class="clas">
-<SPAN CLASS="code"><b>type </b><a name="MutableIO">MutableIO</a>  = <a class="tref" href="#Mutable">Mutable</a> <a class="tref" href="./PreludeBase.html#RealWorld">RealWorld</a></SPAN></dt>
-<dd class="clas">
-<p>
-They type for mostly mutable values that are tied to the <a class="tref" href="./PreludeBase.html#IO">IO</a> monad.</p>
-<p>
-For java types that are <b>mutable only</b> so that they always would occur wrapped into <a class="tref" href="#MutableIO">MutableIO</a>, the convention is to declare them as</p>
-<PRE>
- data Thing = mutable native org.mut.impure.Thing</PRE>
-<p>
-and just write <SPAN CLASS="code">Thing</SPAN> everywhere. The type checker will check the rules for native functions <i>as if</i> <SPAN CLASS="code">Thing</SPAN> was <a class="tref" href="#MutableIO">MutableIO</a> <SPAN CLASS="code">Thing</SPAN>.</p>
-<p>
-However, normal type unification does not take the mutable status into account, so <SPAN CLASS="code">Mutable a m</SPAN> will never unify with <SPAN CLASS="code">Thing</SPAN>.</p>
-</dd>
-<dt class="clas">
-<SPAN CLASS="code"><b>type </b><a name="STMutable">STMutable</a> s d = <a class="tref" href="./PreludeBase.html#ST">ST</a> s (<a class="tref" href="#Mutable">Mutable</a> s d)</SPAN></dt>
-<dd class="clas">
-<p>
-They type of <a class="tref" href="./PreludeBase.html#ST">ST</a> actions that return a mutable value of type <i>d</i></p>
-<p>
-This is an abbreviation for <SPAN CLASS="code">ST s (Mutable s d)</SPAN>    </p>
-</dd>
-</dl>
-<h2>
-<a name="class">Classes</a></h2>
-<dl class="clas">
-<dt class="clas">
-<SPAN CLASS="code"><b>class </b><a name="Cloneable">Cloneable</a> <a class="tref" href="#Freezable">Freezable</a> f ⇒  f</SPAN></dt>
-<dd class="clas">
-<p>
-For a data type declared like</p>
-<PRE>
- data D = native Javatype</PRE>
-<p>
-where <SPAN CLASS="code">Javatype</SPAN> implements the <SPAN CLASS="code">java.lang.Cloneable</SPAN> interface, one can get implementations for <a class="fref" href="#Freezable.freeze">Freezable.freeze</a> and <a class="fref" href="#Freezable.thaw">Freezable.thaw</a> by just stating</p>
-<PRE>
- instance Cloneable D</PRE>
-<p>
-The <a class="fref" href="#Freezable.freeze">Freezable.freeze</a> and <a class="fref" href="#Freezable.thaw">Freezable.thaw</a> operations are implemented in terms of <a class="fref" href="#Cloneable.clone">Cloneable.clone</a>.</p>
-<p>
-Note: Cloning does <b>not</b> produce safe copies if the cloned object contains references to mutable objects. In such cases, sort of a deep cloning would be required.</p>
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="Cloneable.clone">clone</a> ∷ <a class="tref" href="#Cloneable">Cloneable</a> f ⇒ <b>f</b> → f<br><b>pure </b><b>native </b>clone</SPAN></dt>
-<dd class="func">
-<p>
-<SPAN CLASS="code">clone v</SPAN> must be a native method that works like <SPAN CLASS="code">java.lang.Object#clone</SPAN>.</p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Cloneable.freeze">freeze</a> ∷ <a class="tref" href="#Cloneable">Cloneable</a> f ⇒ <b>f</b> → f</SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Cloneable.thaw">thaw</a> ∷ <a class="tref" href="#Cloneable">Cloneable</a> f ⇒ <b>f</b> → f</SPAN></dt>
-<dd class="func">
-</dd>
-</dl>
-</dd>
-<dt class="clas">
-<SPAN CLASS="code"><b>class </b><a name="Exceptional">Exceptional</a> <a class="tref" href="#JavaType">JavaType</a> e ⇒  e</SPAN></dt>
-<dd class="clas">
-<p>
-Function <a class="fref" href="#_catch">catch</a> requires that the argument of a handler function is an instance of <a class="tref" href="#Exceptional">Exceptional</a>.</p>
-<p>
-This is derivable for <SPAN CLASS="code">pure</SPAN> <SPAN CLASS="code">native</SPAN> data types.</p>
-<h3>
-Known Instances</h3>
-<p>
-<a class="tref" href="#Exceptional_Undefined">Undefined</a>, <a class="tref" href="#Exceptional_Exception">Exception</a>, <a class="tref" href="#Exceptional_GuardFailed">GuardFailed</a>, <a class="tref" href="#Exceptional_NoMatch">NoMatch</a></p>
-</dd>
-<dt class="clas">
-<SPAN CLASS="code"><b>class </b><a name="Freezable">Freezable</a>  f</SPAN></dt>
-<dd class="clas">
-<p>
-Type class for mutable values that support making read-only copies. To be implemented with care.</p>
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="Freezable.freeze">freeze</a> ∷ <a class="tref" href="#Freezable">Freezable</a> f ⇒ f → f</SPAN></dt>
-<dd class="func">
-<p>
-"Freeze" a mutable native value. The result is supposed to be immutable or at least not reachable from other parts of the code, especially from java code.</p>
-<p>
-The most prominent way to freeze a value is by <a class="fref" href="#Cloneable.clone">Cloneable.clone</a>-ing it, if that is supported. But note that sometimes a deep copy would be needed, and that <SPAN CLASS="code">clone</SPAN> does not do that.</p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Freezable.thaw">thaw</a> ∷ <a class="tref" href="#Freezable">Freezable</a> f ⇒ f → f</SPAN></dt>
-<dd class="func">
-<p>
-The inverse of <a class="fref" href="#Freezable.freeze">Freezable.freeze</a> creates a value (an object) which can be passed to impure functions without compromising the frozen object passed as argument.</p>
-<p>
-One possibility to thaw an object is by cloning it.</p>
-<p>
-If <a class="fref" href="#Freezable.thaw">Freezable.thaw</a> is not implemented correctly, bad things may happen.</p>
-</dd>
-</dl>
-</dd>
-<dt class="clas">
-<SPAN CLASS="code"><b>class </b><a name="JavaType">JavaType</a>  e</SPAN></dt>
-<dd class="clas">
+<a NAME="data">Definitions</a></h2>
+<dl class="data">
+<dt class="data">
+<SPAN CLASS="code"><b>class </b><a name=JavaType>JavaType</a>  e</SPAN></dt>
+<dd class="data">
 <p>
 Make the <SPAN CLASS="code">java.lang.Class</SPAN> object corresponding to the instantiated type available.</p>
 <p>
@@ -220,111 +198,133 @@ Known Instances</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="JavaType.javaClass">javaClass</a> ∷ <a class="tref" href="#JavaType">JavaType</a> e ⇒ <a class="tref" href="./PreludeBase.html#Class">Class</a> e</SPAN></dt>
+<SPAN CLASS="code"><a name=JavaType.javaClass>javaClass</a> ∷ <a class="tref" href="#JavaType">JavaType</a> e ⇒ <a class="tref" href="./PreludeBase.html#Class">Class</a> e</SPAN></dt>
 <dd class="func">
 <p>
 The <SPAN CLASS="code">java.lang.Class</SPAN> object of the instantiated type   </p>
 </dd>
 </dl>
 </dd>
-<dt class="clas">
-<SPAN CLASS="code"><b>class </b><a name="Serializable">Serializable</a> <a class="tref" href="#Freezable">Freezable</a> f ⇒  f</SPAN></dt>
-<dd class="clas">
-<p>
-For a data type declared like</p>
-<PRE>
- data D = native Javatype</PRE>
-<p>
-where <SPAN CLASS="code">Javatype</SPAN> implements the <SPAN CLASS="code">java.io.Serializable</SPAN> interface, one can get implementations for <a class="fref" href="#Freezable.freeze">Freezable.freeze</a> and <a class="fref" href="#Freezable.thaw">Freezable.thaw</a> by just stating</p>
-<PRE>
- instance Serializable D</PRE>
-<p>
-The <a class="fref" href="#Freezable.freeze">Freezable.freeze</a> and <a class="fref" href="#Freezable.thaw">Freezable.thaw</a> operations are implemented in terms of <a class="fref" href="#Serializable.copySerializable">Serializable.copySerializable</a>, which serializes its argument to a byte array and creates a new copy by deserializing it from the byte array.</p>
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="Serializable.copySerializable">copySerializable</a> ∷ <a class="tref" href="#Serializable">Serializable</a> f ⇒ <b>f</b> → f<br><b>pure </b><b>native </b>frege.runtime.Runtime.copySerializable</SPAN></dt>
-<dd class="func">
-<p>
-<SPAN CLASS="code">copySerializable v</SPAN> is supposed to be a native function that is implemented by <SPAN CLASS="code">frege.runtime.Runtime.copySerializable</SPAN> at the instantiated type.</p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Serializable.freeze">freeze</a> ∷ <a class="tref" href="#Serializable">Serializable</a> f ⇒ <b>f</b> → f</SPAN></dt>
-<dd class="func">
-<p>
-make a safe copy throug serialization/deserialization   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Serializable.thaw">thaw</a> ∷ <a class="tref" href="#Serializable">Serializable</a> f ⇒ <b>f</b> → f</SPAN></dt>
-<dd class="func">
-<p>
-make a safe copy throug serialization/deserialization   </p>
-</dd>
-</dl>
-</dd>
-</dl>
-<h2>
-<a name="instance">Instances</a></h2>
-<dl class="inst">
-<dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="Exceptional_Exception"> </a> <a class="tref" href="#Exceptional">Exceptional</a> <a class="tref" href="#Exception">Exception</a></SPAN></dt>
-<dd class="inst">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="Exceptional_Exception.javaClass">javaClass</a> ∷ <a class="tref" href="./PreludeBase.html#Class">Class</a> <a class="tref" href="#Exception">Exception</a><br><b>pure </b><b>native </b>java.lang.Exception.class</SPAN></dt>
-<dd class="func">
-</dd>
-</dl>
-</dd>
-<dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="Exceptional_GuardFailed"> </a> <a class="tref" href="#Exceptional">Exceptional</a> <a class="tref" href="./PreludeBase.html#GuardFailed">GuardFailed</a></SPAN></dt>
-<dd class="inst">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="Exceptional_GuardFailed.javaClass">javaClass</a> ∷ <a class="tref" href="./PreludeBase.html#Class">Class</a> <a class="tref" href="./PreludeBase.html#GuardFailed">GuardFailed</a><br><b>pure </b><b>native </b>frege.runtime.GuardFailed.class</SPAN></dt>
-<dd class="func">
-</dd>
-</dl>
-</dd>
-<dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="Exceptional_NoMatch"> </a> <a class="tref" href="#Exceptional">Exceptional</a> <a class="tref" href="./PreludeBase.html#NoMatch">NoMatch</a></SPAN></dt>
-<dd class="inst">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="Exceptional_NoMatch.javaClass">javaClass</a> ∷ <a class="tref" href="./PreludeBase.html#Class">Class</a> <a class="tref" href="./PreludeBase.html#NoMatch">NoMatch</a><br><b>pure </b><b>native </b>frege.runtime.NoMatch.class</SPAN></dt>
-<dd class="func">
-</dd>
-</dl>
-</dd>
-<dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="Exceptional_Undefined"> </a> <a class="tref" href="#Exceptional">Exceptional</a> <a class="tref" href="./PreludeBase.html#Undefined">Undefined</a></SPAN></dt>
-<dd class="inst">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="Exceptional_Undefined.javaClass">javaClass</a> ∷ <a class="tref" href="./PreludeBase.html#Class">Class</a> <a class="tref" href="./PreludeBase.html#Undefined">Undefined</a><br><b>pure </b><b>native </b>frege.runtime.Undefined.class</SPAN></dt>
-<dd class="func">
-</dd>
-</dl>
-</dd>
-</dl>
-<h2>
-<a name="data">Data Types</a></h2>
-<dl class="data">
 <dt class="data">
-<SPAN CLASS="code"><b>data </b><a name="Exception"> </a> <a class="tref" href="#Exception">Exception</a> = <b>pure </b><b>native </b>java.lang.Exception</SPAN></dt>
+<SPAN CLASS="code"><b>class </b><a name=Exceptional>Exceptional</a> <a class="tref" href="#JavaType">JavaType</a> e ⇒  e</SPAN></dt>
+<dd class="data">
+<p>
+Function <a class="fref" href="#_catch">catch</a> requires that the argument of a handler function is an instance of <a class="tref" href="#Exceptional">Exceptional</a>.</p>
+<p>
+This is derivable for <SPAN CLASS="code">pure</SPAN> <SPAN CLASS="code">native</SPAN> data types.</p>
+<h3>
+Known Instances</h3>
+<p>
+<a class="tref" href="#Exceptional_Undefined">Undefined</a>, <a class="tref" href="#Exceptional_Exception">Exception</a>, <a class="tref" href="#Exceptional_GuardFailed">GuardFailed</a>, <a class="tref" href="#Exceptional_NoMatch">NoMatch</a></p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=Exception> </a> <a class="tref" href="#Exception">Exception</a> = <b>pure </b><b>native </b>java.lang.Exception</SPAN></dt>
 <dd class="data">
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><b>data </b><a name="Mutable"> </a> <a class="tref" href="#Mutable">Mutable</a> s m</SPAN></dt>
+<SPAN CLASS="code"><a name=doCatch>doCatch</a> ∷ <b><a class="tref" href="./PreludeBase.html#Class">Class</a> b</b> → <b><a class="tref" href="./PreludeBase.html#ST">ST</a> s a</b> → (<b>b → <a class="tref" href="./PreludeBase.html#ST">ST</a> s a</b>) → <a class="tref" href="./PreludeBase.html#ST">ST</a> s a<br><b>native </b>frege.runtime.WrappedCheckedException.doCatch</SPAN></dt>
+<dd class="data">
+<p>
+nowarn: argument of type (ST s a)</p>
+<p>
+Runtime method for implementation of <a class="fref" href="#_catch">catch</a>   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=_catch>catch</a> ∷ <a class="tref" href="#JavaType">JavaType</a> γ ⇒ <b><a class="tref" href="./PreludeBase.html#ST">ST</a> α β</b> → (<b>γ→<a class="tref" href="./PreludeBase.html#ST">ST</a> α β</b>) → <a class="tref" href="./PreludeBase.html#ST">ST</a> α β<br><b>infixl</b>&nbsp;&nbsp;2</SPAN></dt>
+<dd class="data">
+<p>
+The construct</p>
+<PRE>
+ action `catch` handler</PRE>
+<p>
+is a <a class="tref" href="./PreludeBase.html#ST">ST</a> action with the same type as <i>action</i>.</p>
+<p>
+If <i>action</i> yields a result, this will be the result of the overall action. However, if, during execution of <i>action</i> the JVM raises an exception <i>e</i> with java type <SPAN CLASS="code">E</SPAN>, and <SPAN CLASS="code">E</SPAN> is a subtype of java type <SPAN CLASS="code">H</SPAN>, and <SPAN CLASS="code">H</SPAN> is the java type associated with the argument of <i>handler</i>, the return value will be:</p>
+<PRE>
+ handler e</PRE>
+<p>
+Otherwise, if the type of <i>e</i> does not allow to pass it to <i>handler</i> it will be propagated upwards and <SPAN CLASS="code">a `catch` b</SPAN> will not return to its caller.</p>
+<p>
+Because <a class="fref" href="#_catch">catch</a> is left associative, it is possible to catch different exceptions, like in:</p>
+<PRE>
+ action `catch` handler1 `catch` handler2</PRE>
+<p>
+Care must be taken to check for the <b>most specific</b> exception first. In the example above, if the exception handled by <i>handler1</i> is <b>less specific</b> than the one handled by <i>handler2</i>, then <i>handler2</i> will never get a chance to execute.</p>
+<p>
+Another way to put this is to say that if <SPAN CLASS="code">E1</SPAN> and <SPAN CLASS="code">E2</SPAN> are distinct exception types handled in a chain of <a class="fref" href="#_catch">catch</a>es, and <SPAN CLASS="code">E1</SPAN> is (from the point of view of Java!) a subtype of <SPAN CLASS="code">E2</SPAN>, then the handler for <SPAN CLASS="code">E1</SPAN> must appear further left than the handler for <SPAN CLASS="code">E2</SPAN>. If it is a super type of <SPAN CLASS="code">E2</SPAN>, however, its handler must appear further right. And finally, if the types do not stand in a sub-type relationship, the order of the handlers is immaterial.</p>
+<p>
+<b>Note</b> If <i>action</i> is of the form:</p>
+<PRE>
+ doSomething arg</PRE>
+<p>
+then, depending on the strictness of <i>doSomething</i> the argument <i>arg</i> may be evaluated <b>before</b> the action is returned. Exceptions (i.e. undefined values) that occur in the construction of the action do <b>not</b> count as exceptions thrown during execution of it, and hence cannot be catched.</p>
+<p>
+Example:</p>
+<PRE>
+ println (head []) `catch`  ....</PRE>
+<p>
+will not catch the exception that will be thrown when println evaluates</p>
+<p>
+For a remedy, see <a class="fref" href="#_try">try</a>.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=_finally>finally</a> ∷ <b><a class="tref" href="./PreludeBase.html#IO">IO</a> a</b> → <b><a class="tref" href="./PreludeBase.html#IO">IO</a> b</b> → <a class="tref" href="./PreludeBase.html#IO">IO</a> a<br><b>native </b>frege.runtime.WrappedCheckedException.doFinally<br><b>infixl</b>&nbsp;&nbsp;2</SPAN></dt>
+<dd class="data">
+<p>
+nowarn: argument of type (ST s a)</p>
+<p>
+The construct</p>
+<PRE>
+ action `finally` always</PRE>
+<p>
+reurns the same value as <i>action</i>, when executed.</p>
+<p>
+However, no matter if <i>action</i> produces a value or diverges (for example, by throwing an exception), in any case will <i>always</i> be executed, and its return value dismissed.</p>
+<p>
+Note that <a class="fref" href="#_finally">finally</a> only returns to its caller if <i>action</i> would have done so.</p>
+<p>
+<a class="fref" href="#_finally">finally</a> has the same fixity as <a class="fref" href="#_catch">catch</a>, hence it is possible to have</p>
+<PRE>
+ action `catch` handler1 `catch` handler2 `finally` always</PRE>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=throwST>throwST</a> ∷ <b><a class="tref" href="./PreludeBase.html#Throwable">Throwable</a></b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> s a</SPAN></dt>
+<dd class="data">
+<p>
+Deliberatly throw an exception in the <a class="tref" href="./PreludeBase.html#ST">ST</a> monad.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=throwIO>throwIO</a> ∷ <b><a class="tref" href="./PreludeBase.html#Throwable">Throwable</a></b> → <a class="tref" href="./PreludeBase.html#IO">IO</a> a</SPAN></dt>
+<dd class="data">
+<p>
+Deliberatly throw an exception in the <a class="tref" href="./PreludeBase.html#IO">IO</a> monad.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=_try>try</a> ∷ <a class="tref" href="./PreludeMonad.html#Monad">Monad</a> γ ⇒ (β→γ α) → β → γ α</SPAN></dt>
+<dd class="data">
+<p>
+Make sure that exceptions thrown during construction of an action can be catched. See <a class="fref" href="#_catch">catch</a> for an explanation.</p>
+<p>
+Example:</p>
+<PRE>
+ try println (head []) `catch` (\u::Undefined -&gt; println u.catched)</PRE>
+<p>
+should print:</p>
+<PRE>
+ frege.runtime.Undefined: Prelude.head []</PRE>
+<p>
+<a class="fref" href="#_try">try</a> does work for unary functions only. To be safe with functions taking more actions, use:</p>
+<PRE>
+ return a &gt;&gt;= (\a -&gt; return b &gt;&gt;= (\b -&gt; f a b))</PRE>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=catchAll>catchAll</a> ∷ <b><a class="tref" href="./PreludeBase.html#ST">ST</a> α β</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="#Exception">Exception</a> | β)</SPAN></dt>
+<dd class="data">
+<p>
+The <a class="fref" href="#catchAll">catchAll</a> function runs a <a class="tref" href="./PreludeBase.html#ST">ST</a> action and returns either the result or the exception thrown.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=Mutable> </a> <a class="tref" href="#Mutable">Mutable</a> s m</SPAN></dt>
 <dd class="data">
 <p>
 <a class="tref" href="#Mutable">Mutable</a> is a wrapper for native data types. A value of type <SPAN CLASS="code">Mutable s x</SPAN> is really an <SPAN CLASS="code">x</SPAN>, but it is tied to <a class="tref" href="./PreludeBase.html#ST">ST</a> thread s, wherefrom it cannot escape.</p>
@@ -368,7 +368,7 @@ To summarize:</p>
 Constructors</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><b>private</b> <a name="Mutable.Mutable">Mutable</a> m</SPAN></dt>
+<SPAN CLASS="code"><b>private</b> <a name=Mutable.Mutable>Mutable</a> m</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -376,13 +376,13 @@ Constructors</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Mutable.freeze">freeze</a> ∷ <a class="tref" href="#Freezable">Freezable</a> m ⇒ <b><a class="tref" href="#Mutable">Mutable</a> s m</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> s m</SPAN></dt>
+<SPAN CLASS="code"><a name=Mutable.freeze>freeze</a> ∷ <a class="tref" href="#Freezable">Freezable</a> m ⇒ <b><a class="tref" href="#Mutable">Mutable</a> s m</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> s m</SPAN></dt>
 <dd class="func">
 <p>
 obtain a read-only copy of a mutable value through cloning or serialization.   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Mutable.readonly">readonly</a> ∷ (m → b) → <b><a class="tref" href="#Mutable">Mutable</a> s m</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> s b</SPAN></dt>
+<SPAN CLASS="code"><a name=Mutable.readonly>readonly</a> ∷ (m → b) → <b><a class="tref" href="#Mutable">Mutable</a> s m</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> s b</SPAN></dt>
 <dd class="func">
 <p>
 Apply a pure function to a mutable value that pretends to be read-only.</p>
@@ -390,7 +390,7 @@ Apply a pure function to a mutable value that pretends to be read-only.</p>
 The function must not rely on anything that could change in the mutable data!   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Mutable.thaw">thaw</a> ∷ <a class="tref" href="#Freezable">Freezable</a> m ⇒ m → <a class="tref" href="#STMutable">STMutable</a> s m</SPAN></dt>
+<SPAN CLASS="code"><a name=Mutable.thaw>thaw</a> ∷ <a class="tref" href="#Freezable">Freezable</a> m ⇒ m → <a class="tref" href="#STMutable">STMutable</a> s m</SPAN></dt>
 <dd class="func">
 <p>
 obtain a mutable copy of a read only value through cloning or serialization.   </p>
@@ -398,7 +398,152 @@ obtain a mutable copy of a read only value through cloning or serialization.   <
 </dl>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><b>data </b><a name="Ref"> </a> <a class="tref" href="#Ref">Ref</a> a = <b>native </b>frege.runtime.Ref</SPAN></dt>
+<SPAN CLASS="code"><a name=readonly>readonly</a> ∷ (m → b) → <b><a class="tref" href="#Mutable">Mutable</a> s m</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> s b</SPAN></dt>
+<dd class="data">
+<p>
+Alias for <a class="fref" href="#Mutable.readonly">Mutable.readonly</a></p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=mutable>mutable</a> ∷ α → <a class="tref" href="#Mutable">Mutable</a> β α</SPAN></dt>
+<dd class="data">
+<p>
+Obtain a read only native value (temporarily) typed as <a class="tref" href="#Mutable">Mutable</a></p>
+<p>
+For example, this could be needed when running a native <a class="tref" href="./PreludeBase.html#ST">ST</a> method that uses the value as read-only, but we can't declare it, like:</p>
+<PRE>
+ private native copyOf java.util.Arrays.copyOf
+               :: ArrayOf s HashMap -&gt; Int -&gt; ST s (ArrayOf s HashMap)</PRE>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>type </b><a name=MutableIO>MutableIO</a>  = <a class="tref" href="#Mutable">Mutable</a> <a class="tref" href="./PreludeBase.html#RealWorld">RealWorld</a></SPAN></dt>
+<dd class="data">
+<p>
+They type for mostly mutable values that are tied to the <a class="tref" href="./PreludeBase.html#IO">IO</a> monad.</p>
+<p>
+For java types that are <b>mutable only</b> so that they always would occur wrapped into <a class="tref" href="#MutableIO">MutableIO</a>, the convention is to declare them as</p>
+<PRE>
+ data Thing = mutable native org.mut.impure.Thing</PRE>
+<p>
+and just write <SPAN CLASS="code">Thing</SPAN> everywhere. The type checker will check the rules for native functions <i>as if</i> <SPAN CLASS="code">Thing</SPAN> was <a class="tref" href="#MutableIO">MutableIO</a> <SPAN CLASS="code">Thing</SPAN>.</p>
+<p>
+However, normal type unification does not take the mutable status into account, so <SPAN CLASS="code">Mutable a m</SPAN> will never unify with <SPAN CLASS="code">Thing</SPAN>.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>type </b><a name=IOMutable>IOMutable</a> d = <a class="tref" href="./PreludeBase.html#ST">ST</a> <a class="tref" href="./PreludeBase.html#RealWorld">RealWorld</a> (<a class="tref" href="#Mutable">Mutable</a> <a class="tref" href="./PreludeBase.html#RealWorld">RealWorld</a> d)</SPAN></dt>
+<dd class="data">
+<p>
+They type of <a class="tref" href="./PreludeBase.html#IO">IO</a> actions that return a mutable value of type <i>d</i></p>
+<p>
+This is an abbreviation for <SPAN CLASS="code">ST RealWorld (Mutable RealWorld d)</SPAN>    </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>type </b><a name=STMutable>STMutable</a> s d = <a class="tref" href="./PreludeBase.html#ST">ST</a> s (<a class="tref" href="#Mutable">Mutable</a> s d)</SPAN></dt>
+<dd class="data">
+<p>
+They type of <a class="tref" href="./PreludeBase.html#ST">ST</a> actions that return a mutable value of type <i>d</i></p>
+<p>
+This is an abbreviation for <SPAN CLASS="code">ST s (Mutable s d)</SPAN>    </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>class </b><a name=Freezable>Freezable</a>  f</SPAN></dt>
+<dd class="data">
+<p>
+Type class for mutable values that support making read-only copies. To be implemented with care.</p>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Freezable.freeze>freeze</a> ∷ <a class="tref" href="#Freezable">Freezable</a> f ⇒ f → f</SPAN></dt>
+<dd class="func">
+<p>
+"Freeze" a mutable native value. The result is supposed to be immutable or at least not reachable from other parts of the code, especially from java code.</p>
+<p>
+The most prominent way to freeze a value is by <a class="fref" href="#Cloneable.clone">Cloneable.clone</a>-ing it, if that is supported. But note that sometimes a deep copy would be needed, and that <SPAN CLASS="code">clone</SPAN> does not do that.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Freezable.thaw>thaw</a> ∷ <a class="tref" href="#Freezable">Freezable</a> f ⇒ f → f</SPAN></dt>
+<dd class="func">
+<p>
+The inverse of <a class="fref" href="#Freezable.freeze">Freezable.freeze</a> creates a value (an object) which can be passed to impure functions without compromising the frozen object passed as argument.</p>
+<p>
+One possibility to thaw an object is by cloning it.</p>
+<p>
+If <a class="fref" href="#Freezable.thaw">Freezable.thaw</a> is not implemented correctly, bad things may happen.</p>
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>class </b><a name=Cloneable>Cloneable</a> <a class="tref" href="#Freezable">Freezable</a> f ⇒  f</SPAN></dt>
+<dd class="data">
+<p>
+For a data type declared like</p>
+<PRE>
+ data D = native Javatype</PRE>
+<p>
+where <SPAN CLASS="code">Javatype</SPAN> implements the <SPAN CLASS="code">java.lang.Cloneable</SPAN> interface, one can get implementations for <a class="fref" href="#Freezable.freeze">Freezable.freeze</a> and <a class="fref" href="#Freezable.thaw">Freezable.thaw</a> by just stating</p>
+<PRE>
+ instance Cloneable D</PRE>
+<p>
+The <a class="fref" href="#Freezable.freeze">Freezable.freeze</a> and <a class="fref" href="#Freezable.thaw">Freezable.thaw</a> operations are implemented in terms of <a class="fref" href="#Cloneable.clone">Cloneable.clone</a>.</p>
+<p>
+Note: Cloning does <b>not</b> produce safe copies if the cloned object contains references to mutable objects. In such cases, sort of a deep cloning would be required.</p>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Cloneable.clone>clone</a> ∷ <a class="tref" href="#Cloneable">Cloneable</a> f ⇒ <b>f</b> → f<br><b>pure </b><b>native </b>clone</SPAN></dt>
+<dd class="func">
+<p>
+<SPAN CLASS="code">clone v</SPAN> must be a native method that works like <SPAN CLASS="code">java.lang.Object#clone</SPAN>.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Cloneable.freeze>freeze</a> ∷ <a class="tref" href="#Cloneable">Cloneable</a> f ⇒ <b>f</b> → f</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Cloneable.thaw>thaw</a> ∷ <a class="tref" href="#Cloneable">Cloneable</a> f ⇒ <b>f</b> → f</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>class </b><a name=Serializable>Serializable</a> <a class="tref" href="#Freezable">Freezable</a> f ⇒  f</SPAN></dt>
+<dd class="data">
+<p>
+For a data type declared like</p>
+<PRE>
+ data D = native Javatype</PRE>
+<p>
+where <SPAN CLASS="code">Javatype</SPAN> implements the <SPAN CLASS="code">java.io.Serializable</SPAN> interface, one can get implementations for <a class="fref" href="#Freezable.freeze">Freezable.freeze</a> and <a class="fref" href="#Freezable.thaw">Freezable.thaw</a> by just stating</p>
+<PRE>
+ instance Serializable D</PRE>
+<p>
+The <a class="fref" href="#Freezable.freeze">Freezable.freeze</a> and <a class="fref" href="#Freezable.thaw">Freezable.thaw</a> operations are implemented in terms of <a class="fref" href="#Serializable.copySerializable">Serializable.copySerializable</a>, which serializes its argument to a byte array and creates a new copy by deserializing it from the byte array.</p>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Serializable.copySerializable>copySerializable</a> ∷ <a class="tref" href="#Serializable">Serializable</a> f ⇒ <b>f</b> → f<br><b>pure </b><b>native </b>frege.runtime.Runtime.copySerializable</SPAN></dt>
+<dd class="func">
+<p>
+<SPAN CLASS="code">copySerializable v</SPAN> is supposed to be a native function that is implemented by <SPAN CLASS="code">frege.runtime.Runtime.copySerializable</SPAN> at the instantiated type.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Serializable.freeze>freeze</a> ∷ <a class="tref" href="#Serializable">Serializable</a> f ⇒ <b>f</b> → f</SPAN></dt>
+<dd class="func">
+<p>
+make a safe copy through serialization/deserialization   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Serializable.thaw>thaw</a> ∷ <a class="tref" href="#Serializable">Serializable</a> f ⇒ <b>f</b> → f</SPAN></dt>
+<dd class="func">
+<p>
+make a safe copy through serialization/deserialization   </p>
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=Ref> </a> <a class="tref" href="#Ref">Ref</a> a = <b>native </b>frege.runtime.Ref</SPAN></dt>
 <dd class="data">
 <p>
 A mutable reference, suitable for use in the <a class="tref" href="./PreludeBase.html#ST">ST</a> monad.   </p>
@@ -406,170 +551,116 @@ A mutable reference, suitable for use in the <a class="tref" href="./PreludeBase
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Ref.get">get</a> ∷ <b><a class="tref" href="#Mutable">Mutable</a> s (<a class="tref" href="#Ref">Ref</a> a)</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> s a<br><b>native </b>get</SPAN></dt>
+<SPAN CLASS="code"><a name=Ref.get>get</a> ∷ <b><a class="tref" href="#Mutable">Mutable</a> s (<a class="tref" href="#Ref">Ref</a> a)</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> s a<br><b>native </b>get</SPAN></dt>
 <dd class="func">
 <p>
 get the value the reference is pointing to   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Ref.modify">modify</a> ∷ <b><a class="tref" href="#Mutable">Mutable</a> α (<a class="tref" href="#Ref">Ref</a> β)</b> → (β→β) → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Ref.modify>modify</a> ∷ <b><a class="tref" href="#Mutable">Mutable</a> α (<a class="tref" href="#Ref">Ref</a> β)</b> → (β→β) → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 modify the referenced value with a function   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Ref._new">new</a> ∷ <b>a</b> → <a class="tref" href="#STMutable">STMutable</a> s (<a class="tref" href="#Ref">Ref</a> a)<br><b>native </b>new</SPAN></dt>
+<SPAN CLASS="code"><a name=Ref._new>new</a> ∷ <b>a</b> → <a class="tref" href="#STMutable">STMutable</a> s (<a class="tref" href="#Ref">Ref</a> a)<br><b>native </b>new</SPAN></dt>
 <dd class="func">
 <p>
 create a reference that is initially set to the argument value    </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Ref.put">put</a> ∷ <b><a class="tref" href="#Mutable">Mutable</a> s (<a class="tref" href="#Ref">Ref</a> a)</b> → <b>a</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> s <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>put</SPAN></dt>
+<SPAN CLASS="code"><a name=Ref.put>put</a> ∷ <b><a class="tref" href="#Mutable">Mutable</a> s (<a class="tref" href="#Ref">Ref</a> a)</b> → <b>a</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> s <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>put</SPAN></dt>
 <dd class="func">
 <p>
 assign another value to the reference    </p>
 </dd>
 </dl>
 </dd>
-</dl>
-<h2>
-<a name="let">Functions and Values</a></h2>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="_catch">catch</a> ∷ <a class="tref" href="#JavaType">JavaType</a> γ ⇒ <b><a class="tref" href="./PreludeBase.html#ST">ST</a> β α</b> → (<b>γ→<a class="tref" href="./PreludeBase.html#ST">ST</a> β α</b>) → <a class="tref" href="./PreludeBase.html#ST">ST</a> β α<br><b>infixl</b>&nbsp;&nbsp;2</SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><b>type </b><a name=IORef>IORef</a> a = <a class="tref" href="#Mutable">Mutable</a> <a class="tref" href="./PreludeBase.html#RealWorld">RealWorld</a> (<a class="tref" href="#Ref">Ref</a> a)</SPAN></dt>
+<dd class="data">
 <p>
-The construct</p>
-<PRE>
- action `catch` handler</PRE>
-<p>
-is a <a class="tref" href="./PreludeBase.html#ST">ST</a> action with the same type as <i>action</i>.</p>
-<p>
-If <i>action</i> yields a result, this will be the result of the overall action. However, if, during execution of <i>action</i> the JVM raises an exception <i>e</i> with java type <SPAN CLASS="code">E</SPAN>, and <SPAN CLASS="code">E</SPAN> is a subtype of java type <SPAN CLASS="code">H</SPAN>, and <SPAN CLASS="code">H</SPAN> is the java type associated with the argument of <i>handler</i>, the return value will be:</p>
-<PRE>
- handler e</PRE>
-<p>
-Otherwise, if the type of <i>e</i> does not allow to pass it to <i>handler</i> it will be propagated upwards and <SPAN CLASS="code">a `catch` b</SPAN> will not return to its caller.</p>
-<p>
-Because <a class="fref" href="#_catch">catch</a> is left associative, it is possible to catch different exceptions, like in:</p>
-<PRE>
- action `catch` handler1 `catch` handler2</PRE>
-<p>
-Care must be taken to check for the <b>most specific</b> exception first. In the example above, if the exception handled by <i>handler1</i> is <b>less specific</b> than the one handled by <i>handler2</i>, then <i>handler2</i> will never get a chance to execute.</p>
-<p>
-Another way to put this is to say that if <SPAN CLASS="code">E1</SPAN> and <SPAN CLASS="code">E2</SPAN> are distinct exception types handled in a chain of <a class="fref" href="#_catch">catch</a>es, and <SPAN CLASS="code">E1</SPAN> is (from the point of view of Java!) a subtype of <SPAN CLASS="code">E2</SPAN>, then the handler for <SPAN CLASS="code">E1</SPAN> must appear further left than the handler for <SPAN CLASS="code">E2</SPAN>. If it is a super type of <SPAN CLASS="code">E2</SPAN>, however, its handler must appear further right. And finally, if the types do not stand in a sub-type relationship, the order of the handlers is immaterial.</p>
-<p>
-<b>Note</b> If <i>action</i> is of the form:</p>
-<PRE>
- doSomething arg</PRE>
-<p>
-then, depending on the strictness of <i>doSomething</i> the argument <i>arg</i> may be evaluated <b>before</b> the action is returned. Exceptions (i.e. undefined values) that occur in the construction of the action do <b>not</b> count as exceptions thrown during execution of it, and hence cannot be catched.</p>
-<p>
-Example:</p>
-<PRE>
- println (head []) `catch`  ....</PRE>
-<p>
-will not catch the exception that will be thrown when println evaluates</p>
-<p>
-For a remedy, see <a class="fref" href="#_try">try</a>.</p>
+Haskell compatibility   </p>
 </dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="catchAll">catchAll</a> ∷ <b><a class="tref" href="./PreludeBase.html#ST">ST</a> α β</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="#Exception">Exception</a> | β)</SPAN></dt>
-<dd class="func">
-<p>
-The <a class="fref" href="#catchAll">catchAll</a> function runs a <a class="tref" href="./PreludeBase.html#ST">ST</a> action and returns either the result or the exception thrown.</p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="doCatch">doCatch</a> ∷ <b><a class="tref" href="./PreludeBase.html#Class">Class</a> b</b> → <b><a class="tref" href="./PreludeBase.html#ST">ST</a> s a</b> → (<b>b → <a class="tref" href="./PreludeBase.html#ST">ST</a> s a</b>) → <a class="tref" href="./PreludeBase.html#ST">ST</a> s a<br><b>native </b>frege.runtime.WrappedCheckedException.doCatch</SPAN></dt>
-<dd class="func">
-<p>
-nowarn: argument of type (ST s a)</p>
-<p>
-Runtime method for implementation of <a class="fref" href="#_catch">catch</a>   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="_finally">finally</a> ∷ <b><a class="tref" href="./PreludeBase.html#IO">IO</a> a</b> → <b><a class="tref" href="./PreludeBase.html#IO">IO</a> b</b> → <a class="tref" href="./PreludeBase.html#IO">IO</a> a<br><b>native </b>frege.runtime.WrappedCheckedException.doFinally<br><b>infixl</b>&nbsp;&nbsp;2</SPAN></dt>
-<dd class="func">
-<p>
-nowarn: argument of type (ST s a)</p>
-<p>
-The construct</p>
-<PRE>
- action `finally` always</PRE>
-<p>
-reurns the same value as <i>action</i>, when executed.</p>
-<p>
-However, no matter if <i>action</i> produces a value or diverges (for example, by throwing an exception), in any case will <i>always</i> be executed, and its return value dismissed.</p>
-<p>
-Note that <a class="fref" href="#_finally">finally</a> only returns to its caller if <i>action</i> would have done so.</p>
-<p>
-<a class="fref" href="#_finally">finally</a> has the same fixity as <a class="fref" href="#_catch">catch</a>, hence it is possible to have</p>
-<PRE>
- action `catch` handler1 `catch` handler2 `finally` always</PRE>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="throwIO">throwIO</a> ∷ <b><a class="tref" href="./PreludeBase.html#Throwable">Throwable</a></b> → <a class="tref" href="./PreludeBase.html#IO">IO</a> a</SPAN></dt>
-<dd class="func">
-<p>
-Deliberatly throw an exception in the <a class="tref" href="./PreludeBase.html#IO">IO</a> monad.   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="throwST">throwST</a> ∷ <b><a class="tref" href="./PreludeBase.html#Throwable">Throwable</a></b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> s a</SPAN></dt>
-<dd class="func">
-<p>
-Deliberatly throw an exception in the <a class="tref" href="./PreludeBase.html#ST">ST</a> monad.   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="_try">try</a> ∷ <a class="tref" href="./PreludeMonad.html#Monad">Monad</a> γ ⇒ (α→γ β) → α → γ β</SPAN></dt>
-<dd class="func">
-<p>
-Make sure that exceptions thrown during construction of an action can be catched. See <a class="fref" href="#_catch">catch</a> for an explanation.</p>
-<p>
-Example:</p>
-<PRE>
- try println (head []) `catch` (\u::Undefined -&gt; println u.catched)</PRE>
-<p>
-should print:</p>
-<PRE>
- frege.runtime.Undefined: Prelude.head []</PRE>
-<p>
-<a class="fref" href="#_try">try</a> does work for unary functions only. To be safe with functions taking more actions, use:</p>
-<PRE>
- return a &gt;&gt;= (\a -&gt; return b &gt;&gt;= (\b -&gt; f a b))</PRE>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="modifyIORef">modifyIORef</a> ∷ <b><a class="tref" href="#Mutable">Mutable</a> α (<a class="tref" href="#Ref">Ref</a> β)</b> → (β→β) → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
-<dd class="func">
-<p>
-Alias for <a class="fref" href="#Ref.modify">Ref.modify</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="newIORef">newIORef</a> ∷ <b>a</b> → <a class="tref" href="#STMutable">STMutable</a> s (<a class="tref" href="#Ref">Ref</a> a)<br><b>native </b>new</SPAN></dt>
-<dd class="func">
-<p>
-Alias for <a class="fref" href="#Ref._new">Ref.new</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="readIORef">readIORef</a> ∷ <b><a class="tref" href="#Mutable">Mutable</a> s (<a class="tref" href="#Ref">Ref</a> a)</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> s a<br><b>native </b>get</SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><a name=readIORef>readIORef</a> ∷ <b><a class="tref" href="#Mutable">Mutable</a> s (<a class="tref" href="#Ref">Ref</a> a)</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> s a<br><b>native </b>get</SPAN></dt>
+<dd class="data">
 <p>
 Alias for <a class="fref" href="#Ref.get">Ref.get</a></p>
 </dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="readonly">readonly</a> ∷ (m → b) → <b><a class="tref" href="#Mutable">Mutable</a> s m</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> s b</SPAN></dt>
-<dd class="func">
-<p>
-Alias for <a class="fref" href="#Mutable.readonly">Mutable.readonly</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="writeIORef">writeIORef</a> ∷ <b><a class="tref" href="#Mutable">Mutable</a> s (<a class="tref" href="#Ref">Ref</a> a)</b> → <b>a</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> s <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>put</SPAN></dt>
-<dd class="func">
+<dt class="data">
+<SPAN CLASS="code"><a name=writeIORef>writeIORef</a> ∷ <b><a class="tref" href="#Mutable">Mutable</a> s (<a class="tref" href="#Ref">Ref</a> a)</b> → <b>a</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> s <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>put</SPAN></dt>
+<dd class="data">
 <p>
 Alias for <a class="fref" href="#Ref.put">Ref.put</a></p>
 </dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=modifyIORef>modifyIORef</a> ∷ <b><a class="tref" href="#Mutable">Mutable</a> α (<a class="tref" href="#Ref">Ref</a> β)</b> → (β→β) → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="data">
+<p>
+Alias for <a class="fref" href="#Ref.modify">Ref.modify</a></p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=newIORef>newIORef</a> ∷ <b>a</b> → <a class="tref" href="#STMutable">STMutable</a> s (<a class="tref" href="#Ref">Ref</a> a)<br><b>native </b>new</SPAN></dt>
+<dd class="data">
+<p>
+Alias for <a class="fref" href="#Ref._new">Ref.new</a></p>
+</dd>
 </dl>
 <h2>
-<a name="case">Functions and Values by Type</a></h2>
+<a NAME="instance">Instances</a></h2>
+<dl class="inst">
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Exceptional_Exception> </a> <a class="tref" href="#Exceptional">Exceptional</a> <a class="tref" href="#Exception">Exception</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Exceptional_Exception.javaClass>javaClass</a> ∷ <a class="tref" href="./PreludeBase.html#Class">Class</a> <a class="tref" href="#Exception">Exception</a><br><b>pure </b><b>native </b>java.lang.Exception.class</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Exceptional_GuardFailed> </a> <a class="tref" href="#Exceptional">Exceptional</a> <a class="tref" href="./PreludeBase.html#GuardFailed">GuardFailed</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Exceptional_GuardFailed.javaClass>javaClass</a> ∷ <a class="tref" href="./PreludeBase.html#Class">Class</a> <a class="tref" href="./PreludeBase.html#GuardFailed">GuardFailed</a><br><b>pure </b><b>native </b>frege.runtime.GuardFailed.class</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Exceptional_NoMatch> </a> <a class="tref" href="#Exceptional">Exceptional</a> <a class="tref" href="./PreludeBase.html#NoMatch">NoMatch</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Exceptional_NoMatch.javaClass>javaClass</a> ∷ <a class="tref" href="./PreludeBase.html#Class">Class</a> <a class="tref" href="./PreludeBase.html#NoMatch">NoMatch</a><br><b>pure </b><b>native </b>frege.runtime.NoMatch.class</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Exceptional_Undefined> </a> <a class="tref" href="#Exceptional">Exceptional</a> <a class="tref" href="./PreludeBase.html#Undefined">Undefined</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Exceptional_Undefined.javaClass>javaClass</a> ∷ <a class="tref" href="./PreludeBase.html#Class">Class</a> <a class="tref" href="./PreludeBase.html#Undefined">Undefined</a><br><b>pure </b><b>native </b>frege.runtime.Undefined.class</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+</dl>
+<h2>
+<a NAME="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Class">Class</a> <a class="tref" href="./PreludeBase.html#GuardFailed">GuardFailed</a></SPAN></dt>
@@ -674,6 +765,12 @@ Alias for <a class="fref" href="#Ref.put">Ref.put</a></p>
 <a class="fref" href="#Mutable.Mutable">Mutable.Mutable</a></p>
 </dd>
 <dt class="func">
+<SPAN CLASS="code">α → <a class="tref" href="#Mutable">Mutable</a> β α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#mutable">mutable</a></p>
+</dd>
+<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#Freezable">Freezable</a> m ⇒ <a class="tref" href="#Mutable">Mutable</a> s m → <a class="tref" href="./PreludeBase.html#ST">ST</a> s m</SPAN></dt>
 <dd class="func">
 <p>
@@ -698,13 +795,13 @@ Alias for <a class="fref" href="#Ref.put">Ref.put</a></p>
 <a class="fref" href="#doCatch">doCatch</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#JavaType">JavaType</a> γ ⇒ <a class="tref" href="./PreludeBase.html#ST">ST</a> β α → (γ→<a class="tref" href="./PreludeBase.html#ST">ST</a> β α) → <a class="tref" href="./PreludeBase.html#ST">ST</a> β α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#JavaType">JavaType</a> γ ⇒ <a class="tref" href="./PreludeBase.html#ST">ST</a> α β → (γ→<a class="tref" href="./PreludeBase.html#ST">ST</a> α β) → <a class="tref" href="./PreludeBase.html#ST">ST</a> α β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#_catch">catch</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./PreludeMonad.html#Monad">Monad</a> γ ⇒ (α→γ β) → α → γ β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./PreludeMonad.html#Monad">Monad</a> γ ⇒ (β→γ α) → β → γ α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#_try">try</a></p>

@@ -1,0 +1,1684 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<META http-equiv="Content-Type" content="text/html;charset=utf-8">
+<TITLE>Data.HashMap - frege documentation</TITLE>
+<style TYPE="text/css">
+body { font-family: helvetica, arial, sans-serif }
+pre { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
+h3  { font-weight: lighter }
+dt.func { background: rgb(95%, 95%, 80%); margin-top: 10px }
+dt.clas { background: rgb(80%, 95%, 95%); margin-top: 10px }
+dt.inst { background: rgb(95%, 90%, 95%); margin-top: 10px }
+dt.data { background: rgb(95%, 95%, 95%); margin-top: 10px }
+span.code { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
+span.unknown { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: red }
+a.fref { text-decoration: none; font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(30%, 30%, 0%) }
+a.tref { text-decoration: none; font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(40%, 0%,  40%) }
+</style>
+<BODY>
+<h1>
+Module <SPAN CLASS="code">Data.HashMap</SPAN></h1>
+<p>
+A HashMap implementation based on a <a HREF="https://en.wikipedia.org/wiki/Hash_array_mapped_trie">Hash Array Mapped Trie</a></p>
+<p>
+The hash array mapped trie achieves almost hash table-like speed while using memory much more economically. Also, a hash table may have to be periodically resized, an expensive operation, whereas HAMTs grow and shrink dynamically.</p>
+<h2>
+Creating Hash Maps</h2>
+<p>
+Get an empty map with <a class="fref" href="./Monoid.html#Monoid.mempty">Monoid.mempty</a> or <a class="fref" href="../prelude/PreludeList.html#ListEmpty.empty">ListEmpty.empty</a>, make a singleton one with <a class="fref" href="#singleton">singleton</a> or turn an association list into a <a class="tref" href="#HashMap">HashMap</a> with <a class="fref" href="#fromList">fromList</a>. The more general function <a class="fref" href="#fromListWith">fromListWith</a> allows custom handling of associations with duplicate keys.</p>
+<h2>
+Add, Change or Remove Associations</h2>
+<p>
+Use <a class="fref" href="#insert">insert</a>, <a class="fref" href="#delete">delete</a>, <a class="fref" href="#adjust">adjust</a> and <a class="fref" href="#replace">replace</a>. The more general form of <a class="fref" href="#insert">insert</a> is <a class="fref" href="#insertWith">insertWith</a> which accepts a function to combine the given value with an already existing one.</p>
+<h2>
+Lookups</h2>
+<p>
+The basic function is <a class="fref" href="#lookup">lookup</a>, of which <a class="fref" href="#member">member</a> and <a class="fref" href="#lookupDefault">lookupDefault</a> are variants. The operator (<a class="fref" href="#_excl_excl">!!</a>) may be used when the existence of the keys looked for is out of the question.</p>
+<h2>
+Set operations</h2>
+<p>
+There is <a class="fref" href="#union">union</a>, <a class="fref" href="#difference">difference</a> and <a class="fref" href="#intersection">intersection</a>. More general functions <a class="fref" href="#unionWith">unionWith</a> and <a class="fref" href="#intersectionWith">intersectionWith</a> allow combination of the affected values.</p>
+<h2>
+Folds</h2>
+<p>
+Left folds as well as right folds are provided by <a class="fref" href="#foldValues">foldValues</a> and <a class="fref" href="#foldrValues">foldrValues</a>. Variants <a class="fref" href="#foldWithKey">foldWithKey</a> and <a class="fref" href="#foldrWithKey">foldrWithKey</a> allow examination not only of the value, but also of the key.</p>
+<p>
+Frequently needed functions such as <a class="fref" href="#values">values</a>, <a class="fref" href="#keys">keys</a>, <a class="fref" href="#each">each</a> and <a class="fref" href="#size">size</a> are just predefined folds for your convenience.</p>
+<h2>
+Filtering</h2>
+<p>
+Create a subset of an existing map with <a class="fref" href="#filterValues">filterValues</a> or <a class="fref" href="#filterWithKey">filterWithKey</a>.</p>
+<h2>
+Transformations</h2>
+<p>
+<a class="fref" href="#mapValues">mapValues</a>, <a class="fref" href="#mapWithKey">mapWithKey</a> and <a class="fref" href="#traverseWithKey">traverseWithKey</a> should cover any need to transform an existing map.</p>
+<h3>
+Naming Conventions</h3>
+<p>
+Functions whose name have the <i>With</i> suffix take a custom function to combine two values and are thus more general than the ones without that suffix. Most often it is the case that</p>
+<PRE>
+ xxx = xxxWith const</PRE>
+<p>
+Functions whose name have the <i>Values</i> suffix operate on the values of the mappings contained in the map and take an appropriate custom function as argument. The <i>Values</i> suffix also serves to avoid conflicts with Prelude functions (i.e. <a class="fref" href="../prelude/PreludeList.html#map">map</a>, <a class="fref" href="../prelude/PreludeList.html#filter">filter</a>, <a class="fref" href="../prelude/PreludeList.html#fold">fold</a>, <a class="fref" href="../prelude/PreludeList.html#foldr">foldr</a>).</p>
+<p>
+The companions of the <i>Values</i> functions have the suffix <i>WithKey</i> and accept functions that take an extra argument for the key. The key portion of a mapping or association is always passed first, followed by the associated value.</p>
+<h3>
+Imports</h3>
+<ul>
+<li>
+<div>
+import <a HREF="../Prelude.html">frege.Prelude</a> as Prelude</div>
+</li>
+<li>
+<div>
+import <a HREF="./Bits.html">Data.Bits</a> as Bits</div>
+</li>
+<li>
+<div>
+import <a HREF="./Foldable.html">Data.Foldable</a> as Foldable</div>
+</li>
+<li>
+<div>
+import <a HREF="./List.html">Data.List</a> as List</div>
+</li>
+<li>
+<div>
+import <a HREF="./JSON.html">Data.JSON</a> as JSON</div>
+</li>
+<li>
+<div>
+import <a HREF="./Monoid.html">Data.Monoid</a> as Monoid</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeArrays.html">Prelude.PreludeArrays</a> as PreludeArrays</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeText.html">Prelude.PreludeText</a> as PreludeText</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as PreludeMonad</div>
+</li>
+<li>
+<div>
+import <a HREF="../java/util/Regex.html">Java.util.Regex</a> as Regexp</div>
+</li>
+<li>
+<div>
+import <a HREF="./Traversable.html">Data.Traversable</a> as Traversable</div>
+</li>
+</ul>
+<h3>
+Table of Content</h3>
+<ul class="data">
+<li>
+<div>
+<a HREF="#data">Definitions</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#HashMap"> </a> <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#singleton">singleton</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <b>𝖐</b> → 𝖛 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#size">size</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#values">values</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → [𝖛]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#keys">keys</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → [𝖐]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#each">each</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → [(𝖐, 𝖛)]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#insert">insert</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <b>𝖐</b> → 𝖛 → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#insertWith">insertWith</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ (<b>𝖛 → 𝖛 → 𝖛</b>) → <b>𝖐</b> → 𝖛 → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#delete">delete</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <b>𝖐</b> → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#lookup">lookup</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <b>𝖐</b> → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> 𝖛</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#member">member</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <b>𝖐</b> → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#lookupDefault">lookupDefault</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ 𝖛 → <b>𝖐</b> → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → 𝖛</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#_excl_excl">!!</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <b>𝖐</b> → 𝖛&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#adjust">adjust</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ (<b>𝖛 → 𝖛</b>) → <b>𝖐</b> → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#replace">replace</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <b>𝖐</b> → 𝖛 → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#unionWith">unionWith</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ (<b>𝖛 → 𝖛 → 𝖛</b>) → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#union">union</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#unions">unions</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <b>[<a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛]</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#foldWithKey">foldWithKey</a> ∷ (<b>𝖆 → 𝖐 → 𝖛 → 𝖆</b>) → <b>𝖆</b> → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → 𝖆</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#foldValues">foldValues</a> ∷ (<b>𝖆 → 𝖛 → 𝖆</b>) → <b>𝖆</b> → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → 𝖆</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#foldrValues">foldrValues</a> ∷ (<b>𝖛 → 𝖆 → 𝖆</b>) → 𝖆 → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → 𝖆</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#foldrWithKey">foldrWithKey</a> ∷ (<b>𝖐 → 𝖛 → 𝖆 → 𝖆</b>) → 𝖆 → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → 𝖆</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#mapValues">mapValues</a> ∷ (<b>𝖛 → 𝖚</b>) → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖚</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#mapWithKey">mapWithKey</a> ∷ (<b>𝖐 → 𝖛 → 𝖚</b>) → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖚</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#traverseWithKey">traverseWithKey</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> 𝖆 ⇒ (<b>𝖐 → 𝖛 → 𝖆 𝖚</b>) → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → 𝖆 (<a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖚)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#filterWithKey">filterWithKey</a> ∷ (<b>𝖐 → 𝖛 → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></b>) → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#filterValues">filterValues</a> ∷ (<b>𝖛 → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></b>) → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#difference">difference</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖚</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#intersection">intersection</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖚</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#intersectionWith">intersectionWith</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ (<b>𝖛 → 𝖚 → 𝖜</b>) → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖚</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖜</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#fromList">fromList</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <b>[(𝖐, 𝖛)]</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#fromListWith">fromListWith</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ (<b>𝖛 → 𝖛 → 𝖛</b>) → <b>[(𝖐, 𝖛)]</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#instance">Instances</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#ArrayElement_HashMap"> </a> <a class="tref" href="../prelude/PreludeArrays.html#ArrayElement">ArrayElement</a> <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Eq_HashMap"> </a> <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> (<a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐, <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖛) ⇒ <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Foldable_HashMap"> </a> <a class="tref" href="./Foldable.html#Foldable">Foldable</a> <a class="tref" href="#HashMap">HashMap</a> 𝖐</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Functor_HashMap"> </a> <a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> <a class="tref" href="#HashMap">HashMap</a> 𝖐</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#ListEmpty_HashMap"> </a> <a class="tref" href="../prelude/PreludeList.html#ListEmpty">ListEmpty</a> <a class="tref" href="#HashMap">HashMap</a> 𝖐</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#ListMonoid_HashMap"> </a> <a class="tref" href="../prelude/PreludeList.html#ListMonoid">ListMonoid</a> <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <a class="tref" href="#HashMap">HashMap</a> 𝖐</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#ListSource_HashMap"> </a> <a class="tref" href="../prelude/PreludeList.html#ListSource">ListSource</a> <a class="tref" href="#HashMap">HashMap</a> 𝖐</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Monoid_HashMap"> </a> <a class="tref" href="./Monoid.html#Monoid">Monoid</a> <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Show_HashMap"> </a> <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> (<a class="tref" href="./JSON.html#ToJSON">ToJSON</a> 𝖐, <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> 𝖛) ⇒ <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#ToJSON_HashMap"> </a> <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> (<a class="tref" href="./JSON.html#ToJSON">ToJSON</a> 𝖐, <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> 𝖛) ⇒ <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Traversable_HashMap"> </a> <a class="tref" href="./Traversable.html#Traversable">Traversable</a> <a class="tref" href="#HashMap">HashMap</a> 𝖐</SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#case">Functions and Values by Type</a></div>
+</li>
+</ul>
+<h2>
+<a NAME="data">Definitions</a></h2>
+<dl class="data">
+<dt class="data">
+<SPAN CLASS="code"><a name=singleton>singleton</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <b>𝖐</b> → 𝖛 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="data">
+<p>
+<i>O(1)</i> Create a singleton map   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=size>size</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="data">
+<p>
+<i>O(n)</i> Compute the size of the map   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=values>values</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → [𝖛]</SPAN></dt>
+<dd class="data">
+<p>
+<i>O(n)</i> Retrieve a list of the values in the map   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=keys>keys</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → [𝖐]</SPAN></dt>
+<dd class="data">
+<p>
+<i>O(n)</i> Retrieve a list of the keys in the map   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=each>each</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → [(𝖐, 𝖛)]</SPAN></dt>
+<dd class="data">
+<p>
+<i>O(n)</i> Retrieve a list of the associations in the map   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=insert>insert</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <b>𝖐</b> → 𝖛 → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="data">
+<p>
+<i>O(log n)</i></p>
+<PRE>
+ insert k v m</PRE>
+<p>
+is a <a class="tref" href="#HashMap">HashMap</a> <i>h</i> such that</p>
+<PRE>
+ lookup k h = Just v</PRE>
+<p>
+and lookup for any other key <i>o</i></p>
+<PRE>
+ lookup o h = lookup o m</PRE>
+<p>
+Less formally said, <i>k</i> is associated with <i>v</i> in the resulting map, updating a previously existing association of <i>k</i> if it exists, while all other associations are left untouched.</p>
+<p>
+In the case of an update, the new value will get forced, see <a class="fref" href="#insertWith">insertWith</a> for details.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=insertWith>insertWith</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ (<b>𝖛 → 𝖛 → 𝖛</b>) → <b>𝖐</b> → 𝖛 → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="data">
+<p>
+<i>O(log n)</i></p>
+<PRE>
+ insertWith f k v m</PRE>
+<p>
+If <i>m</i> does not contain <i>k</i>, this works like <a class="fref" href="#insert">insert</a>. Otherwise, the existing association of <i>k</i> with some value <i>v'</i> is replaced by an association of <i>k</i> with the result of evaluating</p>
+<PRE>
+ f v v'</PRE>
+<p>
+in the resulting map.</p>
+<p>
+Strict evaluation is necessary to prevent building up of large thunks of the form</p>
+<PRE>
+ f v3 (f v2 (f v1 v0))</PRE>
+<p>
+Note that</p>
+<PRE>
+ insert = insertWith const</PRE>
+<p>
+and that this will evaluate the <b>new</b> value in case of an update. If you want to prevent this, use</p>
+<PRE>
+ replace k v = insert k v . delete k</PRE>
+<p>
+The replaced value will be evaluated only if the given function is strict in the second argument. Since <a class="fref" href="../prelude/PreludeBase.html#_const">const</a> is lazy in the second argument, the following will be fine:</p>
+<PRE>
+ insert "foo" 7 (insert "foo" undefined (delete "foo" m))</PRE>
+<p>
+That is, the value that is inserted for a given key first is not evaluated on insertion, and only evaluated on update if the update function demands it, which is not the case for a plain <a class="fref" href="#insert">insert</a>.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=delete>delete</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <b>𝖐</b> → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="data">
+<p>
+<i>O(log n)</i></p>
+<PRE>
+ delete k m</PRE>
+<p>
+is a <a class="tref" href="#HashMap">HashMap</a> h such that</p>
+<PRE>
+ lookup k h = Nothing</PRE>
+<p>
+and for any other key <i>o</i></p>
+<PRE>
+ lookup o h = lookup o m</PRE>
+<p>
+Less formally, the association of <i>k</i> with some value, if any, is removed in the result, while all other associations are retained.</p>
+<p>
+If <i>m</i> didn't contain <i>k</i> in the first place,</p>
+<PRE>
+ delete k m = m</PRE>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=lookup>lookup</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <b>𝖐</b> → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> 𝖛</SPAN></dt>
+<dd class="data">
+<p>
+<i>O(log n)</i></p>
+<PRE>
+ lookup k m</PRE>
+<p>
+If <i>k</i> is associated with some value <i>v</i>  in map <i>m</i>, it returns</p>
+<PRE>
+ Just v</PRE>
+<p>
+and otherwise</p>
+<PRE>
+ Nothing</PRE>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=member>member</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <b>𝖐</b> → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="data">
+<p>
+<i>O(log n)</i></p>
+<p>
+Checks whether the key is present in the map   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=lookupDefault>lookupDefault</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ 𝖛 → <b>𝖐</b> → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → 𝖛</SPAN></dt>
+<dd class="data">
+<p>
+<i>O(log n)</i></p>
+<p>
+Return the value to which the specified key is mapped, or the default value if this map contains no mapping for the key.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=_excl_excl>!!</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <b>𝖐</b> → 𝖛<br><b>infixl</b>&nbsp;&nbsp;16</SPAN></dt>
+<dd class="data">
+<p>
+<i>O(log n)</i></p>
+<p>
+Return the value associated with the given key in the map. Fails with <a class="fref" href="../prelude/PreludeBase.html#error">error</a> if the key is not present.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=adjust>adjust</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ (<b>𝖛 → 𝖛</b>) → <b>𝖐</b> → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="data">
+<p>
+<i>O(log n)</i></p>
+<p>
+Adjust the value tied to a given key in this map only if it is present. Otherwise, leave the map alone.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=replace>replace</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <b>𝖐</b> → 𝖛 → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="data">
+<p>
+<i>O(log n)</i></p>
+<PRE>
+ replace k v m = insert k v . delete k $ m</PRE>
+<p>
+Insert or update the association of <i>k</i> with <i>v</i> in <i>m</i> but avoid evaluation of <i>v</i> even if <i>m</i> already contains <i>k</i>.</p>
+<p>
+See also notes concerning updates on function <a class="fref" href="#insertWith">insertWith</a>.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=unionWith>unionWith</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ (<b>𝖛 → 𝖛 → 𝖛</b>) → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="data">
+<p>
+<i>O(m*log n)</i></p>
+<p>
+Computes the union of two hash maps.</p>
+<p>
+If a key occurs in both maps, the function provided in the first argument will be used to compute the result in the same way as <a class="fref" href="#insertWith">insertWith</a> would do it, that is, the value from the left hash map will be evaluated while the value from the right map may be evaluated only if the function demands it. However, values associated with keys that are member of only one map are left alone.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=union>union</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="data">
+<p>
+<i>O(m*log n)</i></p>
+<p>
+Computes the union of two hash maps.</p>
+<p>
+If a key occurs in both maps, the value from the left map will be evaluated and taken over to the new map.</p>
+<p>
+Because</p>
+<PRE>
+ union  =  unionWith const</PRE>
+<p>
+the considerations concerning strictness apply for <a class="fref" href="#union">union</a> in the same way as for <a class="fref" href="#unionWith">unionWith</a>.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=unions>unions</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <b>[<a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛]</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="data">
+<p>
+The union of all <a class="tref" href="#HashMap">HashMap</a>s in a list.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=foldWithKey>foldWithKey</a> ∷ (<b>𝖆 → 𝖐 → 𝖛 → 𝖆</b>) → <b>𝖆</b> → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → 𝖆</SPAN></dt>
+<dd class="data">
+<p>
+<i>O(n)</i></p>
+<p>
+Reduce this map by applying a function to all associations, using the given starting value (typically the left-identity of the operator). Each application of the function is evaluated before using the result in the next application.</p>
+<p>
+This function is strict in the starting value.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=foldValues>foldValues</a> ∷ (<b>𝖆 → 𝖛 → 𝖆</b>) → <b>𝖆</b> → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → 𝖆</SPAN></dt>
+<dd class="data">
+<p>
+<i>O(n)</i></p>
+<p>
+Reduce this map by applying a binary operator to all values, using the given starting value (typically the left-identity of the operator). Each application of the operator is evaluated before using the result in the next application.</p>
+<p>
+This function is strict in the starting value.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=foldrValues>foldrValues</a> ∷ (<b>𝖛 → 𝖆 → 𝖆</b>) → 𝖆 → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → 𝖆</SPAN></dt>
+<dd class="data">
+<p>
+<i>O(n)</i></p>
+<p>
+Reduce this map by applying a binary operator to all values, using the given starting value (typically the right-identity of the operator).</p>
+<p>
+<b>Warning</b>: this function exists for Haskell compatibility only. Please be aware that right folds suffer from the danger of stack overflows, while left folds don't and are also faster because of tail recursion. Since the order of values is arbitrary anyway, there is often no good reason to insist on a right fold, so please use <a class="fref" href="#foldValues">foldValues</a> instead.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=foldrWithKey>foldrWithKey</a> ∷ (<b>𝖐 → 𝖛 → 𝖆 → 𝖆</b>) → 𝖆 → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → 𝖆</SPAN></dt>
+<dd class="data">
+<p>
+<i>O(n)</i></p>
+<p>
+Reduce this map by applying a binary operator to all mappings, using the given starting value (typically the right-identity of the operator).</p>
+<p>
+<b>Warning</b>: this function exists for Haskell compatibility only. Please be aware that right folds suffer from the danger of stack overflows, while left folds don't and are also faster because of tail recursion. Since the order of values is arbitrary anyway, there is often no good reason to insist on a right fold, so please use <a class="fref" href="#foldWithKey">foldWithKey</a> instead.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=mapValues>mapValues</a> ∷ (<b>𝖛 → 𝖚</b>) → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖚</SPAN></dt>
+<dd class="data">
+<p>
+<i>O(n)</i></p>
+<p>
+Transform a map by applying a function to every value.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=mapWithKey>mapWithKey</a> ∷ (<b>𝖐 → 𝖛 → 𝖚</b>) → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖚</SPAN></dt>
+<dd class="data">
+<p>
+<i>O(n)</i></p>
+<p>
+Transform a map by applying a function to every key and its associated value.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=traverseWithKey>traverseWithKey</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> 𝖆 ⇒ (<b>𝖐 → 𝖛 → 𝖆 𝖚</b>) → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → 𝖆 (<a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖚)</SPAN></dt>
+<dd class="data">
+<p>
+<i>O(n)</i></p>
+<p>
+Transform a map by applying an applicative functor to every key and its associated value.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=filterWithKey>filterWithKey</a> ∷ (<b>𝖐 → 𝖛 → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></b>) → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="data">
+<p>
+<i>O(n)</i></p>
+<p>
+Filter a map, retaining only mappings whose key and value satisfy a given predicate.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=filterValues>filterValues</a> ∷ (<b>𝖛 → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></b>) → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="data">
+<p>
+<i>O(n)</i></p>
+<p>
+Filter a map, retaining only mappings whose value satisfies a given predicate.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=difference>difference</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖚</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="data">
+<p>
+<i>O(n*log m)</i></p>
+<p>
+Computes the difference of two maps.</p>
+<p>
+Returns a map that contains the mappings of the first map whose keys do not exist in the second.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=intersection>intersection</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖚</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="data">
+<p>
+<i>O(n*log m)</i></p>
+<p>
+Computes the intersection of two maps.</p>
+<p>
+Return a map that contains the mappings of the first map for keys that also exist in the second.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=intersectionWith>intersectionWith</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ (<b>𝖛 → 𝖚 → 𝖜</b>) → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖚</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖜</SPAN></dt>
+<dd class="data">
+<p>
+<i>O(n*log m)</i></p>
+<p>
+Computes the intersection of two maps, combining the values with a given function.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=fromList>fromList</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <b>[(𝖐, 𝖛)]</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="data">
+<p>
+<i>O(n)</i></p>
+<p>
+Build a map from an association list. If the list contains duplicate mappings, the later mappings take precedence.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=fromListWith>fromListWith</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ (<b>𝖛 → 𝖛 → 𝖛</b>) → <b>[(𝖐, 𝖛)]</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="data">
+<p>
+<i>O(n)</i></p>
+<p>
+Build a map from an association list. Uses the provided function to merge values associated with duplicate keys.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=HashMap> </a> <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="data">
+<p>
+A map from hashable keys to values based on a Hash Mapped Array Trie.</p>
+<p>
+A map cannot contain duplicate keys; each key can map to at most one value. A <a class="tref" href="#HashMap">HashMap</a> makes no guarantees as to the order of its elements.</p>
+<p>
+A node of the <a class="tref" href="#HashMap">HashMap</a> is either</p>
+<ul>
+<LI>
+ a key/value pair </LI>
+<LI>
+ a list of key/value tuples with pair-wise different keys, where the hash code for all keys is identical (collisions). In the (hopefully) unlikely case of such collisions, the performance of operations using the affected keys degrades to that of similar operations on lists. However, collision lists should be short, if occurring at all.</LI>
+<LI>
+ a bitmapped node with a bitmap of size 32 to indicate absence or presence of sub-nodes, followed by an array of up to 32 (sub)nodes.</LI>
+</ul>
+<p>
+This implementation of a <a HREF="https://en.wikipedia.org/wiki/Persistent_data_structure">persistent</a> hash array mapped trie uses 32 bit hash values as provided by Java and the Frege <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> type class.</p>
+<p>
+To find a value, the search starts with the root node. If the node is a key/value pair, the node's key is compared to the search key. When the keys are equal, the value is returned, otherwise the key is not in the map.</p>
+<p>
+If the node is a bitmapped node, the hash code of the lookup key is computed and the presence of the index provided by the last five bits is checked in the bitmap. If it is there, the search continues with the corresponding node from the node array, otherwise the key is not in the map. With every recursion, the next five bits of the hash code will be used for indexing.</p>
+<p>
+It remains the case that the node is a collision list. The searched key's hashcode either is the same as the one of the keys in the collision list, in which case the search degrades to a sequential search in that list, or it is different, and in the latter case we know that the key is not in the map without even touching the list.</p>
+<p>
+Hence, the worst case in searching must do the following:</p>
+<ul>
+<LI>
+ 1 time: compute the hash code of the key </LI>
+<LI>
+ 7 times: find the next node through the sub-node array. This is in essence computation of an index with bit operations, followed by a memory read. The reason this is done at max 7 times is that it consumes 5 bits of the hash code every time. With 32 bit hash codes, we have 6 5-bit quantities that can range from 0 to 31, while the last 5-bit quantity has only 2 significant bits, the other ones are always zero. The hashmapped nodes at the 7th level of the map will consequently have at most 4 sub-nodes. (Note that this is an intrinsic limit that is determined by the hash code bit size, <b>not</b> by the algorithm. Should later Java versions choose to provide <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a> bitcodes, for example, this code will still work with marginal adjustments, just that there would be 13 levels of bitmapped nodes instead of 7.)</LI>
+<LI>
+ <i>n</i> times: comparison with the keys in the collision list, where <i>n</i> is the number of elements of the collision list, or comparison with the key of a key/value node (this is equivalent to a collision list of length 1).</LI>
+</ul>
+<p>
+It turns out that - absent hash collisions - lookups will be done almost in <b>constant time</b>. And so will be inserts and deletes, although with a slightly larger constant factor due to the house-keeping necessary for a persistent data structure. However, even this are in the worst case 7 array copies, where 6 of them may be of size 32 and one of size 4. Assuming that the pointers are 4 bytes long, this amounts to copying at most 196*4 bytes of memory.</p>
+<p>
+The map can have at most 2^32 non-bitmapped nodes maintained in 1+32+1024+32768+1048576+33554432+1073741824 bitmapped nodes. But because collision lists can be arbitrary long, the total number of key/value pairs is <b>not limited</b>.</p>
+<h3>
+Constructors</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><b>private</b> <a name=HashMap.BM>BM</a> {subnodes ∷ <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛), bitmap ∷ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>}</SPAN></dt>
+<dd class="func">
+<p>
+Bitmapped node. It has a bitmap of 32 bits that indicate presence or absence of a sub node for a given index which is in the range [0..31], and an array of sub nodes. The size of the array is equal to the number of 1-bits in the bitmap. An index is mapped to an actual array index like so: If the corresponding <a class="fref" href="./Bits.html#Bits.bit">Bits.bit</a> is set in the bitmap, the number of less significant 1-bits in the bitmap is counted with <a class="fref" href="./Bits.html#Bits.bitCount">Bits.bitCount</a> and this is then the index in the array. Otherwise there is no sub node for that index.</p>
+<dl>
+<dt>
+Invariant 1</dt>
+<dd>
+<div>
+ The length of <SPAN CLASS="unknown">subnodes</SPAN> equals the number of set bits in <SPAN CLASS="unknown">bitmap</SPAN>. </div>
+</dd>
+<dt>
+Invariant 2</dt>
+<dd>
+<div>
+ There is no null pointer in <SPAN CLASS="unknown">subnodes</SPAN>. </div>
+</dd>
+<dt>
+Invariant 3</dt>
+<dd>
+<div>
+ No subnode is the empty node. </div>
+</dd>
+</dl>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><b>private</b> <a name=HashMap.CO>CO</a> {hash ∷ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, list ∷ [(𝖐, 𝖛)]}</SPAN></dt>
+<dd class="func">
+<p>
+Collision node, holding a list of key/value tuples as well as the <a class="fref" href="../prelude/PreludeBase.html#Eq.hashCode">Eq.hashCode</a> all keys have in common. This helps us avoid touching the list when the sought key has a different hash code.</p>
+<dl>
+<dt>
+Invariant 1</dt>
+<dd>
+<div>
+ length of <SPAN CLASS="unknown">list</SPAN> is at least 2. </div>
+</dd>
+<dt>
+Invariant 2</dt>
+<dd>
+<div>
+ all keys in <SPAN CLASS="unknown">list</SPAN> are different. </div>
+</dd>
+</dl>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><b>private</b> <a name=HashMap.KV>KV</a> {hash ∷ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, key ∷ 𝖐, value ∷ 𝖛}</SPAN></dt>
+<dd class="func">
+<p>
+Singleton node holding a key with a value. Also caches the <a class="fref" href="../prelude/PreludeBase.html#Eq.hashCode">Eq.hashCode</a> of the key to avoid possibly expensive recomputation.</p>
+</dd>
+</dl>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=HashMap.bitmap>bitmap</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">bitmap</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=HashMap.collisions>collisions</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, [[α]])</SPAN></dt>
+<dd class="func">
+<p>
+<i>O(n)</i> Compute a 3-tuple of</p>
+<ul>
+<LI>
+ the number of collision nodes </LI>
+<LI>
+ the total number of keys that have a collision </LI>
+<LI>
+ a list of lists of colliding keys    </LI>
+</ul>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=HashMap.hash>hash</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">hash</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=HashMap.indexMap>indexMap</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+transform an index into an actual array index</p>
+<PRE>
+ indexMap bmap nodes inx</PRE>
+<p>
+<i>bmap</i> is the bitmap</p>
+<p>
+<i>nodes</i> is the number of actual subnodes</p>
+<p>
+<i>inx</i> is a hash code or part of a hash code, whose least significant 5 bits are the index</p>
+<p>
+returns a number in the range 0..nodes, where <i>nodes</i> means "no corresponding node"   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=HashMap.invariants>invariants</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+this checks the invariants for a node   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=HashMap.key>key</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → α</SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">key</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=HashMap.list>list</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → [(α, β)]</SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">list</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=HashMap.subnodes>subnodes</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> α β)</SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">subnodes</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=HashMap.value>value</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → β</SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">value</SPAN></p>
+</dd>
+</dl>
+</dd>
+</dl>
+<h2>
+<a NAME="instance">Instances</a></h2>
+<dl class="inst">
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=ArrayElement_HashMap> </a> <a class="tref" href="../prelude/PreludeArrays.html#ArrayElement">ArrayElement</a> <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=ArrayElement_HashMap.elemAt>elemAt</a> ∷ <b><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> α β)</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#HashMap">HashMap</a> α β<br><b>pure </b><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeArrays.html#ArrayElem.elemAt">ArrayElem.elemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ArrayElement_HashMap.getAt>getAt</a> ∷ <b><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> β (<a class="tref" href="#HashMap">HashMap</a> γ α)</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> β (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="#HashMap">HashMap</a> γ α))<br><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeArrays.html#ArrayElem.getAt">ArrayElem.getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ArrayElement_HashMap.getElemAt>getElemAt</a> ∷ <b><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> γ (<a class="tref" href="#HashMap">HashMap</a> α β)</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> γ (<a class="tref" href="#HashMap">HashMap</a> α β)<br><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeArrays.html#ArrayElem.getElemAt">ArrayElem.getElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ArrayElement_HashMap.itemAt>itemAt</a> ∷ <b><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> α β)</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="#HashMap">HashMap</a> α β)<br><b>pure </b><b>native </b>[i]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeArrays.html#ArrayElem.itemAt">ArrayElem.itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ArrayElement_HashMap.javaClass>javaClass</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Class">Class</a> (<a class="tref" href="#HashMap">HashMap</a> α β)<br><b>pure </b><b>native </b>THashMap.class</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ArrayElement_HashMap.modifyAt>modifyAt</a> ∷ (<a class="tref" href="#HashMap">HashMap</a> β γ → <a class="tref" href="#HashMap">HashMap</a> β γ) → <b><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> α (<a class="tref" href="#HashMap">HashMap</a> β γ)</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeArrays.html#ArrayElem.modifyAt">ArrayElem.modifyAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ArrayElement_HashMap.modifyElemAt>modifyElemAt</a> ∷ (<a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="#HashMap">HashMap</a> α β) → <b><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> γ (<a class="tref" href="#HashMap">HashMap</a> α β)</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> γ <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeArrays.html#ArrayElem.modifyElemAt">ArrayElem.modifyElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ArrayElement_HashMap.newArray>newArray</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> β γ))<br><b>native </b>new[]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeArrays.html#ArrayElem.newArray">ArrayElem.newArray</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ArrayElement_HashMap.newArrayM>newArrayM</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> γ (<a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> γ (<a class="tref" href="#HashMap">HashMap</a> α β)))</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeArrays.html#ArrayElement.newArrayM">ArrayElement.newArrayM</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ArrayElement_HashMap.setAt>setAt</a> ∷ <b><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> β (<a class="tref" href="#HashMap">HashMap</a> γ α)</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="#HashMap">HashMap</a> γ α)</b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeArrays.html#ArrayElem.setAt">ArrayElem.setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ArrayElement_HashMap.setElemAt>setElemAt</a> ∷ <b><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> α (<a class="tref" href="#HashMap">HashMap</a> β γ)</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="#HashMap">HashMap</a> β γ</b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeArrays.html#ArrayElem.setElemAt">ArrayElem.setElemAt</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Eq_HashMap> </a> <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> (<a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐, <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖛) ⇒ <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Eq_HashMap._excl_eq>!=</a> ∷ (<a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α, <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β) ⇒ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeBase.html#Eq._excl_eq">Eq.!=</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Eq_HashMap._eq_eq>==</a> ∷ (<a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α, <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β) ⇒ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Eq_HashMap.hashCode>hashCode</a> ∷ (<a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α, <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β) ⇒ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Foldable_HashMap> </a> <a class="tref" href="./Foldable.html#Foldable">Foldable</a> <a class="tref" href="#HashMap">HashMap</a> 𝖐</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Foldable_HashMap.fold>fold</a> ∷ <a class="tref" href="./Monoid.html#Monoid">Monoid</a> β ⇒ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → β</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="./Foldable.html#Foldable.fold">Foldable.fold</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Foldable_HashMap.fold1>fold1</a> ∷ <a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> β ⇒ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → β</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="./Foldable.html#Foldable.fold1">Foldable.fold1</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Foldable_HashMap.foldMap>foldMap</a> ∷ <a class="tref" href="./Monoid.html#Monoid">Monoid</a> γ ⇒ (α → γ) → <b><a class="tref" href="#HashMap">HashMap</a> β α</b> → γ</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="./Foldable.html#Foldable.foldMap">Foldable.foldMap</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Foldable_HashMap.foldMap1>foldMap1</a> ∷ <a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> α ⇒ (β → α) → <b><a class="tref" href="#HashMap">HashMap</a> γ β</b> → α</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="./Foldable.html#Foldable.foldMap1">Foldable.foldMap1</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Foldable_HashMap.foldl>foldl</a> ∷ (<b>γ → β → γ</b>) → <b>γ</b> → <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → γ</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Foldable_HashMap.foldl1>foldl1</a> ∷ (α → α → α) → <b><a class="tref" href="#HashMap">HashMap</a> β α</b> → α</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="./Foldable.html#Foldable.foldl1">Foldable.foldl1</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Foldable_HashMap.foldr>foldr</a> ∷ (<b>α → γ → γ</b>) → γ → <b><a class="tref" href="#HashMap">HashMap</a> β α</b> → γ</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Foldable_HashMap.foldr1>foldr1</a> ∷ (α → α → α) → <b><a class="tref" href="#HashMap">HashMap</a> β α</b> → α</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="./Foldable.html#Foldable.foldr1">Foldable.foldr1</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Functor_HashMap> </a> <a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> <a class="tref" href="#HashMap">HashMap</a> 𝖐</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Functor_HashMap.fmap>fmap</a> ∷ (<b>α → γ</b>) → <b><a class="tref" href="#HashMap">HashMap</a> β α</b> → <a class="tref" href="#HashMap">HashMap</a> β γ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=ListEmpty_HashMap> </a> <a class="tref" href="../prelude/PreludeList.html#ListEmpty">ListEmpty</a> <a class="tref" href="#HashMap">HashMap</a> 𝖐</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=ListEmpty_HashMap.empty>empty</a> ∷ <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<dd class="func">
+<p>
+<i>O(1)</i></p>
+<p>
+The empty <a class="tref" href="#HashMap">HashMap</a>, represented by a bitmapped node with a bitmap that is 0.   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ListEmpty_HashMap._null>null</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<i>O(1)</i></p>
+<p>
+<SPAN CLASS="code">true</SPAN> if and only if the argument is the empty <a class="tref" href="#HashMap">HashMap</a>, otherwise <SPAN CLASS="code">false</SPAN>   </p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=ListMonoid_HashMap> </a> <a class="tref" href="../prelude/PreludeList.html#ListMonoid">ListMonoid</a> <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <a class="tref" href="#HashMap">HashMap</a> 𝖐</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=ListMonoid_HashMap._plus_plus>++</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → <a class="tref" href="#HashMap">HashMap</a> α β<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=ListSource_HashMap> </a> <a class="tref" href="../prelude/PreludeList.html#ListSource">ListSource</a> <a class="tref" href="#HashMap">HashMap</a> 𝖐</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=ListSource_HashMap.toList>toList</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → [β]</SPAN></dt>
+<dd class="func">
+<p>
+Return the list of values in a <a class="tref" href="#HashMap">HashMap</a>.</p>
+<p>
+Note that this is not symmetric with <a class="fref" href="#fromList">fromList</a>!   </p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Monoid_HashMap> </a> <a class="tref" href="./Monoid.html#Monoid">Monoid</a> <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Monoid_HashMap.mappend>mappend</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → <a class="tref" href="#HashMap">HashMap</a> α β<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
+<dd class="func">
+<p>
+builds the <a class="fref" href="#union">union</a> of two <a class="tref" href="#HashMap">HashMap</a>s   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monoid_HashMap.mconcat>mconcat</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b>[<a class="tref" href="#HashMap">HashMap</a> α β]</b> → <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="./Monoid.html#Monoid.mconcat">Monoid.mconcat</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monoid_HashMap.mempty>mempty</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<dd class="func">
+<p>
+The empty <a class="tref" href="#HashMap">HashMap</a>.   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monoid_HashMap.mtimes>mtimes</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="./Monoid.html#Monoid.mtimes">Monoid.mtimes</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monoid_HashMap.sconcat>sconcat</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b>[<a class="tref" href="#HashMap">HashMap</a> α β]</b> → <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="./Monoid.html#Semigroup.sconcat">Semigroup.sconcat</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monoid_HashMap.stimes>stimes</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="./Monoid.html#Semigroup.stimes">Semigroup.stimes</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Show_HashMap> </a> <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> (<a class="tref" href="./JSON.html#ToJSON">ToJSON</a> 𝖐, <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> 𝖛) ⇒ <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_HashMap.display>display</a> ∷ (<a class="tref" href="./JSON.html#ToJSON">ToJSON</a> α, <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> β) ⇒ <a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.display">Show.display</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_HashMap.show>show</a> ∷ (<a class="tref" href="./JSON.html#ToJSON">ToJSON</a> α, <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> β) ⇒ <a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_HashMap.showChars>showChars</a> ∷ (<a class="tref" href="./JSON.html#ToJSON">ToJSON</a> α, <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> β) ⇒ <a class="tref" href="#HashMap">HashMap</a> α β → [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showChars">Show.showChars</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_HashMap.showList>showList</a> ∷ (<a class="tref" href="./JSON.html#ToJSON">ToJSON</a> α, <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> β) ⇒ <b>[<a class="tref" href="#HashMap">HashMap</a> α β]</b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showList">Show.showList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_HashMap.showsPrec>showsPrec</a> ∷ (<a class="tref" href="./JSON.html#ToJSON">ToJSON</a> α, <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> β) ⇒ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#HashMap">HashMap</a> α β → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsPrec">Show.showsPrec</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_HashMap.showsub>showsub</a> ∷ (<a class="tref" href="./JSON.html#ToJSON">ToJSON</a> α, <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> β) ⇒ <a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsub">Show.showsub</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=ToJSON_HashMap> </a> <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> (<a class="tref" href="./JSON.html#ToJSON">ToJSON</a> 𝖐, <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> 𝖛) ⇒ <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=ToJSON_HashMap.toJSON>toJSON</a> ∷ (<a class="tref" href="./JSON.html#ToJSON">ToJSON</a> α, <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> β) ⇒ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → <a class="tref" href="./JSON.html#Value">Value</a></SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Traversable_HashMap> </a> <a class="tref" href="./Traversable.html#Traversable">Traversable</a> <a class="tref" href="#HashMap">HashMap</a> 𝖐</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Traversable_HashMap.mapM>mapM</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ (<b>β → γ α</b>) → <b><a class="tref" href="#HashMap">HashMap</a> δ β</b> → γ (<a class="tref" href="#HashMap">HashMap</a> δ α)</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="./Traversable.html#Traversable.mapM">Traversable.mapM</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Traversable_HashMap.sequence>sequence</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <b><a class="tref" href="#HashMap">HashMap</a> α (β γ)</b> → β (<a class="tref" href="#HashMap">HashMap</a> α γ)</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="./Traversable.html#Traversable.sequence">Traversable.sequence</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Traversable_HashMap.sequenceA>sequenceA</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α ⇒ <b><a class="tref" href="#HashMap">HashMap</a> γ (α β)</b> → α (<a class="tref" href="#HashMap">HashMap</a> γ β)</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="./Traversable.html#Traversable.sequenceA">Traversable.sequenceA</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Traversable_HashMap.traverse>traverse</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> δ ⇒ (<b>β → δ α</b>) → <b><a class="tref" href="#HashMap">HashMap</a> γ β</b> → δ (<a class="tref" href="#HashMap">HashMap</a> γ α)</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+</dl>
+<h2>
+<a NAME="case">Functions and Values by Type</a></h2>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.indexMap">HashMap.indexMap</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(α → α → α) → <a class="tref" href="#HashMap">HashMap</a> β α → α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Foldable_HashMap.foldl1">Foldable_HashMap.foldl1</a>, <a class="fref" href="#Foldable_HashMap.foldr1">Foldable_HashMap.foldr1</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(𝖐 → 𝖛 → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#filterWithKey">filterWithKey</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(𝖛 → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#filterValues">filterValues</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> α β → (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>→<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>) → <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.chg$bitmap">HashMap.chg$bitmap</a>, <a class="fref" href="#HashMap.chg$hash">HashMap.chg$hash</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.upd$bitmap">HashMap.upd$bitmap</a>, <a class="fref" href="#HashMap.upd$hash">HashMap.upd$hash</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> α β → (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, [[α]])</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.collisions">HashMap.collisions</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> α β)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.subnodes">HashMap.subnodes</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> α β → [(α, β)]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.list">HashMap.list</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> α β → [β]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ListSource_HashMap.toList">ListSource_HashMap.toList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ListEmpty_HashMap._null">ListEmpty_HashMap.null</a>, <a class="fref" href="#HashMap.has$list">HashMap.has$list</a>, <a class="fref" href="#HashMap.has$hash">HashMap.has$hash</a>, <a class="fref" href="#HashMap.has$bitmap">HashMap.has$bitmap</a>, <a class="fref" href="#HashMap.has$key">HashMap.has$key</a>, <a class="fref" href="#HashMap.has$value">HashMap.has$value</a>, <a class="fref" href="#HashMap.has$subnodes">HashMap.has$subnodes</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.bitmap">HashMap.bitmap</a>, <a class="fref" href="#HashMap.hash">HashMap.hash</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> α β → α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.key">HashMap.key</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> α β → β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.value">HashMap.value</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → [(𝖐, 𝖛)]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#each">each</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → [𝖐]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#keys">keys</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → [𝖛]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#values">values</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#size">size</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> α β) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_HashMap.elemAt">ArrayElement_HashMap.elemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> α β) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="#HashMap">HashMap</a> α β)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_HashMap.itemAt">ArrayElement_HashMap.itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.BM">HashMap.BM</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → [(𝖐, 𝖛)] → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.CO">HashMap.CO</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → 𝖐 → 𝖛 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.KV">HashMap.KV</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="./JSON.html#ToJSON">ToJSON</a> α, <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> β) ⇒ <a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_HashMap.show">Show_HashMap.show</a>, <a class="fref" href="#Show_HashMap.display">Show_HashMap.display</a>, <a class="fref" href="#Show_HashMap.showsub">Show_HashMap.showsub</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="./JSON.html#ToJSON">ToJSON</a> α, <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> β) ⇒ <a class="tref" href="#HashMap">HashMap</a> α β → [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_HashMap.showChars">Show_HashMap.showChars</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="./JSON.html#ToJSON">ToJSON</a> α, <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> β) ⇒ <a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="./JSON.html#Value">Value</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ToJSON_HashMap.toJSON">ToJSON_HashMap.toJSON</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="./JSON.html#ToJSON">ToJSON</a> α, <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> β) ⇒ [<a class="tref" href="#HashMap">HashMap</a> α β] → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_HashMap.showList">Show_HashMap.showList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="./JSON.html#ToJSON">ToJSON</a> α, <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> β) ⇒ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_HashMap.showsPrec">Show_HashMap.showsPrec</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./Monoid.html#Monoid">Monoid</a> β ⇒ <a class="tref" href="#HashMap">HashMap</a> α β → β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Foldable_HashMap.fold">Foldable_HashMap.fold</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> β ⇒ <a class="tref" href="#HashMap">HashMap</a> α β → β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Foldable_HashMap.fold1">Foldable_HashMap.fold1</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ListMonoid_HashMap._plus_plus">ListMonoid_HashMap.++</a>, <a class="fref" href="#Monoid_HashMap.mappend">Monoid_HashMap.mappend</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ [<a class="tref" href="#HashMap">HashMap</a> α β] → <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monoid_HashMap.mconcat">Monoid_HashMap.mconcat</a>, <a class="fref" href="#Monoid_HashMap.sconcat">Monoid_HashMap.sconcat</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monoid_HashMap.mtimes">Monoid_HashMap.mtimes</a>, <a class="fref" href="#Monoid_HashMap.stimes">Monoid_HashMap.stimes</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α, <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β) ⇒ <a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Eq_HashMap._eq_eq">Eq_HashMap.==</a>, <a class="fref" href="#Eq_HashMap._excl_eq">Eq_HashMap.!=</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α, <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β) ⇒ <a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Eq_HashMap.hashCode">Eq_HashMap.hashCode</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ (𝖛 → 𝖛 → 𝖛) → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#unionWith">unionWith</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ (𝖛 → 𝖛 → 𝖛) → [(𝖐, 𝖛)] → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#fromListWith">fromListWith</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ (𝖛 → 𝖛 → 𝖛) → 𝖐 → 𝖛 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#insertWith">insertWith</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ (𝖛 → 𝖛) → 𝖐 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#adjust">adjust</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#union">union</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → 𝖐 → 𝖛</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#_excl_excl">!!</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.invariants">HashMap.invariants</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ [<a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛] → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#unions">unions</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ [(𝖐, 𝖛)] → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#fromList">fromList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ 𝖐 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#delete">delete</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ 𝖐 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> 𝖛</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#lookup">lookup</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ 𝖐 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#member">member</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ 𝖐 → 𝖛 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#insert">insert</a>, <a class="fref" href="#replace">replace</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ 𝖐 → 𝖛 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#singleton">singleton</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ 𝖛 → 𝖐 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → 𝖛</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#lookupDefault">lookupDefault</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ListEmpty_HashMap.empty">ListEmpty_HashMap.empty</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Class">Class</a> (<a class="tref" href="#HashMap">HashMap</a> α β)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_HashMap.javaClass">ArrayElement_HashMap.javaClass</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monoid_HashMap.mempty">Monoid_HashMap.mempty</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="#HashMap">HashMap</a> α β) → <a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> γ (<a class="tref" href="#HashMap">HashMap</a> α β) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> γ <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_HashMap.modifyElemAt">ArrayElement_HashMap.modifyElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="#HashMap">HashMap</a> β γ → <a class="tref" href="#HashMap">HashMap</a> β γ) → <a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> α (<a class="tref" href="#HashMap">HashMap</a> β γ) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_HashMap.modifyAt">ArrayElement_HashMap.modifyAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(α → γ → γ) → γ → <a class="tref" href="#HashMap">HashMap</a> β α → γ</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Foldable_HashMap.foldr">Foldable_HashMap.foldr</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(α → γ) → <a class="tref" href="#HashMap">HashMap</a> β α → <a class="tref" href="#HashMap">HashMap</a> β γ</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Functor_HashMap.fmap">Functor_HashMap.fmap</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(γ → β → γ) → γ → <a class="tref" href="#HashMap">HashMap</a> α β → γ</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Foldable_HashMap.foldl">Foldable_HashMap.foldl</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(𝖆 → 𝖐 → 𝖛 → 𝖆) → 𝖆 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → 𝖆</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#foldWithKey">foldWithKey</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(𝖆 → 𝖛 → 𝖆) → 𝖆 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → 𝖆</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#foldValues">foldValues</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(𝖐 → 𝖛 → 𝖆 → 𝖆) → 𝖆 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → 𝖆</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#foldrWithKey">foldrWithKey</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(𝖐 → 𝖛 → 𝖚) → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖚</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#mapWithKey">mapWithKey</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(𝖛 → 𝖆 → 𝖆) → 𝖆 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → 𝖆</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#foldrValues">foldrValues</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(𝖛 → 𝖚) → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖚</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#mapValues">mapValues</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> α γ → (γ→β) → <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.chg$value">HashMap.chg$value</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> α γ → β → <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.upd$value">HashMap.upd$value</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> γ β → (γ→α) → <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.chg$key">HashMap.chg$key</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> γ β → α → <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.upd$key">HashMap.upd$key</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> α (<a class="tref" href="#HashMap">HashMap</a> β γ) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#HashMap">HashMap</a> β γ → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_HashMap.setElemAt">ArrayElement_HashMap.setElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> β (<a class="tref" href="#HashMap">HashMap</a> γ α) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="#HashMap">HashMap</a> γ α) → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_HashMap.setAt">ArrayElement_HashMap.setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> β (<a class="tref" href="#HashMap">HashMap</a> γ α) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> β (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="#HashMap">HashMap</a> γ α))</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_HashMap.getAt">ArrayElement_HashMap.getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> γ (<a class="tref" href="#HashMap">HashMap</a> α β) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> γ (<a class="tref" href="#HashMap">HashMap</a> α β)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_HashMap.getElemAt">ArrayElement_HashMap.getElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> β γ))</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_HashMap.newArray">ArrayElement_HashMap.newArray</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> γ (<a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> γ (<a class="tref" href="#HashMap">HashMap</a> α β)))</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_HashMap.newArrayM">ArrayElement_HashMap.newArrayM</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./Monoid.html#Monoid">Monoid</a> γ ⇒ (α → γ) → <a class="tref" href="#HashMap">HashMap</a> β α → γ</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Foldable_HashMap.foldMap">Foldable_HashMap.foldMap</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> α ⇒ (β → α) → <a class="tref" href="#HashMap">HashMap</a> γ β → α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Foldable_HashMap.foldMap1">Foldable_HashMap.foldMap1</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖚 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#difference">difference</a>, <a class="fref" href="#intersection">intersection</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α ⇒ <a class="tref" href="#HashMap">HashMap</a> γ (α β) → α (<a class="tref" href="#HashMap">HashMap</a> γ β)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Traversable_HashMap.sequenceA">Traversable_HashMap.sequenceA</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#HashMap">HashMap</a> α (β γ) → β (<a class="tref" href="#HashMap">HashMap</a> α γ)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Traversable_HashMap.sequence">Traversable_HashMap.sequence</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> β α → (<a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> β α)→<a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> γ δ)) → <a class="tref" href="#HashMap">HashMap</a> γ δ</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.chg$subnodes">HashMap.chg$subnodes</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> β α → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> γ δ) → <a class="tref" href="#HashMap">HashMap</a> γ δ</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.upd$subnodes">HashMap.upd$subnodes</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> β α → [(δ, γ)] → <a class="tref" href="#HashMap">HashMap</a> δ γ</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.upd$list">HashMap.upd$list</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> δ α → ([(δ, α)]→[(β, γ)]) → <a class="tref" href="#HashMap">HashMap</a> β γ</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.chg$list">HashMap.chg$list</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ (𝖛 → 𝖚 → 𝖜) → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖚 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖜</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#intersectionWith">intersectionWith</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> δ ⇒ (β → δ α) → <a class="tref" href="#HashMap">HashMap</a> γ β → δ (<a class="tref" href="#HashMap">HashMap</a> γ α)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Traversable_HashMap.traverse">Traversable_HashMap.traverse</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> 𝖆 ⇒ (𝖐 → 𝖛 → 𝖆 𝖚) → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → 𝖆 (<a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖚)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#traverseWithKey">traverseWithKey</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ (β → γ α) → <a class="tref" href="#HashMap">HashMap</a> δ β → γ (<a class="tref" href="#HashMap">HashMap</a> δ α)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Traversable_HashMap.mapM">Traversable_HashMap.mapM</a></p>
+</dd>
+</dl>
+<p>
+<a HREF="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Strict" height="31" width="88"></a></p>
+</BODY>
+</HTML>

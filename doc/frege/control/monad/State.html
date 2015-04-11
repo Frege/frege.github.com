@@ -17,41 +17,9 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 </style>
 <BODY>
 <h1>
-<a name="package">Package <SPAN CLASS="code">Control.monad.State</SPAN></a></h1>
-<p>
- Source file: <SPAN CLASS="code">./frege/control/monad/State.fr</SPAN></p>
-<h3>
-Package Documentation</h3>
+Module <SPAN CLASS="code">Control.monad.State</SPAN></h1>
 <p>
 The strict <a class="tref" href="#State">State</a> <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a>   </p>
-<h3>
-Table of Content</h3>
-<ul>
-<li>
-<div>
-<a HREF="#instance">Instances</a></div>
-<div>
-<a class="tref" href="#MonadAlt_StateT">MonadAlt_StateT</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#MonadIO_StateT">MonadIO_StateT</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#MonadPlus_StateT">MonadPlus_StateT</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#MonadTrans_StateT">MonadTrans_StateT</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Monad_State">Monad_State</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Monad_StateT">Monad_StateT</a></div>
-</li>
-<li>
-<div>
-<a HREF="#data">Data Types</a></div>
-<div>
-<a class="tref" href="#State">State</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#StateT">StateT</a></div>
-</li>
-<li>
-<div>
-<a HREF="#let">Functions and Values (alphabetically)</a></div>
-<div>
-<a class="fref" href="#evalState">evalState</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#execState">execState</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#promote">promote</a></div>
-</li>
-<li>
-<div>
-<a HREF="#case">Functions and Values (by type)</a></div>
-<div>
-<a class="fref" href="#evalState">evalState</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#execState">execState</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#promote">promote</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MonadAlt_StateT._lt_bar_gt">MonadAlt_StateT.&lt;|&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MonadAlt_StateT._lt_plus_gt">MonadAlt_StateT.&lt;+&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MonadAlt_StateT.pzero">MonadAlt_StateT.pzero</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MonadIO_StateT.liftIO">MonadIO_StateT.liftIO</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MonadPlus_StateT.mzero">MonadPlus_StateT.mzero</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MonadPlus_StateT.mplus">MonadPlus_StateT.mplus</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#MonadTrans_StateT.lift">MonadTrans_StateT.lift</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_State._gt_gt">Monad_State.&gt;&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_State._lt_star">Monad_State.&lt;*</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_State._star_gt">Monad_State.*&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_State._lt_star_gt">Monad_State.&lt;*&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_State.fmap">Monad_State.fmap</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_State._gt_gt_eq">Monad_State.&gt;&gt;=</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_State.pure">Monad_State.pure</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_State.join">Monad_State.join</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_State._return">Monad_State.return</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_StateT._lt_star_gt">Monad_StateT.&lt;*&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_StateT._lt_star">Monad_StateT.&lt;*</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_StateT._star_gt">Monad_StateT.*&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_StateT.join">Monad_StateT.join</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_StateT._gt_gt_eq">Monad_StateT.&gt;&gt;=</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_StateT._gt_gt">Monad_StateT.&gt;&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_StateT.fmap">Monad_StateT.fmap</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_StateT._return">Monad_StateT.return</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monad_StateT.pure">Monad_StateT.pure</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#State.get">State.get</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#State.State">State.State</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#State.put">State.put</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#State.modify">State.modify</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#State.run">State.run</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#StateT.get">StateT.get</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#StateT.StateT">StateT.StateT</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#StateT.chg$run">StateT.chg$run</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#StateT.modify">StateT.modify</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#StateT.has$run">StateT.has$run</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#StateT.put">StateT.put</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#StateT.run">StateT.run</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#StateT.upd$run">StateT.upd$run</a></div>
-</li>
-</ul>
 <h3>
 Imports</h3>
 <ul>
@@ -96,199 +64,99 @@ import <a HREF="../../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as Pre
 import <a HREF="../../java/util/Regex.html">Java.util.Regex</a> as Regexp</div>
 </li>
 </ul>
+<h3>
+Table of Content</h3>
+<ul class="data">
+<li>
+<div>
+<a HREF="#data">Definitions</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#State"> </a> <a class="tref" href="#State">State</a> s a</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#StateT"> </a> <a class="tref" href="#StateT">StateT</a> s m a</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#runState">runState</a> ∷ <b><a class="tref" href="#State">State</a> α β</b> → α → (β, α)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#evalState">evalState</a> ∷ <b><a class="tref" href="#State">State</a> α β</b> → α → β</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#execState">execState</a> ∷ <b><a class="tref" href="#State">State</a> α β</b> → α → α</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#runStateT">runStateT</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> 𝖒 ⇒ <b><a class="tref" href="#StateT">StateT</a> 𝖘 𝖒 𝖛</b> → 𝖘 → 𝖒 (𝖛, 𝖘)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#evalStateT">evalStateT</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> 𝖒 ⇒ <a class="tref" href="#StateT">StateT</a> 𝖘 𝖒 𝖛 → 𝖘 → 𝖒 𝖛</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#execStateT">execStateT</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> 𝖒 ⇒ <a class="tref" href="#StateT">StateT</a> 𝖘 𝖒 𝖛 → 𝖘 → 𝖒 𝖘</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#promote">promote</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#State">State</a> γ α → <a class="tref" href="#StateT">StateT</a> γ β α</SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#instance">Instances</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#MonadAlt_StateT"> </a> <a class="tref" href="../../prelude/PreludeMonad.html#MonadAlt">MonadAlt</a> <a class="tref" href="../../prelude/PreludeMonad.html#MonadAlt">MonadAlt</a> m ⇒ <a class="tref" href="#StateT">StateT</a> s m</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#MonadIO_StateT"> </a> <a class="tref" href="./trans/MonadIO.html#MonadIO">MonadIO</a> <a class="tref" href="./trans/MonadIO.html#MonadIO">MonadIO</a> m ⇒ <a class="tref" href="#StateT">StateT</a> s m</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#MonadPlus_StateT"> </a> <a class="tref" href="../../prelude/PreludeMonad.html#MonadPlus">MonadPlus</a> <a class="tref" href="../../prelude/PreludeMonad.html#MonadPlus">MonadPlus</a> m ⇒ <a class="tref" href="#StateT">StateT</a> s m</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#MonadTrans_StateT"> </a> <a class="tref" href="./trans/MonadTrans.html#MonadTrans">MonadTrans</a> <a class="tref" href="#StateT">StateT</a> s</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Monad_State"> </a> <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> <a class="tref" href="#State">State</a> s</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Monad_StateT"> </a> <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> m ⇒ <a class="tref" href="#StateT">StateT</a> s m</SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#case">Functions and Values by Type</a></div>
+</li>
+</ul>
 <h2>
-<a name="instance">Instances</a></h2>
-<dl class="inst">
-<dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="MonadAlt_StateT"> </a> <a class="tref" href="../../prelude/PreludeMonad.html#MonadAlt">MonadAlt</a> <a class="tref" href="../../prelude/PreludeMonad.html#MonadAlt">MonadAlt</a> m ⇒ <a class="tref" href="#StateT">StateT</a> s m</SPAN></dt>
-<dd class="inst">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="MonadAlt_StateT._lt_plus_gt">&lt;+&gt;</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#MonadAlt">MonadAlt</a> β ⇒ <b><a class="tref" href="#StateT">StateT</a> γ β α</b> → <b><a class="tref" href="#StateT">StateT</a> γ β α</b> → <a class="tref" href="#StateT">StateT</a> γ β α<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="MonadAlt_StateT._lt_bar_gt">&lt;|&gt;</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#MonadAlt">MonadAlt</a> α ⇒ <b><a class="tref" href="#StateT">StateT</a> β α γ</b> → <b><a class="tref" href="#StateT">StateT</a> β α γ</b> → <a class="tref" href="#StateT">StateT</a> β α γ<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="MonadAlt_StateT.pzero">pzero</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#MonadAlt">MonadAlt</a> γ ⇒ <a class="tref" href="#StateT">StateT</a> α γ β</SPAN></dt>
-<dd class="func">
-</dd>
-</dl>
-</dd>
-<dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="MonadIO_StateT"> </a> <a class="tref" href="./trans/MonadIO.html#MonadIO">MonadIO</a> <a class="tref" href="./trans/MonadIO.html#MonadIO">MonadIO</a> m ⇒ <a class="tref" href="#StateT">StateT</a> s m</SPAN></dt>
-<dd class="inst">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="MonadIO_StateT.liftIO">liftIO</a> ∷ <a class="tref" href="./trans/MonadIO.html#MonadIO">MonadIO</a> α ⇒ <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> γ → <a class="tref" href="#StateT">StateT</a> β α γ</SPAN></dt>
-<dd class="func">
-</dd>
-</dl>
-</dd>
-<dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="MonadPlus_StateT"> </a> <a class="tref" href="../../prelude/PreludeMonad.html#MonadPlus">MonadPlus</a> <a class="tref" href="../../prelude/PreludeMonad.html#MonadPlus">MonadPlus</a> m ⇒ <a class="tref" href="#StateT">StateT</a> s m</SPAN></dt>
-<dd class="inst">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="MonadPlus_StateT.mplus">mplus</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#MonadPlus">MonadPlus</a> β ⇒ <b><a class="tref" href="#StateT">StateT</a> γ β α</b> → <b><a class="tref" href="#StateT">StateT</a> γ β α</b> → <a class="tref" href="#StateT">StateT</a> γ β α<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="MonadPlus_StateT.mzero">mzero</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#MonadPlus">MonadPlus</a> γ ⇒ <a class="tref" href="#StateT">StateT</a> α γ β</SPAN></dt>
-<dd class="func">
-</dd>
-</dl>
-</dd>
-<dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="MonadTrans_StateT"> </a> <a class="tref" href="./trans/MonadTrans.html#MonadTrans">MonadTrans</a> <a class="tref" href="#StateT">StateT</a> s</SPAN></dt>
-<dd class="inst">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="MonadTrans_StateT.lift">lift</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ γ α → <a class="tref" href="#StateT">StateT</a> β γ α</SPAN></dt>
-<dd class="func">
-</dd>
-</dl>
-</dd>
-<dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="Monad_State"> </a> <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> <a class="tref" href="#State">State</a> s</SPAN></dt>
-<dd class="inst">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="Monad_State._star_gt">*&gt;</a> ∷ <a class="tref" href="#State">State</a> β α → <a class="tref" href="#State">State</a> β γ → <a class="tref" href="#State">State</a> β γ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Applicative._star_gt">Applicative.*&gt;</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Monad_State._lt_star">&lt;*</a> ∷ <a class="tref" href="#State">State</a> γ β → <a class="tref" href="#State">State</a> γ α → <a class="tref" href="#State">State</a> γ β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Applicative._lt_star">Applicative.&lt;*</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Monad_State._lt_star_gt">&lt;*&gt;</a> ∷ <a class="tref" href="#State">State</a> α (γ→β) → <a class="tref" href="#State">State</a> α γ → <a class="tref" href="#State">State</a> α β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Monad._lt_star_gt">Monad.&lt;*&gt;</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Monad_State._gt_gt">&gt;&gt;</a> ∷ <b><a class="tref" href="#State">State</a> β α</b> → <a class="tref" href="#State">State</a> β γ → <a class="tref" href="#State">State</a> β γ<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Monad_State._gt_gt_eq">&gt;&gt;=</a> ∷ <b><a class="tref" href="#State">State</a> γ β</b> → (β → <a class="tref" href="#State">State</a> γ α) → <a class="tref" href="#State">State</a> γ α<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
-<dd class="func">
-<p>
-monadic bind for the <a class="tref" href="#State">State</a> monad   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Monad_State.fmap">fmap</a> ∷ (β → α) → <b><a class="tref" href="#State">State</a> γ β</b> → <a class="tref" href="#State">State</a> γ α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Monad.fmap">Monad.fmap</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Monad_State.join">join</a> ∷ <b><a class="tref" href="#State">State</a> α (<a class="tref" href="#State">State</a> α β)</b> → <a class="tref" href="#State">State</a> α β</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Monad.join">Monad.join</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Monad_State.pure">pure</a> ∷ <b>α</b> → <a class="tref" href="#State">State</a> β α</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Monad.pure">Monad.pure</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Monad_State._return">return</a> ∷ <b>α</b> → <a class="tref" href="#State">State</a> β α</SPAN></dt>
-<dd class="func">
-<p>
-lift a value to the <a class="tref" href="#State">State</a> monad   </p>
-</dd>
-</dl>
-</dd>
-<dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="Monad_StateT"> </a> <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> m ⇒ <a class="tref" href="#StateT">StateT</a> s m</SPAN></dt>
-<dd class="inst">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="Monad_StateT._star_gt">*&gt;</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#StateT">StateT</a> γ α β → <a class="tref" href="#StateT">StateT</a> γ α δ → <a class="tref" href="#StateT">StateT</a> γ α δ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Applicative._star_gt">Applicative.*&gt;</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Monad_StateT._lt_star">&lt;*</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#StateT">StateT</a> γ α β → <a class="tref" href="#StateT">StateT</a> γ α δ → <a class="tref" href="#StateT">StateT</a> γ α β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Applicative._lt_star">Applicative.&lt;*</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Monad_StateT._lt_star_gt">&lt;*&gt;</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#StateT">StateT</a> γ α (β→δ) → <a class="tref" href="#StateT">StateT</a> γ α β → <a class="tref" href="#StateT">StateT</a> γ α δ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Monad._lt_star_gt">Monad.&lt;*&gt;</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Monad_StateT._gt_gt">&gt;&gt;</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <b><a class="tref" href="#StateT">StateT</a> α β δ</b> → <a class="tref" href="#StateT">StateT</a> α β γ → <a class="tref" href="#StateT">StateT</a> α β γ<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Monad_StateT._gt_gt_eq">&gt;&gt;=</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <b><a class="tref" href="#StateT">StateT</a> α β δ</b> → (δ → <a class="tref" href="#StateT">StateT</a> α β γ) → <a class="tref" href="#StateT">StateT</a> α β γ<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Monad_StateT.fmap">fmap</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ (α → δ) → <b><a class="tref" href="#StateT">StateT</a> γ β α</b> → <a class="tref" href="#StateT">StateT</a> γ β δ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Monad.fmap">Monad.fmap</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Monad_StateT.join">join</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <b><a class="tref" href="#StateT">StateT</a> γ β (<a class="tref" href="#StateT">StateT</a> γ β α)</b> → <a class="tref" href="#StateT">StateT</a> γ β α</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Monad.join">Monad.join</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Monad_StateT.pure">pure</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ <b>β</b> → <a class="tref" href="#StateT">StateT</a> α γ β</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Monad.pure">Monad.pure</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Monad_StateT._return">return</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <b>γ</b> → <a class="tref" href="#StateT">StateT</a> β α γ</SPAN></dt>
-<dd class="func">
-</dd>
-</dl>
-</dd>
-</dl>
-<h2>
-<a name="data">Data Types</a></h2>
+<a NAME="data">Definitions</a></h2>
 <dl class="data">
 <dt class="data">
-<SPAN CLASS="code"><b>data </b><a name="State"> </a> <a class="tref" href="#State">State</a> s a</SPAN></dt>
+<SPAN CLASS="code"><b>data </b><a name=State> </a> <a class="tref" href="#State">State</a> s a</SPAN></dt>
 <dd class="data">
 <p>
-<SPAN CLASS="code">State s a</SPAN> is an abstrac data type that resembles a stateful computation with State <i>s</i> and result <i>a</i>, i.e. functions of type <SPAN CLASS="code">s -&gt; (a, s)</SPAN> where the State is immutable.</p>
+<SPAN CLASS="code">State s a</SPAN> is an abstract data type that resembles a stateful computation with State <i>s</i> and result <i>a</i>, i.e. functions of type <SPAN CLASS="code">s -&gt; (a, s)</SPAN> where the State is immutable.</p>
 <h3>
 Constructors</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><b>private</b> <a name="State.State">State</a> (s → (a, s))</SPAN></dt>
+<SPAN CLASS="code"><b>private</b> <a name=State.State>State</a> (s → (a, s))</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -296,25 +164,25 @@ Constructors</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="State.get">get</a> ∷ <a class="tref" href="#State">State</a> α α</SPAN></dt>
+<SPAN CLASS="code"><a name=State.get>get</a> ∷ <a class="tref" href="#State">State</a> α α</SPAN></dt>
 <dd class="func">
 <p>
 return the state from the internals of the monad   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="State.modify">modify</a> ∷ (α→α) → <a class="tref" href="#State">State</a> α <a class="tref" href="../../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name=State.modify>modify</a> ∷ (α→α) → <a class="tref" href="#State">State</a> α <a class="tref" href="../../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 modify the <a class="tref" href="#State">State</a>   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="State.put">put</a> ∷ α → <a class="tref" href="#State">State</a> α <a class="tref" href="../../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name=State.put>put</a> ∷ α → <a class="tref" href="#State">State</a> α <a class="tref" href="../../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 replace the <a class="tref" href="#State">State</a> inside the monad    </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="State.run">run</a> ∷ <b><a class="tref" href="#State">State</a> α β</b> → α → (β, α)</SPAN></dt>
+<SPAN CLASS="code"><a name=State.run>run</a> ∷ <b><a class="tref" href="#State">State</a> α β</b> → α → (β, α)</SPAN></dt>
 <dd class="func">
 <p>
 run a stateful computation   </p>
@@ -322,13 +190,43 @@ run a stateful computation   </p>
 </dl>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><b>data </b><a name="StateT"> </a> <a class="tref" href="#StateT">StateT</a> s m a</SPAN></dt>
+<SPAN CLASS="code"><a name=runState>runState</a> ∷ <b><a class="tref" href="#State">State</a> α β</b> → α → (β, α)</SPAN></dt>
 <dd class="data">
+<p>
+Alias for <a class="fref" href="#State.run">State.run</a></p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=evalState>evalState</a> ∷ <b><a class="tref" href="#State">State</a> α β</b> → α → β</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=execState>execState</a> ∷ <b><a class="tref" href="#State">State</a> α β</b> → α → α</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=runStateT>runStateT</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> 𝖒 ⇒ <b><a class="tref" href="#StateT">StateT</a> 𝖘 𝖒 𝖛</b> → 𝖘 → 𝖒 (𝖛, 𝖘)</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=evalStateT>evalStateT</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> 𝖒 ⇒ <a class="tref" href="#StateT">StateT</a> 𝖘 𝖒 𝖛 → 𝖘 → 𝖒 𝖛</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=execStateT>execStateT</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> 𝖒 ⇒ <a class="tref" href="#StateT">StateT</a> 𝖘 𝖒 𝖛 → 𝖘 → 𝖒 𝖘</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=StateT> </a> <a class="tref" href="#StateT">StateT</a> s m a</SPAN></dt>
+<dd class="data">
+<PRE>
+ StateT s m a</PRE>
+<p>
+A stateful computation that transforms an inner <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> <i>m</i>   </p>
 <h3>
 Constructors</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><b>private</b> <a name="StateT.StateT">StateT</a> {run ∷ s → m (a, s)}</SPAN></dt>
+<SPAN CLASS="code"><b>private</b> <a name=StateT.StateT>StateT</a> {run ∷ s → m (a, s)}</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -336,50 +234,212 @@ Constructors</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="StateT.get">get</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#StateT">StateT</a> α β α</SPAN></dt>
+<SPAN CLASS="code"><a name=StateT.get>get</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#StateT">StateT</a> α β α</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="StateT.modify">modify</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ (α→α) → <a class="tref" href="#StateT">StateT</a> α β <a class="tref" href="../../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name=StateT.modify>modify</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ (α→α) → <a class="tref" href="#StateT">StateT</a> α β <a class="tref" href="../../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="StateT.put">put</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ α → <a class="tref" href="#StateT">StateT</a> α β <a class="tref" href="../../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name=StateT.put>put</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ α → <a class="tref" href="#StateT">StateT</a> α β <a class="tref" href="../../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="StateT.run">run</a> ∷ <b><a class="tref" href="#StateT">StateT</a> α β γ</b> → α → β (γ, α)</SPAN></dt>
+<SPAN CLASS="code"><a name=StateT.run>run</a> ∷ <b><a class="tref" href="#StateT">StateT</a> α β γ</b> → α → β (γ, α)</SPAN></dt>
 <dd class="func">
 <p>
 access field <SPAN CLASS="code">run</SPAN></p>
 </dd>
 </dl>
 </dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=promote>promote</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#State">State</a> γ α → <a class="tref" href="#StateT">StateT</a> γ β α</SPAN></dt>
+<dd class="data">
+</dd>
 </dl>
 <h2>
-<a name="let">Functions and Values</a></h2>
+<a NAME="instance">Instances</a></h2>
+<dl class="inst">
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=MonadAlt_StateT> </a> <a class="tref" href="../../prelude/PreludeMonad.html#MonadAlt">MonadAlt</a> <a class="tref" href="../../prelude/PreludeMonad.html#MonadAlt">MonadAlt</a> m ⇒ <a class="tref" href="#StateT">StateT</a> s m</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="evalState">evalState</a> ∷ <b><a class="tref" href="#State">State</a> α β</b> → α → β</SPAN></dt>
+<SPAN CLASS="code"><a name=MonadAlt_StateT._lt_plus_gt>&lt;+&gt;</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#MonadAlt">MonadAlt</a> β ⇒ <b><a class="tref" href="#StateT">StateT</a> γ β α</b> → <b><a class="tref" href="#StateT">StateT</a> γ β α</b> → <a class="tref" href="#StateT">StateT</a> γ β α<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="execState">execState</a> ∷ <b><a class="tref" href="#State">State</a> α β</b> → α → α</SPAN></dt>
+<SPAN CLASS="code"><a name=MonadAlt_StateT._lt_bar_gt>&lt;|&gt;</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#MonadAlt">MonadAlt</a> γ ⇒ <b><a class="tref" href="#StateT">StateT</a> α γ β</b> → <b><a class="tref" href="#StateT">StateT</a> α γ β</b> → <a class="tref" href="#StateT">StateT</a> α γ β<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="promote">promote</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#State">State</a> β γ → <a class="tref" href="#StateT">StateT</a> β α γ</SPAN></dt>
+<SPAN CLASS="code"><a name=MonadAlt_StateT.pzero>pzero</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#MonadAlt">MonadAlt</a> α ⇒ <a class="tref" href="#StateT">StateT</a> β α γ</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=MonadIO_StateT> </a> <a class="tref" href="./trans/MonadIO.html#MonadIO">MonadIO</a> <a class="tref" href="./trans/MonadIO.html#MonadIO">MonadIO</a> m ⇒ <a class="tref" href="#StateT">StateT</a> s m</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=MonadIO_StateT.liftIO>liftIO</a> ∷ <a class="tref" href="./trans/MonadIO.html#MonadIO">MonadIO</a> γ ⇒ <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> β → <a class="tref" href="#StateT">StateT</a> α γ β</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=MonadPlus_StateT> </a> <a class="tref" href="../../prelude/PreludeMonad.html#MonadPlus">MonadPlus</a> <a class="tref" href="../../prelude/PreludeMonad.html#MonadPlus">MonadPlus</a> m ⇒ <a class="tref" href="#StateT">StateT</a> s m</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=MonadPlus_StateT.mplus>mplus</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#MonadPlus">MonadPlus</a> γ ⇒ <b><a class="tref" href="#StateT">StateT</a> α γ β</b> → <b><a class="tref" href="#StateT">StateT</a> α γ β</b> → <a class="tref" href="#StateT">StateT</a> α γ β<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="runState">runState</a> ∷ <b><a class="tref" href="#State">State</a> α β</b> → α → (β, α)</SPAN></dt>
+<SPAN CLASS="code"><a name=MonadPlus_StateT.mzero>mzero</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#MonadPlus">MonadPlus</a> α ⇒ <a class="tref" href="#StateT">StateT</a> β α γ</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=MonadTrans_StateT> </a> <a class="tref" href="./trans/MonadTrans.html#MonadTrans">MonadTrans</a> <a class="tref" href="#StateT">StateT</a> s</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=MonadTrans_StateT.lift>lift</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ α β → <a class="tref" href="#StateT">StateT</a> γ α β</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Monad_State> </a> <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> <a class="tref" href="#State">State</a> s</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_State._star_gt>*&gt;</a> ∷ <a class="tref" href="#State">State</a> γ β → <a class="tref" href="#State">State</a> γ α → <a class="tref" href="#State">State</a> γ α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
-Alias for <a class="fref" href="#State.run">State.run</a></p>
+inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Applicative._star_gt">Applicative.*&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_State._lt_star>&lt;*</a> ∷ <a class="tref" href="#State">State</a> α γ → <a class="tref" href="#State">State</a> α β → <a class="tref" href="#State">State</a> α γ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Applicative._lt_star">Applicative.&lt;*</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_State._lt_star_gt>&lt;*&gt;</a> ∷ <a class="tref" href="#State">State</a> α (γ→β) → <a class="tref" href="#State">State</a> α γ → <a class="tref" href="#State">State</a> α β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Monad._lt_star_gt">Monad.&lt;*&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_State._gt_gt>&gt;&gt;</a> ∷ <b><a class="tref" href="#State">State</a> β α</b> → <a class="tref" href="#State">State</a> β γ → <a class="tref" href="#State">State</a> β γ<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_State._gt_gt_eq>&gt;&gt;=</a> ∷ <b><a class="tref" href="#State">State</a> α γ</b> → (γ → <a class="tref" href="#State">State</a> α β) → <a class="tref" href="#State">State</a> α β<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
+<dd class="func">
+<p>
+monadic bind for the <a class="tref" href="#State">State</a> monad   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_State.fmap>fmap</a> ∷ (α → γ) → <b><a class="tref" href="#State">State</a> β α</b> → <a class="tref" href="#State">State</a> β γ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Monad.fmap">Monad.fmap</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_State.join>join</a> ∷ <b><a class="tref" href="#State">State</a> α (<a class="tref" href="#State">State</a> α β)</b> → <a class="tref" href="#State">State</a> α β</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Monad.join">Monad.join</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_State.pure>pure</a> ∷ <b>α</b> → <a class="tref" href="#State">State</a> β α</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Monad.pure">Monad.pure</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_State._return>return</a> ∷ <b>α</b> → <a class="tref" href="#State">State</a> β α</SPAN></dt>
+<dd class="func">
+<p>
+lift a value to the <a class="tref" href="#State">State</a> monad   </p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Monad_StateT> </a> <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> m ⇒ <a class="tref" href="#StateT">StateT</a> s m</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_StateT._star_gt>*&gt;</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#StateT">StateT</a> α β δ → <a class="tref" href="#StateT">StateT</a> α β γ → <a class="tref" href="#StateT">StateT</a> α β γ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Applicative._star_gt">Applicative.*&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_StateT._lt_star>&lt;*</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ <a class="tref" href="#StateT">StateT</a> β δ α → <a class="tref" href="#StateT">StateT</a> β δ γ → <a class="tref" href="#StateT">StateT</a> β δ α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Applicative._lt_star">Applicative.&lt;*</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_StateT._lt_star_gt>&lt;*&gt;</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#StateT">StateT</a> α β (δ→γ) → <a class="tref" href="#StateT">StateT</a> α β δ → <a class="tref" href="#StateT">StateT</a> α β γ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Monad._lt_star_gt">Monad.&lt;*&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_StateT._gt_gt>&gt;&gt;</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ <b><a class="tref" href="#StateT">StateT</a> β δ α</b> → <a class="tref" href="#StateT">StateT</a> β δ γ → <a class="tref" href="#StateT">StateT</a> β δ γ<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_StateT._gt_gt_eq>&gt;&gt;=</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ <b><a class="tref" href="#StateT">StateT</a> β δ α</b> → (α → <a class="tref" href="#StateT">StateT</a> β δ γ) → <a class="tref" href="#StateT">StateT</a> β δ γ<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_StateT.fmap>fmap</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ (β → α) → <b><a class="tref" href="#StateT">StateT</a> γ δ β</b> → <a class="tref" href="#StateT">StateT</a> γ δ α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Monad.fmap">Monad.fmap</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_StateT.join>join</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <b><a class="tref" href="#StateT">StateT</a> γ β (<a class="tref" href="#StateT">StateT</a> γ β α)</b> → <a class="tref" href="#StateT">StateT</a> γ β α</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Monad.join">Monad.join</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_StateT.pure>pure</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <b>α</b> → <a class="tref" href="#StateT">StateT</a> γ β α</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Monad.pure">Monad.pure</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_StateT._return>return</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ <b>β</b> → <a class="tref" href="#StateT">StateT</a> α γ β</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
 </dd>
 </dl>
 <h2>
-<a name="case">Functions and Values by Type</a></h2>
+<a NAME="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
 <SPAN CLASS="code">(α→α) → <a class="tref" href="#State">State</a> α <a class="tref" href="../../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
@@ -466,7 +526,7 @@ Alias for <a class="fref" href="#State.run">State.run</a></p>
 <a class="fref" href="#StateT.StateT">StateT.StateT</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(β → α) → <a class="tref" href="#State">State</a> γ β → <a class="tref" href="#State">State</a> γ α</SPAN></dt>
+<SPAN CLASS="code">(α → γ) → <a class="tref" href="#State">State</a> β α → <a class="tref" href="#State">State</a> β γ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_State.fmap">Monad_State.fmap</a></p>
@@ -484,40 +544,40 @@ Alias for <a class="fref" href="#State.run">State.run</a></p>
 <a class="fref" href="#Monad_State._lt_star_gt">Monad_State.&lt;*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#State">State</a> β α → <a class="tref" href="#State">State</a> β γ → <a class="tref" href="#State">State</a> β γ</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Monad_State._gt_gt">Monad_State.&gt;&gt;</a>, <a class="fref" href="#Monad_State._star_gt">Monad_State.*&gt;</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#State">State</a> γ β → (β → <a class="tref" href="#State">State</a> γ α) → <a class="tref" href="#State">State</a> γ α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#State">State</a> α γ → (γ → <a class="tref" href="#State">State</a> α β) → <a class="tref" href="#State">State</a> α β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_State._gt_gt_eq">Monad_State.&gt;&gt;=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#State">State</a> γ β → <a class="tref" href="#State">State</a> γ α → <a class="tref" href="#State">State</a> γ β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#State">State</a> α γ → <a class="tref" href="#State">State</a> α β → <a class="tref" href="#State">State</a> α γ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_State._lt_star">Monad_State.&lt;*</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./trans/MonadIO.html#MonadIO">MonadIO</a> α ⇒ <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> γ → <a class="tref" href="#StateT">StateT</a> β α γ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#State">State</a> β α → <a class="tref" href="#State">State</a> β γ → <a class="tref" href="#State">State</a> β γ</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_State._gt_gt">Monad_State.&gt;&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#State">State</a> γ β → <a class="tref" href="#State">State</a> γ α → <a class="tref" href="#State">State</a> γ α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_State._star_gt">Monad_State.*&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./trans/MonadIO.html#MonadIO">MonadIO</a> γ ⇒ <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> β → <a class="tref" href="#StateT">StateT</a> α γ β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#MonadIO_StateT.liftIO">MonadIO_StateT.liftIO</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#State">State</a> β γ → <a class="tref" href="#StateT">StateT</a> β α γ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ α β → <a class="tref" href="#StateT">StateT</a> γ α β</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#promote">promote</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ γ → <a class="tref" href="#StateT">StateT</a> β α γ</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Monad_StateT._return">Monad_StateT.return</a></p>
+<a class="fref" href="#MonadTrans_StateT.lift">MonadTrans_StateT.lift</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#StateT">StateT</a> γ β (<a class="tref" href="#StateT">StateT</a> γ β α) → <a class="tref" href="#StateT">StateT</a> γ β α</SPAN></dt>
@@ -526,22 +586,40 @@ Alias for <a class="fref" href="#State.run">State.run</a></p>
 <a class="fref" href="#Monad_StateT.join">Monad_StateT.join</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ γ α → <a class="tref" href="#StateT">StateT</a> β γ α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#State">State</a> γ α → <a class="tref" href="#StateT">StateT</a> γ β α</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#MonadTrans_StateT.lift">MonadTrans_StateT.lift</a></p>
+<a class="fref" href="#promote">promote</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ β → <a class="tref" href="#StateT">StateT</a> α γ β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ α → <a class="tref" href="#StateT">StateT</a> γ β α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_StateT.pure">Monad_StateT.pure</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#MonadAlt">MonadAlt</a> α ⇒ <a class="tref" href="#StateT">StateT</a> β α γ → <a class="tref" href="#StateT">StateT</a> β α γ → <a class="tref" href="#StateT">StateT</a> β α γ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ β → <a class="tref" href="#StateT">StateT</a> α γ β</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#MonadAlt_StateT._lt_bar_gt">MonadAlt_StateT.&lt;|&gt;</a></p>
+<a class="fref" href="#Monad_StateT._return">Monad_StateT.return</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> 𝖒 ⇒ <a class="tref" href="#StateT">StateT</a> 𝖘 𝖒 𝖛 → 𝖘 → 𝖒 (𝖛, 𝖘)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#runStateT">runStateT</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> 𝖒 ⇒ <a class="tref" href="#StateT">StateT</a> 𝖘 𝖒 𝖛 → 𝖘 → 𝖒 𝖘</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#execStateT">execStateT</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> 𝖒 ⇒ <a class="tref" href="#StateT">StateT</a> 𝖘 𝖒 𝖛 → 𝖘 → 𝖒 𝖛</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#evalStateT">evalStateT</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#MonadAlt">MonadAlt</a> β ⇒ <a class="tref" href="#StateT">StateT</a> γ β α → <a class="tref" href="#StateT">StateT</a> γ β α → <a class="tref" href="#StateT">StateT</a> γ β α</SPAN></dt>
@@ -550,70 +628,76 @@ Alias for <a class="fref" href="#State.run">State.run</a></p>
 <a class="fref" href="#MonadAlt_StateT._lt_plus_gt">MonadAlt_StateT.&lt;+&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#MonadPlus">MonadPlus</a> β ⇒ <a class="tref" href="#StateT">StateT</a> γ β α → <a class="tref" href="#StateT">StateT</a> γ β α → <a class="tref" href="#StateT">StateT</a> γ β α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#MonadAlt">MonadAlt</a> γ ⇒ <a class="tref" href="#StateT">StateT</a> α γ β → <a class="tref" href="#StateT">StateT</a> α γ β → <a class="tref" href="#StateT">StateT</a> α γ β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#MonadAlt_StateT._lt_bar_gt">MonadAlt_StateT.&lt;|&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#MonadPlus">MonadPlus</a> γ ⇒ <a class="tref" href="#StateT">StateT</a> α γ β → <a class="tref" href="#StateT">StateT</a> α γ β → <a class="tref" href="#StateT">StateT</a> α γ β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#MonadPlus_StateT.mplus">MonadPlus_StateT.mplus</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#MonadAlt">MonadAlt</a> γ ⇒ <a class="tref" href="#StateT">StateT</a> α γ β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#MonadAlt">MonadAlt</a> α ⇒ <a class="tref" href="#StateT">StateT</a> β α γ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#MonadAlt_StateT.pzero">MonadAlt_StateT.pzero</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#MonadPlus">MonadPlus</a> γ ⇒ <a class="tref" href="#StateT">StateT</a> α γ β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#MonadPlus">MonadPlus</a> α ⇒ <a class="tref" href="#StateT">StateT</a> β α γ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#MonadPlus_StateT.mzero">MonadPlus_StateT.mzero</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#StateT">StateT</a> γ α (β→δ) → <a class="tref" href="#StateT">StateT</a> γ α β → <a class="tref" href="#StateT">StateT</a> γ α δ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#StateT">StateT</a> α β (δ→γ) → <a class="tref" href="#StateT">StateT</a> α β δ → <a class="tref" href="#StateT">StateT</a> α β γ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_StateT._lt_star_gt">Monad_StateT.&lt;*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#StateT">StateT</a> γ α β → <a class="tref" href="#StateT">StateT</a> γ α δ → <a class="tref" href="#StateT">StateT</a> γ α β</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Monad_StateT._lt_star">Monad_StateT.&lt;*</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#StateT">StateT</a> γ α β → <a class="tref" href="#StateT">StateT</a> γ α δ → <a class="tref" href="#StateT">StateT</a> γ α δ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#StateT">StateT</a> α β δ → <a class="tref" href="#StateT">StateT</a> α β γ → <a class="tref" href="#StateT">StateT</a> α β γ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_StateT._star_gt">Monad_StateT.*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ (α → δ) → <a class="tref" href="#StateT">StateT</a> γ β α → <a class="tref" href="#StateT">StateT</a> γ β δ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ (β → α) → <a class="tref" href="#StateT">StateT</a> γ δ β → <a class="tref" href="#StateT">StateT</a> γ δ α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_StateT.fmap">Monad_StateT.fmap</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#StateT">StateT</a> α β δ → (δ → <a class="tref" href="#StateT">StateT</a> α β γ) → <a class="tref" href="#StateT">StateT</a> α β γ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ <a class="tref" href="#StateT">StateT</a> β δ α → (α → <a class="tref" href="#StateT">StateT</a> β δ γ) → <a class="tref" href="#StateT">StateT</a> β δ γ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_StateT._gt_gt_eq">Monad_StateT.&gt;&gt;=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#StateT">StateT</a> α β δ → <a class="tref" href="#StateT">StateT</a> α β γ → <a class="tref" href="#StateT">StateT</a> α β γ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ <a class="tref" href="#StateT">StateT</a> β δ α → <a class="tref" href="#StateT">StateT</a> β δ γ → <a class="tref" href="#StateT">StateT</a> β δ α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_StateT._lt_star">Monad_StateT.&lt;*</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ <a class="tref" href="#StateT">StateT</a> β δ α → <a class="tref" href="#StateT">StateT</a> β δ γ → <a class="tref" href="#StateT">StateT</a> β δ γ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_StateT._gt_gt">Monad_StateT.&gt;&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#StateT">StateT</a> δ ε α → (β→ζ (γ, β)) → <a class="tref" href="#StateT">StateT</a> β ζ γ</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#StateT.upd$run">StateT.upd$run</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#StateT">StateT</a> ζ δ ε → (<a class="tref" href="../../prelude/PreludeBase.html#Function">-&gt;</a> ζ (δ (ε, ζ))→α→β (γ, α)) → <a class="tref" href="#StateT">StateT</a> α β γ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#StateT">StateT</a> β ζ ε → (<a class="tref" href="../../prelude/PreludeBase.html#Function">-&gt;</a> β (ζ (ε, β))→γ→α (δ, γ)) → <a class="tref" href="#StateT">StateT</a> γ α δ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#StateT.chg$run">StateT.chg$run</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#StateT">StateT</a> ε α ζ → (γ→β (δ, γ)) → <a class="tref" href="#StateT">StateT</a> γ β δ</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#StateT.upd$run">StateT.upd$run</a></p>
 </dd>
 </dl>
 <p>

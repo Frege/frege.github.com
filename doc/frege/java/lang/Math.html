@@ -1,0 +1,1220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<META http-equiv="Content-Type" content="text/html;charset=utf-8">
+<TITLE>Java.lang.Math - frege documentation</TITLE>
+<style TYPE="text/css">
+body { font-family: helvetica, arial, sans-serif }
+pre { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
+h3  { font-weight: lighter }
+dt.func { background: rgb(95%, 95%, 80%); margin-top: 10px }
+dt.clas { background: rgb(80%, 95%, 95%); margin-top: 10px }
+dt.inst { background: rgb(95%, 90%, 95%); margin-top: 10px }
+dt.data { background: rgb(95%, 95%, 95%); margin-top: 10px }
+span.code { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
+span.unknown { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: red }
+a.fref { text-decoration: none; font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(30%, 30%, 0%) }
+a.tref { text-decoration: none; font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(40%, 0%,  40%) }
+</style>
+<BODY>
+<h1>
+Module <SPAN CLASS="code">Java.lang.Math</SPAN></h1>
+<p>
+Mathematical functions from <a HREF="http://docs.oracle.com/javase/7/docs/api/java/lang/Math.html">java.lang.Math</a>.</p>
+<p>
+Functions that are already defined elsewhere, like <SPAN CLASS="code">abs</SPAN> or <SPAN CLASS="code">min</SPAN> have been left out.</p>
+<p>
+This module is not good for inclusion in user code, because of the overloaded primitive functions.</p>
+<p>
+Better use</p>
+<PRE>
+ import Prelude.Math</PRE>
+<p>
+which also defines the class <a HREF="../../prelude/Math.html#Floating">Floating</a> that makes it possibly to use the primitive functions in a type safe way.</p>
+<h3>
+Imports</h3>
+<ul>
+<li>
+<div>
+import <a HREF="../../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
+</li>
+</ul>
+<h3>
+Table of Content</h3>
+<ul class="data">
+<li>
+<div>
+<a HREF="#data">Definitions</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#e">e</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#pi">pi</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#acos">acos</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#acosα">acosα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#acos">acos</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#acosβ">acosβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#acos">acos</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#asin">asin</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#asinα">asinα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#asin">asin</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#asinβ">asinβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#asin">asin</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#atan">atan</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#atanα">atanα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#atan">atan</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#atanβ">atanβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#atan">atan</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#atan2">atan2</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#atan2α">atan2α</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#atan2">atan2</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#atan2β">atan2β</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#atan2">atan2</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#cbrt">cbrt</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#cbrtα">cbrtα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#cbrt">cbrt</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#cbrtβ">cbrtβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#cbrt">cbrt</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#ceil">ceil</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#ceilα">ceilα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ceil">ceil</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#ceilβ">ceilβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ceil">ceil</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#copySign">copySign</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#copySignα">copySignα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#copySign">copySign</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#copySignβ">copySignβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#copySign">copySign</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#cos">cos</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#cosα">cosα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#cos">cos</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#cosβ">cosβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#cos">cos</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#cosh">cosh</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#coshα">coshα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#cosh">cosh</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#coshβ">coshβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#cosh">cosh</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#exp">exp</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#expα">expα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#exp">exp</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#expβ">expβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#exp">exp</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#expm1">expm1</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#expm1α">expm1α</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#expm1">expm1</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#expm1β">expm1β</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#expm1">expm1</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#floor">floor</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#floorα">floorα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#floor">floor</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#floorβ">floorβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#floor">floor</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#getExponent">getExponent</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#getExponentα">getExponentα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#getExponent">getExponent</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#getExponentβ">getExponentβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#getExponent">getExponent</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#hypot">hypot</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#hypotα">hypotα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#hypot">hypot</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#hypotβ">hypotβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#hypot">hypot</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#ieeeRemainder">ieeeRemainder</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#ieeeRemainderα">ieeeRemainderα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ieeeRemainder">ieeeRemainder</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#ieeeRemainderβ">ieeeRemainderβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ieeeRemainder">ieeeRemainder</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#log">log</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#logα">logα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#log">log</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#logβ">logβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#log">log</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#log10">log10</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#log10α">log10α</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#log10">log10</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#log10β">log10β</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#log10">log10</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#log1p">log1p</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#log1pα">log1pα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#log1p">log1p</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#log1pβ">log1pβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#log1p">log1p</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#nextAfter">nextAfter</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#nextAfterα">nextAfterα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#nextAfter">nextAfter</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#nextAfterβ">nextAfterβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#nextAfter">nextAfter</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#nextUp">nextUp</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#nextUpα">nextUpα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#nextUp">nextUp</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#nextUpβ">nextUpβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#nextUp">nextUp</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#_star_star">**</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#_star_starα">**α</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#_star_star">**</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#_star_starβ">**β</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#_star_star">**</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#pow">pow</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#powα">powα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#pow">pow</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#powβ">powβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#pow">pow</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#rint">rint</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#rintα">rintα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#rint">rint</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#rintβ">rintβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#rint">rint</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#round">round</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Long">Long</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Long">Long</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#roundα">roundα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Long">Long</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#round">round</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#roundβ">roundβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Long">Long</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#round">round</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#scalb">scalb</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#scalbα">scalbα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#scalb">scalb</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#scalbβ">scalbβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#scalb">scalb</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#signum">signum</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#signumα">signumα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#signum">signum</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#signumβ">signumβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#signum">signum</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#sin">sin</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#sinα">sinα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#sin">sin</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#sinβ">sinβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#sin">sin</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#sinh">sinh</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#sinhα">sinhα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#sinh">sinh</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#sinhβ">sinhβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#sinh">sinh</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#sqrt">sqrt</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#sqrtα">sqrtα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#sqrt">sqrt</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#sqrtβ">sqrtβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#sqrt">sqrt</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#tan">tan</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#tanα">tanα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#tan">tan</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#tanβ">tanβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#tan">tan</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#tanh">tanh</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#tanhα">tanhα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#tanh">tanh</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#tanhβ">tanhβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#tanh">tanh</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#toDegrees">toDegrees</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#toDegreesα">toDegreesα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#toDegrees">toDegrees</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#toDegreesβ">toDegreesβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#toDegrees">toDegrees</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#toRadians">toRadians</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#toRadiansα">toRadiansα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#toRadians">toRadians</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#toRadiansβ">toRadiansβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#toRadians">toRadians</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#ulp">ulp</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;<a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#ulpα">ulpα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ulp">ulp</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#ulpβ">ulpβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ulp">ulp</a></SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#case">Functions and Values by Type</a></div>
+</li>
+</ul>
+<h2>
+<a NAME="data">Definitions</a></h2>
+<dl class="data">
+<dt class="data">
+<SPAN CLASS="code"><a name=e>e</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.E</SPAN></dt>
+<dd class="data">
+<p>
+The <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> value that is closer than any other to e, the base of the natural logarithms.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=pi>pi</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.PI</SPAN></dt>
+<dd class="data">
+<p>
+The <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> value that is closer than any other to pi, the ratio of the circumference of a circle to its diameter.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=acos>acos</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.acos</SPAN></dt>
+<dd class="data">
+<p>
+Returns the arc cosine of a value; the returned angle is in the range 0.0 through <a class="fref" href="#pi">pi</a>.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=acosα>acosα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.acos&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#acos">acos</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the arc cosine of a value; the returned angle is in the range 0.0 through <a class="fref" href="#pi">pi</a>.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=acosβ>acosβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.acos&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#acos">acos</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the arc cosine of a value; the returned angle is in the range 0.0 through <a class="fref" href="#pi">pi</a>.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=asin>asin</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.asin</SPAN></dt>
+<dd class="data">
+<p>
+Returns the arc sine of a value; the returned angle is in the range -<a class="fref" href="#pi">pi</a>/2 through <a class="fref" href="#pi">pi</a>/2.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=asinα>asinα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.asin&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#asin">asin</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the arc sine of a value; the returned angle is in the range -<a class="fref" href="#pi">pi</a>/2 through <a class="fref" href="#pi">pi</a>/2.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=asinβ>asinβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.asin&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#asin">asin</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the arc sine of a value; the returned angle is in the range -<a class="fref" href="#pi">pi</a>/2 through <a class="fref" href="#pi">pi</a>/2.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=atan>atan</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.atan</SPAN></dt>
+<dd class="data">
+<p>
+Returns the arc tangent of a value; the returned angle is in the range -<a class="fref" href="#pi">pi</a>/2 through <a class="fref" href="#pi">pi</a>/2.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=atanα>atanα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.atan&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#atan">atan</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the arc tangent of a value; the returned angle is in the range -<a class="fref" href="#pi">pi</a>/2 through <a class="fref" href="#pi">pi</a>/2.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=atanβ>atanβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.atan&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#atan">atan</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the arc tangent of a value; the returned angle is in the range -<a class="fref" href="#pi">pi</a>/2 through <a class="fref" href="#pi">pi</a>/2.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=atan2>atan2</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.atan2</SPAN></dt>
+<dd class="data">
+<p>
+Returns the angle theta from the conversion of rectangular coordinates (x, y) to polar coordinates (r, theta).   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=atan2α>atan2α</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.atan2&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#atan2">atan2</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the angle theta from the conversion of rectangular coordinates (x, y) to polar coordinates (r, theta).   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=atan2β>atan2β</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.atan2&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#atan2">atan2</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the angle theta from the conversion of rectangular coordinates (x, y) to polar coordinates (r, theta).   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=cbrt>cbrt</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.cbrt</SPAN></dt>
+<dd class="data">
+<p>
+Returns the cube root of a value.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=cbrtα>cbrtα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.cbrt&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#cbrt">cbrt</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the cube root of a value.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=cbrtβ>cbrtβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.cbrt&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#cbrt">cbrt</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the cube root of a value.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=ceil>ceil</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.ceil</SPAN></dt>
+<dd class="data">
+<p>
+Returns the smallest (closest to negative infinity) value that is greater than or equal to the argument and is equal to a mathematical integer.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=ceilα>ceilα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.ceil&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ceil">ceil</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the smallest (closest to negative infinity) value that is greater than or equal to the argument and is equal to a mathematical integer.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=ceilβ>ceilβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.ceil&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ceil">ceil</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the smallest (closest to negative infinity) value that is greater than or equal to the argument and is equal to a mathematical integer.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=copySign>copySign</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a><br><b>pure </b><b>native </b>java.lang.Math.copySign</SPAN></dt>
+<dd class="data">
+<p>
+Returns the first argument with the sign of the second argument.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=copySignα>copySignα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.copySign&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#copySign">copySign</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the first argument with the sign of the second argument.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=copySignβ>copySignβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a><br><b>pure </b><b>native </b>java.lang.Math.copySign&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#copySign">copySign</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the first argument with the sign of the second argument.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=cos>cos</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.cos</SPAN></dt>
+<dd class="data">
+<p>
+Returns the trigonometric cosine of an angle.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=cosα>cosα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.cos&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#cos">cos</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the trigonometric cosine of an angle.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=cosβ>cosβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.cos&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#cos">cos</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the trigonometric cosine of an angle.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=cosh>cosh</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.cosh</SPAN></dt>
+<dd class="data">
+<p>
+Returns the hyperbolic cosine of a floating point value.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=coshα>coshα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.cosh&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#cosh">cosh</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the hyperbolic cosine of a floating point value.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=coshβ>coshβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.cosh&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#cosh">cosh</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the hyperbolic cosine of a floating point value.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=exp>exp</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.exp</SPAN></dt>
+<dd class="data">
+<p>
+Returns Euler's number <a class="fref" href="#e">e</a> raised to the power of a floating-point value.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=expα>expα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.exp&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#exp">exp</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns Euler's number <a class="fref" href="#e">e</a> raised to the power of a floating-point value.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=expβ>expβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.exp&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#exp">exp</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns Euler's number <a class="fref" href="#e">e</a> raised to the power of a floating-point value.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=expm1>expm1</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.expm1</SPAN></dt>
+<dd class="data">
+<p>
+Returns <SPAN CLASS="code">e^x -1</SPAN>.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=expm1α>expm1α</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.expm1&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#expm1">expm1</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns <SPAN CLASS="code">e^x -1</SPAN>.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=expm1β>expm1β</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.expm1&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#expm1">expm1</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns <SPAN CLASS="code">e^x -1</SPAN>.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=floor>floor</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.floor</SPAN></dt>
+<dd class="data">
+<p>
+Returns the largest (closest to positive infinity) value that is less than or equal to the argument and is equal to a mathematical integer.</p>
+<p>
+Special cases:</p>
+<ul>
+<LI>
+ If the argument value is already equal to a mathematical integer, then the result is the same as the argument.</LI>
+<LI>
+ If the argument is NaN or an infinity or positive zero or negative zero, then the result is the same as the argument.</LI>
+</ul>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=floorα>floorα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.floor&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#floor">floor</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the largest (closest to positive infinity) value that is less than or equal to the argument and is equal to a mathematical integer.</p>
+<p>
+Special cases:</p>
+<ul>
+<LI>
+ If the argument value is already equal to a mathematical integer, then the result is the same as the argument.</LI>
+<LI>
+ If the argument is NaN or an infinity or positive zero or negative zero, then the result is the same as the argument.</LI>
+</ul>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=floorβ>floorβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.floor&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#floor">floor</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the largest (closest to positive infinity) value that is less than or equal to the argument and is equal to a mathematical integer.</p>
+<p>
+Special cases:</p>
+<ul>
+<LI>
+ If the argument value is already equal to a mathematical integer, then the result is the same as the argument.</LI>
+<LI>
+ If the argument is NaN or an infinity or positive zero or negative zero, then the result is the same as the argument.</LI>
+</ul>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=getExponent>getExponent</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a><br><b>pure </b><b>native </b>java.lang.Math.getExponent</SPAN></dt>
+<dd class="data">
+<p>
+Returns the unbiased exponent used in the representation of a floating point number.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=getExponentα>getExponentα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a><br><b>pure </b><b>native </b>java.lang.Math.getExponent&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#getExponent">getExponent</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the unbiased exponent used in the representation of a floating point number.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=getExponentβ>getExponentβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a><br><b>pure </b><b>native </b>java.lang.Math.getExponent&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#getExponent">getExponent</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the unbiased exponent used in the representation of a floating point number.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=hypot>hypot</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.hypot</SPAN></dt>
+<dd class="data">
+<p>
+Returns <a class="fref" href="#sqrt">sqrt</a> <SPAN CLASS="code">(x² + y²)</SPAN> without intermediate overflow or underflow.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=hypotα>hypotα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.hypot&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#hypot">hypot</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns <a class="fref" href="#sqrt">sqrt</a> <SPAN CLASS="code">(x² + y²)</SPAN> without intermediate overflow or underflow.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=hypotβ>hypotβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.hypot&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#hypot">hypot</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns <a class="fref" href="#sqrt">sqrt</a> <SPAN CLASS="code">(x² + y²)</SPAN> without intermediate overflow or underflow.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=ieeeRemainder>ieeeRemainder</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.IEEEremainder</SPAN></dt>
+<dd class="data">
+<p>
+Computes the remainder operation on two arguments as prescribed by the IEEE 754 standard.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=ieeeRemainderα>ieeeRemainderα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.IEEEremainder&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ieeeRemainder">ieeeRemainder</a></SPAN></dt>
+<dd class="data">
+<p>
+Computes the remainder operation on two arguments as prescribed by the IEEE 754 standard.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=ieeeRemainderβ>ieeeRemainderβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.IEEEremainder&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ieeeRemainder">ieeeRemainder</a></SPAN></dt>
+<dd class="data">
+<p>
+Computes the remainder operation on two arguments as prescribed by the IEEE 754 standard.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=log>log</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.log</SPAN></dt>
+<dd class="data">
+<p>
+Returns the natural logarithm (base <a class="fref" href="#e">e</a>) of a value.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=logα>logα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.log&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#log">log</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the natural logarithm (base <a class="fref" href="#e">e</a>) of a value.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=logβ>logβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.log&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#log">log</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the natural logarithm (base <a class="fref" href="#e">e</a>) of a value.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=log10>log10</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.log10</SPAN></dt>
+<dd class="data">
+<p>
+Returns the base 10 logarithm of a value.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=log10α>log10α</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.log10&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#log10">log10</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the base 10 logarithm of a value.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=log10β>log10β</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.log10&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#log10">log10</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the base 10 logarithm of a value.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=log1p>log1p</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.log1p</SPAN></dt>
+<dd class="data">
+<p>
+Returns the natural logarithm of the sum of the argument and 1.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=log1pα>log1pα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.log1p&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#log1p">log1p</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the natural logarithm of the sum of the argument and 1.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=log1pβ>log1pβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.log1p&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#log1p">log1p</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the natural logarithm of the sum of the argument and 1.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=nextAfter>nextAfter</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.nextAfter</SPAN></dt>
+<dd class="data">
+<p>
+Returns the floating-point number adjacent to the first argument in the direction of the second argument.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=nextAfterα>nextAfterα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.nextAfter&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#nextAfter">nextAfter</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the floating-point number adjacent to the first argument in the direction of the second argument.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=nextAfterβ>nextAfterβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.nextAfter&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#nextAfter">nextAfter</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the floating-point number adjacent to the first argument in the direction of the second argument.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=nextUp>nextUp</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a><br><b>pure </b><b>native </b>java.lang.Math.nextUp</SPAN></dt>
+<dd class="data">
+<p>
+Returns the floating-point value adjacent to the argument in the direction of positive infinity.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=nextUpα>nextUpα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.nextUp&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#nextUp">nextUp</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the floating-point value adjacent to the argument in the direction of positive infinity.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=nextUpβ>nextUpβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a><br><b>pure </b><b>native </b>java.lang.Math.nextUp&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#nextUp">nextUp</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the floating-point value adjacent to the argument in the direction of positive infinity.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=_star_star>**</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.pow<br><b>infixr</b>&nbsp;&nbsp;15</SPAN></dt>
+<dd class="data">
+<p>
+Returns the value of the first argument raised to the power of the second argument.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=_star_starα>**α</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.pow&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#_star_star">**</a><br><b>infixr</b>&nbsp;&nbsp;15</SPAN></dt>
+<dd class="data">
+<p>
+Returns the value of the first argument raised to the power of the second argument.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=_star_starβ>**β</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.pow&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#_star_star">**</a><br><b>infixr</b>&nbsp;&nbsp;15</SPAN></dt>
+<dd class="data">
+<p>
+Returns the value of the first argument raised to the power of the second argument.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=pow>pow</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.pow</SPAN></dt>
+<dd class="data">
+<p>
+Returns the value of the first argument raised to the power of the second argument.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=powα>powα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.pow&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#pow">pow</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the value of the first argument raised to the power of the second argument.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=powβ>powβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.pow&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#pow">pow</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the value of the first argument raised to the power of the second argument.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=rint>rint</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.rint</SPAN></dt>
+<dd class="data">
+<p>
+Returns the <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> value that is closest in value to the argument and is equal to a mathematical integer.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=rintα>rintα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.rint&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#rint">rint</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> value that is closest in value to the argument and is equal to a mathematical integer.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=rintβ>rintβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.rint&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#rint">rint</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> value that is closest in value to the argument and is equal to a mathematical integer.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=round>round</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Long">Long</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Long">Long</a><br><b>pure </b><b>native </b>java.lang.Math.round</SPAN></dt>
+<dd class="data">
+<p>
+Returns the closest <a class="tref" href="../../prelude/PreludeBase.html#Long">Long</a> to the argument, with ties rounding up.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=roundα>roundα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Long">Long</a><br><b>pure </b><b>native </b>java.lang.Math.round&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#round">round</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the closest <a class="tref" href="../../prelude/PreludeBase.html#Long">Long</a> to the argument, with ties rounding up.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=roundβ>roundβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Long">Long</a><br><b>pure </b><b>native </b>java.lang.Math.round&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#round">round</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the closest <a class="tref" href="../../prelude/PreludeBase.html#Long">Long</a> to the argument, with ties rounding up.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=scalb>scalb</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a><br><b>pure </b><b>native </b>java.lang.Math.scalb</SPAN></dt>
+<dd class="data">
+<PRE>
+ scalb d scaleFactor</PRE>
+<p>
+Return <SPAN CLASS="code">d * 2^scaleFactor</SPAN> rounded as if performed by a single correctly rounded floating-point multiply.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=scalbα>scalbα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.scalb&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#scalb">scalb</a></SPAN></dt>
+<dd class="data">
+<PRE>
+ scalb d scaleFactor</PRE>
+<p>
+Return <SPAN CLASS="code">d * 2^scaleFactor</SPAN> rounded as if performed by a single correctly rounded floating-point multiply.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=scalbβ>scalbβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a><br><b>pure </b><b>native </b>java.lang.Math.scalb&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#scalb">scalb</a></SPAN></dt>
+<dd class="data">
+<PRE>
+ scalb d scaleFactor</PRE>
+<p>
+Return <SPAN CLASS="code">d * 2^scaleFactor</SPAN> rounded as if performed by a single correctly rounded floating-point multiply.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=signum>signum</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a><br><b>pure </b><b>native </b>java.lang.Math.signum</SPAN></dt>
+<dd class="data">
+<p>
+Returns the signum function of the argument; zero if the argument is zero, 1.0 if the argument is greater than zero, -1.0 if the argument is less than zero.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=signumα>signumα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.signum&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#signum">signum</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the signum function of the argument; zero if the argument is zero, 1.0 if the argument is greater than zero, -1.0 if the argument is less than zero.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=signumβ>signumβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a><br><b>pure </b><b>native </b>java.lang.Math.signum&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#signum">signum</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the signum function of the argument; zero if the argument is zero, 1.0 if the argument is greater than zero, -1.0 if the argument is less than zero.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=sin>sin</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.sin</SPAN></dt>
+<dd class="data">
+<p>
+Returns the trigonometric sine of an angle.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=sinα>sinα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.sin&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#sin">sin</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the trigonometric sine of an angle.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=sinβ>sinβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.sin&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#sin">sin</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the trigonometric sine of an angle.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=sinh>sinh</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.sinh</SPAN></dt>
+<dd class="data">
+<p>
+Returns the hyperbolic sine of a value.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=sinhα>sinhα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.sinh&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#sinh">sinh</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the hyperbolic sine of a value.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=sinhβ>sinhβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.sinh&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#sinh">sinh</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the hyperbolic sine of a value.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=sqrt>sqrt</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.sqrt</SPAN></dt>
+<dd class="data">
+<p>
+Returns the correctly rounded positive square root of a value.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=sqrtα>sqrtα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.sqrt&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#sqrt">sqrt</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the correctly rounded positive square root of a value.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=sqrtβ>sqrtβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.sqrt&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#sqrt">sqrt</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the correctly rounded positive square root of a value.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=tan>tan</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.tan</SPAN></dt>
+<dd class="data">
+<p>
+Returns the trigonometric tangent of an angle.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=tanα>tanα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.tan&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#tan">tan</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the trigonometric tangent of an angle.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=tanβ>tanβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.tan&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#tan">tan</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the trigonometric tangent of an angle.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=tanh>tanh</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.tanh</SPAN></dt>
+<dd class="data">
+<p>
+Returns the hyperbolic tangent of a floating point value.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=tanhα>tanhα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.tanh&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#tanh">tanh</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the hyperbolic tangent of a floating point value.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=tanhβ>tanhβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.tanh&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#tanh">tanh</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the hyperbolic tangent of a floating point value.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=toDegrees>toDegrees</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.toDegrees</SPAN></dt>
+<dd class="data">
+<p>
+Converts an angle measured in radians to an approximately equivalent angle measured in degrees.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=toDegreesα>toDegreesα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.toDegrees&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#toDegrees">toDegrees</a></SPAN></dt>
+<dd class="data">
+<p>
+Converts an angle measured in radians to an approximately equivalent angle measured in degrees.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=toDegreesβ>toDegreesβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.toDegrees&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#toDegrees">toDegrees</a></SPAN></dt>
+<dd class="data">
+<p>
+Converts an angle measured in radians to an approximately equivalent angle measured in degrees.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=toRadians>toRadians</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.toRadians</SPAN></dt>
+<dd class="data">
+<p>
+Converts an angle measured in degrees to an approximately equivalent angle measured in radians.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=toRadiansα>toRadiansα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.toRadians&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#toRadians">toRadians</a></SPAN></dt>
+<dd class="data">
+<p>
+Converts an angle measured in degrees to an approximately equivalent angle measured in radians.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=toRadiansβ>toRadiansβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.toRadians&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#toRadians">toRadians</a></SPAN></dt>
+<dd class="data">
+<p>
+Converts an angle measured in degrees to an approximately equivalent angle measured in radians.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=ulp>ulp</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a><br><b>pure </b><b>native </b>java.lang.Math.ulp</SPAN></dt>
+<dd class="data">
+<p>
+Returns the size of an ulp of the argument.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=ulpα>ulpα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a><br><b>pure </b><b>native </b>java.lang.Math.ulp&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ulp">ulp</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the size of an ulp of the argument.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=ulpβ>ulpβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a><br><b>pure </b><b>native </b>java.lang.Math.ulp&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ulp">ulp</a></SPAN></dt>
+<dd class="data">
+<p>
+Returns the size of an ulp of the argument.   </p>
+</dd>
+</dl>
+<h2>
+<a NAME="case">Functions and Values by Type</a></h2>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#_star_starα">**α</a>, <a class="fref" href="#atan2α">atan2α</a>, <a class="fref" href="#copySignα">copySignα</a>, <a class="fref" href="#hypotα">hypotα</a>, <a class="fref" href="#ieeeRemainderα">ieeeRemainderα</a>, <a class="fref" href="#nextAfterα">nextAfterα</a>, <a class="fref" href="#powα">powα</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#scalbα">scalbα</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#acosβ">acosβ</a>, <a class="fref" href="#asinβ">asinβ</a>, <a class="fref" href="#atanβ">atanβ</a>, <a class="fref" href="#cbrtα">cbrtα</a>, <a class="fref" href="#ceilα">ceilα</a>, <a class="fref" href="#coshα">coshα</a>, <a class="fref" href="#cosα">cosα</a>, <a class="fref" href="#expm1α">expm1α</a>, <a class="fref" href="#expα">expα</a>, <a class="fref" href="#floorα">floorα</a>, <a class="fref" href="#log10α">log10α</a>, <a class="fref" href="#log1pα">log1pα</a>, <a class="fref" href="#logα">logα</a>, <a class="fref" href="#nextUpα">nextUpα</a>, <a class="fref" href="#rintα">rintα</a>, <a class="fref" href="#signumα">signumα</a>, <a class="fref" href="#sinhα">sinhα</a>, <a class="fref" href="#sinα">sinα</a>, <a class="fref" href="#sqrtα">sqrtα</a>, <a class="fref" href="#tanhα">tanhα</a>, <a class="fref" href="#tanα">tanα</a>, <a class="fref" href="#toDegreesα">toDegreesα</a>, <a class="fref" href="#toRadiansα">toRadiansα</a>, <a class="fref" href="#ulpα">ulpα</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#getExponentα">getExponentα</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../../prelude/PreludeBase.html#Long">Long</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#roundα">roundα</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#_star_starβ">**β</a>, <a class="fref" href="#atan2β">atan2β</a>, <a class="fref" href="#hypotβ">hypotβ</a>, <a class="fref" href="#ieeeRemainderβ">ieeeRemainderβ</a>, <a class="fref" href="#nextAfterβ">nextAfterβ</a>, <a class="fref" href="#powβ">powβ</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#copySignβ">copySignβ</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#scalbβ">scalbβ</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#acosα">acosα</a>, <a class="fref" href="#asinα">asinα</a>, <a class="fref" href="#atanα">atanα</a>, <a class="fref" href="#cbrtβ">cbrtβ</a>, <a class="fref" href="#ceilβ">ceilβ</a>, <a class="fref" href="#coshβ">coshβ</a>, <a class="fref" href="#cosβ">cosβ</a>, <a class="fref" href="#expm1β">expm1β</a>, <a class="fref" href="#expβ">expβ</a>, <a class="fref" href="#floorβ">floorβ</a>, <a class="fref" href="#log10β">log10β</a>, <a class="fref" href="#log1pβ">log1pβ</a>, <a class="fref" href="#logβ">logβ</a>, <a class="fref" href="#rintβ">rintβ</a>, <a class="fref" href="#sinhβ">sinhβ</a>, <a class="fref" href="#sinβ">sinβ</a>, <a class="fref" href="#sqrtβ">sqrtβ</a>, <a class="fref" href="#tanhβ">tanhβ</a>, <a class="fref" href="#tanβ">tanβ</a>, <a class="fref" href="#toDegreesβ">toDegreesβ</a>, <a class="fref" href="#toRadiansβ">toRadiansβ</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#nextUpβ">nextUpβ</a>, <a class="fref" href="#signumβ">signumβ</a>, <a class="fref" href="#ulpβ">ulpβ</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#getExponentβ">getExponentβ</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../../prelude/PreludeBase.html#Long">Long</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#roundβ">roundβ</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeBase.html#Double">Double</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#e">e</a>, <a class="fref" href="#pi">pi</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">ω</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#_star_star">**</a>, <a class="fref" href="#acos">acos</a>, <a class="fref" href="#asin">asin</a>, <a class="fref" href="#atan">atan</a>, <a class="fref" href="#atan2">atan2</a>, <a class="fref" href="#cbrt">cbrt</a>, <a class="fref" href="#ceil">ceil</a>, <a class="fref" href="#copySign">copySign</a>, <a class="fref" href="#cos">cos</a>, <a class="fref" href="#cosh">cosh</a>, <a class="fref" href="#exp">exp</a>, <a class="fref" href="#expm1">expm1</a>, <a class="fref" href="#floor">floor</a>, <a class="fref" href="#getExponent">getExponent</a>, <a class="fref" href="#hypot">hypot</a>, <a class="fref" href="#ieeeRemainder">ieeeRemainder</a>, <a class="fref" href="#log">log</a>, <a class="fref" href="#log10">log10</a>, <a class="fref" href="#log1p">log1p</a>, <a class="fref" href="#nextAfter">nextAfter</a>, <a class="fref" href="#nextUp">nextUp</a>, <a class="fref" href="#pow">pow</a>, <a class="fref" href="#rint">rint</a>, <a class="fref" href="#round">round</a>, <a class="fref" href="#scalb">scalb</a>, <a class="fref" href="#signum">signum</a>, <a class="fref" href="#sin">sin</a>, <a class="fref" href="#sinh">sinh</a>, <a class="fref" href="#sqrt">sqrt</a>, <a class="fref" href="#tan">tan</a>, <a class="fref" href="#tanh">tanh</a>, <a class="fref" href="#toDegrees">toDegrees</a>, <a class="fref" href="#toRadians">toRadians</a>, <a class="fref" href="#ulp">ulp</a></p>
+</dd>
+</dl>
+<p>
+<a HREF="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Strict" height="31" width="88"></a></p>
+</BODY>
+</HTML>

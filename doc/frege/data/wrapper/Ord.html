@@ -17,35 +17,9 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 </style>
 <BODY>
 <h1>
-<a name="package">Package <SPAN CLASS="code">Data.wrapper.Ord</SPAN></a></h1>
-<p>
- Source file: <SPAN CLASS="code">./frege/data/wrapper/Ord.fr</SPAN></p>
-<h3>
-Package Documentation</h3>
+Module <SPAN CLASS="code">Data.wrapper.Ord</SPAN></h1>
 <p>
 <a class="tref" href="../Monoid.html#Monoid">Monoid</a> instances for bounded and ordered values, using <a class="fref" href="../../prelude/PreludeBase.html#Ord.min">Ord.min</a> and <a class="fref" href="../../prelude/PreludeBase.html#Ord.max">Ord.max</a>   </p>
-<h3>
-Table of Content</h3>
-<ul>
-<li>
-<div>
-<a HREF="#instance">Instances</a></div>
-<div>
-<a class="tref" href="#Eq_Max">Eq_Max</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Eq_Min">Eq_Min</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Monoid_Max">Monoid_Max</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Monoid_Min">Monoid_Min</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Ord_Max">Ord_Max</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Ord_Min">Ord_Min</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Semigroup_Max">Semigroup_Max</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Semigroup_Min">Semigroup_Min</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Show_Max">Show_Max</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Show_Min">Show_Min</a></div>
-</li>
-<li>
-<div>
-<a HREF="#data">Data Types</a></div>
-<div>
-<a class="tref" href="#Max">Max</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Min">Min</a></div>
-</li>
-<li>
-<div>
-<a HREF="#case">Functions and Values (by type)</a></div>
-<div>
-<a class="fref" href="#Eq_Max._eq_eq">Eq_Max.==</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Eq_Max._excl_eq">Eq_Max.!=</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Eq_Max.hashCode">Eq_Max.hashCode</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Eq_Min._eq_eq">Eq_Min.==</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Eq_Min._excl_eq">Eq_Min.!=</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Eq_Min.hashCode">Eq_Min.hashCode</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_Max.mempty">Monoid_Max.mempty</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_Max.mconcat">Monoid_Max.mconcat</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_Max.mtimes">Monoid_Max.mtimes</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_Min.mempty">Monoid_Min.mempty</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_Min.mconcat">Monoid_Min.mconcat</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Monoid_Min.mtimes">Monoid_Min.mtimes</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_Max._gt">Ord_Max.&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_Max._lt_eq">Ord_Max.&lt;=</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_Max._lt">Ord_Max.&lt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_Max._lt_eq_gt">Ord_Max.&lt;=&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_Max.compare">Ord_Max.compare</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_Max._gt_eq">Ord_Max.&gt;=</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_Max.max">Ord_Max.max</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_Max.min">Ord_Max.min</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_Min._gt">Ord_Min.&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_Min._lt_eq">Ord_Min.&lt;=</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_Min._lt">Ord_Min.&lt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_Min._lt_eq_gt">Ord_Min.&lt;=&gt;</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_Min.compare">Ord_Min.compare</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_Min._gt_eq">Ord_Min.&gt;=</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_Min.max">Ord_Min.max</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Ord_Min.min">Ord_Min.min</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Semigroup_Max.sconcat">Semigroup_Max.sconcat</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Semigroup_Max.mappend">Semigroup_Max.mappend</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Semigroup_Max.stimes">Semigroup_Max.stimes</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Semigroup_Min.sconcat">Semigroup_Min.sconcat</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Semigroup_Min.mappend">Semigroup_Min.mappend</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Semigroup_Min.stimes">Semigroup_Min.stimes</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_Max.showList">Show_Max.showList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_Max.show">Show_Max.show</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_Max.display">Show_Max.display</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_Max.showChars">Show_Max.showChars</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_Max.showsub">Show_Max.showsub</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_Max.showsPrec">Show_Max.showsPrec</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_Min.showList">Show_Min.showList</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_Min.show">Show_Min.show</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_Min.display">Show_Min.display</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_Min.showChars">Show_Min.showChars</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_Min.showsub">Show_Min.showsub</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Show_Min.showsPrec">Show_Min.showsPrec</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Max.has$unwrap">Max.has$unwrap</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Max.chg$unwrap">Max.chg$unwrap</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Max.Max">Max.Max</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Max.unwrap">Max.unwrap</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Max.upd$unwrap">Max.upd$unwrap</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Min.has$unwrap">Min.has$unwrap</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Min.chg$unwrap">Min.chg$unwrap</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Min.Min">Min.Min</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Min.unwrap">Min.unwrap</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Min.upd$unwrap">Min.upd$unwrap</a></div>
-</li>
-</ul>
 <h3>
 Imports</h3>
 <ul>
@@ -86,369 +60,93 @@ import <a HREF="../../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as Pre
 import <a HREF="../../java/util/Regex.html">Java.util.Regex</a> as Regexp</div>
 </li>
 </ul>
+<h3>
+Table of Content</h3>
+<ul class="data">
+<li>
+<div>
+<a HREF="#data">Definitions</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#Max"> </a> <a class="tref" href="#Max">Max</a> a</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#Min"> </a> <a class="tref" href="#Min">Min</a> a</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#getMin">getMin</a> ∷ <b><a class="tref" href="#Min">Min</a> α</b> → α</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#getMax">getMax</a> ∷ <b><a class="tref" href="#Max">Max</a> α</b> → α</SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#instance">Instances</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Eq_Max"> </a> <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> a ⇒ <a class="tref" href="#Max">Max</a> a</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Eq_Min"> </a> <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> a ⇒ <a class="tref" href="#Min">Min</a> a</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Monoid_Max"> </a> <a class="tref" href="../Monoid.html#Monoid">Monoid</a> (<a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> a, <a class="tref" href="../../prelude/PreludeBase.html#Bounded">Bounded</a> a) ⇒ <a class="tref" href="#Max">Max</a> a</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Monoid_Min"> </a> <a class="tref" href="../Monoid.html#Monoid">Monoid</a> (<a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> a, <a class="tref" href="../../prelude/PreludeBase.html#Bounded">Bounded</a> a) ⇒ <a class="tref" href="#Min">Min</a> a</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Ord_Max"> </a> <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> a ⇒ <a class="tref" href="#Max">Max</a> a</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Ord_Min"> </a> <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> a ⇒ <a class="tref" href="#Min">Min</a> a</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Semigroup_Max"> </a> <a class="tref" href="../Monoid.html#Semigroup">Semigroup</a> <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> a ⇒ <a class="tref" href="#Max">Max</a> a</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Semigroup_Min"> </a> <a class="tref" href="../Monoid.html#Semigroup">Semigroup</a> <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> a ⇒ <a class="tref" href="#Min">Min</a> a</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Show_Max"> </a> <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> a ⇒ <a class="tref" href="#Max">Max</a> a</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Show_Min"> </a> <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> a ⇒ <a class="tref" href="#Min">Min</a> a</SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#case">Functions and Values by Type</a></div>
+</li>
+</ul>
 <h2>
-<a name="instance">Instances</a></h2>
-<dl class="inst">
-<dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="Eq_Max"> </a> <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> a ⇒ <a class="tref" href="#Max">Max</a> a</SPAN></dt>
-<dd class="inst">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="Eq_Max._excl_eq">!=</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → <b><a class="tref" href="#Max">Max</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeBase.html#Eq._excl_eq">Eq.!=</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Eq_Max._eq_eq">==</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → <b><a class="tref" href="#Max">Max</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
-<dd class="func">
-<p>
-Function generated for derived instance.</p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Eq_Max.hashCode">hashCode</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
-<dd class="func">
-<p>
-Function generated for derived instance.</p>
-</dd>
-</dl>
-</dd>
-<dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="Eq_Min"> </a> <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> a ⇒ <a class="tref" href="#Min">Min</a> a</SPAN></dt>
-<dd class="inst">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="Eq_Min._excl_eq">!=</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → <b><a class="tref" href="#Min">Min</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeBase.html#Eq._excl_eq">Eq.!=</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Eq_Min._eq_eq">==</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → <b><a class="tref" href="#Min">Min</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
-<dd class="func">
-<p>
-Function generated for derived instance.</p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Eq_Min.hashCode">hashCode</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
-<dd class="func">
-<p>
-Function generated for derived instance.</p>
-</dd>
-</dl>
-</dd>
-<dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="Monoid_Max"> </a> <a class="tref" href="../Monoid.html#Monoid">Monoid</a> (<a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> a, <a class="tref" href="../../prelude/PreludeBase.html#Bounded">Bounded</a> a) ⇒ <a class="tref" href="#Max">Max</a> a</SPAN></dt>
-<dd class="inst">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="Monoid_Max.mconcat">mconcat</a> ∷ (<a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α, <a class="tref" href="../../prelude/PreludeBase.html#Bounded">Bounded</a> α) ⇒ <b>[<a class="tref" href="#Max">Max</a> α]</b> → <a class="tref" href="#Max">Max</a> α</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../Monoid.html#Monoid.mconcat">Monoid.mconcat</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Monoid_Max.mempty">mempty</a> ∷ (<a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α, <a class="tref" href="../../prelude/PreludeBase.html#Bounded">Bounded</a> α) ⇒ <a class="tref" href="#Max">Max</a> α</SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Monoid_Max.mtimes">mtimes</a> ∷ (<a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α, <a class="tref" href="../../prelude/PreludeBase.html#Bounded">Bounded</a> α) ⇒ <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#Max">Max</a> α → <a class="tref" href="#Max">Max</a> α</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../Monoid.html#Monoid.mtimes">Monoid.mtimes</a></p>
-</dd>
-</dl>
-</dd>
-<dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="Monoid_Min"> </a> <a class="tref" href="../Monoid.html#Monoid">Monoid</a> (<a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> a, <a class="tref" href="../../prelude/PreludeBase.html#Bounded">Bounded</a> a) ⇒ <a class="tref" href="#Min">Min</a> a</SPAN></dt>
-<dd class="inst">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="Monoid_Min.mconcat">mconcat</a> ∷ (<a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α, <a class="tref" href="../../prelude/PreludeBase.html#Bounded">Bounded</a> α) ⇒ <b>[<a class="tref" href="#Min">Min</a> α]</b> → <a class="tref" href="#Min">Min</a> α</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../Monoid.html#Monoid.mconcat">Monoid.mconcat</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Monoid_Min.mempty">mempty</a> ∷ (<a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α, <a class="tref" href="../../prelude/PreludeBase.html#Bounded">Bounded</a> α) ⇒ <a class="tref" href="#Min">Min</a> α</SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Monoid_Min.mtimes">mtimes</a> ∷ (<a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α, <a class="tref" href="../../prelude/PreludeBase.html#Bounded">Bounded</a> α) ⇒ <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#Min">Min</a> α → <a class="tref" href="#Min">Min</a> α</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../Monoid.html#Monoid.mtimes">Monoid.mtimes</a></p>
-</dd>
-</dl>
-</dd>
-<dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="Ord_Max"> </a> <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> a ⇒ <a class="tref" href="#Max">Max</a> a</SPAN></dt>
-<dd class="inst">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="Ord_Max._lt">&lt;</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → <b><a class="tref" href="#Max">Max</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord._lt">Ord.&lt;</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Ord_Max._lt_eq">&lt;=</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → <b><a class="tref" href="#Max">Max</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord._lt_eq">Ord.&lt;=</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Ord_Max._lt_eq_gt">&lt;=&gt;</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → <b><a class="tref" href="#Max">Max</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Ordering">Ordering</a><br><b>infix</b>&nbsp;&nbsp;8</SPAN></dt>
-<dd class="func">
-<p>
-Function generated for derived instance.</p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Ord_Max._gt">&gt;</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → <b><a class="tref" href="#Max">Max</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord._gt">Ord.&gt;</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Ord_Max._gt_eq">&gt;=</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → <b><a class="tref" href="#Max">Max</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord._gt_eq">Ord.&gt;=</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Ord_Max.compare">compare</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → <b><a class="tref" href="#Max">Max</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Ordering">Ordering</a><br><b>infix</b>&nbsp;&nbsp;8</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord.compare">Ord.compare</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Ord_Max.max">max</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → <b><a class="tref" href="#Max">Max</a> α</b> → <a class="tref" href="#Max">Max</a> α</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord.max">Ord.max</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Ord_Max.min">min</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → <b><a class="tref" href="#Max">Max</a> α</b> → <a class="tref" href="#Max">Max</a> α</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord.min">Ord.min</a></p>
-</dd>
-</dl>
-</dd>
-<dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="Ord_Min"> </a> <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> a ⇒ <a class="tref" href="#Min">Min</a> a</SPAN></dt>
-<dd class="inst">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="Ord_Min._lt">&lt;</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → <b><a class="tref" href="#Min">Min</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord._lt">Ord.&lt;</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Ord_Min._lt_eq">&lt;=</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → <b><a class="tref" href="#Min">Min</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord._lt_eq">Ord.&lt;=</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Ord_Min._lt_eq_gt">&lt;=&gt;</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → <b><a class="tref" href="#Min">Min</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Ordering">Ordering</a><br><b>infix</b>&nbsp;&nbsp;8</SPAN></dt>
-<dd class="func">
-<p>
-Function generated for derived instance.</p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Ord_Min._gt">&gt;</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → <b><a class="tref" href="#Min">Min</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord._gt">Ord.&gt;</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Ord_Min._gt_eq">&gt;=</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → <b><a class="tref" href="#Min">Min</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord._gt_eq">Ord.&gt;=</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Ord_Min.compare">compare</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → <b><a class="tref" href="#Min">Min</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Ordering">Ordering</a><br><b>infix</b>&nbsp;&nbsp;8</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord.compare">Ord.compare</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Ord_Min.max">max</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → <b><a class="tref" href="#Min">Min</a> α</b> → <a class="tref" href="#Min">Min</a> α</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord.max">Ord.max</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Ord_Min.min">min</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → <b><a class="tref" href="#Min">Min</a> α</b> → <a class="tref" href="#Min">Min</a> α</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord.min">Ord.min</a></p>
-</dd>
-</dl>
-</dd>
-<dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="Semigroup_Max"> </a> <a class="tref" href="../Monoid.html#Semigroup">Semigroup</a> <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> a ⇒ <a class="tref" href="#Max">Max</a> a</SPAN></dt>
-<dd class="inst">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="Semigroup_Max.mappend">mappend</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → <b><a class="tref" href="#Max">Max</a> α</b> → <a class="tref" href="#Max">Max</a> α<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Semigroup_Max.sconcat">sconcat</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b>[<a class="tref" href="#Max">Max</a> α]</b> → <a class="tref" href="#Max">Max</a> α</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../Monoid.html#Semigroup.sconcat">Semigroup.sconcat</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Semigroup_Max.stimes">stimes</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#Max">Max</a> α → <a class="tref" href="#Max">Max</a> α</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../Monoid.html#Semigroup.stimes">Semigroup.stimes</a></p>
-</dd>
-</dl>
-</dd>
-<dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="Semigroup_Min"> </a> <a class="tref" href="../Monoid.html#Semigroup">Semigroup</a> <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> a ⇒ <a class="tref" href="#Min">Min</a> a</SPAN></dt>
-<dd class="inst">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="Semigroup_Min.mappend">mappend</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → <b><a class="tref" href="#Min">Min</a> α</b> → <a class="tref" href="#Min">Min</a> α<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
-<dd class="func">
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Semigroup_Min.sconcat">sconcat</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b>[<a class="tref" href="#Min">Min</a> α]</b> → <a class="tref" href="#Min">Min</a> α</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../Monoid.html#Semigroup.sconcat">Semigroup.sconcat</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Semigroup_Min.stimes">stimes</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#Min">Min</a> α → <a class="tref" href="#Min">Min</a> α</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../Monoid.html#Semigroup.stimes">Semigroup.stimes</a></p>
-</dd>
-</dl>
-</dd>
-<dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="Show_Max"> </a> <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> a ⇒ <a class="tref" href="#Max">Max</a> a</SPAN></dt>
-<dd class="inst">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="Show_Max.display">display</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.display">Show.display</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Show_Max.show">show</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
-<dd class="func">
-<p>
-Function generated for derived instance.</p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Show_Max.showChars">showChars</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → [<a class="tref" href="../../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.showChars">Show.showChars</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Show_Max.showList">showList</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <b>[<a class="tref" href="#Max">Max</a> α]</b> → <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.showList">Show.showList</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Show_Max.showsPrec">showsPrec</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> → <b><a class="tref" href="#Max">Max</a> α</b> → <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.showsPrec">Show.showsPrec</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Show_Max.showsub">showsub</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
-<dd class="func">
-<p>
-Function generated for derived instance.</p>
-</dd>
-</dl>
-</dd>
-<dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name="Show_Min"> </a> <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> a ⇒ <a class="tref" href="#Min">Min</a> a</SPAN></dt>
-<dd class="inst">
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="Show_Min.display">display</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.display">Show.display</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Show_Min.show">show</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
-<dd class="func">
-<p>
-Function generated for derived instance.</p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Show_Min.showChars">showChars</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → [<a class="tref" href="../../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.showChars">Show.showChars</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Show_Min.showList">showList</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <b>[<a class="tref" href="#Min">Min</a> α]</b> → <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.showList">Show.showList</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Show_Min.showsPrec">showsPrec</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> → <b><a class="tref" href="#Min">Min</a> α</b> → <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
-<dd class="func">
-<p>
-inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.showsPrec">Show.showsPrec</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Show_Min.showsub">showsub</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
-<dd class="func">
-<p>
-Function generated for derived instance.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<h2>
-<a name="data">Data Types</a></h2>
+<a NAME="data">Definitions</a></h2>
 <dl class="data">
 <dt class="data">
-<SPAN CLASS="code"><b>data </b><a name="Max"> </a> <a class="tref" href="#Max">Max</a> a</SPAN></dt>
+<SPAN CLASS="code"><b>data </b><a name=Min> </a> <a class="tref" href="#Min">Min</a> a</SPAN></dt>
 <dd class="data">
 <h3>
 Constructors</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Max.Max">Max</a> {unwrap ∷ a}</SPAN></dt>
+<SPAN CLASS="code"><a name=Min.Min>Min</a> {unwrap ∷ a}</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -456,7 +154,7 @@ Constructors</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Max.unwrap">unwrap</a> ∷ <b><a class="tref" href="#Max">Max</a> α</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a name=Min.unwrap>unwrap</a> ∷ <b><a class="tref" href="#Min">Min</a> α</b> → α</SPAN></dt>
 <dd class="func">
 <p>
 access field <SPAN CLASS="code">unwrap</SPAN></p>
@@ -464,46 +162,394 @@ access field <SPAN CLASS="code">unwrap</SPAN></p>
 </dl>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><b>data </b><a name="Min"> </a> <a class="tref" href="#Min">Min</a> a</SPAN></dt>
+<SPAN CLASS="code"><a name=getMin>getMin</a> ∷ <b><a class="tref" href="#Min">Min</a> α</b> → α</SPAN></dt>
 <dd class="data">
-<h3>
-Constructors</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="Min.Min">Min</a> {unwrap ∷ a}</SPAN></dt>
-<dd class="func">
-</dd>
-</dl>
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="Min.unwrap">unwrap</a> ∷ <b><a class="tref" href="#Min">Min</a> α</b> → α</SPAN></dt>
-<dd class="func">
-<p>
-access field <SPAN CLASS="code">unwrap</SPAN></p>
-</dd>
-</dl>
-</dd>
-</dl>
-<h2>
-<a name="let">Functions and Values</a></h2>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="getMax">getMax</a> ∷ <b><a class="tref" href="#Max">Max</a> α</b> → α</SPAN></dt>
-<dd class="func">
-<p>
-Alias for <a class="fref" href="#Max.unwrap">Max.unwrap</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="getMin">getMin</a> ∷ <b><a class="tref" href="#Min">Min</a> α</b> → α</SPAN></dt>
-<dd class="func">
 <p>
 Alias for <a class="fref" href="#Min.unwrap">Min.unwrap</a></p>
 </dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=Max> </a> <a class="tref" href="#Max">Max</a> a</SPAN></dt>
+<dd class="data">
+<h3>
+Constructors</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Max.Max>Max</a> {unwrap ∷ a}</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Max.unwrap>unwrap</a> ∷ <b><a class="tref" href="#Max">Max</a> α</b> → α</SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">unwrap</SPAN></p>
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=getMax>getMax</a> ∷ <b><a class="tref" href="#Max">Max</a> α</b> → α</SPAN></dt>
+<dd class="data">
+<p>
+Alias for <a class="fref" href="#Max.unwrap">Max.unwrap</a></p>
+</dd>
 </dl>
 <h2>
-<a name="case">Functions and Values by Type</a></h2>
+<a NAME="instance">Instances</a></h2>
+<dl class="inst">
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Eq_Max> </a> <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> a ⇒ <a class="tref" href="#Max">Max</a> a</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Eq_Max._excl_eq>!=</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → <b><a class="tref" href="#Max">Max</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeBase.html#Eq._excl_eq">Eq.!=</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Eq_Max._eq_eq>==</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → <b><a class="tref" href="#Max">Max</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
+<dd class="func">
+<p>
+Function generated for derived instance.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Eq_Max.hashCode>hashCode</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+Function generated for derived instance.</p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Eq_Min> </a> <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> a ⇒ <a class="tref" href="#Min">Min</a> a</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Eq_Min._excl_eq>!=</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → <b><a class="tref" href="#Min">Min</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeBase.html#Eq._excl_eq">Eq.!=</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Eq_Min._eq_eq>==</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → <b><a class="tref" href="#Min">Min</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
+<dd class="func">
+<p>
+Function generated for derived instance.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Eq_Min.hashCode>hashCode</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+Function generated for derived instance.</p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Monoid_Max> </a> <a class="tref" href="../Monoid.html#Monoid">Monoid</a> (<a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> a, <a class="tref" href="../../prelude/PreludeBase.html#Bounded">Bounded</a> a) ⇒ <a class="tref" href="#Max">Max</a> a</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Monoid_Max.mconcat>mconcat</a> ∷ (<a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α, <a class="tref" href="../../prelude/PreludeBase.html#Bounded">Bounded</a> α) ⇒ <b>[<a class="tref" href="#Max">Max</a> α]</b> → <a class="tref" href="#Max">Max</a> α</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../Monoid.html#Monoid.mconcat">Monoid.mconcat</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monoid_Max.mempty>mempty</a> ∷ (<a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α, <a class="tref" href="../../prelude/PreludeBase.html#Bounded">Bounded</a> α) ⇒ <a class="tref" href="#Max">Max</a> α</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monoid_Max.mtimes>mtimes</a> ∷ (<a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α, <a class="tref" href="../../prelude/PreludeBase.html#Bounded">Bounded</a> α) ⇒ <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#Max">Max</a> α → <a class="tref" href="#Max">Max</a> α</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../Monoid.html#Monoid.mtimes">Monoid.mtimes</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Monoid_Min> </a> <a class="tref" href="../Monoid.html#Monoid">Monoid</a> (<a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> a, <a class="tref" href="../../prelude/PreludeBase.html#Bounded">Bounded</a> a) ⇒ <a class="tref" href="#Min">Min</a> a</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Monoid_Min.mconcat>mconcat</a> ∷ (<a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α, <a class="tref" href="../../prelude/PreludeBase.html#Bounded">Bounded</a> α) ⇒ <b>[<a class="tref" href="#Min">Min</a> α]</b> → <a class="tref" href="#Min">Min</a> α</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../Monoid.html#Monoid.mconcat">Monoid.mconcat</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monoid_Min.mempty>mempty</a> ∷ (<a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α, <a class="tref" href="../../prelude/PreludeBase.html#Bounded">Bounded</a> α) ⇒ <a class="tref" href="#Min">Min</a> α</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monoid_Min.mtimes>mtimes</a> ∷ (<a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α, <a class="tref" href="../../prelude/PreludeBase.html#Bounded">Bounded</a> α) ⇒ <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#Min">Min</a> α → <a class="tref" href="#Min">Min</a> α</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../Monoid.html#Monoid.mtimes">Monoid.mtimes</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Ord_Max> </a> <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> a ⇒ <a class="tref" href="#Max">Max</a> a</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Ord_Max._lt>&lt;</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → <b><a class="tref" href="#Max">Max</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord._lt">Ord.&lt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Ord_Max._lt_eq>&lt;=</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → <b><a class="tref" href="#Max">Max</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord._lt_eq">Ord.&lt;=</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Ord_Max._lt_eq_gt>&lt;=&gt;</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → <b><a class="tref" href="#Max">Max</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Ordering">Ordering</a><br><b>infix</b>&nbsp;&nbsp;8</SPAN></dt>
+<dd class="func">
+<p>
+Function generated for derived instance.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Ord_Max._gt>&gt;</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → <b><a class="tref" href="#Max">Max</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord._gt">Ord.&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Ord_Max._gt_eq>&gt;=</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → <b><a class="tref" href="#Max">Max</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord._gt_eq">Ord.&gt;=</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Ord_Max.compare>compare</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → <b><a class="tref" href="#Max">Max</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Ordering">Ordering</a><br><b>infix</b>&nbsp;&nbsp;8</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord.compare">Ord.compare</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Ord_Max.max>max</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → <b><a class="tref" href="#Max">Max</a> α</b> → <a class="tref" href="#Max">Max</a> α</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord.max">Ord.max</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Ord_Max.min>min</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → <b><a class="tref" href="#Max">Max</a> α</b> → <a class="tref" href="#Max">Max</a> α</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord.min">Ord.min</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Ord_Min> </a> <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> a ⇒ <a class="tref" href="#Min">Min</a> a</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Ord_Min._lt>&lt;</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → <b><a class="tref" href="#Min">Min</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord._lt">Ord.&lt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Ord_Min._lt_eq>&lt;=</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → <b><a class="tref" href="#Min">Min</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord._lt_eq">Ord.&lt;=</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Ord_Min._lt_eq_gt>&lt;=&gt;</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → <b><a class="tref" href="#Min">Min</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Ordering">Ordering</a><br><b>infix</b>&nbsp;&nbsp;8</SPAN></dt>
+<dd class="func">
+<p>
+Function generated for derived instance.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Ord_Min._gt>&gt;</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → <b><a class="tref" href="#Min">Min</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord._gt">Ord.&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Ord_Min._gt_eq>&gt;=</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → <b><a class="tref" href="#Min">Min</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord._gt_eq">Ord.&gt;=</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Ord_Min.compare>compare</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → <b><a class="tref" href="#Min">Min</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#Ordering">Ordering</a><br><b>infix</b>&nbsp;&nbsp;8</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord.compare">Ord.compare</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Ord_Min.max>max</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → <b><a class="tref" href="#Min">Min</a> α</b> → <a class="tref" href="#Min">Min</a> α</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord.max">Ord.max</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Ord_Min.min>min</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → <b><a class="tref" href="#Min">Min</a> α</b> → <a class="tref" href="#Min">Min</a> α</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord.min">Ord.min</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Semigroup_Max> </a> <a class="tref" href="../Monoid.html#Semigroup">Semigroup</a> <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> a ⇒ <a class="tref" href="#Max">Max</a> a</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Semigroup_Max.mappend>mappend</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → <b><a class="tref" href="#Max">Max</a> α</b> → <a class="tref" href="#Max">Max</a> α<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Semigroup_Max.sconcat>sconcat</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b>[<a class="tref" href="#Max">Max</a> α]</b> → <a class="tref" href="#Max">Max</a> α</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../Monoid.html#Semigroup.sconcat">Semigroup.sconcat</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Semigroup_Max.stimes>stimes</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#Max">Max</a> α → <a class="tref" href="#Max">Max</a> α</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../Monoid.html#Semigroup.stimes">Semigroup.stimes</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Semigroup_Min> </a> <a class="tref" href="../Monoid.html#Semigroup">Semigroup</a> <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> a ⇒ <a class="tref" href="#Min">Min</a> a</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Semigroup_Min.mappend>mappend</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → <b><a class="tref" href="#Min">Min</a> α</b> → <a class="tref" href="#Min">Min</a> α<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Semigroup_Min.sconcat>sconcat</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b>[<a class="tref" href="#Min">Min</a> α]</b> → <a class="tref" href="#Min">Min</a> α</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../Monoid.html#Semigroup.sconcat">Semigroup.sconcat</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Semigroup_Min.stimes>stimes</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#Min">Min</a> α → <a class="tref" href="#Min">Min</a> α</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../Monoid.html#Semigroup.stimes">Semigroup.stimes</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Show_Max> </a> <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> a ⇒ <a class="tref" href="#Max">Max</a> a</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Max.display>display</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.display">Show.display</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Max.show>show</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+Function generated for derived instance.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Max.showChars>showChars</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → [<a class="tref" href="../../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.showChars">Show.showChars</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Max.showList>showList</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <b>[<a class="tref" href="#Max">Max</a> α]</b> → <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.showList">Show.showList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Max.showsPrec>showsPrec</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> → <b><a class="tref" href="#Max">Max</a> α</b> → <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.showsPrec">Show.showsPrec</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Max.showsub>showsub</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <b><a class="tref" href="#Max">Max</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+Function generated for derived instance.</p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Show_Min> </a> <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> a ⇒ <a class="tref" href="#Min">Min</a> a</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Min.display>display</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.display">Show.display</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Min.show>show</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+Function generated for derived instance.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Min.showChars>showChars</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → [<a class="tref" href="../../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.showChars">Show.showChars</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Min.showList>showList</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <b>[<a class="tref" href="#Min">Min</a> α]</b> → <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.showList">Show.showList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Min.showsPrec>showsPrec</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> → <b><a class="tref" href="#Min">Min</a> α</b> → <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.showsPrec">Show.showsPrec</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Min.showsub>showsub</a> ∷ <a class="tref" href="../../prelude/PreludeText.html#Show">Show</a> α ⇒ <b><a class="tref" href="#Min">Min</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+Function generated for derived instance.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<h2>
+<a NAME="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#Max">Max</a> α → α</SPAN></dt>

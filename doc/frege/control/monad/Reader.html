@@ -17,35 +17,9 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 </style>
 <BODY>
 <h1>
-<a name="package">Package <SPAN CLASS="code">Control.monad.Reader</SPAN></a></h1>
-<p>
- Source file: <SPAN CLASS="code">./frege/control/monad/Reader.fr</SPAN></p>
-<h3>
-Package Documentation</h3>
+Module <SPAN CLASS="code">Control.monad.Reader</SPAN></h1>
 <p>
 <a class="tref" href="#Reader">Reader</a> monad and monad transformer, based on <a class="tref" href="../arrow/Kleisli.html#Kleisli">Kleisli</a>   </p>
-<h3>
-Table of Content</h3>
-<ul>
-<li>
-<div>
-<a HREF="#type">Type Aliases</a></div>
-<div>
-<a class="tref" href="#Reader">Reader</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ReaderT">ReaderT</a></div>
-</li>
-<li>
-<div>
-<a HREF="#let">Functions and Values (alphabetically)</a></div>
-<div>
-<a class="fref" href="#ask">ask</a></div>
-</li>
-<li>
-<div>
-<a HREF="#case">Functions and Values (by type)</a></div>
-<div>
-<a class="fref" href="#ask">ask</a></div>
-</li>
-</ul>
 <h3>
 Imports</h3>
 <ul>
@@ -90,28 +64,50 @@ import <a HREF="../../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as Pre
 import <a HREF="../../java/util/Regex.html">Java.util.Regex</a> as Regexp</div>
 </li>
 </ul>
-<h2>
-<a name="type">Type Aliases</a></h2>
-<dl class="clas">
-<dt class="clas">
-<SPAN CLASS="code"><b>type </b><a name="Reader">Reader</a> a b = <a class="tref" href="../arrow/Kleisli.html#Kleisli">Kleisli</a> <a class="tref" href="../../data/wrapper/Identity.html#Identity">Identity</a> a b</SPAN></dt>
-<dd class="clas">
+<h3>
+Table of Content</h3>
+<ul class="data">
+<li>
+<div>
+<a HREF="#data">Definitions</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><b>type </b><a class="tref" href="#Reader">Reader</a> a b = <a class="tref" href="../arrow/Kleisli.html#Kleisli">Kleisli</a> <a class="tref" href="../../data/wrapper/Identity.html#Identity">Identity</a> a b</SPAN></dt>
+<dd>
 </dd>
-<dt class="clas">
-<SPAN CLASS="code"><b>type </b><a name="ReaderT">ReaderT</a> m a b = <a class="tref" href="../arrow/Kleisli.html#Kleisli">Kleisli</a> m a b</SPAN></dt>
-<dd class="clas">
+<dt>
+<SPAN CLASS="code"><b>type </b><a class="tref" href="#ReaderT">ReaderT</a> m a b = <a class="tref" href="../arrow/Kleisli.html#Kleisli">Kleisli</a> m a b</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#ask">ask</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> m ⇒ <a class="tref" href="#ReaderT">ReaderT</a> m e e</SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#case">Functions and Values by Type</a></div>
+</li>
+</ul>
+<h2>
+<a NAME="data">Definitions</a></h2>
+<dl class="data">
+<dt class="data">
+<SPAN CLASS="code"><b>type </b><a name=Reader>Reader</a> a b = <a class="tref" href="../arrow/Kleisli.html#Kleisli">Kleisli</a> <a class="tref" href="../../data/wrapper/Identity.html#Identity">Identity</a> a b</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>type </b><a name=ReaderT>ReaderT</a> m a b = <a class="tref" href="../arrow/Kleisli.html#Kleisli">Kleisli</a> m a b</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=ask>ask</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> m ⇒ <a class="tref" href="#ReaderT">ReaderT</a> m e e</SPAN></dt>
+<dd class="data">
 </dd>
 </dl>
 <h2>
-<a name="let">Functions and Values</a></h2>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="ask">ask</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> m ⇒ <a class="tref" href="#ReaderT">ReaderT</a> m e e</SPAN></dt>
-<dd class="func">
-</dd>
-</dl>
-<h2>
-<a name="case">Functions and Values by Type</a></h2>
+<a NAME="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> m ⇒ <a class="tref" href="#ReaderT">ReaderT</a> m e e</SPAN></dt>

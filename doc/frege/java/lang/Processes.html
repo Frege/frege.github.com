@@ -17,35 +17,9 @@ a.tref { text-decoration: none; font-family: "lucida console", "courier new", mo
 </style>
 <BODY>
 <h1>
-<a name="package">Package <SPAN CLASS="code">Java.lang.Processes</SPAN></a></h1>
-<p>
- Source file: <SPAN CLASS="code">./frege/java/lang/Processes.fr</SPAN></p>
-<h3>
-Package Documentation</h3>
+Module <SPAN CLASS="code">Java.lang.Processes</SPAN></h1>
 <p>
 Java types needed to run processes. Because the associated classes are in <SPAN CLASS="code">java.lang</SPAN>, the stuff here would belong into package <SPAN CLASS="code">frege.java.Lang</SPAN>, however, it does not seem justified to have it imported in each and every program.      </p>
-<h3>
-Table of Content</h3>
-<ul>
-<li>
-<div>
-<a HREF="#data">Data Types</a></div>
-<div>
-<a class="tref" href="#Process">Process</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#ProcessBuilder">ProcessBuilder</a>&nbsp;&nbsp;&nbsp; <a class="tref" href="#Redirect">Redirect</a></div>
-</li>
-<li>
-<div>
-<a HREF="#let">Functions and Values (alphabetically)</a></div>
-<div>
-<a class="fref" href="#stderrReader">stderrReader</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#stdinWriter">stdinWriter</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#stdoutReader">stdoutReader</a></div>
-</li>
-<li>
-<div>
-<a HREF="#case">Functions and Values (by type)</a></div>
-<div>
-<a class="fref" href="#stderrReader">stderrReader</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#stdinWriter">stdinWriter</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#stdoutReader">stdoutReader</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Process.execβ">Process.execβ</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Process.exec">Process.exec</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Process.destroy">Process.destroy</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Process.execα">Process.execα</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Process.getInputStream">Process.getInputStream</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Process.exitValue">Process.exitValue</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Process.getErrorStream">Process.getErrorStream</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Process.getOutputStream">Process.getOutputStream</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Process.waitFor">Process.waitFor</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ProcessBuilder.redirectErrorStream">ProcessBuilder.redirectErrorStream</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ProcessBuilder._new">ProcessBuilder.new</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ProcessBuilder.directory">ProcessBuilder.directory</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ProcessBuilder.inheritIO">ProcessBuilder.inheritIO</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ProcessBuilder.redirectError">ProcessBuilder.redirectError</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ProcessBuilder.newFromArray">ProcessBuilder.newFromArray</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ProcessBuilder.redirectInputα">ProcessBuilder.redirectInputα</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ProcessBuilder.redirectErrorβ">ProcessBuilder.redirectErrorβ</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ProcessBuilder.redirectErrorα">ProcessBuilder.redirectErrorα</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ProcessBuilder.redirectInput">ProcessBuilder.redirectInput</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ProcessBuilder.redirectOutput">ProcessBuilder.redirectOutput</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ProcessBuilder.redirectInputβ">ProcessBuilder.redirectInputβ</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ProcessBuilder.redirectOutputβ">ProcessBuilder.redirectOutputβ</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ProcessBuilder.redirectOutputα">ProcessBuilder.redirectOutputα</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#ProcessBuilder.start">ProcessBuilder.start</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Redirect.inherit">Redirect.inherit</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Redirect.file">Redirect.file</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Redirect.appendTo">Redirect.appendTo</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Redirect.from">Redirect.from</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Redirect.pipe">Redirect.pipe</a>&nbsp;&nbsp;&nbsp; <a class="fref" href="#Redirect.to">Redirect.to</a></div>
-</li>
-</ul>
 <h3>
 Imports</h3>
 <ul>
@@ -82,11 +56,49 @@ import <a HREF="../../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as Pre
 import <a HREF="../util/Regex.html">Java.util.Regex</a> as Regexp</div>
 </li>
 </ul>
+<h3>
+Table of Content</h3>
+<ul class="data">
+<li>
+<div>
+<a HREF="#data">Definitions</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#Process"> </a> <a class="tref" href="#Process">Process</a> = <b>mutable </b><b>native </b>java.lang.Process</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#ProcessBuilder"> </a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a> = <b>mutable </b><b>native </b>java.lang.ProcessBuilder</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#Redirect"> </a> <a class="tref" href="#Redirect">Redirect</a> = <b>mutable </b><b>native </b>java.lang.ProcessBuilder.Redirect</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#stdinWriter">stdinWriter</a> ∷ <b><a class="tref" href="#Process">Process</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../IO.html#PrintWriter">PrintWriter</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#stdoutReader">stdoutReader</a> ∷ <b><a class="tref" href="#Process">Process</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../IO.html#BufferedReader">BufferedReader</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#stderrReader">stderrReader</a> ∷ <b><a class="tref" href="#Process">Process</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../IO.html#BufferedReader">BufferedReader</a></SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#case">Functions and Values by Type</a></div>
+</li>
+</ul>
 <h2>
-<a name="data">Data Types</a></h2>
+<a NAME="data">Definitions</a></h2>
 <dl class="data">
 <dt class="data">
-<SPAN CLASS="code"><b>data </b><a name="Process"> </a> <a class="tref" href="#Process">Process</a> = <b>mutable </b><b>native </b>java.lang.Process</SPAN></dt>
+<SPAN CLASS="code"><b>data </b><a name=Process> </a> <a class="tref" href="#Process">Process</a> = <b>mutable </b><b>native </b>java.lang.Process</SPAN></dt>
 <dd class="data">
 <p>
 The type <a class="tref" href="#Process">Process</a> provides methods for performing input from the process, performing output to the process, waiting for the process to complete, checking the exit status of the process, and destroying (killing) the process.</p>
@@ -96,13 +108,13 @@ An instance of <a class="tref" href="#Process">Process</a> can be obtained from 
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="Process.destroy">destroy</a> ∷ <b><a class="tref" href="#Process">Process</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../../prelude/PreludeBase.html#Unit">()</a><br><b>native </b>destroy</SPAN></dt>
+<SPAN CLASS="code"><a name=Process.destroy>destroy</a> ∷ <b><a class="tref" href="#Process">Process</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../../prelude/PreludeBase.html#Unit">()</a><br><b>native </b>destroy</SPAN></dt>
 <dd class="func">
 <p>
 Kills the subprocess. The subprocess represented by this <a class="tref" href="#Process">Process</a> object is forcibly terminated.   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Process.exec">exec</a> ∷ <a class="tref" href="../../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> <a class="tref" href="../../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> <a class="tref" href="../../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a>) → <a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a>) → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Process">Process</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>throws </b><a class="tref" href="../Lang.html#IOException">IOException</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Process">Process</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>throws </b><a class="tref" href="../Lang.html#IOException">IOException</a><br><b>native </b>java.lang.Runtime.getRuntime().exec</SPAN></dt>
+<SPAN CLASS="code"><a name=Process.exec>exec</a> ∷ <a class="tref" href="../../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> <a class="tref" href="../../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> <a class="tref" href="../../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a>) → <a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a>) → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Process">Process</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>throws </b><a class="tref" href="../Lang.html#IOException">IOException</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Process">Process</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>throws </b><a class="tref" href="../Lang.html#IOException">IOException</a><br><b>native </b>java.lang.Runtime.getRuntime().exec</SPAN></dt>
 <dd class="func">
 <PRE>
  Process.exec cmdarray envp dir
@@ -159,7 +171,7 @@ Throws:</dt>
 </ul>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Process.execα">execα</a> ∷ <b><a class="tref" href="../../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> <a class="tref" href="../../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> <a class="tref" href="../../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a>)</b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a>)</b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Process">Process</a><br><b>native </b>java.lang.Runtime.getRuntime().exec&nbsp;&nbsp;<b>throws </b><a class="tref" href="../Lang.html#IOException">IOException</a>&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#Process.exec">exec</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Process.execα>execα</a> ∷ <b><a class="tref" href="../../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> <a class="tref" href="../../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> <a class="tref" href="../../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a>)</b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a>)</b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Process">Process</a><br><b>native </b>java.lang.Runtime.getRuntime().exec&nbsp;&nbsp;<b>throws </b><a class="tref" href="../Lang.html#IOException">IOException</a>&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#Process.exec">exec</a></SPAN></dt>
 <dd class="func">
 <PRE>
  Process.exec cmdarray envp dir
@@ -216,7 +228,7 @@ Throws:</dt>
 </ul>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Process.execβ">execβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Process">Process</a><br><b>native </b>java.lang.Runtime.getRuntime().exec&nbsp;&nbsp;<b>throws </b><a class="tref" href="../Lang.html#IOException">IOException</a>&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#Process.exec">exec</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Process.execβ>execβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Process">Process</a><br><b>native </b>java.lang.Runtime.getRuntime().exec&nbsp;&nbsp;<b>throws </b><a class="tref" href="../Lang.html#IOException">IOException</a>&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#Process.exec">exec</a></SPAN></dt>
 <dd class="func">
 <PRE>
  Process.exec cmdarray envp dir
@@ -273,7 +285,7 @@ Throws:</dt>
 </ul>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Process.exitValue">exitValue</a> ∷ <b><a class="tref" href="#Process">Process</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a><br><b>native </b>exitValue&nbsp;&nbsp;<b>throws </b><a class="tref" href="../Lang.html#IllegalThreadStateException">IllegalThreadStateException</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Process.exitValue>exitValue</a> ∷ <b><a class="tref" href="#Process">Process</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a><br><b>native </b>exitValue&nbsp;&nbsp;<b>throws </b><a class="tref" href="../Lang.html#IllegalThreadStateException">IllegalThreadStateException</a></SPAN></dt>
 <dd class="func">
 <p>
 Returns the exit value for the subprocess represented by this Process object.</p>
@@ -281,7 +293,7 @@ Returns the exit value for the subprocess represented by this Process object.</p
 By convention, the value 0 indicates normal termination.   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Process.getErrorStream">getErrorStream</a> ∷ <b><a class="tref" href="#Process">Process</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../IO.html#InputStream">InputStream</a><br><b>native </b>getErrorStream</SPAN></dt>
+<SPAN CLASS="code"><a name=Process.getErrorStream>getErrorStream</a> ∷ <b><a class="tref" href="#Process">Process</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../IO.html#InputStream">InputStream</a><br><b>native </b>getErrorStream</SPAN></dt>
 <dd class="func">
 <p>
 Returns the input stream connected to the standard error output of the subprocess. The stream obtains data piped from the error output of the process represented by this <a class="tref" href="#Process">Process</a> object.</p>
@@ -289,7 +301,7 @@ Returns the input stream connected to the standard error output of the subproces
 If the standard error of the subprocess has been redirected using <a class="fref" href="#ProcessBuilder.redirectError">ProcessBuilder.redirectError</a> or <a class="fref" href="#ProcessBuilder.redirectErrorStream">ProcessBuilder.redirectErrorStream</a> then this method will return an input stream, for which the <SPAN CLASS="unknown">InputStream.read</SPAN> method always returns <SPAN CLASS="code">-1</SPAN>, the <SPAN CLASS="unknown">InputStream.available</SPAN> method returns always <SPAN CLASS="code">0</SPAN> and the <SPAN CLASS="unknown">InputStream.close</SPAN> method does nothing.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Process.getInputStream">getInputStream</a> ∷ <b><a class="tref" href="#Process">Process</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../IO.html#InputStream">InputStream</a><br><b>native </b>getInputStream</SPAN></dt>
+<SPAN CLASS="code"><a name=Process.getInputStream>getInputStream</a> ∷ <b><a class="tref" href="#Process">Process</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../IO.html#InputStream">InputStream</a><br><b>native </b>getInputStream</SPAN></dt>
 <dd class="func">
 <p>
 Returns the input stream connected to the standard output of the subprocess. The stream obtains data piped from the standard output of the process represented by this <a class="tref" href="#Process">Process</a> object.</p>
@@ -299,7 +311,7 @@ If the standard output of the subprocess has been redirected using <a class="fre
 Otherwise, if the standard error of the subprocess has been redirected using <a class="fref" href="#ProcessBuilder.redirectErrorStream">ProcessBuilder.redirectErrorStream</a> then the input stream returned by this method will receive the merged standard output and the standard error of the subprocess.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Process.getOutputStream">getOutputStream</a> ∷ <b><a class="tref" href="#Process">Process</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../IO.html#OutputStream">OutputStream</a><br><b>native </b>getOutputStream</SPAN></dt>
+<SPAN CLASS="code"><a name=Process.getOutputStream>getOutputStream</a> ∷ <b><a class="tref" href="#Process">Process</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../IO.html#OutputStream">OutputStream</a><br><b>native </b>getOutputStream</SPAN></dt>
 <dd class="func">
 <p>
 Returns the output stream connected to the standard input of the subprocess. Output to the stream is piped into the standard input of the process represented by this <a class="tref" href="#Process">Process</a> object.</p>
@@ -307,7 +319,7 @@ Returns the output stream connected to the standard input of the subprocess. Out
 If the standard input of the subprocess has been redirected using <a class="fref" href="#ProcessBuilder.redirectInput">ProcessBuilder.redirectInput</a> then this method will return an output stream for which the <SPAN CLASS="unknown">OutputStream.write</SPAN> method always throws <a class="tref" href="../Lang.html#IOException">IOException</a> and the <SPAN CLASS="unknown">OutputStream.close</SPAN> method does nothing.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="Process.waitFor">waitFor</a> ∷ <b><a class="tref" href="#Process">Process</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a><br><b>native </b>waitFor&nbsp;&nbsp;<b>throws </b><a class="tref" href="../../prelude/PreludeBase.html#InterruptedException">InterruptedException</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Process.waitFor>waitFor</a> ∷ <b><a class="tref" href="#Process">Process</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a><br><b>native </b>waitFor&nbsp;&nbsp;<b>throws </b><a class="tref" href="../../prelude/PreludeBase.html#InterruptedException">InterruptedException</a></SPAN></dt>
 <dd class="func">
 <p>
 Causes the current thread to wait, if necessary, until the process represented by this <a class="tref" href="#Process">Process</a> object has terminated. This method returns immediately if the subprocess has already terminated. If the subprocess has not yet terminated, the calling thread will be blocked until the subprocess exits.</p>
@@ -329,7 +341,93 @@ Throws:</dt>
 </dl>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><b>data </b><a name="ProcessBuilder"> </a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a> = <b>mutable </b><b>native </b>java.lang.ProcessBuilder</SPAN></dt>
+<SPAN CLASS="code"><a name=stdinWriter>stdinWriter</a> ∷ <b><a class="tref" href="#Process">Process</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../IO.html#PrintWriter">PrintWriter</a></SPAN></dt>
+<dd class="data">
+<p>
+Convenience function to get an UTF-8 encoded <a class="tref" href="../IO.html#PrintWriter">PrintWriter</a> that is connected to the standard input of a <a class="tref" href="#Process">Process</a>.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=stdoutReader>stdoutReader</a> ∷ <b><a class="tref" href="#Process">Process</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../IO.html#BufferedReader">BufferedReader</a></SPAN></dt>
+<dd class="data">
+<p>
+Convenience function to get an UTF-8 encoded <a class="tref" href="../IO.html#BufferedReader">BufferedReader</a> that is connected to the standard output of a <a class="tref" href="#Process">Process</a>.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=stderrReader>stderrReader</a> ∷ <b><a class="tref" href="#Process">Process</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../IO.html#BufferedReader">BufferedReader</a></SPAN></dt>
+<dd class="data">
+<p>
+Convenience function to get an UTF-8 encoded <a class="tref" href="../IO.html#BufferedReader">BufferedReader</a> that is connected to the standard error of a <a class="tref" href="#Process">Process</a>.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=Redirect> </a> <a class="tref" href="#Redirect">Redirect</a> = <b>mutable </b><b>native </b>java.lang.ProcessBuilder.Redirect</SPAN></dt>
+<dd class="data">
+<p>
+Represents a source of subprocess input or a destination of subprocess output. Each <a class="tref" href="#Redirect">Redirect</a> is one of the following:</p>
+<ul>
+<LI>
+ the special value <a class="fref" href="#Redirect.pipe">Redirect.pipe</a> </LI>
+<LI>
+ the special value <a class="fref" href="#Redirect.inherit">Redirect.inherit</a> </LI>
+<LI>
+ a redirection to read from a file, created by an invocation of <a class="fref" href="#Redirect.from">Redirect.from</a> </LI>
+<LI>
+ a redirection to write to a file, created by an invocation of <a class="fref" href="#Redirect.to">Redirect.to</a> </LI>
+<LI>
+ a redirection to append to a file, created by an invocation of <a class="fref" href="#Redirect.appendTo">Redirect.appendTo</a> </LI>
+</ul>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Redirect.appendTo>appendTo</a> ∷ <b><a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Redirect">Redirect</a><br><b>native </b>java.lang.ProcessBuilder.Redirect.appendTo</SPAN></dt>
+<dd class="func">
+<p>
+Redirect to append to the specified file.</p>
+<p>
+Each write operation first advances the position to the end of the file and then writes the requested data.   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Redirect.file>file</a> ∷ <b><a class="tref" href="#Redirect">Redirect</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a>))<br><b>native </b>file</SPAN></dt>
+<dd class="func">
+<p>
+Returns the <a class="tref" href="../IO.html#File">File</a> source or destination associated with this redirect, or null if there is no such file.   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Redirect.from>from</a> ∷ <b><a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Redirect">Redirect</a><br><b>native </b>java.lang.ProcessBuilder.Redirect.from</SPAN></dt>
+<dd class="func">
+<p>
+Redirect to read from the specified <a class="tref" href="../IO.html#File">File</a>.   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Redirect.inherit>inherit</a> ∷ <a class="tref" href="#Redirect">Redirect</a><br><b>native </b>java.lang.ProcessBuilder.Redirect.INHERIT</SPAN></dt>
+<dd class="func">
+<p>
+nowarn: We know this is constant</p>
+<p>
+Indicates that subprocess I/O source or destination will be the same as those of the current process.</p>
+<p>
+This is the normal behavior of most operating system command interpreters (shells).   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Redirect.pipe>pipe</a> ∷ <a class="tref" href="#Redirect">Redirect</a><br><b>native </b>java.lang.ProcessBuilder.Redirect.PIPE</SPAN></dt>
+<dd class="func">
+<p>
+nowarn: We know this is constant</p>
+<p>
+Indicates that subprocess I/O will be connected to the current Java process over a pipe.</p>
+<p>
+This is the default handling of subprocess standard I/O.   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Redirect.to>to</a> ∷ <b><a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Redirect">Redirect</a><br><b>native </b>java.lang.ProcessBuilder.Redirect.to</SPAN></dt>
+<dd class="func">
+<p>
+Redirect to write to the specified file, discarding previous content, if any.   </p>
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=ProcessBuilder> </a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a> = <b>mutable </b><b>native </b>java.lang.ProcessBuilder</SPAN></dt>
 <dd class="data">
 <p>
 The <a class="tref" href="#ProcessBuilder">ProcessBuilder</a> type is used to create operating system processes.</p>
@@ -361,91 +459,91 @@ Note that this type is not synchronized. If multiple threads access a <a class="
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name="ProcessBuilder.directory">directory</a> ∷ <b><a class="tref" href="#ProcessBuilder">ProcessBuilder</a></b> → <b><a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br><b>native </b>directory</SPAN></dt>
+<SPAN CLASS="code"><a name=ProcessBuilder.directory>directory</a> ∷ <b><a class="tref" href="#ProcessBuilder">ProcessBuilder</a></b> → <b><a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br><b>native </b>directory</SPAN></dt>
 <dd class="func">
 <p>
 set the working directory   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="ProcessBuilder.inheritIO">inheritIO</a> ∷ <b><a class="tref" href="#ProcessBuilder">ProcessBuilder</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br><b>native </b>inheritIO</SPAN></dt>
+<SPAN CLASS="code"><a name=ProcessBuilder.inheritIO>inheritIO</a> ∷ <b><a class="tref" href="#ProcessBuilder">ProcessBuilder</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br><b>native </b>inheritIO</SPAN></dt>
 <dd class="func">
 <p>
 inherit the standard input, output and error from the current process   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="ProcessBuilder._new">new</a> ∷ [<a class="tref" href="../../prelude/PreludeBase.html#String">String</a>] → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a></SPAN></dt>
+<SPAN CLASS="code"><a name=ProcessBuilder._new>new</a> ∷ [<a class="tref" href="../../prelude/PreludeBase.html#String">String</a>] → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a></SPAN></dt>
 <dd class="func">
 <p>
 create a <a class="tref" href="#ProcessBuilder">ProcessBuilder</a> passing the command line as list.   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="ProcessBuilder.newFromArray">newFromArray</a> ∷ <b><a class="tref" href="../../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> <a class="tref" href="../../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br><b>native </b>new</SPAN></dt>
+<SPAN CLASS="code"><a name=ProcessBuilder.newFromArray>newFromArray</a> ∷ <b><a class="tref" href="../../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> <a class="tref" href="../../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br><b>native </b>new</SPAN></dt>
 <dd class="func">
 <p>
 create a <a class="tref" href="#ProcessBuilder">ProcessBuilder</a> passing the command line as array   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="ProcessBuilder.redirectError">redirectError</a> ∷ <a class="tref" href="#ProcessBuilder">ProcessBuilder</a> → <a class="tref" href="#Redirect">Redirect</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="#ProcessBuilder">ProcessBuilder</a> → <a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br><b>native </b>redirectError</SPAN></dt>
+<SPAN CLASS="code"><a name=ProcessBuilder.redirectError>redirectError</a> ∷ <a class="tref" href="#ProcessBuilder">ProcessBuilder</a> → <a class="tref" href="#Redirect">Redirect</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="#ProcessBuilder">ProcessBuilder</a> → <a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br><b>native </b>redirectError</SPAN></dt>
 <dd class="func">
 <p>
 redirect standard error   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="ProcessBuilder.redirectErrorStream">redirectErrorStream</a> ∷ <b><a class="tref" href="#ProcessBuilder">ProcessBuilder</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br><b>native </b>redirectErrorStream</SPAN></dt>
+<SPAN CLASS="code"><a name=ProcessBuilder.redirectErrorStream>redirectErrorStream</a> ∷ <b><a class="tref" href="#ProcessBuilder">ProcessBuilder</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br><b>native </b>redirectErrorStream</SPAN></dt>
 <dd class="func">
 <p>
 set the redirectErrorStream property   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="ProcessBuilder.redirectErrorα">redirectErrorα</a> ∷ <b><a class="tref" href="#ProcessBuilder">ProcessBuilder</a></b> → <b><a class="tref" href="#Redirect">Redirect</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br><b>native </b>redirectError&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ProcessBuilder.redirectError">redirectError</a></SPAN></dt>
+<SPAN CLASS="code"><a name=ProcessBuilder.redirectErrorα>redirectErrorα</a> ∷ <b><a class="tref" href="#ProcessBuilder">ProcessBuilder</a></b> → <b><a class="tref" href="#Redirect">Redirect</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br><b>native </b>redirectError&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ProcessBuilder.redirectError">redirectError</a></SPAN></dt>
 <dd class="func">
 <p>
 redirect standard error   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="ProcessBuilder.redirectErrorβ">redirectErrorβ</a> ∷ <b><a class="tref" href="#ProcessBuilder">ProcessBuilder</a></b> → <b><a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br><b>native </b>redirectError&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ProcessBuilder.redirectError">redirectError</a></SPAN></dt>
+<SPAN CLASS="code"><a name=ProcessBuilder.redirectErrorβ>redirectErrorβ</a> ∷ <b><a class="tref" href="#ProcessBuilder">ProcessBuilder</a></b> → <b><a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br><b>native </b>redirectError&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ProcessBuilder.redirectError">redirectError</a></SPAN></dt>
 <dd class="func">
 <p>
 redirect standard error   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="ProcessBuilder.redirectInput">redirectInput</a> ∷ <a class="tref" href="#ProcessBuilder">ProcessBuilder</a> → <a class="tref" href="#Redirect">Redirect</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="#ProcessBuilder">ProcessBuilder</a> → <a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br><b>native </b>redirectInput</SPAN></dt>
+<SPAN CLASS="code"><a name=ProcessBuilder.redirectInput>redirectInput</a> ∷ <a class="tref" href="#ProcessBuilder">ProcessBuilder</a> → <a class="tref" href="#Redirect">Redirect</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="#ProcessBuilder">ProcessBuilder</a> → <a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br><b>native </b>redirectInput</SPAN></dt>
 <dd class="func">
 <p>
 redirect standard input   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="ProcessBuilder.redirectInputα">redirectInputα</a> ∷ <b><a class="tref" href="#ProcessBuilder">ProcessBuilder</a></b> → <b><a class="tref" href="#Redirect">Redirect</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br><b>native </b>redirectInput&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ProcessBuilder.redirectInput">redirectInput</a></SPAN></dt>
+<SPAN CLASS="code"><a name=ProcessBuilder.redirectInputα>redirectInputα</a> ∷ <b><a class="tref" href="#ProcessBuilder">ProcessBuilder</a></b> → <b><a class="tref" href="#Redirect">Redirect</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br><b>native </b>redirectInput&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ProcessBuilder.redirectInput">redirectInput</a></SPAN></dt>
 <dd class="func">
 <p>
 redirect standard input   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="ProcessBuilder.redirectInputβ">redirectInputβ</a> ∷ <b><a class="tref" href="#ProcessBuilder">ProcessBuilder</a></b> → <b><a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br><b>native </b>redirectInput&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ProcessBuilder.redirectInput">redirectInput</a></SPAN></dt>
+<SPAN CLASS="code"><a name=ProcessBuilder.redirectInputβ>redirectInputβ</a> ∷ <b><a class="tref" href="#ProcessBuilder">ProcessBuilder</a></b> → <b><a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br><b>native </b>redirectInput&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ProcessBuilder.redirectInput">redirectInput</a></SPAN></dt>
 <dd class="func">
 <p>
 redirect standard input   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="ProcessBuilder.redirectOutput">redirectOutput</a> ∷ <a class="tref" href="#ProcessBuilder">ProcessBuilder</a> → <a class="tref" href="#Redirect">Redirect</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="#ProcessBuilder">ProcessBuilder</a> → <a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br><b>native </b>redirectOutput</SPAN></dt>
+<SPAN CLASS="code"><a name=ProcessBuilder.redirectOutput>redirectOutput</a> ∷ <a class="tref" href="#ProcessBuilder">ProcessBuilder</a> → <a class="tref" href="#Redirect">Redirect</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="#ProcessBuilder">ProcessBuilder</a> → <a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br><b>native </b>redirectOutput</SPAN></dt>
 <dd class="func">
 <p>
 redirect standard output   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="ProcessBuilder.redirectOutputα">redirectOutputα</a> ∷ <b><a class="tref" href="#ProcessBuilder">ProcessBuilder</a></b> → <b><a class="tref" href="#Redirect">Redirect</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br><b>native </b>redirectOutput&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ProcessBuilder.redirectOutput">redirectOutput</a></SPAN></dt>
+<SPAN CLASS="code"><a name=ProcessBuilder.redirectOutputα>redirectOutputα</a> ∷ <b><a class="tref" href="#ProcessBuilder">ProcessBuilder</a></b> → <b><a class="tref" href="#Redirect">Redirect</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br><b>native </b>redirectOutput&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ProcessBuilder.redirectOutput">redirectOutput</a></SPAN></dt>
 <dd class="func">
 <p>
 redirect standard output   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="ProcessBuilder.redirectOutputβ">redirectOutputβ</a> ∷ <b><a class="tref" href="#ProcessBuilder">ProcessBuilder</a></b> → <b><a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br><b>native </b>redirectOutput&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ProcessBuilder.redirectOutput">redirectOutput</a></SPAN></dt>
+<SPAN CLASS="code"><a name=ProcessBuilder.redirectOutputβ>redirectOutputβ</a> ∷ <b><a class="tref" href="#ProcessBuilder">ProcessBuilder</a></b> → <b><a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a><br><b>native </b>redirectOutput&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ProcessBuilder.redirectOutput">redirectOutput</a></SPAN></dt>
 <dd class="func">
 <p>
 redirect standard output   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name="ProcessBuilder.start">start</a> ∷ <b><a class="tref" href="#ProcessBuilder">ProcessBuilder</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Process">Process</a><br><b>native </b>start&nbsp;&nbsp;<b>throws </b><a class="tref" href="../Lang.html#IOException">IOException</a></SPAN></dt>
+<SPAN CLASS="code"><a name=ProcessBuilder.start>start</a> ∷ <b><a class="tref" href="#ProcessBuilder">ProcessBuilder</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Process">Process</a><br><b>native </b>start&nbsp;&nbsp;<b>throws </b><a class="tref" href="../Lang.html#IOException">IOException</a></SPAN></dt>
 <dd class="func">
 <p>
 start the new process</p>
@@ -454,99 +552,9 @@ For details see <a class="fref" href="#Process.exec">Process.exec</a>   </p>
 </dd>
 </dl>
 </dd>
-<dt class="data">
-<SPAN CLASS="code"><b>data </b><a name="Redirect"> </a> <a class="tref" href="#Redirect">Redirect</a> = <b>mutable </b><b>native </b>java.lang.ProcessBuilder.Redirect</SPAN></dt>
-<dd class="data">
-<p>
-Represents a source of subprocess input or a destination of subprocess output. Each <a class="tref" href="#Redirect">Redirect</a> is one of the following:</p>
-<ul>
-<LI>
- the special value <a class="fref" href="#Redirect.pipe">Redirect.pipe</a> </LI>
-<LI>
- the special value <a class="fref" href="#Redirect.inherit">Redirect.inherit</a> </LI>
-<LI>
- a redirection to read from a file, created by an invocation of <a class="fref" href="#Redirect.from">Redirect.from</a> </LI>
-<LI>
- a redirection to write to a file, created by an invocation of <a class="fref" href="#Redirect.to">Redirect.to</a> </LI>
-<LI>
- a redirection to append to a file, created by an invocation of <a class="fref" href="#Redirect.appendTo">Redirect.appendTo</a> </LI>
-</ul>
-<h3>
-Member Functions</h3>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="Redirect.appendTo">appendTo</a> ∷ <b><a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Redirect">Redirect</a><br><b>native </b>java.lang.ProcessBuilder.Redirect.appendTo</SPAN></dt>
-<dd class="func">
-<p>
-Redirect to append to the specified file.</p>
-<p>
-Each write operation first advances the position to the end of the file and then writes the requested data.   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Redirect.file">file</a> ∷ <b><a class="tref" href="#Redirect">Redirect</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a>))<br><b>native </b>file</SPAN></dt>
-<dd class="func">
-<p>
-Returns the <a class="tref" href="../IO.html#File">File</a> source or destination associated with this redirect, or null if there is no such file.   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Redirect.from">from</a> ∷ <b><a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Redirect">Redirect</a><br><b>native </b>java.lang.ProcessBuilder.Redirect.from</SPAN></dt>
-<dd class="func">
-<p>
-Redirect to read from the specified <a class="tref" href="../IO.html#File">File</a>.   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Redirect.inherit">inherit</a> ∷ <a class="tref" href="#Redirect">Redirect</a><br><b>native </b>java.lang.ProcessBuilder.Redirect.INHERIT</SPAN></dt>
-<dd class="func">
-<p>
-nowarn: We know this is constant</p>
-<p>
-Indicates that subprocess I/O source or destination will be the same as those of the current process.</p>
-<p>
-This is the normal behavior of most operating system command interpreters (shells).   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Redirect.pipe">pipe</a> ∷ <a class="tref" href="#Redirect">Redirect</a><br><b>native </b>java.lang.ProcessBuilder.Redirect.PIPE</SPAN></dt>
-<dd class="func">
-<p>
-nowarn: We know this is constant</p>
-<p>
-Indicates that subprocess I/O will be connected to the current Java process over a pipe.</p>
-<p>
-This is the default handling of subprocess standard I/O.   </p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="Redirect.to">to</a> ∷ <b><a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Redirect">Redirect</a><br><b>native </b>java.lang.ProcessBuilder.Redirect.to</SPAN></dt>
-<dd class="func">
-<p>
-Redirect to write to the specified file, discarding previous content, if any.   </p>
-</dd>
-</dl>
-</dd>
 </dl>
 <h2>
-<a name="let">Functions and Values</a></h2>
-<dl class="func">
-<dt class="func">
-<SPAN CLASS="code"><a name="stderrReader">stderrReader</a> ∷ <b><a class="tref" href="#Process">Process</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../IO.html#BufferedReader">BufferedReader</a></SPAN></dt>
-<dd class="func">
-<p>
-Convenience function to get an UTF-8 encoded <a class="tref" href="../IO.html#BufferedReader">BufferedReader</a> that is connected to the standard error of a <a class="tref" href="#Process">Process</a>.</p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="stdinWriter">stdinWriter</a> ∷ <b><a class="tref" href="#Process">Process</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../IO.html#PrintWriter">PrintWriter</a></SPAN></dt>
-<dd class="func">
-<p>
-Convenience function to get an UTF-8 encoded <a class="tref" href="../IO.html#PrintWriter">PrintWriter</a> that is connected to the standard input of a <a class="tref" href="#Process">Process</a>.</p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name="stdoutReader">stdoutReader</a> ∷ <b><a class="tref" href="#Process">Process</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../IO.html#BufferedReader">BufferedReader</a></SPAN></dt>
-<dd class="func">
-<p>
-Convenience function to get an UTF-8 encoded <a class="tref" href="../IO.html#BufferedReader">BufferedReader</a> that is connected to the standard output of a <a class="tref" href="#Process">Process</a>.</p>
-</dd>
-</dl>
-<h2>
-<a name="case">Functions and Values by Type</a></h2>
+<a NAME="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> <a class="tref" href="../../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> <a class="tref" href="../../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a>) → <a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a>) → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Process">Process</a></SPAN></dt>
