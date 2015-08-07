@@ -25,14 +25,6 @@ Imports</h3>
 <ul>
 <li>
 <div>
-import <a HREF="../../prelude/PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
-</li>
-<li>
-<div>
-import <a HREF="../../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
-</li>
-<li>
-<div>
 import <a HREF="../../Prelude.html">frege.Prelude</a> as Prelude</div>
 </li>
 <li>
@@ -41,15 +33,23 @@ import <a HREF="../../prelude/PreludeArrays.html">Prelude.PreludeArrays</a> as P
 </li>
 <li>
 <div>
+import <a HREF="../../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
+</li>
+<li>
+<div>
 import <a HREF="../../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
 </li>
 <li>
 <div>
-import <a HREF="../../prelude/PreludeText.html">Prelude.PreludeText</a> as PreludeText</div>
+import <a HREF="../../prelude/PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
 </li>
 <li>
 <div>
 import <a HREF="../../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as PreludeMonad</div>
+</li>
+<li>
+<div>
+import <a HREF="../../prelude/PreludeText.html">Prelude.PreludeText</a> as PreludeText</div>
 </li>
 <li>
 <div>
@@ -572,7 +572,7 @@ For details see <a class="fref" href="#Process.exec">Process.exec</a>   </p>
 <SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Redirect">Redirect</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Redirect.appendTo">Redirect.appendTo</a>, <a class="fref" href="#Redirect.from">Redirect.from</a>, <a class="fref" href="#Redirect.to">Redirect.to</a></p>
+<a class="fref" href="#Redirect.to">Redirect.to</a>, <a class="fref" href="#Redirect.appendTo">Redirect.appendTo</a>, <a class="fref" href="#Redirect.from">Redirect.from</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Process">Process</a></SPAN></dt>
@@ -596,7 +596,7 @@ For details see <a class="fref" href="#Process.exec">Process.exec</a>   </p>
 <SPAN CLASS="code"><a class="tref" href="#Process">Process</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../IO.html#InputStream">InputStream</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Process.getInputStream">Process.getInputStream</a>, <a class="fref" href="#Process.getErrorStream">Process.getErrorStream</a></p>
+<a class="fref" href="#Process.getErrorStream">Process.getErrorStream</a>, <a class="fref" href="#Process.getInputStream">Process.getInputStream</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#Process">Process</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../IO.html#OutputStream">OutputStream</a></SPAN></dt>
@@ -620,19 +620,19 @@ For details see <a class="fref" href="#Process.exec">Process.exec</a>   </p>
 <SPAN CLASS="code"><a class="tref" href="#Process">Process</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Process.exitValue">Process.exitValue</a>, <a class="fref" href="#Process.waitFor">Process.waitFor</a></p>
+<a class="fref" href="#Process.waitFor">Process.waitFor</a>, <a class="fref" href="#Process.exitValue">Process.exitValue</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#ProcessBuilder">ProcessBuilder</a> → <a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../IO.html#File">File</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#ProcessBuilder.directory">ProcessBuilder.directory</a>, <a class="fref" href="#ProcessBuilder.redirectErrorβ">ProcessBuilder.redirectErrorβ</a>, <a class="fref" href="#ProcessBuilder.redirectInputβ">ProcessBuilder.redirectInputβ</a>, <a class="fref" href="#ProcessBuilder.redirectOutputβ">ProcessBuilder.redirectOutputβ</a></p>
+<a class="fref" href="#ProcessBuilder.redirectOutputβ">ProcessBuilder.redirectOutputβ</a>, <a class="fref" href="#ProcessBuilder.directory">ProcessBuilder.directory</a>, <a class="fref" href="#ProcessBuilder.redirectErrorβ">ProcessBuilder.redirectErrorβ</a>, <a class="fref" href="#ProcessBuilder.redirectInputβ">ProcessBuilder.redirectInputβ</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#ProcessBuilder">ProcessBuilder</a> → <a class="tref" href="#Redirect">Redirect</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#ProcessBuilder.redirectInputα">ProcessBuilder.redirectInputα</a>, <a class="fref" href="#ProcessBuilder.redirectErrorα">ProcessBuilder.redirectErrorα</a>, <a class="fref" href="#ProcessBuilder.redirectOutputα">ProcessBuilder.redirectOutputα</a></p>
+<a class="fref" href="#ProcessBuilder.redirectOutputα">ProcessBuilder.redirectOutputα</a>, <a class="fref" href="#ProcessBuilder.redirectInputα">ProcessBuilder.redirectInputα</a>, <a class="fref" href="#ProcessBuilder.redirectErrorα">ProcessBuilder.redirectErrorα</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#ProcessBuilder">ProcessBuilder</a> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ProcessBuilder">ProcessBuilder</a></SPAN></dt>
@@ -668,7 +668,7 @@ For details see <a class="fref" href="#Process.exec">Process.exec</a>   </p>
 <SPAN CLASS="code">ω</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Process.exec">Process.exec</a>, <a class="fref" href="#ProcessBuilder.redirectError">ProcessBuilder.redirectError</a>, <a class="fref" href="#ProcessBuilder.redirectInput">ProcessBuilder.redirectInput</a>, <a class="fref" href="#ProcessBuilder.redirectOutput">ProcessBuilder.redirectOutput</a></p>
+<a class="fref" href="#Process.exec">Process.exec</a>, <a class="fref" href="#ProcessBuilder.redirectOutput">ProcessBuilder.redirectOutput</a>, <a class="fref" href="#ProcessBuilder.redirectInput">ProcessBuilder.redirectInput</a>, <a class="fref" href="#ProcessBuilder.redirectError">ProcessBuilder.redirectError</a></p>
 </dd>
 </dl>
 <p>

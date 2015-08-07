@@ -25,11 +25,7 @@ Imports</h3>
 <ul>
 <li>
 <div>
-import <a HREF="../prelude/PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
-</li>
-<li>
-<div>
-import <a HREF="../Prelude.html">frege.Prelude</a> as Prelude</div>
+import <a HREF="../compiler/Classtools.html">Compiler.Classtools</a> as CT</div>
 </li>
 <li>
 <div>
@@ -37,15 +33,11 @@ import <a HREF="../data/List.html">Data.List</a> as L</div>
 </li>
 <li>
 <div>
-import <a HREF="../compiler/Classtools.html">Compiler.Classtools</a> as CT</div>
-</li>
-<li>
-<div>
 import <a HREF="../data/Monoid.html">Data.Monoid</a> as Monoid</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
+import <a HREF="../Prelude.html">frege.Prelude</a> as Prelude</div>
 </li>
 <li>
 <div>
@@ -53,11 +45,15 @@ import <a HREF="../prelude/PreludeArrays.html">Prelude.PreludeArrays</a> as Prel
 </li>
 <li>
 <div>
+import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
+</li>
+<li>
+<div>
 import <a HREF="../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeText.html">Prelude.PreludeText</a> as PreludeText</div>
+import <a HREF="../prelude/PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
 </li>
 <li>
 <div>
@@ -65,11 +61,15 @@ import <a HREF="../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as Prelud
 </li>
 <li>
 <div>
-import <a HREF="../data/TreeMap.html">Data.TreeMap</a> as TreeMap</div>
+import <a HREF="../prelude/PreludeText.html">Prelude.PreludeText</a> as PreludeText</div>
 </li>
 <li>
 <div>
 import <a HREF="../java/util/Regex.html">Java.util.Regex</a> as Regexp</div>
+</li>
+<li>
+<div>
+import <a HREF="../data/TreeMap.html">Data.TreeMap</a> as TreeMap</div>
 </li>
 <li>
 <div>
@@ -282,7 +282,7 @@ Constructors</h3>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=RTree.T>T</a> (<a class="tref" href="../data/TreeMap.html#Tree">Tree</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a> a)</SPAN></dt>
+<SPAN CLASS="code"><a name=RTree.T>T</a> (<a class="tref" href="../data/TreeMap.html#TreeMap">TreeMap</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a> a)</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -338,7 +338,7 @@ Constructors</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Functor_RTree.fmap>fmap</a> ∷ (α → β) → <b><a class="tref" href="#RTree">RTree</a> α</b> → <a class="tref" href="#RTree">RTree</a> β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name=Functor_RTree.fmap>fmap</a> ∷ (β → α) → <b><a class="tref" href="#RTree">RTree</a> β</b> → <a class="tref" href="#RTree">RTree</a> α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -438,7 +438,7 @@ Member Functions</h3>
 <a class="fref" href="#classAtEnd">classAtEnd</a>, <a class="fref" href="#dirSep">dirSep</a>, <a class="fref" href="#dollars">dollars</a>, <a class="fref" href="#pathRE">pathRE</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../data/TreeMap.html#Tree">Tree</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a> a → <a class="tref" href="#RTree">RTree</a> a</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../data/TreeMap.html#TreeMap">TreeMap</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a> a → <a class="tref" href="#RTree">RTree</a> a</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#RTree.T">RTree.T</a></p>
@@ -462,7 +462,7 @@ Member Functions</h3>
 <a class="fref" href="#Y.Y">Y.Y</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α → β) → <a class="tref" href="#RTree">RTree</a> α → <a class="tref" href="#RTree">RTree</a> β</SPAN></dt>
+<SPAN CLASS="code">(β → α) → <a class="tref" href="#RTree">RTree</a> β → <a class="tref" href="#RTree">RTree</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Functor_RTree.fmap">Functor_RTree.fmap</a></p>

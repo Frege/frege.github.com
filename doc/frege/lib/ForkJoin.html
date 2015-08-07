@@ -25,15 +25,7 @@ Imports</h3>
 <ul>
 <li>
 <div>
-import <a HREF="../prelude/PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
-</li>
-<li>
-<div>
 import <a HREF="../Prelude.html">frege.Prelude</a> as Prelude</div>
-</li>
-<li>
-<div>
-import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
 </li>
 <li>
 <div>
@@ -41,15 +33,23 @@ import <a HREF="../prelude/PreludeArrays.html">Prelude.PreludeArrays</a> as Prel
 </li>
 <li>
 <div>
+import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
+</li>
+<li>
+<div>
 import <a HREF="../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeText.html">Prelude.PreludeText</a> as PreludeText</div>
+import <a HREF="../prelude/PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
 </li>
 <li>
 <div>
 import <a HREF="../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as PreludeMonad</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeText.html">Prelude.PreludeText</a> as PreludeText</div>
 </li>
 <li>
 <div>
@@ -64,15 +64,15 @@ Table of Content</h3>
 <a HREF="#data">Definitions</a></div>
 <dl>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#par">par</a> ∷ α → β → β&nbsp;</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#par">par</a> ∷ β → α → α&nbsp;</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#$_bar">$|</a> ∷ (α→β) → α → β&nbsp;</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#$_bar">$|</a> ∷ (β→α) → β → α&nbsp;</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#parOp">parOp</a> ∷ (α→γ→β) → α → γ → β</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#parOp">parOp</a> ∷ (β→γ→α) → β → γ → α</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -80,7 +80,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#mapP">mapP</a> ∷ (α→β) → <b>[α]</b> → [β]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#mapP">mapP</a> ∷ (β→α) → <b>[β]</b> → [α]</SPAN></dt>
 <dd>
 </dd>
 </dl>
@@ -94,7 +94,7 @@ Table of Content</h3>
 <a NAME="data">Definitions</a></h2>
 <dl class="data">
 <dt class="data">
-<SPAN CLASS="code"><a name=par>par</a> ∷ α → β → β<br><b>infixr</b>&nbsp;&nbsp;2</SPAN></dt>
+<SPAN CLASS="code"><a name=par>par</a> ∷ β → α → α<br><b>infixr</b>&nbsp;&nbsp;2</SPAN></dt>
 <dd class="data">
 <dl>
 <dt>
@@ -108,7 +108,7 @@ usage</dt>
 Fork evaluation of <SPAN CLASS="code">a</SPAN> and return <SPAN CLASS="code">b</SPAN>.</p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=$_bar>$|</a> ∷ (α→β) → α → β<br><b>infixr</b>&nbsp;&nbsp;1</SPAN></dt>
+<SPAN CLASS="code"><a name=$_bar>$|</a> ∷ (β→α) → β → α<br><b>infixr</b>&nbsp;&nbsp;1</SPAN></dt>
 <dd class="data">
 <dl>
 <dt>
@@ -122,7 +122,7 @@ usage</dt>
 Equivalent to <SPAN CLASS="code">a `par` f a</SPAN></p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=parOp>parOp</a> ∷ (α→γ→β) → α → γ → β</SPAN></dt>
+<SPAN CLASS="code"><a name=parOp>parOp</a> ∷ (β→γ→α) → β → γ → α</SPAN></dt>
 <dd class="data">
 <dl>
 <dt>
@@ -150,7 +150,7 @@ usage</dt>
 Equivalent to <SPAN CLASS="code">parOp (:) a as</SPAN></p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=mapP>mapP</a> ∷ (α→β) → <b>[α]</b> → [β]</SPAN></dt>
+<SPAN CLASS="code"><a name=mapP>mapP</a> ∷ (β→α) → <b>[β]</b> → [α]</SPAN></dt>
 <dd class="data">
 <dl>
 <dt>
@@ -174,25 +174,25 @@ Like <a class="fref" href="../prelude/PreludeList.html#map">map</a>, but applies
 <a class="fref" href="#_colon_bar">:|</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α→β) → [α] → [β]</SPAN></dt>
+<SPAN CLASS="code">(β→α) → [β] → [α]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#mapP">mapP</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α→β) → α → β</SPAN></dt>
+<SPAN CLASS="code">(β→α) → β → α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#$_bar">$|</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">α → β → β</SPAN></dt>
+<SPAN CLASS="code">β → α → α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#par">par</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α→γ→β) → α → γ → β</SPAN></dt>
+<SPAN CLASS="code">(β→γ→α) → β → γ → α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#parOp">parOp</a></p>

@@ -21,7 +21,7 @@ Module <SPAN CLASS="code">Prelude.PreludeList</SPAN></h1>
 <p>
 This package provides common list functions for the Frege language.</p>
 <p>
-It contains all functions described in section 9.1 of the <i>Haskell 2010 Language Report</i>, except for <a HREF="../data/List.html#lookup">lookup</a>, which has been moved to <SPAN CLASS="code">frege.data.List</SPAN> (the equivalent of Haskell's <SPAN CLASS="code">Data.List</SPAN>).</p>
+It contains all functions described in section 9.1 of the <i>Haskell 2010 Language Report</i>, except for <a HREF="../data/List.html#lookup">lookup</a> and <a HREF="../data/List.html#!!">!!</a>. These functions have been moved to <SPAN CLASS="code">frege.data.List</SPAN> (the equivalent of Haskell's <SPAN CLASS="code">Data.List</SPAN>).</p>
 <p>
 In addition to the common list functions, three type classes capture common properties of types that are like ordinary lists:</p>
 <dl>
@@ -130,11 +130,11 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#concat">concat</a> ∷ (<a class="tref" href="#ListEmpty">ListEmpty</a> α, <a class="tref" href="#ListSemigroup">ListSemigroup</a> α) ⇒ <b>[α β]</b> → α β</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#concat">concat</a> ∷ (<a class="tref" href="#ListEmpty">ListEmpty</a> β, <a class="tref" href="#ListSemigroup">ListSemigroup</a> β) ⇒ <b>[β α]</b> → β α</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#concatMap">concatMap</a> ∷ (<a class="tref" href="#ListEmpty">ListEmpty</a> α, <a class="tref" href="#ListSemigroup">ListSemigroup</a> α) ⇒ (β→α γ) → <b>[β]</b> → α γ</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#concatMap">concatMap</a> ∷ (<a class="tref" href="#ListEmpty">ListEmpty</a> α, <a class="tref" href="#ListSemigroup">ListSemigroup</a> α) ⇒ (γ→α β) → <b>[γ]</b> → α β</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -146,11 +146,11 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#foldl">foldl</a> ∷ (α→β→α) → α → <b>[β]</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#foldl">foldl</a> ∷ (β→α→β) → β → <b>[α]</b> → β</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#fold">fold</a> ∷ (α→β→α) → <b>α</b> → <b>[β]</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#fold">fold</a> ∷ (β→α→β) → <b>β</b> → <b>[α]</b> → β</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -174,7 +174,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#scanl">scanl</a> ∷ (α→β→α) → <b>α</b> → <b>[β]</b> → [α]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#scanl">scanl</a> ∷ (β→α→β) → <b>β</b> → <b>[α]</b> → [β]</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -198,7 +198,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#foldrs">foldrs</a> ∷ (α→β→β) → <b>β</b> → <b>[α]</b> → β</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#foldrs">foldrs</a> ∷ (β→α→α) → <b>α</b> → <b>[β]</b> → α</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -210,7 +210,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#map">map</a> ∷ (α→β) → <b>[α]</b> → [β]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#map">map</a> ∷ (β→α) → <b>[β]</b> → [α]</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -262,35 +262,31 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#zip">zip</a> ∷ <b>[α]</b> → <b>[β]</b> → [(α, β)]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#zip">zip</a> ∷ <b>[β]</b> → <b>[α]</b> → [(β, α)]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#unzip">unzip</a> ∷ <b>[(α, β)]</b> → ([α], [β])</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#unzip">unzip</a> ∷ <b>[(β, α)]</b> → ([β], [α])</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#zipWith">zipWith</a> ∷ (β→α→γ) → <b>[β]</b> → <b>[α]</b> → [γ]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#zipWith">zipWith</a> ∷ (α→β→γ) → <b>[α]</b> → <b>[β]</b> → [γ]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#zip3">zip3</a> ∷ <b>[α]</b> → <b>[β]</b> → <b>[γ]</b> → [(α, β, γ)]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#zip3">zip3</a> ∷ <b>[γ]</b> → <b>[β]</b> → <b>[α]</b> → [(γ, β, α)]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#unzip3">unzip3</a> ∷ <b>[(β, γ, α)]</b> → ([β], [γ], [α])</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#unzip3">unzip3</a> ∷ <b>[(β, α, γ)]</b> → ([β], [α], [γ])</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#zipWith3">zipWith3</a> ∷ (α→δ→β→γ) → <b>[α]</b> → <b>[δ]</b> → <b>[β]</b> → [γ]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#zipWith3">zipWith3</a> ∷ (α→β→δ→γ) → <b>[α]</b> → <b>[β]</b> → <b>[δ]</b> → [γ]</SPAN></dt>
 <dd>
 </dd>
 <dt>
 <SPAN CLASS="code"><a class="fref" href="#intersperse">intersperse</a> ∷ α → <b>[α]</b> → [α]</SPAN></dt>
-<dd>
-</dd>
-<dt>
-<SPAN CLASS="code"><a class="fref" href="#_excl_excl">!!</a> ∷ <b>[α]</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → α&nbsp;</SPAN></dt>
 <dd>
 </dd>
 </dl>
@@ -467,7 +463,7 @@ A class of things we can make a list from</p>
 <h3>
 Known Instances</h3>
 <p>
-<a class="tref" href="#ListView_StringJ">StringJ</a>, <a class="tref" href="#ListSource__lbrack_rbrack">[]</a>, <a class="tref" href="#ListSource_Either">Either</a>, <a class="tref" href="#ListSource_Maybe">Maybe</a></p>
+<a class="tref" href="#ListView_StringJ">StringJ</a>, <a class="tref" href="#ListSource__lbrack_rbrack">[]</a>, <a class="tref" href="#ListSource_Maybe">Maybe</a>, <a class="tref" href="#ListSource_Either">Either</a></p>
 <h3>
 Member Functions</h3>
 <dl class="func">
@@ -538,7 +534,7 @@ except that <a class="fref" href="#all">all</a> stops at the first element that 
 Note that, according to the identity above, <SPAN CLASS="code">all p []</SPAN> is always <SPAN CLASS="code">true</SPAN>.</p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=concat>concat</a> ∷ (<a class="tref" href="#ListEmpty">ListEmpty</a> α, <a class="tref" href="#ListSemigroup">ListSemigroup</a> α) ⇒ <b>[α β]</b> → α β</SPAN></dt>
+<SPAN CLASS="code"><a name=concat>concat</a> ∷ (<a class="tref" href="#ListEmpty">ListEmpty</a> β, <a class="tref" href="#ListSemigroup">ListSemigroup</a> β) ⇒ <b>[β α]</b> → β α</SPAN></dt>
 <dd class="data">
 <p>
 <a class="fref" href="#concat">concat</a> concatenates the subitems of the argument which is a list of list or a list of strings.</p>
@@ -546,7 +542,7 @@ Note that, according to the identity above, <SPAN CLASS="code">all p []</SPAN> i
 It is ok if the argument is an infinite list or any of the sublists is infinite. In either case, the result will also be infinite.</p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=concatMap>concatMap</a> ∷ (<a class="tref" href="#ListEmpty">ListEmpty</a> α, <a class="tref" href="#ListSemigroup">ListSemigroup</a> α) ⇒ (β→α γ) → <b>[β]</b> → α γ</SPAN></dt>
+<SPAN CLASS="code"><a name=concatMap>concatMap</a> ∷ (<a class="tref" href="#ListEmpty">ListEmpty</a> α, <a class="tref" href="#ListSemigroup">ListSemigroup</a> α) ⇒ (γ→α β) → <b>[γ]</b> → α β</SPAN></dt>
 <dd class="data">
 <p>
 Map a function over a list and concatenate the list or string results.</p>
@@ -574,7 +570,7 @@ will loop forever, whereas</p>
 will faithfully deliver the list of positive integers that are divisible by 2, one by one.</p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=foldl>foldl</a> ∷ (α→β→α) → α → <b>[β]</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a name=foldl>foldl</a> ∷ (β→α→β) → β → <b>[α]</b> → β</SPAN></dt>
 <dd class="data">
 <p>
 warning: It is strongly advised to use <a class="fref" href="#fold">fold</a> instead - beware of stack overflow!</p>
@@ -588,7 +584,7 @@ Because the operator is applied lazily, <a class="fref" href="#foldl">foldl</a> 
 This function exists merely for compatibility with Haskell.</p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=fold>fold</a> ∷ (α→β→α) → <b>α</b> → <b>[β]</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a name=fold>fold</a> ∷ (β→α→β) → <b>β</b> → <b>[α]</b> → β</SPAN></dt>
 <dd class="data">
 <p>
 <a class="fref" href="#fold">fold</a>, applied to a binary operator, a starting value (typically the left identity of the operator), and a list, reduces the list using the binary operator, from left to right:</p>
@@ -634,7 +630,7 @@ The maximal value of a non empty list, same as (<a class="fref" href="#foldl1">f
 <a class="fref" href="#foldl1">foldl1</a> is a variant of <a class="fref" href="#fold">fold</a> that has no starting value argument and thus must be applied to nonempty lists only.</p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=scanl>scanl</a> ∷ (α→β→α) → <b>α</b> → <b>[β]</b> → [α]</SPAN></dt>
+<SPAN CLASS="code"><a name=scanl>scanl</a> ∷ (β→α→β) → <b>β</b> → <b>[α]</b> → [β]</SPAN></dt>
 <dd class="data">
 <p>
 <a class="fref" href="#scanl">scanl</a> is similar to <a class="fref" href="#fold">fold</a> but returns a list of successive reduced values from the left:</p>
@@ -694,7 +690,7 @@ If <i>f</i> is commutative, the list finite and laziness not an issue, <a class=
 <a class="fref" href="#foldr1">foldr1</a> is a variant of <a class="fref" href="#foldr">foldr</a> that has no starting argument, and thus must be applied to a non-empty list    </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=foldrs>foldrs</a> ∷ (α→β→β) → <b>β</b> → <b>[α]</b> → β</SPAN></dt>
+<SPAN CLASS="code"><a name=foldrs>foldrs</a> ∷ (β→α→α) → <b>α</b> → <b>[β]</b> → α</SPAN></dt>
 <dd class="data">
 <p>
 This function may be used in place of</p>
@@ -730,7 +726,7 @@ Returns the last element of a list by taking the <a class="fref" href="#ListView
 See also <a class="fref" href="#init">init</a>   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=map>map</a> ∷ (α→β) → <b>[α]</b> → [β]</SPAN></dt>
+<SPAN CLASS="code"><a name=map>map</a> ∷ (β→α) → <b>[β]</b> → [α]</SPAN></dt>
 <dd class="data">
 <p>
 <SPAN CLASS="code">map f xs</SPAN> applies <i>f</i> to each element of <i>xs</i> and builds a new list from the results.</p>
@@ -826,7 +822,7 @@ opposite of <a class="fref" href="#elem">elem</a>   </p>
 <SPAN CLASS="code">iterate f a</SPAN> builds the infinite list <SPAN CLASS="code">[a, f a, f (f a), ...]</SPAN></p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=zip>zip</a> ∷ <b>[α]</b> → <b>[β]</b> → [(α, β)]</SPAN></dt>
+<SPAN CLASS="code"><a name=zip>zip</a> ∷ <b>[β]</b> → <b>[α]</b> → [(β, α)]</SPAN></dt>
 <dd class="data">
 <p>
 <SPAN CLASS="code">zip as bs</SPAN> builds a list of tuples of corresponding elements of /as/ and /bs/. Trailing elements of the longer list are ignored.</p>
@@ -834,7 +830,7 @@ opposite of <a class="fref" href="#elem">elem</a>   </p>
  zip (1,2,3) "ab" = [(1, "a"), (2, "b")]</PRE>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=unzip>unzip</a> ∷ <b>[(α, β)]</b> → ([α], [β])</SPAN></dt>
+<SPAN CLASS="code"><a name=unzip>unzip</a> ∷ <b>[(β, α)]</b> → ([β], [α])</SPAN></dt>
 <dd class="data">
 <p>
 <a class="fref" href="#unzip">unzip</a> turns a list of tuples into a tuple of lists. It is the opposite of <a class="fref" href="#zip">zip</a> and the following holds for genuine lists</p>
@@ -848,25 +844,25 @@ But note that</p>
 will only hold if <SPAN CLASS="code">length as == length bs</SPAN></p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=zipWith>zipWith</a> ∷ (β→α→γ) → <b>[β]</b> → <b>[α]</b> → [γ]</SPAN></dt>
+<SPAN CLASS="code"><a name=zipWith>zipWith</a> ∷ (α→β→γ) → <b>[α]</b> → <b>[β]</b> → [γ]</SPAN></dt>
 <dd class="data">
 <p>
 <SPAN CLASS="code">zipWith f xs ys</SPAN> zips two lists with function <i>f</i> instead of the standard <a class="tref" href="./PreludeBase.html#Tuple2">(,)</a> that is used by <a class="fref" href="#zip">zip</a></p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=zip3>zip3</a> ∷ <b>[α]</b> → <b>[β]</b> → <b>[γ]</b> → [(α, β, γ)]</SPAN></dt>
+<SPAN CLASS="code"><a name=zip3>zip3</a> ∷ <b>[γ]</b> → <b>[β]</b> → <b>[α]</b> → [(γ, β, α)]</SPAN></dt>
 <dd class="data">
 <p>
 <a class="fref" href="#zip3">zip3</a> zips 3 lists in the same way as <a class="fref" href="#zip">zip</a> does it.   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=unzip3>unzip3</a> ∷ <b>[(β, γ, α)]</b> → ([β], [γ], [α])</SPAN></dt>
+<SPAN CLASS="code"><a name=unzip3>unzip3</a> ∷ <b>[(β, α, γ)]</b> → ([β], [α], [γ])</SPAN></dt>
 <dd class="data">
 <p>
 <a class="fref" href="#unzip3">unzip3</a> unzips a list of triples and returns a triple of lists.   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=zipWith3>zipWith3</a> ∷ (α→δ→β→γ) → <b>[α]</b> → <b>[δ]</b> → <b>[β]</b> → [γ]</SPAN></dt>
+<SPAN CLASS="code"><a name=zipWith3>zipWith3</a> ∷ (α→β→δ→γ) → <b>[α]</b> → <b>[β]</b> → <b>[δ]</b> → [γ]</SPAN></dt>
 <dd class="data">
 <p>
 <a class="fref" href="#zipWith3">zipWith3</a> <i>f</i> zips 3 lists with function <i>f</i> instead of the standard <a class="tref" href="./PreludeBase.html#Tuple3">(,,)</a> that is used by <a class="fref" href="#zip3">zip3</a>   </p>
@@ -878,12 +874,6 @@ will only hold if <SPAN CLASS="code">length as == length bs</SPAN></p>
 <SPAN CLASS="code">intersperse a xs</SPAN> inserts <i>a</i> between every two elements of <i>xs</i></p>
 <PRE>
  intersperse 0 (1..3) == [1,0,2,0,3]</PRE>
-</dd>
-<dt class="data">
-<SPAN CLASS="code"><a name=_excl_excl>!!</a> ∷ <b>[α]</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → α<br><b>infixl</b>&nbsp;&nbsp;16</SPAN></dt>
-<dd class="data">
-<p>
-<SPAN CLASS="code">xs !! n</SPAN> is the element with index <i>n</i> of the list <i>xs</i>, where the head element of a list has index 0.</p>
 </dd>
 </dl>
 <h2>
@@ -924,7 +914,7 @@ Concatenation of two lists   </p>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=ListSource_Either.toList>toList</a> ∷ <b>(α | β)</b> → [β]</SPAN></dt>
+<SPAN CLASS="code"><a name=ListSource_Either.toList>toList</a> ∷ <b>(β | α)</b> → [α]</SPAN></dt>
 <dd class="func">
 <p>
 Singleton with element from <a class="fref" href="./PreludeBase.html#Either.Right">Either.Right</a> or empty list for <a class="fref" href="./PreludeBase.html#Either.Left">Either.Left</a>   </p>
@@ -1254,12 +1244,6 @@ inherited from <a class="fref" href="./PreludeBase.html#Ord.min">Ord.min</a></p>
 <a class="fref" href="#ListMonoid__lbrack_rbrack._plus_plus">ListMonoid_[].++</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">[α] → <a class="tref" href="./PreludeBase.html#Int">Int</a> → α</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#_excl_excl">!!</a></p>
-</dd>
-<dt class="func">
 <SPAN CLASS="code">[α] → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α, [α])</SPAN></dt>
 <dd class="func">
 <p>
@@ -1305,7 +1289,7 @@ inherited from <a class="fref" href="./PreludeBase.html#Ord.min">Ord.min</a></p>
 <SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> → [α] → [α]</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#ListView__lbrack_rbrack.drop">ListView_[].drop</a>, <a class="fref" href="#ListView__lbrack_rbrack.take">ListView_[].take</a></p>
+<a class="fref" href="#ListView__lbrack_rbrack.take">ListView_[].take</a>, <a class="fref" href="#ListView__lbrack_rbrack.drop">ListView_[].drop</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> → α → [α]</SPAN></dt>
@@ -1341,19 +1325,19 @@ inherited from <a class="fref" href="./PreludeBase.html#Ord.min">Ord.min</a></p>
 <SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Ord">Ord</a> α ⇒ [α] → [α] → [α]</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Ord__lbrack_rbrack.max">Ord_[].max</a>, <a class="fref" href="#Ord__lbrack_rbrack.min">Ord_[].min</a></p>
+<a class="fref" href="#Ord__lbrack_rbrack.min">Ord_[].min</a>, <a class="fref" href="#Ord__lbrack_rbrack.max">Ord_[].max</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Ord">Ord</a> α ⇒ [α] → [α] → <a class="tref" href="./PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Ord__lbrack_rbrack._gt">Ord_[].&gt;</a>, <a class="fref" href="#Ord__lbrack_rbrack._lt_eq">Ord_[].&lt;=</a>, <a class="fref" href="#Ord__lbrack_rbrack._lt">Ord_[].&lt;</a>, <a class="fref" href="#Ord__lbrack_rbrack._gt_eq">Ord_[].&gt;=</a></p>
+<a class="fref" href="#Ord__lbrack_rbrack._gt_eq">Ord_[].&gt;=</a>, <a class="fref" href="#Ord__lbrack_rbrack._lt">Ord_[].&lt;</a>, <a class="fref" href="#Ord__lbrack_rbrack._lt_eq">Ord_[].&lt;=</a>, <a class="fref" href="#Ord__lbrack_rbrack._gt">Ord_[].&gt;</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Ord">Ord</a> α ⇒ [α] → [α] → <a class="tref" href="./PreludeBase.html#Ordering">Ordering</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Ord__lbrack_rbrack._lt_eq_gt">Ord_[].&lt;=&gt;</a>, <a class="fref" href="#Ord__lbrack_rbrack.compare">Ord_[].compare</a></p>
+<a class="fref" href="#Ord__lbrack_rbrack.compare">Ord_[].compare</a>, <a class="fref" href="#Ord__lbrack_rbrack._lt_eq_gt">Ord_[].&lt;=&gt;</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Ord">Ord</a> α ⇒ [α] → α</SPAN></dt>
@@ -1380,43 +1364,49 @@ inherited from <a class="fref" href="./PreludeBase.html#Ord.min">Ord.min</a></p>
 <a class="fref" href="#scanr">scanr</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α→β→α) → α → [β] → [α]</SPAN></dt>
+<SPAN CLASS="code">(α→β→β) → β → [α] → β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#foldr">foldr</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(β→α→α) → α → [β] → α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#foldrs">foldrs</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(β→α→β) → β → [α] → [β]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#scanl">scanl</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α→β→α) → α → [β] → α</SPAN></dt>
+<SPAN CLASS="code">(β→α→β) → β → [α] → β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#fold">fold</a>, <a class="fref" href="#foldl">foldl</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α→β→β) → β → [α] → β</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#foldr">foldr</a>, <a class="fref" href="#foldrs">foldrs</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code">(α→β) → [α] → [β]</SPAN></dt>
+<SPAN CLASS="code">(β→α) → [β] → [α]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#map">map</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α | β) → [β]</SPAN></dt>
+<SPAN CLASS="code">(β | α) → [α]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ListSource_Either.toList">ListSource_Either.toList</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">[(α, β)] → ([α], [β])</SPAN></dt>
+<SPAN CLASS="code">[(β, α)] → ([β], [α])</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#unzip">unzip</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">[α] → [β] → [(α, β)]</SPAN></dt>
+<SPAN CLASS="code">[β] → [α] → [(β, α)]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#zip">zip</a></p>
@@ -1428,7 +1418,7 @@ inherited from <a class="fref" href="./PreludeBase.html#Ord.min">Ord.min</a></p>
 <a class="fref" href="#ListEmpty._null">ListEmpty.null</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="#ListEmpty">ListEmpty</a> α, <a class="tref" href="#ListSemigroup">ListSemigroup</a> α) ⇒ [α β] → α β</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="#ListEmpty">ListEmpty</a> β, <a class="tref" href="#ListSemigroup">ListSemigroup</a> β) ⇒ [β α] → β α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#concat">concat</a></p>
@@ -1485,7 +1475,7 @@ inherited from <a class="fref" href="./PreludeBase.html#Ord.min">Ord.min</a></p>
 <SPAN CLASS="code"><a class="tref" href="#ListView">ListView</a> α ⇒ <a class="tref" href="./PreludeBase.html#Int">Int</a> → α β → α β</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#ListView.drop">ListView.drop</a>, <a class="fref" href="#ListView.take">ListView.take</a></p>
+<a class="fref" href="#ListView.take">ListView.take</a>, <a class="fref" href="#ListView.drop">ListView.drop</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#ListEmpty">ListEmpty</a> α ⇒ α β</SPAN></dt>
@@ -1494,31 +1484,31 @@ inherited from <a class="fref" href="./PreludeBase.html#Ord.min">Ord.min</a></p>
 <a class="fref" href="#ListEmpty.empty">ListEmpty.empty</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(β→α→γ) → [β] → [α] → [γ]</SPAN></dt>
+<SPAN CLASS="code">(α→β→γ) → [α] → [β] → [γ]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#zipWith">zipWith</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">[(β, γ, α)] → ([β], [γ], [α])</SPAN></dt>
+<SPAN CLASS="code">[(β, α, γ)] → ([β], [α], [γ])</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#unzip3">unzip3</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">[α] → [β] → [γ] → [(α, β, γ)]</SPAN></dt>
+<SPAN CLASS="code">[γ] → [β] → [α] → [(γ, β, α)]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#zip3">zip3</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="#ListEmpty">ListEmpty</a> α, <a class="tref" href="#ListSemigroup">ListSemigroup</a> α) ⇒ (β→α γ) → [β] → α γ</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="#ListEmpty">ListEmpty</a> α, <a class="tref" href="#ListSemigroup">ListSemigroup</a> α) ⇒ (γ→α β) → [γ] → α β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#concatMap">concatMap</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α→δ→β→γ) → [α] → [δ] → [β] → [γ]</SPAN></dt>
+<SPAN CLASS="code">(α→β→δ→γ) → [α] → [β] → [δ] → [γ]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#zipWith3">zipWith3</a></p>

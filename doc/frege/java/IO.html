@@ -25,15 +25,7 @@ Imports</h3>
 <ul>
 <li>
 <div>
-import <a HREF="../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
-</li>
-<li>
-<div>
 import <a HREF="./Lang.html">Java.Lang</a> as Lang</div>
-</li>
-<li>
-<div>
-import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
 </li>
 <li>
 <div>
@@ -41,11 +33,19 @@ import <a HREF="../prelude/PreludeArrays.html">Prelude.PreludeArrays</a> as Prel
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as PreludeMonad</div>
+import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
 </li>
 <li>
 <div>
 import <a HREF="../prelude/PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as PreludeMonad</div>
 </li>
 <li>
 <div>
@@ -336,7 +336,7 @@ Member Functions</h3>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=File.createTempFile>createTempFile</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeIO.html#IOMutable">IOMutable</a> <a class="tref" href="#File">File</a><br><b>native </b>java.io.File.createTempFile&nbsp;&nbsp;<b>throws </b><a class="tref" href="./Lang.html#IOException">IOException</a></SPAN></dt>
+<SPAN CLASS="code"><a name=File.createTempFile>createTempFile</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="#File">File</a><br><b>native </b>java.io.File.createTempFile&nbsp;&nbsp;<b>throws </b><a class="tref" href="./Lang.html#IOException">IOException</a></SPAN></dt>
 <dd class="func">
 <p>
 Create an empty file in the default temp directory.</p>
@@ -947,7 +947,7 @@ inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsub">S
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#File">File</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#File.delete">File.delete</a>, <a class="fref" href="#File.canWrite">File.canWrite</a>, <a class="fref" href="#File.canRead">File.canRead</a>, <a class="fref" href="#File.exists">File.exists</a>, <a class="fref" href="#File.isFile">File.isFile</a>, <a class="fref" href="#File.isAbsolute">File.isAbsolute</a>, <a class="fref" href="#File.isDirectory">File.isDirectory</a>, <a class="fref" href="#File.mkdirs">File.mkdirs</a></p>
+<a class="fref" href="#File.isFile">File.isFile</a>, <a class="fref" href="#File.isAbsolute">File.isAbsolute</a>, <a class="fref" href="#File.isDirectory">File.isDirectory</a>, <a class="fref" href="#File.delete">File.delete</a>, <a class="fref" href="#File.exists">File.exists</a>, <a class="fref" href="#File.canRead">File.canRead</a>, <a class="fref" href="#File.canWrite">File.canWrite</a>, <a class="fref" href="#File.mkdirs">File.mkdirs</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#File">File</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></SPAN></dt>
@@ -956,7 +956,7 @@ inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsub">S
 <a class="fref" href="#File.lastModified">File.lastModified</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeIO.html#IOMutable">IOMutable</a> <a class="tref" href="#File">File</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="#File">File</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#File.createTempFile">File.createTempFile</a></p>
@@ -1031,7 +1031,7 @@ inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsub">S
 <SPAN CLASS="code"><a class="tref" href="#File">File</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Show_File.show">Show_File.show</a>, <a class="fref" href="#Show_File.display">Show_File.display</a>, <a class="fref" href="#Show_File.showsub">Show_File.showsub</a>, <a class="fref" href="#File.getPathF">File.getPathF</a></p>
+<a class="fref" href="#Show_File.showsub">Show_File.showsub</a>, <a class="fref" href="#Show_File.display">Show_File.display</a>, <a class="fref" href="#Show_File.show">Show_File.show</a>, <a class="fref" href="#File.getPathF">File.getPathF</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#File">File</a> → [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
@@ -1043,7 +1043,7 @@ inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsub">S
 <SPAN CLASS="code"><a class="tref" href="#File">File</a> → <a class="tref" href="#File">File</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Serializable_File.freeze">Serializable_File.freeze</a>, <a class="fref" href="#Serializable_File.copySerializable">Serializable_File.copySerializable</a>, <a class="fref" href="#Serializable_File.thaw">Serializable_File.thaw</a></p>
+<a class="fref" href="#Serializable_File.thaw">Serializable_File.thaw</a>, <a class="fref" href="#Serializable_File.copySerializable">Serializable_File.copySerializable</a>, <a class="fref" href="#Serializable_File.freeze">Serializable_File.freeze</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#File">File</a> → <a class="tref" href="#URI">URI</a></SPAN></dt>
@@ -1079,7 +1079,7 @@ inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsub">S
 <SPAN CLASS="code"><a class="tref" href="#PrintWriter">PrintWriter</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#PrintWriter.print">PrintWriter.print</a>, <a class="fref" href="#PrintWriter.printlnα">PrintWriter.printlnα</a></p>
+<a class="fref" href="#PrintWriter.printlnα">PrintWriter.printlnα</a>, <a class="fref" href="#PrintWriter.print">PrintWriter.print</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#PrintWriter">PrintWriter</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
@@ -1187,7 +1187,7 @@ inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsub">S
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#File.pathSeparator">File.pathSeparator</a>, <a class="fref" href="#File.separator">File.separator</a></p>
+<a class="fref" href="#File.separator">File.separator</a>, <a class="fref" href="#File.pathSeparator">File.pathSeparator</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#BufferedReader">BufferedReader</a></SPAN></dt>
@@ -1223,7 +1223,7 @@ inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsub">S
 <SPAN CLASS="code">ω</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#File._new">File.new</a>, <a class="fref" href="#FileInputStream._new">FileInputStream.new</a>, <a class="fref" href="#FileOutputStream._new">FileOutputStream.new</a>, <a class="fref" href="#PrintWriter._new">PrintWriter.new</a>, <a class="fref" href="#PrintWriter.printf">PrintWriter.printf</a>, <a class="fref" href="#PrintWriter.println">PrintWriter.println</a>, <a class="fref" href="#Writer.write">Writer.write</a></p>
+<a class="fref" href="#File._new">File.new</a>, <a class="fref" href="#FileInputStream._new">FileInputStream.new</a>, <a class="fref" href="#FileOutputStream._new">FileOutputStream.new</a>, <a class="fref" href="#PrintWriter.println">PrintWriter.println</a>, <a class="fref" href="#PrintWriter._new">PrintWriter.new</a>, <a class="fref" href="#PrintWriter.printf">PrintWriter.printf</a>, <a class="fref" href="#Writer.write">Writer.write</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#PrintWriter">PrintWriter</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → a → b → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>

@@ -25,11 +25,7 @@ Imports</h3>
 <ul>
 <li>
 <div>
-import <a HREF="./PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
-</li>
-<li>
-<div>
-import <a HREF="./Maybe.html">Prelude.Maybe</a> as Maybe</div>
+import <a HREF="../control/Category.html">Control.Category</a> as Category</div>
 </li>
 <li>
 <div>
@@ -37,15 +33,19 @@ import <a HREF="./PreludeList.html">Prelude.PreludeList</a> as L</div>
 </li>
 <li>
 <div>
-import <a HREF="../control/Category.html">Control.Category</a> as Category</div>
+import <a HREF="./Maybe.html">Prelude.Maybe</a> as Maybe</div>
 </li>
 <li>
 <div>
-import <a HREF="./PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
+import <a HREF="./PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
 </li>
 <li>
 <div>
 import <a HREF="./PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
+</li>
+<li>
+<div>
+import <a HREF="./PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
 </li>
 <li>
 <div>
@@ -246,7 +246,7 @@ Here is a cheat sheet for the different array get and set methods:</p>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=JArray.cache>cache</a> ∷ <a class="tref" href="#ArrayElem">ArrayElem</a> α ⇒ (<a class="tref" href="./PreludeBase.html#Int">Int</a>→<a class="tref" href="#JArray">JArray</a> α→α) → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> β (<a class="tref" href="#JArray">JArray</a> α)</SPAN></dt>
+<SPAN CLASS="code"><a name=JArray.cache>cache</a> ∷ <a class="tref" href="#ArrayElem">ArrayElem</a> β ⇒ (<a class="tref" href="./PreludeBase.html#Int">Int</a>→<a class="tref" href="#JArray">JArray</a> β→β) → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> β)</SPAN></dt>
 <dd class="func">
 <p>
 Create a mutable array of a given size and compute the values of its elements by some function. The function gets the current index and the already computed values in  the form of an immutable array, where it can access elements with a <b>smaller</b> index than the current one.</p>
@@ -490,7 +490,7 @@ Note that <a class="tref" href="#JArray">JArray</a> cannot be an instance of <a 
 <h3>
 Known Instances</h3>
 <p>
-<a class="tref" href="#ArrayElement__lbrack_rbrack">[]</a>, <a class="tref" href="#ArrayElement_Integer">Integer</a>, <a class="tref" href="#ArrayElement_String">StringJ</a>, <a class="tref" href="#ArrayElement_l_cc_r">(,,)</a>, <a class="tref" href="#ArrayElement_l_c_r">(,)</a>, <a class="tref" href="#ArrayElement__minus_gt">-&gt;</a>, <a class="tref" href="#PrimitiveArrayElement_Long">Long</a>, <a class="tref" href="#PrimitiveArrayElement_Double">Double</a>, <a class="tref" href="#PrimitiveArrayElement_Float">Float</a>, <a class="tref" href="#PrimitiveArrayElement_Bool">Bool</a>, <a class="tref" href="#PrimitiveArrayElement_Char">Char</a>, <a class="tref" href="#PrimitiveArrayElement_Int">Int</a></p>
+<a class="tref" href="#ArrayElement_String">StringJ</a>, <a class="tref" href="#ArrayElement__minus_gt">-&gt;</a>, <a class="tref" href="#ArrayElement_l_c_r">(,)</a>, <a class="tref" href="#ArrayElement_l_cc_r">(,,)</a>, <a class="tref" href="#ArrayElement_Integer">Integer</a>, <a class="tref" href="#ArrayElement__lbrack_rbrack">[]</a>, <a class="tref" href="#PrimitiveArrayElement_Int">Int</a>, <a class="tref" href="#PrimitiveArrayElement_Char">Char</a>, <a class="tref" href="#PrimitiveArrayElement_Bool">Bool</a>, <a class="tref" href="#PrimitiveArrayElement_Float">Float</a>, <a class="tref" href="#PrimitiveArrayElement_Double">Double</a>, <a class="tref" href="#PrimitiveArrayElement_Long">Long</a></p>
 <h3>
 Member Functions</h3>
 <dl class="func">
@@ -562,7 +562,7 @@ The default implementation of <a class="fref" href="#PrimitiveArrayElement.setAt
 <h3>
 Known Instances</h3>
 <p>
-<a class="tref" href="#PrimitiveArrayElement_Long">Long</a>, <a class="tref" href="#PrimitiveArrayElement_Double">Double</a>, <a class="tref" href="#PrimitiveArrayElement_Float">Float</a>, <a class="tref" href="#PrimitiveArrayElement_Bool">Bool</a>, <a class="tref" href="#PrimitiveArrayElement_Char">Char</a>, <a class="tref" href="#PrimitiveArrayElement_Int">Int</a></p>
+<a class="tref" href="#PrimitiveArrayElement_Int">Int</a>, <a class="tref" href="#PrimitiveArrayElement_Char">Char</a>, <a class="tref" href="#PrimitiveArrayElement_Bool">Bool</a>, <a class="tref" href="#PrimitiveArrayElement_Float">Float</a>, <a class="tref" href="#PrimitiveArrayElement_Double">Double</a>, <a class="tref" href="#PrimitiveArrayElement_Long">Long</a></p>
 <h3>
 Member Functions</h3>
 <dl class="func">
@@ -598,7 +598,7 @@ In addition to the base class <a class="tref" href="#ArrayElem">ArrayElem</a> it
 <h3>
 Known Instances</h3>
 <p>
-<a class="tref" href="#ArrayElement__lbrack_rbrack">[]</a>, <a class="tref" href="#ArrayElement_Integer">Integer</a>, <a class="tref" href="#ArrayElement_String">StringJ</a>, <a class="tref" href="#ArrayElement_l_cc_r">(,,)</a>, <a class="tref" href="#ArrayElement_l_c_r">(,)</a>, <a class="tref" href="#ArrayElement__minus_gt">-&gt;</a></p>
+<a class="tref" href="#ArrayElement_String">StringJ</a>, <a class="tref" href="#ArrayElement__minus_gt">-&gt;</a>, <a class="tref" href="#ArrayElement_l_c_r">(,)</a>, <a class="tref" href="#ArrayElement_l_cc_r">(,,)</a>, <a class="tref" href="#ArrayElement_Integer">Integer</a>, <a class="tref" href="#ArrayElement__lbrack_rbrack">[]</a></p>
 <h3>
 Member Functions</h3>
 <dl class="func">
@@ -629,59 +629,59 @@ Member Functions</h3>
 inherited from <a class="fref" href="#ArrayElem.elemAt">ArrayElem.elemAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement_l_c_r.getAt>getAt</a> ∷ <b><a class="tref" href="#ArrayOf">ArrayOf</a> β (γ, α)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> β (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (γ, α))<br><b>native </b>[i]</SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement_l_c_r.getAt>getAt</a> ∷ <b><a class="tref" href="#ArrayOf">ArrayOf</a> α (γ, β)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (γ, β))<br><b>native </b>[i]</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#ArrayElem.getAt">ArrayElem.getAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement_l_c_r.getElemAt>getElemAt</a> ∷ <b><a class="tref" href="#ArrayOf">ArrayOf</a> β (γ, α)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> β (γ, α)<br><b>native </b>[i]</SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement_l_c_r.getElemAt>getElemAt</a> ∷ <b><a class="tref" href="#ArrayOf">ArrayOf</a> β (α, γ)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> β (α, γ)<br><b>native </b>[i]</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#ArrayElem.getElemAt">ArrayElem.getElemAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement_l_c_r.itemAt>itemAt</a> ∷ <b><a class="tref" href="#JArray">JArray</a> (α, β)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α, β)<br><b>pure </b><b>native </b>[i]</SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement_l_c_r.itemAt>itemAt</a> ∷ <b><a class="tref" href="#JArray">JArray</a> (β, α)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (β, α)<br><b>pure </b><b>native </b>[i]</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#ArrayElem.itemAt">ArrayElem.itemAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement_l_c_r.javaClass>javaClass</a> ∷ <a class="tref" href="./PreludeBase.html#Class">Class</a> (α, β)<br><b>pure </b><b>native </b>frege.prelude.PreludeBase.TTuple2.class</SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement_l_c_r.javaClass>javaClass</a> ∷ <a class="tref" href="./PreludeBase.html#Class">Class</a> (β, α)<br><b>pure </b><b>native </b>frege.prelude.PreludeBase.TTuple2.class</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement_l_c_r.modifyAt>modifyAt</a> ∷ ((γ, α) → (γ, α)) → <b><a class="tref" href="#ArrayOf">ArrayOf</a> β (γ, α)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement_l_c_r.modifyAt>modifyAt</a> ∷ ((γ, β) → (γ, β)) → <b><a class="tref" href="#ArrayOf">ArrayOf</a> α (γ, β)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#ArrayElem.modifyAt">ArrayElem.modifyAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement_l_c_r.modifyElemAt>modifyElemAt</a> ∷ ((β, γ) → (β, γ)) → <b><a class="tref" href="#ArrayOf">ArrayOf</a> α (β, γ)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement_l_c_r.modifyElemAt>modifyElemAt</a> ∷ ((β, α) → (β, α)) → <b><a class="tref" href="#ArrayOf">ArrayOf</a> γ (β, α)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#ArrayElem.modifyElemAt">ArrayElem.modifyElemAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement_l_c_r.newArray>newArray</a> ∷ <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> γ (<a class="tref" href="#JArray">JArray</a> (α, β))<br><b>native </b>new[]</SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement_l_c_r.newArray>newArray</a> ∷ <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> (γ, β))<br><b>native </b>new[]</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#ArrayElem.newArray">ArrayElem.newArray</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement_l_c_r.newArrayM>newArrayM</a> ∷ <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> β (<a class="tref" href="#JArray">JArray</a> (<a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> β (γ, α)))</SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement_l_c_r.newArrayM>newArrayM</a> ∷ <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> γ (<a class="tref" href="#JArray">JArray</a> (<a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> γ (β, α)))</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#ArrayElement.newArrayM">ArrayElement.newArrayM</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement_l_c_r.setAt>setAt</a> ∷ <b><a class="tref" href="#ArrayOf">ArrayOf</a> α (β, γ)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (β, γ)</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement_l_c_r.setAt>setAt</a> ∷ <b><a class="tref" href="#ArrayOf">ArrayOf</a> β (α, γ)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α, γ)</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#ArrayElem.setAt">ArrayElem.setAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement_l_c_r.setElemAt>setElemAt</a> ∷ <b><a class="tref" href="#ArrayOf">ArrayOf</a> γ (α, β)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <b>(α, β)</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement_l_c_r.setElemAt>setElemAt</a> ∷ <b><a class="tref" href="#ArrayOf">ArrayOf</a> α (γ, β)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <b>(γ, β)</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</a></p>
@@ -695,13 +695,13 @@ inherited from <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement_l_cc_r.elemAt>elemAt</a> ∷ <b><a class="tref" href="#JArray">JArray</a> (γ, β, α)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → (γ, β, α)<br><b>pure </b><b>native </b>[i]</SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement_l_cc_r.elemAt>elemAt</a> ∷ <b><a class="tref" href="#JArray">JArray</a> (α, γ, β)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → (α, γ, β)<br><b>pure </b><b>native </b>[i]</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#ArrayElem.elemAt">ArrayElem.elemAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement_l_cc_r.getAt>getAt</a> ∷ <b><a class="tref" href="#ArrayOf">ArrayOf</a> β (γ, α, δ)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> β (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (γ, α, δ))<br><b>native </b>[i]</SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement_l_cc_r.getAt>getAt</a> ∷ <b><a class="tref" href="#ArrayOf">ArrayOf</a> α (β, δ, γ)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (β, δ, γ))<br><b>native </b>[i]</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#ArrayElem.getAt">ArrayElem.getAt</a></p>
@@ -723,37 +723,37 @@ inherited from <a class="fref" href="#ArrayElem.itemAt">ArrayElem.itemAt</a></p>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement_l_cc_r.modifyAt>modifyAt</a> ∷ ((β, α, γ) → (β, α, γ)) → <b><a class="tref" href="#ArrayOf">ArrayOf</a> δ (β, α, γ)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> δ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement_l_cc_r.modifyAt>modifyAt</a> ∷ ((β, α, δ) → (β, α, δ)) → <b><a class="tref" href="#ArrayOf">ArrayOf</a> γ (β, α, δ)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#ArrayElem.modifyAt">ArrayElem.modifyAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement_l_cc_r.modifyElemAt>modifyElemAt</a> ∷ ((α, δ, β) → (α, δ, β)) → <b><a class="tref" href="#ArrayOf">ArrayOf</a> γ (α, δ, β)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement_l_cc_r.modifyElemAt>modifyElemAt</a> ∷ ((β, δ, γ) → (β, δ, γ)) → <b><a class="tref" href="#ArrayOf">ArrayOf</a> α (β, δ, γ)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#ArrayElem.modifyElemAt">ArrayElem.modifyElemAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement_l_cc_r.newArray>newArray</a> ∷ <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> β (<a class="tref" href="#JArray">JArray</a> (γ, α, δ))<br><b>native </b>new[]</SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement_l_cc_r.newArray>newArray</a> ∷ <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> δ (<a class="tref" href="#JArray">JArray</a> (α, γ, β))<br><b>native </b>new[]</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#ArrayElem.newArray">ArrayElem.newArray</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement_l_cc_r.newArrayM>newArrayM</a> ∷ <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> δ (<a class="tref" href="#JArray">JArray</a> (<a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> δ (γ, β, α)))</SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement_l_cc_r.newArrayM>newArrayM</a> ∷ <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> (<a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> α (β, δ, γ)))</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#ArrayElement.newArrayM">ArrayElement.newArrayM</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement_l_cc_r.setAt>setAt</a> ∷ <b><a class="tref" href="#ArrayOf">ArrayOf</a> β (γ, α, δ)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (γ, α, δ)</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement_l_cc_r.setAt>setAt</a> ∷ <b><a class="tref" href="#ArrayOf">ArrayOf</a> δ (α, γ, β)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α, γ, β)</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> δ <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#ArrayElem.setAt">ArrayElem.setAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement_l_cc_r.setElemAt>setElemAt</a> ∷ <b><a class="tref" href="#ArrayOf">ArrayOf</a> β (γ, α, δ)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <b>(γ, α, δ)</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement_l_cc_r.setElemAt>setElemAt</a> ∷ <b><a class="tref" href="#ArrayOf">ArrayOf</a> α (β, δ, γ)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <b>(β, δ, γ)</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</a></p>
@@ -767,19 +767,19 @@ inherited from <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement__minus_gt.elemAt>elemAt</a> ∷ <b><a class="tref" href="#JArray">JArray</a> (α→β)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → α→β<br><b>pure </b><b>native </b>[i]</SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement__minus_gt.elemAt>elemAt</a> ∷ <b><a class="tref" href="#JArray">JArray</a> (β→α)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → β→α<br><b>pure </b><b>native </b>[i]</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#ArrayElem.elemAt">ArrayElem.elemAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement__minus_gt.getAt>getAt</a> ∷ <b><a class="tref" href="#ArrayOf">ArrayOf</a> α (γ→β)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (γ→β))<br><b>native </b>[i]</SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement__minus_gt.getAt>getAt</a> ∷ <b><a class="tref" href="#ArrayOf">ArrayOf</a> β (α→γ)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> β (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α→γ))<br><b>native </b>[i]</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#ArrayElem.getAt">ArrayElem.getAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement__minus_gt.getElemAt>getElemAt</a> ∷ <b><a class="tref" href="#ArrayOf">ArrayOf</a> β (α→γ)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> β (α→γ)<br><b>native </b>[i]</SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement__minus_gt.getElemAt>getElemAt</a> ∷ <b><a class="tref" href="#ArrayOf">ArrayOf</a> γ (β→α)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> γ (β→α)<br><b>native </b>[i]</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#ArrayElem.getElemAt">ArrayElem.getElemAt</a></p>
@@ -801,31 +801,31 @@ inherited from <a class="fref" href="#ArrayElem.itemAt">ArrayElem.itemAt</a></p>
 inherited from <a class="fref" href="#ArrayElem.modifyAt">ArrayElem.modifyAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement__minus_gt.modifyElemAt>modifyElemAt</a> ∷ ((β→α) → β→α) → <b><a class="tref" href="#ArrayOf">ArrayOf</a> γ (β→α)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement__minus_gt.modifyElemAt>modifyElemAt</a> ∷ ((α→γ) → α→γ) → <b><a class="tref" href="#ArrayOf">ArrayOf</a> β (α→γ)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#ArrayElem.modifyElemAt">ArrayElem.modifyElemAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement__minus_gt.newArray>newArray</a> ∷ <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> (γ→β))<br><b>native </b>new[]</SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement__minus_gt.newArray>newArray</a> ∷ <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> γ (<a class="tref" href="#JArray">JArray</a> (β→α))<br><b>native </b>new[]</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#ArrayElem.newArray">ArrayElem.newArray</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement__minus_gt.newArrayM>newArrayM</a> ∷ <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> γ (<a class="tref" href="#JArray">JArray</a> (<a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> γ (β→α)))</SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement__minus_gt.newArrayM>newArrayM</a> ∷ <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> (<a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> α (γ→β)))</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#ArrayElement.newArrayM">ArrayElement.newArrayM</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement__minus_gt.setAt>setAt</a> ∷ <b><a class="tref" href="#ArrayOf">ArrayOf</a> γ (β→α)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (β→α)</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement__minus_gt.setAt>setAt</a> ∷ <b><a class="tref" href="#ArrayOf">ArrayOf</a> α (γ→β)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (γ→β)</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#ArrayElem.setAt">ArrayElem.setAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement__minus_gt.setElemAt>setElemAt</a> ∷ <b><a class="tref" href="#ArrayOf">ArrayOf</a> α (γ→β)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → (<b>γ→β</b>) → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement__minus_gt.setElemAt>setElemAt</a> ∷ <b><a class="tref" href="#ArrayOf">ArrayOf</a> γ (β→α)</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → (<b>β→α</b>) → <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</a></p>
@@ -1017,7 +1017,7 @@ inherited from <a class="fref" href="#ArrayElem.itemAt">ArrayElem.itemAt</a></p>
 inherited from <a class="fref" href="#ArrayElem.modifyAt">ArrayElem.modifyAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement__lbrack_rbrack.modifyElemAt>modifyElemAt</a> ∷ ([α] → [α]) → <b><a class="tref" href="#ArrayOf">ArrayOf</a> β [α]</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement__lbrack_rbrack.modifyElemAt>modifyElemAt</a> ∷ ([β] → [β]) → <b><a class="tref" href="#ArrayOf">ArrayOf</a> α [β]</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#ArrayElem.modifyElemAt">ArrayElem.modifyElemAt</a></p>
@@ -1652,49 +1652,49 @@ inherited from <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</
 <SPAN CLASS="code">(<a class="tref" href="./PreludeBase.html#String">String</a> → <a class="tref" href="./PreludeBase.html#String">String</a>) → <a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#String">String</a> → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#ArrayElement_String.modifyAt">ArrayElement_String.modifyAt</a>, <a class="fref" href="#ArrayElement_String.modifyElemAt">ArrayElement_String.modifyElemAt</a></p>
+<a class="fref" href="#ArrayElement_String.modifyElemAt">ArrayElement_String.modifyElemAt</a>, <a class="fref" href="#ArrayElement_String.modifyAt">ArrayElement_String.modifyAt</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">(<a class="tref" href="./PreludeBase.html#Bool">Bool</a> → <a class="tref" href="./PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Bool">Bool</a> → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#PrimitiveArrayElement_Bool.modifyAt">PrimitiveArrayElement_Bool.modifyAt</a>, <a class="fref" href="#PrimitiveArrayElement_Bool.modifyElemAt">PrimitiveArrayElement_Bool.modifyElemAt</a></p>
+<a class="fref" href="#PrimitiveArrayElement_Bool.modifyElemAt">PrimitiveArrayElement_Bool.modifyElemAt</a>, <a class="fref" href="#PrimitiveArrayElement_Bool.modifyAt">PrimitiveArrayElement_Bool.modifyAt</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">(<a class="tref" href="./PreludeBase.html#Char">Char</a> → <a class="tref" href="./PreludeBase.html#Char">Char</a>) → <a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Char">Char</a> → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#PrimitiveArrayElement_Char.modifyAt">PrimitiveArrayElement_Char.modifyAt</a>, <a class="fref" href="#PrimitiveArrayElement_Char.modifyElemAt">PrimitiveArrayElement_Char.modifyElemAt</a></p>
+<a class="fref" href="#PrimitiveArrayElement_Char.modifyElemAt">PrimitiveArrayElement_Char.modifyElemAt</a>, <a class="fref" href="#PrimitiveArrayElement_Char.modifyAt">PrimitiveArrayElement_Char.modifyAt</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">(<a class="tref" href="./PreludeBase.html#Double">Double</a> → <a class="tref" href="./PreludeBase.html#Double">Double</a>) → <a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Double">Double</a> → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#PrimitiveArrayElement_Double.modifyAt">PrimitiveArrayElement_Double.modifyAt</a>, <a class="fref" href="#PrimitiveArrayElement_Double.modifyElemAt">PrimitiveArrayElement_Double.modifyElemAt</a></p>
+<a class="fref" href="#PrimitiveArrayElement_Double.modifyElemAt">PrimitiveArrayElement_Double.modifyElemAt</a>, <a class="fref" href="#PrimitiveArrayElement_Double.modifyAt">PrimitiveArrayElement_Double.modifyAt</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">(<a class="tref" href="./PreludeBase.html#Float">Float</a> → <a class="tref" href="./PreludeBase.html#Float">Float</a>) → <a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Float">Float</a> → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#PrimitiveArrayElement_Float.modifyAt">PrimitiveArrayElement_Float.modifyAt</a>, <a class="fref" href="#PrimitiveArrayElement_Float.modifyElemAt">PrimitiveArrayElement_Float.modifyElemAt</a></p>
+<a class="fref" href="#PrimitiveArrayElement_Float.modifyElemAt">PrimitiveArrayElement_Float.modifyElemAt</a>, <a class="fref" href="#PrimitiveArrayElement_Float.modifyAt">PrimitiveArrayElement_Float.modifyAt</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">(<a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#Int">Int</a>) → <a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#PrimitiveArrayElement_Int.modifyAt">PrimitiveArrayElement_Int.modifyAt</a>, <a class="fref" href="#PrimitiveArrayElement_Int.modifyElemAt">PrimitiveArrayElement_Int.modifyElemAt</a></p>
+<a class="fref" href="#PrimitiveArrayElement_Int.modifyElemAt">PrimitiveArrayElement_Int.modifyElemAt</a>, <a class="fref" href="#PrimitiveArrayElement_Int.modifyAt">PrimitiveArrayElement_Int.modifyAt</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">(<a class="tref" href="./PreludeBase.html#Integer">Integer</a> → <a class="tref" href="./PreludeBase.html#Integer">Integer</a>) → <a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Integer">Integer</a> → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#ArrayElement_Integer.modifyAt">ArrayElement_Integer.modifyAt</a>, <a class="fref" href="#ArrayElement_Integer.modifyElemAt">ArrayElement_Integer.modifyElemAt</a></p>
+<a class="fref" href="#ArrayElement_Integer.modifyElemAt">ArrayElement_Integer.modifyElemAt</a>, <a class="fref" href="#ArrayElement_Integer.modifyAt">ArrayElement_Integer.modifyAt</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">(<a class="tref" href="./PreludeBase.html#Long">Long</a> → <a class="tref" href="./PreludeBase.html#Long">Long</a>) → <a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#Long">Long</a> → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#PrimitiveArrayElement_Long.modifyAt">PrimitiveArrayElement_Long.modifyAt</a>, <a class="fref" href="#PrimitiveArrayElement_Long.modifyElemAt">PrimitiveArrayElement_Long.modifyElemAt</a></p>
+<a class="fref" href="#PrimitiveArrayElement_Long.modifyElemAt">PrimitiveArrayElement_Long.modifyElemAt</a>, <a class="fref" href="#PrimitiveArrayElement_Long.modifyAt">PrimitiveArrayElement_Long.modifyAt</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α <a class="tref" href="./PreludeBase.html#String">String</a> → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="./PreludeBase.html#String">String</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
@@ -2036,7 +2036,7 @@ inherited from <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</
 <SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Eq">Eq</a> α ⇒ <a class="tref" href="#JArray">JArray</a> α → <a class="tref" href="#JArray">JArray</a> α → <a class="tref" href="./PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Eq_JArray._eq_eq">Eq_JArray.==</a>, <a class="fref" href="#Eq_JArray._excl_eq">Eq_JArray.!=</a></p>
+<a class="fref" href="#Eq_JArray._excl_eq">Eq_JArray.!=</a>, <a class="fref" href="#Eq_JArray._eq_eq">Eq_JArray.==</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Eq">Eq</a> α ⇒ <a class="tref" href="#JArray">JArray</a> α → <a class="tref" href="./PreludeBase.html#Int">Int</a></SPAN></dt>
@@ -2060,7 +2060,13 @@ inherited from <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</
 <SPAN CLASS="code">([α] → [α]) → <a class="tref" href="#ArrayOf">ArrayOf</a> β [α] → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#ArrayElement__lbrack_rbrack.modifyAt">ArrayElement_[].modifyAt</a>, <a class="fref" href="#ArrayElement__lbrack_rbrack.modifyElemAt">ArrayElement_[].modifyElemAt</a></p>
+<a class="fref" href="#ArrayElement__lbrack_rbrack.modifyAt">ArrayElement_[].modifyAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">([β] → [β]) → <a class="tref" href="#ArrayOf">ArrayOf</a> α [β] → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement__lbrack_rbrack.modifyElemAt">ArrayElement_[].modifyElemAt</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">(α → β → α) → α → <a class="tref" href="#JArray">JArray</a> β → α</SPAN></dt>
@@ -2129,22 +2135,22 @@ inherited from <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</
 <a class="fref" href="#ArrayElement_l_c_r.elemAt">ArrayElement_(,).elemAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> (α, β) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α, β)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> (β, α) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (β, α)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ArrayElement_l_c_r.itemAt">ArrayElement_(,).itemAt</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> (α→β) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → α→β</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#ArrayElement__minus_gt.elemAt">ArrayElement_-&gt;.elemAt</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> (α→β) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α→β)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ArrayElement__minus_gt.itemAt">ArrayElement_-&gt;.itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> (β→α) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → β→α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement__minus_gt.elemAt">ArrayElement_-&gt;.elemAt</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Class">Class</a> a → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> s (<a class="tref" href="#JArray">JArray</a> (<a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> s a))</SPAN></dt>
@@ -2213,12 +2219,6 @@ inherited from <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</
 <a class="fref" href="#JArray.modify">JArray.modify</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#ArrayElem">ArrayElem</a> α ⇒ (<a class="tref" href="./PreludeBase.html#Int">Int</a>→<a class="tref" href="#JArray">JArray</a> α→α) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> β (<a class="tref" href="#JArray">JArray</a> α)</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#JArray.cache">JArray.cache</a></p>
-</dd>
-<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#ArrayElem">ArrayElem</a> α ⇒ [(<a class="tref" href="./PreludeBase.html#Int">Int</a>, α)] → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> β (<a class="tref" href="#JArray">JArray</a> α)</SPAN></dt>
 <dd class="func">
 <p>
@@ -2241,6 +2241,12 @@ inherited from <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</
 <dd class="func">
 <p>
 <a class="fref" href="#arrayMap">arrayMap</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayElem">ArrayElem</a> β ⇒ (<a class="tref" href="./PreludeBase.html#Int">Int</a>→<a class="tref" href="#JArray">JArray</a> β→β) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> β)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JArray.cache">JArray.cache</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#ArrayElement">ArrayElement</a> a ⇒ <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> s (<a class="tref" href="#JArray">JArray</a> (<a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> s a))</SPAN></dt>
@@ -2267,7 +2273,7 @@ inherited from <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</
 <a class="fref" href="#JArray.genericFromIndexList">JArray.genericFromIndexList</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Class">Class</a> (α, β)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Class">Class</a> (β, α)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ArrayElement_l_c_r.javaClass">ArrayElement_(,).javaClass</a></p>
@@ -2279,19 +2285,19 @@ inherited from <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</
 <a class="fref" href="#ArrayElement__minus_gt.javaClass">ArrayElement_-&gt;.javaClass</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">((β, γ) → (β, γ)) → <a class="tref" href="#ArrayOf">ArrayOf</a> α (β, γ) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code">((β, α) → (β, α)) → <a class="tref" href="#ArrayOf">ArrayOf</a> γ (β, α) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ArrayElement_l_c_r.modifyElemAt">ArrayElement_(,).modifyElemAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">((γ, α) → (γ, α)) → <a class="tref" href="#ArrayOf">ArrayOf</a> β (γ, α) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code">((γ, β) → (γ, β)) → <a class="tref" href="#ArrayOf">ArrayOf</a> α (γ, β) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ArrayElement_l_c_r.modifyAt">ArrayElement_(,).modifyAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">((β→α) → β→α) → <a class="tref" href="#ArrayOf">ArrayOf</a> γ (β→α) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code">((α→γ) → α→γ) → <a class="tref" href="#ArrayOf">ArrayOf</a> β (α→γ) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ArrayElement__minus_gt.modifyElemAt">ArrayElement_-&gt;.modifyElemAt</a></p>
@@ -2303,52 +2309,58 @@ inherited from <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</
 <a class="fref" href="#ArrayElement__minus_gt.modifyAt">ArrayElement_-&gt;.modifyAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α (β, γ) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (β, γ) → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#ArrayElement_l_c_r.setAt">ArrayElement_(,).setAt</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α (γ→β) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → (γ→β) → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#ArrayElement__minus_gt.setElemAt">ArrayElement_-&gt;.setElemAt</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α (γ→β) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (γ→β))</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#ArrayElement__minus_gt.getAt">ArrayElement_-&gt;.getAt</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> β (γ, α) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> β (γ, α)</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#ArrayElement_l_c_r.getElemAt">ArrayElement_(,).getElemAt</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> β (γ, α) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> β (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (γ, α))</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#ArrayElement_l_c_r.getAt">ArrayElement_(,).getAt</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> β (α→γ) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> β (α→γ)</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#ArrayElement__minus_gt.getElemAt">ArrayElement_-&gt;.getElemAt</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> γ (α, β) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → (α, β) → <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α (γ, β) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → (γ, β) → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ArrayElement_l_c_r.setElemAt">ArrayElement_(,).setElemAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> γ (β→α) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (β→α) → <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α (γ, β) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (γ, β))</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_l_c_r.getAt">ArrayElement_(,).getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α (γ→β) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (γ→β) → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ArrayElement__minus_gt.setAt">ArrayElement_-&gt;.setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> β (α, γ) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α, γ) → <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_l_c_r.setAt">ArrayElement_(,).setAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> β (α, γ) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> β (α, γ)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_l_c_r.getElemAt">ArrayElement_(,).getElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> β (α→γ) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> β (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α→γ))</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement__minus_gt.getAt">ArrayElement_-&gt;.getAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> γ (β→α) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → (β→α) → <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement__minus_gt.setElemAt">ArrayElement_-&gt;.setElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> γ (β→α) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> γ (β→α)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement__minus_gt.getElemAt">ArrayElement_-&gt;.getElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> (α, γ, β) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → (α, γ, β)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_l_cc_r.elemAt">ArrayElement_(,,).elemAt</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> (α, γ, β) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α, γ, β)</SPAN></dt>
@@ -2357,34 +2369,28 @@ inherited from <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</
 <a class="fref" href="#ArrayElement_l_cc_r.itemAt">ArrayElement_(,,).itemAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#JArray">JArray</a> (γ, β, α) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → (γ, β, α)</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#ArrayElement_l_cc_r.elemAt">ArrayElement_(,,).elemAt</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> (γ→β))</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#ArrayElement__minus_gt.newArray">ArrayElement_-&gt;.newArray</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> β (<a class="tref" href="#JArray">JArray</a> (<a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> β (γ, α)))</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#ArrayElement_l_c_r.newArrayM">ArrayElement_(,).newArrayM</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> γ (<a class="tref" href="#JArray">JArray</a> (α, β))</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> (γ, β))</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ArrayElement_l_c_r.newArray">ArrayElement_(,).newArray</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> γ (<a class="tref" href="#JArray">JArray</a> (<a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> γ (β→α)))</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> (<a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> α (γ→β)))</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ArrayElement__minus_gt.newArrayM">ArrayElement_-&gt;.newArrayM</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> γ (<a class="tref" href="#JArray">JArray</a> (β→α))</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement__minus_gt.newArray">ArrayElement_-&gt;.newArray</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> γ (<a class="tref" href="#JArray">JArray</a> (<a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> γ (β, α)))</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_l_c_r.newArrayM">ArrayElement_(,).newArrayM</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#ArrayElem">ArrayElem</a> α ⇒ (β → α → β) → β → <a class="tref" href="#ArrayOf">ArrayOf</a> γ α → <a class="tref" href="./PreludeBase.html#ST">ST</a> γ β</SPAN></dt>
@@ -2411,31 +2417,25 @@ inherited from <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</
 <a class="fref" href="#ArrayElement_l_cc_r.javaClass">ArrayElement_(,,).javaClass</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">((α, δ, β) → (α, δ, β)) → <a class="tref" href="#ArrayOf">ArrayOf</a> γ (α, δ, β) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#ArrayElement_l_cc_r.modifyElemAt">ArrayElement_(,,).modifyElemAt</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code">((β, α, γ) → (β, α, γ)) → <a class="tref" href="#ArrayOf">ArrayOf</a> δ (β, α, γ) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> δ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code">((β, α, δ) → (β, α, δ)) → <a class="tref" href="#ArrayOf">ArrayOf</a> γ (β, α, δ) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> γ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ArrayElement_l_cc_r.modifyAt">ArrayElement_(,,).modifyAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> β (γ, α, δ) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → (γ, α, δ) → <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code">((β, δ, γ) → (β, δ, γ)) → <a class="tref" href="#ArrayOf">ArrayOf</a> α (β, δ, γ) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_l_cc_r.modifyElemAt">ArrayElement_(,,).modifyElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α (β, δ, γ) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → (β, δ, γ) → <a class="tref" href="./PreludeBase.html#ST">ST</a> α <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ArrayElement_l_cc_r.setElemAt">ArrayElement_(,,).setElemAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> β (γ, α, δ) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (γ, α, δ) → <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#ArrayElement_l_cc_r.setAt">ArrayElement_(,,).setAt</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> β (γ, α, δ) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> β (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (γ, α, δ))</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> α (β, δ, γ) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (β, δ, γ))</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ArrayElement_l_cc_r.getAt">ArrayElement_(,,).getAt</a></p>
@@ -2447,16 +2447,22 @@ inherited from <a class="fref" href="#ArrayElem.setElemAt">ArrayElem.setElemAt</
 <a class="fref" href="#ArrayElement_l_cc_r.getElemAt">ArrayElement_(,,).getElemAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> β (<a class="tref" href="#JArray">JArray</a> (γ, α, δ))</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#ArrayOf">ArrayOf</a> δ (α, γ, β) → <a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α, γ, β) → <a class="tref" href="./PreludeBase.html#ST">ST</a> δ <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#ArrayElement_l_cc_r.newArray">ArrayElement_(,,).newArray</a></p>
+<a class="fref" href="#ArrayElement_l_cc_r.setAt">ArrayElement_(,,).setAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> δ (<a class="tref" href="#JArray">JArray</a> (<a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> δ (γ, β, α)))</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="#JArray">JArray</a> (<a class="tref" href="./PreludeIO.html#Mutable">Mutable</a> α (β, δ, γ)))</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ArrayElement_l_cc_r.newArrayM">ArrayElement_(,,).newArrayM</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Int">Int</a> → <a class="tref" href="./PreludeIO.html#STMutable">STMutable</a> δ (<a class="tref" href="#JArray">JArray</a> (α, γ, β))</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_l_cc_r.newArray">ArrayElement_(,,).newArray</a></p>
 </dd>
 </dl>
 <p>

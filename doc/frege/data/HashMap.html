@@ -23,6 +23,26 @@ A HashMap implementation based on a <a HREF="https://en.wikipedia.org/wiki/Hash_
 <p>
 The hash array mapped trie achieves almost hash table-like speed while using memory much more economically. Also, a hash table may have to be periodically resized, an expensive operation, whereas HAMTs grow and shrink dynamically.</p>
 <h2>
+Comparison with <SPAN CLASS="unknown">Data.TreeMap</SPAN></h2>
+<h3>
+Advantages of the <a class="tref" href="#HashMap">HashMap</a></h3>
+<ul>
+<LI>
+ The hash map can be used with key types that do not have a <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> instance. </LI>
+<LI>
+ It is less affected by slow implementations of the (<a class="fref" href="../prelude/PreludeBase.html#Eq._eq_eq">Eq.==</a>) operation on keys. </LI>
+<LI>
+ There is less aggregated memory overhead per key/value pair. </LI>
+</ul>
+<h3>
+Disadvantages of the <a class="tref" href="#HashMap">HashMap</a></h3>
+<ul>
+<LI>
+ Performance is severely affected when the hashing function tends to produce many collisions.</LI>
+<LI>
+ It does not support getting the minimum/maximum key in logarithmic time, nor processing in key order in linear time.</LI>
+</ul>
+<h2>
 Creating Hash Maps</h2>
 <p>
 Get an empty map with <a class="fref" href="./Monoid.html#Monoid.mempty">Monoid.mempty</a> or <a class="fref" href="../prelude/PreludeList.html#ListEmpty.empty">ListEmpty.empty</a>, make a singleton one with <a class="fref" href="#singleton">singleton</a> or turn an association list into a <a class="tref" href="#HashMap">HashMap</a> with <a class="fref" href="#fromList">fromList</a>. The more general function <a class="fref" href="#fromListWith">fromListWith</a> allows custom handling of associations with duplicate keys.</p>
@@ -59,16 +79,12 @@ Functions whose name have the <i>With</i> suffix take a custom function to combi
 <PRE>
  xxx = xxxWith const</PRE>
 <p>
-Functions whose name have the <i>Values</i> suffix operate on the values of the mappings contained in the map and take an appropriate custom function as argument. The <i>Values</i> suffix also serves to avoid conflicts with Prelude functions (i.e. <a class="fref" href="../prelude/PreludeList.html#map">map</a>, <a class="fref" href="../prelude/PreludeList.html#filter">filter</a>, <a class="fref" href="../prelude/PreludeList.html#fold">fold</a>, <a class="fref" href="../prelude/PreludeList.html#foldr">foldr</a>).</p>
+Functions whose name have the <i>Values</i> suffix operate on the values of the mappings contained in the map and take an appropriate custom function as argument. The <i>Values</i> suffix also serves to avoid conflicts with Prelude functions (i.e. <a class="fref" href="../prelude/PreludeList.html#map">map</a>, <a class="fref" href="../prelude/PreludeList.html#filter">filter</a>, <a class="fref" href="./Foldable.html#Foldable.fold">Foldable.fold</a>, <a class="fref" href="./Foldable.html#Foldable.foldr">Foldable.foldr</a>).</p>
 <p>
 The companions of the <i>Values</i> functions have the suffix <i>WithKey</i> and accept functions that take an extra argument for the key. The key portion of a mapping or association is always passed first, followed by the associated value.</p>
 <h3>
 Imports</h3>
 <ul>
-<li>
-<div>
-import <a HREF="../Prelude.html">frege.Prelude</a> as Prelude</div>
-</li>
 <li>
 <div>
 import <a HREF="./Bits.html">Data.Bits</a> as Bits</div>
@@ -79,11 +95,11 @@ import <a HREF="./Foldable.html">Data.Foldable</a> as Foldable</div>
 </li>
 <li>
 <div>
-import <a HREF="./List.html">Data.List</a> as List</div>
+import <a HREF="./JSON.html">Data.JSON</a> as JSON</div>
 </li>
 <li>
 <div>
-import <a HREF="./JSON.html">Data.JSON</a> as JSON</div>
+import <a HREF="./List.html">Data.List</a> as List</div>
 </li>
 <li>
 <div>
@@ -91,11 +107,7 @@ import <a HREF="./Monoid.html">Data.Monoid</a> as Monoid</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
-</li>
-<li>
-<div>
-import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
+import <a HREF="../Prelude.html">frege.Prelude</a> as Prelude</div>
 </li>
 <li>
 <div>
@@ -103,15 +115,23 @@ import <a HREF="../prelude/PreludeArrays.html">Prelude.PreludeArrays</a> as Prel
 </li>
 <li>
 <div>
+import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
+</li>
+<li>
+<div>
 import <a HREF="../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeText.html">Prelude.PreludeText</a> as PreludeText</div>
+import <a HREF="../prelude/PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
 </li>
 <li>
 <div>
 import <a HREF="../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as PreludeMonad</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeText.html">Prelude.PreludeText</a> as PreludeText</div>
 </li>
 <li>
 <div>
@@ -742,7 +762,7 @@ Member Functions</h3>
 access field <SPAN CLASS="code">bitmap</SPAN></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=HashMap.collisions>collisions</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, [[α]])</SPAN></dt>
+<SPAN CLASS="code"><a name=HashMap.collisions>collisions</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> β α</b> → (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, [[β]])</SPAN></dt>
 <dd class="func">
 <p>
 <i>O(n)</i> Compute a 3-tuple of</p>
@@ -756,7 +776,17 @@ access field <SPAN CLASS="code">bitmap</SPAN></p>
 </ul>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=HashMap.hash>hash</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><a name=HashMap.delete>delete</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <b>𝖐</b> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="func">
+<p>
+<i>O(log n)</i></p>
+<PRE>
+ hm.delete k</PRE>
+<p>
+Variant of <a class="fref" href="#delete">delete</a> that is better suited for left folds and supports dot-notation.   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=HashMap.hash>hash</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> β α</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
 access field <SPAN CLASS="code">hash</SPAN></p>
@@ -778,31 +808,51 @@ transform an index into an actual array index</p>
 returns a number in the range 0..nodes, where <i>nodes</i> means "no corresponding node"   </p>
 </dd>
 <dt class="func">
+<SPAN CLASS="code"><a name=HashMap.insert>insert</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <b>𝖐</b> → 𝖛 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="func">
+<p>
+<i>O(log n)</i></p>
+<PRE>
+ hm.insert k v</PRE>
+<p>
+Variant of <a class="fref" href="#insert">insert</a> that is better suited for left folds and supports dot-notation.   </p>
+</dd>
+<dt class="func">
 <SPAN CLASS="code"><a name=HashMap.invariants>invariants</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
 this checks the invariants for a node   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=HashMap.key>key</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a name=HashMap.key>key</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> β α</b> → β</SPAN></dt>
 <dd class="func">
 <p>
 access field <SPAN CLASS="code">key</SPAN></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=HashMap.list>list</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → [(α, β)]</SPAN></dt>
+<SPAN CLASS="code"><a name=HashMap.list>list</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> β α</b> → [(β, α)]</SPAN></dt>
 <dd class="func">
 <p>
 access field <SPAN CLASS="code">list</SPAN></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=HashMap.subnodes>subnodes</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> α β)</SPAN></dt>
+<SPAN CLASS="code"><a name=HashMap.lookup>lookup</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <b><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</b> → <b>𝖐</b> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> 𝖛</SPAN></dt>
+<dd class="func">
+<p>
+<i>O(log n)</i></p>
+<PRE>
+ hm.lookup k</PRE>
+<p>
+Variant of <a class="fref" href="#lookup">lookup</a> that supports dot-notation.   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=HashMap.subnodes>subnodes</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> β α</b> → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> β α)</SPAN></dt>
 <dd class="func">
 <p>
 access field <SPAN CLASS="code">subnodes</SPAN></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=HashMap.value>value</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → β</SPAN></dt>
+<SPAN CLASS="code"><a name=HashMap.value>value</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> β α</b> → α</SPAN></dt>
 <dd class="func">
 <p>
 access field <SPAN CLASS="code">value</SPAN></p>
@@ -820,19 +870,19 @@ access field <SPAN CLASS="code">value</SPAN></p>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement_HashMap.elemAt>elemAt</a> ∷ <b><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> α β)</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#HashMap">HashMap</a> α β<br><b>pure </b><b>native </b>[i]</SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement_HashMap.elemAt>elemAt</a> ∷ <b><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> β α)</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#HashMap">HashMap</a> β α<br><b>pure </b><b>native </b>[i]</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeArrays.html#ArrayElem.elemAt">ArrayElem.elemAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement_HashMap.getAt>getAt</a> ∷ <b><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> β (<a class="tref" href="#HashMap">HashMap</a> γ α)</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> β (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="#HashMap">HashMap</a> γ α))<br><b>native </b>[i]</SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement_HashMap.getAt>getAt</a> ∷ <b><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> β (<a class="tref" href="#HashMap">HashMap</a> α γ)</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> β (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="#HashMap">HashMap</a> α γ))<br><b>native </b>[i]</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeArrays.html#ArrayElem.getAt">ArrayElem.getAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement_HashMap.getElemAt>getElemAt</a> ∷ <b><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> γ (<a class="tref" href="#HashMap">HashMap</a> α β)</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> γ (<a class="tref" href="#HashMap">HashMap</a> α β)<br><b>native </b>[i]</SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement_HashMap.getElemAt>getElemAt</a> ∷ <b><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> γ (<a class="tref" href="#HashMap">HashMap</a> β α)</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> γ (<a class="tref" href="#HashMap">HashMap</a> β α)<br><b>native </b>[i]</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeArrays.html#ArrayElem.getElemAt">ArrayElem.getElemAt</a></p>
@@ -848,37 +898,37 @@ inherited from <a class="fref" href="../prelude/PreludeArrays.html#ArrayElem.ite
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement_HashMap.modifyAt>modifyAt</a> ∷ (<a class="tref" href="#HashMap">HashMap</a> β γ → <a class="tref" href="#HashMap">HashMap</a> β γ) → <b><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> α (<a class="tref" href="#HashMap">HashMap</a> β γ)</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement_HashMap.modifyAt>modifyAt</a> ∷ (<a class="tref" href="#HashMap">HashMap</a> α γ → <a class="tref" href="#HashMap">HashMap</a> α γ) → <b><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> β (<a class="tref" href="#HashMap">HashMap</a> α γ)</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeArrays.html#ArrayElem.modifyAt">ArrayElem.modifyAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement_HashMap.modifyElemAt>modifyElemAt</a> ∷ (<a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="#HashMap">HashMap</a> α β) → <b><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> γ (<a class="tref" href="#HashMap">HashMap</a> α β)</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> γ <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement_HashMap.modifyElemAt>modifyElemAt</a> ∷ (<a class="tref" href="#HashMap">HashMap</a> α γ → <a class="tref" href="#HashMap">HashMap</a> α γ) → <b><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> β (<a class="tref" href="#HashMap">HashMap</a> α γ)</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeArrays.html#ArrayElem.modifyElemAt">ArrayElem.modifyElemAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement_HashMap.newArray>newArray</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> β γ))<br><b>native </b>new[]</SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement_HashMap.newArray>newArray</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> γ β))<br><b>native </b>new[]</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeArrays.html#ArrayElem.newArray">ArrayElem.newArray</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement_HashMap.newArrayM>newArrayM</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> γ (<a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> γ (<a class="tref" href="#HashMap">HashMap</a> α β)))</SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement_HashMap.newArrayM>newArrayM</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> γ (<a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> γ (<a class="tref" href="#HashMap">HashMap</a> β α)))</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeArrays.html#ArrayElement.newArrayM">ArrayElement.newArrayM</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement_HashMap.setAt>setAt</a> ∷ <b><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> β (<a class="tref" href="#HashMap">HashMap</a> γ α)</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="#HashMap">HashMap</a> γ α)</b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement_HashMap.setAt>setAt</a> ∷ <b><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> α (<a class="tref" href="#HashMap">HashMap</a> γ β)</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="#HashMap">HashMap</a> γ β)</b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeArrays.html#ArrayElem.setAt">ArrayElem.setAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement_HashMap.setElemAt>setElemAt</a> ∷ <b><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> α (<a class="tref" href="#HashMap">HashMap</a> β γ)</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="#HashMap">HashMap</a> β γ</b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement_HashMap.setElemAt>setElemAt</a> ∷ <b><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> γ (<a class="tref" href="#HashMap">HashMap</a> β α)</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="#HashMap">HashMap</a> β α</b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> γ <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeArrays.html#ArrayElem.setElemAt">ArrayElem.setElemAt</a></p>
@@ -892,17 +942,17 @@ inherited from <a class="fref" href="../prelude/PreludeArrays.html#ArrayElem.set
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Eq_HashMap._excl_eq>!=</a> ∷ (<a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α, <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β) ⇒ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
+<SPAN CLASS="code"><a name=Eq_HashMap._excl_eq>!=</a> ∷ (<a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β, <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α) ⇒ <b><a class="tref" href="#HashMap">HashMap</a> β α</b> → <b><a class="tref" href="#HashMap">HashMap</a> β α</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeBase.html#Eq._excl_eq">Eq.!=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Eq_HashMap._eq_eq>==</a> ∷ (<a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α, <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β) ⇒ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
+<SPAN CLASS="code"><a name=Eq_HashMap._eq_eq>==</a> ∷ (<a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β, <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α) ⇒ <b><a class="tref" href="#HashMap">HashMap</a> β α</b> → <b><a class="tref" href="#HashMap">HashMap</a> β α</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Eq_HashMap.hashCode>hashCode</a> ∷ (<a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α, <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β) ⇒ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Eq_HashMap.hashCode>hashCode</a> ∷ (<a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β, <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α) ⇒ <b><a class="tref" href="#HashMap">HashMap</a> β α</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -914,19 +964,19 @@ inherited from <a class="fref" href="../prelude/PreludeBase.html#Eq._excl_eq">Eq
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Foldable_HashMap.fold>fold</a> ∷ <a class="tref" href="./Monoid.html#Monoid">Monoid</a> β ⇒ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → β</SPAN></dt>
+<SPAN CLASS="code"><a name=Foldable_HashMap.fold>fold</a> ∷ <a class="tref" href="./Monoid.html#Monoid">Monoid</a> α ⇒ <b><a class="tref" href="#HashMap">HashMap</a> β α</b> → α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./Foldable.html#Foldable.fold">Foldable.fold</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Foldable_HashMap.fold1>fold1</a> ∷ <a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> β ⇒ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → β</SPAN></dt>
+<SPAN CLASS="code"><a name=Foldable_HashMap.fold1>fold1</a> ∷ <a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> α ⇒ <b><a class="tref" href="#HashMap">HashMap</a> β α</b> → α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./Foldable.html#Foldable.fold1">Foldable.fold1</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Foldable_HashMap.foldMap>foldMap</a> ∷ <a class="tref" href="./Monoid.html#Monoid">Monoid</a> γ ⇒ (α → γ) → <b><a class="tref" href="#HashMap">HashMap</a> β α</b> → γ</SPAN></dt>
+<SPAN CLASS="code"><a name=Foldable_HashMap.foldMap>foldMap</a> ∷ <a class="tref" href="./Monoid.html#Monoid">Monoid</a> α ⇒ (β → α) → <b><a class="tref" href="#HashMap">HashMap</a> γ β</b> → α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./Foldable.html#Foldable.foldMap">Foldable.foldMap</a></p>
@@ -966,7 +1016,7 @@ inherited from <a class="fref" href="./Foldable.html#Foldable.foldr1">Foldable.f
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Functor_HashMap.fmap>fmap</a> ∷ (<b>α → γ</b>) → <b><a class="tref" href="#HashMap">HashMap</a> β α</b> → <a class="tref" href="#HashMap">HashMap</a> β γ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name=Functor_HashMap.fmap>fmap</a> ∷ (<b>β → α</b>) → <b><a class="tref" href="#HashMap">HashMap</a> γ β</b> → <a class="tref" href="#HashMap">HashMap</a> γ α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -978,7 +1028,7 @@ Member Functions</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=ListEmpty_HashMap.empty>empty</a> ∷ <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<SPAN CLASS="code"><a name=ListEmpty_HashMap.empty>empty</a> ∷ <a class="tref" href="#HashMap">HashMap</a> β α</SPAN></dt>
 <dd class="func">
 <p>
 <i>O(1)</i></p>
@@ -986,7 +1036,7 @@ Member Functions</h3>
 The empty <a class="tref" href="#HashMap">HashMap</a>, represented by a bitmapped node with a bitmap that is 0.   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ListEmpty_HashMap._null>null</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a name=ListEmpty_HashMap._null>null</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> β α</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
 <i>O(1)</i></p>
@@ -1002,7 +1052,7 @@ The empty <a class="tref" href="#HashMap">HashMap</a>, represented by a bitmappe
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=ListMonoid_HashMap._plus_plus>++</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → <a class="tref" href="#HashMap">HashMap</a> α β<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
+<SPAN CLASS="code"><a name=ListMonoid_HashMap._plus_plus>++</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β ⇒ <b><a class="tref" href="#HashMap">HashMap</a> β α</b> → <b><a class="tref" href="#HashMap">HashMap</a> β α</b> → <a class="tref" href="#HashMap">HashMap</a> β α<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -1014,7 +1064,7 @@ Member Functions</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=ListSource_HashMap.toList>toList</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → [β]</SPAN></dt>
+<SPAN CLASS="code"><a name=ListSource_HashMap.toList>toList</a> ∷ <b><a class="tref" href="#HashMap">HashMap</a> β α</b> → [α]</SPAN></dt>
 <dd class="func">
 <p>
 Return the list of values in a <a class="tref" href="#HashMap">HashMap</a>.</p>
@@ -1030,37 +1080,37 @@ Note that this is not symmetric with <a class="fref" href="#fromList">fromList</
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Monoid_HashMap.mappend>mappend</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → <a class="tref" href="#HashMap">HashMap</a> α β<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
+<SPAN CLASS="code"><a name=Monoid_HashMap.mappend>mappend</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β ⇒ <b><a class="tref" href="#HashMap">HashMap</a> β α</b> → <b><a class="tref" href="#HashMap">HashMap</a> β α</b> → <a class="tref" href="#HashMap">HashMap</a> β α<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
 <dd class="func">
 <p>
 builds the <a class="fref" href="#union">union</a> of two <a class="tref" href="#HashMap">HashMap</a>s   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Monoid_HashMap.mconcat>mconcat</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b>[<a class="tref" href="#HashMap">HashMap</a> α β]</b> → <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<SPAN CLASS="code"><a name=Monoid_HashMap.mconcat>mconcat</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β ⇒ <b>[<a class="tref" href="#HashMap">HashMap</a> β α]</b> → <a class="tref" href="#HashMap">HashMap</a> β α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./Monoid.html#Monoid.mconcat">Monoid.mconcat</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Monoid_HashMap.mempty>mempty</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<SPAN CLASS="code"><a name=Monoid_HashMap.mempty>mempty</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β ⇒ <a class="tref" href="#HashMap">HashMap</a> β α</SPAN></dt>
 <dd class="func">
 <p>
 The empty <a class="tref" href="#HashMap">HashMap</a>.   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Monoid_HashMap.mtimes>mtimes</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<SPAN CLASS="code"><a name=Monoid_HashMap.mtimes>mtimes</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β ⇒ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#HashMap">HashMap</a> β α → <a class="tref" href="#HashMap">HashMap</a> β α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./Monoid.html#Monoid.mtimes">Monoid.mtimes</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Monoid_HashMap.sconcat>sconcat</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b>[<a class="tref" href="#HashMap">HashMap</a> α β]</b> → <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<SPAN CLASS="code"><a name=Monoid_HashMap.sconcat>sconcat</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β ⇒ <b>[<a class="tref" href="#HashMap">HashMap</a> β α]</b> → <a class="tref" href="#HashMap">HashMap</a> β α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./Monoid.html#Semigroup.sconcat">Semigroup.sconcat</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Monoid_HashMap.stimes>stimes</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<SPAN CLASS="code"><a name=Monoid_HashMap.stimes>stimes</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β ⇒ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="#HashMap">HashMap</a> β α → <a class="tref" href="#HashMap">HashMap</a> β α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./Monoid.html#Semigroup.stimes">Semigroup.stimes</a></p>
@@ -1096,13 +1146,13 @@ inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showChars"
 inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showList">Show.showList</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Show_HashMap.showsPrec>showsPrec</a> ∷ (<a class="tref" href="./JSON.html#ToJSON">ToJSON</a> α, <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> β) ⇒ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#HashMap">HashMap</a> α β → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Show_HashMap.showsPrec>showsPrec</a> ∷ (<a class="tref" href="./JSON.html#ToJSON">ToJSON</a> β, <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> α) ⇒ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#HashMap">HashMap</a> β α → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsPrec">Show.showsPrec</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Show_HashMap.showsub>showsub</a> ∷ (<a class="tref" href="./JSON.html#ToJSON">ToJSON</a> α, <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> β) ⇒ <a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Show_HashMap.showsub>showsub</a> ∷ (<a class="tref" href="./JSON.html#ToJSON">ToJSON</a> β, <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> α) ⇒ <a class="tref" href="#HashMap">HashMap</a> β α → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsub">Show.showsub</a></p>
@@ -1116,7 +1166,7 @@ inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsub">S
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=ToJSON_HashMap.toJSON>toJSON</a> ∷ (<a class="tref" href="./JSON.html#ToJSON">ToJSON</a> α, <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> β) ⇒ <b><a class="tref" href="#HashMap">HashMap</a> α β</b> → <a class="tref" href="./JSON.html#Value">Value</a></SPAN></dt>
+<SPAN CLASS="code"><a name=ToJSON_HashMap.toJSON>toJSON</a> ∷ (<a class="tref" href="./JSON.html#ToJSON">ToJSON</a> β, <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> α) ⇒ <b><a class="tref" href="#HashMap">HashMap</a> β α</b> → <a class="tref" href="./JSON.html#Value">Value</a></SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -1128,25 +1178,25 @@ Member Functions</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Traversable_HashMap.mapM>mapM</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ (<b>β → γ α</b>) → <b><a class="tref" href="#HashMap">HashMap</a> δ β</b> → γ (<a class="tref" href="#HashMap">HashMap</a> δ α)</SPAN></dt>
+<SPAN CLASS="code"><a name=Traversable_HashMap.mapM>mapM</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ (<b>δ → α γ</b>) → <b><a class="tref" href="#HashMap">HashMap</a> β δ</b> → α (<a class="tref" href="#HashMap">HashMap</a> β γ)</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./Traversable.html#Traversable.mapM">Traversable.mapM</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Traversable_HashMap.sequence>sequence</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <b><a class="tref" href="#HashMap">HashMap</a> α (β γ)</b> → β (<a class="tref" href="#HashMap">HashMap</a> α γ)</SPAN></dt>
+<SPAN CLASS="code"><a name=Traversable_HashMap.sequence>sequence</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ <b><a class="tref" href="#HashMap">HashMap</a> β (γ α)</b> → γ (<a class="tref" href="#HashMap">HashMap</a> β α)</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./Traversable.html#Traversable.sequence">Traversable.sequence</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Traversable_HashMap.sequenceA>sequenceA</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α ⇒ <b><a class="tref" href="#HashMap">HashMap</a> γ (α β)</b> → α (<a class="tref" href="#HashMap">HashMap</a> γ β)</SPAN></dt>
+<SPAN CLASS="code"><a name=Traversable_HashMap.sequenceA>sequenceA</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> β ⇒ <b><a class="tref" href="#HashMap">HashMap</a> α (β γ)</b> → β (<a class="tref" href="#HashMap">HashMap</a> α γ)</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./Traversable.html#Traversable.sequenceA">Traversable.sequenceA</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Traversable_HashMap.traverse>traverse</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> δ ⇒ (<b>β → δ α</b>) → <b><a class="tref" href="#HashMap">HashMap</a> γ β</b> → δ (<a class="tref" href="#HashMap">HashMap</a> γ α)</SPAN></dt>
+<SPAN CLASS="code"><a name=Traversable_HashMap.traverse>traverse</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α ⇒ (<b>γ → α β</b>) → <b><a class="tref" href="#HashMap">HashMap</a> δ γ</b> → α (<a class="tref" href="#HashMap">HashMap</a> δ β)</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -1165,7 +1215,7 @@ inherited from <a class="fref" href="./Traversable.html#Traversable.sequenceA">T
 <SPAN CLASS="code">(α → α → α) → <a class="tref" href="#HashMap">HashMap</a> β α → α</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Foldable_HashMap.foldl1">Foldable_HashMap.foldl1</a>, <a class="fref" href="#Foldable_HashMap.foldr1">Foldable_HashMap.foldr1</a></p>
+<a class="fref" href="#Foldable_HashMap.foldr1">Foldable_HashMap.foldr1</a>, <a class="fref" href="#Foldable_HashMap.foldl1">Foldable_HashMap.foldl1</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">(𝖐 → 𝖛 → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
@@ -1183,61 +1233,85 @@ inherited from <a class="fref" href="./Traversable.html#Traversable.sequenceA">T
 <SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> α β → (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>→<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>) → <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#HashMap.chg$bitmap">HashMap.chg$bitmap</a>, <a class="fref" href="#HashMap.chg$hash">HashMap.chg$hash</a></p>
+<a class="fref" href="#HashMap.chg$bitmap">HashMap.chg$bitmap</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#HashMap.upd$bitmap">HashMap.upd$bitmap</a>, <a class="fref" href="#HashMap.upd$hash">HashMap.upd$hash</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> α β → (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, [[α]])</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#HashMap.collisions">HashMap.collisions</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> α β)</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#HashMap.subnodes">HashMap.subnodes</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> α β → [(α, β)]</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#HashMap.list">HashMap.list</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> α β → [β]</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#ListSource_HashMap.toList">ListSource_HashMap.toList</a></p>
+<a class="fref" href="#HashMap.upd$hash">HashMap.upd$hash</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#ListEmpty_HashMap._null">ListEmpty_HashMap.null</a>, <a class="fref" href="#HashMap.has$list">HashMap.has$list</a>, <a class="fref" href="#HashMap.has$hash">HashMap.has$hash</a>, <a class="fref" href="#HashMap.has$bitmap">HashMap.has$bitmap</a>, <a class="fref" href="#HashMap.has$key">HashMap.has$key</a>, <a class="fref" href="#HashMap.has$value">HashMap.has$value</a>, <a class="fref" href="#HashMap.has$subnodes">HashMap.has$subnodes</a></p>
+<a class="fref" href="#HashMap.has$value">HashMap.has$value</a>, <a class="fref" href="#HashMap.has$hash">HashMap.has$hash</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#HashMap.bitmap">HashMap.bitmap</a>, <a class="fref" href="#HashMap.hash">HashMap.hash</a></p>
+<a class="fref" href="#HashMap.bitmap">HashMap.bitmap</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> α β → α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> β α → (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>→<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>) → <a class="tref" href="#HashMap">HashMap</a> β α</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#HashMap.key">HashMap.key</a></p>
+<a class="fref" href="#HashMap.chg$hash">HashMap.chg$hash</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> α β → β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> β α → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#HashMap">HashMap</a> β α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.upd$bitmap">HashMap.upd$bitmap</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> β α → (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, [[β]])</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.collisions">HashMap.collisions</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> β α → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> β α)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.subnodes">HashMap.subnodes</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> β α → [(β, α)]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.list">HashMap.list</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> β α → [α]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ListSource_HashMap.toList">ListSource_HashMap.toList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> β α → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ListEmpty_HashMap._null">ListEmpty_HashMap.null</a>, <a class="fref" href="#HashMap.has$subnodes">HashMap.has$subnodes</a>, <a class="fref" href="#HashMap.has$key">HashMap.has$key</a>, <a class="fref" href="#HashMap.has$list">HashMap.has$list</a>, <a class="fref" href="#HashMap.has$bitmap">HashMap.has$bitmap</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> β α → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.hash">HashMap.hash</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> β α → α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#HashMap.value">HashMap.value</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> β α → β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.key">HashMap.key</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → [(𝖐, 𝖛)]</SPAN></dt>
@@ -1264,16 +1338,16 @@ inherited from <a class="fref" href="./Traversable.html#Traversable.sequenceA">T
 <a class="fref" href="#size">size</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> α β) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#ArrayElement_HashMap.elemAt">ArrayElement_HashMap.elemAt</a></p>
-</dd>
-<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> α β) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="#HashMap">HashMap</a> α β)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ArrayElement_HashMap.itemAt">ArrayElement_HashMap.itemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> β α) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#HashMap">HashMap</a> β α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_HashMap.elemAt">ArrayElement_HashMap.elemAt</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
@@ -1297,7 +1371,7 @@ inherited from <a class="fref" href="./Traversable.html#Traversable.sequenceA">T
 <SPAN CLASS="code">(<a class="tref" href="./JSON.html#ToJSON">ToJSON</a> α, <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> β) ⇒ <a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Show_HashMap.show">Show_HashMap.show</a>, <a class="fref" href="#Show_HashMap.display">Show_HashMap.display</a>, <a class="fref" href="#Show_HashMap.showsub">Show_HashMap.showsub</a></p>
+<a class="fref" href="#Show_HashMap.display">Show_HashMap.display</a>, <a class="fref" href="#Show_HashMap.show">Show_HashMap.show</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">(<a class="tref" href="./JSON.html#ToJSON">ToJSON</a> α, <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> β) ⇒ <a class="tref" href="#HashMap">HashMap</a> α β → [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
@@ -1306,61 +1380,67 @@ inherited from <a class="fref" href="./Traversable.html#Traversable.sequenceA">T
 <a class="fref" href="#Show_HashMap.showChars">Show_HashMap.showChars</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="./JSON.html#ToJSON">ToJSON</a> α, <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> β) ⇒ <a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="./JSON.html#Value">Value</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#ToJSON_HashMap.toJSON">ToJSON_HashMap.toJSON</a></p>
-</dd>
-<dt class="func">
 <SPAN CLASS="code">(<a class="tref" href="./JSON.html#ToJSON">ToJSON</a> α, <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> β) ⇒ [<a class="tref" href="#HashMap">HashMap</a> α β] → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Show_HashMap.showList">Show_HashMap.showList</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="./JSON.html#ToJSON">ToJSON</a> α, <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> β) ⇒ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="./JSON.html#ToJSON">ToJSON</a> β, <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> α) ⇒ <a class="tref" href="#HashMap">HashMap</a> β α → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_HashMap.showsub">Show_HashMap.showsub</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="./JSON.html#ToJSON">ToJSON</a> β, <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> α) ⇒ <a class="tref" href="#HashMap">HashMap</a> β α → <a class="tref" href="./JSON.html#Value">Value</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ToJSON_HashMap.toJSON">ToJSON_HashMap.toJSON</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="./JSON.html#ToJSON">ToJSON</a> β, <a class="tref" href="./JSON.html#ToJSON">ToJSON</a> α) ⇒ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#HashMap">HashMap</a> β α → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Show_HashMap.showsPrec">Show_HashMap.showsPrec</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./Monoid.html#Monoid">Monoid</a> β ⇒ <a class="tref" href="#HashMap">HashMap</a> α β → β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./Monoid.html#Monoid">Monoid</a> α ⇒ <a class="tref" href="#HashMap">HashMap</a> β α → α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Foldable_HashMap.fold">Foldable_HashMap.fold</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> β ⇒ <a class="tref" href="#HashMap">HashMap</a> α β → β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> α ⇒ <a class="tref" href="#HashMap">HashMap</a> β α → α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Foldable_HashMap.fold1">Foldable_HashMap.fold1</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β ⇒ <a class="tref" href="#HashMap">HashMap</a> β α → <a class="tref" href="#HashMap">HashMap</a> β α → <a class="tref" href="#HashMap">HashMap</a> β α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ListMonoid_HashMap._plus_plus">ListMonoid_HashMap.++</a>, <a class="fref" href="#Monoid_HashMap.mappend">Monoid_HashMap.mappend</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ [<a class="tref" href="#HashMap">HashMap</a> α β] → <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β ⇒ [<a class="tref" href="#HashMap">HashMap</a> β α] → <a class="tref" href="#HashMap">HashMap</a> β α</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Monoid_HashMap.mconcat">Monoid_HashMap.mconcat</a>, <a class="fref" href="#Monoid_HashMap.sconcat">Monoid_HashMap.sconcat</a></p>
+<a class="fref" href="#Monoid_HashMap.sconcat">Monoid_HashMap.sconcat</a>, <a class="fref" href="#Monoid_HashMap.mconcat">Monoid_HashMap.mconcat</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β ⇒ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#HashMap">HashMap</a> β α → <a class="tref" href="#HashMap">HashMap</a> β α</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Monoid_HashMap.mtimes">Monoid_HashMap.mtimes</a>, <a class="fref" href="#Monoid_HashMap.stimes">Monoid_HashMap.stimes</a></p>
+<a class="fref" href="#Monoid_HashMap.stimes">Monoid_HashMap.stimes</a>, <a class="fref" href="#Monoid_HashMap.mtimes">Monoid_HashMap.mtimes</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α, <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β) ⇒ <a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β, <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α) ⇒ <a class="tref" href="#HashMap">HashMap</a> β α → <a class="tref" href="#HashMap">HashMap</a> β α → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Eq_HashMap._eq_eq">Eq_HashMap.==</a>, <a class="fref" href="#Eq_HashMap._excl_eq">Eq_HashMap.!=</a></p>
+<a class="fref" href="#Eq_HashMap._excl_eq">Eq_HashMap.!=</a>, <a class="fref" href="#Eq_HashMap._eq_eq">Eq_HashMap.==</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α, <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β) ⇒ <a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β, <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α) ⇒ <a class="tref" href="#HashMap">HashMap</a> β α → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Eq_HashMap.hashCode">Eq_HashMap.hashCode</a></p>
@@ -1394,6 +1474,24 @@ inherited from <a class="fref" href="./Traversable.html#Traversable.sequenceA">T
 <dd class="func">
 <p>
 <a class="fref" href="#union">union</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → 𝖐 → 𝖛 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.insert">HashMap.insert</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → 𝖐 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.delete">HashMap.delete</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → 𝖐 → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> 𝖛</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.lookup">HashMap.lookup</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → 𝖐 → 𝖛</SPAN></dt>
@@ -1456,7 +1554,7 @@ inherited from <a class="fref" href="./Traversable.html#Traversable.sequenceA">T
 <a class="fref" href="#lookupDefault">lookupDefault</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> β α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ListEmpty_HashMap.empty">ListEmpty_HashMap.empty</a></p>
@@ -1468,22 +1566,16 @@ inherited from <a class="fref" href="./Traversable.html#Traversable.sequenceA">T
 <a class="fref" href="#ArrayElement_HashMap.javaClass">ArrayElement_HashMap.javaClass</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β ⇒ <a class="tref" href="#HashMap">HashMap</a> β α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monoid_HashMap.mempty">Monoid_HashMap.mempty</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="#HashMap">HashMap</a> α β → <a class="tref" href="#HashMap">HashMap</a> α β) → <a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> γ (<a class="tref" href="#HashMap">HashMap</a> α β) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> γ <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="#HashMap">HashMap</a> α γ → <a class="tref" href="#HashMap">HashMap</a> α γ) → <a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> β (<a class="tref" href="#HashMap">HashMap</a> α γ) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#ArrayElement_HashMap.modifyElemAt">ArrayElement_HashMap.modifyElemAt</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="#HashMap">HashMap</a> β γ → <a class="tref" href="#HashMap">HashMap</a> β γ) → <a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> α (<a class="tref" href="#HashMap">HashMap</a> β γ) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#ArrayElement_HashMap.modifyAt">ArrayElement_HashMap.modifyAt</a></p>
+<a class="fref" href="#ArrayElement_HashMap.modifyElemAt">ArrayElement_HashMap.modifyElemAt</a>, <a class="fref" href="#ArrayElement_HashMap.modifyAt">ArrayElement_HashMap.modifyAt</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">(α → γ → γ) → γ → <a class="tref" href="#HashMap">HashMap</a> β α → γ</SPAN></dt>
@@ -1492,7 +1584,7 @@ inherited from <a class="fref" href="./Traversable.html#Traversable.sequenceA">T
 <a class="fref" href="#Foldable_HashMap.foldr">Foldable_HashMap.foldr</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α → γ) → <a class="tref" href="#HashMap">HashMap</a> β α → <a class="tref" href="#HashMap">HashMap</a> β γ</SPAN></dt>
+<SPAN CLASS="code">(β → α) → <a class="tref" href="#HashMap">HashMap</a> γ β → <a class="tref" href="#HashMap">HashMap</a> γ α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Functor_HashMap.fmap">Functor_HashMap.fmap</a></p>
@@ -1540,67 +1632,67 @@ inherited from <a class="fref" href="./Traversable.html#Traversable.sequenceA">T
 <a class="fref" href="#mapValues">mapValues</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> α γ → (γ→β) → <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#HashMap.chg$value">HashMap.chg$value</a></p>
-</dd>
-<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> α γ → β → <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#HashMap.upd$value">HashMap.upd$value</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> γ β → (γ→α) → <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> β α → (β→γ) → <a class="tref" href="#HashMap">HashMap</a> γ α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#HashMap.chg$key">HashMap.chg$key</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> γ β → α → <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> γ α → β → <a class="tref" href="#HashMap">HashMap</a> β α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#HashMap.upd$key">HashMap.upd$key</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> α (<a class="tref" href="#HashMap">HashMap</a> β γ) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#HashMap">HashMap</a> β γ → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> γ β → (β→α) → <a class="tref" href="#HashMap">HashMap</a> γ α</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#ArrayElement_HashMap.setElemAt">ArrayElement_HashMap.setElemAt</a></p>
+<a class="fref" href="#HashMap.chg$value">HashMap.chg$value</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> β (<a class="tref" href="#HashMap">HashMap</a> γ α) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="#HashMap">HashMap</a> γ α) → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> α (<a class="tref" href="#HashMap">HashMap</a> γ β) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="#HashMap">HashMap</a> γ β) → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ArrayElement_HashMap.setAt">ArrayElement_HashMap.setAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> β (<a class="tref" href="#HashMap">HashMap</a> γ α) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> β (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="#HashMap">HashMap</a> γ α))</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> β (<a class="tref" href="#HashMap">HashMap</a> α γ) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> β (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="#HashMap">HashMap</a> α γ))</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ArrayElement_HashMap.getAt">ArrayElement_HashMap.getAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> γ (<a class="tref" href="#HashMap">HashMap</a> α β) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> γ (<a class="tref" href="#HashMap">HashMap</a> α β)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> γ (<a class="tref" href="#HashMap">HashMap</a> β α) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#HashMap">HashMap</a> β α → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> γ <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ArrayElement_HashMap.setElemAt">ArrayElement_HashMap.setElemAt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> γ (<a class="tref" href="#HashMap">HashMap</a> β α) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> γ (<a class="tref" href="#HashMap">HashMap</a> β α)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ArrayElement_HashMap.getElemAt">ArrayElement_HashMap.getElemAt</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> β γ))</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> α (<a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> γ β))</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ArrayElement_HashMap.newArray">ArrayElement_HashMap.newArray</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> γ (<a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> γ (<a class="tref" href="#HashMap">HashMap</a> α β)))</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> γ (<a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> γ (<a class="tref" href="#HashMap">HashMap</a> β α)))</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ArrayElement_HashMap.newArrayM">ArrayElement_HashMap.newArrayM</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./Monoid.html#Monoid">Monoid</a> γ ⇒ (α → γ) → <a class="tref" href="#HashMap">HashMap</a> β α → γ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./Monoid.html#Monoid">Monoid</a> α ⇒ (β → α) → <a class="tref" href="#HashMap">HashMap</a> γ β → α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Foldable_HashMap.foldMap">Foldable_HashMap.foldMap</a></p>
@@ -1618,40 +1710,40 @@ inherited from <a class="fref" href="./Traversable.html#Traversable.sequenceA">T
 <a class="fref" href="#difference">difference</a>, <a class="fref" href="#intersection">intersection</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α ⇒ <a class="tref" href="#HashMap">HashMap</a> γ (α β) → α (<a class="tref" href="#HashMap">HashMap</a> γ β)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> β ⇒ <a class="tref" href="#HashMap">HashMap</a> α (β γ) → β (<a class="tref" href="#HashMap">HashMap</a> α γ)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable_HashMap.sequenceA">Traversable_HashMap.sequenceA</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#HashMap">HashMap</a> α (β γ) → β (<a class="tref" href="#HashMap">HashMap</a> α γ)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ <a class="tref" href="#HashMap">HashMap</a> β (γ α) → γ (<a class="tref" href="#HashMap">HashMap</a> β α)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable_HashMap.sequence">Traversable_HashMap.sequence</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> β α → (<a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> β α)→<a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> γ δ)) → <a class="tref" href="#HashMap">HashMap</a> γ δ</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#HashMap.chg$subnodes">HashMap.chg$subnodes</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> β α → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> γ δ) → <a class="tref" href="#HashMap">HashMap</a> γ δ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> α γ → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> δ β) → <a class="tref" href="#HashMap">HashMap</a> δ β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#HashMap.upd$subnodes">HashMap.upd$subnodes</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> β α → [(δ, γ)] → <a class="tref" href="#HashMap">HashMap</a> δ γ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> β α → (<a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> β α)→<a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> (<a class="tref" href="#HashMap">HashMap</a> δ γ)) → <a class="tref" href="#HashMap">HashMap</a> δ γ</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#HashMap.upd$list">HashMap.upd$list</a></p>
+<a class="fref" href="#HashMap.chg$subnodes">HashMap.chg$subnodes</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> δ α → ([(δ, α)]→[(β, γ)]) → <a class="tref" href="#HashMap">HashMap</a> β γ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> γ δ → ([(γ, δ)]→[(α, β)]) → <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#HashMap.chg$list">HashMap.chg$list</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HashMap">HashMap</a> γ δ → [(α, β)] → <a class="tref" href="#HashMap">HashMap</a> α β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.upd$list">HashMap.upd$list</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> 𝖐 ⇒ (𝖛 → 𝖚 → 𝖜) → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖛 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖚 → <a class="tref" href="#HashMap">HashMap</a> 𝖐 𝖜</SPAN></dt>
@@ -1660,7 +1752,7 @@ inherited from <a class="fref" href="./Traversable.html#Traversable.sequenceA">T
 <a class="fref" href="#intersectionWith">intersectionWith</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> δ ⇒ (β → δ α) → <a class="tref" href="#HashMap">HashMap</a> γ β → δ (<a class="tref" href="#HashMap">HashMap</a> γ α)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α ⇒ (γ → α β) → <a class="tref" href="#HashMap">HashMap</a> δ γ → α (<a class="tref" href="#HashMap">HashMap</a> δ β)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable_HashMap.traverse">Traversable_HashMap.traverse</a></p>
@@ -1672,7 +1764,7 @@ inherited from <a class="fref" href="./Traversable.html#Traversable.sequenceA">T
 <a class="fref" href="#traverseWithKey">traverseWithKey</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ (β → γ α) → <a class="tref" href="#HashMap">HashMap</a> δ β → γ (<a class="tref" href="#HashMap">HashMap</a> δ α)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ (δ → α γ) → <a class="tref" href="#HashMap">HashMap</a> β δ → α (<a class="tref" href="#HashMap">HashMap</a> β γ)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable_HashMap.mapM">Traversable_HashMap.mapM</a></p>

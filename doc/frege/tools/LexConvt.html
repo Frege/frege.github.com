@@ -43,15 +43,7 @@ Imports</h3>
 <ul>
 <li>
 <div>
-import <a HREF="../prelude/PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
-</li>
-<li>
-<div>
 import <a HREF="../Prelude.html">frege.Prelude</a> as Prelude</div>
-</li>
-<li>
-<div>
-import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
 </li>
 <li>
 <div>
@@ -59,15 +51,23 @@ import <a HREF="../prelude/PreludeArrays.html">Prelude.PreludeArrays</a> as Prel
 </li>
 <li>
 <div>
+import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
+</li>
+<li>
+<div>
 import <a HREF="../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeText.html">Prelude.PreludeText</a> as PreludeText</div>
+import <a HREF="../prelude/PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
 </li>
 <li>
 <div>
 import <a HREF="../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as PreludeMonad</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeText.html">Prelude.PreludeText</a> as PreludeText</div>
 </li>
 <li>
 <div>
@@ -122,7 +122,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#escaped">escaped</a> ∷ <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> β ⇒ α → <b><a class="tref" href="../java/IO.html#PrintWriter">PrintWriter</a></b> → β → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#escaped">escaped</a> ∷ <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α ⇒ β → <b><a class="tref" href="../java/IO.html#PrintWriter">PrintWriter</a></b> → α → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> β</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -286,7 +286,7 @@ in Block, detected *   </p>
 <dd class="data">
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=escaped>escaped</a> ∷ <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> β ⇒ α → <b><a class="tref" href="../java/IO.html#PrintWriter">PrintWriter</a></b> → β → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name=escaped>escaped</a> ∷ <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α ⇒ β → <b><a class="tref" href="../java/IO.html#PrintWriter">PrintWriter</a></b> → α → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> β</SPAN></dt>
 <dd class="data">
 </dd>
 <dt class="data">
@@ -455,7 +455,7 @@ Function generated for derived instance.</p>
 <SPAN CLASS="code"><a class="tref" href="#Stat">Stat</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Show_Stat.show">Show_Stat.show</a>, <a class="fref" href="#Show_Stat.display">Show_Stat.display</a>, <a class="fref" href="#Show_Stat.showsub">Show_Stat.showsub</a></p>
+<a class="fref" href="#Show_Stat.showsub">Show_Stat.showsub</a>, <a class="fref" href="#Show_Stat.display">Show_Stat.display</a>, <a class="fref" href="#Show_Stat.show">Show_Stat.show</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#Stat">Stat</a> → [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
@@ -467,7 +467,7 @@ Function generated for derived instance.</p>
 <SPAN CLASS="code"><a class="tref" href="#Stat">Stat</a> → <a class="tref" href="#Stat">Stat</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Stat.Esc">Stat.Esc</a>, <a class="fref" href="#Stat.Block">Stat.Block</a>, <a class="fref" href="#Stat.StarA">Stat.StarA</a>, <a class="fref" href="#Stat.Slash1">Stat.Slash1</a>, <a class="fref" href="#Stat.StarB">Stat.StarB</a></p>
+<a class="fref" href="#Stat.StarA">Stat.StarA</a>, <a class="fref" href="#Stat.Slash1">Stat.Slash1</a>, <a class="fref" href="#Stat.StarB">Stat.StarB</a>, <a class="fref" href="#Stat.Block">Stat.Block</a>, <a class="fref" href="#Stat.Esc">Stat.Esc</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../java/util/Regex.html#Regex">Regex</a></SPAN></dt>
@@ -479,10 +479,10 @@ Function generated for derived instance.</p>
 <SPAN CLASS="code"><a class="tref" href="#Stat">Stat</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Stat.Normal">Stat.Normal</a>, <a class="fref" href="#Stat.InChar">Stat.InChar</a>, <a class="fref" href="#Stat.InString">Stat.InString</a>, <a class="fref" href="#Stat.InPat">Stat.InPat</a>, <a class="fref" href="#Stat.SkipLn">Stat.SkipLn</a>, <a class="fref" href="#Stat.Slash2">Stat.Slash2</a></p>
+<a class="fref" href="#Stat.Slash2">Stat.Slash2</a>, <a class="fref" href="#Stat.InString">Stat.InString</a>, <a class="fref" href="#Stat.Normal">Stat.Normal</a>, <a class="fref" href="#Stat.InChar">Stat.InChar</a>, <a class="fref" href="#Stat.InPat">Stat.InPat</a>, <a class="fref" href="#Stat.SkipLn">Stat.SkipLn</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeText.html#Show">Show</a> β ⇒ α → <a class="tref" href="../java/IO.html#PrintWriter">PrintWriter</a> → β → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α ⇒ β → <a class="tref" href="../java/IO.html#PrintWriter">PrintWriter</a> → α → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#escaped">escaped</a></p>

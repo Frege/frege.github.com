@@ -25,15 +25,7 @@ Imports</h3>
 <ul>
 <li>
 <div>
-import <a HREF="../prelude/PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
-</li>
-<li>
-<div>
-import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
-</li>
-<li>
-<div>
-import <a HREF="../Prelude.html">frege.Prelude</a> as Prelude</div>
+import <a HREF="../data/List.html">Data.List</a> as List</div>
 </li>
 <li>
 <div>
@@ -41,7 +33,15 @@ import <a HREF="../prelude/Math.html">Prelude.Math</a> as Math</div>
 </li>
 <li>
 <div>
+import <a HREF="../Prelude.html">frege.Prelude</a> as Prelude</div>
+</li>
+<li>
+<div>
 import <a HREF="../prelude/PreludeArrays.html">Prelude.PreludeArrays</a> as PreludeArrays</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
 </li>
 <li>
 <div>
@@ -49,11 +49,15 @@ import <a HREF="../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</d
 </li>
 <li>
 <div>
-import <a HREF="../prelude/PreludeText.html">Prelude.PreludeText</a> as PreludeText</div>
+import <a HREF="../prelude/PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
 </li>
 <li>
 <div>
 import <a HREF="../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as PreludeMonad</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeText.html">Prelude.PreludeText</a> as PreludeText</div>
 </li>
 <li>
 <div>
@@ -300,7 +304,7 @@ Generates a list of the given length.   </p>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Applicative_Gen._star_gt>*&gt;</a> ∷ <a class="tref" href="#Gen">Gen</a> α → <a class="tref" href="#Gen">Gen</a> β → <a class="tref" href="#Gen">Gen</a> β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name=Applicative_Gen._star_gt>*&gt;</a> ∷ <a class="tref" href="#Gen">Gen</a> β → <a class="tref" href="#Gen">Gen</a> α → <a class="tref" href="#Gen">Gen</a> α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeMonad.html#Applicative._star_gt">Applicative.*&gt;</a></p>
@@ -328,7 +332,7 @@ inherited from <a class="fref" href="../prelude/PreludeMonad.html#Applicative._l
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Functor_Gen.fmap>fmap</a> ∷ (α → β) → <b><a class="tref" href="#Gen">Gen</a> α</b> → <a class="tref" href="#Gen">Gen</a> β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name=Functor_Gen.fmap>fmap</a> ∷ (β → α) → <b><a class="tref" href="#Gen">Gen</a> β</b> → <a class="tref" href="#Gen">Gen</a> α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -340,7 +344,7 @@ Member Functions</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Monad_Gen._gt_gt>&gt;&gt;</a> ∷ <b><a class="tref" href="#Gen">Gen</a> α</b> → <a class="tref" href="#Gen">Gen</a> β → <a class="tref" href="#Gen">Gen</a> β<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
+<SPAN CLASS="code"><a name=Monad_Gen._gt_gt>&gt;&gt;</a> ∷ <b><a class="tref" href="#Gen">Gen</a> β</b> → <a class="tref" href="#Gen">Gen</a> α → <a class="tref" href="#Gen">Gen</a> α<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad._gt_gt">Monad.&gt;&gt;</a></p>
@@ -468,7 +472,7 @@ inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad.join">Mo
 <a class="fref" href="#choose">choose</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α → β) → <a class="tref" href="#Gen">Gen</a> α → <a class="tref" href="#Gen">Gen</a> β</SPAN></dt>
+<SPAN CLASS="code">(β → α) → <a class="tref" href="#Gen">Gen</a> β → <a class="tref" href="#Gen">Gen</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Functor_Gen.fmap">Functor_Gen.fmap</a></p>
@@ -486,25 +490,25 @@ inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad.join">Mo
 <a class="fref" href="#Monad_Gen._gt_gt_eq">Monad_Gen.&gt;&gt;=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Gen">Gen</a> α → (<a class="tref" href="../prelude/PreludeBase.html#Function">-&gt;</a> <a class="tref" href="../system/Random.html#StdGen">StdGen</a> (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>→α)→<a class="tref" href="../system/Random.html#StdGen">StdGen</a>→<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>→β) → <a class="tref" href="#Gen">Gen</a> β</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Gen.chg$unGen">Gen.chg$unGen</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Gen">Gen</a> α → (<a class="tref" href="../system/Random.html#StdGen">StdGen</a>→<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>→β) → <a class="tref" href="#Gen">Gen</a> β</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Gen.upd$unGen">Gen.upd$unGen</a></p>
-</dd>
-<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#Gen">Gen</a> α → <a class="tref" href="#Gen">Gen</a> β → <a class="tref" href="#Gen">Gen</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Applicative_Gen._lt_star">Applicative_Gen.&lt;*</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Gen">Gen</a> α → <a class="tref" href="#Gen">Gen</a> β → <a class="tref" href="#Gen">Gen</a> β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Gen">Gen</a> β → (<a class="tref" href="../prelude/PreludeBase.html#Function">-&gt;</a> <a class="tref" href="../system/Random.html#StdGen">StdGen</a> (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>→β)→<a class="tref" href="../system/Random.html#StdGen">StdGen</a>→<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>→α) → <a class="tref" href="#Gen">Gen</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Gen.chg$unGen">Gen.chg$unGen</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Gen">Gen</a> β → (<a class="tref" href="../system/Random.html#StdGen">StdGen</a>→<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>→α) → <a class="tref" href="#Gen">Gen</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Gen.upd$unGen">Gen.upd$unGen</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Gen">Gen</a> β → <a class="tref" href="#Gen">Gen</a> α → <a class="tref" href="#Gen">Gen</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Applicative_Gen._star_gt">Applicative_Gen.*&gt;</a>, <a class="fref" href="#Monad_Gen._gt_gt">Monad_Gen.&gt;&gt;</a></p>
