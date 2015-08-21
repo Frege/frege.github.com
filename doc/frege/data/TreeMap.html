@@ -831,7 +831,7 @@ access field <SPAN CLASS="code">left</SPAN></p>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=TreeMap.lookup>lookup</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b><a class="tref" href="#TreeMap">TreeMap</a> α β</b> → <b>α</b> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> β</SPAN></dt>
+<SPAN CLASS="code"><a name=TreeMap.lookup>lookup</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> β ⇒ <b><a class="tref" href="#TreeMap">TreeMap</a> β α</b> → <b>β</b> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
@@ -847,11 +847,11 @@ version of lookup that is optimised for <a class="tref" href="../prelude/Prelude
 version of lookup that is optimised for <a class="tref" href="../prelude/PreludeBase.html#String">String</a> keys   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=TreeMap.mapKV>mapKV</a> ∷ (γ→β→α) → <b><a class="tref" href="#TreeMap">TreeMap</a> γ β</b> → <a class="tref" href="#TreeMap">TreeMap</a> γ α</SPAN></dt>
+<SPAN CLASS="code"><a name=TreeMap.mapKV>mapKV</a> ∷ (β→α→γ) → <b><a class="tref" href="#TreeMap">TreeMap</a> β α</b> → <a class="tref" href="#TreeMap">TreeMap</a> β γ</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=TreeMap.mapV>mapV</a> ∷ (α→γ) → <b><a class="tref" href="#TreeMap">TreeMap</a> β α</b> → <a class="tref" href="#TreeMap">TreeMap</a> β γ</SPAN></dt>
+<SPAN CLASS="code"><a name=TreeMap.mapV>mapV</a> ∷ (γ→β) → <b><a class="tref" href="#TreeMap">TreeMap</a> α γ</b> → <a class="tref" href="#TreeMap">TreeMap</a> α β</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
@@ -865,7 +865,7 @@ version of lookup that is optimised for <a class="tref" href="../prelude/Prelude
 access field <SPAN CLASS="code">right</SPAN></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=TreeMap.rightmost>rightmost</a> ∷ <b><a class="tref" href="#TreeMap">TreeMap</a> β α</b> → <a class="tref" href="#TreeMap">TreeMap</a> β α</SPAN></dt>
+<SPAN CLASS="code"><a name=TreeMap.rightmost>rightmost</a> ∷ <b><a class="tref" href="#TreeMap">TreeMap</a> α β</b> → <a class="tref" href="#TreeMap">TreeMap</a> α β</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
@@ -877,7 +877,7 @@ access field <SPAN CLASS="code">right</SPAN></p>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=TreeMap.traverseKV>traverseKV</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> γ ⇒ (δ→α→γ β) → <b><a class="tref" href="#TreeMap">TreeMap</a> δ α</b> → γ (<a class="tref" href="#TreeMap">TreeMap</a> δ β)</SPAN></dt>
+<SPAN CLASS="code"><a name=TreeMap.traverseKV>traverseKV</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> β ⇒ (δ→γ→β α) → <b><a class="tref" href="#TreeMap">TreeMap</a> δ γ</b> → β (<a class="tref" href="#TreeMap">TreeMap</a> δ α)</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
@@ -977,7 +977,7 @@ inherited from <a class="fref" href="../prelude/PreludeArrays.html#ArrayElem.new
 inherited from <a class="fref" href="../prelude/PreludeArrays.html#ArrayElement.newArrayM">ArrayElement.newArrayM</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=ArrayElement_TreeMap.setAt>setAt</a> ∷ <b><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> β (<a class="tref" href="#TreeMap">TreeMap</a> α γ)</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="#TreeMap">TreeMap</a> α γ)</b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
+<SPAN CLASS="code"><a name=ArrayElement_TreeMap.setAt>setAt</a> ∷ <b><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> α (<a class="tref" href="#TreeMap">TreeMap</a> γ β)</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="#TreeMap">TreeMap</a> γ β)</b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a><br><b>native </b>[]=</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeArrays.html#ArrayElem.setAt">ArrayElem.setAt</a></p>
@@ -1071,7 +1071,7 @@ Member Functions</h3>
 inherited from <a class="fref" href="../prelude/PreludeText.html#Show.display">Show.display</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Show_TreeMap.show>show</a> ∷ (<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> β) ⇒ <b><a class="tref" href="#TreeMap">TreeMap</a> α β</b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Show_TreeMap.show>show</a> ∷ (<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> β, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α) ⇒ <b><a class="tref" href="#TreeMap">TreeMap</a> β α</b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
 Function generated for derived instance.</p>
@@ -1095,7 +1095,7 @@ inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showList">
 inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsPrec">Show.showsPrec</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Show_TreeMap.showsub>showsub</a> ∷ (<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> β, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α) ⇒ <b><a class="tref" href="#TreeMap">TreeMap</a> β α</b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Show_TreeMap.showsub>showsub</a> ∷ (<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> β) ⇒ <b><a class="tref" href="#TreeMap">TreeMap</a> α β</b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
 Function generated for derived instance.</p>
@@ -1248,7 +1248,7 @@ Transform a map by applying a function to every value.</p>
 <SPAN CLASS="code"><a class="tref" href="#TreeMap">TreeMap</a> α β → (<a class="tref" href="#TreeMap">TreeMap</a> α β→<a class="tref" href="#TreeMap">TreeMap</a> α β) → <a class="tref" href="#TreeMap">TreeMap</a> α β</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#TreeMap.chg$right">TreeMap.chg$right</a></p>
+<a class="fref" href="#TreeMap.chg$right">TreeMap.chg$right</a>, <a class="fref" href="#TreeMap.chg$left">TreeMap.chg$left</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#TreeMap">TreeMap</a> α β → (β→β) → <a class="tref" href="#TreeMap">TreeMap</a> α β</SPAN></dt>
@@ -1263,16 +1263,10 @@ Transform a map by applying a function to every value.</p>
 <a class="fref" href="#TreeMap.upd$höhe">TreeMap.upd$höhe</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#TreeMap">TreeMap</a> α β → β → <a class="tref" href="#TreeMap">TreeMap</a> α β</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#TreeMap.upd$value">TreeMap.upd$value</a></p>
-</dd>
-<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#TreeMap">TreeMap</a> α β → <a class="tref" href="#TreeMap">TreeMap</a> α β</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#TreeMap.rotright">TreeMap.rotright</a>, <a class="fref" href="#TreeMap.rebalance">TreeMap.rebalance</a>, <a class="fref" href="#TreeMap.left">TreeMap.left</a>, <a class="fref" href="#TreeMap.drotlr">TreeMap.drotlr</a></p>
+<a class="fref" href="#TreeMap.rotright">TreeMap.rotright</a>, <a class="fref" href="#TreeMap.rebalance">TreeMap.rebalance</a>, <a class="fref" href="#TreeMap.left">TreeMap.left</a>, <a class="fref" href="#TreeMap.rightmost">TreeMap.rightmost</a>, <a class="fref" href="#TreeMap.drotlr">TreeMap.drotlr</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#TreeMap">TreeMap</a> α β → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
@@ -1299,12 +1293,6 @@ Transform a map by applying a function to every value.</p>
 <a class="fref" href="#TreeMap.upd$right">TreeMap.upd$right</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#TreeMap">TreeMap</a> β α → (<a class="tref" href="#TreeMap">TreeMap</a> β α→<a class="tref" href="#TreeMap">TreeMap</a> β α) → <a class="tref" href="#TreeMap">TreeMap</a> β α</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#TreeMap.chg$left">TreeMap.chg$left</a></p>
-</dd>
-<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#TreeMap">TreeMap</a> β α → (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>→<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>) → <a class="tref" href="#TreeMap">TreeMap</a> β α</SPAN></dt>
 <dd class="func">
 <p>
@@ -1317,6 +1305,12 @@ Transform a map by applying a function to every value.</p>
 <a class="fref" href="#TreeMap.chg$key">TreeMap.chg$key</a></p>
 </dd>
 <dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#TreeMap">TreeMap</a> β α → α → <a class="tref" href="#TreeMap">TreeMap</a> β α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#TreeMap.upd$value">TreeMap.upd$value</a></p>
+</dd>
+<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#TreeMap">TreeMap</a> β α → β → <a class="tref" href="#TreeMap">TreeMap</a> β α</SPAN></dt>
 <dd class="func">
 <p>
@@ -1326,7 +1320,7 @@ Transform a map by applying a function to every value.</p>
 <SPAN CLASS="code"><a class="tref" href="#TreeMap">TreeMap</a> β α → <a class="tref" href="#TreeMap">TreeMap</a> β α</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#TreeMap.rotleft">TreeMap.rotleft</a>, <a class="fref" href="#TreeMap.right">TreeMap.right</a>, <a class="fref" href="#TreeMap.leftmost">TreeMap.leftmost</a>, <a class="fref" href="#TreeMap.rightmost">TreeMap.rightmost</a>, <a class="fref" href="#TreeMap.drotrl">TreeMap.drotrl</a></p>
+<a class="fref" href="#TreeMap.rotleft">TreeMap.rotleft</a>, <a class="fref" href="#TreeMap.right">TreeMap.right</a>, <a class="fref" href="#TreeMap.leftmost">TreeMap.leftmost</a>, <a class="fref" href="#TreeMap.drotrl">TreeMap.drotrl</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#TreeMap">TreeMap</a> β α → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
@@ -1425,12 +1419,6 @@ Transform a map by applying a function to every value.</p>
 <a class="fref" href="#TreeMap.delete">TreeMap.delete</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <a class="tref" href="#TreeMap">TreeMap</a> α β → α → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> β</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#TreeMap.lookup">TreeMap.lookup</a></p>
-</dd>
-<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ (β→β→β) → α → β → <a class="tref" href="#TreeMap">TreeMap</a> α β → <a class="tref" href="#TreeMap">TreeMap</a> α β</SPAN></dt>
 <dd class="func">
 <p>
@@ -1447,6 +1435,12 @@ Transform a map by applying a function to every value.</p>
 <dd class="func">
 <p>
 <a class="fref" href="#Monoid_TreeMap.mappend">Monoid_TreeMap.mappend</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> β ⇒ <a class="tref" href="#TreeMap">TreeMap</a> β α → β → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#TreeMap.lookup">TreeMap.lookup</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> β ⇒ <a class="tref" href="#TreeMap">TreeMap</a> β α → β → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
@@ -1584,7 +1578,7 @@ Transform a map by applying a function to every value.</p>
 <SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> β) ⇒ <a class="tref" href="#TreeMap">TreeMap</a> α β → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Show_TreeMap.display">Show_TreeMap.display</a>, <a class="fref" href="#Show_TreeMap.show">Show_TreeMap.show</a></p>
+<a class="fref" href="#Show_TreeMap.showsub">Show_TreeMap.showsub</a>, <a class="fref" href="#Show_TreeMap.display">Show_TreeMap.display</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> β) ⇒ <a class="tref" href="#TreeMap">TreeMap</a> α β → [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
@@ -1602,7 +1596,7 @@ Transform a map by applying a function to every value.</p>
 <SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> β, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α) ⇒ <a class="tref" href="#TreeMap">TreeMap</a> β α → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Show_TreeMap.showsub">Show_TreeMap.showsub</a></p>
+<a class="fref" href="#Show_TreeMap.show">Show_TreeMap.show</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> β, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α) ⇒ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#TreeMap">TreeMap</a> β α → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
@@ -1701,28 +1695,28 @@ Transform a map by applying a function to every value.</p>
 <a class="fref" href="#mapValues">mapValues</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α→γ) → <a class="tref" href="#TreeMap">TreeMap</a> β α → <a class="tref" href="#TreeMap">TreeMap</a> β γ</SPAN></dt>
+<SPAN CLASS="code">(β→α→γ) → <a class="tref" href="#TreeMap">TreeMap</a> β α → <a class="tref" href="#TreeMap">TreeMap</a> β γ</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#TreeMap.mapKV">TreeMap.mapKV</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(γ→β) → <a class="tref" href="#TreeMap">TreeMap</a> α γ → <a class="tref" href="#TreeMap">TreeMap</a> α β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#TreeMap.mapV">TreeMap.mapV</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(γ→β→α) → <a class="tref" href="#TreeMap">TreeMap</a> γ β → <a class="tref" href="#TreeMap">TreeMap</a> γ α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> α (<a class="tref" href="#TreeMap">TreeMap</a> γ β) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="#TreeMap">TreeMap</a> γ β) → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#TreeMap.mapKV">TreeMap.mapKV</a></p>
+<a class="fref" href="#ArrayElement_TreeMap.setAt">ArrayElement_TreeMap.setAt</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> α (<a class="tref" href="#TreeMap">TreeMap</a> γ β) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> α (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="#TreeMap">TreeMap</a> γ β))</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ArrayElement_TreeMap.getAt">ArrayElement_TreeMap.getAt</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> β (<a class="tref" href="#TreeMap">TreeMap</a> α γ) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="#TreeMap">TreeMap</a> α γ) → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#ArrayElement_TreeMap.setAt">ArrayElement_TreeMap.setAt</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#ArrayOf">ArrayOf</a> γ (<a class="tref" href="#TreeMap">TreeMap</a> β α) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#TreeMap">TreeMap</a> β α → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> γ <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
@@ -1797,16 +1791,16 @@ Transform a map by applying a function to every value.</p>
 <a class="fref" href="#intersectionWith">intersectionWith</a></p>
 </dd>
 <dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> β ⇒ (δ→γ→β α) → <a class="tref" href="#TreeMap">TreeMap</a> δ γ → β (<a class="tref" href="#TreeMap">TreeMap</a> δ α)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#TreeMap.traverseKV">TreeMap.traverseKV</a></p>
+</dd>
+<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> γ ⇒ (α → γ δ) → <a class="tref" href="#TreeMap">TreeMap</a> β α → γ (<a class="tref" href="#TreeMap">TreeMap</a> β δ)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable_TreeMap.traverse">Traversable_TreeMap.traverse</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> γ ⇒ (δ→α→γ β) → <a class="tref" href="#TreeMap">TreeMap</a> δ α → γ (<a class="tref" href="#TreeMap">TreeMap</a> δ β)</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#TreeMap.traverseKV">TreeMap.traverseKV</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> 𝖆 ⇒ (𝖐 → 𝖛 → 𝖆 𝖚) → <a class="tref" href="#TreeMap">TreeMap</a> 𝖐 𝖛 → 𝖆 (<a class="tref" href="#TreeMap">TreeMap</a> 𝖐 𝖚)</SPAN></dt>
