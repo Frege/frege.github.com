@@ -34,15 +34,17 @@ Regular expression literals have type <a class="tref" href="#Regex">Regex</a> an
  ´\b(foo|bar)\b´       -- string enclosed in grave accents
  '\w+'                 -- string with length &gt; 1 enclosed in apostrphes</PRE>
 <p>
+The notation with the apostrophes has been introduced because many have a hard time entering a grave accent mark on their terminal. However, it is not possible to write a regular expressions with length 1 this way, because then the literal gets interpreted as <a class="tref" href="../../prelude/PreludeBase.html#Char">Char</a> literal. (One can write something like <SPAN CLASS="code">'(?:X)'</SPAN> for a <a class="tref" href="#Regex">Regex</a> that matches a single <SPAN CLASS="code">'X'</SPAN>).</p>
+<p>
 The advantage of using literals rather than compiling string constants to patterns at runtime is</p>
 <p>
 1) they are checked by the Frege compiler, and illegal ones cause compilation to fail</p>
 <p>
-2) at runtime, literals are available as immutable values of type <SPAN CLASS="code">java.util.regex.Pattern</SPAN>, not as strings, as can be seen so often in humand written Java code. Thus the cost of repeated regex compilation is avoided.</p>
+2) at runtime, literals are available as immutable values of type <SPAN CLASS="code">java.util.regex.Pattern</SPAN>, not as strings, as can be seen so often in human written Java code. Thus the cost of repeated regex compilation is avoided.</p>
 <p>
 3) The regular expression can be written directly, like in Perl or other languages, without taking String escape rules into account. That is, to match a $ sign, one writes</p>
 <PRE>
- '\$'</PRE>
+ ´\$´</PRE>
 <p>
 and not</p>
 <PRE>
@@ -50,7 +52,7 @@ and not</p>
 <p>
 like in Java.</p>
 <p>
-The <a class="tref" href="#Regex">Regex</a> values created from the literals have the following flags enabled: <SPAN CLASS="unknown">Pattern.canon_eq</SPAN>, <SPAN CLASS="unknown">Pattern.unicode_case</SPAN> and <SPAN CLASS="unknown">Pattern.unicode_character_class</SPAN>. That is, they do their best - as far as Java supports it - to get processing of Unicode strings right.</p>
+The <a class="tref" href="#Regex">Regex</a> values created from the literals have the following flags enabled: <a class="fref" href="#Regex.canon_eq">Regex.canon_eq</a>, <a class="fref" href="#Regex.unicode_case">Regex.unicode_case</a> and <a class="fref" href="#Regex.unicode_character_class">Regex.unicode_character_class</a>. That is, they do their best - as far as Java supports it - to get processing of Unicode strings right.</p>
 <h3>
 <a class="tref" href="#Regex">Regex</a> literals in pattern matching</h3>
 <p>
@@ -290,7 +292,11 @@ Comments mode can also be enabled via the embedded flag expression <SPAN CLASS="
 <p>
 compile a <a class="tref" href="../../prelude/PreludeBase.html#String">String</a> to a <a class="tref" href="#Regex">Regex</a></p>
 <p>
-Returns <a class="fref" href="../../prelude/PreludeBase.html#either">either</a> a  <a class="tref" href="#PatternSyntaxException">PatternSyntaxException</a> in <a class="fref" href="../../prelude/PreludeBase.html#Either.Left">Either.Left</a> or a <a class="tref" href="#Regex">Regex</a> in <a class="fref" href="../../prelude/PreludeBase.html#Either.Right">Either.Right</a>.   </p>
+Returns <a class="fref" href="../../prelude/PreludeBase.html#either">either</a> a  <a class="tref" href="#PatternSyntaxException">PatternSyntaxException</a> in <a class="fref" href="../../prelude/PreludeBase.html#Either.Left">Either.Left</a> or a <a class="tref" href="#Regex">Regex</a> in <a class="fref" href="../../prelude/PreludeBase.html#Either.Right">Either.Right</a>.</p>
+<p>
+The overloaded form has an additional <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> argument which is a set of flags. Such a set can be constructed by adding up the individual flag values, for example:</p>
+<PRE>
+  Regex.compile "foo|bar" (Regex.canon_eq + Regex.case_insensitive)</PRE>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name=Regex.compileα>compileα</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> → (<a class="tref" href="#PatternSyntaxException">PatternSyntaxException</a> | <a class="tref" href="#Regex">Regex</a>)<br><b>pure </b><b>native </b>java.util.regex.Pattern.compile&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#Regex.compile">compile</a></SPAN></dt>
@@ -298,7 +304,11 @@ Returns <a class="fref" href="../../prelude/PreludeBase.html#either">either</a> 
 <p>
 compile a <a class="tref" href="../../prelude/PreludeBase.html#String">String</a> to a <a class="tref" href="#Regex">Regex</a></p>
 <p>
-Returns <a class="fref" href="../../prelude/PreludeBase.html#either">either</a> a  <a class="tref" href="#PatternSyntaxException">PatternSyntaxException</a> in <a class="fref" href="../../prelude/PreludeBase.html#Either.Left">Either.Left</a> or a <a class="tref" href="#Regex">Regex</a> in <a class="fref" href="../../prelude/PreludeBase.html#Either.Right">Either.Right</a>.   </p>
+Returns <a class="fref" href="../../prelude/PreludeBase.html#either">either</a> a  <a class="tref" href="#PatternSyntaxException">PatternSyntaxException</a> in <a class="fref" href="../../prelude/PreludeBase.html#Either.Left">Either.Left</a> or a <a class="tref" href="#Regex">Regex</a> in <a class="fref" href="../../prelude/PreludeBase.html#Either.Right">Either.Right</a>.</p>
+<p>
+The overloaded form has an additional <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> argument which is a set of flags. Such a set can be constructed by adding up the individual flag values, for example:</p>
+<PRE>
+  Regex.compile "foo|bar" (Regex.canon_eq + Regex.case_insensitive)</PRE>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name=Regex.compileβ>compileβ</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></b> → (<a class="tref" href="#PatternSyntaxException">PatternSyntaxException</a> | <a class="tref" href="#Regex">Regex</a>)<br><b>pure </b><b>native </b>java.util.regex.Pattern.compile&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#Regex.compile">compile</a></SPAN></dt>
@@ -306,7 +316,11 @@ Returns <a class="fref" href="../../prelude/PreludeBase.html#either">either</a> 
 <p>
 compile a <a class="tref" href="../../prelude/PreludeBase.html#String">String</a> to a <a class="tref" href="#Regex">Regex</a></p>
 <p>
-Returns <a class="fref" href="../../prelude/PreludeBase.html#either">either</a> a  <a class="tref" href="#PatternSyntaxException">PatternSyntaxException</a> in <a class="fref" href="../../prelude/PreludeBase.html#Either.Left">Either.Left</a> or a <a class="tref" href="#Regex">Regex</a> in <a class="fref" href="../../prelude/PreludeBase.html#Either.Right">Either.Right</a>.   </p>
+Returns <a class="fref" href="../../prelude/PreludeBase.html#either">either</a> a  <a class="tref" href="#PatternSyntaxException">PatternSyntaxException</a> in <a class="fref" href="../../prelude/PreludeBase.html#Either.Left">Either.Left</a> or a <a class="tref" href="#Regex">Regex</a> in <a class="fref" href="../../prelude/PreludeBase.html#Either.Right">Either.Right</a>.</p>
+<p>
+The overloaded form has an additional <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> argument which is a set of flags. Such a set can be constructed by adding up the individual flag values, for example:</p>
+<PRE>
+  Regex.compile "foo|bar" (Regex.canon_eq + Regex.case_insensitive)</PRE>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name=Regex.dotall>dotall</a> ∷ <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a><br><b>pure </b><b>native </b>java.util.regex.Pattern.DOTALL</SPAN></dt>
@@ -546,9 +560,9 @@ If the match was successful but the group specified failed to match any part of 
 <p>
 Note that some groups, for example <SPAN CLASS="code">(a?)</SPAN>, match the empty string. This function will return <SPAN CLASS="code">Just ""</SPAN> when such a group successfully matches the empty string in the input.</p>
 <p>
-The result will also be <a class="fref" href="../../prelude/PreludeBase.html#Maybe.Nothing">Maybe.Nothing</a> when the specified group does not exist, that is, when the <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> argument is outside the range <SPAN CLASS="code">[0..</SPAN><SPAN CLASS="unknown">Matcher.groupCount</SPAN> <SPAN CLASS="code">m]</SPAN></p>
+The result will also be <a class="fref" href="../../prelude/PreludeBase.html#Maybe.Nothing">Maybe.Nothing</a> when the specified group does not exist, that is, when the <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a> argument is outside the range <SPAN CLASS="code">[0..</SPAN><a class="fref" href="#MatchResult.groupCount">MatchResult.groupCount</a> <SPAN CLASS="code">m]</SPAN></p>
 <p>
-The following property holds for a <SPAN CLASS="unknown">Matcher</SPAN> <i>m</i> with input sequence <i>s</i> and valid group index <i>g</i>:</p>
+The following property holds for a <a class="tref" href="#MatchResult">MatchResult</a> <i>m</i> with input sequence <i>s</i> and valid group index <i>g</i>:</p>
 <PRE>
  isJust (m.group g) ==&gt; (m.group g) == Just (s.substr (m.start g) (m.end g))</PRE>
 </dd>
@@ -582,9 +596,9 @@ See also <a class="fref" href="#_eq_tilde_tilde">=~~</a></p>
 <SPAN CLASS="code"><a name=MatchResult.match>match</a> ∷ <b><a class="tref" href="#MatchResult">MatchResult</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#String">String</a><br><b>pure </b><b>native </b>group</SPAN></dt>
 <dd class="func">
 <p>
-<SPAN CLASS="code">Matcher.match m</SPAN> returns the input subsequence matched by the previous match. The result is <a class="fref" href="../../prelude/PreludeBase.html#undefined">undefined</a> if the last match was not successful.</p>
+<SPAN CLASS="code">MatchResult.match m</SPAN> returns the input subsequence matched by the previous match. The result is <a class="fref" href="../../prelude/PreludeBase.html#undefined">undefined</a> if the last match was not successful.</p>
 <p>
-For a <SPAN CLASS="unknown">Matcher</SPAN> <SPAN CLASS="code">m</SPAN> with input sequence <SPAN CLASS="code">s</SPAN>, the following holds:</p>
+For a <a class="tref" href="#MatchResult">MatchResult</a> <SPAN CLASS="code">m</SPAN> with input sequence <SPAN CLASS="code">s</SPAN>, the following holds:</p>
 <PRE>
  isJust (m.group 0) ==&gt; unJust (m.group 0) == m.match</PRE>
 <p>
@@ -628,7 +642,7 @@ If <i>offset</i> is  negative or not smaller than the length of <i>string</i>, t
 <PRE>
  string =~~ regex</PRE>
 <p>
-tries to match <i>string</i> against <i>regex</i> and returns a list of all captured substrings, see <SPAN CLASS="unknown">Matcher.groups</SPAN>.</p>
+tries to match <i>string</i> against <i>regex</i> and returns a list of all captured substrings, see <a class="fref" href="#MatchResult.groups">MatchResult.groups</a>.</p>
 <p>
 Example:</p>
 <PRE>
