@@ -672,19 +672,19 @@ inherited from <a class="fref" href="../prelude/PreludeList.html#ListView.tail">
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Monad_Stream._star_gt>*&gt;</a> ∷ <b><a class="tref" href="#Stream">Stream</a> β</b> → <b><a class="tref" href="#Stream">Stream</a> α</b> → <a class="tref" href="#Stream">Stream</a> α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name=Monad_Stream._star_gt>*&gt;</a> ∷ <b><a class="tref" href="#Stream">Stream</a> α</b> → <b><a class="tref" href="#Stream">Stream</a> β</b> → <a class="tref" href="#Stream">Stream</a> β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeMonad.html#Applicative._star_gt">Applicative.*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Monad_Stream._lt_star>&lt;*</a> ∷ <b><a class="tref" href="#Stream">Stream</a> β</b> → <b><a class="tref" href="#Stream">Stream</a> α</b> → <a class="tref" href="#Stream">Stream</a> β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name=Monad_Stream._lt_star>&lt;*</a> ∷ <b><a class="tref" href="#Stream">Stream</a> α</b> → <b><a class="tref" href="#Stream">Stream</a> β</b> → <a class="tref" href="#Stream">Stream</a> α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeMonad.html#Applicative._lt_star">Applicative.&lt;*</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Monad_Stream._lt_star_gt>&lt;*&gt;</a> ∷ <b><a class="tref" href="#Stream">Stream</a> (β→α)</b> → <b><a class="tref" href="#Stream">Stream</a> β</b> → <a class="tref" href="#Stream">Stream</a> α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name=Monad_Stream._lt_star_gt>&lt;*&gt;</a> ∷ <b><a class="tref" href="#Stream">Stream</a> (α→β)</b> → <b><a class="tref" href="#Stream">Stream</a> α</b> → <a class="tref" href="#Stream">Stream</a> β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
@@ -698,7 +698,7 @@ inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad._gt_gt">
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Monad_Stream.fmap>fmap</a> ∷ (β → α) → <b><a class="tref" href="#Stream">Stream</a> β</b> → <a class="tref" href="#Stream">Stream</a> α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name=Monad_Stream.fmap>fmap</a> ∷ (α → β) → <b><a class="tref" href="#Stream">Stream</a> α</b> → <a class="tref" href="#Stream">Stream</a> β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
@@ -1176,7 +1176,7 @@ inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsub">S
 <a class="fref" href="#unfold">unfold</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(β → α) → <a class="tref" href="#Stream">Stream</a> β → <a class="tref" href="#Stream">Stream</a> α</SPAN></dt>
+<SPAN CLASS="code">(α → β) → <a class="tref" href="#Stream">Stream</a> α → <a class="tref" href="#Stream">Stream</a> β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_Stream.fmap">Monad_Stream.fmap</a></p>
@@ -1188,7 +1188,7 @@ inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsub">S
 <a class="fref" href="#unzip">unzip</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Stream">Stream</a> (β→α) → <a class="tref" href="#Stream">Stream</a> β → <a class="tref" href="#Stream">Stream</a> α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Stream">Stream</a> (α→β) → <a class="tref" href="#Stream">Stream</a> α → <a class="tref" href="#Stream">Stream</a> β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_Stream._lt_star_gt">Monad_Stream.&lt;*&gt;</a></p>
@@ -1200,6 +1200,18 @@ inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsub">S
 <a class="fref" href="#zip">zip</a></p>
 </dd>
 <dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Stream">Stream</a> α → <a class="tref" href="#Stream">Stream</a> β → <a class="tref" href="#Stream">Stream</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_Stream._lt_star">Monad_Stream.&lt;*</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Stream">Stream</a> α → <a class="tref" href="#Stream">Stream</a> β → <a class="tref" href="#Stream">Stream</a> β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_Stream._star_gt">Monad_Stream.*&gt;</a></p>
+</dd>
+<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#Stream">Stream</a> β → (β → <a class="tref" href="#Stream">Stream</a> α) → <a class="tref" href="#Stream">Stream</a> α</SPAN></dt>
 <dd class="func">
 <p>
@@ -1209,13 +1221,7 @@ inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsub">S
 <SPAN CLASS="code"><a class="tref" href="#Stream">Stream</a> β → <a class="tref" href="#Stream">Stream</a> α → <a class="tref" href="#Stream">Stream</a> α</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Monad_Stream._gt_gt">Monad_Stream.&gt;&gt;</a>, <a class="fref" href="#Monad_Stream._star_gt">Monad_Stream.*&gt;</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Stream">Stream</a> β → <a class="tref" href="#Stream">Stream</a> α → <a class="tref" href="#Stream">Stream</a> β</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Monad_Stream._lt_star">Monad_Stream.&lt;*</a></p>
+<a class="fref" href="#Monad_Stream._gt_gt">Monad_Stream.&gt;&gt;</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">(a → b → c) → <a class="tref" href="#Stream">Stream</a> a → <a class="tref" href="#Stream">Stream</a> b → <a class="tref" href="#Stream">Stream</a> c</SPAN></dt>

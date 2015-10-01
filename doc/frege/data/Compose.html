@@ -110,7 +110,7 @@ Constructors</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Compose.run>run</a> ∷ <b><a class="tref" href="#Compose">Compose</a> γ β α</b> → γ (β α)</SPAN></dt>
+<SPAN CLASS="code"><a name=Compose.run>run</a> ∷ <b><a class="tref" href="#Compose">Compose</a> α γ β</b> → α (γ β)</SPAN></dt>
 <dd class="func">
 <p>
 access field <SPAN CLASS="code">run</SPAN></p>
@@ -132,23 +132,23 @@ access field <SPAN CLASS="code">run</SPAN></p>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Applicative_Compose._star_gt>*&gt;</a> ∷ (<a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> γ) ⇒ <b><a class="tref" href="#Compose">Compose</a> α γ β</b> → <b><a class="tref" href="#Compose">Compose</a> α γ δ</b> → <a class="tref" href="#Compose">Compose</a> α γ δ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name=Applicative_Compose._star_gt>*&gt;</a> ∷ (<a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> β, <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α) ⇒ <b><a class="tref" href="#Compose">Compose</a> β α δ</b> → <b><a class="tref" href="#Compose">Compose</a> β α γ</b> → <a class="tref" href="#Compose">Compose</a> β α γ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeMonad.html#Applicative._star_gt">Applicative.*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Applicative_Compose._lt_star>&lt;*</a> ∷ (<a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> β, <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> δ) ⇒ <b><a class="tref" href="#Compose">Compose</a> β δ γ</b> → <b><a class="tref" href="#Compose">Compose</a> β δ α</b> → <a class="tref" href="#Compose">Compose</a> β δ γ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name=Applicative_Compose._lt_star>&lt;*</a> ∷ (<a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> β, <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α) ⇒ <b><a class="tref" href="#Compose">Compose</a> β α δ</b> → <b><a class="tref" href="#Compose">Compose</a> β α γ</b> → <a class="tref" href="#Compose">Compose</a> β α δ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeMonad.html#Applicative._lt_star">Applicative.&lt;*</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Applicative_Compose._lt_star_gt>&lt;*&gt;</a> ∷ (<a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> β, <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> δ) ⇒ <b><a class="tref" href="#Compose">Compose</a> β δ (γ→α)</b> → <b><a class="tref" href="#Compose">Compose</a> β δ γ</b> → <a class="tref" href="#Compose">Compose</a> β δ α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name=Applicative_Compose._lt_star_gt>&lt;*&gt;</a> ∷ (<a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> β, <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α) ⇒ <b><a class="tref" href="#Compose">Compose</a> β α (δ→γ)</b> → <b><a class="tref" href="#Compose">Compose</a> β α δ</b> → <a class="tref" href="#Compose">Compose</a> β α γ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Applicative_Compose.pure>pure</a> ∷ (<a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> β, <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α) ⇒ γ → <a class="tref" href="#Compose">Compose</a> β α γ</SPAN></dt>
+<SPAN CLASS="code"><a name=Applicative_Compose.pure>pure</a> ∷ (<a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> γ) ⇒ β → <a class="tref" href="#Compose">Compose</a> α γ β</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -160,7 +160,7 @@ inherited from <a class="fref" href="../prelude/PreludeMonad.html#Applicative._l
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Functor_Compose.fmap>fmap</a> ∷ (<a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> δ, <a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> γ) ⇒ (β → α) → <b><a class="tref" href="#Compose">Compose</a> δ γ β</b> → <a class="tref" href="#Compose">Compose</a> δ γ α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name=Functor_Compose.fmap>fmap</a> ∷ (<a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> β, <a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> δ) ⇒ (γ → α) → <b><a class="tref" href="#Compose">Compose</a> β δ γ</b> → <a class="tref" href="#Compose">Compose</a> β δ α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -176,7 +176,7 @@ Member Functions</h3>
 <a class="fref" href="#Compose.has$run">Compose.has$run</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Compose">Compose</a> γ β α → γ (β α)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Compose">Compose</a> α γ β → α (γ β)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Compose.run">Compose.run</a></p>
@@ -188,43 +188,43 @@ Member Functions</h3>
 <a class="fref" href="#compose">compose</a>, <a class="fref" href="#Compose.Compose">Compose.Compose</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> β, <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α) ⇒ γ → <a class="tref" href="#Compose">Compose</a> β α γ</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> γ) ⇒ β → <a class="tref" href="#Compose">Compose</a> α γ β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Applicative_Compose.pure">Applicative_Compose.pure</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α, <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> γ) ⇒ <a class="tref" href="#Compose">Compose</a> α γ β → <a class="tref" href="#Compose">Compose</a> α γ δ → <a class="tref" href="#Compose">Compose</a> α γ δ</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Applicative_Compose._star_gt">Applicative_Compose.*&gt;</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> β, <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> δ) ⇒ <a class="tref" href="#Compose">Compose</a> β δ (γ→α) → <a class="tref" href="#Compose">Compose</a> β δ γ → <a class="tref" href="#Compose">Compose</a> β δ α</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> β, <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α) ⇒ <a class="tref" href="#Compose">Compose</a> β α (δ→γ) → <a class="tref" href="#Compose">Compose</a> β α δ → <a class="tref" href="#Compose">Compose</a> β α γ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Applicative_Compose._lt_star_gt">Applicative_Compose.&lt;*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> β, <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> δ) ⇒ <a class="tref" href="#Compose">Compose</a> β δ γ → <a class="tref" href="#Compose">Compose</a> β δ α → <a class="tref" href="#Compose">Compose</a> β δ γ</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> β, <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α) ⇒ <a class="tref" href="#Compose">Compose</a> β α δ → <a class="tref" href="#Compose">Compose</a> β α γ → <a class="tref" href="#Compose">Compose</a> β α γ</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Applicative_Compose._star_gt">Applicative_Compose.*&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> β, <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α) ⇒ <a class="tref" href="#Compose">Compose</a> β α δ → <a class="tref" href="#Compose">Compose</a> β α γ → <a class="tref" href="#Compose">Compose</a> β α δ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Applicative_Compose._lt_star">Applicative_Compose.&lt;*</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> δ, <a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> γ) ⇒ (β → α) → <a class="tref" href="#Compose">Compose</a> δ γ β → <a class="tref" href="#Compose">Compose</a> δ γ α</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> β, <a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> δ) ⇒ (γ → α) → <a class="tref" href="#Compose">Compose</a> β δ γ → <a class="tref" href="#Compose">Compose</a> β δ α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Functor_Compose.fmap">Functor_Compose.fmap</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Compose">Compose</a> γ β α → ζ (ε δ) → <a class="tref" href="#Compose">Compose</a> ζ ε δ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Compose">Compose</a> α γ β → δ (ζ ε) → <a class="tref" href="#Compose">Compose</a> δ ζ ε</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Compose.upd$run">Compose.upd$run</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Compose">Compose</a> δ ζ ε → (δ (ζ ε)→α (γ β)) → <a class="tref" href="#Compose">Compose</a> α γ β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Compose">Compose</a> δ γ ζ → (δ (γ ζ)→β (α ε)) → <a class="tref" href="#Compose">Compose</a> β α ε</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Compose.chg$run">Compose.chg$run</a></p>

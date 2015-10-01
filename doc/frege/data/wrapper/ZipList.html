@@ -164,7 +164,7 @@ access field <SPAN CLASS="code">get</SPAN></p>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Applicative_ZipList._star_gt>*&gt;</a> ∷ <b><a class="tref" href="#ZipList">ZipList</a> α</b> → <b><a class="tref" href="#ZipList">ZipList</a> β</b> → <a class="tref" href="#ZipList">ZipList</a> β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name=Applicative_ZipList._star_gt>*&gt;</a> ∷ <b><a class="tref" href="#ZipList">ZipList</a> β</b> → <b><a class="tref" href="#ZipList">ZipList</a> α</b> → <a class="tref" href="#ZipList">ZipList</a> α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Applicative._star_gt">Applicative.*&gt;</a></p>
@@ -204,13 +204,13 @@ inherited from <a class="fref" href="../Foldable.html#Foldable.fold">Foldable.fo
 inherited from <a class="fref" href="../Foldable.html#Foldable.fold1">Foldable.fold1</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Foldable_ZipList.foldMap>foldMap</a> ∷ <a class="tref" href="../Monoid.html#Monoid">Monoid</a> β ⇒ (α → β) → <b><a class="tref" href="#ZipList">ZipList</a> α</b> → β</SPAN></dt>
+<SPAN CLASS="code"><a name=Foldable_ZipList.foldMap>foldMap</a> ∷ <a class="tref" href="../Monoid.html#Monoid">Monoid</a> α ⇒ (β → α) → <b><a class="tref" href="#ZipList">ZipList</a> β</b> → α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../Foldable.html#Foldable.foldMap">Foldable.foldMap</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Foldable_ZipList.foldMap1>foldMap1</a> ∷ <a class="tref" href="../Monoid.html#Semigroup">Semigroup</a> β ⇒ (α → β) → <b><a class="tref" href="#ZipList">ZipList</a> α</b> → β</SPAN></dt>
+<SPAN CLASS="code"><a name=Foldable_ZipList.foldMap1>foldMap1</a> ∷ <a class="tref" href="../Monoid.html#Semigroup">Semigroup</a> α ⇒ (β → α) → <b><a class="tref" href="#ZipList">ZipList</a> β</b> → α</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../Foldable.html#Foldable.foldMap1">Foldable.foldMap1</a></p>
@@ -374,13 +374,13 @@ inherited from <a class="fref" href="../Monoid.html#Semigroup.stimes">Semigroup.
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Traversable_ZipList.mapM>mapM</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ (β → γ α) → <b><a class="tref" href="#ZipList">ZipList</a> β</b> → γ (<a class="tref" href="#ZipList">ZipList</a> α)</SPAN></dt>
+<SPAN CLASS="code"><a name=Traversable_ZipList.mapM>mapM</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ (α → β γ) → <b><a class="tref" href="#ZipList">ZipList</a> α</b> → β (<a class="tref" href="#ZipList">ZipList</a> γ)</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../Traversable.html#Traversable.mapM">Traversable.mapM</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Traversable_ZipList.sequence>sequence</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <b><a class="tref" href="#ZipList">ZipList</a> (α β)</b> → α (<a class="tref" href="#ZipList">ZipList</a> β)</SPAN></dt>
+<SPAN CLASS="code"><a name=Traversable_ZipList.sequence>sequence</a> ∷ <a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <b><a class="tref" href="#ZipList">ZipList</a> (β α)</b> → β (<a class="tref" href="#ZipList">ZipList</a> α)</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../Traversable.html#Traversable.sequence">Traversable.sequence</a></p>
@@ -528,16 +528,16 @@ inherited from <a class="fref" href="../Traversable.html#Traversable.sequenceA">
 <a class="fref" href="#ZipList.chg$get">ZipList.chg$get</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#ZipList">ZipList</a> α → <a class="tref" href="#ZipList">ZipList</a> β → <a class="tref" href="#ZipList">ZipList</a> β</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Applicative_ZipList._star_gt">Applicative_ZipList.*&gt;</a></p>
-</dd>
-<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#ZipList">ZipList</a> α → [β] → <a class="tref" href="#ZipList">ZipList</a> β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ZipList.upd$get">ZipList.upd$get</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ZipList">ZipList</a> β → <a class="tref" href="#ZipList">ZipList</a> α → <a class="tref" href="#ZipList">ZipList</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Applicative_ZipList._star_gt">Applicative_ZipList.*&gt;</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#ZipList">ZipList</a> β → <a class="tref" href="#ZipList">ZipList</a> α → <a class="tref" href="#ZipList">ZipList</a> β</SPAN></dt>
@@ -546,13 +546,13 @@ inherited from <a class="fref" href="../Traversable.html#Traversable.sequenceA">
 <a class="fref" href="#Applicative_ZipList._lt_star">Applicative_ZipList.&lt;*</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../Monoid.html#Monoid">Monoid</a> β ⇒ (α → β) → <a class="tref" href="#ZipList">ZipList</a> α → β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../Monoid.html#Monoid">Monoid</a> α ⇒ (β → α) → <a class="tref" href="#ZipList">ZipList</a> β → α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Foldable_ZipList.foldMap">Foldable_ZipList.foldMap</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../Monoid.html#Semigroup">Semigroup</a> β ⇒ (α → β) → <a class="tref" href="#ZipList">ZipList</a> α → β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../Monoid.html#Semigroup">Semigroup</a> α ⇒ (β → α) → <a class="tref" href="#ZipList">ZipList</a> β → α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Foldable_ZipList.foldMap1">Foldable_ZipList.foldMap1</a></p>
@@ -564,7 +564,7 @@ inherited from <a class="fref" href="../Traversable.html#Traversable.sequenceA">
 <a class="fref" href="#Traversable_ZipList.sequenceA">Traversable_ZipList.sequenceA</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#ZipList">ZipList</a> (α β) → α (<a class="tref" href="#ZipList">ZipList</a> β)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#ZipList">ZipList</a> (β α) → β (<a class="tref" href="#ZipList">ZipList</a> α)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable_ZipList.sequence">Traversable_ZipList.sequence</a></p>
@@ -576,7 +576,7 @@ inherited from <a class="fref" href="../Traversable.html#Traversable.sequenceA">
 <a class="fref" href="#Traversable_ZipList.traverse">Traversable_ZipList.traverse</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ (β → γ α) → <a class="tref" href="#ZipList">ZipList</a> β → γ (<a class="tref" href="#ZipList">ZipList</a> α)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ (α → β γ) → <a class="tref" href="#ZipList">ZipList</a> α → β (<a class="tref" href="#ZipList">ZipList</a> γ)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable_ZipList.mapM">Traversable_ZipList.mapM</a></p>

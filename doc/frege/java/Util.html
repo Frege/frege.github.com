@@ -3742,7 +3742,7 @@ Member Functions</h3>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=EnumMap.get>get</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s (<a class="tref" href="#EnumMap">EnumMap</a> k v)</b> → <b>a</b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s v<br><b>native </b>get</SPAN></dt>
+<SPAN CLASS="code"><a name=EnumMap.get>get</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s (<a class="tref" href="#EnumMap">EnumMap</a> k v)</b> → <b>k</b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s v<br><b>native </b>get</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
@@ -3770,7 +3770,7 @@ Member Functions</h3>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=EnumMap.put>put</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s (<a class="tref" href="#EnumMap">EnumMap</a> k v)</b> → <b>k</b> → <b>v</b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s v<br><b>native </b>put</SPAN></dt>
+<SPAN CLASS="code"><a name=EnumMap.put>put</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s (<a class="tref" href="#EnumMap">EnumMap</a> k v)</b> → <b><a class="tref" href="./Lang.html#JEnum">JEnum</a> k</b> → <b>v</b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s v<br><b>native </b>put</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
@@ -3778,7 +3778,7 @@ Member Functions</h3>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=EnumMap.remove>remove</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s (<a class="tref" href="#EnumMap">EnumMap</a> k v)</b> → <b>a</b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s v<br><b>native </b>remove</SPAN></dt>
+<SPAN CLASS="code"><a name=EnumMap.remove>remove</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s (<a class="tref" href="#EnumMap">EnumMap</a> k v)</b> → <b>k</b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s v<br><b>native </b>remove</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
@@ -14582,16 +14582,22 @@ inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsub">S
 <a class="fref" href="#EnumMap.putAll">EnumMap.putAll</a></p>
 </dd>
 <dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s (<a class="tref" href="#EnumMap">EnumMap</a> k v) → <a class="tref" href="./Lang.html#JEnum">JEnum</a> k → v → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s v</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#EnumMap.put">EnumMap.put</a></p>
+</dd>
+<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s (<a class="tref" href="#EnumMap">EnumMap</a> k v) → <a class="tref" href="../prelude/PreludeBase.html#Object">Object</a> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#EnumMap.containsValue">EnumMap.containsValue</a>, <a class="fref" href="#EnumMap.containsKey">EnumMap.containsKey</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s (<a class="tref" href="#EnumMap">EnumMap</a> k v) → k → v → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s v</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s (<a class="tref" href="#EnumMap">EnumMap</a> k v) → k → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s v</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#EnumMap.put">EnumMap.put</a></p>
+<a class="fref" href="#EnumMap.remove">EnumMap.remove</a>, <a class="fref" href="#EnumMap.get">EnumMap.get</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s (<a class="tref" href="#EnumMap">EnumMap</a> k v) → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> s (<a class="tref" href="#EnumMap">EnumMap</a> k v)</SPAN></dt>
@@ -15540,12 +15546,6 @@ inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsub">S
 <dd class="func">
 <p>
 <a class="fref" href="#EnumMap.equals">EnumMap.equals</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s (<a class="tref" href="#EnumMap">EnumMap</a> k v) → a → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s v</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#EnumMap.remove">EnumMap.remove</a>, <a class="fref" href="#EnumMap.get">EnumMap.get</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s (<a class="tref" href="#HashMap">HashMap</a> k v) → a → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
