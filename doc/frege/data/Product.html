@@ -68,11 +68,11 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#product">product</a> ∷ <b>(α β, γ β)</b> → <a class="tref" href="#Product">Product</a> α γ β</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#product">product</a> ∷ <b>(γ α, β α)</b> → <a class="tref" href="#Product">Product</a> γ β α</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#unproduct">unproduct</a> ∷ <b><a class="tref" href="#Product">Product</a> β α γ</b> → (β γ, α γ)</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#unproduct">unproduct</a> ∷ <b><a class="tref" href="#Product">Product</a> α γ β</b> → (α β, γ β)</SPAN></dt>
 <dd>
 </dd>
 </dl>
@@ -82,7 +82,7 @@ Table of Content</h3>
 <a HREF="#instance">Instances</a></div>
 <dl>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Functor_Product"> </a> <a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> (<a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> f, <a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> g) ⇒ <a class="tref" href="#Product">Product</a> f g</SPAN></dt>
+<SPAN CLASS="code"><b>instance </b>(<a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> f, <a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> g) ⇒ <a class="tref" href="#Functor_Product"> </a><a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> (<a class="tref" href="#Product">Product</a> f g)</SPAN></dt>
 <dd>
 </dd>
 </dl>
@@ -108,13 +108,13 @@ Constructors</h3>
 </dl>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=product>product</a> ∷ <b>(α β, γ β)</b> → <a class="tref" href="#Product">Product</a> α γ β</SPAN></dt>
+<SPAN CLASS="code"><a name=product>product</a> ∷ <b>(γ α, β α)</b> → <a class="tref" href="#Product">Product</a> γ β α</SPAN></dt>
 <dd class="data">
 <p>
 view a tuple as <a class="tref" href="#Product">Product</a>   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=unproduct>unproduct</a> ∷ <b><a class="tref" href="#Product">Product</a> β α γ</b> → (β γ, α γ)</SPAN></dt>
+<SPAN CLASS="code"><a name=unproduct>unproduct</a> ∷ <b><a class="tref" href="#Product">Product</a> α γ β</b> → (α β, γ β)</SPAN></dt>
 <dd class="data">
 <p>
 make a tuple from a <a class="tref" href="#Product">Product</a>   </p>
@@ -124,13 +124,13 @@ make a tuple from a <a class="tref" href="#Product">Product</a>   </p>
 <a NAME="instance">Instances</a></h2>
 <dl class="inst">
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Functor_Product> </a> <a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> (<a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> f, <a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> g) ⇒ <a class="tref" href="#Product">Product</a> f g</SPAN></dt>
+<SPAN CLASS="code"><b>instance </b>(<a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> f, <a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> g) ⇒ <a name=Functor_Product> </a><a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> (<a class="tref" href="#Product">Product</a> f g)</SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Functor_Product.fmap>fmap</a> ∷ (<a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> δ, <a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> β) ⇒ (α → γ) → <b><a class="tref" href="#Product">Product</a> δ β α</b> → <a class="tref" href="#Product">Product</a> δ β γ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name=Functor_Product.fmap>fmap</a> ∷ (<a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> β, <a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> α) ⇒ (δ → γ) → <b><a class="tref" href="#Product">Product</a> β α δ</b> → <a class="tref" href="#Product">Product</a> β α γ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -140,13 +140,13 @@ Member Functions</h3>
 <a NAME="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Product">Product</a> β α γ → (β γ, α γ)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Product">Product</a> α γ β → (α β, γ β)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#unproduct">unproduct</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α β, γ β) → <a class="tref" href="#Product">Product</a> α γ β</SPAN></dt>
+<SPAN CLASS="code">(γ α, β α) → <a class="tref" href="#Product">Product</a> γ β α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#product">product</a></p>
@@ -158,7 +158,7 @@ Member Functions</h3>
 <a class="fref" href="#Product.Prod">Product.Prod</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> δ, <a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> β) ⇒ (α → γ) → <a class="tref" href="#Product">Product</a> δ β α → <a class="tref" href="#Product">Product</a> δ β γ</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> β, <a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> α) ⇒ (δ → γ) → <a class="tref" href="#Product">Product</a> β α δ → <a class="tref" href="#Product">Product</a> β α γ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Functor_Product.fmap">Functor_Product.fmap</a></p>

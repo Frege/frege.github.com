@@ -82,23 +82,23 @@ Table of Content</h3>
 <a HREF="#data">Definitions</a></div>
 <dl>
 <dt>
-<SPAN CLASS="code"><b>class </b><a class="tref" href="#ListEmpty">ListEmpty</a>  α</SPAN></dt>
+<SPAN CLASS="code"><b>class </b> <a class="tref" href="#ListEmpty">ListEmpty</a> α</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>class </b><a class="tref" href="#ListMonoid">ListMonoid</a> (<a class="tref" href="#ListSemigroup">ListSemigroup</a> α, <a class="tref" href="#ListEmpty">ListEmpty</a> α) ⇒  α</SPAN></dt>
+<SPAN CLASS="code"><b>class </b>(<a class="tref" href="#ListSemigroup">ListSemigroup</a> α, <a class="tref" href="#ListEmpty">ListEmpty</a> α) ⇒  <a class="tref" href="#ListMonoid">ListMonoid</a> α</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>class </b><a class="tref" href="#ListSemigroup">ListSemigroup</a>  α</SPAN></dt>
+<SPAN CLASS="code"><b>class </b> <a class="tref" href="#ListSemigroup">ListSemigroup</a> α</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>class </b><a class="tref" href="#ListSource">ListSource</a>  α</SPAN></dt>
+<SPAN CLASS="code"><b>class </b> <a class="tref" href="#ListSource">ListSource</a> α</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>class </b><a class="tref" href="#ListView">ListView</a> (<a class="tref" href="#ListSource">ListSource</a> α, <a class="tref" href="#ListEmpty">ListEmpty</a> α) ⇒  α</SPAN></dt>
+<SPAN CLASS="code"><b>class </b>(<a class="tref" href="#ListSource">ListSource</a> α, <a class="tref" href="#ListEmpty">ListEmpty</a> α) ⇒  <a class="tref" href="#ListView">ListView</a> α</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -174,7 +174,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#scanl">scanl</a> ∷ (β→α→β) → <b>β</b> → <b>[α]</b> → [β]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#scanl">scanl</a> ∷ (α→β→α) → <b>α</b> → <b>[β]</b> → [α]</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -270,7 +270,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#zipWith">zipWith</a> ∷ (α→β→γ) → <b>[α]</b> → <b>[β]</b> → [γ]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#zipWith">zipWith</a> ∷ (β→γ→α) → <b>[β]</b> → <b>[γ]</b> → [α]</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -278,7 +278,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#unzip3">unzip3</a> ∷ <b>[(β, α, γ)]</b> → ([β], [α], [γ])</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#unzip3">unzip3</a> ∷ <b>[(γ, β, α)]</b> → ([γ], [β], [α])</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -296,35 +296,35 @@ Table of Content</h3>
 <a HREF="#instance">Instances</a></div>
 <dl>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#ListMonoid_StringJ"> </a> <a class="tref" href="#ListMonoid">ListMonoid</a> <a class="tref" href="./PreludeBase.html#StringJ">StringJ</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#ListMonoid_StringJ"> </a><a class="tref" href="#ListMonoid">ListMonoid</a> <a class="tref" href="./PreludeBase.html#StringJ">StringJ</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#ListMonoid__lbrack_rbrack"> </a> <a class="tref" href="#ListMonoid">ListMonoid</a> <a class="tref" href="./PreludeBase.html#List">[]</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#ListMonoid__lbrack_rbrack"> </a><a class="tref" href="#ListMonoid">ListMonoid</a> <a class="tref" href="./PreludeBase.html#List">[]</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#ListSource_Either"> </a> <a class="tref" href="#ListSource">ListSource</a> <a class="tref" href="./PreludeBase.html#Either">Either</a> α</SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#ListSource_Either"> </a><a class="tref" href="#ListSource">ListSource</a> (<a class="tref" href="./PreludeBase.html#Either">Either</a> α)</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#ListSource_Maybe"> </a> <a class="tref" href="#ListSource">ListSource</a> <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#ListSource_Maybe"> </a><a class="tref" href="#ListSource">ListSource</a> <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#ListSource__lbrack_rbrack"> </a> <a class="tref" href="#ListSource">ListSource</a> <a class="tref" href="./PreludeBase.html#List">[]</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#ListSource__lbrack_rbrack"> </a><a class="tref" href="#ListSource">ListSource</a> <a class="tref" href="./PreludeBase.html#List">[]</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#ListView_StringJ"> </a> <a class="tref" href="#ListView">ListView</a> <a class="tref" href="./PreludeBase.html#StringJ">StringJ</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#ListView_StringJ"> </a><a class="tref" href="#ListView">ListView</a> <a class="tref" href="./PreludeBase.html#StringJ">StringJ</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#ListView__lbrack_rbrack"> </a> <a class="tref" href="#ListView">ListView</a> <a class="tref" href="./PreludeBase.html#List">[]</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#ListView__lbrack_rbrack"> </a><a class="tref" href="#ListView">ListView</a> <a class="tref" href="./PreludeBase.html#List">[]</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Ord__lbrack_rbrack"> </a> <a class="tref" href="./PreludeBase.html#Ord">Ord</a> <a class="tref" href="./PreludeBase.html#Ord">Ord</a> a ⇒ [a]</SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="./PreludeBase.html#Ord">Ord</a> a ⇒ <a class="tref" href="#Ord__lbrack_rbrack"> </a><a class="tref" href="./PreludeBase.html#Ord">Ord</a> [a]</SPAN></dt>
 <dd>
 </dd>
 </dl>
@@ -338,7 +338,7 @@ Table of Content</h3>
 <a NAME="data">Definitions</a></h2>
 <dl class="data">
 <dt class="data">
-<SPAN CLASS="code"><b>class </b><a name=ListEmpty>ListEmpty</a>  α</SPAN></dt>
+<SPAN CLASS="code"><b>class </b> <a name=ListEmpty>ListEmpty</a> α</SPAN></dt>
 <dd class="data">
 <p>
 A class for containers/collections that have an empty value.</p>
@@ -364,7 +364,7 @@ the empty container   </p>
 </dl>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><b>class </b><a name=ListMonoid>ListMonoid</a> (<a class="tref" href="#ListSemigroup">ListSemigroup</a> α, <a class="tref" href="#ListEmpty">ListEmpty</a> α) ⇒  α</SPAN></dt>
+<SPAN CLASS="code"><b>class </b>(<a class="tref" href="#ListSemigroup">ListSemigroup</a> α, <a class="tref" href="#ListEmpty">ListEmpty</a> α) ⇒  <a name=ListMonoid>ListMonoid</a> α</SPAN></dt>
 <dd class="data">
 <p>
 A class for types that support the (++) operator.   </p>
@@ -374,7 +374,7 @@ Known Instances</h3>
 <a class="tref" href="#ListMonoid__lbrack_rbrack">[]</a>, <a class="tref" href="#ListMonoid_StringJ">StringJ</a></p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><b>class </b><a name=ListSemigroup>ListSemigroup</a>  α</SPAN></dt>
+<SPAN CLASS="code"><b>class </b> <a name=ListSemigroup>ListSemigroup</a> α</SPAN></dt>
 <dd class="data">
 <p>
 A class for types that support <a class="fref" href="#concat">concat</a>   </p>
@@ -396,7 +396,7 @@ concatenate two lists, strings or whatever</p>
 </dl>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><b>class </b><a name=ListView>ListView</a> (<a class="tref" href="#ListSource">ListSource</a> α, <a class="tref" href="#ListEmpty">ListEmpty</a> α) ⇒  α</SPAN></dt>
+<SPAN CLASS="code"><b>class </b>(<a class="tref" href="#ListSource">ListSource</a> α, <a class="tref" href="#ListEmpty">ListEmpty</a> α) ⇒  <a name=ListView>ListView</a> α</SPAN></dt>
 <dd class="data">
 <p>
 A class for things we can view as a list</p>
@@ -456,7 +456,7 @@ split the input stream in head and tail   </p>
 </dl>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><b>class </b><a name=ListSource>ListSource</a>  α</SPAN></dt>
+<SPAN CLASS="code"><b>class </b> <a name=ListSource>ListSource</a> α</SPAN></dt>
 <dd class="data">
 <p>
 A class of things we can make a list from</p>
@@ -630,7 +630,7 @@ The maximal value of a non empty list, same as (<a class="fref" href="#foldl1">f
 <a class="fref" href="#foldl1">foldl1</a> is a variant of <a class="fref" href="#fold">fold</a> that has no starting value argument and thus must be applied to nonempty lists only.</p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=scanl>scanl</a> ∷ (β→α→β) → <b>β</b> → <b>[α]</b> → [β]</SPAN></dt>
+<SPAN CLASS="code"><a name=scanl>scanl</a> ∷ (α→β→α) → <b>α</b> → <b>[β]</b> → [α]</SPAN></dt>
 <dd class="data">
 <p>
 <a class="fref" href="#scanl">scanl</a> is similar to <a class="fref" href="#fold">fold</a> but returns a list of successive reduced values from the left:</p>
@@ -844,7 +844,7 @@ But note that</p>
 will only hold if <SPAN CLASS="code">length as == length bs</SPAN></p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=zipWith>zipWith</a> ∷ (α→β→γ) → <b>[α]</b> → <b>[β]</b> → [γ]</SPAN></dt>
+<SPAN CLASS="code"><a name=zipWith>zipWith</a> ∷ (β→γ→α) → <b>[β]</b> → <b>[γ]</b> → [α]</SPAN></dt>
 <dd class="data">
 <p>
 <SPAN CLASS="code">zipWith f xs ys</SPAN> zips two lists with function <i>f</i> instead of the standard <a class="tref" href="./PreludeBase.html#Tuple2">(,)</a> that is used by <a class="fref" href="#zip">zip</a></p>
@@ -856,7 +856,7 @@ will only hold if <SPAN CLASS="code">length as == length bs</SPAN></p>
 <a class="fref" href="#zip3">zip3</a> zips 3 lists in the same way as <a class="fref" href="#zip">zip</a> does it.   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=unzip3>unzip3</a> ∷ <b>[(β, α, γ)]</b> → ([β], [α], [γ])</SPAN></dt>
+<SPAN CLASS="code"><a name=unzip3>unzip3</a> ∷ <b>[(γ, β, α)]</b> → ([γ], [β], [α])</SPAN></dt>
 <dd class="data">
 <p>
 <a class="fref" href="#unzip3">unzip3</a> unzips a list of triples and returns a triple of lists.   </p>
@@ -880,7 +880,7 @@ will only hold if <SPAN CLASS="code">length as == length bs</SPAN></p>
 <a NAME="instance">Instances</a></h2>
 <dl class="inst">
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=ListMonoid_StringJ> </a> <a class="tref" href="#ListMonoid">ListMonoid</a> <a class="tref" href="./PreludeBase.html#StringJ">StringJ</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=ListMonoid_StringJ> </a><a class="tref" href="#ListMonoid">ListMonoid</a> <a class="tref" href="./PreludeBase.html#StringJ">StringJ</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -894,7 +894,7 @@ Concatenate two strings, uses Java's <SPAN CLASS="code">+</SPAN> operator   </p>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=ListMonoid__lbrack_rbrack> </a> <a class="tref" href="#ListMonoid">ListMonoid</a> <a class="tref" href="./PreludeBase.html#List">[]</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=ListMonoid__lbrack_rbrack> </a><a class="tref" href="#ListMonoid">ListMonoid</a> <a class="tref" href="./PreludeBase.html#List">[]</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -908,7 +908,7 @@ Concatenation of two lists   </p>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=ListSource_Either> </a> <a class="tref" href="#ListSource">ListSource</a> <a class="tref" href="./PreludeBase.html#Either">Either</a> α</SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=ListSource_Either> </a><a class="tref" href="#ListSource">ListSource</a> (<a class="tref" href="./PreludeBase.html#Either">Either</a> α)</SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -922,7 +922,7 @@ Singleton with element from <a class="fref" href="./PreludeBase.html#Either.Righ
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=ListSource_Maybe> </a> <a class="tref" href="#ListSource">ListSource</a> <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=ListSource_Maybe> </a><a class="tref" href="#ListSource">ListSource</a> <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -936,7 +936,7 @@ Singleton with element from <a class="fref" href="./PreludeBase.html#Maybe.Just"
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=ListSource__lbrack_rbrack> </a> <a class="tref" href="#ListSource">ListSource</a> <a class="tref" href="./PreludeBase.html#List">[]</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=ListSource__lbrack_rbrack> </a><a class="tref" href="#ListSource">ListSource</a> <a class="tref" href="./PreludeBase.html#List">[]</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -950,7 +950,7 @@ The list itself.   </p>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=ListView_StringJ> </a> <a class="tref" href="#ListView">ListView</a> <a class="tref" href="./PreludeBase.html#StringJ">StringJ</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=ListView_StringJ> </a><a class="tref" href="#ListView">ListView</a> <a class="tref" href="./PreludeBase.html#StringJ">StringJ</a></SPAN></dt>
 <dd class="inst">
 <p>
 <a class="tref" href="./PreludeBase.html#String">String</a> viewed as list of <a class="tref" href="./PreludeBase.html#Char">Char</a>s.</p>
@@ -1014,7 +1014,7 @@ inherited from <a class="fref" href="#ListView.toList">ListView.toList</a></p>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=ListView__lbrack_rbrack> </a> <a class="tref" href="#ListView">ListView</a> <a class="tref" href="./PreludeBase.html#List">[]</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=ListView__lbrack_rbrack> </a><a class="tref" href="#ListView">ListView</a> <a class="tref" href="./PreludeBase.html#List">[]</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -1082,7 +1082,7 @@ Access head and tail   </p>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Ord__lbrack_rbrack> </a> <a class="tref" href="./PreludeBase.html#Ord">Ord</a> <a class="tref" href="./PreludeBase.html#Ord">Ord</a> a ⇒ [a]</SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="./PreludeBase.html#Ord">Ord</a> a ⇒ <a name=Ord__lbrack_rbrack> </a><a class="tref" href="./PreludeBase.html#Ord">Ord</a> [a]</SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -1364,6 +1364,12 @@ inherited from <a class="fref" href="./PreludeBase.html#Ord.min">Ord.min</a></p>
 <a class="fref" href="#scanr">scanr</a></p>
 </dd>
 <dt class="func">
+<SPAN CLASS="code">(α→β→α) → α → [β] → [α]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#scanl">scanl</a></p>
+</dd>
+<dt class="func">
 <SPAN CLASS="code">(α→β→β) → β → [α] → β</SPAN></dt>
 <dd class="func">
 <p>
@@ -1374,12 +1380,6 @@ inherited from <a class="fref" href="./PreludeBase.html#Ord.min">Ord.min</a></p>
 <dd class="func">
 <p>
 <a class="fref" href="#foldrs">foldrs</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code">(β→α→β) → β → [α] → [β]</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#scanl">scanl</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">(β→α→β) → β → [α] → β</SPAN></dt>
@@ -1484,13 +1484,13 @@ inherited from <a class="fref" href="./PreludeBase.html#Ord.min">Ord.min</a></p>
 <a class="fref" href="#ListEmpty.empty">ListEmpty.empty</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α→β→γ) → [α] → [β] → [γ]</SPAN></dt>
+<SPAN CLASS="code">(β→γ→α) → [β] → [γ] → [α]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#zipWith">zipWith</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">[(β, α, γ)] → ([β], [α], [γ])</SPAN></dt>
+<SPAN CLASS="code">[(γ, β, α)] → ([γ], [β], [α])</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#unzip3">unzip3</a></p>

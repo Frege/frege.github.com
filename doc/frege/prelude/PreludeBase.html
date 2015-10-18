@@ -66,31 +66,31 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>class </b><a class="tref" href="#Bounded">Bounded</a>  b</SPAN></dt>
+<SPAN CLASS="code"><b>class </b> <a class="tref" href="#Bounded">Bounded</a> b</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>class </b><a class="tref" href="#Enum">Enum</a> (<a class="tref" href="#Eq">Eq</a> e, <a class="tref" href="#Ord">Ord</a> e) ⇒  e</SPAN></dt>
+<SPAN CLASS="code"><b>class </b>(<a class="tref" href="#Eq">Eq</a> e, <a class="tref" href="#Ord">Ord</a> e) ⇒  <a class="tref" href="#Enum">Enum</a> e</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>class </b><a class="tref" href="#Eq">Eq</a>  eq</SPAN></dt>
+<SPAN CLASS="code"><b>class </b> <a class="tref" href="#Eq">Eq</a> eq</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>class </b><a class="tref" href="#Integral">Integral</a> (<a class="tref" href="#Eq">Eq</a> integ, <a class="tref" href="#Ord">Ord</a> integ, <a class="tref" href="#Num">Num</a> integ) ⇒  integ</SPAN></dt>
+<SPAN CLASS="code"><b>class </b>(<a class="tref" href="#Eq">Eq</a> integ, <a class="tref" href="#Ord">Ord</a> integ, <a class="tref" href="#Num">Num</a> integ) ⇒  <a class="tref" href="#Integral">Integral</a> integ</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>class </b><a class="tref" href="#Num">Num</a> (<a class="tref" href="#Eq">Eq</a> n, <a class="tref" href="#Ord">Ord</a> n) ⇒  n</SPAN></dt>
+<SPAN CLASS="code"><b>class </b>(<a class="tref" href="#Eq">Eq</a> n, <a class="tref" href="#Ord">Ord</a> n) ⇒  <a class="tref" href="#Num">Num</a> n</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>class </b><a class="tref" href="#Ord">Ord</a> <a class="tref" href="#Eq">Eq</a> ord ⇒  ord</SPAN></dt>
+<SPAN CLASS="code"><b>class </b><a class="tref" href="#Eq">Eq</a> ord ⇒  <a class="tref" href="#Ord">Ord</a> ord</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>class </b><a class="tref" href="#Real">Real</a> (<a class="tref" href="#Eq">Eq</a> r, <a class="tref" href="#Ord">Ord</a> r, <a class="tref" href="#Num">Num</a> r) ⇒  r</SPAN></dt>
+<SPAN CLASS="code"><b>class </b>(<a class="tref" href="#Eq">Eq</a> r, <a class="tref" href="#Ord">Ord</a> r, <a class="tref" href="#Num">Num</a> r) ⇒  <a class="tref" href="#Real">Real</a> r</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -231,6 +231,10 @@ Table of Content</h3>
 </dd>
 <dt>
 <SPAN CLASS="code"><b>data </b><a class="tref" href="#GuardFailed"> </a> <a class="tref" href="#GuardFailed">GuardFailed</a> = <b>pure </b><b>native </b>frege.runtime.GuardFailed</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#HaskellBool"> </a> <a class="tref" href="#HaskellBool">HaskellBool</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -422,7 +426,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#seq">seq</a> ∷ <b>β</b> → <b>α</b> → α&nbsp;</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#seq">seq</a> ∷ <b>α</b> → <b>β</b> → β&nbsp;</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -494,7 +498,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#snd">snd</a> ∷ <b>(α, β)</b> → β</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#snd">snd</a> ∷ <b>(β, α)</b> → α</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -510,11 +514,11 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#$_excl">$!</a> ∷ (<b>α→β</b>) → <b>α</b> → β&nbsp;</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#$_excl">$!</a> ∷ (<b>β→α</b>) → <b>β</b> → α&nbsp;</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#_const">const</a> ∷ <b>α</b> → β → α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#_const">const</a> ∷ <b>β</b> → α → β</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -522,15 +526,15 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#flip">flip</a> ∷ (<b>β→γ→α</b>) → γ → β → α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#flip">flip</a> ∷ (<b>α→β→γ</b>) → β → α → γ</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#uncurry">uncurry</a> ∷ (<b>γ→β→α</b>) → <b>(γ, β)</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#uncurry">uncurry</a> ∷ (<b>β→γ→α</b>) → <b>(β, γ)</b> → α</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#curry">curry</a> ∷ (<b>(α, γ)→β</b>) → α → γ → β</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#curry">curry</a> ∷ (<b>(γ, β)→α</b>) → γ → β → α</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -542,11 +546,11 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#comparing">comparing</a> ∷ <a class="tref" href="#Ord">Ord</a> β ⇒ (α→β) → α → α → <a class="tref" href="#Ordering">Ordering</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#comparing">comparing</a> ∷ <a class="tref" href="#Ord">Ord</a> α ⇒ (β→α) → β → β → <a class="tref" href="#Ordering">Ordering</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#ascending">ascending</a> ∷ <a class="tref" href="#Ord">Ord</a> β ⇒ (α→β) → α → α → <a class="tref" href="#Ordering">Ordering</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#ascending">ascending</a> ∷ <a class="tref" href="#Ord">Ord</a> α ⇒ (β→α) → β → β → <a class="tref" href="#Ordering">Ordering</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -554,7 +558,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#on">on</a> ∷ (<b>β→β→α</b>) → (γ→β) → γ → γ → α&nbsp;</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#on">on</a> ∷ (<b>α→α→γ</b>) → (β→α) → β → β → γ&nbsp;</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -580,135 +584,135 @@ Table of Content</h3>
 <a HREF="#instance">Instances</a></div>
 <dl>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Bounded_Bool"> </a> <a class="tref" href="#Bounded">Bounded</a> <a class="tref" href="#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Bounded_Bool"> </a><a class="tref" href="#Bounded">Bounded</a> <a class="tref" href="#Bool">Bool</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Bounded_Char"> </a> <a class="tref" href="#Bounded">Bounded</a> <a class="tref" href="#Char">Char</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Bounded_Char"> </a><a class="tref" href="#Bounded">Bounded</a> <a class="tref" href="#Char">Char</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Bounded_Int"> </a> <a class="tref" href="#Bounded">Bounded</a> <a class="tref" href="#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Bounded_Int"> </a><a class="tref" href="#Bounded">Bounded</a> <a class="tref" href="#Int">Int</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Bounded_Long"> </a> <a class="tref" href="#Bounded">Bounded</a> <a class="tref" href="#Long">Long</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Bounded_Long"> </a><a class="tref" href="#Bounded">Bounded</a> <a class="tref" href="#Long">Long</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Enum_Bool"> </a> <a class="tref" href="#Enum">Enum</a> <a class="tref" href="#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Enum_Bool"> </a><a class="tref" href="#Enum">Enum</a> <a class="tref" href="#Bool">Bool</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Enum_Char"> </a> <a class="tref" href="#Enum">Enum</a> <a class="tref" href="#Char">Char</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Enum_Char"> </a><a class="tref" href="#Enum">Enum</a> <a class="tref" href="#Char">Char</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Enum_Int"> </a> <a class="tref" href="#Enum">Enum</a> <a class="tref" href="#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Enum_Int"> </a><a class="tref" href="#Enum">Enum</a> <a class="tref" href="#Int">Int</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Enum_Integer"> </a> <a class="tref" href="#Enum">Enum</a> <a class="tref" href="#Integer">Integer</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Enum_Integer"> </a><a class="tref" href="#Enum">Enum</a> <a class="tref" href="#Integer">Integer</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Enum_Long"> </a> <a class="tref" href="#Enum">Enum</a> <a class="tref" href="#Long">Long</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Enum_Long"> </a><a class="tref" href="#Enum">Enum</a> <a class="tref" href="#Long">Long</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Eq_l__r"> </a> <a class="tref" href="#Eq">Eq</a> <a class="tref" href="#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Eq_l__r"> </a><a class="tref" href="#Eq">Eq</a> <a class="tref" href="#Unit">()</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Eq_Bool"> </a> <a class="tref" href="#Eq">Eq</a> <a class="tref" href="#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Eq_Bool"> </a><a class="tref" href="#Eq">Eq</a> <a class="tref" href="#Bool">Bool</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Eq_Char"> </a> <a class="tref" href="#Eq">Eq</a> <a class="tref" href="#Char">Char</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Eq_Char"> </a><a class="tref" href="#Eq">Eq</a> <a class="tref" href="#Char">Char</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Eq_Double"> </a> <a class="tref" href="#Eq">Eq</a> <a class="tref" href="#Double">Double</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Eq_Double"> </a><a class="tref" href="#Eq">Eq</a> <a class="tref" href="#Double">Double</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Eq_Float"> </a> <a class="tref" href="#Eq">Eq</a> <a class="tref" href="#Float">Float</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Eq_Float"> </a><a class="tref" href="#Eq">Eq</a> <a class="tref" href="#Float">Float</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Eq_Int"> </a> <a class="tref" href="#Eq">Eq</a> <a class="tref" href="#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Eq_Int"> </a><a class="tref" href="#Eq">Eq</a> <a class="tref" href="#Int">Int</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Eq_Long"> </a> <a class="tref" href="#Eq">Eq</a> <a class="tref" href="#Long">Long</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Eq_Long"> </a><a class="tref" href="#Eq">Eq</a> <a class="tref" href="#Long">Long</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Eq_String"> </a> <a class="tref" href="#Eq">Eq</a> <a class="tref" href="#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Eq_String"> </a><a class="tref" href="#Eq">Eq</a> <a class="tref" href="#String">String</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Eq__lbrack_rbrack"> </a> <a class="tref" href="#Eq">Eq</a> <a class="tref" href="#Eq">Eq</a> a ⇒ [a]</SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Eq">Eq</a> a ⇒ <a class="tref" href="#Eq__lbrack_rbrack"> </a><a class="tref" href="#Eq">Eq</a> [a]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Integral_Int"> </a> <a class="tref" href="#Integral">Integral</a> <a class="tref" href="#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Integral_Int"> </a><a class="tref" href="#Integral">Integral</a> <a class="tref" href="#Int">Int</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Integral_Integer"> </a> <a class="tref" href="#Integral">Integral</a> <a class="tref" href="#Integer">Integer</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Integral_Integer"> </a><a class="tref" href="#Integral">Integral</a> <a class="tref" href="#Integer">Integer</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Integral_Long"> </a> <a class="tref" href="#Integral">Integral</a> <a class="tref" href="#Long">Long</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Integral_Long"> </a><a class="tref" href="#Integral">Integral</a> <a class="tref" href="#Long">Long</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Num_Int"> </a> <a class="tref" href="#Num">Num</a> <a class="tref" href="#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Num_Int"> </a><a class="tref" href="#Num">Num</a> <a class="tref" href="#Int">Int</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Num_Long"> </a> <a class="tref" href="#Num">Num</a> <a class="tref" href="#Long">Long</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Num_Long"> </a><a class="tref" href="#Num">Num</a> <a class="tref" href="#Long">Long</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Ord_Bool"> </a> <a class="tref" href="#Ord">Ord</a> <a class="tref" href="#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Ord_Bool"> </a><a class="tref" href="#Ord">Ord</a> <a class="tref" href="#Bool">Bool</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Ord_Char"> </a> <a class="tref" href="#Ord">Ord</a> <a class="tref" href="#Char">Char</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Ord_Char"> </a><a class="tref" href="#Ord">Ord</a> <a class="tref" href="#Char">Char</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Ord_Double"> </a> <a class="tref" href="#Ord">Ord</a> <a class="tref" href="#Double">Double</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Ord_Double"> </a><a class="tref" href="#Ord">Ord</a> <a class="tref" href="#Double">Double</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Ord_Float"> </a> <a class="tref" href="#Ord">Ord</a> <a class="tref" href="#Float">Float</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Ord_Float"> </a><a class="tref" href="#Ord">Ord</a> <a class="tref" href="#Float">Float</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Ord_Int"> </a> <a class="tref" href="#Ord">Ord</a> <a class="tref" href="#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Ord_Int"> </a><a class="tref" href="#Ord">Ord</a> <a class="tref" href="#Int">Int</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Ord_Integer"> </a> <a class="tref" href="#Ord">Ord</a> <a class="tref" href="#Integer">Integer</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Ord_Integer"> </a><a class="tref" href="#Ord">Ord</a> <a class="tref" href="#Integer">Integer</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Ord_Long"> </a> <a class="tref" href="#Ord">Ord</a> <a class="tref" href="#Long">Long</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Ord_Long"> </a><a class="tref" href="#Ord">Ord</a> <a class="tref" href="#Long">Long</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Ord_String"> </a> <a class="tref" href="#Ord">Ord</a> <a class="tref" href="#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Ord_String"> </a><a class="tref" href="#Ord">Ord</a> <a class="tref" href="#String">String</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Real_Double"> </a> <a class="tref" href="#Real">Real</a> <a class="tref" href="#Double">Double</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Real_Double"> </a><a class="tref" href="#Real">Real</a> <a class="tref" href="#Double">Double</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Real_Float"> </a> <a class="tref" href="#Real">Real</a> <a class="tref" href="#Float">Float</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Real_Float"> </a><a class="tref" href="#Real">Real</a> <a class="tref" href="#Float">Float</a></SPAN></dt>
 <dd>
 </dd>
 </dl>
@@ -1166,7 +1170,7 @@ empty list</p>
 </dl>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><b>class </b><a name=Eq>Eq</a>  eq</SPAN></dt>
+<SPAN CLASS="code"><b>class </b> <a name=Eq>Eq</a> eq</SPAN></dt>
 <dd class="data">
 <p>
 The type class <a class="tref" href="#Eq">Eq</a> provides operators <a class="fref" href="#Eq._eq_eq">Eq.==</a>, <a class="fref" href="#Eq._excl_eq">Eq.!=</a> and <a class="fref" href="#Eq.hashCode">Eq.hashCode</a>.</p>
@@ -1262,6 +1266,35 @@ constructor undefined == undefined</PRE>
 <dd class="data">
 <p>
 <a class="tref" href="#Bool">Bool</a> values are based on Java's primitive <SPAN CLASS="code">boolean</SPAN> values. Note that <SPAN CLASS="code">true</SPAN> and <SPAN CLASS="code">false</SPAN> are literals, not constructors.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=HaskellBool> </a> <a class="tref" href="#HaskellBool">HaskellBool</a></SPAN></dt>
+<dd class="data">
+<p>
+For compatibility with Haskell, the <a class="tref" href="#HaskellBool">HaskellBool</a> type defines constructors <a class="fref" href="#HaskellBool.True">HaskellBool.True</a> and <a class="fref" href="#HaskellBool.False">HaskellBool.False</a>.</p>
+<p>
+When the identifiers <SPAN CLASS="code">True</SPAN> or <SPAN CLASS="code">False</SPAN> are used in patterns or expressions, qualified or unqualified, and name resolution detects that they resolve to <a class="fref" href="#HaskellBool.True">HaskellBool.True</a> or <a class="fref" href="#HaskellBool.False">HaskellBool.False</a> they will be replaced by literals <SPAN CLASS="code">true</SPAN> or <SPAN CLASS="code">false</SPAN>.</p>
+<p>
+This is, of course, a hack, but I see no other way to bridge the gap between redefinable constructor ids and literals. For example, we couldn't simply define <SPAN CLASS="code">True</SPAN> as another literal keyword, because some Haskell code might use <SPAN CLASS="code">Prelude.True</SPAN> or could have code like.</p>
+<PRE>
+ import Prelude hiding(True, False)
+ data TriBool = False | Perhaps | True</PRE>
+<h3>
+Constructors</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=HaskellBool.False>False</a> </SPAN></dt>
+<dd class="func">
+<p>
+will be replaced by literal <SPAN CLASS="code">false</SPAN>   </p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=HaskellBool.True>True</a> </SPAN></dt>
+<dd class="func">
+<p>
+will be replaced by literal <SPAN CLASS="code">true</SPAN>   </p>
+</dd>
+</dl>
 </dd>
 <dt class="data">
 <SPAN CLASS="code"><a name=otherwise>otherwise</a> ∷ <a class="tref" href="#Bool">Bool</a></SPAN></dt>
@@ -2564,7 +2597,7 @@ Constructs a strict 25-tuple. See remarks for <a class="fref" href="#strictTuple
 Constructs a strict 26-tuple. See remarks for <a class="fref" href="#strictTuple2">strictTuple2</a>.   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=seq>seq</a> ∷ <b>β</b> → <b>α</b> → α<br><b>infixr</b>&nbsp;&nbsp;2</SPAN></dt>
+<SPAN CLASS="code"><a name=seq>seq</a> ∷ <b>α</b> → <b>β</b> → β<br><b>infixr</b>&nbsp;&nbsp;2</SPAN></dt>
 <dd class="data">
 <p>
 <SPAN CLASS="code">a `seq` b</SPAN> evaluates <i>a</i> before it returns <i>b</i></p>
@@ -2778,7 +2811,7 @@ Constructors</h3>
 </dl>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><b>class </b><a name=Ord>Ord</a> <a class="tref" href="#Eq">Eq</a> ord ⇒  ord</SPAN></dt>
+<SPAN CLASS="code"><b>class </b><a class="tref" href="#Eq">Eq</a> ord ⇒  <a name=Ord>Ord</a> ord</SPAN></dt>
 <dd class="data">
 <p>
 The <a class="tref" href="#Ord">Ord</a> class provides relational operators as well as the functions <a class="fref" href="#Ord.max">Ord.max</a> and <a class="fref" href="#Ord.min">Ord.min</a>. The default implementation defines them all in terms of the <i>compare</i> operator <a class="fref" href="#Ord._lt_eq_gt">Ord.&lt;=&gt;</a>.</p>
@@ -2872,7 +2905,7 @@ Relational <SPAN CLASS="code">&gt;=</SPAN> operator. Obeys the following laws:</
 </dl>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><b>class </b><a name=Enum>Enum</a> (<a class="tref" href="#Eq">Eq</a> e, <a class="tref" href="#Ord">Ord</a> e) ⇒  e</SPAN></dt>
+<SPAN CLASS="code"><b>class </b>(<a class="tref" href="#Eq">Eq</a> e, <a class="tref" href="#Ord">Ord</a> e) ⇒  <a name=Enum>Enum</a> e</SPAN></dt>
 <dd class="data">
 <p>
 Class <a class="tref" href="#Enum">Enum</a> defines operations on sequentially ordered types.</p>
@@ -2963,7 +2996,7 @@ default implementation for <a class="fref" href="#Eq.hashCode">Eq.hashCode</a> i
 </dl>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><b>class </b><a name=Num>Num</a> (<a class="tref" href="#Eq">Eq</a> n, <a class="tref" href="#Ord">Ord</a> n) ⇒  n</SPAN></dt>
+<SPAN CLASS="code"><b>class </b>(<a class="tref" href="#Eq">Eq</a> n, <a class="tref" href="#Ord">Ord</a> n) ⇒  <a name=Num>Num</a> n</SPAN></dt>
 <dd class="data">
 <p>
 The <a class="tref" href="#Num">Num</a> class provides the operators (<a class="fref" href="#Num._plus">Num.+</a>), (<a class="fref" href="#Num._minus">Num.-</a>) and (<a class="fref" href="#Num._star">Num.*</a>) as well as some functions that are common for all numeric types.</p>
@@ -3079,7 +3112,7 @@ the number 0 in the instantiated type   </p>
 </dl>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><b>class </b><a name=Real>Real</a> (<a class="tref" href="#Eq">Eq</a> r, <a class="tref" href="#Ord">Ord</a> r, <a class="tref" href="#Num">Num</a> r) ⇒  r</SPAN></dt>
+<SPAN CLASS="code"><b>class </b>(<a class="tref" href="#Eq">Eq</a> r, <a class="tref" href="#Ord">Ord</a> r, <a class="tref" href="#Num">Num</a> r) ⇒  <a name=Real>Real</a> r</SPAN></dt>
 <dd class="data">
 <p>
 The <a class="tref" href="#Real">Real</a> class provides the division operator (<a class="fref" href="#Real._div">Real./</a>).</p>
@@ -3105,7 +3138,7 @@ convert a <a class="tref" href="#Double">Double</a> to any <a class="tref" href=
 </dl>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><b>class </b><a name=Integral>Integral</a> (<a class="tref" href="#Eq">Eq</a> integ, <a class="tref" href="#Ord">Ord</a> integ, <a class="tref" href="#Num">Num</a> integ) ⇒  integ</SPAN></dt>
+<SPAN CLASS="code"><b>class </b>(<a class="tref" href="#Eq">Eq</a> integ, <a class="tref" href="#Ord">Ord</a> integ, <a class="tref" href="#Num">Num</a> integ) ⇒  <a name=Integral>Integral</a> integ</SPAN></dt>
 <dd class="data">
 <p>
 Class <a class="tref" href="#Integral">Integral</a> provides division and remainder operations for integral numbers.   </p>
@@ -3221,7 +3254,7 @@ This behaviour is the same as in Haskell   </p>
 </dl>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><b>class </b><a name=Bounded>Bounded</a>  b</SPAN></dt>
+<SPAN CLASS="code"><b>class </b> <a name=Bounded>Bounded</a> b</SPAN></dt>
 <dd class="data">
 <p>
 A class for data types that have a lower and an upper bound.</p>
@@ -3309,7 +3342,7 @@ apply first function to value in <a class="fref" href="#Either.Left">Either.Left
 return the first element of a 2-tuple   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=snd>snd</a> ∷ <b>(α, β)</b> → β</SPAN></dt>
+<SPAN CLASS="code"><a name=snd>snd</a> ∷ <b>(β, α)</b> → α</SPAN></dt>
 <dd class="data">
 <p>
 return the second element of a 2-tuple   </p>
@@ -3333,13 +3366,13 @@ This will be used in list comprehensions   </p>
 <SPAN CLASS="code">a $ b</SPAN> is the same as <SPAN CLASS="code">a b</SPAN>, but because of <a class="fref" href="#$">$</a>'s low precedence one can write <SPAN CLASS="code">f $ x+y</SPAN> instead of <SPAN CLASS="code">f (x+y)</SPAN>. Also, because <a class="fref" href="#$">$</a> is right associative, <SPAN CLASS="code">f $ g $ h y</SPAN> is <SPAN CLASS="code">f (g (h y))</SPAN></p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=$_excl>$!</a> ∷ (<b>α→β</b>) → <b>α</b> → β<br><b>infixr</b>&nbsp;&nbsp;1</SPAN></dt>
+<SPAN CLASS="code"><a name=$_excl>$!</a> ∷ (<b>β→α</b>) → <b>β</b> → α<br><b>infixr</b>&nbsp;&nbsp;1</SPAN></dt>
 <dd class="data">
 <p>
 Same as `$` but argument is strict   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=_const>const</a> ∷ <b>α</b> → β → α</SPAN></dt>
+<SPAN CLASS="code"><a name=_const>const</a> ∷ <b>β</b> → α → β</SPAN></dt>
 <dd class="data">
 <p>
 <SPAN CLASS="code">const a</SPAN> is a function that returns <i>a</i> regardless of its argument.   </p>
@@ -3353,7 +3386,7 @@ Same as `$` but argument is strict   </p>
 This is a type restricted version of <a class="fref" href="#_const">const</a>.   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=flip>flip</a> ∷ (<b>β→γ→α</b>) → γ → β → α</SPAN></dt>
+<SPAN CLASS="code"><a name=flip>flip</a> ∷ (<b>α→β→γ</b>) → β → α → γ</SPAN></dt>
 <dd class="data">
 <p>
 Exchange first and second argument of a function, i.e.</p>
@@ -3361,13 +3394,13 @@ Exchange first and second argument of a function, i.e.</p>
  flip f a b = f b a   </PRE>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=uncurry>uncurry</a> ∷ (<b>γ→β→α</b>) → <b>(γ, β)</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a name=uncurry>uncurry</a> ∷ (<b>β→γ→α</b>) → <b>(β, γ)</b> → α</SPAN></dt>
 <dd class="data">
 <p>
 Passes the elements of a 2-tuple as arguments to a function.   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=curry>curry</a> ∷ (<b>(α, γ)→β</b>) → α → γ → β</SPAN></dt>
+<SPAN CLASS="code"><a name=curry>curry</a> ∷ (<b>(γ, β)→α</b>) → γ → β → α</SPAN></dt>
 <dd class="data">
 <p>
 <SPAN CLASS="code">curry f</SPAN> passes the next two arguments as 2-tuple to <i>f</i>   </p>
@@ -3393,7 +3426,7 @@ is the same as</p>
  uniqBy (using fst) [(1, 1), (2, 2), (2, 3), (3,4), (2,5)]</PRE>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=comparing>comparing</a> ∷ <a class="tref" href="#Ord">Ord</a> β ⇒ (α→β) → α → α → <a class="tref" href="#Ordering">Ordering</a></SPAN></dt>
+<SPAN CLASS="code"><a name=comparing>comparing</a> ∷ <a class="tref" href="#Ord">Ord</a> α ⇒ (β→α) → β → β → <a class="tref" href="#Ordering">Ordering</a></SPAN></dt>
 <dd class="data">
 <p>
 <SPAN CLASS="code">comparing f</SPAN> applies a projection function on both sides of <a class="fref" href="#Ord._lt_eq_gt">Ord.&lt;=&gt;</a>. Example usage:</p>
@@ -3401,7 +3434,7 @@ is the same as</p>
  sortBy (comparing snd) [(1, "z"), (2, "b")] == [(2, "b"), (1, "z")]</PRE>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=ascending>ascending</a> ∷ <a class="tref" href="#Ord">Ord</a> β ⇒ (α→β) → α → α → <a class="tref" href="#Ordering">Ordering</a></SPAN></dt>
+<SPAN CLASS="code"><a name=ascending>ascending</a> ∷ <a class="tref" href="#Ord">Ord</a> α ⇒ (β→α) → β → β → <a class="tref" href="#Ordering">Ordering</a></SPAN></dt>
 <dd class="data">
 <p>
 Alias for <a class="fref" href="#comparing">comparing</a></p>
@@ -3415,7 +3448,7 @@ Alias for <a class="fref" href="#comparing">comparing</a></p>
  sortBy (descending fst) [(1, "z"), (2, "b")] == [(2, "b"), (1, "z")]</PRE>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=on>on</a> ∷ (<b>β→β→α</b>) → (γ→β) → γ → γ → α<br><b>infixl</b>&nbsp;&nbsp;1</SPAN></dt>
+<SPAN CLASS="code"><a name=on>on</a> ∷ (<b>α→α→γ</b>) → (β→α) → β → β → γ<br><b>infixl</b>&nbsp;&nbsp;1</SPAN></dt>
 <dd class="data">
 <PRE>
  g `on` f</PRE>
@@ -3474,7 +3507,7 @@ Constructors</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=ST._gt_gt_eq>&gt;&gt;=</a> ∷ <b><a class="tref" href="#ST">ST</a> β γ</b> → (γ→<a class="tref" href="#ST">ST</a> β α) → <a class="tref" href="#ST">ST</a> β α<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
+<SPAN CLASS="code"><a name=ST._gt_gt_eq>&gt;&gt;=</a> ∷ <b><a class="tref" href="#ST">ST</a> γ α</b> → (α→<a class="tref" href="#ST">ST</a> γ β) → <a class="tref" href="#ST">ST</a> γ β<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
@@ -3546,7 +3579,7 @@ print a <a class="tref" href="#String">String</a> to the standard output stream 
 <a NAME="instance">Instances</a></h2>
 <dl class="inst">
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Bounded_Bool> </a> <a class="tref" href="#Bounded">Bounded</a> <a class="tref" href="#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Bounded_Bool> </a><a class="tref" href="#Bounded">Bounded</a> <a class="tref" href="#Bool">Bool</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -3562,7 +3595,7 @@ Member Functions</h3>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Bounded_Char> </a> <a class="tref" href="#Bounded">Bounded</a> <a class="tref" href="#Char">Char</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Bounded_Char> </a><a class="tref" href="#Bounded">Bounded</a> <a class="tref" href="#Char">Char</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -3578,7 +3611,7 @@ Member Functions</h3>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Bounded_Int> </a> <a class="tref" href="#Bounded">Bounded</a> <a class="tref" href="#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Bounded_Int> </a><a class="tref" href="#Bounded">Bounded</a> <a class="tref" href="#Int">Int</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -3598,7 +3631,7 @@ the smallest <a class="tref" href="#Int">Int</a> value  -2147483648 (or -(2**31)
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Bounded_Long> </a> <a class="tref" href="#Bounded">Bounded</a> <a class="tref" href="#Long">Long</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Bounded_Long> </a><a class="tref" href="#Bounded">Bounded</a> <a class="tref" href="#Long">Long</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -3618,7 +3651,7 @@ the smallest <a class="tref" href="#Long">Long</a> value  -9223372036854775808 (
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Enum_Bool> </a> <a class="tref" href="#Enum">Enum</a> <a class="tref" href="#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Enum_Bool> </a><a class="tref" href="#Enum">Enum</a> <a class="tref" href="#Bool">Bool</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -3658,7 +3691,7 @@ Member Functions</h3>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Enum_Char> </a> <a class="tref" href="#Enum">Enum</a> <a class="tref" href="#Char">Char</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Enum_Char> </a><a class="tref" href="#Enum">Enum</a> <a class="tref" href="#Char">Char</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -3700,7 +3733,7 @@ Member Functions</h3>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Enum_Int> </a> <a class="tref" href="#Enum">Enum</a> <a class="tref" href="#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Enum_Int> </a><a class="tref" href="#Enum">Enum</a> <a class="tref" href="#Int">Int</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -3748,7 +3781,7 @@ Member Functions</h3>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Enum_Integer> </a> <a class="tref" href="#Enum">Enum</a> <a class="tref" href="#Integer">Integer</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Enum_Integer> </a><a class="tref" href="#Enum">Enum</a> <a class="tref" href="#Integer">Integer</a></SPAN></dt>
 <dd class="inst">
 <p>
 <a class="tref" href="#Integer">Integer</a> is an instance of <a class="tref" href="#Enum">Enum</a></p>
@@ -3798,7 +3831,7 @@ Member Functions</h3>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Enum_Long> </a> <a class="tref" href="#Enum">Enum</a> <a class="tref" href="#Long">Long</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Enum_Long> </a><a class="tref" href="#Enum">Enum</a> <a class="tref" href="#Long">Long</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -3846,7 +3879,7 @@ Member Functions</h3>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Eq_l__r> </a> <a class="tref" href="#Eq">Eq</a> <a class="tref" href="#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Eq_l__r> </a><a class="tref" href="#Eq">Eq</a> <a class="tref" href="#Unit">()</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -3866,7 +3899,7 @@ Member Functions</h3>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Eq_Bool> </a> <a class="tref" href="#Eq">Eq</a> <a class="tref" href="#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Eq_Bool> </a><a class="tref" href="#Eq">Eq</a> <a class="tref" href="#Bool">Bool</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -3886,7 +3919,7 @@ Member Functions</h3>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Eq_Char> </a> <a class="tref" href="#Eq">Eq</a> <a class="tref" href="#Char">Char</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Eq_Char> </a><a class="tref" href="#Eq">Eq</a> <a class="tref" href="#Char">Char</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -3906,7 +3939,7 @@ Member Functions</h3>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Eq_Double> </a> <a class="tref" href="#Eq">Eq</a> <a class="tref" href="#Double">Double</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Eq_Double> </a><a class="tref" href="#Eq">Eq</a> <a class="tref" href="#Double">Double</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -3928,7 +3961,7 @@ the <a class="fref" href="#Eq.hashCode">Eq.hashCode</a> is that of the <a class=
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Eq_Float> </a> <a class="tref" href="#Eq">Eq</a> <a class="tref" href="#Float">Float</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Eq_Float> </a><a class="tref" href="#Eq">Eq</a> <a class="tref" href="#Float">Float</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -3950,7 +3983,7 @@ bit representation of a float serves as hashCode   </p>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Eq_Int> </a> <a class="tref" href="#Eq">Eq</a> <a class="tref" href="#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Eq_Int> </a><a class="tref" href="#Eq">Eq</a> <a class="tref" href="#Int">Int</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -3976,7 +4009,7 @@ The <a class="fref" href="#Eq.hashCode">Eq.hashCode</a> of an <a class="tref" hr
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Eq_Long> </a> <a class="tref" href="#Eq">Eq</a> <a class="tref" href="#Long">Long</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Eq_Long> </a><a class="tref" href="#Eq">Eq</a> <a class="tref" href="#Long">Long</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -4002,7 +4035,7 @@ hash code is upper half and lower half xor'ed   </p>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Eq_String> </a> <a class="tref" href="#Eq">Eq</a> <a class="tref" href="#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Eq_String> </a><a class="tref" href="#Eq">Eq</a> <a class="tref" href="#String">String</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -4024,7 +4057,7 @@ get the hash code   </p>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Eq__lbrack_rbrack> </a> <a class="tref" href="#Eq">Eq</a> <a class="tref" href="#Eq">Eq</a> a ⇒ [a]</SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Eq">Eq</a> a ⇒ <a name=Eq__lbrack_rbrack> </a><a class="tref" href="#Eq">Eq</a> [a]</SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -4048,7 +4081,7 @@ two lists are equal if their heads and tails are equal or if the lists are empty
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Integral_Int> </a> <a class="tref" href="#Integral">Integral</a> <a class="tref" href="#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Integral_Int> </a><a class="tref" href="#Integral">Integral</a> <a class="tref" href="#Int">Int</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -4142,7 +4175,7 @@ inherited from <a class="fref" href="#Integral.quotRem">Integral.quotRem</a></p>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Integral_Integer> </a> <a class="tref" href="#Integral">Integral</a> <a class="tref" href="#Integer">Integer</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Integral_Integer> </a><a class="tref" href="#Integral">Integral</a> <a class="tref" href="#Integer">Integer</a></SPAN></dt>
 <dd class="inst">
 <p>
 <a class="tref" href="#Integer">Integer</a> is an instance of <a class="tref" href="#Integral">Integral</a></p>
@@ -4300,7 +4333,7 @@ inherited from <a class="fref" href="#Num.subtract">Num.subtract</a></p>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Integral_Long> </a> <a class="tref" href="#Integral">Integral</a> <a class="tref" href="#Long">Long</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Integral_Long> </a><a class="tref" href="#Integral">Integral</a> <a class="tref" href="#Long">Long</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -4394,7 +4427,7 @@ inherited from <a class="fref" href="#Integral.quotRem">Integral.quotRem</a></p>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Num_Int> </a> <a class="tref" href="#Num">Num</a> <a class="tref" href="#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Num_Int> </a><a class="tref" href="#Num">Num</a> <a class="tref" href="#Int">Int</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -4492,7 +4525,7 @@ the integer constant 0   </p>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Num_Long> </a> <a class="tref" href="#Num">Num</a> <a class="tref" href="#Long">Long</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Num_Long> </a><a class="tref" href="#Num">Num</a> <a class="tref" href="#Long">Long</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -4590,7 +4623,7 @@ The constant <SPAN CLASS="code">0L</SPAN>.   </p>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Ord_Bool> </a> <a class="tref" href="#Ord">Ord</a> <a class="tref" href="#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Ord_Bool> </a><a class="tref" href="#Ord">Ord</a> <a class="tref" href="#Bool">Bool</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -4636,7 +4669,7 @@ inherited from <a class="fref" href="#Ord.min">Ord.min</a></p>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Ord_Char> </a> <a class="tref" href="#Ord">Ord</a> <a class="tref" href="#Char">Char</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Ord_Char> </a><a class="tref" href="#Ord">Ord</a> <a class="tref" href="#Char">Char</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -4682,7 +4715,7 @@ inherited from <a class="fref" href="#Ord.min">Ord.min</a></p>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Ord_Double> </a> <a class="tref" href="#Ord">Ord</a> <a class="tref" href="#Double">Double</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Ord_Double> </a><a class="tref" href="#Ord">Ord</a> <a class="tref" href="#Double">Double</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -4728,7 +4761,7 @@ inherited from <a class="fref" href="#Ord.min">Ord.min</a></p>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Ord_Float> </a> <a class="tref" href="#Ord">Ord</a> <a class="tref" href="#Float">Float</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Ord_Float> </a><a class="tref" href="#Ord">Ord</a> <a class="tref" href="#Float">Float</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -4774,7 +4807,7 @@ inherited from <a class="fref" href="#Ord.min">Ord.min</a></p>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Ord_Int> </a> <a class="tref" href="#Ord">Ord</a> <a class="tref" href="#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Ord_Int> </a><a class="tref" href="#Ord">Ord</a> <a class="tref" href="#Int">Int</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -4828,7 +4861,7 @@ inherited from <a class="fref" href="#Ord.min">Ord.min</a></p>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Ord_Integer> </a> <a class="tref" href="#Ord">Ord</a> <a class="tref" href="#Integer">Integer</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Ord_Integer> </a><a class="tref" href="#Ord">Ord</a> <a class="tref" href="#Integer">Integer</a></SPAN></dt>
 <dd class="inst">
 <p>
 <a class="tref" href="#Integer">Integer</a> is an instance of <a class="tref" href="#Ord">Ord</a></p>
@@ -4884,7 +4917,7 @@ inherited from <a class="fref" href="#Ord.compare">Ord.compare</a></p>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Ord_Long> </a> <a class="tref" href="#Ord">Ord</a> <a class="tref" href="#Long">Long</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Ord_Long> </a><a class="tref" href="#Ord">Ord</a> <a class="tref" href="#Long">Long</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -4938,7 +4971,7 @@ inherited from <a class="fref" href="#Ord.min">Ord.min</a></p>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Ord_String> </a> <a class="tref" href="#Ord">Ord</a> <a class="tref" href="#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Ord_String> </a><a class="tref" href="#Ord">Ord</a> <a class="tref" href="#String">String</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -4984,7 +5017,7 @@ inherited from <a class="fref" href="#Ord.min">Ord.min</a></p>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Real_Double> </a> <a class="tref" href="#Real">Real</a> <a class="tref" href="#Double">Double</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Real_Double> </a><a class="tref" href="#Real">Real</a> <a class="tref" href="#Double">Double</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -5064,7 +5097,7 @@ inherited from <a class="fref" href="#Num.subtract">Num.subtract</a></p>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Real_Float> </a> <a class="tref" href="#Real">Real</a> <a class="tref" href="#Float">Float</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Real_Float> </a><a class="tref" href="#Real">Real</a> <a class="tref" href="#Float">Float</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -5832,6 +5865,12 @@ inherited from <a class="fref" href="#Num.subtract">Num.subtract</a></p>
 <a class="fref" href="#Real_Float.zero">Real_Float.zero</a>, <a class="fref" href="#Real_Float.one">Real_Float.one</a></p>
 </dd>
 <dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#HaskellBool">HaskellBool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HaskellBool.False">HaskellBool.False</a>, <a class="fref" href="#HaskellBool.True">HaskellBool.True</a></p>
+</dd>
+<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
@@ -6246,22 +6285,16 @@ inherited from <a class="fref" href="#Num.subtract">Num.subtract</a></p>
 <a class="fref" href="#fst">fst</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α, β) → β</SPAN></dt>
+<SPAN CLASS="code">(β, α) → α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#snd">snd</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α→β) → α → β</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#$_excl">$!</a></p>
-</dd>
-<dt class="func">
 <SPAN CLASS="code">(β→α) → β → α</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#$">$</a></p>
+<a class="fref" href="#$">$</a>, <a class="fref" href="#$_excl">$!</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#String">String</a> → a → b → <a class="tref" href="#String">String</a></SPAN></dt>
@@ -6294,10 +6327,10 @@ inherited from <a class="fref" href="#Num.subtract">Num.subtract</a></p>
 <a class="fref" href="#maybe">maybe</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">α → β → α</SPAN></dt>
+<SPAN CLASS="code">α → β → β</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#_const">const</a></p>
+<a class="fref" href="#seq">seq</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">α → <a class="tref" href="#ST">ST</a> β α</SPAN></dt>
@@ -6312,10 +6345,10 @@ inherited from <a class="fref" href="#Num.subtract">Num.subtract</a></p>
 <a class="fref" href="#_at">@</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">β → α → α</SPAN></dt>
+<SPAN CLASS="code">β → α → β</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#seq">seq</a></p>
+<a class="fref" href="#_const">const</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#Eq">Eq</a> α ⇒ (β→α) → β → β → <a class="tref" href="#Bool">Bool</a></SPAN></dt>
@@ -6345,19 +6378,25 @@ inherited from <a class="fref" href="#Num.subtract">Num.subtract</a></p>
 <SPAN CLASS="code"><a class="tref" href="#Ord">Ord</a> α ⇒ (β→α) → β → β → <a class="tref" href="#Ordering">Ordering</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#descending">descending</a></p>
+<a class="fref" href="#comparing">comparing</a>, <a class="fref" href="#descending">descending</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Ord">Ord</a> β ⇒ (α→β) → α → α → <a class="tref" href="#Ordering">Ordering</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#comparing">comparing</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code">((α, γ)→β) → α → γ → β</SPAN></dt>
+<SPAN CLASS="code">((γ, β)→α) → γ → β → α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#curry">curry</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(α→α→γ) → (β→α) → β → β → γ</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#on">on</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(α→β→γ) → β → α → γ</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#flip">flip</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">(α→γ) → (β→γ) → (α | β) → γ</SPAN></dt>
@@ -6366,25 +6405,13 @@ inherited from <a class="fref" href="#Num.subtract">Num.subtract</a></p>
 <a class="fref" href="#either">either</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(β→β→α) → (γ→β) → γ → γ → α</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#on">on</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code">(β→γ→α) → γ → β → α</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#flip">flip</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code">(γ→β→α) → (γ, β) → α</SPAN></dt>
+<SPAN CLASS="code">(β→γ→α) → (β, γ) → α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#uncurry">uncurry</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#ST">ST</a> β γ → (γ→<a class="tref" href="#ST">ST</a> β α) → <a class="tref" href="#ST">ST</a> β α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#ST">ST</a> γ α → (α→<a class="tref" href="#ST">ST</a> γ β) → <a class="tref" href="#ST">ST</a> γ β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#ST._gt_gt_eq">ST.&gt;&gt;=</a></p>

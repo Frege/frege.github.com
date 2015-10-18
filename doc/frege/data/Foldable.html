@@ -88,7 +88,7 @@ Table of Content</h3>
 <a HREF="#data">Definitions</a></div>
 <dl>
 <dt>
-<SPAN CLASS="code"><b>class </b><a class="tref" href="#Foldable">Foldable</a> <a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> t ⇒  t</SPAN></dt>
+<SPAN CLASS="code"><b>class </b><a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> t ⇒  <a class="tref" href="#Foldable">Foldable</a> t</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -210,15 +210,15 @@ Table of Content</h3>
 <a HREF="#instance">Instances</a></div>
 <dl>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Foldable_Identity"> </a> <a class="tref" href="#Foldable">Foldable</a> <a class="tref" href="./wrapper/Identity.html#Identity">Identity</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Foldable_Identity"> </a><a class="tref" href="#Foldable">Foldable</a> <a class="tref" href="./wrapper/Identity.html#Identity">Identity</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Foldable_Maybe"> </a> <a class="tref" href="#Foldable">Foldable</a> <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Foldable_Maybe"> </a><a class="tref" href="#Foldable">Foldable</a> <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Foldable__lbrack_rbrack"> </a> <a class="tref" href="#Foldable">Foldable</a> <a class="tref" href="../prelude/PreludeBase.html#List">[]</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Foldable__lbrack_rbrack"> </a><a class="tref" href="#Foldable">Foldable</a> <a class="tref" href="../prelude/PreludeBase.html#List">[]</a></SPAN></dt>
 <dd>
 </dd>
 </dl>
@@ -232,7 +232,7 @@ Table of Content</h3>
 <a NAME="data">Definitions</a></h2>
 <dl class="data">
 <dt class="data">
-<SPAN CLASS="code"><b>class </b><a name=Foldable>Foldable</a> <a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> t ⇒  t</SPAN></dt>
+<SPAN CLASS="code"><b>class </b><a class="tref" href="../prelude/PreludeMonad.html#Functor">Functor</a> t ⇒  <a name=Foldable>Foldable</a> t</SPAN></dt>
 <dd class="data">
 <p>
 Data structures that can be folded.</p>
@@ -500,7 +500,7 @@ The <a class="fref" href="#find">find</a> function takes a predicate and a struc
 <a NAME="instance">Instances</a></h2>
 <dl class="inst">
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Foldable_Identity> </a> <a class="tref" href="#Foldable">Foldable</a> <a class="tref" href="./wrapper/Identity.html#Identity">Identity</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Foldable_Identity> </a><a class="tref" href="#Foldable">Foldable</a> <a class="tref" href="./wrapper/Identity.html#Identity">Identity</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -518,11 +518,11 @@ inherited from <a class="fref" href="#Foldable.fold">Foldable.fold</a></p>
 inherited from <a class="fref" href="#Foldable.fold1">Foldable.fold1</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Foldable_Identity.foldMap>foldMap</a> ∷ <a class="tref" href="./Monoid.html#Monoid">Monoid</a> α ⇒ (<b>β → α</b>) → <b><a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> β</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a name=Foldable_Identity.foldMap>foldMap</a> ∷ <a class="tref" href="./Monoid.html#Monoid">Monoid</a> β ⇒ (<b>α → β</b>) → <b><a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> α</b> → β</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Foldable_Identity.foldMap1>foldMap1</a> ∷ <a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> α ⇒ (β → α) → <b><a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> β</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a name=Foldable_Identity.foldMap1>foldMap1</a> ∷ <a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> β ⇒ (α → β) → <b><a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> α</b> → β</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Foldable.foldMap1">Foldable.foldMap1</a></p>
@@ -554,7 +554,7 @@ inherited from <a class="fref" href="#Foldable.foldr1">Foldable.foldr1</a></p>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Foldable_Maybe> </a> <a class="tref" href="#Foldable">Foldable</a> <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Foldable_Maybe> </a><a class="tref" href="#Foldable">Foldable</a> <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -578,13 +578,13 @@ inherited from <a class="fref" href="#Foldable.fold1">Foldable.fold1</a></p>
 inherited from <a class="fref" href="#Foldable.foldMap">Foldable.foldMap</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Foldable_Maybe.foldMap1>foldMap1</a> ∷ <a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> α ⇒ (β → α) → <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> β</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a name=Foldable_Maybe.foldMap1>foldMap1</a> ∷ <a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> β ⇒ (α → β) → <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α</b> → β</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Foldable.foldMap1">Foldable.foldMap1</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Foldable_Maybe.foldl>foldl</a> ∷ (β → α → β) → β → <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α</b> → β</SPAN></dt>
+<SPAN CLASS="code"><a name=Foldable_Maybe.foldl>foldl</a> ∷ (α → β → α) → α → <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> β</b> → α</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
@@ -594,7 +594,7 @@ inherited from <a class="fref" href="#Foldable.foldMap1">Foldable.foldMap1</a></
 inherited from <a class="fref" href="#Foldable.foldl1">Foldable.foldl1</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Foldable_Maybe.foldr>foldr</a> ∷ (β → α → α) → α → <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> β</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a name=Foldable_Maybe.foldr>foldr</a> ∷ (α → β → β) → β → <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α</b> → β</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
@@ -606,7 +606,7 @@ inherited from <a class="fref" href="#Foldable.foldr1">Foldable.foldr1</a></p>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Foldable__lbrack_rbrack> </a> <a class="tref" href="#Foldable">Foldable</a> <a class="tref" href="../prelude/PreludeBase.html#List">[]</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Foldable__lbrack_rbrack> </a><a class="tref" href="#Foldable">Foldable</a> <a class="tref" href="../prelude/PreludeBase.html#List">[]</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -630,13 +630,13 @@ inherited from <a class="fref" href="#Foldable.fold1">Foldable.fold1</a></p>
 inherited from <a class="fref" href="#Foldable.foldMap">Foldable.foldMap</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Foldable__lbrack_rbrack.foldMap1>foldMap1</a> ∷ <a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> α ⇒ (β → α) → <b>[β]</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a name=Foldable__lbrack_rbrack.foldMap1>foldMap1</a> ∷ <a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> β ⇒ (α → β) → <b>[α]</b> → β</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Foldable.foldMap1">Foldable.foldMap1</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Foldable__lbrack_rbrack.foldl>foldl</a> ∷ (β → α → β) → <b>β</b> → <b>[α]</b> → β</SPAN></dt>
+<SPAN CLASS="code"><a name=Foldable__lbrack_rbrack.foldl>foldl</a> ∷ (α → β → α) → <b>α</b> → <b>[β]</b> → α</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
@@ -646,7 +646,7 @@ inherited from <a class="fref" href="#Foldable.foldMap1">Foldable.foldMap1</a></
 inherited from <a class="fref" href="#Foldable.foldl1">Foldable.foldl1</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Foldable__lbrack_rbrack.foldr>foldr</a> ∷ (β → α → α) → α → <b>[β]</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a name=Foldable__lbrack_rbrack.foldr>foldr</a> ∷ (α → β → β) → β → <b>[α]</b> → β</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
@@ -722,40 +722,40 @@ inherited from <a class="fref" href="#Foldable.foldr1">Foldable.foldr1</a></p>
 <a class="fref" href="#Foldable__lbrack_rbrack.fold1">Foldable_[].fold1</a></p>
 </dd>
 <dt class="func">
+<SPAN CLASS="code">(α → β → α) → α → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> β → α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Foldable_Maybe.foldl">Foldable_Maybe.foldl</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(α → β → α) → α → [β] → α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Foldable__lbrack_rbrack.foldl">Foldable_[].foldl</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(α → β → β) → β → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α → β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Foldable_Maybe.foldr">Foldable_Maybe.foldr</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(α → β → β) → β → [α] → β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Foldable__lbrack_rbrack.foldr">Foldable_[].foldr</a></p>
+</dd>
+<dt class="func">
 <SPAN CLASS="code">(β → α → α) → α → <a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> β → α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Foldable_Identity.foldr">Foldable_Identity.foldr</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(β → α → α) → α → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> β → α</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Foldable_Maybe.foldr">Foldable_Maybe.foldr</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code">(β → α → α) → α → [β] → α</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Foldable__lbrack_rbrack.foldr">Foldable_[].foldr</a></p>
-</dd>
-<dt class="func">
 <SPAN CLASS="code">(β → α → β) → β → <a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> α → β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Foldable_Identity.foldl">Foldable_Identity.foldl</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code">(β → α → β) → β → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α → β</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Foldable_Maybe.foldl">Foldable_Maybe.foldl</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code">(β → α → β) → β → [α] → β</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Foldable__lbrack_rbrack.foldl">Foldable_[].foldl</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#Foldable">Foldable</a> t ⇒ (a → a → <a class="tref" href="../prelude/PreludeBase.html#Ordering">Ordering</a>) → t a → a</SPAN></dt>
@@ -818,12 +818,6 @@ inherited from <a class="fref" href="#Foldable.foldr1">Foldable.foldr1</a></p>
 <a class="fref" href="#maximum">maximum</a>, <a class="fref" href="#minimum">minimum</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./Monoid.html#Monoid">Monoid</a> α ⇒ (β → α) → <a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> β → α</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Foldable_Identity.foldMap">Foldable_Identity.foldMap</a></p>
-</dd>
-<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="./Monoid.html#Monoid">Monoid</a> α ⇒ (β → α) → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> β → α</SPAN></dt>
 <dd class="func">
 <p>
@@ -836,19 +830,25 @@ inherited from <a class="fref" href="#Foldable.foldr1">Foldable.foldr1</a></p>
 <a class="fref" href="#Foldable__lbrack_rbrack.foldMap">Foldable_[].foldMap</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> α ⇒ (β → α) → <a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> β → α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./Monoid.html#Monoid">Monoid</a> β ⇒ (α → β) → <a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> α → β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Foldable_Identity.foldMap">Foldable_Identity.foldMap</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> β ⇒ (α → β) → <a class="tref" href="./wrapper/Identity.html#Identity">Identity</a> α → β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Foldable_Identity.foldMap1">Foldable_Identity.foldMap1</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> α ⇒ (β → α) → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> β → α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> β ⇒ (α → β) → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α → β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Foldable_Maybe.foldMap1">Foldable_Maybe.foldMap1</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> α ⇒ (β → α) → [β] → α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> β ⇒ (α → β) → [α] → β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Foldable__lbrack_rbrack.foldMap1">Foldable_[].foldMap1</a></p>

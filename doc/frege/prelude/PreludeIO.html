@@ -64,23 +64,23 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>class </b><a class="tref" href="#Cloneable">Cloneable</a> <a class="tref" href="#Freezable">Freezable</a> f ⇒  f</SPAN></dt>
+<SPAN CLASS="code"><b>class </b><a class="tref" href="#Freezable">Freezable</a> f ⇒  <a class="tref" href="#Cloneable">Cloneable</a> f</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>class </b><a class="tref" href="#Exceptional">Exceptional</a> <a class="tref" href="#JavaType">JavaType</a> e ⇒  e</SPAN></dt>
+<SPAN CLASS="code"><b>class </b><a class="tref" href="#JavaType">JavaType</a> e ⇒  <a class="tref" href="#Exceptional">Exceptional</a> e</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>class </b><a class="tref" href="#Freezable">Freezable</a>  f</SPAN></dt>
+<SPAN CLASS="code"><b>class </b> <a class="tref" href="#Freezable">Freezable</a> f</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>class </b><a class="tref" href="#JavaType">JavaType</a>  e</SPAN></dt>
+<SPAN CLASS="code"><b>class </b> <a class="tref" href="#JavaType">JavaType</a> e</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>class </b><a class="tref" href="#Serializable">Serializable</a> <a class="tref" href="#Freezable">Freezable</a> f ⇒  f</SPAN></dt>
+<SPAN CLASS="code"><b>class </b><a class="tref" href="#Freezable">Freezable</a> f ⇒  <a class="tref" href="#Serializable">Serializable</a> f</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -116,7 +116,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#_try">try</a> ∷ <a class="tref" href="./PreludeMonad.html#Monad">Monad</a> β ⇒ (α→β γ) → α → β γ</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#_try">try</a> ∷ <a class="tref" href="./PreludeMonad.html#Monad">Monad</a> γ ⇒ (β→γ α) → β → γ α</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -154,19 +154,19 @@ Table of Content</h3>
 <a HREF="#instance">Instances</a></div>
 <dl>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Exceptional_Exception"> </a> <a class="tref" href="#Exceptional">Exceptional</a> <a class="tref" href="#Exception">Exception</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Exceptional_Exception"> </a><a class="tref" href="#Exceptional">Exceptional</a> <a class="tref" href="#Exception">Exception</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Exceptional_GuardFailed"> </a> <a class="tref" href="#Exceptional">Exceptional</a> <a class="tref" href="./PreludeBase.html#GuardFailed">GuardFailed</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Exceptional_GuardFailed"> </a><a class="tref" href="#Exceptional">Exceptional</a> <a class="tref" href="./PreludeBase.html#GuardFailed">GuardFailed</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Exceptional_NoMatch"> </a> <a class="tref" href="#Exceptional">Exceptional</a> <a class="tref" href="./PreludeBase.html#NoMatch">NoMatch</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Exceptional_NoMatch"> </a><a class="tref" href="#Exceptional">Exceptional</a> <a class="tref" href="./PreludeBase.html#NoMatch">NoMatch</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Exceptional_Undefined"> </a> <a class="tref" href="#Exceptional">Exceptional</a> <a class="tref" href="./PreludeBase.html#Undefined">Undefined</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Exceptional_Undefined"> </a><a class="tref" href="#Exceptional">Exceptional</a> <a class="tref" href="./PreludeBase.html#Undefined">Undefined</a></SPAN></dt>
 <dd>
 </dd>
 </dl>
@@ -180,7 +180,7 @@ Table of Content</h3>
 <a NAME="data">Definitions</a></h2>
 <dl class="data">
 <dt class="data">
-<SPAN CLASS="code"><b>class </b><a name=JavaType>JavaType</a>  e</SPAN></dt>
+<SPAN CLASS="code"><b>class </b> <a name=JavaType>JavaType</a> e</SPAN></dt>
 <dd class="data">
 <p>
 Make the <SPAN CLASS="code">java.lang.Class</SPAN> object corresponding to the instantiated type available.</p>
@@ -206,7 +206,7 @@ The <SPAN CLASS="code">java.lang.Class</SPAN> object of the instantiated type   
 </dl>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><b>class </b><a name=Exceptional>Exceptional</a> <a class="tref" href="#JavaType">JavaType</a> e ⇒  e</SPAN></dt>
+<SPAN CLASS="code"><b>class </b><a class="tref" href="#JavaType">JavaType</a> e ⇒  <a name=Exceptional>Exceptional</a> e</SPAN></dt>
 <dd class="data">
 <p>
 Function <a class="fref" href="#_catch">catch</a> requires that the argument of a handler function is an instance of <a class="tref" href="#Exceptional">Exceptional</a>.</p>
@@ -300,7 +300,7 @@ Deliberately throw an exception in the <a class="tref" href="./PreludeBase.html#
 Deliberately throw an exception in the <a class="tref" href="./PreludeBase.html#IO">IO</a> monad.   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=_try>try</a> ∷ <a class="tref" href="./PreludeMonad.html#Monad">Monad</a> β ⇒ (α→β γ) → α → β γ</SPAN></dt>
+<SPAN CLASS="code"><a name=_try>try</a> ∷ <a class="tref" href="./PreludeMonad.html#Monad">Monad</a> γ ⇒ (β→γ α) → β → γ α</SPAN></dt>
 <dd class="data">
 <p>
 Make sure that exceptions thrown during construction of an action can be catched. See <a class="fref" href="#_catch">catch</a> for an explanation.</p>
@@ -445,7 +445,7 @@ They type of <a class="tref" href="./PreludeBase.html#ST">ST</a> actions that re
 This is an abbreviation for <SPAN CLASS="code">ST s (Mutable s d)</SPAN>    </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><b>class </b><a name=Freezable>Freezable</a>  f</SPAN></dt>
+<SPAN CLASS="code"><b>class </b> <a name=Freezable>Freezable</a> f</SPAN></dt>
 <dd class="data">
 <p>
 Type class for mutable values that support making read-only copies. To be implemented with care.</p>
@@ -473,7 +473,7 @@ If <a class="fref" href="#Freezable.thaw">Freezable.thaw</a> is not implemented 
 </dl>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><b>class </b><a name=Cloneable>Cloneable</a> <a class="tref" href="#Freezable">Freezable</a> f ⇒  f</SPAN></dt>
+<SPAN CLASS="code"><b>class </b><a class="tref" href="#Freezable">Freezable</a> f ⇒  <a name=Cloneable>Cloneable</a> f</SPAN></dt>
 <dd class="data">
 <p>
 For a data type declared like</p>
@@ -507,7 +507,7 @@ Member Functions</h3>
 </dl>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><b>class </b><a name=Serializable>Serializable</a> <a class="tref" href="#Freezable">Freezable</a> f ⇒  f</SPAN></dt>
+<SPAN CLASS="code"><b>class </b><a class="tref" href="#Freezable">Freezable</a> f ⇒  <a name=Serializable>Serializable</a> f</SPAN></dt>
 <dd class="data">
 <p>
 For a data type declared like</p>
@@ -611,7 +611,7 @@ Alias for <a class="fref" href="#Ref._new">Ref.new</a></p>
 <a NAME="instance">Instances</a></h2>
 <dl class="inst">
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Exceptional_Exception> </a> <a class="tref" href="#Exceptional">Exceptional</a> <a class="tref" href="#Exception">Exception</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Exceptional_Exception> </a><a class="tref" href="#Exceptional">Exceptional</a> <a class="tref" href="#Exception">Exception</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -623,7 +623,7 @@ Member Functions</h3>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Exceptional_GuardFailed> </a> <a class="tref" href="#Exceptional">Exceptional</a> <a class="tref" href="./PreludeBase.html#GuardFailed">GuardFailed</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Exceptional_GuardFailed> </a><a class="tref" href="#Exceptional">Exceptional</a> <a class="tref" href="./PreludeBase.html#GuardFailed">GuardFailed</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -635,7 +635,7 @@ Member Functions</h3>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Exceptional_NoMatch> </a> <a class="tref" href="#Exceptional">Exceptional</a> <a class="tref" href="./PreludeBase.html#NoMatch">NoMatch</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Exceptional_NoMatch> </a><a class="tref" href="#Exceptional">Exceptional</a> <a class="tref" href="./PreludeBase.html#NoMatch">NoMatch</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -647,7 +647,7 @@ Member Functions</h3>
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Exceptional_Undefined> </a> <a class="tref" href="#Exceptional">Exceptional</a> <a class="tref" href="./PreludeBase.html#Undefined">Undefined</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Exceptional_Undefined> </a><a class="tref" href="#Exceptional">Exceptional</a> <a class="tref" href="./PreludeBase.html#Undefined">Undefined</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
@@ -801,7 +801,7 @@ Member Functions</h3>
 <a class="fref" href="#_catch">catch</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./PreludeMonad.html#Monad">Monad</a> β ⇒ (α→β γ) → α → β γ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./PreludeMonad.html#Monad">Monad</a> γ ⇒ (β→γ α) → β → γ α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#_try">try</a></p>
