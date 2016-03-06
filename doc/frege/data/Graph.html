@@ -104,7 +104,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#flattenSCCs">flattenSCCs</a> ∷ <b>[<a class="tref" href="#SCC">SCC</a> a]</b> → [a]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#flattenSCCs">flattenSCCs</a> ∷ [<a class="tref" href="#SCC">SCC</a> a] → [a]</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -112,7 +112,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#edgeFromTuple">edgeFromTuple</a> ∷ <b>(α, β)</b> → (α, α, β)</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#edgeFromTuple">edgeFromTuple</a> ∷ <b>(β, α)</b> → (β, β, α)</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -144,11 +144,15 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#mapT">mapT</a> ∷ (<a class="tref" href="../prelude/PreludeArrays.html#ArrayElem">ArrayElem</a> a, <a class="tref" href="../prelude/PreludeArrays.html#ArrayElem">ArrayElem</a> b) ⇒ (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → a → b) → <b><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> a</b> → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> b</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#mapT">mapT</a> ∷ (<a class="tref" href="../prelude/PreludeArrays.html#ArrayElement">ArrayElement</a> a, <a class="tref" href="../prelude/PreludeArrays.html#ArrayElement">ArrayElement</a> b) ⇒ (<b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → a → b</b>) → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> a → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> b</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#buildG">buildG</a> ∷ (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>) → [(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)] → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#mapTI">mapTI</a> ∷ <a class="tref" href="../prelude/PreludeArrays.html#ArrayElement">ArrayElement</a> a ⇒ (<b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → a → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b>) → <b><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> a</b> → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#buildG">buildG</a> ∷ <b>(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</b> → [(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)] → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>]</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -168,7 +172,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#graphFromEdges_tick">graphFromEdges'</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> key ⇒ [(node, key, [key])] → (<a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>], <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>→(node, key, [key]))</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#graphFromEdges$tick">graphFromEdges'</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> key ⇒ [(node, key, [key])] → (<a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>], <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>→(node, key, [key]))</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -270,7 +274,7 @@ Table of Content</h3>
 <a HREF="#of">Re-Exported Items</a></div>
 <dl>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="../prelude/PreludeArrays.html#ArrayElem.elemAt">elemAt</a> ∷ <a class="tref" href="../prelude/PreludeArrays.html#ArrayElem">ArrayElem</a> a ⇒ <b><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> a</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → a&nbsp;</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="../prelude/PreludeArrays.html#ArrayElement.elemAt">elemAt</a> ∷ <a class="tref" href="../prelude/PreludeArrays.html#ArrayElement">ArrayElement</a> a ⇒ <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> a → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → a&nbsp;</SPAN></dt>
 <dd>
 </dd>
 </dl>
@@ -306,7 +310,7 @@ A maximal set of mutually reachable vertices.   </p>
 </dl>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=flattenSCCs>flattenSCCs</a> ∷ <b>[<a class="tref" href="#SCC">SCC</a> a]</b> → [a]</SPAN></dt>
+<SPAN CLASS="code"><a name=flattenSCCs>flattenSCCs</a> ∷ [<a class="tref" href="#SCC">SCC</a> a] → [a]</SPAN></dt>
 <dd class="data">
 <p>
 The vertices of a list of strongly connected components.   </p>
@@ -318,7 +322,7 @@ The vertices of a list of strongly connected components.   </p>
 The vertices of a strongly connected component.   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=edgeFromTuple>edgeFromTuple</a> ∷ <b>(α, β)</b> → (α, α, β)</SPAN></dt>
+<SPAN CLASS="code"><a name=edgeFromTuple>edgeFromTuple</a> ∷ <b>(β, α)</b> → (β, β, α)</SPAN></dt>
 <dd class="data">
 <p>
 Make a (key, [key]) list into one that is accepted by <a class="fref" href="#stronglyConnComp">stronglyConnComp</a>   </p>
@@ -374,11 +378,15 @@ All vertices of a graph.   </p>
 All edges of a graph.   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=mapT>mapT</a> ∷ (<a class="tref" href="../prelude/PreludeArrays.html#ArrayElem">ArrayElem</a> a, <a class="tref" href="../prelude/PreludeArrays.html#ArrayElem">ArrayElem</a> b) ⇒ (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → a → b) → <b><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> a</b> → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> b</SPAN></dt>
+<SPAN CLASS="code"><a name=mapT>mapT</a> ∷ (<a class="tref" href="../prelude/PreludeArrays.html#ArrayElement">ArrayElement</a> a, <a class="tref" href="../prelude/PreludeArrays.html#ArrayElement">ArrayElement</a> b) ⇒ (<b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → a → b</b>) → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> a → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> b</SPAN></dt>
 <dd class="data">
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=buildG>buildG</a> ∷ (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>) → [(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)] → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>]</SPAN></dt>
+<SPAN CLASS="code"><a name=mapTI>mapTI</a> ∷ <a class="tref" href="../prelude/PreludeArrays.html#ArrayElement">ArrayElement</a> a ⇒ (<b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → a → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b>) → <b><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> a</b> → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=buildG>buildG</a> ∷ <b>(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</b> → [(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)] → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>]</SPAN></dt>
 <dd class="data">
 <p>
 Build a graph from a list of edges.   </p>
@@ -406,7 +414,7 @@ A table of the count of edges from each node.   </p>
 A table of the count of edges into each node.   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=graphFromEdges_tick>graphFromEdges'</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> key ⇒ [(node, key, [key])] → (<a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>], <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>→(node, key, [key]))</SPAN></dt>
+<SPAN CLASS="code"><a name=graphFromEdges$tick>graphFromEdges'</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> key ⇒ [(node, key, [key])] → (<a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>], <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>→(node, key, [key]))</SPAN></dt>
 <dd class="data">
 <p>
 Identical to <a class="fref" href="#graphFromEdges">graphFromEdges</a>, except that the return value does not include the function which maps keys to vertices.  This version of <a class="fref" href="#graphFromEdges">graphFromEdges</a> is for backwards compatibility.</p>
@@ -688,19 +696,25 @@ An undirected graph is biconnected if the deletion of any vertex leaves it conne
 <a class="fref" href="#SCC.AcyclicSCC">SCC.AcyclicSCC</a></p>
 </dd>
 <dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#ArrayElement">ArrayElement</a> a ⇒ (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → a → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>) → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> a → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#mapTI">mapTI</a></p>
+</dd>
+<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> key ⇒ [(key, [key])] → [[key]]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#stronglyConnectedComponents">stronglyConnectedComponents</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α, β) → (α, α, β)</SPAN></dt>
+<SPAN CLASS="code">(β, α) → (β, β, α)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#edgeFromTuple">edgeFromTuple</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeArrays.html#ArrayElem">ArrayElem</a> a, <a class="tref" href="../prelude/PreludeArrays.html#ArrayElem">ArrayElem</a> b) ⇒ (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → a → b) → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> a → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> b</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeArrays.html#ArrayElement">ArrayElement</a> a, <a class="tref" href="../prelude/PreludeArrays.html#ArrayElement">ArrayElement</a> b) ⇒ (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → a → b) → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> a → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> b</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#mapT">mapT</a></p>
@@ -715,7 +729,7 @@ An undirected graph is biconnected if the deletion of any vertex leaves it conne
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> key ⇒ [(node, key, [key])] → (<a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>], <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>→(node, key, [key]))</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#graphFromEdges_tick">graphFromEdges'</a></p>
+<a class="fref" href="#graphFromEdges$tick">graphFromEdges'</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> key ⇒ [(node, key, [key])] → [<a class="tref" href="#SCC">SCC</a> (node, key, [key])]</SPAN></dt>

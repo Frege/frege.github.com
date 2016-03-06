@@ -73,6 +73,10 @@ import <a HREF="../compiler/enums/Flags.html">Compiler.enums.Flags</a> as Compil
 </li>
 <li>
 <div>
+import <a HREF="../compiler/common/Errors.html">Compiler.common.Errors</a> as Errors</div>
+</li>
+<li>
+<div>
 import <a HREF="../compiler/types/Global.html">Compiler.types.Global</a> as G</div>
 </li>
 <li>
@@ -137,7 +141,15 @@ import <a HREF="../test/QuickCheck.html">Test.QuickCheck</a> as QC</div>
 </li>
 <li>
 <div>
+import <a HREF="../test/QuickCheckGen.html">Test.QuickCheckGen</a> as QCG</div>
+</li>
+<li>
+<div>
 import <a HREF="../compiler/types/QNames.html">Compiler.types.QNames</a> as QNames</div>
+</li>
+<li>
+<div>
+import <a HREF="../test/QuickCheckProperty.html">Test.QuickCheckProperty</a> as QuickCheckProperty</div>
 </li>
 <li>
 <div>
@@ -154,6 +166,10 @@ import <a HREF="../control/monad/State.html">Control.monad.State</a> as State</d
 <li>
 <div>
 import <a HREF="../compiler/types/Symbols.html">Compiler.types.Symbols</a> as Symbols</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/types/Targets.html">Compiler.types.Targets</a> as Targets</div>
 </li>
 <li>
 <div>
@@ -216,7 +232,11 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#_main">main</a> ∷ <b>[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#$main">main</a> ∷ <b>[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#myTarget">myTarget</a> ∷ <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -240,11 +260,21 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#toLambda">toLambda</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Object">Object</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a>&nbsp;</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#toGen">toGen</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Object">Object</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a>&nbsp;</SPAN></dt>
 <dd>
 </dd>
 <dt>
 <SPAN CLASS="code"><a class="fref" href="#checkField">checkField</a> ∷ <b><a class="tref" href="#Options">Options</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#Class">Class</a> a → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Counter">Counter</a></SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#of">Re-Exported Items</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="../test/QuickCheckGen.html#Gen"> </a> <a class="tref" href="../test/QuickCheckGen.html#Gen">Gen</a> a</SPAN></dt>
 <dd>
 </dd>
 </dl>
@@ -288,13 +318,19 @@ functionality relies on the absolute name of type <a class="tref" href="../test/
 Constructors</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Options.Opt>Opt</a> {list ∷ <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>, verbose ∷ <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>, excluded ∷ <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>, ntimes ∷ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, props ∷ [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>], global ∷ <a class="tref" href="../compiler/types/Global.html#Global">Global</a>}</SPAN></dt>
+<SPAN CLASS="code"><a name=Options.Opt>Opt</a> {list ∷ <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>, verbose ∷ <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>, excluded ∷ <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>, detailed ∷ <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>, ntimes ∷ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, props ∷ [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>], global ∷ <a class="tref" href="../compiler/types/Global.html#Global">Global</a>}</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
 <h3>
 Member Functions</h3>
 <dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Options.detailed>detailed</a> ∷ <b><a class="tref" href="#Options">Options</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">detailed</SPAN></p>
+</dd>
 <dt class="func">
 <SPAN CLASS="code"><a name=Options.excluded>excluded</a> ∷ <b><a class="tref" href="#Options">Options</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
@@ -392,8 +428,14 @@ access field <SPAN CLASS="code">passed</SPAN></p>
 <dd class="data">
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=_main>main</a> ∷ <b>[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a name=$main>main</a> ∷ <b>[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=myTarget>myTarget</a> ∷ <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="data">
+<p>
+find the target this module was compiled for   </p>
 </dd>
 <dt class="data">
 <SPAN CLASS="code"><a name=getOpt>getOpt</a> ∷ <a class="tref" href="#Options">Options</a> → <b>[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="#Options">Options</a>, [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>])</SPAN></dt>
@@ -418,12 +460,12 @@ import a package and extract all toplevel properties   </p>
 <dd class="data">
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=toLambda>toLambda</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Object">Object</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a><br><b>native </b>(frege.runtime.Lambda)</SPAN></dt>
+<SPAN CLASS="code"><a name=toGen>toGen</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Object">Object</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a><br><b>native </b>Quick.toGenImpl</SPAN></dt>
 <dd class="data">
 <p>
 This does the magic.</p>
 <p>
-We know that the type of the item is <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a> on the Frege level. This will be compiled to something that is a Lambda in Java terms.</p>
+We know that the type of the item is <a class="tref" href="../test/QuickCheckGen.html#Gen">Gen</a> <a class="tref" href="../test/QuickCheckProperty.html#Prop">Prop</a> on the Frege level. This will be compiled to something that is a TGen in Java terms.</p>
 <p>
 Hence the cast is a no-op, and the native interface will believe our claim that the Lambda is a Property and will allow us to use it just like any other <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a>.</p>
 </dd>
@@ -442,13 +484,13 @@ Hence the cast is a no-op, and the native interface will believe our claim that 
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Eq_Counter._excl_eq>!=</a> ∷ <b><a class="tref" href="#Counter">Counter</a></b> → <b><a class="tref" href="#Counter">Counter</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
+<SPAN CLASS="code"><a name=Eq_Counter.$excl$eq>!=</a> ∷ <b><a class="tref" href="#Counter">Counter</a></b> → <b><a class="tref" href="#Counter">Counter</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
 <dd class="func">
 <p>
-inherited from <a class="fref" href="../prelude/PreludeBase.html#Eq._excl_eq">Eq.!=</a></p>
+inherited from <a class="fref" href="../prelude/PreludeBase.html#Eq.$excl$eq">Eq.!=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Eq_Counter._eq_eq>==</a> ∷ <b><a class="tref" href="#Counter">Counter</a></b> → <b><a class="tref" href="#Counter">Counter</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
+<SPAN CLASS="code"><a name=Eq_Counter.$eq$eq>==</a> ∷ <b><a class="tref" href="#Counter">Counter</a></b> → <b><a class="tref" href="#Counter">Counter</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
 <dd class="func">
 <p>
 Function generated for derived instance.</p>
@@ -515,7 +557,7 @@ inherited from <a class="fref" href="../data/Monoid.html#Semigroup.stimes">Semig
 <SPAN CLASS="code">[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>] → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#_main">main</a></p>
+<a class="fref" href="#$main">main</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">[<a class="tref" href="#Counter">Counter</a>] → <a class="tref" href="#Counter">Counter</a></SPAN></dt>
@@ -524,7 +566,7 @@ inherited from <a class="fref" href="../data/Monoid.html#Semigroup.stimes">Semig
 <a class="fref" href="#Monoid_Counter.sconcat">Monoid_Counter.sconcat</a>, <a class="fref" href="#Monoid_Counter.mconcat">Monoid_Counter.mconcat</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>] → <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="#Options">Options</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>] → <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="#Options">Options</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Options.Opt">Options.Opt</a></p>
@@ -545,7 +587,7 @@ inherited from <a class="fref" href="../data/Monoid.html#Semigroup.stimes">Semig
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Object">Object</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#toLambda">toLambda</a></p>
+<a class="fref" href="#toGen">toGen</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#Counter">Counter</a> → (<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="#Counter">Counter</a></SPAN></dt>
@@ -575,7 +617,7 @@ inherited from <a class="fref" href="../data/Monoid.html#Semigroup.stimes">Semig
 <SPAN CLASS="code"><a class="tref" href="#Counter">Counter</a> → <a class="tref" href="#Counter">Counter</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Eq_Counter._excl_eq">Eq_Counter.!=</a>, <a class="fref" href="#Eq_Counter._eq_eq">Eq_Counter.==</a></p>
+<a class="fref" href="#Eq_Counter.$excl$eq">Eq_Counter.!=</a>, <a class="fref" href="#Eq_Counter.$eq$eq">Eq_Counter.==</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#Counter">Counter</a> → <a class="tref" href="#Counter">Counter</a> → <a class="tref" href="#Counter">Counter</a></SPAN></dt>
@@ -617,7 +659,7 @@ inherited from <a class="fref" href="../data/Monoid.html#Semigroup.stimes">Semig
 <SPAN CLASS="code"><a class="tref" href="#Options">Options</a> → (<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="#Options">Options</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Options.chg$verbose">Options.chg$verbose</a>, <a class="fref" href="#Options.chg$list">Options.chg$list</a>, <a class="fref" href="#Options.chg$excluded">Options.chg$excluded</a></p>
+<a class="fref" href="#Options.chg$verbose">Options.chg$verbose</a>, <a class="fref" href="#Options.chg$detailed">Options.chg$detailed</a>, <a class="fref" href="#Options.chg$excluded">Options.chg$excluded</a>, <a class="fref" href="#Options.chg$list">Options.chg$list</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#Options">Options</a> → (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>→<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>) → <a class="tref" href="#Options">Options</a></SPAN></dt>
@@ -659,7 +701,7 @@ inherited from <a class="fref" href="../data/Monoid.html#Semigroup.stimes">Semig
 <SPAN CLASS="code"><a class="tref" href="#Options">Options</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a> → <a class="tref" href="#Options">Options</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Options.upd$verbose">Options.upd$verbose</a>, <a class="fref" href="#Options.upd$list">Options.upd$list</a>, <a class="fref" href="#Options.upd$excluded">Options.upd$excluded</a></p>
+<a class="fref" href="#Options.upd$verbose">Options.upd$verbose</a>, <a class="fref" href="#Options.upd$list">Options.upd$list</a>, <a class="fref" href="#Options.upd$detailed">Options.upd$detailed</a>, <a class="fref" href="#Options.upd$excluded">Options.upd$excluded</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#Options">Options</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#Options">Options</a></SPAN></dt>
@@ -683,13 +725,19 @@ inherited from <a class="fref" href="../data/Monoid.html#Semigroup.stimes">Semig
 <SPAN CLASS="code"><a class="tref" href="#Options">Options</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Options.verbose">Options.verbose</a>, <a class="fref" href="#Options.list">Options.list</a>, <a class="fref" href="#Options.excluded">Options.excluded</a></p>
+<a class="fref" href="#Options.verbose">Options.verbose</a>, <a class="fref" href="#Options.list">Options.list</a>, <a class="fref" href="#Options.detailed">Options.detailed</a>, <a class="fref" href="#Options.excluded">Options.excluded</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#Options">Options</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Options.ntimes">Options.ntimes</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#myTarget">myTarget</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../test/QuickCheckProperty.html#Property">Property</a></SPAN></dt>
@@ -725,7 +773,7 @@ inherited from <a class="fref" href="../data/Monoid.html#Semigroup.stimes">Semig
 <SPAN CLASS="code">α → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Counter.has$aborted">Counter.has$aborted</a>, <a class="fref" href="#Counter.has$failed">Counter.has$failed</a>, <a class="fref" href="#Counter.has$passed">Counter.has$passed</a>, <a class="fref" href="#Options.has$verbose">Options.has$verbose</a>, <a class="fref" href="#Options.has$ntimes">Options.has$ntimes</a>, <a class="fref" href="#Options.has$global">Options.has$global</a>, <a class="fref" href="#Options.has$excluded">Options.has$excluded</a>, <a class="fref" href="#Options.has$list">Options.has$list</a>, <a class="fref" href="#Options.has$props">Options.has$props</a></p>
+<a class="fref" href="#Counter.has$aborted">Counter.has$aborted</a>, <a class="fref" href="#Counter.has$failed">Counter.has$failed</a>, <a class="fref" href="#Counter.has$passed">Counter.has$passed</a>, <a class="fref" href="#Options.has$props">Options.has$props</a>, <a class="fref" href="#Options.has$list">Options.has$list</a>, <a class="fref" href="#Options.has$ntimes">Options.has$ntimes</a>, <a class="fref" href="#Options.has$detailed">Options.has$detailed</a>, <a class="fref" href="#Options.has$excluded">Options.has$excluded</a>, <a class="fref" href="#Options.has$global">Options.has$global</a>, <a class="fref" href="#Options.has$verbose">Options.has$verbose</a></p>
 </dd>
 </dl>
 <p>

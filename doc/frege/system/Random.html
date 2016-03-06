@@ -100,7 +100,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#getStdRandom">getStdRandom</a> ∷ (<a class="tref" href="#StdGen">StdGen</a>→(β, α)) → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> β</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#getStdRandom">getStdRandom</a> ∷ (<b><a class="tref" href="#StdGen">StdGen</a>→(α, β)</b>) → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> α</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -254,7 +254,7 @@ The global random generator.   </p>
 Alias for <a class="fref" href="#StdGen.setGlobal">StdGen.setGlobal</a></p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=getStdRandom>getStdRandom</a> ∷ (<a class="tref" href="#StdGen">StdGen</a>→(β, α)) → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> β</SPAN></dt>
+<SPAN CLASS="code"><a name=getStdRandom>getStdRandom</a> ∷ (<b><a class="tref" href="#StdGen">StdGen</a>→(α, β)</b>) → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> α</SPAN></dt>
 <dd class="data">
 </dd>
 <dt class="data">
@@ -269,7 +269,7 @@ Applies <a class="fref" href="#RandomGen.split">RandomGen.split</a> to the curre
 <h3>
 Known Instances</h3>
 <p>
-<a class="tref" href="#Random_Int">Int</a>, <a class="tref" href="#Random_Double">Double</a>, <a class="tref" href="#Random_Bool">Bool</a>, <a class="tref" href="#Random_Float">Float</a>, <a class="tref" href="#Random_Long">Long</a>, <a class="tref" href="#Random_Integer">Integer</a></p>
+<a class="tref" href="#Random_Bool">Bool</a>, <a class="tref" href="#Random_Int">Int</a>, <a class="tref" href="#Random_Double">Double</a>, <a class="tref" href="#Random_Float">Float</a>, <a class="tref" href="#Random_Long">Long</a>, <a class="tref" href="#Random_Integer">Integer</a></p>
 <h3>
 Member Functions</h3>
 <dl class="func">
@@ -348,7 +348,7 @@ get the next <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> and 
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=RandomGen_StdGen.split>split</a> ∷ <a class="tref" href="#StdGen">StdGen</a> → (<a class="tref" href="#StdGen">StdGen</a>, <a class="tref" href="#StdGen">StdGen</a>)</SPAN></dt>
+<SPAN CLASS="code"><a name=RandomGen_StdGen.split>split</a> ∷ <b><a class="tref" href="#StdGen">StdGen</a></b> → (<a class="tref" href="#StdGen">StdGen</a>, <a class="tref" href="#StdGen">StdGen</a>)</SPAN></dt>
 <dd class="func">
 <p>
 Make two independent generators, seeded by two <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a> values drawn from the argument   </p>
@@ -376,7 +376,7 @@ inherited from <a class="fref" href="#Random.randomIO">Random.randomIO</a></p>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Random_Bool.randomRIO>randomRIO</a> ∷ (<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>, <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Random_Bool.randomRIO>randomRIO</a> ∷ <b>(<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>, <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>)</b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Random.randomRIO">Random.randomRIO</a></p>
@@ -416,7 +416,7 @@ inherited from <a class="fref" href="#Random.randomIO">Random.randomIO</a></p>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Random_Double.randomRIO>randomRIO</a> ∷ (<a class="tref" href="../prelude/PreludeBase.html#Double">Double</a>, <a class="tref" href="../prelude/PreludeBase.html#Double">Double</a>) → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Double">Double</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Random_Double.randomRIO>randomRIO</a> ∷ <b>(<a class="tref" href="../prelude/PreludeBase.html#Double">Double</a>, <a class="tref" href="../prelude/PreludeBase.html#Double">Double</a>)</b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Double">Double</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Random.randomRIO">Random.randomRIO</a></p>
@@ -456,7 +456,7 @@ inherited from <a class="fref" href="#Random.randomIO">Random.randomIO</a></p>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Random_Float.randomRIO>randomRIO</a> ∷ (<a class="tref" href="../prelude/PreludeBase.html#Float">Float</a>, <a class="tref" href="../prelude/PreludeBase.html#Float">Float</a>) → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Float">Float</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Random_Float.randomRIO>randomRIO</a> ∷ <b>(<a class="tref" href="../prelude/PreludeBase.html#Float">Float</a>, <a class="tref" href="../prelude/PreludeBase.html#Float">Float</a>)</b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Float">Float</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Random.randomRIO">Random.randomRIO</a></p>
@@ -496,7 +496,7 @@ inherited from <a class="fref" href="#Random.randomIO">Random.randomIO</a></p>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Random_Int.randomRIO>randomRIO</a> ∷ (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>) → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Random_Int.randomRIO>randomRIO</a> ∷ <b>(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Random.randomRIO">Random.randomRIO</a></p>
@@ -540,7 +540,7 @@ For the interval (Long.minBound, Long.maxBound), just the converted <a class="tr
 For any other interval, some non-negative <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a> value not greater than the difference between the upper and the lower bound is added to the lower bound.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Random_Integer.randomRIO>randomRIO</a> ∷ (<a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a>, <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a>) → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Random_Integer.randomRIO>randomRIO</a> ∷ <b>(<a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a>, <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a>)</b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Random.randomRIO">Random.randomRIO</a></p>
@@ -582,7 +582,7 @@ inherited from <a class="fref" href="#Random.randomIO">Random.randomIO</a></p>
 We allow only intervals from (Long.minBound `div` 2) to (Long.maxBound `div` 2) with the exception (Long.minBound, Long.maxBound), which is allowed.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Random_Long.randomRIO>randomRIO</a> ∷ (<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>, <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>) → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Random_Long.randomRIO>randomRIO</a> ∷ <b>(<a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>, <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a>)</b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Random.randomRIO">Random.randomRIO</a></p>
@@ -930,7 +930,7 @@ inherited from <a class="fref" href="#Random.randoms">Random.randoms</a></p>
 <a class="fref" href="#Random.randomIO">Random.randomIO</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="#StdGen">StdGen</a>→(β, α)) → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> β</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="#StdGen">StdGen</a>→(α, β)) → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#getStdRandom">getStdRandom</a></p>

@@ -100,11 +100,11 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#_catch">catch</a> ∷ <a class="tref" href="#JavaType">JavaType</a> γ ⇒ <b><a class="tref" href="./PreludeBase.html#ST">ST</a> β α</b> → (<b>γ→<a class="tref" href="./PreludeBase.html#ST">ST</a> β α</b>) → <a class="tref" href="./PreludeBase.html#ST">ST</a> β α&nbsp;</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#$catch">catch</a> ∷ <a class="tref" href="#Exceptional">Exceptional</a> γ ⇒ <b><a class="tref" href="./PreludeBase.html#ST">ST</a> β α</b> → (<b>γ → <a class="tref" href="./PreludeBase.html#ST">ST</a> β α</b>) → <a class="tref" href="./PreludeBase.html#ST">ST</a> β α&nbsp;</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#_finally">finally</a> ∷ <b><a class="tref" href="./PreludeBase.html#IO">IO</a> a</b> → <b><a class="tref" href="./PreludeBase.html#IO">IO</a> b</b> → <a class="tref" href="./PreludeBase.html#IO">IO</a> a&nbsp;&nbsp;</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#$finally">finally</a> ∷ <b><a class="tref" href="./PreludeBase.html#IO">IO</a> a</b> → <b><a class="tref" href="./PreludeBase.html#IO">IO</a> b</b> → <a class="tref" href="./PreludeBase.html#IO">IO</a> a&nbsp;&nbsp;</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -116,7 +116,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#_try">try</a> ∷ <a class="tref" href="./PreludeMonad.html#Monad">Monad</a> γ ⇒ (β→γ α) → β → γ α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#$try">try</a> ∷ (<a class="tref" href="./PreludeMonad.html#Applicative">Applicative</a> β, <a class="tref" href="./PreludeMonad.html#Bind">Bind</a> β) ⇒ (<b>γ→β α</b>) → γ → β α</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -124,7 +124,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#readonly">readonly</a> ∷ (m → b) → <b><a class="tref" href="#Mutable">Mutable</a> s m</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> s b</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#readonly">readonly</a> ∷ (<b>m → b</b>) → <b><a class="tref" href="#Mutable">Mutable</a> s m</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> s b</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -140,7 +140,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#modifyIORef">modifyIORef</a> ∷ <b><a class="tref" href="#Mutable">Mutable</a> β (<a class="tref" href="#Ref">Ref</a> α)</b> → (α→α) → <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#modifyIORef">modifyIORef</a> ∷ <b><a class="tref" href="#Mutable">Mutable</a> β (<a class="tref" href="#Ref">Ref</a> α)</b> → (<b>α→α</b>) → <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -209,7 +209,7 @@ The <SPAN CLASS="code">java.lang.Class</SPAN> object of the instantiated type   
 <SPAN CLASS="code"><b>class </b><a class="tref" href="#JavaType">JavaType</a> e ⇒  <a name=Exceptional>Exceptional</a> e</SPAN></dt>
 <dd class="data">
 <p>
-Function <a class="fref" href="#_catch">catch</a> requires that the argument of a handler function is an instance of <a class="tref" href="#Exceptional">Exceptional</a>.</p>
+Function <a class="fref" href="#$catch">catch</a> requires that the argument of a handler function is an instance of <a class="tref" href="#Exceptional">Exceptional</a>.</p>
 <p>
 This is derivable for <SPAN CLASS="code">pure</SPAN> <SPAN CLASS="code">native</SPAN> data types.</p>
 <h3>
@@ -222,15 +222,15 @@ Known Instances</h3>
 <dd class="data">
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=doCatch>doCatch</a> ∷ <b><a class="tref" href="./PreludeBase.html#Class">Class</a> b</b> → <b><a class="tref" href="./PreludeBase.html#ST">ST</a> s a</b> → (<b>b → <a class="tref" href="./PreludeBase.html#ST">ST</a> s a</b>) → <a class="tref" href="./PreludeBase.html#ST">ST</a> s a<br><b>native </b>frege.runtime.WrappedCheckedException.doCatch</SPAN></dt>
+<SPAN CLASS="code"><a name=doCatch>doCatch</a> ∷ <b><a class="tref" href="./PreludeBase.html#Class">Class</a> b</b> → <b><a class="tref" href="./PreludeBase.html#ST">ST</a> s a</b> → (<b>b → <a class="tref" href="./PreludeBase.html#ST">ST</a> s a</b>) → <a class="tref" href="./PreludeBase.html#ST">ST</a> s a<br><b>native </b>PreludeBase.WrappedCheckedException.doCatch</SPAN></dt>
 <dd class="data">
 <p>
 nowarn: argument of type (ST s a)</p>
 <p>
-Runtime method for implementation of <a class="fref" href="#_catch">catch</a>   </p>
+Runtime method for implementation of <a class="fref" href="#$catch">catch</a>   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=_catch>catch</a> ∷ <a class="tref" href="#JavaType">JavaType</a> γ ⇒ <b><a class="tref" href="./PreludeBase.html#ST">ST</a> β α</b> → (<b>γ→<a class="tref" href="./PreludeBase.html#ST">ST</a> β α</b>) → <a class="tref" href="./PreludeBase.html#ST">ST</a> β α<br><b>infixl</b>&nbsp;&nbsp;2</SPAN></dt>
+<SPAN CLASS="code"><a name=$catch>catch</a> ∷ <a class="tref" href="#Exceptional">Exceptional</a> γ ⇒ <b><a class="tref" href="./PreludeBase.html#ST">ST</a> β α</b> → (<b>γ → <a class="tref" href="./PreludeBase.html#ST">ST</a> β α</b>) → <a class="tref" href="./PreludeBase.html#ST">ST</a> β α<br><b>infixl</b>&nbsp;&nbsp;2</SPAN></dt>
 <dd class="data">
 <p>
 The construct</p>
@@ -245,13 +245,13 @@ If <i>action</i> yields a result, this will be the result of the overall action.
 <p>
 Otherwise, if the type of <i>e</i> does not allow to pass it to <i>handler</i> it will be propagated upwards and <SPAN CLASS="code">a `catch` b</SPAN> will not return to its caller.</p>
 <p>
-Because <a class="fref" href="#_catch">catch</a> is left associative, it is possible to catch different exceptions, like in:</p>
+Because <a class="fref" href="#$catch">catch</a> is left associative, it is possible to catch different exceptions, like in:</p>
 <PRE>
  action `catch` handler1 `catch` handler2</PRE>
 <p>
 Care must be taken to check for the <b>most specific</b> exception first. In the example above, if the exception handled by <i>handler1</i> is <b>less specific</b> than the one handled by <i>handler2</i>, then <i>handler2</i> will never get a chance to execute.</p>
 <p>
-Another way to put this is to say that if <SPAN CLASS="code">E1</SPAN> and <SPAN CLASS="code">E2</SPAN> are distinct exception types handled in a chain of <a class="fref" href="#_catch">catch</a>es, and <SPAN CLASS="code">E1</SPAN> is (from the point of view of Java!) a subtype of <SPAN CLASS="code">E2</SPAN>, then the handler for <SPAN CLASS="code">E1</SPAN> must appear further left than the handler for <SPAN CLASS="code">E2</SPAN>. If it is a super type of <SPAN CLASS="code">E2</SPAN>, however, its handler must appear further right. And finally, if the types do not stand in a sub-type relationship, the order of the handlers is immaterial.</p>
+Another way to put this is to say that if <SPAN CLASS="code">E1</SPAN> and <SPAN CLASS="code">E2</SPAN> are distinct exception types handled in a chain of <a class="fref" href="#$catch">catch</a>es, and <SPAN CLASS="code">E1</SPAN> is (from the point of view of Java!) a subtype of <SPAN CLASS="code">E2</SPAN>, then the handler for <SPAN CLASS="code">E1</SPAN> must appear further left than the handler for <SPAN CLASS="code">E2</SPAN>. If it is a super type of <SPAN CLASS="code">E2</SPAN>, however, its handler must appear further right. And finally, if the types do not stand in a sub-type relationship, the order of the handlers is immaterial.</p>
 <p>
 <b>Note</b> If <i>action</i> is of the form:</p>
 <PRE>
@@ -265,10 +265,10 @@ Example:</p>
 <p>
 will not catch the exception that will be thrown when println evaluates</p>
 <p>
-For a remedy, see <a class="fref" href="#_try">try</a>.</p>
+For a remedy, see <a class="fref" href="#$try">try</a>.</p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=_finally>finally</a> ∷ <b><a class="tref" href="./PreludeBase.html#IO">IO</a> a</b> → <b><a class="tref" href="./PreludeBase.html#IO">IO</a> b</b> → <a class="tref" href="./PreludeBase.html#IO">IO</a> a<br><b>native </b>frege.runtime.WrappedCheckedException.doFinally<br><b>infixl</b>&nbsp;&nbsp;2</SPAN></dt>
+<SPAN CLASS="code"><a name=$finally>finally</a> ∷ <b><a class="tref" href="./PreludeBase.html#IO">IO</a> a</b> → <b><a class="tref" href="./PreludeBase.html#IO">IO</a> b</b> → <a class="tref" href="./PreludeBase.html#IO">IO</a> a<br><b>native </b>PreludeBase.WrappedCheckedException.doFinally<br><b>infixl</b>&nbsp;&nbsp;2</SPAN></dt>
 <dd class="data">
 <p>
 nowarn: argument of type (ST s a)</p>
@@ -281,9 +281,9 @@ returns the same value as <i>action</i>, when executed.</p>
 <p>
 However, no matter if <i>action</i> produces a value or diverges (for example, by throwing an exception), in any case will <i>always</i> be executed, and its return value dismissed.</p>
 <p>
-Note that <a class="fref" href="#_finally">finally</a> only returns to its caller if <i>action</i> would have done so.</p>
+Note that <a class="fref" href="#$finally">finally</a> only returns to its caller if <i>action</i> would have done so.</p>
 <p>
-<a class="fref" href="#_finally">finally</a> has the same fixity as <a class="fref" href="#_catch">catch</a>, hence it is possible to have</p>
+<a class="fref" href="#$finally">finally</a> has the same fixity as <a class="fref" href="#$catch">catch</a>, hence it is possible to have</p>
 <PRE>
  action `catch` handler1 `catch` handler2 `finally` always</PRE>
 </dd>
@@ -300,10 +300,10 @@ Deliberately throw an exception in the <a class="tref" href="./PreludeBase.html#
 Deliberately throw an exception in the <a class="tref" href="./PreludeBase.html#IO">IO</a> monad.   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=_try>try</a> ∷ <a class="tref" href="./PreludeMonad.html#Monad">Monad</a> γ ⇒ (β→γ α) → β → γ α</SPAN></dt>
+<SPAN CLASS="code"><a name=$try>try</a> ∷ (<a class="tref" href="./PreludeMonad.html#Applicative">Applicative</a> β, <a class="tref" href="./PreludeMonad.html#Bind">Bind</a> β) ⇒ (<b>γ→β α</b>) → γ → β α</SPAN></dt>
 <dd class="data">
 <p>
-Make sure that exceptions thrown during construction of an action can be catched. See <a class="fref" href="#_catch">catch</a> for an explanation.</p>
+Make sure that exceptions thrown during construction of an action can be catched. See <a class="fref" href="#$catch">catch</a> for an explanation.</p>
 <p>
 Example:</p>
 <PRE>
@@ -313,9 +313,9 @@ should print:</p>
 <PRE>
  frege.runtime.Undefined: Prelude.head []</PRE>
 <p>
-<a class="fref" href="#_try">try</a> does work for unary functions only. To be safe with functions taking more actions, use:</p>
+<a class="fref" href="#$try">try</a> does work for unary functions only. To be safe with functions taking more actions, use:</p>
 <PRE>
- return a &gt;&gt;= (\a -&gt; return b &gt;&gt;= (\b -&gt; f a b))</PRE>
+ pure a &gt;&gt;= (\a -&gt; pure b &gt;&gt;= (\b -&gt; f a b))</PRE>
 </dd>
 <dt class="data">
 <SPAN CLASS="code"><a name=catchAll>catchAll</a> ∷ <b><a class="tref" href="./PreludeBase.html#ST">ST</a> α β</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="#Exception">Exception</a> | β)</SPAN></dt>
@@ -364,6 +364,8 @@ To summarize:</p>
 <LI>
  Rule 5 can be bypassed in exceptional cases. </LI>
 </ul>
+<p>
+<b>Implementation note:</b> It is assumed that <a class="tref" href="#Mutable">Mutable</a> is a <b><SPAN CLASS="code">newtype</SPAN></b>.</p>
 <h3>
 Constructors</h3>
 <dl class="func">
@@ -382,7 +384,7 @@ Member Functions</h3>
 obtain a read-only copy of a mutable value through cloning or serialization.   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Mutable.readonly>readonly</a> ∷ (m → b) → <b><a class="tref" href="#Mutable">Mutable</a> s m</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> s b</SPAN></dt>
+<SPAN CLASS="code"><a name=Mutable.readonly>readonly</a> ∷ (<b>m → b</b>) → <b><a class="tref" href="#Mutable">Mutable</a> s m</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> s b</SPAN></dt>
 <dd class="func">
 <p>
 Apply a pure function to a mutable value that pretends to be read-only.</p>
@@ -398,7 +400,7 @@ obtain a mutable copy of a read only value through cloning or serialization.   <
 </dl>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=readonly>readonly</a> ∷ (m → b) → <b><a class="tref" href="#Mutable">Mutable</a> s m</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> s b</SPAN></dt>
+<SPAN CLASS="code"><a name=readonly>readonly</a> ∷ (<b>m → b</b>) → <b><a class="tref" href="#Mutable">Mutable</a> s m</b> → <a class="tref" href="./PreludeBase.html#ST">ST</a> s b</SPAN></dt>
 <dd class="data">
 <p>
 Alias for <a class="fref" href="#Mutable.readonly">Mutable.readonly</a></p>
@@ -491,17 +493,17 @@ Note: Cloning does <b>not</b> produce safe copies if the cloned object contains 
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Cloneable.clone>clone</a> ∷ <a class="tref" href="#Cloneable">Cloneable</a> f ⇒ <b>f</b> → f<br><b>pure </b><b>native </b>clone</SPAN></dt>
+<SPAN CLASS="code"><a name=Cloneable.clone>clone</a> ∷ <a class="tref" href="#Cloneable">Cloneable</a> f ⇒ f → f<br><b>pure </b><b>native </b>clone</SPAN></dt>
 <dd class="func">
 <p>
 <SPAN CLASS="code">clone v</SPAN> must be a native method that works like <SPAN CLASS="code">java.lang.Object#clone</SPAN>.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Cloneable.freeze>freeze</a> ∷ <a class="tref" href="#Cloneable">Cloneable</a> f ⇒ <b>f</b> → f</SPAN></dt>
+<SPAN CLASS="code"><a name=Cloneable.freeze>freeze</a> ∷ <a class="tref" href="#Cloneable">Cloneable</a> f ⇒ f → f</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Cloneable.thaw>thaw</a> ∷ <a class="tref" href="#Cloneable">Cloneable</a> f ⇒ <b>f</b> → f</SPAN></dt>
+<SPAN CLASS="code"><a name=Cloneable.thaw>thaw</a> ∷ <a class="tref" href="#Cloneable">Cloneable</a> f ⇒ f → f</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -523,19 +525,19 @@ The <a class="fref" href="#Freezable.freeze">Freezable.freeze</a> and <a class="
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Serializable.copySerializable>copySerializable</a> ∷ <a class="tref" href="#Serializable">Serializable</a> f ⇒ <b>f</b> → f<br><b>pure </b><b>native </b>frege.runtime.Runtime.copySerializable</SPAN></dt>
+<SPAN CLASS="code"><a name=Serializable.copySerializable>copySerializable</a> ∷ <a class="tref" href="#Serializable">Serializable</a> f ⇒ f → f<br><b>pure </b><b>native </b>frege.runtime.Runtime.copySerializable</SPAN></dt>
 <dd class="func">
 <p>
 <SPAN CLASS="code">copySerializable v</SPAN> is supposed to be a native function that is implemented by <SPAN CLASS="code">frege.runtime.Runtime.copySerializable</SPAN> at the instantiated type.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Serializable.freeze>freeze</a> ∷ <a class="tref" href="#Serializable">Serializable</a> f ⇒ <b>f</b> → f</SPAN></dt>
+<SPAN CLASS="code"><a name=Serializable.freeze>freeze</a> ∷ <a class="tref" href="#Serializable">Serializable</a> f ⇒ f → f</SPAN></dt>
 <dd class="func">
 <p>
 make a safe copy through serialization/deserialization   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Serializable.thaw>thaw</a> ∷ <a class="tref" href="#Serializable">Serializable</a> f ⇒ <b>f</b> → f</SPAN></dt>
+<SPAN CLASS="code"><a name=Serializable.thaw>thaw</a> ∷ <a class="tref" href="#Serializable">Serializable</a> f ⇒ f → f</SPAN></dt>
 <dd class="func">
 <p>
 make a safe copy through serialization/deserialization   </p>
@@ -557,13 +559,13 @@ Member Functions</h3>
 get the value the reference is pointing to   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ref.modify>modify</a> ∷ <b><a class="tref" href="#Mutable">Mutable</a> β (<a class="tref" href="#Ref">Ref</a> α)</b> → (α→α) → <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Ref.modify>modify</a> ∷ <b><a class="tref" href="#Mutable">Mutable</a> β (<a class="tref" href="#Ref">Ref</a> α)</b> → (<b>α→α</b>) → <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 modify the referenced value with a function   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ref._new>new</a> ∷ <b>a</b> → <a class="tref" href="#STMutable">STMutable</a> s (<a class="tref" href="#Ref">Ref</a> a)<br><b>native </b>new</SPAN></dt>
+<SPAN CLASS="code"><a name=Ref.$new>new</a> ∷ <b>a</b> → <a class="tref" href="#STMutable">STMutable</a> s (<a class="tref" href="#Ref">Ref</a> a)<br><b>native </b>new</SPAN></dt>
 <dd class="func">
 <p>
 create a reference that is initially set to the argument value    </p>
@@ -595,7 +597,7 @@ Alias for <a class="fref" href="#Ref.get">Ref.get</a></p>
 Alias for <a class="fref" href="#Ref.put">Ref.put</a></p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=modifyIORef>modifyIORef</a> ∷ <b><a class="tref" href="#Mutable">Mutable</a> β (<a class="tref" href="#Ref">Ref</a> α)</b> → (α→α) → <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name=modifyIORef>modifyIORef</a> ∷ <b><a class="tref" href="#Mutable">Mutable</a> β (<a class="tref" href="#Ref">Ref</a> α)</b> → (<b>α→α</b>) → <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="data">
 <p>
 Alias for <a class="fref" href="#Ref.modify">Ref.modify</a></p>
@@ -604,7 +606,7 @@ Alias for <a class="fref" href="#Ref.modify">Ref.modify</a></p>
 <SPAN CLASS="code"><a name=newIORef>newIORef</a> ∷ <b>a</b> → <a class="tref" href="#STMutable">STMutable</a> s (<a class="tref" href="#Ref">Ref</a> a)<br><b>native </b>new</SPAN></dt>
 <dd class="data">
 <p>
-Alias for <a class="fref" href="#Ref._new">Ref.new</a></p>
+Alias for <a class="fref" href="#Ref.$new">Ref.new</a></p>
 </dd>
 </dl>
 <h2>
@@ -720,7 +722,7 @@ Member Functions</h3>
 <SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#IO">IO</a> a → <a class="tref" href="./PreludeBase.html#IO">IO</a> b → <a class="tref" href="./PreludeBase.html#IO">IO</a> a</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#_finally">finally</a></p>
+<a class="fref" href="#$finally">finally</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#ST">ST</a> α β → <a class="tref" href="./PreludeBase.html#ST">ST</a> α (<a class="tref" href="#Exception">Exception</a> | β)</SPAN></dt>
@@ -756,7 +758,7 @@ Member Functions</h3>
 <SPAN CLASS="code">a → <a class="tref" href="#STMutable">STMutable</a> s (<a class="tref" href="#Ref">Ref</a> a)</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Ref._new">Ref.new</a></p>
+<a class="fref" href="#Ref.$new">Ref.new</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">m → <a class="tref" href="#Mutable">Mutable</a> s m</SPAN></dt>
@@ -795,16 +797,16 @@ Member Functions</h3>
 <a class="fref" href="#doCatch">doCatch</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#JavaType">JavaType</a> γ ⇒ <a class="tref" href="./PreludeBase.html#ST">ST</a> β α → (γ→<a class="tref" href="./PreludeBase.html#ST">ST</a> β α) → <a class="tref" href="./PreludeBase.html#ST">ST</a> β α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Exceptional">Exceptional</a> γ ⇒ <a class="tref" href="./PreludeBase.html#ST">ST</a> β α → (γ → <a class="tref" href="./PreludeBase.html#ST">ST</a> β α) → <a class="tref" href="./PreludeBase.html#ST">ST</a> β α</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#_catch">catch</a></p>
+<a class="fref" href="#$catch">catch</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./PreludeMonad.html#Monad">Monad</a> γ ⇒ (β→γ α) → β → γ α</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="./PreludeMonad.html#Applicative">Applicative</a> β, <a class="tref" href="./PreludeMonad.html#Bind">Bind</a> β) ⇒ (γ→β α) → γ → β α</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#_try">try</a></p>
+<a class="fref" href="#$try">try</a></p>
 </dd>
 </dl>
 <p>
