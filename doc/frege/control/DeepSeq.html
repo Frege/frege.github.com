@@ -1,0 +1,712 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<META http-equiv="Content-Type" content="text/html;charset=utf-8">
+<TITLE>Control.DeepSeq - frege documentation</TITLE>
+<style TYPE="text/css">
+body { font-family: helvetica, arial, sans-serif }
+pre { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
+h3  { font-weight: lighter }
+dt.func { background: rgb(95%, 95%, 80%); margin-top: 10px }
+dt.clas { background: rgb(80%, 95%, 95%); margin-top: 10px }
+dt.inst { background: rgb(95%, 90%, 95%); margin-top: 10px }
+dt.data { background: rgb(95%, 95%, 95%); margin-top: 10px }
+span.code { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
+span.unknown { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: red }
+a.fref { text-decoration: none; font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(30%, 30%, 0%) }
+a.tref { text-decoration: none; font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(40%, 0%,  40%) }
+</style>
+<BODY>
+<h1>
+Module <SPAN CLASS="code">Control.DeepSeq</SPAN></h1>
+<p>
+This module provides an overloaded function, <a class="fref" href="#deepseq">deepseq</a>, for fully evaluating data structures (that is, evaluating to \"Normal Form\").</p>
+<p>
+<a class="fref" href="#deepseq">deepseq</a> differs from <a class="fref" href="../prelude/PreludeBase.html#seq">seq</a> as it traverses data structures deeply, for example, <a class="fref" href="../prelude/PreludeBase.html#seq">seq</a> will evaluate only to the first constructor in the list:</p>
+<PRE>
+ &gt; [1,2,undefined] `seq` 3
+ 3</PRE>
+<p>
+While <a class="fref" href="#deepseq">deepseq</a> will force evaluation of all the list elements:</p>
+<PRE>
+ &gt; [1,2,undefined] `deepseq` 3
+ frege.runtime.Undefined: undefined</PRE>
+<p>
+Another common use is to ensure any exceptions hidden within lazy fields of a data structure do not leak outside the scope of the exception handler, or to force evaluation of a data structure in one thread, before passing to another thread (preventing work moving to the wrong threads).</p>
+<h3>
+Imports</h3>
+<ul>
+<li>
+<div>
+import <a HREF="../Prelude.html">frege.Prelude</a> as Prelude</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeArrays.html">Prelude.PreludeArrays</a> as PreludeArrays</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as PreludeMonad</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeText.html">Prelude.PreludeText</a> as PreludeText</div>
+</li>
+<li>
+<div>
+import <a HREF="../java/util/Regex.html">Java.util.Regex</a> as Regexp</div>
+</li>
+<li>
+<div>
+import <a HREF="../data/Tree.html">Data.Tree</a> as Tree</div>
+</li>
+</ul>
+<h3>
+Table of Content</h3>
+<ul class="data">
+<li>
+<div>
+<a HREF="#data">Definitions</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><b>class </b> <a class="tref" href="#NFData">NFData</a> α</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#deepseq">deepseq</a> ∷ <a class="tref" href="#NFData">NFData</a> α ⇒ α → <b>β</b> → β</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#$$excl$excl">$!!</a> ∷ <a class="tref" href="#NFData">NFData</a> α ⇒ (<b>α → β</b>) → α → β</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#force">force</a> ∷ <a class="tref" href="#NFData">NFData</a> α ⇒ <b>α</b> → α</SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#instance">Instances</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#NFData_$l$r"> </a><a class="tref" href="#NFData">NFData</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b>(<a class="tref" href="#NFData">NFData</a> a, <a class="tref" href="#NFData">NFData</a> b) ⇒ <a class="tref" href="#NFData_$l$c$r"> </a><a class="tref" href="#NFData">NFData</a> (a, b)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b>(<a class="tref" href="#NFData">NFData</a> a, <a class="tref" href="#NFData">NFData</a> b, <a class="tref" href="#NFData">NFData</a> c) ⇒ <a class="tref" href="#NFData_$l$c$c$r"> </a><a class="tref" href="#NFData">NFData</a> (a, b, c)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b>(<a class="tref" href="#NFData">NFData</a> a, <a class="tref" href="#NFData">NFData</a> b, <a class="tref" href="#NFData">NFData</a> c, <a class="tref" href="#NFData">NFData</a> d) ⇒ <a class="tref" href="#NFData_$l$c$c$c$r"> </a><a class="tref" href="#NFData">NFData</a> (a, b, c, d)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b>(<a class="tref" href="#NFData">NFData</a> a1, <a class="tref" href="#NFData">NFData</a> a2, <a class="tref" href="#NFData">NFData</a> a3, <a class="tref" href="#NFData">NFData</a> a4, <a class="tref" href="#NFData">NFData</a> a5) ⇒ <a class="tref" href="#NFData_$l$c$c$c$c$r"> </a><a class="tref" href="#NFData">NFData</a> (a1, a2, a3, a4, a5)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b>(<a class="tref" href="#NFData">NFData</a> a1, <a class="tref" href="#NFData">NFData</a> a2, <a class="tref" href="#NFData">NFData</a> a3, <a class="tref" href="#NFData">NFData</a> a4, <a class="tref" href="#NFData">NFData</a> a5, <a class="tref" href="#NFData">NFData</a> a6) ⇒ <a class="tref" href="#NFData_$l$c$c$c$c$c$r"> </a><a class="tref" href="#NFData">NFData</a> (a1, a2, a3, a4, a5, a6)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b>(<a class="tref" href="#NFData">NFData</a> a1, <a class="tref" href="#NFData">NFData</a> a2, <a class="tref" href="#NFData">NFData</a> a3, <a class="tref" href="#NFData">NFData</a> a4, <a class="tref" href="#NFData">NFData</a> a5, <a class="tref" href="#NFData">NFData</a> a6, <a class="tref" href="#NFData">NFData</a> a7) ⇒ <a class="tref" href="#NFData_$l$c$c$c$c$c$c$r"> </a><a class="tref" href="#NFData">NFData</a> (a1, a2, a3, a4, a5, a6, a7)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b>(<a class="tref" href="#NFData">NFData</a> a1, <a class="tref" href="#NFData">NFData</a> a2, <a class="tref" href="#NFData">NFData</a> a3, <a class="tref" href="#NFData">NFData</a> a4, <a class="tref" href="#NFData">NFData</a> a5, <a class="tref" href="#NFData">NFData</a> a6, <a class="tref" href="#NFData">NFData</a> a7, <a class="tref" href="#NFData">NFData</a> a8) ⇒ <a class="tref" href="#NFData_$l$c$c$c$c$c$c$c$r"> </a><a class="tref" href="#NFData">NFData</a> (a1, a2, a3, a4, a5, a6, a7, a8)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b>(<a class="tref" href="#NFData">NFData</a> a1, <a class="tref" href="#NFData">NFData</a> a2, <a class="tref" href="#NFData">NFData</a> a3, <a class="tref" href="#NFData">NFData</a> a4, <a class="tref" href="#NFData">NFData</a> a5, <a class="tref" href="#NFData">NFData</a> a6, <a class="tref" href="#NFData">NFData</a> a7, <a class="tref" href="#NFData">NFData</a> a8, <a class="tref" href="#NFData">NFData</a> a9) ⇒ <a class="tref" href="#NFData_$l$c$c$c$c$c$c$c$c$r"> </a><a class="tref" href="#NFData">NFData</a> (a1, a2, a3, a4, a5, a6, a7, a8, a9)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#NFData_$minus$gt"> </a><a class="tref" href="#NFData">NFData</a> (a→b)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#NFData_Bool"> </a><a class="tref" href="#NFData">NFData</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#NFData_Char"> </a><a class="tref" href="#NFData">NFData</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#NFData_Double"> </a><a class="tref" href="#NFData">NFData</a> <a class="tref" href="../prelude/PreludeBase.html#Double">Double</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b>(<a class="tref" href="#NFData">NFData</a> α, <a class="tref" href="#NFData">NFData</a> β) ⇒ <a class="tref" href="#NFData_Either"> </a><a class="tref" href="#NFData">NFData</a> (α | β)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#NFData_Float"> </a><a class="tref" href="#NFData">NFData</a> <a class="tref" href="../prelude/PreludeBase.html#Float">Float</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#NFData_Int"> </a><a class="tref" href="#NFData">NFData</a> <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#NFData_Integer"> </a><a class="tref" href="#NFData">NFData</a> <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#NFData_Long"> </a><a class="tref" href="#NFData">NFData</a> <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#NFData">NFData</a> α ⇒ <a class="tref" href="#NFData_Maybe"> </a><a class="tref" href="#NFData">NFData</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#NFData_String"> </a><a class="tref" href="#NFData">NFData</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#NFData">NFData</a> α ⇒ <a class="tref" href="#NFData_Tree"> </a><a class="tref" href="#NFData">NFData</a> (<a class="tref" href="../data/Tree.html#Tree">Tree</a> α)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#NFData">NFData</a> α ⇒ <a class="tref" href="#NFData_$lbrack$rbrack"> </a><a class="tref" href="#NFData">NFData</a> [α]</SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#case">Functions and Values by Type</a></div>
+</li>
+</ul>
+<h2>
+<a NAME="data">Definitions</a></h2>
+<dl class="data">
+<dt class="data">
+<SPAN CLASS="code"><b>class </b> <a name=NFData>NFData</a> α</SPAN></dt>
+<dd class="data">
+<p>
+A class of types that can be fully evaluated.   </p>
+<h3>
+Known Instances</h3>
+<p>
+<a class="tref" href="#NFData_Integer">Integer</a>, <a class="tref" href="#NFData_Char">Char</a>, <a class="tref" href="#NFData_$l$c$c$c$c$r">(,,,,)</a>, <a class="tref" href="#NFData_$l$c$r">(,)</a>, <a class="tref" href="#NFData_$l$r">()</a>, <a class="tref" href="#NFData_$l$c$c$c$r">(,,,)</a>, <a class="tref" href="#NFData_$l$c$c$r">(,,)</a>, <a class="tref" href="#NFData_$l$c$c$c$c$c$c$c$r">(,,,,,,,)</a>, <a class="tref" href="#NFData_$l$c$c$c$c$c$c$r">(,,,,,,)</a>, <a class="tref" href="#NFData_$l$c$c$c$c$c$r">(,,,,,)</a>, <a class="tref" href="#NFData_$minus$gt">-&gt;</a>, <a class="tref" href="#NFData_$l$c$c$c$c$c$c$c$c$r">(,,,,,,,,)</a>, <a class="tref" href="#NFData_Bool">Bool</a>, <a class="tref" href="#NFData_Float">Float</a>, <a class="tref" href="#NFData_Double">Double</a>, <a class="tref" href="#NFData_Either">Either</a>, <a class="tref" href="#NFData_Int">Int</a>, <a class="tref" href="#NFData_String">StringJ</a>, <a class="tref" href="#NFData_Maybe">Maybe</a>, <a class="tref" href="#NFData_Long">Long</a>, <a class="tref" href="#NFData_$lbrack$rbrack">[]</a>, <a class="tref" href="#NFData_Tree">Tree.Tree</a></p>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=NFData.rnf>rnf</a> ∷ <a class="tref" href="#NFData">NFData</a> α ⇒ α → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#NFData.rnf">NFData.rnf</a> should reduce its argument to normal form (that is, fully</p>
+<p>
+evaluate all sub-components), and then return <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a>.   </p>
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=deepseq>deepseq</a> ∷ <a class="tref" href="#NFData">NFData</a> α ⇒ α → <b>β</b> → β</SPAN></dt>
+<dd class="data">
+<p>
+Fully evaluates <SPAN CLASS="code">a</SPAN> and returns <SPAN CLASS="code">b</SPAN>.</p>
+<p>
+<a class="fref" href="#deepseq">deepseq</a>: fully evaluates the first argument, before returning the second.</p>
+<p>
+The name <a class="fref" href="#deepseq">deepseq</a> is used to illustrate the relationship to <a class="fref" href="../prelude/PreludeBase.html#seq">seq</a>: where <a class="fref" href="../prelude/PreludeBase.html#seq">seq</a> is shallow in the sense that it only evaluates the top level of its argument, <a class="fref" href="#deepseq">deepseq</a> traverses the entire data structure evaluating it completely.</p>
+<p>
+<a class="fref" href="#deepseq">deepseq</a> can be useful for forcing pending exceptions, eradicating space leaks, or forcing lazy I/O to happen.  It is also useful in conjunction with parallel Strategies (see the <SPAN CLASS="code">parallel</SPAN> package).</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=$$excl$excl>$!!</a> ∷ <a class="tref" href="#NFData">NFData</a> α ⇒ (<b>α → β</b>) → α → β</SPAN></dt>
+<dd class="data">
+<p>
+the deep analogue of <a class="fref" href="../prelude/PreludeBase.html#$$excl">$!</a>.  In the expression <SPAN CLASS="code">f $!! x</SPAN>, <SPAN CLASS="code">x</SPAN> is</p>
+<p>
+fully evaluated before the function <SPAN CLASS="code">f</SPAN> is applied to it.</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=force>force</a> ∷ <a class="tref" href="#NFData">NFData</a> α ⇒ <b>α</b> → α</SPAN></dt>
+<dd class="data">
+<p>
+a variant of <a class="fref" href="#deepseq">deepseq</a> that is useful in some circumstances:</p>
+<PRE>
+ force x = x `deepseq` x</PRE>
+<p>
+<SPAN CLASS="code">force x</SPAN> fully evaluates <SPAN CLASS="code">x</SPAN>, and then returns it.  Note that <SPAN CLASS="code">force x</SPAN> only performs evaluation when the value of <SPAN CLASS="code">force x</SPAN> itself is demanded, so essentially it turns shallow evaluation into deep evaluation.</p>
+</dd>
+</dl>
+<h2>
+<a NAME="instance">Instances</a></h2>
+<dl class="inst">
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=NFData_$l$r> </a><a class="tref" href="#NFData">NFData</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=NFData_$l$r.rnf>rnf</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#NFData.rnf">NFData.rnf</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b>(<a class="tref" href="#NFData">NFData</a> a, <a class="tref" href="#NFData">NFData</a> b) ⇒ <a name=NFData_$l$c$r> </a><a class="tref" href="#NFData">NFData</a> (a, b)</SPAN></dt>
+<dd class="inst">
+<ul>
+<LI>
+------------------------------------------------------------------------    </LI>
+</ul>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=NFData_$l$c$r.rnf>rnf</a> ∷ (<a class="tref" href="#NFData">NFData</a> α, <a class="tref" href="#NFData">NFData</a> β) ⇒ <b>(α, β)</b> → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b>(<a class="tref" href="#NFData">NFData</a> a, <a class="tref" href="#NFData">NFData</a> b, <a class="tref" href="#NFData">NFData</a> c) ⇒ <a name=NFData_$l$c$c$r> </a><a class="tref" href="#NFData">NFData</a> (a, b, c)</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=NFData_$l$c$c$r.rnf>rnf</a> ∷ (<a class="tref" href="#NFData">NFData</a> α, <a class="tref" href="#NFData">NFData</a> γ, <a class="tref" href="#NFData">NFData</a> β) ⇒ <b>(α, γ, β)</b> → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b>(<a class="tref" href="#NFData">NFData</a> a, <a class="tref" href="#NFData">NFData</a> b, <a class="tref" href="#NFData">NFData</a> c, <a class="tref" href="#NFData">NFData</a> d) ⇒ <a name=NFData_$l$c$c$c$r> </a><a class="tref" href="#NFData">NFData</a> (a, b, c, d)</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=NFData_$l$c$c$c$r.rnf>rnf</a> ∷ (<a class="tref" href="#NFData">NFData</a> δ, <a class="tref" href="#NFData">NFData</a> γ, <a class="tref" href="#NFData">NFData</a> β, <a class="tref" href="#NFData">NFData</a> α) ⇒ <b>(δ, γ, β, α)</b> → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b>(<a class="tref" href="#NFData">NFData</a> a1, <a class="tref" href="#NFData">NFData</a> a2, <a class="tref" href="#NFData">NFData</a> a3, <a class="tref" href="#NFData">NFData</a> a4, <a class="tref" href="#NFData">NFData</a> a5) ⇒ <a name=NFData_$l$c$c$c$c$r> </a><a class="tref" href="#NFData">NFData</a> (a1, a2, a3, a4, a5)</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=NFData_$l$c$c$c$c$r.rnf>rnf</a> ∷ (<a class="tref" href="#NFData">NFData</a> ε, <a class="tref" href="#NFData">NFData</a> β, <a class="tref" href="#NFData">NFData</a> α, <a class="tref" href="#NFData">NFData</a> δ, <a class="tref" href="#NFData">NFData</a> γ) ⇒ <b>(ε, β, α, δ, γ)</b> → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b>(<a class="tref" href="#NFData">NFData</a> a1, <a class="tref" href="#NFData">NFData</a> a2, <a class="tref" href="#NFData">NFData</a> a3, <a class="tref" href="#NFData">NFData</a> a4, <a class="tref" href="#NFData">NFData</a> a5, <a class="tref" href="#NFData">NFData</a> a6) ⇒ <a name=NFData_$l$c$c$c$c$c$r> </a><a class="tref" href="#NFData">NFData</a> (a1, a2, a3, a4, a5, a6)</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=NFData_$l$c$c$c$c$c$r.rnf>rnf</a> ∷ (<a class="tref" href="#NFData">NFData</a> ζ, <a class="tref" href="#NFData">NFData</a> ε, <a class="tref" href="#NFData">NFData</a> β, <a class="tref" href="#NFData">NFData</a> α, <a class="tref" href="#NFData">NFData</a> δ, <a class="tref" href="#NFData">NFData</a> γ) ⇒ <b>(ζ, ε, β, α, δ, γ)</b> → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b>(<a class="tref" href="#NFData">NFData</a> a1, <a class="tref" href="#NFData">NFData</a> a2, <a class="tref" href="#NFData">NFData</a> a3, <a class="tref" href="#NFData">NFData</a> a4, <a class="tref" href="#NFData">NFData</a> a5, <a class="tref" href="#NFData">NFData</a> a6, <a class="tref" href="#NFData">NFData</a> a7) ⇒ <a name=NFData_$l$c$c$c$c$c$c$r> </a><a class="tref" href="#NFData">NFData</a> (a1, a2, a3, a4, a5, a6, a7)</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=NFData_$l$c$c$c$c$c$c$r.rnf>rnf</a> ∷ (<a class="tref" href="#NFData">NFData</a> ε, <a class="tref" href="#NFData">NFData</a> δ, <a class="tref" href="#NFData">NFData</a> η, <a class="tref" href="#NFData">NFData</a> ζ, <a class="tref" href="#NFData">NFData</a> β, <a class="tref" href="#NFData">NFData</a> α, <a class="tref" href="#NFData">NFData</a> γ) ⇒ <b>(ε, δ, η, ζ, β, α, γ)</b> → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b>(<a class="tref" href="#NFData">NFData</a> a1, <a class="tref" href="#NFData">NFData</a> a2, <a class="tref" href="#NFData">NFData</a> a3, <a class="tref" href="#NFData">NFData</a> a4, <a class="tref" href="#NFData">NFData</a> a5, <a class="tref" href="#NFData">NFData</a> a6, <a class="tref" href="#NFData">NFData</a> a7, <a class="tref" href="#NFData">NFData</a> a8) ⇒ <a name=NFData_$l$c$c$c$c$c$c$c$r> </a><a class="tref" href="#NFData">NFData</a> (a1, a2, a3, a4, a5, a6, a7, a8)</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=NFData_$l$c$c$c$c$c$c$c$r.rnf>rnf</a> ∷ (<a class="tref" href="#NFData">NFData</a> α, <a class="tref" href="#NFData">NFData</a> ζ, <a class="tref" href="#NFData">NFData</a> ε, <a class="tref" href="#NFData">NFData</a> θ, <a class="tref" href="#NFData">NFData</a> η, <a class="tref" href="#NFData">NFData</a> γ, <a class="tref" href="#NFData">NFData</a> β, <a class="tref" href="#NFData">NFData</a> δ) ⇒ <b>(α, ζ, ε, θ, η, γ, β, δ)</b> → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b>(<a class="tref" href="#NFData">NFData</a> a1, <a class="tref" href="#NFData">NFData</a> a2, <a class="tref" href="#NFData">NFData</a> a3, <a class="tref" href="#NFData">NFData</a> a4, <a class="tref" href="#NFData">NFData</a> a5, <a class="tref" href="#NFData">NFData</a> a6, <a class="tref" href="#NFData">NFData</a> a7, <a class="tref" href="#NFData">NFData</a> a8, <a class="tref" href="#NFData">NFData</a> a9) ⇒ <a name=NFData_$l$c$c$c$c$c$c$c$c$r> </a><a class="tref" href="#NFData">NFData</a> (a1, a2, a3, a4, a5, a6, a7, a8, a9)</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=NFData_$l$c$c$c$c$c$c$c$c$r.rnf>rnf</a> ∷ (<a class="tref" href="#NFData">NFData</a> ι, <a class="tref" href="#NFData">NFData</a> ζ, <a class="tref" href="#NFData">NFData</a> ε, <a class="tref" href="#NFData">NFData</a> θ, <a class="tref" href="#NFData">NFData</a> η, <a class="tref" href="#NFData">NFData</a> β, <a class="tref" href="#NFData">NFData</a> α, <a class="tref" href="#NFData">NFData</a> δ, <a class="tref" href="#NFData">NFData</a> γ) ⇒ <b>(ι, ζ, ε, θ, η, β, α, δ, γ)</b> → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=NFData_$minus$gt> </a><a class="tref" href="#NFData">NFData</a> (a→b)</SPAN></dt>
+<dd class="inst">
+<p>
+This instance is for convenience and consistency with <a class="fref" href="../prelude/PreludeBase.html#seq">seq</a>.</p>
+<p>
+This assumes that WHNF is equivalent to NF for functions.</p>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=NFData_$minus$gt.rnf>rnf</a> ∷ (<b>β→α</b>) → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=NFData_Bool> </a><a class="tref" href="#NFData">NFData</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=NFData_Bool.rnf>rnf</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#NFData.rnf">NFData.rnf</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=NFData_Char> </a><a class="tref" href="#NFData">NFData</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=NFData_Char.rnf>rnf</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Char">Char</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#NFData.rnf">NFData.rnf</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=NFData_Double> </a><a class="tref" href="#NFData">NFData</a> <a class="tref" href="../prelude/PreludeBase.html#Double">Double</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=NFData_Double.rnf>rnf</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Double">Double</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#NFData.rnf">NFData.rnf</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b>(<a class="tref" href="#NFData">NFData</a> α, <a class="tref" href="#NFData">NFData</a> β) ⇒ <a name=NFData_Either> </a><a class="tref" href="#NFData">NFData</a> (α | β)</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=NFData_Either.rnf>rnf</a> ∷ (<a class="tref" href="#NFData">NFData</a> β, <a class="tref" href="#NFData">NFData</a> α) ⇒ <b>(β | α)</b> → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=NFData_Float> </a><a class="tref" href="#NFData">NFData</a> <a class="tref" href="../prelude/PreludeBase.html#Float">Float</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=NFData_Float.rnf>rnf</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Float">Float</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#NFData.rnf">NFData.rnf</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=NFData_Int> </a><a class="tref" href="#NFData">NFData</a> <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=NFData_Int.rnf>rnf</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#NFData.rnf">NFData.rnf</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=NFData_Integer> </a><a class="tref" href="#NFData">NFData</a> <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=NFData_Integer.rnf>rnf</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#NFData.rnf">NFData.rnf</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=NFData_Long> </a><a class="tref" href="#NFData">NFData</a> <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=NFData_Long.rnf>rnf</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#NFData.rnf">NFData.rnf</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#NFData">NFData</a> α ⇒ <a name=NFData_Maybe> </a><a class="tref" href="#NFData">NFData</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α)</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=NFData_Maybe.rnf>rnf</a> ∷ <a class="tref" href="#NFData">NFData</a> α ⇒ <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=NFData_String> </a><a class="tref" href="#NFData">NFData</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=NFData_String.rnf>rnf</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="#NFData.rnf">NFData.rnf</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#NFData">NFData</a> α ⇒ <a name=NFData_Tree> </a><a class="tref" href="#NFData">NFData</a> (<a class="tref" href="../data/Tree.html#Tree">Tree</a> α)</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=NFData_Tree.rnf>rnf</a> ∷ <a class="tref" href="#NFData">NFData</a> α ⇒ <b><a class="tref" href="../data/Tree.html#Tree">Tree</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#NFData">NFData</a> α ⇒ <a name=NFData_$lbrack$rbrack> </a><a class="tref" href="#NFData">NFData</a> [α]</SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=NFData_$lbrack$rbrack.rnf>rnf</a> ∷ <a class="tref" href="#NFData">NFData</a> α ⇒ <b>[α]</b> → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+</dl>
+<h2>
+<a NAME="case">Functions and Values by Type</a></h2>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#NFData_String.rnf">NFData_String.rnf</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Unit">()</a> → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#NFData_$l$r.rnf">NFData_().rnf</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a> → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#NFData_Bool.rnf">NFData_Bool.rnf</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#NFData_Char.rnf">NFData_Char.rnf</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Double">Double</a> → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#NFData_Double.rnf">NFData_Double.rnf</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Float">Float</a> → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#NFData_Float.rnf">NFData_Float.rnf</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#NFData_Int.rnf">NFData_Int.rnf</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a> → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#NFData_Integer.rnf">NFData_Integer.rnf</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a> → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#NFData_Long.rnf">NFData_Long.rnf</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#NFData">NFData</a> α ⇒ <a class="tref" href="../data/Tree.html#Tree">Tree</a> α → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#NFData_Tree.rnf">NFData_Tree.rnf</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#NFData">NFData</a> α ⇒ <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#NFData_Maybe.rnf">NFData_Maybe.rnf</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#NFData">NFData</a> α ⇒ [α] → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#NFData_$lbrack$rbrack.rnf">NFData_[].rnf</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#NFData">NFData</a> α ⇒ α → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#NFData.rnf">NFData.rnf</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#NFData">NFData</a> α ⇒ α → α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#force">force</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(β→α) → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#NFData_$minus$gt.rnf">NFData_-&gt;.rnf</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#NFData">NFData</a> α ⇒ (α → β) → α → β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#$$excl$excl">$!!</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#NFData">NFData</a> α ⇒ α → β → β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#deepseq">deepseq</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="#NFData">NFData</a> α, <a class="tref" href="#NFData">NFData</a> β) ⇒ (α, β) → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#NFData_$l$c$r.rnf">NFData_(,).rnf</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="#NFData">NFData</a> β, <a class="tref" href="#NFData">NFData</a> α) ⇒ (β | α) → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#NFData_Either.rnf">NFData_Either.rnf</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="#NFData">NFData</a> α, <a class="tref" href="#NFData">NFData</a> γ, <a class="tref" href="#NFData">NFData</a> β) ⇒ (α, γ, β) → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#NFData_$l$c$c$r.rnf">NFData_(,,).rnf</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="#NFData">NFData</a> δ, <a class="tref" href="#NFData">NFData</a> γ, <a class="tref" href="#NFData">NFData</a> β, <a class="tref" href="#NFData">NFData</a> α) ⇒ (δ, γ, β, α) → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#NFData_$l$c$c$c$r.rnf">NFData_(,,,).rnf</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="#NFData">NFData</a> ε, <a class="tref" href="#NFData">NFData</a> β, <a class="tref" href="#NFData">NFData</a> α, <a class="tref" href="#NFData">NFData</a> δ, <a class="tref" href="#NFData">NFData</a> γ) ⇒ (ε, β, α, δ, γ) → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#NFData_$l$c$c$c$c$r.rnf">NFData_(,,,,).rnf</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="#NFData">NFData</a> ζ, <a class="tref" href="#NFData">NFData</a> ε, <a class="tref" href="#NFData">NFData</a> β, <a class="tref" href="#NFData">NFData</a> α, <a class="tref" href="#NFData">NFData</a> δ, <a class="tref" href="#NFData">NFData</a> γ) ⇒ (ζ, ε, β, α, δ, γ) → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#NFData_$l$c$c$c$c$c$r.rnf">NFData_(,,,,,).rnf</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="#NFData">NFData</a> ε, <a class="tref" href="#NFData">NFData</a> δ, <a class="tref" href="#NFData">NFData</a> η, <a class="tref" href="#NFData">NFData</a> ζ, <a class="tref" href="#NFData">NFData</a> β, <a class="tref" href="#NFData">NFData</a> α, <a class="tref" href="#NFData">NFData</a> γ) ⇒ (ε, δ, η, ζ, β, α, γ) → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#NFData_$l$c$c$c$c$c$c$r.rnf">NFData_(,,,,,,).rnf</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="#NFData">NFData</a> α, <a class="tref" href="#NFData">NFData</a> ζ, <a class="tref" href="#NFData">NFData</a> ε, <a class="tref" href="#NFData">NFData</a> θ, <a class="tref" href="#NFData">NFData</a> η, <a class="tref" href="#NFData">NFData</a> γ, <a class="tref" href="#NFData">NFData</a> β, <a class="tref" href="#NFData">NFData</a> δ) ⇒ (α, ζ, ε, θ, η, γ, β, δ) → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#NFData_$l$c$c$c$c$c$c$c$r.rnf">NFData_(,,,,,,,).rnf</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="#NFData">NFData</a> ι, <a class="tref" href="#NFData">NFData</a> ζ, <a class="tref" href="#NFData">NFData</a> ε, <a class="tref" href="#NFData">NFData</a> θ, <a class="tref" href="#NFData">NFData</a> η, <a class="tref" href="#NFData">NFData</a> β, <a class="tref" href="#NFData">NFData</a> α, <a class="tref" href="#NFData">NFData</a> δ, <a class="tref" href="#NFData">NFData</a> γ) ⇒ (ι, ζ, ε, θ, η, β, α, δ, γ) → <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#NFData_$l$c$c$c$c$c$c$c$c$r.rnf">NFData_(,,,,,,,,).rnf</a></p>
+</dd>
+</dl>
+<p>
+<a HREF="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Strict" height="31" width="88"></a></p>
+</BODY>
+</HTML>
