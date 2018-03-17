@@ -35,6 +35,10 @@ import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeB
 </li>
 <li>
 <div>
+import <a HREF="../prelude/PreludeDecimal.html">Prelude.PreludeDecimal</a> as PreludeDecimal</div>
+</li>
+<li>
+<div>
 import <a HREF="../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
 </li>
 <li>
@@ -151,7 +155,7 @@ The first argument <SPAN CLASS="code">(l,u)</SPAN> of each of these operations i
 <h3>
 Known Instances</h3>
 <p>
-<a class="tref" href="#Ix_$l$c$r">(,)</a>, <a class="tref" href="#Ix_$l$r">()</a>, <a class="tref" href="#Ix_Char">Char</a>, <a class="tref" href="#Ix_$l$c$c$c$r">(,,,)</a>, <a class="tref" href="#Ix_$l$c$c$r">(,,)</a>, <a class="tref" href="#Ix_Bool">Bool</a>, <a class="tref" href="#Ix_$l$c$c$c$c$r">(,,,,)</a>, <a class="tref" href="#Ix_Integer">Integer</a>, <a class="tref" href="#Ix_Int">Int</a>, <a class="tref" href="#Ix_Ordering">Ordering</a></p>
+<a class="tref" href="#Ix_Int">Int</a>, <a class="tref" href="#Ix_$l$c$c$r">(,,)</a>, <a class="tref" href="#Ix_$l$c$r">(,)</a>, <a class="tref" href="#Ix_$l$r">()</a>, <a class="tref" href="#Ix_Bool">Bool</a>, <a class="tref" href="#Ix_$l$c$c$c$r">(,,,)</a>, <a class="tref" href="#Ix_$l$c$c$c$c$r">(,,,,)</a>, <a class="tref" href="#Ix_Char">Char</a>, <a class="tref" href="#Ix_Integer">Integer</a>, <a class="tref" href="#Ix_Ordering">Ordering</a></p>
 <h3>
 Member Functions</h3>
 <dl class="func">
@@ -208,10 +212,6 @@ like <a class="fref" href="#Ix.rangeSize">Ix.rangeSize</a>, but without checking
 <dt class="inst">
 <SPAN CLASS="code"><b>instance </b><a name=Ix_$l$r> </a><a class="tref" href="#Ix">Ix</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="inst">
-<ul>
-<LI>
-------------------------------------------------------------------    </LI>
-</ul>
 <h3>
 Member Functions</h3>
 <dl class="func">
@@ -248,10 +248,6 @@ inherited from <a class="fref" href="#Ix.unsafeRangeSize">Ix.unsafeRangeSize</a>
 <dt class="inst">
 <SPAN CLASS="code"><b>instance </b>(<a class="tref" href="#Ix">Ix</a> a, <a class="tref" href="#Ix">Ix</a> b) ⇒ <a name=Ix_$l$c$r> </a><a class="tref" href="#Ix">Ix</a> (a, b)</SPAN></dt>
 <dd class="inst">
-<ul>
-<LI>
-------------------------------------------------------------------    </LI>
-</ul>
 <h3>
 Member Functions</h3>
 <dl class="func">
@@ -290,39 +286,35 @@ inherited from <a class="fref" href="#Ix.unsafeRangeSize">Ix.unsafeRangeSize</a>
 <dt class="inst">
 <SPAN CLASS="code"><b>instance </b>(<a class="tref" href="#Ix">Ix</a> a1, <a class="tref" href="#Ix">Ix</a> a2, <a class="tref" href="#Ix">Ix</a> a3) ⇒ <a name=Ix_$l$c$c$r> </a><a class="tref" href="#Ix">Ix</a> (a1, a2, a3)</SPAN></dt>
 <dd class="inst">
-<ul>
-<LI>
-------------------------------------------------------------------    </LI>
-</ul>
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Ix_$l$c$c$r.inRange>inRange</a> ∷ (<a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α, <a class="tref" href="#Ix">Ix</a> γ) ⇒ <b>((β, α, γ), (β, α, γ))</b> → <b>(β, α, γ)</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Ix_$l$c$c$r.inRange>inRange</a> ∷ (<a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> α) ⇒ <b>((β, γ, α), (β, γ, α))</b> → <b>(β, γ, α)</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ix_$l$c$c$r.index>index</a> ∷ (<a class="tref" href="#Ix">Ix</a> α, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> β) ⇒ <b>((α, γ, β), (α, γ, β))</b> → <b>(α, γ, β)</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Ix_$l$c$c$r.index>index</a> ∷ (<a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> α) ⇒ <b>((β, γ, α), (β, γ, α))</b> → <b>(β, γ, α)</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Ix.index">Ix.index</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ix_$l$c$c$r.range>range</a> ∷ (<a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α) ⇒ <b>((γ, β, α), (γ, β, α))</b> → [(γ, β, α)]</SPAN></dt>
+<SPAN CLASS="code"><a name=Ix_$l$c$c$r.range>range</a> ∷ (<a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> α) ⇒ <b>((β, γ, α), (β, γ, α))</b> → [(β, γ, α)]</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ix_$l$c$c$r.rangeSize>rangeSize</a> ∷ (<a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α) ⇒ <b>((γ, β, α), (γ, β, α))</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Ix_$l$c$c$r.rangeSize>rangeSize</a> ∷ (<a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> α) ⇒ <b>((β, γ, α), (β, γ, α))</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Ix.rangeSize">Ix.rangeSize</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ix_$l$c$c$r.unsafeIndex>unsafeIndex</a> ∷ (<a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α, <a class="tref" href="#Ix">Ix</a> γ) ⇒ <b>((β, α, γ), (β, α, γ))</b> → <b>(β, α, γ)</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Ix_$l$c$c$r.unsafeIndex>unsafeIndex</a> ∷ (<a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> α) ⇒ <b>((β, γ, α), (β, γ, α))</b> → <b>(β, γ, α)</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ix_$l$c$c$r.unsafeRangeSize>unsafeRangeSize</a> ∷ (<a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α, <a class="tref" href="#Ix">Ix</a> γ) ⇒ <b>((β, α, γ), (β, α, γ))</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Ix_$l$c$c$r.unsafeRangeSize>unsafeRangeSize</a> ∷ (<a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> α) ⇒ <b>((β, γ, α), (β, γ, α))</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Ix.unsafeRangeSize">Ix.unsafeRangeSize</a></p>
@@ -332,39 +324,35 @@ inherited from <a class="fref" href="#Ix.unsafeRangeSize">Ix.unsafeRangeSize</a>
 <dt class="inst">
 <SPAN CLASS="code"><b>instance </b>(<a class="tref" href="#Ix">Ix</a> a1, <a class="tref" href="#Ix">Ix</a> a2, <a class="tref" href="#Ix">Ix</a> a3, <a class="tref" href="#Ix">Ix</a> a4) ⇒ <a name=Ix_$l$c$c$c$r> </a><a class="tref" href="#Ix">Ix</a> (a1, a2, a3, a4)</SPAN></dt>
 <dd class="inst">
-<ul>
-<LI>
-------------------------------------------------------------------    </LI>
-</ul>
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Ix_$l$c$c$c$r.inRange>inRange</a> ∷ (<a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α) ⇒ <b>((δ, γ, β, α), (δ, γ, β, α))</b> → <b>(δ, γ, β, α)</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Ix_$l$c$c$c$r.inRange>inRange</a> ∷ (<a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α) ⇒ <b>((γ, δ, β, α), (γ, δ, β, α))</b> → <b>(γ, δ, β, α)</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ix_$l$c$c$c$r.index>index</a> ∷ (<a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α, <a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> γ) ⇒ <b>((β, α, δ, γ), (β, α, δ, γ))</b> → <b>(β, α, δ, γ)</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Ix_$l$c$c$c$r.index>index</a> ∷ (<a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α) ⇒ <b>((γ, δ, β, α), (γ, δ, β, α))</b> → <b>(γ, δ, β, α)</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Ix.index">Ix.index</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ix_$l$c$c$c$r.range>range</a> ∷ (<a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α, <a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> γ) ⇒ <b>((β, α, δ, γ), (β, α, δ, γ))</b> → [(β, α, δ, γ)]</SPAN></dt>
+<SPAN CLASS="code"><a name=Ix_$l$c$c$c$r.range>range</a> ∷ (<a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α) ⇒ <b>((γ, δ, β, α), (γ, δ, β, α))</b> → [(γ, δ, β, α)]</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ix_$l$c$c$c$r.rangeSize>rangeSize</a> ∷ (<a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α, <a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> γ) ⇒ <b>((β, α, δ, γ), (β, α, δ, γ))</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Ix_$l$c$c$c$r.rangeSize>rangeSize</a> ∷ (<a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α) ⇒ <b>((γ, δ, β, α), (γ, δ, β, α))</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Ix.rangeSize">Ix.rangeSize</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ix_$l$c$c$c$r.unsafeIndex>unsafeIndex</a> ∷ (<a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α) ⇒ <b>((δ, γ, β, α), (δ, γ, β, α))</b> → <b>(δ, γ, β, α)</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Ix_$l$c$c$c$r.unsafeIndex>unsafeIndex</a> ∷ (<a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α) ⇒ <b>((γ, δ, β, α), (γ, δ, β, α))</b> → <b>(γ, δ, β, α)</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ix_$l$c$c$c$r.unsafeRangeSize>unsafeRangeSize</a> ∷ (<a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α) ⇒ <b>((δ, γ, β, α), (δ, γ, β, α))</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Ix_$l$c$c$c$r.unsafeRangeSize>unsafeRangeSize</a> ∷ (<a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α) ⇒ <b>((γ, δ, β, α), (γ, δ, β, α))</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Ix.unsafeRangeSize">Ix.unsafeRangeSize</a></p>
@@ -378,31 +366,31 @@ inherited from <a class="fref" href="#Ix.unsafeRangeSize">Ix.unsafeRangeSize</a>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Ix_$l$c$c$c$c$r.inRange>inRange</a> ∷ (<a class="tref" href="#Ix">Ix</a> ε, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α, <a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> γ) ⇒ <b>((ε, β, α, δ, γ), (ε, β, α, δ, γ))</b> → <b>(ε, β, α, δ, γ)</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Ix_$l$c$c$c$c$r.inRange>inRange</a> ∷ (<a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> ε, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> α) ⇒ <b>((δ, ε, β, γ, α), (δ, ε, β, γ, α))</b> → <b>(δ, ε, β, γ, α)</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ix_$l$c$c$c$c$r.index>index</a> ∷ (<a class="tref" href="#Ix">Ix</a> ε, <a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α, <a class="tref" href="#Ix">Ix</a> γ) ⇒ <b>((ε, δ, β, α, γ), (ε, δ, β, α, γ))</b> → <b>(ε, δ, β, α, γ)</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Ix_$l$c$c$c$c$r.index>index</a> ∷ (<a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> ε, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> α) ⇒ <b>((δ, ε, β, γ, α), (δ, ε, β, γ, α))</b> → <b>(δ, ε, β, γ, α)</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Ix.index">Ix.index</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ix_$l$c$c$c$c$r.range>range</a> ∷ (<a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α, <a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> ε) ⇒ <b>((β, α, δ, γ, ε), (β, α, δ, γ, ε))</b> → [(β, α, δ, γ, ε)]</SPAN></dt>
+<SPAN CLASS="code"><a name=Ix_$l$c$c$c$c$r.range>range</a> ∷ (<a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> ε, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> α) ⇒ <b>((δ, ε, β, γ, α), (δ, ε, β, γ, α))</b> → [(δ, ε, β, γ, α)]</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ix_$l$c$c$c$c$r.rangeSize>rangeSize</a> ∷ (<a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> ε, <a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> α) ⇒ <b>((γ, β, ε, δ, α), (γ, β, ε, δ, α))</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Ix_$l$c$c$c$c$r.rangeSize>rangeSize</a> ∷ (<a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> ε, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> α) ⇒ <b>((δ, ε, β, γ, α), (δ, ε, β, γ, α))</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Ix.rangeSize">Ix.rangeSize</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ix_$l$c$c$c$c$r.unsafeIndex>unsafeIndex</a> ∷ (<a class="tref" href="#Ix">Ix</a> α, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> ε, <a class="tref" href="#Ix">Ix</a> δ) ⇒ <b>((α, γ, β, ε, δ), (α, γ, β, ε, δ))</b> → <b>(α, γ, β, ε, δ)</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Ix_$l$c$c$c$c$r.unsafeIndex>unsafeIndex</a> ∷ (<a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> ε, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> α) ⇒ <b>((δ, ε, β, γ, α), (δ, ε, β, γ, α))</b> → <b>(δ, ε, β, γ, α)</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ix_$l$c$c$c$c$r.unsafeRangeSize>unsafeRangeSize</a> ∷ (<a class="tref" href="#Ix">Ix</a> ε, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α, <a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> γ) ⇒ <b>((ε, β, α, δ, γ), (ε, β, α, δ, γ))</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Ix_$l$c$c$c$c$r.unsafeRangeSize>unsafeRangeSize</a> ∷ (<a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> ε, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> α) ⇒ <b>((δ, ε, β, γ, α), (δ, ε, β, γ, α))</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="#Ix.unsafeRangeSize">Ix.unsafeRangeSize</a></p>
@@ -412,10 +400,6 @@ inherited from <a class="fref" href="#Ix.unsafeRangeSize">Ix.unsafeRangeSize</a>
 <dt class="inst">
 <SPAN CLASS="code"><b>instance </b><a name=Ix_Bool> </a><a class="tref" href="#Ix">Ix</a> <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="inst">
-<ul>
-<LI>
-------------------------------------------------------------------    </LI>
-</ul>
 <h3>
 Member Functions</h3>
 <dl class="func">
@@ -452,10 +436,6 @@ inherited from <a class="fref" href="#Ix.unsafeRangeSize">Ix.unsafeRangeSize</a>
 <dt class="inst">
 <SPAN CLASS="code"><b>instance </b><a name=Ix_Char> </a><a class="tref" href="#Ix">Ix</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a></SPAN></dt>
 <dd class="inst">
-<ul>
-<LI>
-------------------------------------------------------------------    </LI>
-</ul>
 <h3>
 Member Functions</h3>
 <dl class="func">
@@ -492,10 +472,6 @@ inherited from <a class="fref" href="#Ix.unsafeRangeSize">Ix.unsafeRangeSize</a>
 <dt class="inst">
 <SPAN CLASS="code"><b>instance </b><a name=Ix_Int> </a><a class="tref" href="#Ix">Ix</a> <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="inst">
-<ul>
-<LI>
-------------------------------------------------------------------    </LI>
-</ul>
 <h3>
 Member Functions</h3>
 <dl class="func">
@@ -532,10 +508,6 @@ inherited from <a class="fref" href="#Ix.unsafeRangeSize">Ix.unsafeRangeSize</a>
 <dt class="inst">
 <SPAN CLASS="code"><b>instance </b><a name=Ix_Integer> </a><a class="tref" href="#Ix">Ix</a> <a class="tref" href="../prelude/PreludeBase.html#Integer">Integer</a></SPAN></dt>
 <dd class="inst">
-<ul>
-<LI>
-------------------------------------------------------------------    </LI>
-</ul>
 <h3>
 Member Functions</h3>
 <dl class="func">
@@ -572,10 +544,6 @@ inherited from <a class="fref" href="#Ix.unsafeRangeSize">Ix.unsafeRangeSize</a>
 <dt class="inst">
 <SPAN CLASS="code"><b>instance </b><a name=Ix_Ordering> </a><a class="tref" href="#Ix">Ix</a> <a class="tref" href="../prelude/PreludeBase.html#Ordering">Ordering</a></SPAN></dt>
 <dd class="inst">
-<ul>
-<LI>
-------------------------------------------------------------------    </LI>
-</ul>
 <h3>
 Member Functions</h3>
 <dl class="func">
@@ -812,112 +780,76 @@ inherited from <a class="fref" href="#Ix.unsafeRangeSize">Ix.unsafeRangeSize</a>
 <a class="fref" href="#indexError">indexError</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="#Ix">Ix</a> α, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> β) ⇒ ((α, γ, β), (α, γ, β)) → (α, γ, β) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Ix_$l$c$c$r.index">Ix_(,,).index</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α, <a class="tref" href="#Ix">Ix</a> γ) ⇒ ((β, α, γ), (β, α, γ)) → (β, α, γ) → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> α) ⇒ ((β, γ, α), (β, γ, α)) → (β, γ, α) → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Ix_$l$c$c$r.inRange">Ix_(,,).inRange</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α, <a class="tref" href="#Ix">Ix</a> γ) ⇒ ((β, α, γ), (β, α, γ)) → (β, α, γ) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> α) ⇒ ((β, γ, α), (β, γ, α)) → (β, γ, α) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Ix_$l$c$c$r.unsafeIndex">Ix_(,,).unsafeIndex</a></p>
+<a class="fref" href="#Ix_$l$c$c$r.unsafeIndex">Ix_(,,).unsafeIndex</a>, <a class="fref" href="#Ix_$l$c$c$r.index">Ix_(,,).index</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α, <a class="tref" href="#Ix">Ix</a> γ) ⇒ ((β, α, γ), (β, α, γ)) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Ix_$l$c$c$r.unsafeRangeSize">Ix_(,,).unsafeRangeSize</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α) ⇒ ((γ, β, α), (γ, β, α)) → [(γ, β, α)]</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> α) ⇒ ((β, γ, α), (β, γ, α)) → [(β, γ, α)]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Ix_$l$c$c$r.range">Ix_(,,).range</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α) ⇒ ((γ, β, α), (γ, β, α)) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> α) ⇒ ((β, γ, α), (β, γ, α)) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Ix_$l$c$c$r.rangeSize">Ix_(,,).rangeSize</a></p>
+<a class="fref" href="#Ix_$l$c$c$r.unsafeRangeSize">Ix_(,,).unsafeRangeSize</a>, <a class="fref" href="#Ix_$l$c$c$r.rangeSize">Ix_(,,).rangeSize</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α, <a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> γ) ⇒ ((β, α, δ, γ), (β, α, δ, γ)) → (β, α, δ, γ) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Ix_$l$c$c$c$r.index">Ix_(,,,).index</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α, <a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> γ) ⇒ ((β, α, δ, γ), (β, α, δ, γ)) → [(β, α, δ, γ)]</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Ix_$l$c$c$c$r.range">Ix_(,,,).range</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α, <a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> γ) ⇒ ((β, α, δ, γ), (β, α, δ, γ)) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Ix_$l$c$c$c$r.rangeSize">Ix_(,,,).rangeSize</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α) ⇒ ((δ, γ, β, α), (δ, γ, β, α)) → (δ, γ, β, α) → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α) ⇒ ((γ, δ, β, α), (γ, δ, β, α)) → (γ, δ, β, α) → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Ix_$l$c$c$c$r.inRange">Ix_(,,,).inRange</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α) ⇒ ((δ, γ, β, α), (δ, γ, β, α)) → (δ, γ, β, α) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α) ⇒ ((γ, δ, β, α), (γ, δ, β, α)) → (γ, δ, β, α) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Ix_$l$c$c$c$r.unsafeIndex">Ix_(,,,).unsafeIndex</a></p>
+<a class="fref" href="#Ix_$l$c$c$c$r.unsafeIndex">Ix_(,,,).unsafeIndex</a>, <a class="fref" href="#Ix_$l$c$c$c$r.index">Ix_(,,,).index</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α) ⇒ ((δ, γ, β, α), (δ, γ, β, α)) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α) ⇒ ((γ, δ, β, α), (γ, δ, β, α)) → [(γ, δ, β, α)]</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Ix_$l$c$c$c$r.unsafeRangeSize">Ix_(,,,).unsafeRangeSize</a></p>
+<a class="fref" href="#Ix_$l$c$c$c$r.range">Ix_(,,,).range</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="#Ix">Ix</a> α, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> ε, <a class="tref" href="#Ix">Ix</a> δ) ⇒ ((α, γ, β, ε, δ), (α, γ, β, ε, δ)) → (α, γ, β, ε, δ) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α) ⇒ ((γ, δ, β, α), (γ, δ, β, α)) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Ix_$l$c$c$c$c$r.unsafeIndex">Ix_(,,,,).unsafeIndex</a></p>
+<a class="fref" href="#Ix_$l$c$c$c$r.unsafeRangeSize">Ix_(,,,).unsafeRangeSize</a>, <a class="fref" href="#Ix_$l$c$c$c$r.rangeSize">Ix_(,,,).rangeSize</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α, <a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> ε) ⇒ ((β, α, δ, γ, ε), (β, α, δ, γ, ε)) → [(β, α, δ, γ, ε)]</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Ix_$l$c$c$c$c$r.range">Ix_(,,,,).range</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> ε, <a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> α) ⇒ ((γ, β, ε, δ, α), (γ, β, ε, δ, α)) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Ix_$l$c$c$c$c$r.rangeSize">Ix_(,,,,).rangeSize</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="#Ix">Ix</a> ε, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α, <a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> γ) ⇒ ((ε, β, α, δ, γ), (ε, β, α, δ, γ)) → (ε, β, α, δ, γ) → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> ε, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> α) ⇒ ((δ, ε, β, γ, α), (δ, ε, β, γ, α)) → (δ, ε, β, γ, α) → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Ix_$l$c$c$c$c$r.inRange">Ix_(,,,,).inRange</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="#Ix">Ix</a> ε, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α, <a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> γ) ⇒ ((ε, β, α, δ, γ), (ε, β, α, δ, γ)) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> ε, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> α) ⇒ ((δ, ε, β, γ, α), (δ, ε, β, γ, α)) → (δ, ε, β, γ, α) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Ix_$l$c$c$c$c$r.unsafeRangeSize">Ix_(,,,,).unsafeRangeSize</a></p>
+<a class="fref" href="#Ix_$l$c$c$c$c$r.unsafeIndex">Ix_(,,,,).unsafeIndex</a>, <a class="fref" href="#Ix_$l$c$c$c$c$r.index">Ix_(,,,,).index</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="#Ix">Ix</a> ε, <a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> α, <a class="tref" href="#Ix">Ix</a> γ) ⇒ ((ε, δ, β, α, γ), (ε, δ, β, α, γ)) → (ε, δ, β, α, γ) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> ε, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> α) ⇒ ((δ, ε, β, γ, α), (δ, ε, β, γ, α)) → [(δ, ε, β, γ, α)]</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Ix_$l$c$c$c$c$r.index">Ix_(,,,,).index</a></p>
+<a class="fref" href="#Ix_$l$c$c$c$c$r.range">Ix_(,,,,).range</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="#Ix">Ix</a> δ, <a class="tref" href="#Ix">Ix</a> ε, <a class="tref" href="#Ix">Ix</a> β, <a class="tref" href="#Ix">Ix</a> γ, <a class="tref" href="#Ix">Ix</a> α) ⇒ ((δ, ε, β, γ, α), (δ, ε, β, γ, α)) → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Ix_$l$c$c$c$c$r.unsafeRangeSize">Ix_(,,,,).unsafeRangeSize</a>, <a class="fref" href="#Ix_$l$c$c$c$c$r.rangeSize">Ix_(,,,,).rangeSize</a></p>
 </dd>
 </dl>
 <p>

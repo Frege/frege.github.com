@@ -1,0 +1,548 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<META http-equiv="Content-Type" content="text/html;charset=utf-8">
+<TITLE>Control.concurrent.STM - frege documentation</TITLE>
+<style TYPE="text/css">
+body { font-family: helvetica, arial, sans-serif }
+pre { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
+h3  { font-weight: lighter }
+dt.func { background: rgb(95%, 95%, 80%); margin-top: 10px }
+dt.clas { background: rgb(80%, 95%, 95%); margin-top: 10px }
+dt.inst { background: rgb(95%, 90%, 95%); margin-top: 10px }
+dt.data { background: rgb(95%, 95%, 95%); margin-top: 10px }
+span.code { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
+span.unknown { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: red }
+a.fref { text-decoration: none; font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(30%, 30%, 0%) }
+a.tref { text-decoration: none; font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(40%, 0%,  40%) }
+</style>
+<BODY>
+<h1>
+Module <SPAN CLASS="code">Control.concurrent.STM</SPAN></h1>
+<ul>
+<LI>
+ Software Transactional Memory (STM) </LI>
+<LI>
+ </LI>
+<LI>
+ This STM implements an optimistic concurrency control for Frege. </LI>
+<LI>
+ It is based on </LI>
+<LI>
+     Harris, Tim, Simon Marlow, Simon Peyton-Jones, and Maurice Herlihy (2005). </LI>
+<LI>
+     “Composable Memory Transactions”. In: Proceedings of the Tenth ACM SIG- </LI>
+<LI>
+     PLAN Symposium on Principles and Practice of Parallel Programming. PPoPP </LI>
+<LI>
+     ’05. 551050. Chicago, IL, USA: ACM, pp. 48–60. isbn: 1-59593-080-9. </LI>
+<LI>
+     doi: http://dx.doi.org/10.2200/S00272ED1V01Y201006CAC011. url: </LI>
+<LI>
+     http://doi.acm.org/10.1145/1065944.1065952 </LI>
+<LI>
+ </LI>
+<LI>
+ An STM action is called transaction. </LI>
+</ul>
+<h3>
+Imports</h3>
+<ul>
+<li>
+<div>
+import <a HREF="../../Prelude.html">frege.Prelude</a> as Prelude</div>
+</li>
+<li>
+<div>
+import <a HREF="../../prelude/PreludeArrays.html">Prelude.PreludeArrays</a> as PreludeArrays</div>
+</li>
+<li>
+<div>
+import <a HREF="../../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
+</li>
+<li>
+<div>
+import <a HREF="../../prelude/PreludeDecimal.html">Prelude.PreludeDecimal</a> as PreludeDecimal</div>
+</li>
+<li>
+<div>
+import <a HREF="../../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
+</li>
+<li>
+<div>
+import <a HREF="../../prelude/PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
+</li>
+<li>
+<div>
+import <a HREF="../../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as PreludeMonad</div>
+</li>
+<li>
+<div>
+import <a HREF="../../prelude/PreludeText.html">Prelude.PreludeText</a> as PreludeText</div>
+</li>
+<li>
+<div>
+import <a HREF="../../java/util/Regex.html">Java.util.Regex</a> as Regexp</div>
+</li>
+</ul>
+<h3>
+Table of Content</h3>
+<ul class="data">
+<li>
+<div>
+<a HREF="#data">Definitions</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><b>type </b><a class="tref" href="#TMVar">TMVar</a> α = <a class="tref" href="#TVar">TVar</a> (<a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> α)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#STM"> </a> <a class="tref" href="#STM">STM</a> α</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#STMResult"> </a> <a class="tref" href="#STMResult">STMResult</a> α</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#STMWorld"> </a> <a class="tref" href="#STMWorld">STMWorld</a> = <b>pure </b><b>native </b>frege.runtime.Phantom.STM</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#TVar"> </a> <a class="tref" href="#TVar">TVar</a> α</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#newTVar">newTVar</a> ∷ <b>α</b> → <a class="tref" href="#STM">STM</a> (<a class="tref" href="#TVar">TVar</a> α)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#readTVar">readTVar</a> ∷ <b><a class="tref" href="#TVar">TVar</a> α</b> → <a class="tref" href="#STM">STM</a> α</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#writeTVar">writeTVar</a> ∷ <b><a class="tref" href="#TVar">TVar</a> α</b> → <b>α</b> → <a class="tref" href="#STM">STM</a> <a class="tref" href="../../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#retry">retry</a> ∷ <a class="tref" href="#STM">STM</a> α</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#check">check</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a></b> → <a class="tref" href="#STM">STM</a> <a class="tref" href="../../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#atomically">atomically</a> ∷ <b><a class="tref" href="#STM">STM</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> α</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#newEmptyTMVar">newEmptyTMVar</a> ∷ <a class="tref" href="#STM">STM</a> (<a class="tref" href="#TMVar">TMVar</a> α)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#newTMVar">newTMVar</a> ∷ α → <a class="tref" href="#STM">STM</a> (<a class="tref" href="#TMVar">TMVar</a> α)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#takeTMVar">takeTMVar</a> ∷ <b><a class="tref" href="#TMVar">TMVar</a> α</b> → <a class="tref" href="#STM">STM</a> α</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#putTMVar">putTMVar</a> ∷ <b><a class="tref" href="#TMVar">TMVar</a> α</b> → α → <a class="tref" href="#STM">STM</a> <a class="tref" href="../../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#pollTMVar">pollTMVar</a> ∷ <b><a class="tref" href="#TMVar">TMVar</a> α</b> → <a class="tref" href="#STM">STM</a> (<a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> α)</SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#instance">Instances</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#MonadOr_STM"> </a><a class="tref" href="../../prelude/PreludeMonad.html#MonadOr">MonadOr</a> <a class="tref" href="#STM">STM</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#MonadPlus_STM"> </a><a class="tref" href="../../prelude/PreludeMonad.html#MonadPlus">MonadPlus</a> <a class="tref" href="#STM">STM</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#MonadZero_STM"> </a><a class="tref" href="../../prelude/PreludeMonad.html#MonadZero">MonadZero</a> <a class="tref" href="#STM">STM</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Monad_STM"> </a><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> <a class="tref" href="#STM">STM</a></SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#case">Functions and Values by Type</a></div>
+</li>
+</ul>
+<h2>
+<a NAME="data">Definitions</a></h2>
+<dl class="data">
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=STMWorld> </a> <a class="tref" href="#STMWorld">STMWorld</a> = <b>pure </b><b>native </b>frege.runtime.Phantom.STM</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=STMResult> </a> <a class="tref" href="#STMResult">STMResult</a> α</SPAN></dt>
+<dd class="data">
+<h3>
+Constructors</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=STMResult.Result>Result</a> α</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=STMResult.Retry>Retry</a> </SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=STM> </a> <a class="tref" href="#STM">STM</a> α</SPAN></dt>
+<dd class="data">
+<h3>
+Constructors</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=STM.STM>STM</a> (<a class="tref" href="../../prelude/PreludeBase.html#ST">ST</a> <a class="tref" href="#STMWorld">STMWorld</a> (<a class="tref" href="#STMResult">STMResult</a> α))</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=TVar> </a> <a class="tref" href="#TVar">TVar</a> α</SPAN></dt>
+<dd class="data">
+<p>
+Container for shared mutable data.   </p>
+<h3>
+Constructors</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><b>private</b> <a name=TVar.TVar>TVar</a> (<a class="tref" href="../../prelude/PreludeIO.html#Mutable">Mutable</a> <a class="tref" href="#STMWorld">STMWorld</a> (<a class="tref" href="#NativeTVar">NativeTVar</a> α))</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=TVar.$new>new</a> ∷ <b>α</b> → <a class="tref" href="#STM">STM</a> (<a class="tref" href="#TVar">TVar</a> α)</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=TVar.read>read</a> ∷ <b><a class="tref" href="#TVar">TVar</a> α</b> → <a class="tref" href="#STM">STM</a> α</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=TVar.write>write</a> ∷ <b><a class="tref" href="#TVar">TVar</a> α</b> → <b>α</b> → <a class="tref" href="#STM">STM</a> <a class="tref" href="../../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=newTVar>newTVar</a> ∷ <b>α</b> → <a class="tref" href="#STM">STM</a> (<a class="tref" href="#TVar">TVar</a> α)</SPAN></dt>
+<dd class="data">
+<p>
+Alias for <a class="fref" href="#TVar.$new">TVar.new</a></p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=readTVar>readTVar</a> ∷ <b><a class="tref" href="#TVar">TVar</a> α</b> → <a class="tref" href="#STM">STM</a> α</SPAN></dt>
+<dd class="data">
+<p>
+Alias for <a class="fref" href="#TVar.read">TVar.read</a></p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=writeTVar>writeTVar</a> ∷ <b><a class="tref" href="#TVar">TVar</a> α</b> → <b>α</b> → <a class="tref" href="#STM">STM</a> <a class="tref" href="../../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="data">
+<p>
+Alias for <a class="fref" href="#TVar.write">TVar.write</a></p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=retry>retry</a> ∷ <a class="tref" href="#STM">STM</a> α</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=check>check</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a></b> → <a class="tref" href="#STM">STM</a> <a class="tref" href="../../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=atomically>atomically</a> ∷ <b><a class="tref" href="#STM">STM</a> α</b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> α</SPAN></dt>
+<dd class="data">
+<p>
+Executes an STM action.   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>type </b><a name=TMVar>TMVar</a> α = <a class="tref" href="#TVar">TVar</a> (<a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> α)</SPAN></dt>
+<dd class="data">
+<p>
+TMVars are MVars implemented using STM   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=newEmptyTMVar>newEmptyTMVar</a> ∷ <a class="tref" href="#STM">STM</a> (<a class="tref" href="#TMVar">TMVar</a> α)</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=newTMVar>newTMVar</a> ∷ α → <a class="tref" href="#STM">STM</a> (<a class="tref" href="#TMVar">TMVar</a> α)</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=takeTMVar>takeTMVar</a> ∷ <b><a class="tref" href="#TMVar">TMVar</a> α</b> → <a class="tref" href="#STM">STM</a> α</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=putTMVar>putTMVar</a> ∷ <b><a class="tref" href="#TMVar">TMVar</a> α</b> → α → <a class="tref" href="#STM">STM</a> <a class="tref" href="../../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=pollTMVar>pollTMVar</a> ∷ <b><a class="tref" href="#TMVar">TMVar</a> α</b> → <a class="tref" href="#STM">STM</a> (<a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> α)</SPAN></dt>
+<dd class="data">
+</dd>
+</dl>
+<h2>
+<a NAME="instance">Instances</a></h2>
+<dl class="inst">
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=MonadOr_STM> </a><a class="tref" href="../../prelude/PreludeMonad.html#MonadOr">MonadOr</a> <a class="tref" href="#STM">STM</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=MonadOr_STM.orElse>orElse</a> ∷ <b><a class="tref" href="#STM">STM</a> α</b> → <b><a class="tref" href="#STM">STM</a> α</b> → <a class="tref" href="#STM">STM</a> α</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=MonadPlus_STM> </a><a class="tref" href="../../prelude/PreludeMonad.html#MonadPlus">MonadPlus</a> <a class="tref" href="#STM">STM</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=MonadPlus_STM.mplus>mplus</a> ∷ <a class="tref" href="#STM">STM</a> α → <a class="tref" href="#STM">STM</a> α → <a class="tref" href="#STM">STM</a> α<br><b>infixr</b>&nbsp;&nbsp;13</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=MonadZero_STM> </a><a class="tref" href="../../prelude/PreludeMonad.html#MonadZero">MonadZero</a> <a class="tref" href="#STM">STM</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=MonadZero_STM.mzero>mzero</a> ∷ <a class="tref" href="#STM">STM</a> α</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Monad_STM> </a><a class="tref" href="../../prelude/PreludeMonad.html#Monad">Monad</a> <a class="tref" href="#STM">STM</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_STM.$star$gt>*&gt;</a> ∷ <a class="tref" href="#STM">STM</a> α → <a class="tref" href="#STM">STM</a> β → <a class="tref" href="#STM">STM</a> β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Applicative.$star$gt">Applicative.*&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_STM.$lt$star>&lt;*</a> ∷ <a class="tref" href="#STM">STM</a> α → <a class="tref" href="#STM">STM</a> β → <a class="tref" href="#STM">STM</a> α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Applicative.$lt$star">Applicative.&lt;*</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_STM.$lt$star$gt>&lt;*&gt;</a> ∷ <a class="tref" href="#STM">STM</a> (α→β) → <a class="tref" href="#STM">STM</a> α → <a class="tref" href="#STM">STM</a> β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Monad.$lt$star$gt">Monad.&lt;*&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_STM.$gt$gt>&gt;&gt;</a> ∷ <b><a class="tref" href="#STM">STM</a> α</b> → <a class="tref" href="#STM">STM</a> β → <a class="tref" href="#STM">STM</a> β<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Monad.$gt$gt">Monad.&gt;&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_STM.$gt$gt$eq>&gt;&gt;=</a> ∷ <b><a class="tref" href="#STM">STM</a> α</b> → (<b>α → <a class="tref" href="#STM">STM</a> β</b>) → <a class="tref" href="#STM">STM</a> β<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_STM.fmap>fmap</a> ∷ (<b>α → β</b>) → <b><a class="tref" href="#STM">STM</a> α</b> → <a class="tref" href="#STM">STM</a> β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Monad.fmap">Monad.fmap</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_STM.join>join</a> ∷ <b><a class="tref" href="#STM">STM</a> (<a class="tref" href="#STM">STM</a> α)</b> → <a class="tref" href="#STM">STM</a> α</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Monad.join">Monad.join</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_STM.pure>pure</a> ∷ α → <a class="tref" href="#STM">STM</a> α</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+</dl>
+<h2>
+<a NAME="case">Functions and Values by Type</a></h2>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a> → <a class="tref" href="#STM">STM</a> <a class="tref" href="../../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#check">check</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeBase.html#ST">ST</a> <a class="tref" href="#STMWorld">STMWorld</a> (<a class="tref" href="#STMResult">STMResult</a> α) → <a class="tref" href="#STM">STM</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#STM.STM">STM.STM</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../prelude/PreludeIO.html#Mutable">Mutable</a> <a class="tref" href="#STMWorld">STMWorld</a> (<a class="tref" href="#NativeTVar">NativeTVar</a> α) → <a class="tref" href="#TVar">TVar</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#TVar.TVar">TVar.TVar</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#STM">STM</a> (<a class="tref" href="#STM">STM</a> α) → <a class="tref" href="#STM">STM</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_STM.join">Monad_STM.join</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#STM">STM</a> α → <a class="tref" href="#STM">STM</a> α → <a class="tref" href="#STM">STM</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#MonadOr_STM.orElse">MonadOr_STM.orElse</a>, <a class="fref" href="#MonadPlus_STM.mplus">MonadPlus_STM.mplus</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#STM">STM</a> α → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#atomically">atomically</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#TMVar">TMVar</a> α → α → <a class="tref" href="#STM">STM</a> <a class="tref" href="../../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#putTMVar">putTMVar</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#TMVar">TMVar</a> α → <a class="tref" href="#STM">STM</a> (<a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> α)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#pollTMVar">pollTMVar</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#TMVar">TMVar</a> α → <a class="tref" href="#STM">STM</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#takeTMVar">takeTMVar</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#TVar">TVar</a> α → α → <a class="tref" href="#STM">STM</a> <a class="tref" href="../../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#TVar.write">TVar.write</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#TVar">TVar</a> α → <a class="tref" href="#STM">STM</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#TVar.read">TVar.read</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">α → <a class="tref" href="#STM">STM</a> (<a class="tref" href="#TMVar">TMVar</a> α)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#newTMVar">newTMVar</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">α → <a class="tref" href="#STM">STM</a> (<a class="tref" href="#TVar">TVar</a> α)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#TVar.$new">TVar.new</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">α → <a class="tref" href="#STM">STM</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_STM.pure">Monad_STM.pure</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">α → <a class="tref" href="#STMResult">STMResult</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#STMResult.Result">STMResult.Result</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#STM">STM</a> (<a class="tref" href="#TMVar">TMVar</a> α)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#newEmptyTMVar">newEmptyTMVar</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#STM">STM</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#retry">retry</a>, <a class="fref" href="#MonadZero_STM.mzero">MonadZero_STM.mzero</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#STMResult">STMResult</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#STMResult.Retry">STMResult.Retry</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(α → β) → <a class="tref" href="#STM">STM</a> α → <a class="tref" href="#STM">STM</a> β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_STM.fmap">Monad_STM.fmap</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#STM">STM</a> (α→β) → <a class="tref" href="#STM">STM</a> α → <a class="tref" href="#STM">STM</a> β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_STM.$lt$star$gt">Monad_STM.&lt;*&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#STM">STM</a> α → (α → <a class="tref" href="#STM">STM</a> β) → <a class="tref" href="#STM">STM</a> β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_STM.$gt$gt$eq">Monad_STM.&gt;&gt;=</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#STM">STM</a> α → <a class="tref" href="#STM">STM</a> β → <a class="tref" href="#STM">STM</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_STM.$lt$star">Monad_STM.&lt;*</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#STM">STM</a> α → <a class="tref" href="#STM">STM</a> β → <a class="tref" href="#STM">STM</a> β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_STM.$star$gt">Monad_STM.*&gt;</a>, <a class="fref" href="#Monad_STM.$gt$gt">Monad_STM.&gt;&gt;</a></p>
+</dd>
+</dl>
+<p>
+<a HREF="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Strict" height="31" width="88"></a></p>
+</BODY>
+</HTML>

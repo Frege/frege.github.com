@@ -41,6 +41,10 @@ import <a HREF="../../prelude/PreludeBase.html">Prelude.PreludeBase</a> as Prelu
 </li>
 <li>
 <div>
+import <a HREF="../../prelude/PreludeDecimal.html">Prelude.PreludeDecimal</a> as PreludeDecimal</div>
+</li>
+<li>
+<div>
 import <a HREF="../../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
 </li>
 <li>
@@ -246,7 +250,7 @@ Member Functions</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Monad_Identity.$star$gt>*&gt;</a> ∷ <b><a class="tref" href="#Identity">Identity</a> β</b> → <b><a class="tref" href="#Identity">Identity</a> α</b> → <a class="tref" href="#Identity">Identity</a> α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name=Monad_Identity.$star$gt>*&gt;</a> ∷ <b><a class="tref" href="#Identity">Identity</a> α</b> → <b><a class="tref" href="#Identity">Identity</a> β</b> → <a class="tref" href="#Identity">Identity</a> β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Applicative.$star$gt">Applicative.*&gt;</a></p>
@@ -262,7 +266,7 @@ inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Applicative
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Monad_Identity.$gt$gt>&gt;&gt;</a> ∷ <b><a class="tref" href="#Identity">Identity</a> β</b> → <b><a class="tref" href="#Identity">Identity</a> α</b> → <a class="tref" href="#Identity">Identity</a> α<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
+<SPAN CLASS="code"><a name=Monad_Identity.$gt$gt>&gt;&gt;</a> ∷ <b><a class="tref" href="#Identity">Identity</a> α</b> → <b><a class="tref" href="#Identity">Identity</a> β</b> → <a class="tref" href="#Identity">Identity</a> β<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
@@ -270,7 +274,7 @@ inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Applicative
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Monad_Identity.fmap>fmap</a> ∷ (<b>β → α</b>) → <b><a class="tref" href="#Identity">Identity</a> β</b> → <a class="tref" href="#Identity">Identity</a> α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name=Monad_Identity.fmap>fmap</a> ∷ (<b>α → β</b>) → <b><a class="tref" href="#Identity">Identity</a> α</b> → <a class="tref" href="#Identity">Identity</a> β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
@@ -594,7 +598,7 @@ inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.showsub
 <a class="fref" href="#Monoid_Identity.mempty">Monoid_Identity.mempty</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(β → α) → <a class="tref" href="#Identity">Identity</a> β → <a class="tref" href="#Identity">Identity</a> α</SPAN></dt>
+<SPAN CLASS="code">(α → β) → <a class="tref" href="#Identity">Identity</a> α → <a class="tref" href="#Identity">Identity</a> β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_Identity.fmap">Monad_Identity.fmap</a></p>
@@ -618,22 +622,22 @@ inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.showsub
 <a class="fref" href="#Monad_Identity.$lt$star">Monad_Identity.&lt;*</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Identity">Identity</a> β → (β→α) → <a class="tref" href="#Identity">Identity</a> α</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Identity.chg$run">Identity.chg$run</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Identity">Identity</a> β → <a class="tref" href="#Identity">Identity</a> α → <a class="tref" href="#Identity">Identity</a> α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Identity">Identity</a> α → <a class="tref" href="#Identity">Identity</a> β → <a class="tref" href="#Identity">Identity</a> β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_Identity.$star$gt">Monad_Identity.*&gt;</a>, <a class="fref" href="#Monad_Identity.$gt$gt">Monad_Identity.&gt;&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Identity">Identity</a> β → α → <a class="tref" href="#Identity">Identity</a> α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Identity">Identity</a> α → β → <a class="tref" href="#Identity">Identity</a> β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Identity.upd$run">Identity.upd$run</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Identity">Identity</a> β → (β→α) → <a class="tref" href="#Identity">Identity</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Identity.chg$run">Identity.chg$run</a></p>
 </dd>
 </dl>
 <p>

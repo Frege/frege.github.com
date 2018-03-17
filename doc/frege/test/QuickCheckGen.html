@@ -25,10 +25,6 @@ Imports</h3>
 <ul>
 <li>
 <div>
-import <a HREF="../data/List.html">Data.List</a> as List</div>
-</li>
-<li>
-<div>
 import <a HREF="../prelude/Math.html">Prelude.Math</a> as Math</div>
 </li>
 <li>
@@ -42,6 +38,10 @@ import <a HREF="../prelude/PreludeArrays.html">Prelude.PreludeArrays</a> as Prel
 <li>
 <div>
 import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeDecimal.html">Prelude.PreludeDecimal</a> as PreludeDecimal</div>
 </li>
 <li>
 <div>
@@ -312,7 +312,7 @@ Member Functions</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Monad_Gen.$star$gt>*&gt;</a> ∷ <a class="tref" href="#Gen">Gen</a> β → <a class="tref" href="#Gen">Gen</a> α → <a class="tref" href="#Gen">Gen</a> α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name=Monad_Gen.$star$gt>*&gt;</a> ∷ <a class="tref" href="#Gen">Gen</a> α → <a class="tref" href="#Gen">Gen</a> β → <a class="tref" href="#Gen">Gen</a> β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeMonad.html#Applicative.$star$gt">Applicative.*&gt;</a></p>
@@ -328,7 +328,7 @@ inherited from <a class="fref" href="../prelude/PreludeMonad.html#Applicative.$l
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Monad_Gen.$gt$gt>&gt;&gt;</a> ∷ <b><a class="tref" href="#Gen">Gen</a> β</b> → <a class="tref" href="#Gen">Gen</a> α → <a class="tref" href="#Gen">Gen</a> α<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
+<SPAN CLASS="code"><a name=Monad_Gen.$gt$gt>&gt;&gt;</a> ∷ <b><a class="tref" href="#Gen">Gen</a> α</b> → <a class="tref" href="#Gen">Gen</a> β → <a class="tref" href="#Gen">Gen</a> β<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad.$gt$gt">Monad.&gt;&gt;</a></p>
@@ -474,10 +474,10 @@ inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad.join">Mo
 <a class="fref" href="#Monad_Gen.$gt$gt$eq">Monad_Gen.&gt;&gt;=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Gen">Gen</a> α → (<a class="tref" href="../prelude/PreludeBase.html#Function">-&gt;</a> <a class="tref" href="../system/Random.html#StdGen">StdGen</a> (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>→α)→<a class="tref" href="../system/Random.html#StdGen">StdGen</a>→<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>→β) → <a class="tref" href="#Gen">Gen</a> β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Gen">Gen</a> α → (<a class="tref" href="../system/Random.html#StdGen">StdGen</a>→<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>→β) → <a class="tref" href="#Gen">Gen</a> β</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Gen.chg$unGen">Gen.chg$unGen</a></p>
+<a class="fref" href="#Gen.upd$unGen">Gen.upd$unGen</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#Gen">Gen</a> α → <a class="tref" href="#Gen">Gen</a> β → <a class="tref" href="#Gen">Gen</a> α</SPAN></dt>
@@ -486,16 +486,16 @@ inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad.join">Mo
 <a class="fref" href="#Monad_Gen.$lt$star">Monad_Gen.&lt;*</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Gen">Gen</a> β → (<a class="tref" href="../system/Random.html#StdGen">StdGen</a>→<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>→α) → <a class="tref" href="#Gen">Gen</a> α</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Gen.upd$unGen">Gen.upd$unGen</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Gen">Gen</a> β → <a class="tref" href="#Gen">Gen</a> α → <a class="tref" href="#Gen">Gen</a> α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Gen">Gen</a> α → <a class="tref" href="#Gen">Gen</a> β → <a class="tref" href="#Gen">Gen</a> β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_Gen.$star$gt">Monad_Gen.*&gt;</a>, <a class="fref" href="#Monad_Gen.$gt$gt">Monad_Gen.&gt;&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Gen">Gen</a> β → (<a class="tref" href="../prelude/PreludeBase.html#Function">-&gt;</a> <a class="tref" href="../system/Random.html#StdGen">StdGen</a> (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>→β)→<a class="tref" href="../system/Random.html#StdGen">StdGen</a>→<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>→α) → <a class="tref" href="#Gen">Gen</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Gen.chg$unGen">Gen.chg$unGen</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Integral">Integral</a> n ⇒ n → <a class="tref" href="#Gen">Gen</a> a → <a class="tref" href="#Gen">Gen</a> a</SPAN></dt>

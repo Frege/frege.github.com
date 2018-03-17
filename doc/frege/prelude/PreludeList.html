@@ -130,7 +130,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#concatMap">concatMap</a> ∷ <a class="tref" href="#ListMonoid">ListMonoid</a> γ ⇒ (<b>α→γ β</b>) → [α] → γ β</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#concatMap">concatMap</a> ∷ <a class="tref" href="#ListMonoid">ListMonoid</a> β ⇒ (<b>γ→β α</b>) → [γ] → β α</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -194,7 +194,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#foldrs">foldrs</a> ∷ (<b>α→β→β</b>) → <b>β</b> → <b>[α]</b> → β</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#foldrs">foldrs</a> ∷ (<b>β→α→α</b>) → <b>α</b> → <b>[β]</b> → α</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -258,31 +258,35 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#zip">zip</a> ∷ <b>[β]</b> → <b>[α]</b> → [(β, α)]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#zip">zip</a> ∷ <b>[α]</b> → [β] → [(α, β)]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#unzip">unzip</a> ∷ <b>[(β, α)]</b> → ([β], [α])</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#unzip">unzip</a> ∷ <b>[(α, β)]</b> → ([α], [β])</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#zipWith">zipWith</a> ∷ (<b>β→α→γ</b>) → <b>[β]</b> → <b>[α]</b> → [γ]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#zipWith">zipWith</a> ∷ (<b>β→γ→α</b>) → <b>[β]</b> → [γ] → [α]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#zip3">zip3</a> ∷ <b>[β]</b> → <b>[α]</b> → <b>[γ]</b> → [(β, α, γ)]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#zip3">zip3</a> ∷ <b>[α]</b> → [β] → [γ] → [(α, β, γ)]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#unzip3">unzip3</a> ∷ <b>[(β, α, γ)]</b> → ([β], [α], [γ])</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#unzip3">unzip3</a> ∷ <b>[(α, β, γ)]</b> → ([α], [β], [γ])</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#zipWith3">zipWith3</a> ∷ (<b>γ→α→β→δ</b>) → <b>[γ]</b> → <b>[α]</b> → <b>[β]</b> → [δ]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#zipWith3">zipWith3</a> ∷ (<b>β→γ→δ→α</b>) → <b>[β]</b> → [γ] → [δ] → [α]</SPAN></dt>
 <dd>
 </dd>
 <dt>
 <SPAN CLASS="code"><a class="fref" href="#intersperse">intersperse</a> ∷ α → <b>[α]</b> → [α]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#$excl$excl">!!</a> ∷ <b>[α]</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → α&nbsp;</SPAN></dt>
 <dd>
 </dd>
 </dl>
@@ -542,7 +546,7 @@ except that <a class="fref" href="#all">all</a> stops at the first element that 
 Note that, according to the identity above, <SPAN CLASS="code">all p []</SPAN> is always <SPAN CLASS="code">true</SPAN>.</p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=concatMap>concatMap</a> ∷ <a class="tref" href="#ListMonoid">ListMonoid</a> γ ⇒ (<b>α→γ β</b>) → [α] → γ β</SPAN></dt>
+<SPAN CLASS="code"><a name=concatMap>concatMap</a> ∷ <a class="tref" href="#ListMonoid">ListMonoid</a> β ⇒ (<b>γ→β α</b>) → [γ] → β α</SPAN></dt>
 <dd class="data">
 <p>
 Map a function over a list and concatenate the list or string results.</p>
@@ -690,7 +694,7 @@ If <i>f</i> is commutative, the list finite and laziness not an issue, <a class=
 <a class="fref" href="#foldr1">foldr1</a> is a variant of <a class="fref" href="#foldr">foldr</a> that has no starting argument, and thus must be applied to a non-empty list    </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=foldrs>foldrs</a> ∷ (<b>α→β→β</b>) → <b>β</b> → <b>[α]</b> → β</SPAN></dt>
+<SPAN CLASS="code"><a name=foldrs>foldrs</a> ∷ (<b>β→α→α</b>) → <b>α</b> → <b>[β]</b> → α</SPAN></dt>
 <dd class="data">
 <p>
 This function may be used in place of</p>
@@ -822,7 +826,7 @@ opposite of <a class="fref" href="#elem">elem</a>   </p>
 <SPAN CLASS="code">iterate f a</SPAN> builds the infinite list <SPAN CLASS="code">[a, f a, f (f a), ...]</SPAN></p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=zip>zip</a> ∷ <b>[β]</b> → <b>[α]</b> → [(β, α)]</SPAN></dt>
+<SPAN CLASS="code"><a name=zip>zip</a> ∷ <b>[α]</b> → [β] → [(α, β)]</SPAN></dt>
 <dd class="data">
 <p>
 <SPAN CLASS="code">zip as bs</SPAN> builds a list of tuples of corresponding elements of /as/ and /bs/. Trailing elements of the longer list are ignored.</p>
@@ -830,7 +834,7 @@ opposite of <a class="fref" href="#elem">elem</a>   </p>
  zip (1,2,3) "ab" = [(1, "a"), (2, "b")]</PRE>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=unzip>unzip</a> ∷ <b>[(β, α)]</b> → ([β], [α])</SPAN></dt>
+<SPAN CLASS="code"><a name=unzip>unzip</a> ∷ <b>[(α, β)]</b> → ([α], [β])</SPAN></dt>
 <dd class="data">
 <p>
 <a class="fref" href="#unzip">unzip</a> turns a list of tuples into a tuple of lists. It is the opposite of <a class="fref" href="#zip">zip</a> and the following holds for genuine lists</p>
@@ -844,25 +848,25 @@ But note that</p>
 will only hold if <SPAN CLASS="code">length as == length bs</SPAN></p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=zipWith>zipWith</a> ∷ (<b>β→α→γ</b>) → <b>[β]</b> → <b>[α]</b> → [γ]</SPAN></dt>
+<SPAN CLASS="code"><a name=zipWith>zipWith</a> ∷ (<b>β→γ→α</b>) → <b>[β]</b> → [γ] → [α]</SPAN></dt>
 <dd class="data">
 <p>
 <SPAN CLASS="code">zipWith f xs ys</SPAN> zips two lists with function <i>f</i> instead of the standard <a class="tref" href="./PreludeBase.html#Tuple2">(,)</a> that is used by <a class="fref" href="#zip">zip</a></p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=zip3>zip3</a> ∷ <b>[β]</b> → <b>[α]</b> → <b>[γ]</b> → [(β, α, γ)]</SPAN></dt>
+<SPAN CLASS="code"><a name=zip3>zip3</a> ∷ <b>[α]</b> → [β] → [γ] → [(α, β, γ)]</SPAN></dt>
 <dd class="data">
 <p>
 <a class="fref" href="#zip3">zip3</a> zips 3 lists in the same way as <a class="fref" href="#zip">zip</a> does it.   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=unzip3>unzip3</a> ∷ <b>[(β, α, γ)]</b> → ([β], [α], [γ])</SPAN></dt>
+<SPAN CLASS="code"><a name=unzip3>unzip3</a> ∷ <b>[(α, β, γ)]</b> → ([α], [β], [γ])</SPAN></dt>
 <dd class="data">
 <p>
 <a class="fref" href="#unzip3">unzip3</a> unzips a list of triples and returns a triple of lists.   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=zipWith3>zipWith3</a> ∷ (<b>γ→α→β→δ</b>) → <b>[γ]</b> → <b>[α]</b> → <b>[β]</b> → [δ]</SPAN></dt>
+<SPAN CLASS="code"><a name=zipWith3>zipWith3</a> ∷ (<b>β→γ→δ→α</b>) → <b>[β]</b> → [γ] → [δ] → [α]</SPAN></dt>
 <dd class="data">
 <p>
 <a class="fref" href="#zipWith3">zipWith3</a> <i>f</i> zips 3 lists with function <i>f</i> instead of the standard <a class="tref" href="./PreludeBase.html#Tuple3">(,,)</a> that is used by <a class="fref" href="#zip3">zip3</a>   </p>
@@ -874,6 +878,12 @@ will only hold if <SPAN CLASS="code">length as == length bs</SPAN></p>
 <SPAN CLASS="code">intersperse a xs</SPAN> inserts <i>a</i> between every two elements of <i>xs</i></p>
 <PRE>
  intersperse 0 (1..3) == [1,0,2,0,3]</PRE>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=$excl$excl>!!</a> ∷ <b>[α]</b> → <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → α<br><b>infixl</b>&nbsp;&nbsp;16</SPAN></dt>
+<dd class="data">
+<p>
+<SPAN CLASS="code">xs !! n</SPAN> is the element with index <i>n</i> of the list <i>xs</i>, where the head element of a list has index 0.</p>
 </dd>
 </dl>
 <h2>
@@ -1032,7 +1042,7 @@ inherited from <a class="fref" href="#ListView.toList">ListView.toList</a></p>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=ListView_$lbrack$rbrack.drop>drop</a> ∷ <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → [α] → [α]</SPAN></dt>
+<SPAN CLASS="code"><a name=ListView_$lbrack$rbrack.drop>drop</a> ∷ <b><a class="tref" href="./PreludeBase.html#Int">Int</a></b> → <b>[α]</b> → [α]</SPAN></dt>
 <dd class="func">
 <p>
 <SPAN CLASS="code">drop n xs</SPAN> returns what remains from /xs/ after the /n/ leading elements have been dropped. If /n/ is greater than the <a class="fref" href="#ListView.length">ListView.length</a> of /xs/, the result is the empty list.</p>
@@ -1268,6 +1278,12 @@ inherited from <a class="fref" href="./PreludeBase.html#Ord.min">Ord.min</a></p>
 <a class="fref" href="#ListMonoid_$lbrack$rbrack.$plus$plus">ListMonoid_[].++</a></p>
 </dd>
 <dt class="func">
+<SPAN CLASS="code">[α] → <a class="tref" href="./PreludeBase.html#Int">Int</a> → α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#$excl$excl">!!</a></p>
+</dd>
+<dt class="func">
 <SPAN CLASS="code">[α] → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α, [α])</SPAN></dt>
 <dd class="func">
 <p>
@@ -1397,7 +1413,13 @@ inherited from <a class="fref" href="./PreludeBase.html#Ord.min">Ord.min</a></p>
 <SPAN CLASS="code">(α→β→β) → β → [α] → β</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#foldr">foldr</a>, <a class="fref" href="#foldrs">foldrs</a></p>
+<a class="fref" href="#foldr">foldr</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(β→α→α) → α → [β] → α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#foldrs">foldrs</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">(β→α→β) → β → [α] → [β]</SPAN></dt>
@@ -1418,13 +1440,13 @@ inherited from <a class="fref" href="./PreludeBase.html#Ord.min">Ord.min</a></p>
 <a class="fref" href="#ListSource_Either.toList">ListSource_Either.toList</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">[(β, α)] → ([β], [α])</SPAN></dt>
+<SPAN CLASS="code">[(α, β)] → ([α], [β])</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#unzip">unzip</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">[β] → [α] → [(β, α)]</SPAN></dt>
+<SPAN CLASS="code">[α] → [β] → [(α, β)]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#zip">zip</a></p>
@@ -1502,31 +1524,31 @@ inherited from <a class="fref" href="./PreludeBase.html#Ord.min">Ord.min</a></p>
 <a class="fref" href="#ListEmpty.empty">ListEmpty.empty</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(β→α→γ) → [β] → [α] → [γ]</SPAN></dt>
+<SPAN CLASS="code">(β→γ→α) → [β] → [γ] → [α]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#zipWith">zipWith</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">[(β, α, γ)] → ([β], [α], [γ])</SPAN></dt>
+<SPAN CLASS="code">[(α, β, γ)] → ([α], [β], [γ])</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#unzip3">unzip3</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">[β] → [α] → [γ] → [(β, α, γ)]</SPAN></dt>
+<SPAN CLASS="code">[α] → [β] → [γ] → [(α, β, γ)]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#zip3">zip3</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#ListMonoid">ListMonoid</a> γ ⇒ (α→γ β) → [α] → γ β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#ListMonoid">ListMonoid</a> β ⇒ (γ→β α) → [γ] → β α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#concatMap">concatMap</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(γ→α→β→δ) → [γ] → [α] → [β] → [δ]</SPAN></dt>
+<SPAN CLASS="code">(β→γ→δ→α) → [β] → [γ] → [δ] → [α]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#zipWith3">zipWith3</a></p>

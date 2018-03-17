@@ -73,6 +73,10 @@ import <a HREF="../compiler/types/NSNames.html">Compiler.types.NSNames</a> as NS
 </li>
 <li>
 <div>
+import <a HREF="../java/Net.html">Java.Net</a> as Net</div>
+</li>
+<li>
+<div>
 import <a HREF="../compiler/classes/Nice.html">Compiler.classes.Nice</a> as Nice</div>
 </li>
 <li>
@@ -98,6 +102,10 @@ import <a HREF="../prelude/PreludeArrays.html">Prelude.PreludeArrays</a> as Prel
 <li>
 <div>
 import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeDecimal.html">Prelude.PreludeDecimal</a> as PreludeDecimal</div>
 </li>
 <li>
 <div>
@@ -180,11 +188,11 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#justCompiled">justCompiled</a> ∷ <b><a class="tref" href="../compiler/types/Global.html#Global">Global</a></b> → <a class="tref" href="../lib/Modules.html#Y">Y</a> <a class="tref" href="../lib/Modules.html#RTree">RTree</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../lib/Modules.html#Y">Y</a> <a class="tref" href="../lib/Modules.html#RTree">RTree</a>)</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#justCompiled">justCompiled</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../java/Net.html#URLClassLoader">URLClassLoader</a></b> → <a class="tref" href="../lib/Modules.html#Y">Y</a> <a class="tref" href="../lib/Modules.html#RTree">RTree</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../lib/Modules.html#Y">Y</a> <a class="tref" href="../lib/Modules.html#RTree">RTree</a>)</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#updateCache">updateCache</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α ⇒ β → γ → α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#updateCache">updateCache</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> γ ⇒ α → β → γ <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -264,7 +272,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#correctDependenciesFor">correctDependenciesFor</a> ∷ <b>[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#correctDependenciesFor">correctDependenciesFor</a> ∷ <b>[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -272,7 +280,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#lexPassIDE">lexPassIDE</a> ∷ <b><a class="tref" href="../java/Lang.html#CharSequence">CharSequence</a></b> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#lexPassIDE">lexPassIDE</a> ∷ <b><a class="tref" href="../java/Lang.html#CharSequence">CharSequence</a></b> → <a class="tref" href="../compiler/types/Global.html#StG">StG</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</SPAN></dt>
 <dd>
 </dd>
 </dl>
@@ -312,13 +320,13 @@ Table of Content</h3>
 initialize the root of the package tree   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=justCompiled>justCompiled</a> ∷ <b><a class="tref" href="../compiler/types/Global.html#Global">Global</a></b> → <a class="tref" href="../lib/Modules.html#Y">Y</a> <a class="tref" href="../lib/Modules.html#RTree">RTree</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../lib/Modules.html#Y">Y</a> <a class="tref" href="../lib/Modules.html#RTree">RTree</a>)</SPAN></dt>
+<SPAN CLASS="code"><a name=justCompiled>justCompiled</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../java/Net.html#URLClassLoader">URLClassLoader</a></b> → <a class="tref" href="../lib/Modules.html#Y">Y</a> <a class="tref" href="../lib/Modules.html#RTree">RTree</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../lib/Modules.html#Y">Y</a> <a class="tref" href="../lib/Modules.html#RTree">RTree</a>)</SPAN></dt>
 <dd class="data">
 <p>
 add a new module   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=updateCache>updateCache</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α ⇒ β → γ → α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name=updateCache>updateCache</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> γ ⇒ α → β → γ <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="data">
 <p>
 Remove this package from the package cache   </p>
@@ -516,7 +524,7 @@ This indicates the mouse was not hovering over some identifier.</p>
 find all operators in the current symbol table and tabulate their fixities   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=correctDependenciesFor>correctDependenciesFor</a> ∷ <b>[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
+<SPAN CLASS="code"><a name=correctDependenciesFor>correctDependenciesFor</a> ∷ <b>[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
 <dd class="data">
 <p>
 Correct the result of <SPAN CLASS="unknown">frege.compiler.Scanner.dependencies</SPAN>, which returns a singleton list with one element <SPAN CLASS="code">"frege.prelude.PreludeBase"</SPAN> for source files that don't have any import clauses. Yet, unless this is a prelude package itself, <SPAN CLASS="code">"frege.Prelude"</SPAN> will be imported.</p>
@@ -532,7 +540,7 @@ Get all the dependencies from a source text</p>
 This will be done on a fresh <a class="tref" href="../compiler/types/Global.html#Global">Global</a>   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=lexPassIDE>lexPassIDE</a> ∷ <b><a class="tref" href="../java/Lang.html#CharSequence">CharSequence</a></b> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</SPAN></dt>
+<SPAN CLASS="code"><a name=lexPassIDE>lexPassIDE</a> ∷ <b><a class="tref" href="../java/Lang.html#CharSequence">CharSequence</a></b> → <a class="tref" href="../compiler/types/Global.html#StG">StG</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</SPAN></dt>
 <dd class="data">
 <p>
 lexical analysis from the IDE does not read files, but takes the content directly   </p>
@@ -612,6 +620,12 @@ inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsub">S
 <a class="fref" href="#Proposal.Proposal">Proposal.Proposal</a></p>
 </dd>
 <dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../java/Net.html#URLClassLoader">URLClassLoader</a> → <a class="tref" href="../lib/Modules.html#Y">Y</a> <a class="tref" href="../lib/Modules.html#RTree">RTree</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../lib/Modules.html#Y">Y</a> <a class="tref" href="../lib/Modules.html#RTree">RTree</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#justCompiled">justCompiled</a></p>
+</dd>
+<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
@@ -646,12 +660,6 @@ inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsub">S
 <dd class="func">
 <p>
 <a class="fref" href="#proposeContent">proposeContent</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="../lib/Modules.html#Y">Y</a> <a class="tref" href="../lib/Modules.html#RTree">RTree</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../lib/Modules.html#Y">Y</a> <a class="tref" href="../lib/Modules.html#RTree">RTree</a>)</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#justCompiled">justCompiled</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
@@ -744,7 +752,7 @@ inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsub">S
 <a class="fref" href="#Proposal.off">Proposal.off</a>, <a class="fref" href="#Proposal.len">Proposal.len</a>, <a class="fref" href="#Proposal.cursor">Proposal.cursor</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../java/Lang.html#CharSequence">CharSequence</a> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../java/Lang.html#CharSequence">CharSequence</a> → <a class="tref" href="../compiler/types/Global.html#StG">StG</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#lexPassIDE">lexPassIDE</a></p>
@@ -798,7 +806,7 @@ inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsub">S
 <a class="fref" href="#verbose">verbose</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α ⇒ β → γ → α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> γ ⇒ α → β → γ <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#updateCache">updateCache</a></p>

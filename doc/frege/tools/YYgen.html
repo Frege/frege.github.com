@@ -95,7 +95,7 @@ The parser itself does not make any assumptions about what a token is. Instead, 
 <p>
 where /token/ is the type of tokens and /tid/ is the type of the token constants defined in the "%token" directive. The /yytoken/ function must be total, i.e. all possible token values must produce some token constant, yet this does not have to be one of the constants that is listed in the "%token" directive.</p>
 <p>
-The /yyfromId/ function must produce an example token value for each token constant the parser knows of through the "%token" diretive. Both functions have to be there only when a "%token" directive is present.</p>
+The /yyfromId/ function must produce an example token value for each token constant the parser knows of through the "%token" directive. Both functions have to be there only when a "%token" directive is present.</p>
 <p>
 If the grammar uses character constants, the following functions must be present:</p>
 <PRE>
@@ -157,6 +157,10 @@ import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeB
 </li>
 <li>
 <div>
+import <a HREF="../prelude/PreludeDecimal.html">Prelude.PreludeDecimal</a> as PreludeDecimal</div>
+</li>
+<li>
+<div>
 import <a HREF="../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
 </li>
 <li>
@@ -208,7 +212,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#ressource">ressource</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#resource">resource</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -216,7 +220,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#loadRessource">loadRessource</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> a</b> → <b><a class="tref" href="../java/Net.html#URLClassLoader">URLClassLoader</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#loadResource">loadResource</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> a</b> → <b><a class="tref" href="../java/Net.html#URLClassLoader">URLClassLoader</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -316,11 +320,11 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#sortfst">sortfst</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b>(α, β)</b> → <b>(α, γ)</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#sortfst">sortfst</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> γ ⇒ <b>(γ, α)</b> → <b>(γ, β)</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#sortgos">sortgos</a> ∷ (<a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ <b>(β, δ, α)</b> → <b>(β, γ, α)</b> → <a class="tref" href="../prelude/PreludeBase.html#Ordering">Ordering</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#sortgos">sortgos</a> ∷ (<a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> δ, <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> γ) ⇒ <b>(δ, α, γ)</b> → <b>(δ, β, γ)</b> → <a class="tref" href="../prelude/PreludeBase.html#Ordering">Ordering</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -376,11 +380,11 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#gengos">gengos</a> ∷ (<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> β, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> γ, <a class="tref" href="../prelude/PreludeList.html#ListSource">ListSource</a> δ, <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> α, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> γ, <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> β) ⇒ δ (α, γ, β) → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#gengos">gengos</a> ∷ (<a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> α, <a class="tref" href="../prelude/PreludeList.html#ListSource">ListSource</a> β, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> γ, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> δ, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> δ, <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> γ) ⇒ β (α, δ, γ) → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#printgos">printgos</a> ∷ [(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, [(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)])] → <b><a class="tref" href="../java/IO.html#PrintWriter">PrintWriter</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#printgos">printgos</a> ∷ <b>[(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, [(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)])]</b> → <b><a class="tref" href="../java/IO.html#PrintWriter">PrintWriter</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -466,7 +470,7 @@ Table of Content</h3>
 <a NAME="data">Definitions</a></h2>
 <dl class="data">
 <dt class="data">
-<SPAN CLASS="code"><a name=ressource>ressource</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a name=resource>resource</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="data">
 </dd>
 <dt class="data">
@@ -474,7 +478,7 @@ Table of Content</h3>
 <dd class="data">
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=loadRessource>loadRessource</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> a</b> → <b><a class="tref" href="../java/Net.html#URLClassLoader">URLClassLoader</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
+<SPAN CLASS="code"><a name=loadResource>loadResource</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> a</b> → <b><a class="tref" href="../java/Net.html#URLClassLoader">URLClassLoader</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
 <dd class="data">
 </dd>
 <dt class="data">
@@ -485,13 +489,13 @@ Table of Content</h3>
 <SPAN CLASS="code"><a name=uncr>uncr</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="data">
 <p>
-remove carriage returns from strings   </p>
+remove carriage returns from strings -     </p>
 </dd>
 <dt class="data">
 <SPAN CLASS="code"><a name=fileContent>fileContent</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
 <dd class="data">
 <p>
-give back file content as list of lines   </p>
+give back file content as list of lines -     </p>
 </dd>
 <dt class="data">
 <SPAN CLASS="code"><a name=scanlines>scanlines</a> ∷ [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>] → ([<a class="tref" href="../prelude/PreludeBase.html#String">String</a>], [(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>])])</SPAN></dt>
@@ -674,11 +678,11 @@ Constructors</h3>
 <dd class="data">
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=sortfst>sortfst</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b>(α, β)</b> → <b>(α, γ)</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a name=sortfst>sortfst</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> γ ⇒ <b>(γ, α)</b> → <b>(γ, β)</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="data">
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=sortgos>sortgos</a> ∷ (<a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ <b>(β, δ, α)</b> → <b>(β, γ, α)</b> → <a class="tref" href="../prelude/PreludeBase.html#Ordering">Ordering</a></SPAN></dt>
+<SPAN CLASS="code"><a name=sortgos>sortgos</a> ∷ (<a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> δ, <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> γ) ⇒ <b>(δ, α, γ)</b> → <b>(δ, β, γ)</b> → <a class="tref" href="../prelude/PreludeBase.html#Ordering">Ordering</a></SPAN></dt>
 <dd class="data">
 </dd>
 <dt class="data">
@@ -734,11 +738,11 @@ Constructors</h3>
 <dd class="data">
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=gengos>gengos</a> ∷ (<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> β, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> γ, <a class="tref" href="../prelude/PreludeList.html#ListSource">ListSource</a> δ, <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> α, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> γ, <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> β) ⇒ δ (α, γ, β) → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a name=gengos>gengos</a> ∷ (<a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> α, <a class="tref" href="../prelude/PreludeList.html#ListSource">ListSource</a> β, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> γ, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> δ, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> δ, <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> γ) ⇒ β (α, δ, γ) → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="data">
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=printgos>printgos</a> ∷ [(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, [(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)])] → <b><a class="tref" href="../java/IO.html#PrintWriter">PrintWriter</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name=printgos>printgos</a> ∷ <b>[(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, [(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)])]</b> → <b><a class="tref" href="../java/IO.html#PrintWriter">PrintWriter</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="data">
 <p>
 create frege code for go tabs</p>
@@ -1525,7 +1529,7 @@ Function generated for derived instance.</p>
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> a → <a class="tref" href="../java/Net.html#URLClassLoader">URLClassLoader</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#loadRessource">loadRessource</a></p>
+<a class="fref" href="#loadResource">loadResource</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> a → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
@@ -1549,7 +1553,7 @@ Function generated for derived instance.</p>
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#ressource">ressource</a></p>
+<a class="fref" href="#resource">resource</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">α → <a class="tref" href="#Action">Action</a> → [<a class="tref" href="#Prod">Prod</a>] → [(α, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)]</SPAN></dt>
@@ -1594,22 +1598,22 @@ Function generated for derived instance.</p>
 <a class="fref" href="#genacc">genacc</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> α ⇒ (α, β) → (α, γ) → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> γ ⇒ (γ, α) → (γ, β) → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#sortfst">sortfst</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ (β, δ, α) → (β, γ, α) → <a class="tref" href="../prelude/PreludeBase.html#Ordering">Ordering</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#sortgos">sortgos</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeText.html#Show">Show</a> β, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> γ, <a class="tref" href="../prelude/PreludeList.html#ListSource">ListSource</a> δ, <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> α, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> γ, <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> β) ⇒ δ (α, γ, β) → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> α, <a class="tref" href="../prelude/PreludeList.html#ListSource">ListSource</a> β, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> γ, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> δ, <a class="tref" href="../prelude/PreludeText.html#Show">Show</a> α, <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> δ, <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> γ) ⇒ β (α, δ, γ) → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#gengos">gengos</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> δ, <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> γ) ⇒ (δ, α, γ) → (δ, β, γ) → <a class="tref" href="../prelude/PreludeBase.html#Ordering">Ordering</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#sortgos">sortgos</a></p>
 </dd>
 </dl>
 <p>

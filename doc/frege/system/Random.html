@@ -21,7 +21,7 @@ Module <SPAN CLASS="code">System.Random</SPAN></h1>
 <p>
 This module deals with the common task of pseudo-random number generation.</p>
 <p>
-It is possible to generate repeatable results, by starting with a specified initial random number, or to get different results on each run by using a generator that gets seeded in a system-dependend random way, or by supplying a seed from some other source.</p>
+It is possible to generate repeatable results, by starting with a specified initial random number, or to get different results on each run by using a generator that gets seeded in a system-dependent random way, or by supplying a seed from some other source.</p>
 <p>
 In Frege, the underlying mechanism for actually generating random numbers is provided by <a class="tref" href="../java/Util.html#Random">J.Random</a>. Consequently, one cannot expect that a random generator seeded with a certain value will generate the same sequence of random numbers as its Haskell counterpart.</p>
 <h3>
@@ -46,6 +46,10 @@ import <a HREF="../prelude/PreludeArrays.html">Prelude.PreludeArrays</a> as Prel
 <li>
 <div>
 import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeDecimal.html">Prelude.PreludeDecimal</a> as PreludeDecimal</div>
 </li>
 <li>
 <div>
@@ -269,7 +273,7 @@ Applies <a class="fref" href="#RandomGen.split">RandomGen.split</a> to the curre
 <h3>
 Known Instances</h3>
 <p>
-<a class="tref" href="#Random_Bool">Bool</a>, <a class="tref" href="#Random_Int">Int</a>, <a class="tref" href="#Random_Double">Double</a>, <a class="tref" href="#Random_Float">Float</a>, <a class="tref" href="#Random_Long">Long</a>, <a class="tref" href="#Random_Integer">Integer</a></p>
+<a class="tref" href="#Random_Int">Int</a>, <a class="tref" href="#Random_Bool">Bool</a>, <a class="tref" href="#Random_Double">Double</a>, <a class="tref" href="#Random_Float">Float</a>, <a class="tref" href="#Random_Long">Long</a>, <a class="tref" href="#Random_Integer">Integer</a></p>
 <h3>
 Member Functions</h3>
 <dl class="func">
@@ -348,7 +352,7 @@ get the next <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> and 
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=RandomGen_StdGen.split>split</a> ∷ <b><a class="tref" href="#StdGen">StdGen</a></b> → (<a class="tref" href="#StdGen">StdGen</a>, <a class="tref" href="#StdGen">StdGen</a>)</SPAN></dt>
+<SPAN CLASS="code"><a name=RandomGen_StdGen.split>split</a> ∷ <a class="tref" href="#StdGen">StdGen</a> → (<a class="tref" href="#StdGen">StdGen</a>, <a class="tref" href="#StdGen">StdGen</a>)</SPAN></dt>
 <dd class="func">
 <p>
 Make two independent generators, seeded by two <a class="tref" href="../prelude/PreludeBase.html#Long">Long</a> values drawn from the argument   </p>

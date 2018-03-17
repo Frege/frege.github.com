@@ -65,6 +65,10 @@ import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeB
 </li>
 <li>
 <div>
+import <a HREF="../prelude/PreludeDecimal.html">Prelude.PreludeDecimal</a> as PreludeDecimal</div>
+</li>
+<li>
+<div>
 import <a HREF="../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
 </li>
 <li>
@@ -100,6 +104,10 @@ Table of Content</h3>
 <a HREF="#data">Definitions</a></div>
 <dl>
 <dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#Edge"> </a> <a class="tref" href="#Edge">Edge</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
 <SPAN CLASS="code"><b>data </b><a class="tref" href="#SCC"> </a> <a class="tref" href="#SCC">SCC</a> vertex</SPAN></dt>
 <dd>
 </dd>
@@ -112,7 +120,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#edgeFromTuple">edgeFromTuple</a> ∷ <b>(β, α)</b> → (β, β, α)</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#edgeFromTuple">edgeFromTuple</a> ∷ <b>(α, β)</b> → (α, α, β)</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -140,7 +148,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#edges">edges</a> ∷ <b><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>]</b> → [(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#edges">edges</a> ∷ <b><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>]</b> → [<a class="tref" href="#Edge">Edge</a>]</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -152,7 +160,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#buildG">buildG</a> ∷ <b>(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</b> → [(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)] → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#buildG">buildG</a> ∷ <b>(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</b> → [<a class="tref" href="#Edge">Edge</a>] → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>]</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -160,7 +168,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#reverseE">reverseE</a> ∷ <b><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>]</b> → [(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#reverseE">reverseE</a> ∷ <b><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>]</b> → [<a class="tref" href="#Edge">Edge</a>]</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -322,7 +330,7 @@ The vertices of a list of strongly connected components.   </p>
 The vertices of a strongly connected component.   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=edgeFromTuple>edgeFromTuple</a> ∷ <b>(β, α)</b> → (β, β, α)</SPAN></dt>
+<SPAN CLASS="code"><a name=edgeFromTuple>edgeFromTuple</a> ∷ <b>(α, β)</b> → (α, α, β)</SPAN></dt>
 <dd class="data">
 <p>
 Make a (key, [key]) list into one that is accepted by <a class="fref" href="#stronglyConnComp">stronglyConnComp</a>   </p>
@@ -335,7 +343,7 @@ Convenience function to compute topologically sorted strongly connected componen
 <PRE>
   [(key, [key])]</PRE>
 <p>
-The result will be a list of lists of <i>keys</i>, where a singleton indicates no mutual dependency with other keys and a list consisting of several keys means that those are mutually dependend on each other.</p>
+The result will be a list of lists of <i>keys</i>, where a singleton indicates no mutual dependency with other keys and a list consisting of several keys means that those are mutually dependent on each other.</p>
 <p>
 In addition, earlier elements will not depend on later ones.</p>
 <p>
@@ -358,6 +366,36 @@ The strongly connected components of a directed graph, topologically sorted.  Th
 This interface is used when you expect to apply <a class="tref" href="#SCC">SCC</a> to (some of) the result of <a class="tref" href="#SCC">SCC</a>, so you don't want to lose the dependency information.</p>
 </dd>
 <dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=Edge> </a> <a class="tref" href="#Edge">Edge</a></SPAN></dt>
+<dd class="data">
+<p>
+An edge from the first vertex to the second.   </p>
+<h3>
+Constructors</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Edge.Edge>Edge</a> {from ∷ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, to ∷ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>}</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Edge.from>from</a> ∷ <b><a class="tref" href="#Edge">Edge</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">from</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Edge.to>to</a> ∷ <b><a class="tref" href="#Edge">Edge</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">to</SPAN></p>
+</dd>
+</dl>
+</dd>
+<dt class="data">
 <SPAN CLASS="code"><a name=size>size</a> ∷ <b>(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="data">
 </dd>
@@ -372,7 +410,7 @@ This interface is used when you expect to apply <a class="tref" href="#SCC">SCC<
 All vertices of a graph.   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=edges>edges</a> ∷ <b><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>]</b> → [(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)]</SPAN></dt>
+<SPAN CLASS="code"><a name=edges>edges</a> ∷ <b><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>]</b> → [<a class="tref" href="#Edge">Edge</a>]</SPAN></dt>
 <dd class="data">
 <p>
 All edges of a graph.   </p>
@@ -386,7 +424,7 @@ All edges of a graph.   </p>
 <dd class="data">
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=buildG>buildG</a> ∷ <b>(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</b> → [(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)] → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>]</SPAN></dt>
+<SPAN CLASS="code"><a name=buildG>buildG</a> ∷ <b>(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</b> → [<a class="tref" href="#Edge">Edge</a>] → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>]</SPAN></dt>
 <dd class="data">
 <p>
 Build a graph from a list of edges.   </p>
@@ -398,7 +436,7 @@ Build a graph from a list of edges.   </p>
 The graph obtained by reversing all edges.   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=reverseE>reverseE</a> ∷ <b><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>]</b> → [(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)]</SPAN></dt>
+<SPAN CLASS="code"><a name=reverseE>reverseE</a> ∷ <b><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>]</b> → [<a class="tref" href="#Edge">Edge</a>]</SPAN></dt>
 <dd class="data">
 </dd>
 <dt class="data">
@@ -540,12 +578,6 @@ An undirected graph is biconnected if the deletion of any vertex leaves it conne
 <a NAME="case">Functions and Values by Type</a></h2>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>) → [(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)] → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>]</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#buildG">buildG</a></p>
-</dd>
-<dt class="func">
 <SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>) → <a class="tref" href="./Tree.html#Forest">Forest</a> <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
@@ -556,6 +588,12 @@ An undirected graph is biconnected if the deletion of any vertex leaves it conne
 <dd class="func">
 <p>
 <a class="fref" href="#prune">prune</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>) → [<a class="tref" href="#Edge">Edge</a>] → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#buildG">buildG</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>) → [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>] → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
@@ -624,12 +662,6 @@ An undirected graph is biconnected if the deletion of any vertex leaves it conne
 <a class="fref" href="#indegree">indegree</a>, <a class="fref" href="#outdegree">outdegree</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>] → [(<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)]</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#edges">edges</a>, <a class="fref" href="#reverseE">reverseE</a></p>
-</dd>
-<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>] → <a class="tref" href="./Tree.html#Forest">Forest</a> [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>]</SPAN></dt>
 <dd class="func">
 <p>
@@ -642,10 +674,40 @@ An undirected graph is biconnected if the deletion of any vertex leaves it conne
 <a class="fref" href="#components">components</a>, <a class="fref" href="#dff">dff</a>, <a class="fref" href="#scc">scc</a></p>
 </dd>
 <dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>] → [<a class="tref" href="#Edge">Edge</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#edges">edges</a>, <a class="fref" href="#reverseE">reverseE</a></p>
+</dd>
+<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>] → [<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#postOrd">postOrd</a>, <a class="fref" href="#topSort">topSort</a>, <a class="fref" href="#vertices">vertices</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Edge">Edge</a> → (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>→<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>) → <a class="tref" href="#Edge">Edge</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Edge.chg$from">Edge.chg$from</a>, <a class="fref" href="#Edge.chg$to">Edge.chg$to</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Edge">Edge</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#Edge">Edge</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Edge.upd$to">Edge.upd$to</a>, <a class="fref" href="#Edge.upd$from">Edge.upd$from</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Edge">Edge</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Edge.to">Edge.to</a>, <a class="fref" href="#Edge.from">Edge.from</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#Edge">Edge</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Edge.Edge">Edge.Edge</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#SCC">SCC</a> vertex → [vertex]</SPAN></dt>
@@ -696,6 +758,12 @@ An undirected graph is biconnected if the deletion of any vertex leaves it conne
 <a class="fref" href="#SCC.AcyclicSCC">SCC.AcyclicSCC</a></p>
 </dd>
 <dt class="func">
+<SPAN CLASS="code">α → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Edge.has$from">Edge.has$from</a>, <a class="fref" href="#Edge.has$to">Edge.has$to</a></p>
+</dd>
+<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeArrays.html#ArrayElement">ArrayElement</a> a ⇒ (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → a → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>) → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> a → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
@@ -708,7 +776,7 @@ An undirected graph is biconnected if the deletion of any vertex leaves it conne
 <a class="fref" href="#stronglyConnectedComponents">stronglyConnectedComponents</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(β, α) → (β, β, α)</SPAN></dt>
+<SPAN CLASS="code">(α, β) → (α, α, β)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#edgeFromTuple">edgeFromTuple</a></p>

@@ -37,6 +37,10 @@ import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeB
 </li>
 <li>
 <div>
+import <a HREF="../prelude/PreludeDecimal.html">Prelude.PreludeDecimal</a> as PreludeDecimal</div>
+</li>
+<li>
+<div>
 import <a HREF="../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
 </li>
 <li>
@@ -64,15 +68,15 @@ Table of Content</h3>
 <a HREF="#data">Definitions</a></div>
 <dl>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#par">par</a> ∷ α → β → β&nbsp;</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#par">par</a> ∷ β → α → α&nbsp;</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#$$bar">$|</a> ∷ (<b>α→β</b>) → α → β&nbsp;</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#$$bar">$|</a> ∷ (<b>β→α</b>) → β → α&nbsp;</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#parOp">parOp</a> ∷ (<b>β→α→γ</b>) → β → α → γ</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#parOp">parOp</a> ∷ (<b>β→γ→α</b>) → β → γ → α</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -94,7 +98,7 @@ Table of Content</h3>
 <a NAME="data">Definitions</a></h2>
 <dl class="data">
 <dt class="data">
-<SPAN CLASS="code"><a name=par>par</a> ∷ α → β → β<br><b>infixr</b>&nbsp;&nbsp;2</SPAN></dt>
+<SPAN CLASS="code"><a name=par>par</a> ∷ β → α → α<br><b>infixr</b>&nbsp;&nbsp;2</SPAN></dt>
 <dd class="data">
 <PRE>
  a `par` b</PRE>
@@ -102,7 +106,7 @@ Table of Content</h3>
 Fork evaluation of <SPAN CLASS="code">a</SPAN> and return <SPAN CLASS="code">b</SPAN>.</p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=$$bar>$|</a> ∷ (<b>α→β</b>) → α → β<br><b>infixr</b>&nbsp;&nbsp;1</SPAN></dt>
+<SPAN CLASS="code"><a name=$$bar>$|</a> ∷ (<b>β→α</b>) → β → α<br><b>infixr</b>&nbsp;&nbsp;1</SPAN></dt>
 <dd class="data">
 <PRE>
  f $| a</PRE>
@@ -114,7 +118,7 @@ Equivalent to</p>
 Is useful only if <SPAN CLASS="code">f</SPAN> takes a lazy argument, otherwise the thunk will be evaluated right away.</p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=parOp>parOp</a> ∷ (<b>β→α→γ</b>) → β → α → γ</SPAN></dt>
+<SPAN CLASS="code"><a name=parOp>parOp</a> ∷ (<b>β→γ→α</b>) → β → γ → α</SPAN></dt>
 <dd class="data">
 <PRE>
    parOp f a b</PRE>
@@ -154,25 +158,25 @@ Like <a class="fref" href="../prelude/PreludeList.html#map">map</a>, but applies
 <a class="fref" href="#$colon$bar">:|</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α→β) → α → β</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#$$bar">$|</a></p>
-</dd>
-<dt class="func">
 <SPAN CLASS="code">(β→α) → [β] → [α]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#mapP">mapP</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">α → β → β</SPAN></dt>
+<SPAN CLASS="code">(β→α) → β → α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#$$bar">$|</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">β → α → α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#par">par</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(β→α→γ) → β → α → γ</SPAN></dt>
+<SPAN CLASS="code">(β→γ→α) → β → γ → α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#parOp">parOp</a></p>

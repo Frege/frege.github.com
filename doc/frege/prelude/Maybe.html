@@ -74,7 +74,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#listToMaybe">listToMaybe</a> ∷ <a class="tref" href="./PreludeList.html#ListSource">ListSource</a> α ⇒ α β → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> β</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#listToMaybe">listToMaybe</a> ∷ <a class="tref" href="./PreludeList.html#ListSource">ListSource</a> β ⇒ β α → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -168,7 +168,7 @@ The <a class="fref" href="#catMaybes">catMaybes</a> function takes a list of <a 
 The <a class="fref" href="#mapMaybe">mapMaybe</a> function is a version of <a class="fref" href="./PreludeList.html#map">map</a> which can throw out elements. In particular, the functional argument returns something of type <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> <i>b</i>. If this is <a class="fref" href="./PreludeBase.html#Maybe.Nothing">Maybe.Nothing</a>, no element is added on to the result list. If it just <a class="fref" href="./PreludeBase.html#Maybe.Just">Maybe.Just</a> <i>b</i>, then <i>b</i> is included in the result list.</p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=listToMaybe>listToMaybe</a> ∷ <a class="tref" href="./PreludeList.html#ListSource">ListSource</a> α ⇒ α β → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> β</SPAN></dt>
+<SPAN CLASS="code"><a name=listToMaybe>listToMaybe</a> ∷ <a class="tref" href="./PreludeList.html#ListSource">ListSource</a> β ⇒ β α → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α</SPAN></dt>
 <dd class="data">
 <p>
 give the first element of a list or <a class="fref" href="./PreludeBase.html#Maybe.Nothing">Maybe.Nothing</a>   </p>
@@ -190,19 +190,19 @@ convert a <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> to a single 
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Applicative_Maybe.$star$gt>*&gt;</a> ∷ <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> β → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name=Applicative_Maybe.$star$gt>*&gt;</a> ∷ <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> β → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./PreludeMonad.html#Applicative.$star$gt">Applicative.*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Applicative_Maybe.$lt$star>&lt;*</a> ∷ <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> β → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name=Applicative_Maybe.$lt$star>&lt;*</a> ∷ <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> β → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./PreludeMonad.html#Applicative.$lt$star">Applicative.&lt;*</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Applicative_Maybe.$lt$star$gt>&lt;*&gt;</a> ∷ <b><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (β→α)</b> → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> β → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name=Applicative_Maybe.$lt$star$gt>&lt;*&gt;</a> ∷ <b><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α→β)</b> → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
@@ -300,11 +300,11 @@ Member Functions</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Monad_Maybe.$gt$gt>&gt;&gt;</a> ∷ <b><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> β</b> → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
+<SPAN CLASS="code"><a name=Monad_Maybe.$gt$gt>&gt;&gt;</a> ∷ <b><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α</b> → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> β → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> β<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Monad_Maybe.$gt$gt$eq>&gt;&gt;=</a> ∷ <b><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> β</b> → (<b>β → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α</b>) → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
+<SPAN CLASS="code"><a name=Monad_Maybe.$gt$gt$eq>&gt;&gt;=</a> ∷ <b><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α</b> → (<b>α → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> β</b>) → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> β<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 <PRE>
  Nothing &gt;&gt;= _ = Nothing</PRE>
@@ -316,10 +316,6 @@ Member Functions</h3>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./PreludeMonad.html#Monad.join">Monad.join</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a name=Monad_Maybe.pure>pure</a> ∷ α → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α</SPAN></dt>
-<dd class="func">
 </dd>
 </dl>
 </dd>
@@ -429,7 +425,7 @@ inherited from <a class="fref" href="./PreludeBase.html#Ord.min">Ord.min</a></p>
 <SPAN CLASS="code">α → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Applicative_Maybe.pure">Applicative_Maybe.pure</a>, <a class="fref" href="#Monad_Maybe.pure">Monad_Maybe.pure</a></p>
+<a class="fref" href="#Applicative_Maybe.pure">Applicative_Maybe.pure</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Eq">Eq</a> α ⇒ <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α → <a class="tref" href="./PreludeBase.html#Bool">Bool</a></SPAN></dt>
@@ -480,40 +476,40 @@ inherited from <a class="fref" href="./PreludeBase.html#Ord.min">Ord.min</a></p>
 <a class="fref" href="#mapMaybe">mapMaybe</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (β→α) → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> β → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> (α→β) → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Applicative_Maybe.$lt$star$gt">Applicative_Maybe.&lt;*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> β → (β → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α) → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α → (α → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> β) → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Monad_Maybe.$gt$gt$eq">Monad_Maybe.&gt;&gt;=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> β → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Applicative_Maybe.$star$gt">Applicative_Maybe.*&gt;</a>, <a class="fref" href="#Monad_Maybe.$gt$gt">Monad_Maybe.&gt;&gt;</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> β → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> β → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Applicative_Maybe.$lt$star">Applicative_Maybe.&lt;*</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./PreludeList.html#ListSource">ListSource</a> α ⇒ α β → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> β → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> β</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#listToMaybe">listToMaybe</a></p>
+<a class="fref" href="#Applicative_Maybe.$star$gt">Applicative_Maybe.*&gt;</a>, <a class="fref" href="#Monad_Maybe.$gt$gt">Monad_Maybe.&gt;&gt;</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="./PreludeList.html#ListSource">ListSource</a> β ⇒ β (<a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α) → [α]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#catMaybes">catMaybes</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./PreludeList.html#ListSource">ListSource</a> β ⇒ β α → <a class="tref" href="./PreludeBase.html#Maybe">Maybe</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#listToMaybe">listToMaybe</a></p>
 </dd>
 </dl>
 <p>

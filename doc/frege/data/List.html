@@ -39,6 +39,10 @@ import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeB
 </li>
 <li>
 <div>
+import <a HREF="../prelude/PreludeDecimal.html">Prelude.PreludeDecimal</a> as PreludeDecimal</div>
+</li>
+<li>
+<div>
 import <a HREF="../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
 </li>
 <li>
@@ -106,7 +110,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#lookup">lookup</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β ⇒ β → <b>[(β, α)]</b> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#lookup">lookup</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ α → <b>[(α, β)]</b> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> β</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -114,7 +118,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#deleteBy">deleteBy</a> ∷ (<b>β→α→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></b>) → β → <b>[α]</b> → [α]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#deleteBy">deleteBy</a> ∷ (<b>α→β→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></b>) → α → <b>[β]</b> → [β]</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -146,7 +150,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#intersectBy">intersectBy</a> ∷ <a class="tref" href="../prelude/PreludeList.html#ListSource">ListSource</a> α ⇒ (<b>γ→β→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></b>) → α γ → [β] → [γ]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#intersectBy">intersectBy</a> ∷ <a class="tref" href="../prelude/PreludeList.html#ListSource">ListSource</a> γ ⇒ (<b>β→α→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></b>) → γ β → [α] → [β]</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -182,67 +186,67 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#intercalate">intercalate</a> ∷ <a class="tref" href="../prelude/PreludeList.html#ListMonoid">ListMonoid</a> β ⇒ β α → [β α] → β α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#intercalate">intercalate</a> ∷ [a] → <b>[[a]]</b> → [a]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#zip4">zip4</a> ∷ <b>[β]</b> → <b>[α]</b> → <b>[δ]</b> → <b>[γ]</b> → [(β, α, δ, γ)]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#zip4">zip4</a> ∷ <b>[α]</b> → [β] → [γ] → [δ] → [(α, β, γ, δ)]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#unzip4">unzip4</a> ∷ <b>[(γ, α, β, δ)]</b> → ([γ], [α], [β], [δ])</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#unzip4">unzip4</a> ∷ <b>[(α, β, γ, δ)]</b> → ([α], [β], [γ], [δ])</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#zipWith4">zipWith4</a> ∷ (<b>γ→α→β→δ→ε</b>) → <b>[γ]</b> → <b>[α]</b> → <b>[β]</b> → <b>[δ]</b> → [ε]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#zipWith4">zipWith4</a> ∷ (<b>β→γ→δ→ε→α</b>) → <b>[β]</b> → [γ] → [δ] → [ε] → [α]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#zip5">zip5</a> ∷ <b>[γ]</b> → <b>[ε]</b> → <b>[δ]</b> → <b>[β]</b> → <b>[α]</b> → [(γ, ε, δ, β, α)]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#zip5">zip5</a> ∷ <b>[α]</b> → [β] → [γ] → [δ] → [ε] → [(α, β, γ, δ, ε)]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#unzip5">unzip5</a> ∷ <b>[(ε, β, γ, α, δ)]</b> → ([ε], [β], [γ], [α], [δ])</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#unzip5">unzip5</a> ∷ <b>[(α, β, γ, δ, ε)]</b> → ([α], [β], [γ], [δ], [ε])</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#zipWith5">zipWith5</a> ∷ (<b>δ→β→γ→ε→ζ→α</b>) → <b>[δ]</b> → <b>[β]</b> → <b>[γ]</b> → <b>[ε]</b> → <b>[ζ]</b> → [α]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#zipWith5">zipWith5</a> ∷ (<b>β→γ→δ→ε→ζ→α</b>) → <b>[β]</b> → [γ] → [δ] → [ε] → [ζ] → [α]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#zip6">zip6</a> ∷ <b>[ε]</b> → <b>[β]</b> → <b>[α]</b> → <b>[δ]</b> → <b>[γ]</b> → <b>[ζ]</b> → [(ε, β, α, δ, γ, ζ)]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#zip6">zip6</a> ∷ <b>[α]</b> → [β] → [γ] → [δ] → [ε] → [ζ] → [(α, β, γ, δ, ε, ζ)]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#unzip6">unzip6</a> ∷ <b>[(ζ, β, α, δ, ε, γ)]</b> → ([ζ], [β], [α], [δ], [ε], [γ])</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#unzip6">unzip6</a> ∷ <b>[(α, β, γ, δ, ε, ζ)]</b> → ([α], [β], [γ], [δ], [ε], [ζ])</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#zipWith6">zipWith6</a> ∷ (<b>δ→ε→β→γ→ζ→η→α</b>) → <b>[δ]</b> → <b>[ε]</b> → <b>[β]</b> → <b>[γ]</b> → <b>[ζ]</b> → <b>[η]</b> → [α]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#zipWith6">zipWith6</a> ∷ (<b>β→γ→δ→ε→ζ→η→α</b>) → <b>[β]</b> → [γ] → [δ] → [ε] → [ζ] → [η] → [α]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#zip7">zip7</a> ∷ <b>[β]</b> → <b>[α]</b> → <b>[δ]</b> → <b>[γ]</b> → <b>[ζ]</b> → <b>[ε]</b> → <b>[η]</b> → [(β, α, δ, γ, ζ, ε, η)]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#zip7">zip7</a> ∷ <b>[α]</b> → [β] → [γ] → [δ] → [ε] → [ζ] → [η] → [(α, β, γ, δ, ε, ζ, η)]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#unzip7">unzip7</a> ∷ <b>[(ε, η, ζ, β, γ, α, δ)]</b> → ([ε], [η], [ζ], [β], [γ], [α], [δ])</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#unzip7">unzip7</a> ∷ <b>[(α, β, γ, δ, ε, ζ, η)]</b> → ([α], [β], [γ], [δ], [ε], [ζ], [η])</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#zipWith7">zipWith7</a> ∷ (<b>η→θ→γ→δ→α→β→ε→ζ</b>) → <b>[η]</b> → <b>[θ]</b> → <b>[γ]</b> → <b>[δ]</b> → <b>[α]</b> → <b>[β]</b> → <b>[ε]</b> → [ζ]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#zipWith7">zipWith7</a> ∷ (<b>β→γ→δ→ε→ζ→η→θ→α</b>) → <b>[β]</b> → [γ] → [δ] → [ε] → [ζ] → [η] → [θ] → [α]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#sortBy">sortBy</a> ∷ <a class="tref" href="../prelude/PreludeList.html#ListSource">ListSource</a> α ⇒ (<b>β→β→<a class="tref" href="../prelude/PreludeBase.html#Ordering">Ordering</a></b>) → α β → [β]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#sortBy">sortBy</a> ∷ <a class="tref" href="../prelude/PreludeList.html#ListSource">ListSource</a> β ⇒ (<b>α→α→<a class="tref" href="../prelude/PreludeBase.html#Ordering">Ordering</a></b>) → β α → [α]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#merge">merge</a> ∷ (<b>α→α→<a class="tref" href="../prelude/PreludeBase.html#Ordering">Ordering</a></b>) → <b>[α]</b> → <b>[α]</b> → [α]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#merge">merge</a> ∷ (<b>α→α→<a class="tref" href="../prelude/PreludeBase.html#Ordering">Ordering</a></b>) → <b>[α]</b> → [α] → [α]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#sort">sort</a> ∷ (<a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> α, <a class="tref" href="../prelude/PreludeList.html#ListSource">ListSource</a> β) ⇒ β α → [α]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#sort">sort</a> ∷ (<a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="../prelude/PreludeList.html#ListSource">ListSource</a> α) ⇒ α β → [β]</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -274,11 +278,11 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#isPrefixOf">isPrefixOf</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b>[α]</b> → <b>[α]</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#isPrefixOf">isPrefixOf</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b>[α]</b> → [α] → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#isSuffixOf">isSuffixOf</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> a ⇒ <b>[a]</b> → <b>[a]</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#isSuffixOf">isSuffixOf</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> a ⇒ <b>[a]</b> → [a] → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -327,10 +331,6 @@ Table of Content</h3>
 </dd>
 <dt>
 <SPAN CLASS="code"><a class="fref" href="#genericReplicate">genericReplicate</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Integral">Integral</a> i ⇒ i → a → [a]</SPAN></dt>
-<dd>
-</dd>
-<dt>
-<SPAN CLASS="code"><a class="fref" href="#$excl$excl">!!</a> ∷ <b>[α]</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → α&nbsp;</SPAN></dt>
 <dd>
 </dd>
 </dl>
@@ -440,7 +440,7 @@ Consequently, for all lists /xs/</p>
 See also: <a class="fref" href="../prelude/PreludeBase.html#using">using</a>   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=lookup>lookup</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β ⇒ β → <b>[(β, α)]</b> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α</SPAN></dt>
+<SPAN CLASS="code"><a name=lookup>lookup</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ α → <b>[(α, β)]</b> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> β</SPAN></dt>
 <dd class="data">
 <p>
 lookup a key in an association list   </p>
@@ -456,7 +456,7 @@ lookup a key in an association list   </p>
 It is a special case of <a class="fref" href="#deleteBy">deleteBy</a>, which allows the programmer to supply their own equality test.</p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=deleteBy>deleteBy</a> ∷ (<b>β→α→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></b>) → β → <b>[α]</b> → [α]</SPAN></dt>
+<SPAN CLASS="code"><a name=deleteBy>deleteBy</a> ∷ (<b>α→β→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></b>) → α → <b>[β]</b> → [β]</SPAN></dt>
 <dd class="data">
 <p>
 The <a class="fref" href="#deleteBy">deleteBy</a> function behaves like <a class="fref" href="#delete">delete</a>, but takes a user-supplied equality predicate.   </p>
@@ -520,7 +520,7 @@ If the first list contains duplicates, so will the result.</p>
 It is a special case of <a class="fref" href="#intersectBy">intersectBy</a>, which allows the programmer to supply their own equality test.</p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=intersectBy>intersectBy</a> ∷ <a class="tref" href="../prelude/PreludeList.html#ListSource">ListSource</a> α ⇒ (<b>γ→β→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></b>) → α γ → [β] → [γ]</SPAN></dt>
+<SPAN CLASS="code"><a name=intersectBy>intersectBy</a> ∷ <a class="tref" href="../prelude/PreludeList.html#ListSource">ListSource</a> γ ⇒ (<b>β→α→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></b>) → γ β → [α] → [β]</SPAN></dt>
 <dd class="data">
 <p>
 The <a class="fref" href="#intersectBy">intersectBy</a> function is the non-overloaded version of <a class="fref" href="#intersect">intersect</a>.   </p>
@@ -610,85 +610,85 @@ The following is true for all finite lists xs</p>
 A variant of <a class="fref" href="#partition">partition</a> that satisfies the Haskell 2010 specification. When the order of the results is irrelevant or one actually wants the results reversed, consider the more efficient <a class="fref" href="#partitioned">partitioned</a>.</p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=intercalate>intercalate</a> ∷ <a class="tref" href="../prelude/PreludeList.html#ListMonoid">ListMonoid</a> β ⇒ β α → [β α] → β α</SPAN></dt>
+<SPAN CLASS="code"><a name=intercalate>intercalate</a> ∷ [a] → <b>[[a]]</b> → [a]</SPAN></dt>
 <dd class="data">
 <p>
 <SPAN CLASS="code">intercalate xs xss</SPAN> is equivalent to <SPAN CLASS="code">concat (intersperse xs xss)</SPAN></p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=zip4>zip4</a> ∷ <b>[β]</b> → <b>[α]</b> → <b>[δ]</b> → <b>[γ]</b> → [(β, α, δ, γ)]</SPAN></dt>
+<SPAN CLASS="code"><a name=zip4>zip4</a> ∷ <b>[α]</b> → [β] → [γ] → [δ] → [(α, β, γ, δ)]</SPAN></dt>
 <dd class="data">
 <p>
 <a class="fref" href="#zip4">zip4</a> zips 4 lists in the same way as <a class="fref" href="../prelude/PreludeList.html#zip">zip</a> does it.   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=unzip4>unzip4</a> ∷ <b>[(γ, α, β, δ)]</b> → ([γ], [α], [β], [δ])</SPAN></dt>
+<SPAN CLASS="code"><a name=unzip4>unzip4</a> ∷ <b>[(α, β, γ, δ)]</b> → ([α], [β], [γ], [δ])</SPAN></dt>
 <dd class="data">
 <p>
 <a class="fref" href="#unzip4">unzip4</a> unzips a list of quadrupels and returns a quadrupel of lists.   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=zipWith4>zipWith4</a> ∷ (<b>γ→α→β→δ→ε</b>) → <b>[γ]</b> → <b>[α]</b> → <b>[β]</b> → <b>[δ]</b> → [ε]</SPAN></dt>
+<SPAN CLASS="code"><a name=zipWith4>zipWith4</a> ∷ (<b>β→γ→δ→ε→α</b>) → <b>[β]</b> → [γ] → [δ] → [ε] → [α]</SPAN></dt>
 <dd class="data">
 <p>
 <a class="fref" href="#zipWith4">zipWith4</a> /f/ zips 4 lists with function /f/ instead of the standard <a class="tref" href="../prelude/PreludeBase.html#Tuple4">(,,,)</a> that is used by <a class="fref" href="#zip4">zip4</a>   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=zip5>zip5</a> ∷ <b>[γ]</b> → <b>[ε]</b> → <b>[δ]</b> → <b>[β]</b> → <b>[α]</b> → [(γ, ε, δ, β, α)]</SPAN></dt>
+<SPAN CLASS="code"><a name=zip5>zip5</a> ∷ <b>[α]</b> → [β] → [γ] → [δ] → [ε] → [(α, β, γ, δ, ε)]</SPAN></dt>
 <dd class="data">
 <p>
 <a class="fref" href="#zip5">zip5</a> zips 5 lists in the same way as <a class="fref" href="../prelude/PreludeList.html#zip">zip</a> does it.   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=unzip5>unzip5</a> ∷ <b>[(ε, β, γ, α, δ)]</b> → ([ε], [β], [γ], [α], [δ])</SPAN></dt>
+<SPAN CLASS="code"><a name=unzip5>unzip5</a> ∷ <b>[(α, β, γ, δ, ε)]</b> → ([α], [β], [γ], [δ], [ε])</SPAN></dt>
 <dd class="data">
 <p>
-<a class="fref" href="#unzip5">unzip5</a> unzips a list of quintupels and returns a quintupel of lists.   </p>
+<a class="fref" href="#unzip5">unzip5</a> unzips a list of quintuples and returns a quintuple of lists.   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=zipWith5>zipWith5</a> ∷ (<b>δ→β→γ→ε→ζ→α</b>) → <b>[δ]</b> → <b>[β]</b> → <b>[γ]</b> → <b>[ε]</b> → <b>[ζ]</b> → [α]</SPAN></dt>
+<SPAN CLASS="code"><a name=zipWith5>zipWith5</a> ∷ (<b>β→γ→δ→ε→ζ→α</b>) → <b>[β]</b> → [γ] → [δ] → [ε] → [ζ] → [α]</SPAN></dt>
 <dd class="data">
 <p>
 <a class="fref" href="#zipWith5">zipWith5</a> /f/ zips 5 lists with function /f/ instead of the standard <a class="tref" href="../prelude/PreludeBase.html#Tuple5">(,,,,)</a> that is used by <a class="fref" href="#zip5">zip5</a>   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=zip6>zip6</a> ∷ <b>[ε]</b> → <b>[β]</b> → <b>[α]</b> → <b>[δ]</b> → <b>[γ]</b> → <b>[ζ]</b> → [(ε, β, α, δ, γ, ζ)]</SPAN></dt>
+<SPAN CLASS="code"><a name=zip6>zip6</a> ∷ <b>[α]</b> → [β] → [γ] → [δ] → [ε] → [ζ] → [(α, β, γ, δ, ε, ζ)]</SPAN></dt>
 <dd class="data">
 <p>
 <a class="fref" href="#zip6">zip6</a> zips 6 lists in the same way as <a class="fref" href="../prelude/PreludeList.html#zip">zip</a> does it.   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=unzip6>unzip6</a> ∷ <b>[(ζ, β, α, δ, ε, γ)]</b> → ([ζ], [β], [α], [δ], [ε], [γ])</SPAN></dt>
+<SPAN CLASS="code"><a name=unzip6>unzip6</a> ∷ <b>[(α, β, γ, δ, ε, ζ)]</b> → ([α], [β], [γ], [δ], [ε], [ζ])</SPAN></dt>
 <dd class="data">
 <p>
-<a class="fref" href="#unzip6">unzip6</a> unzips a list of sextupels and returns a sextupel of lists.   </p>
+<a class="fref" href="#unzip6">unzip6</a> unzips a list of sextuples and returns a sextuple of lists.   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=zipWith6>zipWith6</a> ∷ (<b>δ→ε→β→γ→ζ→η→α</b>) → <b>[δ]</b> → <b>[ε]</b> → <b>[β]</b> → <b>[γ]</b> → <b>[ζ]</b> → <b>[η]</b> → [α]</SPAN></dt>
+<SPAN CLASS="code"><a name=zipWith6>zipWith6</a> ∷ (<b>β→γ→δ→ε→ζ→η→α</b>) → <b>[β]</b> → [γ] → [δ] → [ε] → [ζ] → [η] → [α]</SPAN></dt>
 <dd class="data">
 <p>
 <a class="fref" href="#zipWith6">zipWith6</a> /f/ zips 6 lists with function /f/ instead of the standard <a class="tref" href="../prelude/PreludeBase.html#Tuple6">(,,,,,)</a> that is used by <a class="fref" href="#zip6">zip6</a>   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=zip7>zip7</a> ∷ <b>[β]</b> → <b>[α]</b> → <b>[δ]</b> → <b>[γ]</b> → <b>[ζ]</b> → <b>[ε]</b> → <b>[η]</b> → [(β, α, δ, γ, ζ, ε, η)]</SPAN></dt>
+<SPAN CLASS="code"><a name=zip7>zip7</a> ∷ <b>[α]</b> → [β] → [γ] → [δ] → [ε] → [ζ] → [η] → [(α, β, γ, δ, ε, ζ, η)]</SPAN></dt>
 <dd class="data">
 <p>
 <a class="fref" href="#zip7">zip7</a> zips 7 lists in the same way as <a class="fref" href="../prelude/PreludeList.html#zip">zip</a> does it.   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=unzip7>unzip7</a> ∷ <b>[(ε, η, ζ, β, γ, α, δ)]</b> → ([ε], [η], [ζ], [β], [γ], [α], [δ])</SPAN></dt>
+<SPAN CLASS="code"><a name=unzip7>unzip7</a> ∷ <b>[(α, β, γ, δ, ε, ζ, η)]</b> → ([α], [β], [γ], [δ], [ε], [ζ], [η])</SPAN></dt>
 <dd class="data">
 <p>
-<a class="fref" href="#unzip7">unzip7</a> unzips a list of septupels and returns a septupel of lists.   </p>
+<a class="fref" href="#unzip7">unzip7</a> unzips a list of septuples and returns a septuple of lists.   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=zipWith7>zipWith7</a> ∷ (<b>η→θ→γ→δ→α→β→ε→ζ</b>) → <b>[η]</b> → <b>[θ]</b> → <b>[γ]</b> → <b>[δ]</b> → <b>[α]</b> → <b>[β]</b> → <b>[ε]</b> → [ζ]</SPAN></dt>
+<SPAN CLASS="code"><a name=zipWith7>zipWith7</a> ∷ (<b>β→γ→δ→ε→ζ→η→θ→α</b>) → <b>[β]</b> → [γ] → [δ] → [ε] → [ζ] → [η] → [θ] → [α]</SPAN></dt>
 <dd class="data">
 <p>
 <a class="fref" href="#zipWith7">zipWith7</a> /f/ zips 7 lists with function /f/ instead of the standard <a class="tref" href="../prelude/PreludeBase.html#Tuple7">(,,,,,,)</a> that is used by <a class="fref" href="#zip7">zip7</a>   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=sortBy>sortBy</a> ∷ <a class="tref" href="../prelude/PreludeList.html#ListSource">ListSource</a> α ⇒ (<b>β→β→<a class="tref" href="../prelude/PreludeBase.html#Ordering">Ordering</a></b>) → α β → [β]</SPAN></dt>
+<SPAN CLASS="code"><a name=sortBy>sortBy</a> ∷ <a class="tref" href="../prelude/PreludeList.html#ListSource">ListSource</a> β ⇒ (<b>α→α→<a class="tref" href="../prelude/PreludeBase.html#Ordering">Ordering</a></b>) → β α → [α]</SPAN></dt>
 <dd class="data">
 <p>
 <SPAN CLASS="code">sortBy f xs</SPAN> is a stable sort (merge sort), it uses /f/ to decide the order of elements. If <SPAN CLASS="code">a `f` b</SPAN> is <a class="fref" href="../prelude/PreludeBase.html#Ordering.Lt">Ordering.Lt</a> or <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a>, then /a/ comes before /b/, otherwise /b/ comes before /a/.</p>
@@ -696,7 +696,7 @@ A variant of <a class="fref" href="#partition">partition</a> that satisfies the 
 see also <a class="fref" href="../prelude/PreludeBase.html#comparing">comparing</a>,  <a class="fref" href="../prelude/PreludeBase.html#descending">descending</a></p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=merge>merge</a> ∷ (<b>α→α→<a class="tref" href="../prelude/PreludeBase.html#Ordering">Ordering</a></b>) → <b>[α]</b> → <b>[α]</b> → [α]</SPAN></dt>
+<SPAN CLASS="code"><a name=merge>merge</a> ∷ (<b>α→α→<a class="tref" href="../prelude/PreludeBase.html#Ordering">Ordering</a></b>) → <b>[α]</b> → [α] → [α]</SPAN></dt>
 <dd class="data">
 <p>
 Merge two lists, taking elements from the left as long as they are not <a class="fref" href="../prelude/PreludeBase.html#Ordering.Gt">Ordering.Gt</a> (according to the passed comparison function) than the head element from the right.</p>
@@ -704,7 +704,7 @@ Merge two lists, taking elements from the left as long as they are not <a class=
 Makes most sense when the lists are sorted by the same criteria.</p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=sort>sort</a> ∷ (<a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> α, <a class="tref" href="../prelude/PreludeList.html#ListSource">ListSource</a> β) ⇒ β α → [α]</SPAN></dt>
+<SPAN CLASS="code"><a name=sort>sort</a> ∷ (<a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="../prelude/PreludeList.html#ListSource">ListSource</a> α) ⇒ α β → [β]</SPAN></dt>
 <dd class="data">
 <p>
 Standard sort uses operator <a class="fref" href="../prelude/PreludeBase.html#Ord.$lt$eq$gt">Ord.&lt;=&gt;</a> and demands that the type of the list elements is an instance of <a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a></p>
@@ -767,13 +767,13 @@ The <a class="fref" href="#stripPrefix">stripPrefix</a> function drops the given
  stripPrefix "foo" "barfoobaz" -&gt; Nothing</PRE>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=isPrefixOf>isPrefixOf</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b>[α]</b> → <b>[α]</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a name=isPrefixOf>isPrefixOf</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ <b>[α]</b> → [α] → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="data">
 <p>
 The <a class="fref" href="#isPrefixOf">isPrefixOf</a> function takes two lists and returns <SPAN CLASS="code">true</SPAN> iff the first list is a prefix of the second.</p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=isSuffixOf>isSuffixOf</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> a ⇒ <b>[a]</b> → <b>[a]</b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a name=isSuffixOf>isSuffixOf</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> a ⇒ <b>[a]</b> → [a] → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="data">
 <p>
 The <a class="fref" href="#isSuffixOf">isSuffixOf</a> function takes two lists and returns <SPAN CLASS="code">true</SPAN> iff the first list is a suffix of the second. Both lists must be finite.</p>
@@ -847,19 +847,13 @@ The <a class="fref" href="#genericSplitAt">genericSplitAt</a> function is an ove
 <SPAN CLASS="code"><a name=genericIndex>genericIndex</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Integral">Integral</a> a ⇒ <b>[b]</b> → a → b</SPAN></dt>
 <dd class="data">
 <p>
-The <a class="fref" href="#genericIndex">genericIndex</a> function is an overloaded version of <a class="fref" href="#$excl$excl">!!</a>, which accepts any <a class="tref" href="../prelude/PreludeBase.html#Integral">Integral</a> value as the index.</p>
+The <a class="fref" href="#genericIndex">genericIndex</a> function is an overloaded version of <a class="fref" href="../prelude/PreludeList.html#$excl$excl">!!</a>, which accepts any <a class="tref" href="../prelude/PreludeBase.html#Integral">Integral</a> value as the index.</p>
 </dd>
 <dt class="data">
 <SPAN CLASS="code"><a name=genericReplicate>genericReplicate</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Integral">Integral</a> i ⇒ i → a → [a]</SPAN></dt>
 <dd class="data">
 <p>
 The <a class="fref" href="#genericReplicate">genericReplicate</a> function is an overloaded version of <a class="fref" href="../prelude/PreludeList.html#replicate">replicate</a>, which accepts any <a class="tref" href="../prelude/PreludeBase.html#Integral">Integral</a> value as the number of repetitions to make.</p>
-</dd>
-<dt class="data">
-<SPAN CLASS="code"><a name=$excl$excl>!!</a> ∷ <b>[α]</b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → α<br><b>infixl</b>&nbsp;&nbsp;16</SPAN></dt>
-<dd class="data">
-<p>
-<SPAN CLASS="code">xs !! n</SPAN> is the element with index <i>n</i> of the list <i>xs</i>, where the head element of a list has index 0.</p>
 </dd>
 </dl>
 <h2>
@@ -938,10 +932,10 @@ The <a class="fref" href="#genericReplicate">genericReplicate</a> function is an
 <a class="fref" href="#transpose">transpose</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">[α] → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → α</SPAN></dt>
+<SPAN CLASS="code">[a] → [[a]] → [a]</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#$excl$excl">!!</a></p>
+<a class="fref" href="#intercalate">intercalate</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">[α] → [[α]]</SPAN></dt>
@@ -1022,19 +1016,19 @@ The <a class="fref" href="#genericReplicate">genericReplicate</a> function is an
 <a class="fref" href="#deleteFirstsBy">deleteFirstsBy</a></p>
 </dd>
 <dt class="func">
+<SPAN CLASS="code">(α→β→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → α → [β] → [β]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#deleteBy">deleteBy</a></p>
+</dd>
+<dt class="func">
 <SPAN CLASS="code">(α→β→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → α → [β] → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#elemBy">elemBy</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(β→α→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → β → [α] → [α]</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#deleteBy">deleteBy</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> β ⇒ β → [(β, α)] → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> α ⇒ α → [(α, β)] → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#lookup">lookup</a></p>
@@ -1070,19 +1064,13 @@ The <a class="fref" href="#genericReplicate">genericReplicate</a> function is an
 <a class="fref" href="#genericLength">genericLength</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> α, <a class="tref" href="../prelude/PreludeList.html#ListSource">ListSource</a> β) ⇒ β α → [α]</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="../prelude/PreludeList.html#ListSource">ListSource</a> α) ⇒ α β → [β]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#sort">sort</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeList.html#ListMonoid">ListMonoid</a> β ⇒ β α → [β α] → β α</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#intercalate">intercalate</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeList.html#ListSource">ListSource</a> α ⇒ (β→β→<a class="tref" href="../prelude/PreludeBase.html#Ordering">Ordering</a>) → α β → [β]</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeList.html#ListSource">ListSource</a> β ⇒ (α→α→<a class="tref" href="../prelude/PreludeBase.html#Ordering">Ordering</a>) → β α → [α]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#sortBy">sortBy</a></p>
@@ -1094,79 +1082,79 @@ The <a class="fref" href="#genericReplicate">genericReplicate</a> function is an
 <a class="fref" href="#mapAccumL">mapAccumL</a>, <a class="fref" href="#mapAccumR">mapAccumR</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeList.html#ListSource">ListSource</a> α ⇒ (γ→β→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → α γ → [β] → [γ]</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeList.html#ListSource">ListSource</a> γ ⇒ (β→α→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → γ β → [α] → [β]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#intersectBy">intersectBy</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">[(γ, α, β, δ)] → ([γ], [α], [β], [δ])</SPAN></dt>
+<SPAN CLASS="code">[(α, β, γ, δ)] → ([α], [β], [γ], [δ])</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#unzip4">unzip4</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">[β] → [α] → [δ] → [γ] → [(β, α, δ, γ)]</SPAN></dt>
+<SPAN CLASS="code">[α] → [β] → [γ] → [δ] → [(α, β, γ, δ)]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#zip4">zip4</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(γ→α→β→δ→ε) → [γ] → [α] → [β] → [δ] → [ε]</SPAN></dt>
+<SPAN CLASS="code">(β→γ→δ→ε→α) → [β] → [γ] → [δ] → [ε] → [α]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#zipWith4">zipWith4</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">[(ε, β, γ, α, δ)] → ([ε], [β], [γ], [α], [δ])</SPAN></dt>
+<SPAN CLASS="code">[(α, β, γ, δ, ε)] → ([α], [β], [γ], [δ], [ε])</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#unzip5">unzip5</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">[γ] → [ε] → [δ] → [β] → [α] → [(γ, ε, δ, β, α)]</SPAN></dt>
+<SPAN CLASS="code">[α] → [β] → [γ] → [δ] → [ε] → [(α, β, γ, δ, ε)]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#zip5">zip5</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(δ→β→γ→ε→ζ→α) → [δ] → [β] → [γ] → [ε] → [ζ] → [α]</SPAN></dt>
+<SPAN CLASS="code">(β→γ→δ→ε→ζ→α) → [β] → [γ] → [δ] → [ε] → [ζ] → [α]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#zipWith5">zipWith5</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">[(ζ, β, α, δ, ε, γ)] → ([ζ], [β], [α], [δ], [ε], [γ])</SPAN></dt>
+<SPAN CLASS="code">[(α, β, γ, δ, ε, ζ)] → ([α], [β], [γ], [δ], [ε], [ζ])</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#unzip6">unzip6</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">[ε] → [β] → [α] → [δ] → [γ] → [ζ] → [(ε, β, α, δ, γ, ζ)]</SPAN></dt>
+<SPAN CLASS="code">[α] → [β] → [γ] → [δ] → [ε] → [ζ] → [(α, β, γ, δ, ε, ζ)]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#zip6">zip6</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(δ→ε→β→γ→ζ→η→α) → [δ] → [ε] → [β] → [γ] → [ζ] → [η] → [α]</SPAN></dt>
+<SPAN CLASS="code">(β→γ→δ→ε→ζ→η→α) → [β] → [γ] → [δ] → [ε] → [ζ] → [η] → [α]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#zipWith6">zipWith6</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">[(ε, η, ζ, β, γ, α, δ)] → ([ε], [η], [ζ], [β], [γ], [α], [δ])</SPAN></dt>
+<SPAN CLASS="code">[(α, β, γ, δ, ε, ζ, η)] → ([α], [β], [γ], [δ], [ε], [ζ], [η])</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#unzip7">unzip7</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">[β] → [α] → [δ] → [γ] → [ζ] → [ε] → [η] → [(β, α, δ, γ, ζ, ε, η)]</SPAN></dt>
+<SPAN CLASS="code">[α] → [β] → [γ] → [δ] → [ε] → [ζ] → [η] → [(α, β, γ, δ, ε, ζ, η)]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#zip7">zip7</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(η→θ→γ→δ→α→β→ε→ζ) → [η] → [θ] → [γ] → [δ] → [α] → [β] → [ε] → [ζ]</SPAN></dt>
+<SPAN CLASS="code">(β→γ→δ→ε→ζ→η→θ→α) → [β] → [γ] → [δ] → [ε] → [ζ] → [η] → [θ] → [α]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#zipWith7">zipWith7</a></p>

@@ -41,6 +41,10 @@ import <a HREF="../../prelude/PreludeBase.html">Prelude.PreludeBase</a> as Prelu
 </li>
 <li>
 <div>
+import <a HREF="../../prelude/PreludeDecimal.html">Prelude.PreludeDecimal</a> as PreludeDecimal</div>
+</li>
+<li>
+<div>
 import <a HREF="../../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
 </li>
 <li>
@@ -128,19 +132,19 @@ access field <SPAN CLASS="code">get</SPAN></p>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Applicative_Const.$star$gt>*&gt;</a> ∷ <a class="tref" href="../Monoid.html#Monoid">Monoid</a> γ ⇒ <b><a class="tref" href="#Const">Const</a> γ β</b> → <b><a class="tref" href="#Const">Const</a> γ α</b> → <a class="tref" href="#Const">Const</a> γ α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name=Applicative_Const.$star$gt>*&gt;</a> ∷ <a class="tref" href="../Monoid.html#Monoid">Monoid</a> α ⇒ <b><a class="tref" href="#Const">Const</a> α β</b> → <b><a class="tref" href="#Const">Const</a> α γ</b> → <a class="tref" href="#Const">Const</a> α γ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Applicative.$star$gt">Applicative.*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Applicative_Const.$lt$star>&lt;*</a> ∷ <a class="tref" href="../Monoid.html#Monoid">Monoid</a> γ ⇒ <b><a class="tref" href="#Const">Const</a> γ β</b> → <b><a class="tref" href="#Const">Const</a> γ α</b> → <a class="tref" href="#Const">Const</a> γ β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name=Applicative_Const.$lt$star>&lt;*</a> ∷ <a class="tref" href="../Monoid.html#Monoid">Monoid</a> α ⇒ <b><a class="tref" href="#Const">Const</a> α β</b> → <b><a class="tref" href="#Const">Const</a> α γ</b> → <a class="tref" href="#Const">Const</a> α β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Applicative.$lt$star">Applicative.&lt;*</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Applicative_Const.$lt$star$gt>&lt;*&gt;</a> ∷ <a class="tref" href="../Monoid.html#Monoid">Monoid</a> α ⇒ <b><a class="tref" href="#Const">Const</a> α (γ→β)</b> → <b><a class="tref" href="#Const">Const</a> α γ</b> → <a class="tref" href="#Const">Const</a> α β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name=Applicative_Const.$lt$star$gt>&lt;*&gt;</a> ∷ <a class="tref" href="../Monoid.html#Monoid">Monoid</a> α ⇒ <b><a class="tref" href="#Const">Const</a> α (β→γ)</b> → <b><a class="tref" href="#Const">Const</a> α β</b> → <a class="tref" href="#Const">Const</a> α γ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
@@ -156,7 +160,7 @@ inherited from <a class="fref" href="../../prelude/PreludeMonad.html#Applicative
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Functor_Const.fmap>fmap</a> ∷ (<b>α → γ</b>) → <b><a class="tref" href="#Const">Const</a> β α</b> → <a class="tref" href="#Const">Const</a> β γ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name=Functor_Const.fmap>fmap</a> ∷ (<b>β → γ</b>) → <b><a class="tref" href="#Const">Const</a> α β</b> → <a class="tref" href="#Const">Const</a> α γ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -190,40 +194,40 @@ Member Functions</h3>
 <a class="fref" href="#Applicative_Const.pure">Applicative_Const.pure</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α → γ) → <a class="tref" href="#Const">Const</a> β α → <a class="tref" href="#Const">Const</a> β γ</SPAN></dt>
+<SPAN CLASS="code">(β → γ) → <a class="tref" href="#Const">Const</a> α β → <a class="tref" href="#Const">Const</a> α γ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Functor_Const.fmap">Functor_Const.fmap</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../Monoid.html#Monoid">Monoid</a> α ⇒ <a class="tref" href="#Const">Const</a> α (γ→β) → <a class="tref" href="#Const">Const</a> α γ → <a class="tref" href="#Const">Const</a> α β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../Monoid.html#Monoid">Monoid</a> α ⇒ <a class="tref" href="#Const">Const</a> α (β→γ) → <a class="tref" href="#Const">Const</a> α β → <a class="tref" href="#Const">Const</a> α γ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Applicative_Const.$lt$star$gt">Applicative_Const.&lt;*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../Monoid.html#Monoid">Monoid</a> γ ⇒ <a class="tref" href="#Const">Const</a> γ β → <a class="tref" href="#Const">Const</a> γ α → <a class="tref" href="#Const">Const</a> γ α</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Applicative_Const.$star$gt">Applicative_Const.*&gt;</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../Monoid.html#Monoid">Monoid</a> γ ⇒ <a class="tref" href="#Const">Const</a> γ β → <a class="tref" href="#Const">Const</a> γ α → <a class="tref" href="#Const">Const</a> γ β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../Monoid.html#Monoid">Monoid</a> α ⇒ <a class="tref" href="#Const">Const</a> α β → <a class="tref" href="#Const">Const</a> α γ → <a class="tref" href="#Const">Const</a> α β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Applicative_Const.$lt$star">Applicative_Const.&lt;*</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Const">Const</a> β γ → (β→δ) → <a class="tref" href="#Const">Const</a> δ α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../Monoid.html#Monoid">Monoid</a> α ⇒ <a class="tref" href="#Const">Const</a> α β → <a class="tref" href="#Const">Const</a> α γ → <a class="tref" href="#Const">Const</a> α γ</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Const.chg$get">Const.chg$get</a></p>
+<a class="fref" href="#Applicative_Const.$star$gt">Applicative_Const.*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Const">Const</a> γ β → δ → <a class="tref" href="#Const">Const</a> δ α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Const">Const</a> α β → γ → <a class="tref" href="#Const">Const</a> γ δ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Const.upd$get">Const.upd$get</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Const">Const</a> δ α → (δ→β) → <a class="tref" href="#Const">Const</a> β γ</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Const.chg$get">Const.chg$get</a></p>
 </dd>
 </dl>
 <p>

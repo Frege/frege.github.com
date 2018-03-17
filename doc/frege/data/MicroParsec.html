@@ -41,6 +41,10 @@ import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeB
 </li>
 <li>
 <div>
+import <a HREF="../prelude/PreludeDecimal.html">Prelude.PreludeDecimal</a> as PreludeDecimal</div>
+</li>
+<li>
+<div>
 import <a HREF="../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
 </li>
 <li>
@@ -72,27 +76,27 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#getPos">getPos</a> ∷ <a class="tref" href="#Parser">Parser</a> β α (β α)</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#getPos">getPos</a> ∷ <a class="tref" href="#Parser">Parser</a> α β (α β)</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#putPos">putPos</a> ∷ β α → <a class="tref" href="#Parser">Parser</a> β α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#putPos">putPos</a> ∷ α β → <a class="tref" href="#Parser">Parser</a> α β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#modifyPos">modifyPos</a> ∷ (<b>β α→β α</b>) → <a class="tref" href="#Parser">Parser</a> β α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#modifyPos">modifyPos</a> ∷ (<b>α β→α β</b>) → <a class="tref" href="#Parser">Parser</a> α β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#failure">failure</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Parser">Parser</a> β α γ</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#failure">failure</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Parser">Parser</a> α β γ</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#runid">runid</a> ∷ <b><a class="tref" href="#Parser">Parser</a> β γ α</b> → β γ → ((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | α), β γ)</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#runid">runid</a> ∷ <b><a class="tref" href="#Parser">Parser</a> α β γ</b> → α β → ((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | γ), α β)</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#parse">parse</a> ∷ <b><a class="tref" href="#Parser">Parser</a> γ α β</b> → γ α → (<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | β)</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#parse">parse</a> ∷ <b><a class="tref" href="#Parser">Parser</a> α β γ</b> → α β → (<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | γ)</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -104,11 +108,11 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#label">label</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <b><a class="tref" href="#Parser">Parser</a> β α γ</b> → <a class="tref" href="#Parser">Parser</a> β α γ</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#label">label</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <b><a class="tref" href="#Parser">Parser</a> γ β α</b> → <a class="tref" href="#Parser">Parser</a> γ β α</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#$lt$qm$gt">&lt;?&gt;</a> ∷ <b><a class="tref" href="#Parser">Parser</a> β α γ</b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Parser">Parser</a> β α γ&nbsp;</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#$lt$qm$gt">&lt;?&gt;</a> ∷ <b><a class="tref" href="#Parser">Parser</a> γ β α</b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Parser">Parser</a> γ β α&nbsp;</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -128,7 +132,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#pany">pany</a> ∷ <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> β ⇒ <a class="tref" href="#Parser">Parser</a> β α α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#pany">pany</a> ∷ <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α ⇒ <a class="tref" href="#Parser">Parser</a> α β β</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -172,11 +176,11 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#some">some</a> ∷ <b><a class="tref" href="#Parser">Parser</a> β α γ</b> → <a class="tref" href="#Parser">Parser</a> β α [γ]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#some">some</a> ∷ <b><a class="tref" href="#Parser">Parser</a> γ β α</b> → <a class="tref" href="#Parser">Parser</a> γ β [α]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#many1">many1</a> ∷ <b><a class="tref" href="#Parser">Parser</a> β α γ</b> → <a class="tref" href="#Parser">Parser</a> β α [γ]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#many1">many1</a> ∷ <b><a class="tref" href="#Parser">Parser</a> γ β α</b> → <a class="tref" href="#Parser">Parser</a> γ β [α]</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -188,15 +192,15 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#skipWhile">skipWhile</a> ∷ <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> β ⇒ (<b>α→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></b>) → <a class="tref" href="#Parser">Parser</a> β α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#skipWhile">skipWhile</a> ∷ <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α ⇒ (<b>β→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></b>) → <a class="tref" href="#Parser">Parser</a> α β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#skipUntil">skipUntil</a> ∷ <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α ⇒ (<b>β→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></b>) → <a class="tref" href="#Parser">Parser</a> α β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#skipUntil">skipUntil</a> ∷ <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> β ⇒ (<b>α→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></b>) → <a class="tref" href="#Parser">Parser</a> β α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#cond">cond</a> ∷ <b><a class="tref" href="#Parser">Parser</a> α δ γ</b> → <a class="tref" href="#Parser">Parser</a> α δ β → <a class="tref" href="#Parser">Parser</a> α δ β → <a class="tref" href="#Parser">Parser</a> α δ β</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#cond">cond</a> ∷ <b><a class="tref" href="#Parser">Parser</a> β γ α</b> → <a class="tref" href="#Parser">Parser</a> β γ δ → <a class="tref" href="#Parser">Parser</a> β γ δ → <a class="tref" href="#Parser">Parser</a> β γ δ</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -204,15 +208,15 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#choice">choice</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Plus">Plus</a> α ⇒ <b>[α β]</b> → α β</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#choice">choice</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Plus">Plus</a> β ⇒ <b>[β α]</b> → β α</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#count">count</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → α β → α [β]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#count">count</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → β α → β [α]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#between">between</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ δ γ → δ α → δ β → δ β</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#between">between</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ α β → α δ → α γ → α γ</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -220,27 +224,27 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#sepBy1">sepBy1</a> ∷ <b><a class="tref" href="#Parser">Parser</a> γ β α</b> → <b><a class="tref" href="#Parser">Parser</a> γ β δ</b> → <a class="tref" href="#Parser">Parser</a> γ β [α]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#sepBy1">sepBy1</a> ∷ <b><a class="tref" href="#Parser">Parser</a> δ γ α</b> → <b><a class="tref" href="#Parser">Parser</a> δ γ β</b> → <a class="tref" href="#Parser">Parser</a> δ γ [α]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#sepBy">sepBy</a> ∷ <b><a class="tref" href="#Parser">Parser</a> β α δ</b> → <b><a class="tref" href="#Parser">Parser</a> β α γ</b> → <a class="tref" href="#Parser">Parser</a> β α [δ]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#sepBy">sepBy</a> ∷ <b><a class="tref" href="#Parser">Parser</a> δ γ α</b> → <b><a class="tref" href="#Parser">Parser</a> δ γ β</b> → <a class="tref" href="#Parser">Parser</a> δ γ [α]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#endBy">endBy</a> ∷ <b><a class="tref" href="#Parser">Parser</a> β α δ</b> → <b><a class="tref" href="#Parser">Parser</a> β α γ</b> → <a class="tref" href="#Parser">Parser</a> β α [δ]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#endBy">endBy</a> ∷ <b><a class="tref" href="#Parser">Parser</a> δ γ α</b> → <b><a class="tref" href="#Parser">Parser</a> δ γ β</b> → <a class="tref" href="#Parser">Parser</a> δ γ [α]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#endBy1">endBy1</a> ∷ <b><a class="tref" href="#Parser">Parser</a> γ β δ</b> → <b><a class="tref" href="#Parser">Parser</a> γ β α</b> → <a class="tref" href="#Parser">Parser</a> γ β [δ]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#endBy1">endBy1</a> ∷ <b><a class="tref" href="#Parser">Parser</a> δ γ α</b> → <b><a class="tref" href="#Parser">Parser</a> δ γ β</b> → <a class="tref" href="#Parser">Parser</a> δ γ [α]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#sepEndBy">sepEndBy</a> ∷ <b><a class="tref" href="#Parser">Parser</a> δ γ β</b> → <b><a class="tref" href="#Parser">Parser</a> δ γ α</b> → <a class="tref" href="#Parser">Parser</a> δ γ [β]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#sepEndBy">sepEndBy</a> ∷ <b><a class="tref" href="#Parser">Parser</a> δ γ α</b> → <b><a class="tref" href="#Parser">Parser</a> δ γ β</b> → <a class="tref" href="#Parser">Parser</a> δ γ [α]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#sepEndBy1">sepEndBy1</a> ∷ <b><a class="tref" href="#Parser">Parser</a> δ γ β</b> → <b><a class="tref" href="#Parser">Parser</a> δ γ α</b> → <a class="tref" href="#Parser">Parser</a> δ γ [β]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#sepEndBy1">sepEndBy1</a> ∷ <b><a class="tref" href="#Parser">Parser</a> δ γ α</b> → <b><a class="tref" href="#Parser">Parser</a> δ γ β</b> → <a class="tref" href="#Parser">Parser</a> δ γ [α]</SPAN></dt>
 <dd>
 </dd>
 </dl>
@@ -290,7 +294,7 @@ Constructors</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Parser.run>run</a> ∷ <b><a class="tref" href="#Parser">Parser</a> β α γ</b> → β α → ((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | γ), β α)</SPAN></dt>
+<SPAN CLASS="code"><a name=Parser.run>run</a> ∷ <b><a class="tref" href="#Parser">Parser</a> α β γ</b> → α β → ((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | γ), α β)</SPAN></dt>
 <dd class="func">
 <p>
 access field <SPAN CLASS="code">run</SPAN></p>
@@ -298,7 +302,7 @@ access field <SPAN CLASS="code">run</SPAN></p>
 </dl>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=getPos>getPos</a> ∷ <a class="tref" href="#Parser">Parser</a> β α (β α)</SPAN></dt>
+<SPAN CLASS="code"><a name=getPos>getPos</a> ∷ <a class="tref" href="#Parser">Parser</a> α β (α β)</SPAN></dt>
 <dd class="data">
 <p>
 Remember the current state of the input stream.</p>
@@ -306,7 +310,7 @@ Remember the current state of the input stream.</p>
 <a class="fref" href="#getPos">getPos</a> always succeeds.   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=putPos>putPos</a> ∷ β α → <a class="tref" href="#Parser">Parser</a> β α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name=putPos>putPos</a> ∷ α β → <a class="tref" href="#Parser">Parser</a> α β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="data">
 <p>
 Resume parsing with the given input stream.</p>
@@ -314,23 +318,23 @@ Resume parsing with the given input stream.</p>
 <a class="fref" href="#putPos">putPos</a> always succeeds.    </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=modifyPos>modifyPos</a> ∷ (<b>β α→β α</b>) → <a class="tref" href="#Parser">Parser</a> β α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name=modifyPos>modifyPos</a> ∷ (<b>α β→α β</b>) → <a class="tref" href="#Parser">Parser</a> α β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="data">
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=failure>failure</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Parser">Parser</a> β α γ</SPAN></dt>
+<SPAN CLASS="code"><a name=failure>failure</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Parser">Parser</a> α β γ</SPAN></dt>
 <dd class="data">
 <p>
 fail with given error message   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=runid>runid</a> ∷ <b><a class="tref" href="#Parser">Parser</a> β γ α</b> → β γ → ((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | α), β γ)</SPAN></dt>
+<SPAN CLASS="code"><a name=runid>runid</a> ∷ <b><a class="tref" href="#Parser">Parser</a> α β γ</b> → α β → ((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | γ), α β)</SPAN></dt>
 <dd class="data">
 <p>
 run a  parser   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=parse>parse</a> ∷ <b><a class="tref" href="#Parser">Parser</a> γ α β</b> → γ α → (<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | β)</SPAN></dt>
+<SPAN CLASS="code"><a name=parse>parse</a> ∷ <b><a class="tref" href="#Parser">Parser</a> α β γ</b> → α β → (<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | γ)</SPAN></dt>
 <dd class="data">
 <p>
 run a Parser, return just the result/error   </p>
@@ -346,7 +350,7 @@ run a <a class="tref" href="#Parser">Parser</a> on some input and report   </p>
 <dd class="data">
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=label>label</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <b><a class="tref" href="#Parser">Parser</a> β α γ</b> → <a class="tref" href="#Parser">Parser</a> β α γ</SPAN></dt>
+<SPAN CLASS="code"><a name=label>label</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <b><a class="tref" href="#Parser">Parser</a> γ β α</b> → <a class="tref" href="#Parser">Parser</a> γ β α</SPAN></dt>
 <dd class="data">
 <p>
 Causes the error message to be <i>msg</i> when <i>p</i> fails.</p>
@@ -359,7 +363,7 @@ The error will be reported at the position where <i>p</i> was attempted, not nec
  id expected, found a?</PRE>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=$lt$qm$gt>&lt;?&gt;</a> ∷ <b><a class="tref" href="#Parser">Parser</a> β α γ</b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Parser">Parser</a> β α γ<br><b>infix</b>&nbsp;&nbsp;14</SPAN></dt>
+<SPAN CLASS="code"><a name=$lt$qm$gt>&lt;?&gt;</a> ∷ <b><a class="tref" href="#Parser">Parser</a> γ β α</b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Parser">Parser</a> γ β α<br><b>infix</b>&nbsp;&nbsp;14</SPAN></dt>
 <dd class="data">
 <PRE>
  p &lt;?&gt; msg</PRE>
@@ -403,7 +407,7 @@ Succeeds on end of stream or when the token does not satisfy the property.</p>
 In other words, <SPAN CLASS="code">exceptWhen p</SPAN> succeeds if and only if <SPAN CLASS="code">satisfy p</SPAN> fails.   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=pany>pany</a> ∷ <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> β ⇒ <a class="tref" href="#Parser">Parser</a> β α α</SPAN></dt>
+<SPAN CLASS="code"><a name=pany>pany</a> ∷ <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α ⇒ <a class="tref" href="#Parser">Parser</a> α β β</SPAN></dt>
 <dd class="data">
 <PRE>
  pany</PRE>
@@ -421,22 +425,32 @@ Is the same parser as <i>p</i>, but skips spaces afterwards   </p>
 <dt class="data">
 <SPAN CLASS="code"><a name=space>space</a> ∷ <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α ⇒ <a class="tref" href="#Parser">Parser</a> α <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a></SPAN></dt>
 <dd class="data">
+<p>
+parse a single space character   </p>
 </dd>
 <dt class="data">
 <SPAN CLASS="code"><a name=digit>digit</a> ∷ <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α ⇒ <a class="tref" href="#Parser">Parser</a> α <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a></SPAN></dt>
 <dd class="data">
+<p>
+parse a single digit   </p>
 </dd>
 <dt class="data">
 <SPAN CLASS="code"><a name=letter>letter</a> ∷ <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α ⇒ <a class="tref" href="#Parser">Parser</a> α <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a></SPAN></dt>
 <dd class="data">
+<p>
+parse a single letter   </p>
 </dd>
 <dt class="data">
 <SPAN CLASS="code"><a name=uppercase>uppercase</a> ∷ <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α ⇒ <a class="tref" href="#Parser">Parser</a> α <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a></SPAN></dt>
 <dd class="data">
+<p>
+parse a single uppercase letter   </p>
 </dd>
 <dt class="data">
 <SPAN CLASS="code"><a name=spaces>spaces</a> ∷ <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α ⇒ <a class="tref" href="#Parser">Parser</a> α <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="data">
+<p>
+skip any spaces   </p>
 </dd>
 <dt class="data">
 <SPAN CLASS="code"><a name=string>string</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="#Parser">Parser</a> <a class="tref" href="./Iterators.html#StringIterator">StringIterator</a> <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
@@ -469,7 +483,7 @@ Succeeds also when <i>p</i> fails the first time, in that case the result is an 
 Must not be applied to a parser that always succeeds!   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=some>some</a> ∷ <b><a class="tref" href="#Parser">Parser</a> β α γ</b> → <a class="tref" href="#Parser">Parser</a> β α [γ]</SPAN></dt>
+<SPAN CLASS="code"><a name=some>some</a> ∷ <b><a class="tref" href="#Parser">Parser</a> γ β α</b> → <a class="tref" href="#Parser">Parser</a> γ β [α]</SPAN></dt>
 <dd class="data">
 <PRE>
  some p</PRE>
@@ -479,7 +493,7 @@ Like <a class="fref" href="#many">many</a>, except there must be at least one <i
 Must not be applied to a parser that always succeeds!   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=many1>many1</a> ∷ <b><a class="tref" href="#Parser">Parser</a> β α γ</b> → <a class="tref" href="#Parser">Parser</a> β α [γ]</SPAN></dt>
+<SPAN CLASS="code"><a name=many1>many1</a> ∷ <b><a class="tref" href="#Parser">Parser</a> γ β α</b> → <a class="tref" href="#Parser">Parser</a> γ β [α]</SPAN></dt>
 <dd class="data">
 <p>
 Alias for <a class="fref" href="#some">some</a></p>
@@ -507,7 +521,7 @@ Must not be applied to a parser that always succeeds!   </p>
 Collect tokens as long as they satisfy <i>p</i>   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=skipWhile>skipWhile</a> ∷ <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> β ⇒ (<b>α→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></b>) → <a class="tref" href="#Parser">Parser</a> β α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name=skipWhile>skipWhile</a> ∷ <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α ⇒ (<b>β→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></b>) → <a class="tref" href="#Parser">Parser</a> α β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="data">
 <PRE>
  skipWhile p</PRE>
@@ -523,7 +537,7 @@ This will loop forever if there is no <SPAN CLASS="code">'a'</SPAN> in the input
  skipUntil (== 'a')</PRE>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=skipUntil>skipUntil</a> ∷ <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α ⇒ (<b>β→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></b>) → <a class="tref" href="#Parser">Parser</a> α β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name=skipUntil>skipUntil</a> ∷ <a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> β ⇒ (<b>α→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></b>) → <a class="tref" href="#Parser">Parser</a> β α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="data">
 <PRE>
  skipUntil p</PRE>
@@ -533,7 +547,7 @@ Skip tokens as long as they do not satisfy p</p>
 When this succeeds, the next token will satisfy p or the stream is exhausted.   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=cond>cond</a> ∷ <b><a class="tref" href="#Parser">Parser</a> α δ γ</b> → <a class="tref" href="#Parser">Parser</a> α δ β → <a class="tref" href="#Parser">Parser</a> α δ β → <a class="tref" href="#Parser">Parser</a> α δ β</SPAN></dt>
+<SPAN CLASS="code"><a name=cond>cond</a> ∷ <b><a class="tref" href="#Parser">Parser</a> β γ α</b> → <a class="tref" href="#Parser">Parser</a> β γ δ → <a class="tref" href="#Parser">Parser</a> β γ δ → <a class="tref" href="#Parser">Parser</a> β γ δ</SPAN></dt>
 <dd class="data">
 <PRE>
  cond pcond pthen pelse</PRE>
@@ -553,7 +567,7 @@ unfolds as</p>
  cond if1 t1 (cond if2 t2 (... (cond ifn tn e)))    </PRE>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=choice>choice</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Plus">Plus</a> α ⇒ <b>[α β]</b> → α β</SPAN></dt>
+<SPAN CLASS="code"><a name=choice>choice</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Plus">Plus</a> β ⇒ <b>[β α]</b> → β α</SPAN></dt>
 <dd class="data">
 <PRE>
  choice ps</PRE>
@@ -561,7 +575,7 @@ unfolds as</p>
 Tries the parsers in the list from left to right, until success.    </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=count>count</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → α β → α [β]</SPAN></dt>
+<SPAN CLASS="code"><a name=count>count</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → β α → β [α]</SPAN></dt>
 <dd class="data">
 <PRE>
  count n p</PRE>
@@ -569,7 +583,7 @@ Tries the parsers in the list from left to right, until success.    </p>
 Applies <i>p</i> <i>n</i> times and returns a list of the results   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=between>between</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ δ γ → δ α → δ β → δ β</SPAN></dt>
+<SPAN CLASS="code"><a name=between>between</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ α β → α δ → α γ → α γ</SPAN></dt>
 <dd class="data">
 <PRE>
  between left right p</PRE>
@@ -587,7 +601,7 @@ Applies <i>p</i>, and returns <i>v</i> when it fails.</p>
 Always succeeds.   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=sepBy1>sepBy1</a> ∷ <b><a class="tref" href="#Parser">Parser</a> γ β α</b> → <b><a class="tref" href="#Parser">Parser</a> γ β δ</b> → <a class="tref" href="#Parser">Parser</a> γ β [α]</SPAN></dt>
+<SPAN CLASS="code"><a name=sepBy1>sepBy1</a> ∷ <b><a class="tref" href="#Parser">Parser</a> δ γ α</b> → <b><a class="tref" href="#Parser">Parser</a> δ γ β</b> → <a class="tref" href="#Parser">Parser</a> δ γ [α]</SPAN></dt>
 <dd class="data">
 <PRE>
  p `sepBy1` q</PRE>
@@ -595,7 +609,7 @@ Always succeeds.   </p>
 Parses p and many q followed by p   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=sepBy>sepBy</a> ∷ <b><a class="tref" href="#Parser">Parser</a> β α δ</b> → <b><a class="tref" href="#Parser">Parser</a> β α γ</b> → <a class="tref" href="#Parser">Parser</a> β α [δ]</SPAN></dt>
+<SPAN CLASS="code"><a name=sepBy>sepBy</a> ∷ <b><a class="tref" href="#Parser">Parser</a> δ γ α</b> → <b><a class="tref" href="#Parser">Parser</a> δ γ β</b> → <a class="tref" href="#Parser">Parser</a> δ γ [α]</SPAN></dt>
 <dd class="data">
 <PRE>
  p `sepBy` q</PRE>
@@ -603,7 +617,7 @@ Parses p and many q followed by p   </p>
 Like <a class="fref" href="#sepBy1">sepBy1</a>, but allows zero <i>p</i> elements   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=endBy>endBy</a> ∷ <b><a class="tref" href="#Parser">Parser</a> β α δ</b> → <b><a class="tref" href="#Parser">Parser</a> β α γ</b> → <a class="tref" href="#Parser">Parser</a> β α [δ]</SPAN></dt>
+<SPAN CLASS="code"><a name=endBy>endBy</a> ∷ <b><a class="tref" href="#Parser">Parser</a> δ γ α</b> → <b><a class="tref" href="#Parser">Parser</a> δ γ β</b> → <a class="tref" href="#Parser">Parser</a> δ γ [α]</SPAN></dt>
 <dd class="data">
 <PRE>
  p `endBy` q</PRE>
@@ -611,7 +625,7 @@ Like <a class="fref" href="#sepBy1">sepBy1</a>, but allows zero <i>p</i> element
 Parses zero or more occurrences of <i>p</i> separated and ended by <i>q</i>   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=endBy1>endBy1</a> ∷ <b><a class="tref" href="#Parser">Parser</a> γ β δ</b> → <b><a class="tref" href="#Parser">Parser</a> γ β α</b> → <a class="tref" href="#Parser">Parser</a> γ β [δ]</SPAN></dt>
+<SPAN CLASS="code"><a name=endBy1>endBy1</a> ∷ <b><a class="tref" href="#Parser">Parser</a> δ γ α</b> → <b><a class="tref" href="#Parser">Parser</a> δ γ β</b> → <a class="tref" href="#Parser">Parser</a> δ γ [α]</SPAN></dt>
 <dd class="data">
 <PRE>
  p `endBy1` q</PRE>
@@ -619,7 +633,7 @@ Parses zero or more occurrences of <i>p</i> separated and ended by <i>q</i>   </
 Parses one or more occurrences of <i>p</i> separated and ended by <i>q</i>   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=sepEndBy>sepEndBy</a> ∷ <b><a class="tref" href="#Parser">Parser</a> δ γ β</b> → <b><a class="tref" href="#Parser">Parser</a> δ γ α</b> → <a class="tref" href="#Parser">Parser</a> δ γ [β]</SPAN></dt>
+<SPAN CLASS="code"><a name=sepEndBy>sepEndBy</a> ∷ <b><a class="tref" href="#Parser">Parser</a> δ γ α</b> → <b><a class="tref" href="#Parser">Parser</a> δ γ β</b> → <a class="tref" href="#Parser">Parser</a> δ γ [α]</SPAN></dt>
 <dd class="data">
 <PRE>
  p `sepEndBy` q</PRE>
@@ -627,7 +641,7 @@ Parses one or more occurrences of <i>p</i> separated and ended by <i>q</i>   </p
 Parses zero or more occurrences of <i>p</i>, separated and optionally ended by <i>q</i>   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=sepEndBy1>sepEndBy1</a> ∷ <b><a class="tref" href="#Parser">Parser</a> δ γ β</b> → <b><a class="tref" href="#Parser">Parser</a> δ γ α</b> → <a class="tref" href="#Parser">Parser</a> δ γ [β]</SPAN></dt>
+<SPAN CLASS="code"><a name=sepEndBy1>sepEndBy1</a> ∷ <b><a class="tref" href="#Parser">Parser</a> δ γ α</b> → <b><a class="tref" href="#Parser">Parser</a> δ γ β</b> → <a class="tref" href="#Parser">Parser</a> δ γ [α]</SPAN></dt>
 <dd class="data">
 <PRE>
  p `sepEndBy1` q</PRE>
@@ -645,15 +659,15 @@ Parses one or more occurrences of <i>p</i>, separated and optionally ended by <i
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=MonadAlt_Parser.$star$gt>*&gt;</a> ∷ <b><a class="tref" href="#Parser">Parser</a> α γ β</b> → <a class="tref" href="#Parser">Parser</a> α γ δ → <a class="tref" href="#Parser">Parser</a> α γ δ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name=MonadAlt_Parser.$star$gt>*&gt;</a> ∷ <b><a class="tref" href="#Parser">Parser</a> β α γ</b> → <a class="tref" href="#Parser">Parser</a> β α δ → <a class="tref" href="#Parser">Parser</a> β α δ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=MonadAlt_Parser.$lt$star>&lt;*</a> ∷ <b><a class="tref" href="#Parser">Parser</a> δ β α</b> → <b><a class="tref" href="#Parser">Parser</a> δ β γ</b> → <a class="tref" href="#Parser">Parser</a> δ β α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name=MonadAlt_Parser.$lt$star>&lt;*</a> ∷ <b><a class="tref" href="#Parser">Parser</a> β α γ</b> → <b><a class="tref" href="#Parser">Parser</a> β α δ</b> → <a class="tref" href="#Parser">Parser</a> β α γ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=MonadAlt_Parser.$lt$star$gt>&lt;*&gt;</a> ∷ <a class="tref" href="#Parser">Parser</a> β α (δ→γ) → <a class="tref" href="#Parser">Parser</a> β α δ → <a class="tref" href="#Parser">Parser</a> β α γ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name=MonadAlt_Parser.$lt$star$gt>&lt;*&gt;</a> ∷ <a class="tref" href="#Parser">Parser</a> β α (γ→δ) → <a class="tref" href="#Parser">Parser</a> β α γ → <a class="tref" href="#Parser">Parser</a> β α δ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad.$lt$star$gt">Monad.&lt;*&gt;</a></p>
@@ -667,7 +681,7 @@ inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad.$lt$star
 The result is that of the first parser, if it succeeds, otherwise that of the second one, which is applied to the input left over by <i>p</i></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=MonadAlt_Parser.$lt$bar$gt>&lt;|&gt;</a> ∷ <b><a class="tref" href="#Parser">Parser</a> α γ β</b> → <a class="tref" href="#Parser">Parser</a> α γ β → <a class="tref" href="#Parser">Parser</a> α γ β<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
+<SPAN CLASS="code"><a name=MonadAlt_Parser.$lt$bar$gt>&lt;|&gt;</a> ∷ <b><a class="tref" href="#Parser">Parser</a> β α γ</b> → <a class="tref" href="#Parser">Parser</a> β α γ → <a class="tref" href="#Parser">Parser</a> β α γ<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 <PRE>
  p &lt;|&gt; q</PRE>
@@ -679,13 +693,13 @@ The result is that of the first parser, if it succeeds, otherwise that of the se
 would succeed if the input starts with 'c' or 'd'.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=MonadAlt_Parser.$gt$gt>&gt;&gt;</a> ∷ <b><a class="tref" href="#Parser">Parser</a> β α δ</b> → <a class="tref" href="#Parser">Parser</a> β α γ → <a class="tref" href="#Parser">Parser</a> β α γ<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
+<SPAN CLASS="code"><a name=MonadAlt_Parser.$gt$gt>&gt;&gt;</a> ∷ <b><a class="tref" href="#Parser">Parser</a> β α γ</b> → <a class="tref" href="#Parser">Parser</a> β α δ → <a class="tref" href="#Parser">Parser</a> β α δ<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad.$gt$gt">Monad.&gt;&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=MonadAlt_Parser.$gt$gt$eq>&gt;&gt;=</a> ∷ <b><a class="tref" href="#Parser">Parser</a> β α δ</b> → (<b>δ → <a class="tref" href="#Parser">Parser</a> β α γ</b>) → <a class="tref" href="#Parser">Parser</a> β α γ<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
+<SPAN CLASS="code"><a name=MonadAlt_Parser.$gt$gt$eq>&gt;&gt;=</a> ∷ <b><a class="tref" href="#Parser">Parser</a> β α γ</b> → (<b>γ → <a class="tref" href="#Parser">Parser</a> β α δ</b>) → <a class="tref" href="#Parser">Parser</a> β α δ<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 <PRE>
  p &gt;&gt;= (r -&gt; q)
@@ -696,7 +710,7 @@ If <SPAN CLASS="code">p</SPAN> succeeds, the overall result is that of <SPAN CLA
 Could be read as <i>p followed by q</i>.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=MonadAlt_Parser.fmap>fmap</a> ∷ (<b>δ → γ</b>) → <b><a class="tref" href="#Parser">Parser</a> β α δ</b> → <a class="tref" href="#Parser">Parser</a> β α γ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name=MonadAlt_Parser.fmap>fmap</a> ∷ (<b>γ → δ</b>) → <b><a class="tref" href="#Parser">Parser</a> β α γ</b> → <a class="tref" href="#Parser">Parser</a> β α δ<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad.fmap">Monad.fmap</a></p>
@@ -708,13 +722,13 @@ inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad.fmap">Mo
 inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad.join">Monad.join</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=MonadAlt_Parser.pure>pure</a> ∷ β → <a class="tref" href="#Parser">Parser</a> α γ β</SPAN></dt>
+<SPAN CLASS="code"><a name=MonadAlt_Parser.pure>pure</a> ∷ γ → <a class="tref" href="#Parser">Parser</a> β α γ</SPAN></dt>
 <dd class="func">
 <p>
 generic success   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=MonadAlt_Parser.pzero>pzero</a> ∷ <a class="tref" href="#Parser">Parser</a> γ β α</SPAN></dt>
+<SPAN CLASS="code"><a name=MonadAlt_Parser.pzero>pzero</a> ∷ <a class="tref" href="#Parser">Parser</a> β α γ</SPAN></dt>
 <dd class="func">
 <p>
 generic failure   </p>
@@ -756,13 +770,13 @@ generic failure   </p>
 <a class="fref" href="#digit">digit</a>, <a class="fref" href="#letter">letter</a>, <a class="fref" href="#space">space</a>, <a class="fref" href="#uppercase">uppercase</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(β α→β α) → <a class="tref" href="#Parser">Parser</a> β α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code">(α β→α β) → <a class="tref" href="#Parser">Parser</a> α β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#modifyPos">modifyPos</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">β α → <a class="tref" href="#Parser">Parser</a> β α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code">α β → <a class="tref" href="#Parser">Parser</a> α β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#putPos">putPos</a></p>
@@ -783,7 +797,7 @@ generic failure   </p>
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α ⇒ (β→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="#Parser">Parser</a> α β <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#exceptWhen">exceptWhen</a>, <a class="fref" href="#skipUntil">skipUntil</a></p>
+<a class="fref" href="#exceptWhen">exceptWhen</a>, <a class="fref" href="#skipWhile">skipWhile</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> β ⇒ <a class="tref" href="#Parser">Parser</a> β <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> α → <a class="tref" href="#Parser">Parser</a> β <a class="tref" href="../prelude/PreludeBase.html#Char">Char</a> α</SPAN></dt>
@@ -801,16 +815,16 @@ generic failure   </p>
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> β ⇒ (α→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="#Parser">Parser</a> β α <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#skipWhile">skipWhile</a></p>
+<a class="fref" href="#skipUntil">skipUntil</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → α β → α [β]</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → β α → β [α]</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#count">count</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Plus">Plus</a> α ⇒ [α β] → α β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Plus">Plus</a> β ⇒ [β α] → β α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#choice">choice</a></p>
@@ -822,7 +836,7 @@ generic failure   </p>
 <a class="fref" href="#expect">expect</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> β α (β α)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> α β (α β)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#getPos">getPos</a></p>
@@ -834,7 +848,7 @@ generic failure   </p>
 <a class="fref" href="#eos">eos</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> β ⇒ <a class="tref" href="#Parser">Parser</a> β α α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeList.html#ListView">ListView</a> α ⇒ <a class="tref" href="#Parser">Parser</a> α β β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#pany">pany</a></p>
@@ -852,10 +866,16 @@ generic failure   </p>
 <a class="fref" href="#optional">optional</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> α γ β → <a class="tref" href="#Parser">Parser</a> α γ β → <a class="tref" href="#Parser">Parser</a> α γ β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> α β γ → α β → ((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | γ), α β)</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#MonadAlt_Parser.$lt$bar$gt">MonadAlt_Parser.&lt;|&gt;</a></p>
+<a class="fref" href="#runid">runid</a>, <a class="fref" href="#Parser.run">Parser.run</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> α β γ → α β → (<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | γ)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#parse">parse</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> β α (<a class="tref" href="#Parser">Parser</a> β α γ) → <a class="tref" href="#Parser">Parser</a> β α γ</SPAN></dt>
@@ -867,31 +887,7 @@ generic failure   </p>
 <SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> β α γ → <a class="tref" href="#Parser">Parser</a> β α γ → <a class="tref" href="#Parser">Parser</a> β α γ</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#MonadAlt_Parser.$lt$plus$gt">MonadAlt_Parser.&lt;+&gt;</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> β α γ → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Parser">Parser</a> β α γ</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#$lt$qm$gt">&lt;?&gt;</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> β α γ → β α → ((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | γ), β α)</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Parser.run">Parser.run</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> β α γ → <a class="tref" href="#Parser">Parser</a> β α [γ]</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#some">some</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> β γ α → β γ → ((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | α), β γ)</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#runid">runid</a></p>
+<a class="fref" href="#MonadAlt_Parser.$lt$bar$gt">MonadAlt_Parser.&lt;|&gt;</a>, <a class="fref" href="#MonadAlt_Parser.$lt$plus$gt">MonadAlt_Parser.&lt;+&gt;</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> β δ γ → <a class="tref" href="#Parser">Parser</a> β δ <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
@@ -900,25 +896,25 @@ generic failure   </p>
 <a class="fref" href="#skip">skip</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> γ α β → γ α → (<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | β)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> γ β α → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Parser">Parser</a> γ β α</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#parse">parse</a></p>
+<a class="fref" href="#$lt$qm$gt">&lt;?&gt;</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> γ β α → <a class="tref" href="#Parser">Parser</a> γ β [α]</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#many">many</a></p>
+<a class="fref" href="#many">many</a>, <a class="fref" href="#some">some</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Parser">Parser</a> β α γ → <a class="tref" href="#Parser">Parser</a> β α γ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Parser">Parser</a> γ β α → <a class="tref" href="#Parser">Parser</a> γ β α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#label">label</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Parser">Parser</a> β α γ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Parser">Parser</a> α β γ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#failure">failure</a></p>
@@ -930,7 +926,7 @@ generic failure   </p>
 <a class="fref" href="#option">option</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">β → <a class="tref" href="#Parser">Parser</a> α γ β</SPAN></dt>
+<SPAN CLASS="code">γ → <a class="tref" href="#Parser">Parser</a> β α γ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#MonadAlt_Parser.pure">MonadAlt_Parser.pure</a></p>
@@ -942,76 +938,52 @@ generic failure   </p>
 <a class="fref" href="#parseTest">parseTest</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> γ β α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> β α γ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#MonadAlt_Parser.pzero">MonadAlt_Parser.pzero</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(δ → γ) → <a class="tref" href="#Parser">Parser</a> β α δ → <a class="tref" href="#Parser">Parser</a> β α γ</SPAN></dt>
+<SPAN CLASS="code">(γ → δ) → <a class="tref" href="#Parser">Parser</a> β α γ → <a class="tref" href="#Parser">Parser</a> β α δ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#MonadAlt_Parser.fmap">MonadAlt_Parser.fmap</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> α γ β → <a class="tref" href="#Parser">Parser</a> α γ δ → <a class="tref" href="#Parser">Parser</a> α γ δ</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#MonadAlt_Parser.$star$gt">MonadAlt_Parser.*&gt;</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> α δ γ → <a class="tref" href="#Parser">Parser</a> α δ β → <a class="tref" href="#Parser">Parser</a> α δ β → <a class="tref" href="#Parser">Parser</a> α δ β</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#cond">cond</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> β α (δ→γ) → <a class="tref" href="#Parser">Parser</a> β α δ → <a class="tref" href="#Parser">Parser</a> β α γ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> β α (γ→δ) → <a class="tref" href="#Parser">Parser</a> β α γ → <a class="tref" href="#Parser">Parser</a> β α δ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#MonadAlt_Parser.$lt$star$gt">MonadAlt_Parser.&lt;*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> β α δ → (δ → <a class="tref" href="#Parser">Parser</a> β α γ) → <a class="tref" href="#Parser">Parser</a> β α γ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> β α γ → (γ → <a class="tref" href="#Parser">Parser</a> β α δ) → <a class="tref" href="#Parser">Parser</a> β α δ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#MonadAlt_Parser.$gt$gt$eq">MonadAlt_Parser.&gt;&gt;=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> β α δ → <a class="tref" href="#Parser">Parser</a> β α γ → <a class="tref" href="#Parser">Parser</a> β α [δ]</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#endBy">endBy</a>, <a class="fref" href="#sepBy">sepBy</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> β α δ → <a class="tref" href="#Parser">Parser</a> β α γ → <a class="tref" href="#Parser">Parser</a> β α γ</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#MonadAlt_Parser.$gt$gt">MonadAlt_Parser.&gt;&gt;</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> γ β α → <a class="tref" href="#Parser">Parser</a> γ β δ → <a class="tref" href="#Parser">Parser</a> γ β [α]</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#sepBy1">sepBy1</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> γ β δ → <a class="tref" href="#Parser">Parser</a> γ β α → <a class="tref" href="#Parser">Parser</a> γ β [δ]</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#endBy1">endBy1</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> δ β α → <a class="tref" href="#Parser">Parser</a> δ β γ → <a class="tref" href="#Parser">Parser</a> δ β α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> β α γ → <a class="tref" href="#Parser">Parser</a> β α δ → <a class="tref" href="#Parser">Parser</a> β α γ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#MonadAlt_Parser.$lt$star">MonadAlt_Parser.&lt;*</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> δ γ β → <a class="tref" href="#Parser">Parser</a> δ γ α → <a class="tref" href="#Parser">Parser</a> δ γ [β]</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> β α γ → <a class="tref" href="#Parser">Parser</a> β α δ → <a class="tref" href="#Parser">Parser</a> β α δ</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#sepEndBy">sepEndBy</a>, <a class="fref" href="#sepEndBy1">sepEndBy1</a></p>
+<a class="fref" href="#MonadAlt_Parser.$gt$gt">MonadAlt_Parser.&gt;&gt;</a>, <a class="fref" href="#MonadAlt_Parser.$star$gt">MonadAlt_Parser.*&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> β γ α → <a class="tref" href="#Parser">Parser</a> β γ δ → <a class="tref" href="#Parser">Parser</a> β γ δ → <a class="tref" href="#Parser">Parser</a> β γ δ</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#cond">cond</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> δ γ α → <a class="tref" href="#Parser">Parser</a> δ γ β → <a class="tref" href="#Parser">Parser</a> δ γ [α]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#endBy">endBy</a>, <a class="fref" href="#endBy1">endBy1</a>, <a class="fref" href="#sepBy">sepBy</a>, <a class="fref" href="#sepBy1">sepBy1</a>, <a class="fref" href="#sepEndBy">sepEndBy</a>, <a class="fref" href="#sepEndBy1">sepEndBy1</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code">[(<a class="tref" href="#Parser">Parser</a> a d b, <a class="tref" href="#Parser">Parser</a> a d c)] → <a class="tref" href="#Parser">Parser</a> a d c → <a class="tref" href="#Parser">Parser</a> a d c</SPAN></dt>
@@ -1020,19 +992,19 @@ generic failure   </p>
 <a class="fref" href="#select">select</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> δ ⇒ δ γ → δ α → δ β → δ β</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ α β → α δ → α γ → α γ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#between">between</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> γ β α → (<a class="tref" href="../prelude/PreludeBase.html#Function">-&gt;</a> (γ β) ((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | α), γ β)→ζ ε→((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | δ), ζ ε)) → <a class="tref" href="#Parser">Parser</a> ζ ε δ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> α β γ → (<a class="tref" href="../prelude/PreludeBase.html#Function">-&gt;</a> (α β) ((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | γ), α β)→δ ε→((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | ζ), δ ε)) → <a class="tref" href="#Parser">Parser</a> δ ε ζ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Parser.chg$run">Parser.chg$run</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> ε β ζ → (γ α→((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | δ), γ α)) → <a class="tref" href="#Parser">Parser</a> γ α δ</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Parser">Parser</a> α β γ → (δ ε→((<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | ζ), δ ε)) → <a class="tref" href="#Parser">Parser</a> δ ε ζ</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Parser.upd$run">Parser.upd$run</a></p>

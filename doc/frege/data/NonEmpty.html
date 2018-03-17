@@ -49,6 +49,10 @@ import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeB
 </li>
 <li>
 <div>
+import <a HREF="../prelude/PreludeDecimal.html">Prelude.PreludeDecimal</a> as PreludeDecimal</div>
+</li>
+<li>
+<div>
 import <a HREF="../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
 </li>
 <li>
@@ -152,7 +156,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#unzip">unzip</a> ∷ <b><a class="tref" href="#NonEmpty">NonEmpty</a> (a, b)</b> → (<a class="tref" href="#NonEmpty">NonEmpty</a> a, <a class="tref" href="#NonEmpty">NonEmpty</a> b)</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#unzip">unzip</a> ∷ <a class="tref" href="#NonEmpty">NonEmpty</a> (a, b) → (<a class="tref" href="#NonEmpty">NonEmpty</a> a, <a class="tref" href="#NonEmpty">NonEmpty</a> b)</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -350,7 +354,7 @@ The sort function implements a stable sorting algorithm.   </p>
 The insert function takes an element and a <a class="tref" href="#NonEmpty">NonEmpty</a> and inserts the element into the <a class="tref" href="#NonEmpty">NonEmpty</a> at the last position where it is still less than or equal to the next element.</p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=unzip>unzip</a> ∷ <b><a class="tref" href="#NonEmpty">NonEmpty</a> (a, b)</b> → (<a class="tref" href="#NonEmpty">NonEmpty</a> a, <a class="tref" href="#NonEmpty">NonEmpty</a> b)</SPAN></dt>
+<SPAN CLASS="code"><a name=unzip>unzip</a> ∷ <a class="tref" href="#NonEmpty">NonEmpty</a> (a, b) → (<a class="tref" href="#NonEmpty">NonEmpty</a> a, <a class="tref" href="#NonEmpty">NonEmpty</a> b)</SPAN></dt>
 <dd class="data">
 <p>
 unzip transforms a <a class="tref" href="#NonEmpty">NonEmpty</a> of pairs into a <a class="tref" href="#NonEmpty">NonEmpty</a> of first components and a <a class="tref" href="#NonEmpty">NonEmpty</a> of second components.    </p>
@@ -410,19 +414,19 @@ inherited from <a class="fref" href="./Foldable.html#Foldable.fold">Foldable.fol
 inherited from <a class="fref" href="./Foldable.html#Foldable.fold1">Foldable.fold1</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Foldable_NonEmpty.foldMap>foldMap</a> ∷ <a class="tref" href="./Monoid.html#Monoid">Monoid</a> α ⇒ (<b>β → α</b>) → <b><a class="tref" href="#NonEmpty">NonEmpty</a> β</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a name=Foldable_NonEmpty.foldMap>foldMap</a> ∷ <a class="tref" href="./Monoid.html#Monoid">Monoid</a> β ⇒ (<b>α → β</b>) → <b><a class="tref" href="#NonEmpty">NonEmpty</a> α</b> → β</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./Foldable.html#Foldable.foldMap">Foldable.foldMap</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Foldable_NonEmpty.foldMap1>foldMap1</a> ∷ <a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> α ⇒ (<b>β → α</b>) → <b><a class="tref" href="#NonEmpty">NonEmpty</a> β</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a name=Foldable_NonEmpty.foldMap1>foldMap1</a> ∷ <a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> β ⇒ (<b>α → β</b>) → <b><a class="tref" href="#NonEmpty">NonEmpty</a> α</b> → β</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./Foldable.html#Foldable.foldMap1">Foldable.foldMap1</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Foldable_NonEmpty.foldl>foldl</a> ∷ (<b>β → α → β</b>) → <b>β</b> → <b><a class="tref" href="#NonEmpty">NonEmpty</a> α</b> → β</SPAN></dt>
+<SPAN CLASS="code"><a name=Foldable_NonEmpty.foldl>foldl</a> ∷ (<b>α → β → α</b>) → <b>α</b> → <b><a class="tref" href="#NonEmpty">NonEmpty</a> β</b> → α</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
@@ -432,7 +436,7 @@ inherited from <a class="fref" href="./Foldable.html#Foldable.foldMap1">Foldable
 inherited from <a class="fref" href="./Foldable.html#Foldable.foldl1">Foldable.foldl1</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Foldable_NonEmpty.foldr>foldr</a> ∷ (<b>β → α → α</b>) → α → <b><a class="tref" href="#NonEmpty">NonEmpty</a> β</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a name=Foldable_NonEmpty.foldr>foldr</a> ∷ (<b>α → β → β</b>) → β → <b><a class="tref" href="#NonEmpty">NonEmpty</a> α</b> → β</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
@@ -450,7 +454,7 @@ inherited from <a class="fref" href="./Foldable.html#Foldable.foldr1">Foldable.f
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Functor_NonEmpty.fmap>fmap</a> ∷ (<b>β → α</b>) → <b><a class="tref" href="#NonEmpty">NonEmpty</a> β</b> → <a class="tref" href="#NonEmpty">NonEmpty</a> α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name=Functor_NonEmpty.fmap>fmap</a> ∷ (<b>α → β</b>) → <b><a class="tref" href="#NonEmpty">NonEmpty</a> α</b> → <a class="tref" href="#NonEmpty">NonEmpty</a> β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -518,13 +522,13 @@ inherited from <a class="fref" href="../prelude/PreludeMonad.html#Applicative.$l
 inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad.$lt$star$gt">Monad.&lt;*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Monad_NonEmpty.$gt$gt>&gt;&gt;</a> ∷ <b><a class="tref" href="#NonEmpty">NonEmpty</a> β</b> → <a class="tref" href="#NonEmpty">NonEmpty</a> α → <a class="tref" href="#NonEmpty">NonEmpty</a> α<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
+<SPAN CLASS="code"><a name=Monad_NonEmpty.$gt$gt>&gt;&gt;</a> ∷ <b><a class="tref" href="#NonEmpty">NonEmpty</a> α</b> → <a class="tref" href="#NonEmpty">NonEmpty</a> β → <a class="tref" href="#NonEmpty">NonEmpty</a> β<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad.$gt$gt">Monad.&gt;&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Monad_NonEmpty.$gt$gt$eq>&gt;&gt;=</a> ∷ <b><a class="tref" href="#NonEmpty">NonEmpty</a> β</b> → (<b>β → <a class="tref" href="#NonEmpty">NonEmpty</a> α</b>) → <a class="tref" href="#NonEmpty">NonEmpty</a> α<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
+<SPAN CLASS="code"><a name=Monad_NonEmpty.$gt$gt$eq>&gt;&gt;=</a> ∷ <b><a class="tref" href="#NonEmpty">NonEmpty</a> α</b> → (<b>α → <a class="tref" href="#NonEmpty">NonEmpty</a> β</b>) → <a class="tref" href="#NonEmpty">NonEmpty</a> β<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
@@ -668,25 +672,25 @@ inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsub">S
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Traversable_NonEmpty.mapM>mapM</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ (<b>α → β γ</b>) → <a class="tref" href="#NonEmpty">NonEmpty</a> α → β (<a class="tref" href="#NonEmpty">NonEmpty</a> γ)</SPAN></dt>
+<SPAN CLASS="code"><a name=Traversable_NonEmpty.mapM>mapM</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ (<b>α → γ β</b>) → <a class="tref" href="#NonEmpty">NonEmpty</a> α → γ (<a class="tref" href="#NonEmpty">NonEmpty</a> β)</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./Traversable.html#Traversable.mapM">Traversable.mapM</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Traversable_NonEmpty.sequence>sequence</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#NonEmpty">NonEmpty</a> (α β) → α (<a class="tref" href="#NonEmpty">NonEmpty</a> β)</SPAN></dt>
+<SPAN CLASS="code"><a name=Traversable_NonEmpty.sequence>sequence</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#NonEmpty">NonEmpty</a> (β α) → β (<a class="tref" href="#NonEmpty">NonEmpty</a> α)</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./Traversable.html#Traversable.sequence">Traversable.sequence</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Traversable_NonEmpty.sequenceA>sequenceA</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α ⇒ <a class="tref" href="#NonEmpty">NonEmpty</a> (α β) → α (<a class="tref" href="#NonEmpty">NonEmpty</a> β)</SPAN></dt>
+<SPAN CLASS="code"><a name=Traversable_NonEmpty.sequenceA>sequenceA</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> β ⇒ <a class="tref" href="#NonEmpty">NonEmpty</a> (β α) → β (<a class="tref" href="#NonEmpty">NonEmpty</a> α)</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./Traversable.html#Traversable.sequenceA">Traversable.sequenceA</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Traversable_NonEmpty.traverse>traverse</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> γ ⇒ (<b>β → γ α</b>) → <a class="tref" href="#NonEmpty">NonEmpty</a> β → γ (<a class="tref" href="#NonEmpty">NonEmpty</a> α)</SPAN></dt>
+<SPAN CLASS="code"><a name=Traversable_NonEmpty.traverse>traverse</a> ∷ <a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> γ ⇒ (<b>α → γ β</b>) → <a class="tref" href="#NonEmpty">NonEmpty</a> α → γ (<a class="tref" href="#NonEmpty">NonEmpty</a> β)</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -930,19 +934,19 @@ inherited from <a class="fref" href="./Traversable.html#Traversable.sequenceA">T
 <a class="fref" href="#scanl">scanl</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(β → α → α) → α → <a class="tref" href="#NonEmpty">NonEmpty</a> β → α</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Foldable_NonEmpty.foldr">Foldable_NonEmpty.foldr</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code">(β → α → β) → β → <a class="tref" href="#NonEmpty">NonEmpty</a> α → β</SPAN></dt>
+<SPAN CLASS="code">(α → β → α) → α → <a class="tref" href="#NonEmpty">NonEmpty</a> β → α</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Foldable_NonEmpty.foldl">Foldable_NonEmpty.foldl</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(β → α) → <a class="tref" href="#NonEmpty">NonEmpty</a> β → <a class="tref" href="#NonEmpty">NonEmpty</a> α</SPAN></dt>
+<SPAN CLASS="code">(α → β → β) → β → <a class="tref" href="#NonEmpty">NonEmpty</a> α → β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Foldable_NonEmpty.foldr">Foldable_NonEmpty.foldr</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(α → β) → <a class="tref" href="#NonEmpty">NonEmpty</a> α → <a class="tref" href="#NonEmpty">NonEmpty</a> β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Functor_NonEmpty.fmap">Functor_NonEmpty.fmap</a></p>
@@ -966,6 +970,12 @@ inherited from <a class="fref" href="./Traversable.html#Traversable.sequenceA">T
 <a class="fref" href="#zip">zip</a></p>
 </dd>
 <dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#NonEmpty">NonEmpty</a> α → (α → <a class="tref" href="#NonEmpty">NonEmpty</a> β) → <a class="tref" href="#NonEmpty">NonEmpty</a> β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_NonEmpty.$gt$gt$eq">Monad_NonEmpty.&gt;&gt;=</a></p>
+</dd>
+<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#NonEmpty">NonEmpty</a> α → <a class="tref" href="#NonEmpty">NonEmpty</a> β → <a class="tref" href="#NonEmpty">NonEmpty</a> α</SPAN></dt>
 <dd class="func">
 <p>
@@ -975,28 +985,16 @@ inherited from <a class="fref" href="./Traversable.html#Traversable.sequenceA">T
 <SPAN CLASS="code"><a class="tref" href="#NonEmpty">NonEmpty</a> α → <a class="tref" href="#NonEmpty">NonEmpty</a> β → <a class="tref" href="#NonEmpty">NonEmpty</a> β</SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#Monad_NonEmpty.$star$gt">Monad_NonEmpty.*&gt;</a></p>
+<a class="fref" href="#Monad_NonEmpty.$gt$gt">Monad_NonEmpty.&gt;&gt;</a>, <a class="fref" href="#Monad_NonEmpty.$star$gt">Monad_NonEmpty.*&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#NonEmpty">NonEmpty</a> β → (β → <a class="tref" href="#NonEmpty">NonEmpty</a> α) → <a class="tref" href="#NonEmpty">NonEmpty</a> α</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Monad_NonEmpty.$gt$gt$eq">Monad_NonEmpty.&gt;&gt;=</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#NonEmpty">NonEmpty</a> β → <a class="tref" href="#NonEmpty">NonEmpty</a> α → <a class="tref" href="#NonEmpty">NonEmpty</a> α</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Monad_NonEmpty.$gt$gt">Monad_NonEmpty.&gt;&gt;</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./Monoid.html#Monoid">Monoid</a> α ⇒ (β → α) → <a class="tref" href="#NonEmpty">NonEmpty</a> β → α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./Monoid.html#Monoid">Monoid</a> β ⇒ (α → β) → <a class="tref" href="#NonEmpty">NonEmpty</a> α → β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Foldable_NonEmpty.foldMap">Foldable_NonEmpty.foldMap</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> α ⇒ (β → α) → <a class="tref" href="#NonEmpty">NonEmpty</a> β → α</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./Monoid.html#Semigroup">Semigroup</a> β ⇒ (α → β) → <a class="tref" href="#NonEmpty">NonEmpty</a> α → β</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Foldable_NonEmpty.foldMap1">Foldable_NonEmpty.foldMap1</a></p>
@@ -1008,25 +1006,25 @@ inherited from <a class="fref" href="./Traversable.html#Traversable.sequenceA">T
 <a class="fref" href="#cycle">cycle</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> α ⇒ <a class="tref" href="#NonEmpty">NonEmpty</a> (α β) → α (<a class="tref" href="#NonEmpty">NonEmpty</a> β)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> β ⇒ <a class="tref" href="#NonEmpty">NonEmpty</a> (β α) → β (<a class="tref" href="#NonEmpty">NonEmpty</a> α)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable_NonEmpty.sequenceA">Traversable_NonEmpty.sequenceA</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <a class="tref" href="#NonEmpty">NonEmpty</a> (α β) → α (<a class="tref" href="#NonEmpty">NonEmpty</a> β)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ <a class="tref" href="#NonEmpty">NonEmpty</a> (β α) → β (<a class="tref" href="#NonEmpty">NonEmpty</a> α)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable_NonEmpty.sequence">Traversable_NonEmpty.sequence</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> γ ⇒ (β → γ α) → <a class="tref" href="#NonEmpty">NonEmpty</a> β → γ (<a class="tref" href="#NonEmpty">NonEmpty</a> α)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Applicative">Applicative</a> γ ⇒ (α → γ β) → <a class="tref" href="#NonEmpty">NonEmpty</a> α → γ (<a class="tref" href="#NonEmpty">NonEmpty</a> β)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable_NonEmpty.traverse">Traversable_NonEmpty.traverse</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> β ⇒ (α → β γ) → <a class="tref" href="#NonEmpty">NonEmpty</a> α → β (<a class="tref" href="#NonEmpty">NonEmpty</a> γ)</SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> γ ⇒ (α → γ β) → <a class="tref" href="#NonEmpty">NonEmpty</a> α → γ (<a class="tref" href="#NonEmpty">NonEmpty</a> β)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Traversable_NonEmpty.mapM">Traversable_NonEmpty.mapM</a></p>

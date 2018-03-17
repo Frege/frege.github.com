@@ -41,10 +41,6 @@ import <a HREF="../../compiler/types/Global.html">Compiler.types.Global</a> as G
 </li>
 <li>
 <div>
-import <a HREF="../../compiler/types/Kinds.html">Compiler.types.Kinds</a> as Kinds</div>
-</li>
-<li>
-<div>
 import <a HREF="../../compiler/common/Mangle.html">Compiler.common.Mangle</a> as Mangle</div>
 </li>
 <li>
@@ -74,6 +70,10 @@ import <a HREF="../../prelude/PreludeArrays.html">Prelude.PreludeArrays</a> as P
 <li>
 <div>
 import <a HREF="../../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
+</li>
+<li>
+<div>
+import <a HREF="../../prelude/PreludeDecimal.html">Prelude.PreludeDecimal</a> as PreludeDecimal</div>
 </li>
 <li>
 <div>
@@ -308,7 +308,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#overloadOf">overloadOf</a> ∷ <b><a class="tref" href="../../compiler/types/Global.html#Global">Global</a></b> → <b><a class="tref" href="../../compiler/types/Global.html#Symbol">Symbol</a></b> → [<a class="tref" href="../../compiler/types/Global.html#Symbol">Symbol</a>]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#overloadOf">overloadOf</a> ∷ <b><a class="tref" href="../../compiler/types/Global.html#Global">Global</a></b> → <a class="tref" href="../../compiler/types/Global.html#Symbol">Symbol</a> → [<a class="tref" href="../../compiler/types/Global.html#Symbol">Symbol</a>]</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -320,7 +320,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#altcode">altcode</a> ∷ <b>[(<a class="tref" href="#Text">Text</a>, α)]</b> → [(<a class="tref" href="#Text">Text</a>, α)]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#altcode">altcode</a> ∷ [(<a class="tref" href="#Text">Text</a>, α)] → [(<a class="tref" href="#Text">Text</a>, α)]</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -416,7 +416,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#relPath">relPath</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../../java/IO.html#File">File</a>)</b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../../java/IO.html#File">File</a>)</b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#relPath">relPath</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../../java/IO.html#File">File</a>)</b> → <a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../../java/IO.html#File">File</a>) → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -492,6 +492,10 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Eq_Kind"> </a><a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> <a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
 <SPAN CLASS="code"><b>instance </b><a class="tref" href="#Eq_PKind"> </a><a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> <a class="tref" href="#PKind">PKind</a></SPAN></dt>
 <dd>
 </dd>
@@ -512,7 +516,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Ord_Kind"> </a><a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> <a class="tref" href="../../compiler/types/Kinds.html#Kind">Kind</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Ord_Kind"> </a><a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> <a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -844,7 +848,7 @@ a double colon in spaces, could be ∷ symbol if options allow   </p>
 <dd class="data">
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=overloadOf>overloadOf</a> ∷ <b><a class="tref" href="../../compiler/types/Global.html#Global">Global</a></b> → <b><a class="tref" href="../../compiler/types/Global.html#Symbol">Symbol</a></b> → [<a class="tref" href="../../compiler/types/Global.html#Symbol">Symbol</a>]</SPAN></dt>
+<SPAN CLASS="code"><a name=overloadOf>overloadOf</a> ∷ <b><a class="tref" href="../../compiler/types/Global.html#Global">Global</a></b> → <a class="tref" href="../../compiler/types/Global.html#Symbol">Symbol</a> → [<a class="tref" href="../../compiler/types/Global.html#Symbol">Symbol</a>]</SPAN></dt>
 <dd class="data">
 <p>
 Give the function that is overloaded with this one.   </p>
@@ -862,7 +866,7 @@ Give a list of sigmas and throws clauses of the overloads for this one   </p>
 create a label  for a variable or a constructor   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=altcode>altcode</a> ∷ <b>[(<a class="tref" href="#Text">Text</a>, α)]</b> → [(<a class="tref" href="#Text">Text</a>, α)]</SPAN></dt>
+<SPAN CLASS="code"><a name=altcode>altcode</a> ∷ [(<a class="tref" href="#Text">Text</a>, α)] → [(<a class="tref" href="#Text">Text</a>, α)]</SPAN></dt>
 <dd class="data">
 </dd>
 <dt class="data">
@@ -875,7 +879,7 @@ compile a doc comment to a list of paragraphs</p>
 <SPAN CLASS="code"><b>data </b><a name=PKind> </a> <a class="tref" href="#PKind">PKind</a></SPAN></dt>
 <dd class="data">
 <p>
-we have the following parapgraph kinds:</p>
+we have the following paragraph kinds:</p>
 <ul>
 <LI>
  plain </LI>
@@ -1044,7 +1048,7 @@ packToFile "frege.system.IO" ".fr" == frege/system/IO.fr</PRE>
 <dd class="data">
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=relPath>relPath</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../../java/IO.html#File">File</a>)</b> → <b><a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../../java/IO.html#File">File</a>)</b> → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a name=relPath>relPath</a> ∷ <b><a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../../java/IO.html#File">File</a>)</b> → <a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../../java/IO.html#File">File</a>) → <a class="tref" href="../../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="data">
 <p>
 given a directory name and a file or directory name, compute the name of the directory relative to that filename, e.g.</p>
@@ -1135,6 +1139,32 @@ Function generated for derived instance.</p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a name=Eq_Context.hashCode>hashCode</a> ∷ <b><a class="tref" href="../../compiler/types/Types.html#Context">Context</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+Function generated for derived instance.</p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Eq_Kind> </a><a class="tref" href="../../prelude/PreludeBase.html#Eq">Eq</a> <a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Eq_Kind.$excl$eq>!=</a> ∷ <b><a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a></b> → <b><a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../../prelude/PreludeBase.html#Eq.$excl$eq">Eq.!=</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Eq_Kind.$eq$eq>==</a> ∷ <b><a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a></b> → <b><a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
+<dd class="func">
+<p>
+Function generated for derived instance.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Eq_Kind.hashCode>hashCode</a> ∷ <b><a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
 Function generated for derived instance.</p>
@@ -1302,55 +1332,55 @@ inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord.min">Ord
 </dl>
 </dd>
 <dt class="inst">
-<SPAN CLASS="code"><b>instance </b><a name=Ord_Kind> </a><a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> <a class="tref" href="../../compiler/types/Kinds.html#Kind">Kind</a></SPAN></dt>
+<SPAN CLASS="code"><b>instance </b><a name=Ord_Kind> </a><a class="tref" href="../../prelude/PreludeBase.html#Ord">Ord</a> <a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a></SPAN></dt>
 <dd class="inst">
 <h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_Kind.$lt>&lt;</a> ∷ <b><a class="tref" href="../../compiler/types/Kinds.html#Kind">Kind</a></b> → <b><a class="tref" href="../../compiler/types/Kinds.html#Kind">Kind</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_Kind.$lt>&lt;</a> ∷ <b><a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a></b> → <b><a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord.$lt">Ord.&lt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_Kind.$lt$eq>&lt;=</a> ∷ <b><a class="tref" href="../../compiler/types/Kinds.html#Kind">Kind</a></b> → <b><a class="tref" href="../../compiler/types/Kinds.html#Kind">Kind</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_Kind.$lt$eq>&lt;=</a> ∷ <b><a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a></b> → <b><a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord.$lt$eq">Ord.&lt;=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_Kind.$lt$eq$gt>&lt;=&gt;</a> ∷ <b><a class="tref" href="../../compiler/types/Kinds.html#Kind">Kind</a></b> → <b><a class="tref" href="../../compiler/types/Kinds.html#Kind">Kind</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Ordering">Ordering</a><br><b>infix</b>&nbsp;&nbsp;8</SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_Kind.$lt$eq$gt>&lt;=&gt;</a> ∷ <b><a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a></b> → <b><a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Ordering">Ordering</a><br><b>infix</b>&nbsp;&nbsp;8</SPAN></dt>
 <dd class="func">
 <p>
 Function generated for derived instance.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_Kind.$gt>&gt;</a> ∷ <b><a class="tref" href="../../compiler/types/Kinds.html#Kind">Kind</a></b> → <b><a class="tref" href="../../compiler/types/Kinds.html#Kind">Kind</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_Kind.$gt>&gt;</a> ∷ <b><a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a></b> → <b><a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord.$gt">Ord.&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_Kind.$gt$eq>&gt;=</a> ∷ <b><a class="tref" href="../../compiler/types/Kinds.html#Kind">Kind</a></b> → <b><a class="tref" href="../../compiler/types/Kinds.html#Kind">Kind</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_Kind.$gt$eq>&gt;=</a> ∷ <b><a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a></b> → <b><a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord.$gt$eq">Ord.&gt;=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_Kind.compare>compare</a> ∷ <b><a class="tref" href="../../compiler/types/Kinds.html#Kind">Kind</a></b> → <b><a class="tref" href="../../compiler/types/Kinds.html#Kind">Kind</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Ordering">Ordering</a><br><b>infix</b>&nbsp;&nbsp;8</SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_Kind.compare>compare</a> ∷ <b><a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a></b> → <b><a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a></b> → <a class="tref" href="../../prelude/PreludeBase.html#Ordering">Ordering</a><br><b>infix</b>&nbsp;&nbsp;8</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord.compare">Ord.compare</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_Kind.max>max</a> ∷ <b><a class="tref" href="../../compiler/types/Kinds.html#Kind">Kind</a></b> → <b><a class="tref" href="../../compiler/types/Kinds.html#Kind">Kind</a></b> → <a class="tref" href="../../compiler/types/Kinds.html#Kind">Kind</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_Kind.max>max</a> ∷ <b><a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a></b> → <b><a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a></b> → <a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord.max">Ord.max</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_Kind.min>min</a> ∷ <b><a class="tref" href="../../compiler/types/Kinds.html#Kind">Kind</a></b> → <b><a class="tref" href="../../compiler/types/Kinds.html#Kind">Kind</a></b> → <a class="tref" href="../../compiler/types/Kinds.html#Kind">Kind</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_Kind.min>min</a> ∷ <b><a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a></b> → <b><a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a></b> → <a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a></SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="../../prelude/PreludeBase.html#Ord.min">Ord.min</a></p>
@@ -1594,6 +1624,30 @@ inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.showsub
 <a class="fref" href="#Eq_Context.hashCode">Eq_Context.hashCode</a></p>
 </dd>
 <dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a> → <a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a> → <a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Ord_Kind.min">Ord_Kind.min</a>, <a class="fref" href="#Ord_Kind.max">Ord_Kind.max</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a> → <a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Eq_Kind.$excl$eq">Eq_Kind.!=</a>, <a class="fref" href="#Eq_Kind.$eq$eq">Eq_Kind.==</a>, <a class="fref" href="#Ord_Kind.$gt$eq">Ord_Kind.&gt;=</a>, <a class="fref" href="#Ord_Kind.$lt">Ord_Kind.&lt;</a>, <a class="fref" href="#Ord_Kind.$lt$eq">Ord_Kind.&lt;=</a>, <a class="fref" href="#Ord_Kind.$gt">Ord_Kind.&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a> → <a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a> → <a class="tref" href="../../prelude/PreludeBase.html#Ordering">Ordering</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Ord_Kind.compare">Ord_Kind.compare</a>, <a class="fref" href="#Ord_Kind.$lt$eq$gt">Ord_Kind.&lt;=&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../../compiler/types/Types.html#Kind">Kind</a> → <a class="tref" href="../../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Eq_Kind.hashCode">Eq_Kind.hashCode</a></p>
+</dd>
+<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../../compiler/types/Types.html#Rho">Rho</a> → <a class="tref" href="../../compiler/types/Types.html#Rho">Rho</a> → <a class="tref" href="../../compiler/types/Types.html#Rho">Rho</a></SPAN></dt>
 <dd class="func">
 <p>
@@ -1832,24 +1886,6 @@ inherited from <a class="fref" href="../../prelude/PreludeText.html#Show.showsub
 <dd class="func">
 <p>
 <a class="fref" href="#symArrow">symArrow</a>, <a class="fref" href="#symDarrow">symDarrow</a>, <a class="fref" href="#symDcolon">symDcolon</a>, <a class="fref" href="#symForall">symForall</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../compiler/types/Kinds.html#Kind">Kind</a> → <a class="tref" href="../../compiler/types/Kinds.html#Kind">Kind</a> → <a class="tref" href="../../compiler/types/Kinds.html#Kind">Kind</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Ord_Kind.min">Ord_Kind.min</a>, <a class="fref" href="#Ord_Kind.max">Ord_Kind.max</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../compiler/types/Kinds.html#Kind">Kind</a> → <a class="tref" href="../../compiler/types/Kinds.html#Kind">Kind</a> → <a class="tref" href="../../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Ord_Kind.$gt$eq">Ord_Kind.&gt;=</a>, <a class="fref" href="#Ord_Kind.$lt">Ord_Kind.&lt;</a>, <a class="fref" href="#Ord_Kind.$lt$eq">Ord_Kind.&lt;=</a>, <a class="fref" href="#Ord_Kind.$gt">Ord_Kind.&gt;</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../../compiler/types/Kinds.html#Kind">Kind</a> → <a class="tref" href="../../compiler/types/Kinds.html#Kind">Kind</a> → <a class="tref" href="../../prelude/PreludeBase.html#Ordering">Ordering</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#Ord_Kind.compare">Ord_Kind.compare</a>, <a class="fref" href="#Ord_Kind.$lt$eq$gt">Ord_Kind.&lt;=&gt;</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../../compiler/types/Packs.html#Pack">Pack</a> → <a class="tref" href="../../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Text">Text</a> → <a class="tref" href="#Text">Text</a></SPAN></dt>
