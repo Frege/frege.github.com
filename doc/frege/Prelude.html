@@ -88,11 +88,15 @@ Table of Content</h3>
 <a HREF="#data">Definitions</a></div>
 <dl>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#print">print</a> ∷ <a class="tref" href="./prelude/PreludeText.html#Show">Show</a> α ⇒ <b>α</b> → <a class="tref" href="./prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#parseDecimal">parseDecimal</a> ∷ <b><a class="tref" href="./prelude/PreludeBase.html#String">String</a></b> → (<a class="tref" href="./prelude/PreludeBase.html#NumberFormatException">NumberFormatException</a> | <a class="tref" href="./prelude/PreludeDecimal.html#Decimal">Decimal</a>)</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#println">println</a> ∷ <a class="tref" href="./prelude/PreludeText.html#Show">Show</a> α ⇒ <b>α</b> → <a class="tref" href="./prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#print">print</a> ∷ <a class="tref" href="./prelude/PreludeText.html#Show">Show</a> 𝖆 ⇒ <b>𝖆</b> → <a class="tref" href="./prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#println">println</a> ∷ <a class="tref" href="./prelude/PreludeText.html#Show">Show</a> 𝖆 ⇒ <b>𝖆</b> → <a class="tref" href="./prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -120,7 +124,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#getContentsOf">getContentsOf</a> ∷ <b><a class="tref" href="./java/IO.html#Reader">Reader</a></b> → <a class="tref" href="./prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="./prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#getContentsOf">getContentsOf</a> ∷ <b><a class="tref" href="./prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="./java/IO.html#Reader">Reader</a></b> → <a class="tref" href="./prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="./prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -306,10 +310,6 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>instance </b><a class="tref" href="./java/Lang.html#ArrayElement_JEnum"> </a><a class="tref" href="./prelude/PreludeArrays.html#ArrayElement">ArrayElement</a> (<a class="tref" href="./java/Lang.html#JEnum">JEnum</a> e)</SPAN></dt>
-<dd>
-</dd>
-<dt>
 <SPAN CLASS="code"><b>instance </b><a class="tref" href="./java/Lang.html#ArrayElement_Object"> </a><a class="tref" href="./prelude/PreludeArrays.html#ArrayElement">ArrayElement</a> <a class="tref" href="./prelude/PreludeBase.html#Object">Object</a></SPAN></dt>
 <dd>
 </dd>
@@ -366,7 +366,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/IO.html#BufferedReader"> </a> <a class="tref" href="./java/IO.html#BufferedReader">BufferedReader</a> = <b>mutable </b><b>native </b>java.io.BufferedReader</SPAN></dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/IO.html#BufferedReader"> </a> <a class="tref" href="./java/IO.html#BufferedReader">BufferedReader</a> = <b>native </b>java.io.BufferedReader</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -394,7 +394,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/Lang.html#ClassLoader"> </a> <a class="tref" href="./java/Lang.html#ClassLoader">ClassLoader</a> = <b>mutable </b><b>native </b>java.lang.ClassLoader</SPAN></dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/Lang.html#ClassLoader"> </a> <a class="tref" href="./java/Lang.html#ClassLoader">ClassLoader</a> = <b>native </b>java.lang.ClassLoader</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -406,7 +406,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/IO.html#Closeable"> </a> <a class="tref" href="./java/IO.html#Closeable">Closeable</a> = <b>mutable </b><b>native </b>java.io.Closeable</SPAN></dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/IO.html#Closeable"> </a> <a class="tref" href="./java/IO.html#Closeable">Closeable</a> = <b>native </b>java.io.Closeable</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -638,7 +638,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/IO.html#FileInputStream"> </a> <a class="tref" href="./java/IO.html#FileInputStream">FileInputStream</a> = <b>mutable </b><b>native </b>java.io.FileInputStream</SPAN></dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/IO.html#FileInputStream"> </a> <a class="tref" href="./java/IO.html#FileInputStream">FileInputStream</a> = <b>native </b>java.io.FileInputStream</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -646,7 +646,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/IO.html#FileOutputStream"> </a> <a class="tref" href="./java/IO.html#FileOutputStream">FileOutputStream</a> = <b>mutable </b><b>native </b>java.io.FileOutputStream</SPAN></dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/IO.html#FileOutputStream"> </a> <a class="tref" href="./java/IO.html#FileOutputStream">FileOutputStream</a> = <b>native </b>java.io.FileOutputStream</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -654,7 +654,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/IO.html#Flushable"> </a> <a class="tref" href="./java/IO.html#Flushable">Flushable</a> = <b>mutable </b><b>native </b>java.io.Flushable</SPAN></dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/IO.html#Flushable"> </a> <a class="tref" href="./java/IO.html#Flushable">Flushable</a> = <b>native </b>java.io.Flushable</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -726,11 +726,11 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/IO.html#InputStream"> </a> <a class="tref" href="./java/IO.html#InputStream">InputStream</a> = <b>mutable </b><b>native </b>java.io.InputStream</SPAN></dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/IO.html#InputStream"> </a> <a class="tref" href="./java/IO.html#InputStream">InputStream</a> = <b>native </b>java.io.InputStream</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/IO.html#InputStreamReader"> </a> <a class="tref" href="./java/IO.html#InputStreamReader">InputStreamReader</a> = <b>mutable </b><b>native </b>java.io.InputStreamReader</SPAN></dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/IO.html#InputStreamReader"> </a> <a class="tref" href="./java/IO.html#InputStreamReader">InputStreamReader</a> = <b>native </b>java.io.InputStreamReader</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1038,11 +1038,11 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/IO.html#OutputStream"> </a> <a class="tref" href="./java/IO.html#OutputStream">OutputStream</a> = <b>mutable </b><b>native </b>java.io.OutputStream</SPAN></dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/IO.html#OutputStream"> </a> <a class="tref" href="./java/IO.html#OutputStream">OutputStream</a> = <b>native </b>java.io.OutputStream</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/IO.html#OutputStreamWriter"> </a> <a class="tref" href="./java/IO.html#OutputStreamWriter">OutputStreamWriter</a> = <b>mutable </b><b>native </b>java.io.OutputStreamWriter</SPAN></dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/IO.html#OutputStreamWriter"> </a> <a class="tref" href="./java/IO.html#OutputStreamWriter">OutputStreamWriter</a> = <b>native </b>java.io.OutputStreamWriter</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1086,11 +1086,11 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/Lang.html#PrintStream"> </a> <a class="tref" href="./java/Lang.html#PrintStream">PrintStream</a> = <b>mutable </b><b>native </b>java.io.PrintStream</SPAN></dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/Lang.html#PrintStream"> </a> <a class="tref" href="./java/Lang.html#PrintStream">PrintStream</a> = <b>native </b>java.io.PrintStream</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/IO.html#PrintWriter"> </a> <a class="tref" href="./java/IO.html#PrintWriter">PrintWriter</a> = <b>mutable </b><b>native </b>java.io.PrintWriter</SPAN></dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/IO.html#PrintWriter"> </a> <a class="tref" href="./java/IO.html#PrintWriter">PrintWriter</a> = <b>native </b>java.io.PrintWriter</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1110,7 +1110,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/IO.html#Reader"> </a> <a class="tref" href="./java/IO.html#Reader">Reader</a> = <b>mutable </b><b>native </b>java.io.Reader</SPAN></dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/IO.html#Reader"> </a> <a class="tref" href="./java/IO.html#Reader">Reader</a> = <b>native </b>java.io.Reader</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1278,7 +1278,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/IO.html#StringWriter"> </a> <a class="tref" href="./java/IO.html#StringWriter">StringWriter</a> = <b>mutable </b><b>native </b>java.io.StringWriter</SPAN></dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/IO.html#StringWriter"> </a> <a class="tref" href="./java/IO.html#StringWriter">StringWriter</a> = <b>native </b>java.io.StringWriter</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1286,7 +1286,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/Lang.html#Thread"> </a> <a class="tref" href="./java/Lang.html#Thread">Thread</a> = <b>mutable </b><b>native </b>java.lang.Thread</SPAN></dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/Lang.html#Thread"> </a> <a class="tref" href="./java/Lang.html#Thread">Thread</a> = <b>native </b>java.lang.Thread</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1302,7 +1302,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/IO.html#Writer"> </a> <a class="tref" href="./java/IO.html#Writer">Writer</a> = <b>mutable </b><b>native </b>java.io.Writer</SPAN></dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="./java/IO.html#Writer"> </a> <a class="tref" href="./java/IO.html#Writer">Writer</a> = <b>native </b>java.io.Writer</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1314,11 +1314,11 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#$excl$excl">!!</a> ∷ <b>[α]</b> → <b><a class="tref" href="./prelude/PreludeBase.html#Int">Int</a></b> → α&nbsp;</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#$excl$excl">!!</a> ∷ <b>[𝖆]</b> → <b><a class="tref" href="./prelude/PreludeBase.html#Int">Int</a></b> → 𝖆</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#$excl$colon">!:</a> ∷ <b>α</b> → [α] → [α]&nbsp;</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#$excl$colon">!:</a> ∷ <b>𝖆</b> → [𝖆] → [𝖆]&nbsp;</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1334,11 +1334,11 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#$">$</a> ∷ (<b>β→α</b>) → β → α&nbsp;</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#$">$</a> ∷ (<b>𝖇→𝖆</b>) → 𝖇 → 𝖆&nbsp;</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#$$excl">$!</a> ∷ (<b>β→α</b>) → <b>β</b> → α&nbsp;</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#$$excl">$!</a> ∷ (<b>𝖇→𝖆</b>) → <b>𝖇</b> → 𝖆&nbsp;</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1398,7 +1398,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#$lt$eq$lt">&lt;=&lt;</a> ∷ <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> α ⇒ (<b>γ→α β</b>) → (<b>δ→α γ</b>) → δ → α β&nbsp;</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#$lt$eq$lt">&lt;=&lt;</a> ∷ <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> 𝖆 ⇒ (<b>𝖈→𝖆 𝖇</b>) → (<b>𝖉→𝖆 𝖈</b>) → 𝖉 → 𝖆 𝖇&nbsp;</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1410,7 +1410,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#$eq$lt$lt">=&lt;&lt;</a> ∷ <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> α ⇒ (<b>γ→α β</b>) → α γ → α β&nbsp;</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#$eq$lt$lt">=&lt;&lt;</a> ∷ <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> 𝖆 ⇒ (<b>𝖈→𝖆 𝖇</b>) → 𝖆 𝖈 → 𝖆 𝖇&nbsp;</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1438,7 +1438,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#$gt$eq$gt">&gt;=&gt;</a> ∷ <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> α ⇒ (<b>γ→α δ</b>) → (<b>δ→α β</b>) → γ → α β&nbsp;</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#$gt$eq$gt">&gt;=&gt;</a> ∷ <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> 𝖆 ⇒ (<b>𝖈→𝖆 𝖉</b>) → (<b>𝖉→𝖆 𝖇</b>) → 𝖈 → 𝖆 𝖇&nbsp;</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1454,7 +1454,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#$at">@</a> ∷ α → β → <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a>&nbsp;</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#$at">@</a> ∷ 𝖆 → 𝖇 → <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a>&nbsp;</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1482,7 +1482,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#all">all</a> ∷ (<b>α→<a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></b>) → <b>[α]</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#all">all</a> ∷ (<b>𝖆→<a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></b>) → <b>[𝖆]</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1490,7 +1490,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#any">any</a> ∷ (<b>α→<a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></b>) → <b>[α]</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#any">any</a> ∷ (<b>𝖆→<a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></b>) → <b>[𝖆]</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1498,7 +1498,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./java/IO.html#appendWriter">appendWriter</a> ∷ <b><a class="tref" href="./prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="./prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="./java/IO.html#PrintWriter">PrintWriter</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./java/IO.html#appendWriter">appendWriter</a> ∷ <b><a class="tref" href="./prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="./prelude/PreludeIO.html#STMutable">STMutable</a> <a class="tref" href="./prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="./java/IO.html#PrintWriter">PrintWriter</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1546,7 +1546,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#comparing">comparing</a> ∷ <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β ⇒ (<b>α→β</b>) → α → α → <a class="tref" href="./prelude/PreludeBase.html#Ordering">Ordering</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#comparing">comparing</a> ∷ <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇 ⇒ (<b>𝖆→𝖇</b>) → 𝖆 → 𝖆 → <a class="tref" href="./prelude/PreludeBase.html#Ordering">Ordering</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1554,11 +1554,11 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#bool">bool</a> ∷ α → α → <b><a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></b> → α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#bool">bool</a> ∷ 𝖆 → 𝖆 → <b><a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></b> → 𝖆</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#$break">break</a> ∷ (<b>α→<a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></b>) → [α] → ([α], [α])</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#$break">break</a> ∷ (<b>𝖆→<a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></b>) → [𝖆] → ([𝖆], [𝖆])</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1566,7 +1566,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/Maybe.html#catMaybes">catMaybes</a> ∷ <a class="tref" href="./prelude/PreludeList.html#ListSource">ListSource</a> β ⇒ β (<a class="tref" href="./prelude/PreludeBase.html#Maybe">Maybe</a> α) → [α]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/Maybe.html#catMaybes">catMaybes</a> ∷ <a class="tref" href="./prelude/PreludeList.html#ListSource">ListSource</a> 𝖇 ⇒ 𝖇 (<a class="tref" href="./prelude/PreludeBase.html#Maybe">Maybe</a> 𝖆) → [𝖆]</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1586,7 +1586,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#chunked">chunked</a> ∷ <b><a class="tref" href="./prelude/PreludeBase.html#Int">Int</a></b> → <b>[α]</b> → [[α]]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#chunked">chunked</a> ∷ <b><a class="tref" href="./prelude/PreludeBase.html#Int">Int</a></b> → <b>[𝖆]</b> → [[𝖆]]</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1598,7 +1598,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#comparing">comparing</a> ∷ <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β ⇒ (<b>α→β</b>) → α → α → <a class="tref" href="./prelude/PreludeBase.html#Ordering">Ordering</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#comparing">comparing</a> ∷ <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇 ⇒ (<b>𝖆→𝖇</b>) → 𝖆 → 𝖆 → <a class="tref" href="./prelude/PreludeBase.html#Ordering">Ordering</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1606,11 +1606,11 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#concatMap">concatMap</a> ∷ <a class="tref" href="./prelude/PreludeList.html#ListMonoid">ListMonoid</a> β ⇒ (<b>γ→β α</b>) → [γ] → β α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#concatMap">concatMap</a> ∷ <a class="tref" href="./prelude/PreludeList.html#ListMonoid">ListMonoid</a> 𝖇 ⇒ (<b>𝖈→𝖇 𝖆</b>) → [𝖈] → 𝖇 𝖆</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#$const">const</a> ∷ <b>β</b> → α → β</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#$const">const</a> ∷ <b>𝖇</b> → 𝖆 → 𝖇</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1626,7 +1626,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#curry">curry</a> ∷ (<b>(β, γ)→α</b>) → β → γ → α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#curry">curry</a> ∷ (<b>(𝖇, 𝖈)→𝖆</b>) → 𝖇 → 𝖈 → 𝖆</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1634,7 +1634,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#descending">descending</a> ∷ <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β ⇒ (<b>α→β</b>) → α → α → <a class="tref" href="./prelude/PreludeBase.html#Ordering">Ordering</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#descending">descending</a> ∷ <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇 ⇒ (<b>𝖆→𝖇</b>) → 𝖆 → 𝖆 → <a class="tref" href="./prelude/PreludeBase.html#Ordering">Ordering</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1654,15 +1654,15 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#dropWhile">dropWhile</a> ∷ (<b>α→<a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></b>) → <b>[α]</b> → [α]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#dropWhile">dropWhile</a> ∷ (<b>𝖆→<a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></b>) → <b>[𝖆]</b> → [𝖆]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#either">either</a> ∷ (<b>β→α</b>) → (<b>γ→α</b>) → <b>(β | γ)</b> → α&nbsp;</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#either">either</a> ∷ (<b>𝖇→𝖆</b>) → (<b>𝖈→𝖆</b>) → <b>(𝖇 | 𝖈)</b> → 𝖆&nbsp;</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#elem">elem</a> ∷ <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> α ⇒ α → <b>[α]</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a>&nbsp;</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#elem">elem</a> ∷ <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖆 ⇒ 𝖆 → <b>[𝖆]</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a>&nbsp;</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1702,11 +1702,11 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#filter">filter</a> ∷ (<b>α→<a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></b>) → <b>[α]</b> → [α]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#filter">filter</a> ∷ (<b>𝖆→<a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></b>) → <b>[𝖆]</b> → [𝖆]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#filterM">filterM</a> ∷ (<a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> α, <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> α) ⇒ (<b>β→α <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></b>) → <b>[β]</b> → α [β]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#filterM">filterM</a> ∷ (<a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> 𝖆, <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> 𝖆) ⇒ (<b>𝖇→𝖆 <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></b>) → <b>[𝖇]</b> → 𝖆 [𝖇]</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1718,7 +1718,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#flip">flip</a> ∷ (<b>β→γ→α</b>) → γ → β → α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#flip">flip</a> ∷ (<b>𝖇→𝖈→𝖆</b>) → 𝖈 → 𝖇 → 𝖆</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1726,43 +1726,43 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#fold">fold</a> ∷ (<b>α→β→α</b>) → <b>α</b> → <b>[β]</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#fold">fold</a> ∷ (<b>𝖆→𝖇→𝖆</b>) → <b>𝖆</b> → <b>[𝖇]</b> → 𝖆</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#foldM">foldM</a> ∷ (<a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> α, <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> α) ⇒ (<b>β→γ→α β</b>) → β → <b>[γ]</b> → α β</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#foldM">foldM</a> ∷ (<a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> 𝖆, <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> 𝖆) ⇒ (<b>𝖇→𝖈→𝖆 𝖇</b>) → 𝖇 → <b>[𝖈]</b> → 𝖆 𝖇</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#foldM_">foldM_</a> ∷ <a class="tref" href="./prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ (<b>β→γ→α β</b>) → β → [γ] → α <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#foldM_">foldM_</a> ∷ <a class="tref" href="./prelude/PreludeMonad.html#Monad">Monad</a> 𝖆 ⇒ (<b>𝖇→𝖈→𝖆 𝖇</b>) → 𝖇 → [𝖈] → 𝖆 <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#foldl">foldl</a> ∷ (<b>α→β→α</b>) → α → <b>[β]</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#foldl">foldl</a> ∷ (<b>𝖆→𝖇→𝖆</b>) → 𝖆 → <b>[𝖇]</b> → 𝖆</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#fold">fold</a> ∷ (<b>α→β→α</b>) → <b>α</b> → <b>[β]</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#fold">fold</a> ∷ (<b>𝖆→𝖇→𝖆</b>) → <b>𝖆</b> → <b>[𝖇]</b> → 𝖆</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#foldl1">foldl1</a> ∷ (<b>α→α→α</b>) → <b>[α]</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#foldl1">foldl1</a> ∷ (<b>𝖆→𝖆→𝖆</b>) → <b>[𝖆]</b> → 𝖆</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#foldl1">foldl1</a> ∷ (<b>α→α→α</b>) → <b>[α]</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#foldl1">foldl1</a> ∷ (<b>𝖆→𝖆→𝖆</b>) → <b>[𝖆]</b> → 𝖆</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#foldr">foldr</a> ∷ (<b>α→β→β</b>) → β → <b>[α]</b> → β</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#foldr">foldr</a> ∷ (<b>𝖆→𝖇→𝖇</b>) → 𝖇 → <b>[𝖆]</b> → 𝖇</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#foldr1">foldr1</a> ∷ (<b>α→α→α</b>) → <b>[α]</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#foldr1">foldr1</a> ∷ (<b>𝖆→𝖆→𝖆</b>) → <b>[𝖆]</b> → 𝖆</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#foldrs">foldrs</a> ∷ (<b>β→α→α</b>) → <b>α</b> → <b>[β]</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#foldrs">foldrs</a> ∷ (<b>𝖇→𝖆→𝖆</b>) → <b>𝖆</b> → <b>[𝖇]</b> → 𝖆</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1770,15 +1770,15 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#forM">forM</a> ∷ (<a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> α, <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> α) ⇒ <b>[γ]</b> → (<b>γ→α β</b>) → α [β]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#forM">forM</a> ∷ (<a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> 𝖆, <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> 𝖆) ⇒ <b>[𝖈]</b> → (<b>𝖈→𝖆 𝖇</b>) → 𝖆 [𝖇]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#forM_">forM_</a> ∷ <a class="tref" href="./prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <b>[γ]</b> → (<b>γ→α β</b>) → α <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#forM_">forM_</a> ∷ <a class="tref" href="./prelude/PreludeMonad.html#Monad">Monad</a> 𝖆 ⇒ <b>[𝖈]</b> → (<b>𝖈→𝖆 𝖇</b>) → 𝖆 <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#forever">forever</a> ∷ <a class="tref" href="./prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ α β → α γ</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#forever">forever</a> ∷ <a class="tref" href="./prelude/PreludeMonad.html#Monad">Monad</a> 𝖆 ⇒ 𝖆 𝖇 → 𝖆 𝖈</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1810,11 +1810,11 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/Maybe.html#fromMaybe">fromMaybe</a> ∷ α → <b><a class="tref" href="./prelude/PreludeBase.html#Maybe">Maybe</a> α</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/Maybe.html#fromMaybe">fromMaybe</a> ∷ 𝖆 → <b><a class="tref" href="./prelude/PreludeBase.html#Maybe">Maybe</a> 𝖆</b> → 𝖆</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#fst">fst</a> ∷ <b>(α, β)</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#fst">fst</a> ∷ <b>(𝖆, 𝖇)</b> → 𝖆</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1850,7 +1850,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#guard">guard</a> ∷ <a class="tref" href="./prelude/PreludeMonad.html#MonadZero">MonadZero</a> α ⇒ <b><a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></b> → α <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#guard">guard</a> ∷ <a class="tref" href="./prelude/PreludeMonad.html#MonadZero">MonadZero</a> 𝖆 ⇒ <b><a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></b> → 𝖆 <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1866,7 +1866,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#init">init</a> ∷ <b>[α]</b> → [α]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#init">init</a> ∷ <b>[𝖆]</b> → [𝖆]</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1874,7 +1874,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/Maybe.html#isJust">isJust</a> ∷ <b><a class="tref" href="./prelude/PreludeBase.html#Maybe">Maybe</a> α</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/Maybe.html#isJust">isJust</a> ∷ <b><a class="tref" href="./prelude/PreludeBase.html#Maybe">Maybe</a> 𝖆</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1882,7 +1882,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/Maybe.html#isNothing">isNothing</a> ∷ <b><a class="tref" href="./prelude/PreludeBase.html#Maybe">Maybe</a> α</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/Maybe.html#isNothing">isNothing</a> ∷ <b><a class="tref" href="./prelude/PreludeBase.html#Maybe">Maybe</a> 𝖆</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1894,7 +1894,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#iterate">iterate</a> ∷ (<b>α→α</b>) → α → [α]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#iterate">iterate</a> ∷ (<b>𝖆→𝖆</b>) → 𝖆 → [𝖆]</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1910,11 +1910,11 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#last">last</a> ∷ <b>[α]</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#last">last</a> ∷ <b>[𝖆]</b> → 𝖆</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#lazyif">lazyif</a> ∷ <b><a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></b> → α → α → α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#lazyif">lazyif</a> ∷ <b><a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></b> → 𝖆 → 𝖆 → 𝖆</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1950,19 +1950,19 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#liftM2">liftM2</a> ∷ (<a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> α, <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> α) ⇒ (<b>γ→δ→β</b>) → α γ → α δ → α β</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#liftM2">liftM2</a> ∷ (<a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> 𝖆, <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> 𝖆) ⇒ (<b>𝖈→𝖉→𝖇</b>) → 𝖆 𝖈 → 𝖆 𝖉 → 𝖆 𝖇</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#liftM3">liftM3</a> ∷ (<a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> α, <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> α) ⇒ (<b>γ→δ→ε→β</b>) → α γ → α δ → α ε → α β</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#liftM3">liftM3</a> ∷ (<a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> 𝖆, <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> 𝖆) ⇒ (<b>𝖈→𝖉→𝖊→𝖇</b>) → 𝖆 𝖈 → 𝖆 𝖉 → 𝖆 𝖊 → 𝖆 𝖇</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#liftM4">liftM4</a> ∷ (<a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> α, <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> α) ⇒ (<b>γ→δ→ε→ζ→β</b>) → α γ → α δ → α ε → α ζ → α β</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#liftM4">liftM4</a> ∷ (<a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> 𝖆, <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> 𝖆) ⇒ (<b>𝖈→𝖉→𝖊→𝖋→𝖇</b>) → 𝖆 𝖈 → 𝖆 𝖉 → 𝖆 𝖊 → 𝖆 𝖋 → 𝖆 𝖇</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#liftM5">liftM5</a> ∷ (<a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> α, <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> α) ⇒ (<b>γ→δ→ε→ζ→η→β</b>) → α γ → α δ → α ε → α ζ → α η → α β</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#liftM5">liftM5</a> ∷ (<a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> 𝖆, <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> 𝖆) ⇒ (<b>𝖈→𝖉→𝖊→𝖋→𝖌→𝖇</b>) → 𝖆 𝖈 → 𝖆 𝖉 → 𝖆 𝖊 → 𝖆 𝖋 → 𝖆 𝖌 → 𝖆 𝖇</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -1978,27 +1978,27 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/Maybe.html#listToMaybe">listToMaybe</a> ∷ <a class="tref" href="./prelude/PreludeList.html#ListSource">ListSource</a> β ⇒ β α → <a class="tref" href="./prelude/PreludeBase.html#Maybe">Maybe</a> α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/Maybe.html#listToMaybe">listToMaybe</a> ∷ <a class="tref" href="./prelude/PreludeList.html#ListSource">ListSource</a> 𝖇 ⇒ 𝖇 𝖆 → <a class="tref" href="./prelude/PreludeBase.html#Maybe">Maybe</a> 𝖆</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#map">map</a> ∷ (<b>β→α</b>) → <b>[β]</b> → [α]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#map">map</a> ∷ (<b>𝖇→𝖆</b>) → <b>[𝖇]</b> → [𝖆]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#mapAndUnzipM">mapAndUnzipM</a> ∷ (<a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> α, <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> α) ⇒ (<b>β→α (γ, δ)</b>) → [β] → α ([γ], [δ])</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#mapAndUnzipM">mapAndUnzipM</a> ∷ (<a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> 𝖆, <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> 𝖆) ⇒ (<b>𝖇→𝖆 (𝖈, 𝖉)</b>) → [𝖇] → 𝖆 ([𝖈], [𝖉])</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#mapM">mapM</a> ∷ (<a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> α, <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> α) ⇒ (<b>γ→α β</b>) → <b>[γ]</b> → α [β]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#mapM">mapM</a> ∷ (<a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> 𝖆, <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> 𝖆) ⇒ (<b>𝖈→𝖆 𝖇</b>) → <b>[𝖈]</b> → 𝖆 [𝖇]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#mapM_">mapM_</a> ∷ <a class="tref" href="./prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ (<b>γ→α β</b>) → <b>[γ]</b> → α <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#mapM_">mapM_</a> ∷ <a class="tref" href="./prelude/PreludeMonad.html#Monad">Monad</a> 𝖆 ⇒ (<b>𝖈→𝖆 𝖇</b>) → <b>[𝖈]</b> → 𝖆 <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/Maybe.html#mapMaybe">mapMaybe</a> ∷ (<b>β→<a class="tref" href="./prelude/PreludeBase.html#Maybe">Maybe</a> α</b>) → [β] → [α]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/Maybe.html#mapMaybe">mapMaybe</a> ∷ (<b>𝖇→<a class="tref" href="./prelude/PreludeBase.html#Maybe">Maybe</a> 𝖆</b>) → [𝖇] → [𝖆]</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -2014,11 +2014,11 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#maximum">maximum</a> ∷ <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b>[α]</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#maximum">maximum</a> ∷ <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆 ⇒ <b>[𝖆]</b> → 𝖆</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#maybe">maybe</a> ∷ α → (<b>β→α</b>) → <b><a class="tref" href="./prelude/PreludeBase.html#Maybe">Maybe</a> β</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#maybe">maybe</a> ∷ 𝖆 → (<b>𝖇→𝖆</b>) → <b><a class="tref" href="./prelude/PreludeBase.html#Maybe">Maybe</a> 𝖇</b> → 𝖆</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -2038,7 +2038,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#minimum">minimum</a> ∷ <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α ⇒ <b>[α]</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#minimum">minimum</a> ∷ <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆 ⇒ <b>[𝖆]</b> → 𝖆</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -2054,7 +2054,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeIO.html#Ref.modify">modify</a> ∷ <b><a class="tref" href="./prelude/PreludeIO.html#Mutable">Mutable</a> β (<a class="tref" href="./prelude/PreludeIO.html#Ref">Ref</a> α)</b> → (<b>α→α</b>) → <a class="tref" href="./prelude/PreludeBase.html#ST">ST</a> β <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeIO.html#Ref.modify">modify</a> ∷ <b><a class="tref" href="./prelude/PreludeIO.html#Mutable">Mutable</a> 𝖇 (<a class="tref" href="./prelude/PreludeIO.html#Ref">Ref</a> 𝖆)</b> → (<b>𝖆→𝖆</b>) → <a class="tref" href="./prelude/PreludeBase.html#ST">ST</a> 𝖇 <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -2062,11 +2062,11 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#msum">msum</a> ∷ <a class="tref" href="./prelude/PreludeMonad.html#MonadPlus">MonadPlus</a> β ⇒ <b>[β α]</b> → β α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#msum">msum</a> ∷ <a class="tref" href="./prelude/PreludeMonad.html#MonadPlus">MonadPlus</a> 𝖇 ⇒ <b>[𝖇 𝖆]</b> → 𝖇 𝖆</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeIO.html#mutable">mutable</a> ∷ β → <a class="tref" href="./prelude/PreludeIO.html#Mutable">Mutable</a> α β</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeIO.html#mutable">mutable</a> ∷ 𝖇 → <a class="tref" href="./prelude/PreludeIO.html#Mutable">Mutable</a> 𝖆 𝖇</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -2098,7 +2098,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#notElem">notElem</a> ∷ <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> α ⇒ α → <b>[α]</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a>&nbsp;</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#notElem">notElem</a> ∷ <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖆 ⇒ 𝖆 → <b>[𝖆]</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a>&nbsp;</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -2114,7 +2114,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#on">on</a> ∷ (<b>β→β→α</b>) → (<b>γ→β</b>) → γ → γ → α&nbsp;</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#on">on</a> ∷ (<b>𝖇→𝖇→𝖆</b>) → (<b>𝖈→𝖇</b>) → 𝖈 → 𝖈 → 𝖆&nbsp;</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -2122,11 +2122,11 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./java/IO.html#openReader">openReader</a> ∷ <b><a class="tref" href="./prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="./prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="./java/IO.html#BufferedReader">BufferedReader</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./java/IO.html#openReader">openReader</a> ∷ <b><a class="tref" href="./prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="./prelude/PreludeIO.html#STMutable">STMutable</a> <a class="tref" href="./prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="./java/IO.html#BufferedReader">BufferedReader</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./java/IO.html#openWriter">openWriter</a> ∷ <b><a class="tref" href="./prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="./prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="./java/IO.html#PrintWriter">PrintWriter</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./java/IO.html#openWriter">openWriter</a> ∷ <b><a class="tref" href="./prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="./prelude/PreludeIO.html#STMutable">STMutable</a> <a class="tref" href="./prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="./java/IO.html#PrintWriter">PrintWriter</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -2174,7 +2174,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#product">product</a> ∷ <a class="tref" href="./prelude/PreludeBase.html#Num">Num</a> α ⇒ <b>[α]</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#product">product</a> ∷ <a class="tref" href="./prelude/PreludeBase.html#Num">Num</a> 𝖆 ⇒ <b>[𝖆]</b> → 𝖆</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -2218,11 +2218,11 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#repeat">repeat</a> ∷ α → [α]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#repeat">repeat</a> ∷ 𝖆 → [𝖆]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#replicate">replicate</a> ∷ <b><a class="tref" href="./prelude/PreludeBase.html#Int">Int</a></b> → α → [α]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#replicate">replicate</a> ∷ <b><a class="tref" href="./prelude/PreludeBase.html#Int">Int</a></b> → 𝖆 → [𝖆]</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -2238,7 +2238,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#reverse">reverse</a> ∷ <b>[α]</b> → [α]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#reverse">reverse</a> ∷ <b>[𝖆]</b> → [𝖆]</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -2246,11 +2246,11 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#scanl">scanl</a> ∷ (<b>β→α→β</b>) → <b>β</b> → <b>[α]</b> → [β]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#scanl">scanl</a> ∷ (<b>𝖇→𝖆→𝖇</b>) → <b>𝖇</b> → <b>[𝖆]</b> → [𝖇]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#scanl1">scanl1</a> ∷ (<b>α→α→α</b>) → <b>[α]</b> → [α]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#scanl1">scanl1</a> ∷ (<b>𝖆→𝖆→𝖆</b>) → <b>[𝖆]</b> → [𝖆]</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -2258,19 +2258,19 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#scanr1">scanr1</a> ∷ (<b>α→α→α</b>) → <b>[α]</b> → [α]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#scanr1">scanr1</a> ∷ (<b>𝖆→𝖆→𝖆</b>) → <b>[𝖆]</b> → [𝖆]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#seq">seq</a> ∷ <b>α</b> → <b>β</b> → β&nbsp;</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#seq">seq</a> ∷ <b>𝖆</b> → <b>𝖇</b> → 𝖇&nbsp;</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#sequence">sequence</a> ∷ (<a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> α, <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> α) ⇒ <b>[α β]</b> → α [β]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#sequence">sequence</a> ∷ (<a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> 𝖆, <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> 𝖆) ⇒ <b>[𝖆 𝖇]</b> → 𝖆 [𝖇]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#sequence_">sequence_</a> ∷ <a class="tref" href="./prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ <b>[α β]</b> → α <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#sequence_">sequence_</a> ∷ <a class="tref" href="./prelude/PreludeMonad.html#Monad">Monad</a> 𝖆 ⇒ <b>[𝖆 𝖇]</b> → 𝖆 <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -2286,15 +2286,15 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#shortFilterM">shortFilterM</a> ∷ (<a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> α, <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> α) ⇒ (<b>β→α <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></b>) → <b>[β]</b> → α [β]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#shortFilterM">shortFilterM</a> ∷ (<a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> 𝖆, <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> 𝖆) ⇒ (<b>𝖇→𝖆 <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></b>) → <b>[𝖇]</b> → 𝖆 [𝖇]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#shortFoldM">shortFoldM</a> ∷ (<a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> α, <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> α) ⇒ (<b>β→γ→α β</b>) → β → <b>[γ]</b> → α β</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#shortFoldM">shortFoldM</a> ∷ (<a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> 𝖆, <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> 𝖆) ⇒ (<b>𝖇→𝖈→𝖆 𝖇</b>) → 𝖇 → <b>[𝖈]</b> → 𝖆 𝖇</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#shortSequence">shortSequence</a> ∷ (<a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> α, <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> α) ⇒ <b>[α β]</b> → α [β]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#shortSequence">shortSequence</a> ∷ (<a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> 𝖆, <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> 𝖆) ⇒ <b>[𝖆 𝖇]</b> → 𝖆 [𝖇]</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -2338,15 +2338,15 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#snd">snd</a> ∷ <b>(β, α)</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#snd">snd</a> ∷ <b>(𝖇, 𝖆)</b> → 𝖆</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#span">span</a> ∷ (<b>α→<a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></b>) → [α] → ([α], [α])</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#span">span</a> ∷ (<b>𝖆→<a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></b>) → [𝖆] → ([𝖆], [𝖆])</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#splitAt">splitAt</a> ∷ <a class="tref" href="./prelude/PreludeList.html#ListView">ListView</a> β ⇒ <a class="tref" href="./prelude/PreludeBase.html#Int">Int</a> → β α → (β α, β α)</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#splitAt">splitAt</a> ∷ <a class="tref" href="./prelude/PreludeList.html#ListView">ListView</a> 𝖇 ⇒ <a class="tref" href="./prelude/PreludeBase.html#Int">Int</a> → 𝖇 𝖆 → (𝖇 𝖆, 𝖇 𝖆)</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -2354,19 +2354,19 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./java/IO.html#stderr">stderr</a> ∷ <a class="tref" href="./java/IO.html#PrintWriter">PrintWriter</a>&nbsp;</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./java/IO.html#stderr">stderr</a> ∷ <a class="tref" href="./prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="./java/IO.html#PrintWriter">PrintWriter</a>&nbsp;</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./java/IO.html#stdin">stdin</a> ∷ <a class="tref" href="./java/IO.html#BufferedReader">BufferedReader</a>&nbsp;</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./java/IO.html#stdin">stdin</a> ∷ <a class="tref" href="./prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="./java/IO.html#BufferedReader">BufferedReader</a>&nbsp;</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./java/IO.html#stdout">stdout</a> ∷ <a class="tref" href="./java/IO.html#PrintWriter">PrintWriter</a>&nbsp;</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./java/IO.html#stdout">stdout</a> ∷ <a class="tref" href="./prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="./java/IO.html#PrintWriter">PrintWriter</a>&nbsp;</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#strhead">strhead</a> ∷ <b><a class="tref" href="./prelude/PreludeBase.html#StringJ">StringJ</a> α</b> → <b><a class="tref" href="./prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./prelude/PreludeBase.html#StringJ">StringJ</a> α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#strhead">strhead</a> ∷ <b><a class="tref" href="./prelude/PreludeBase.html#StringJ">StringJ</a> 𝖆</b> → <b><a class="tref" href="./prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="./prelude/PreludeBase.html#StringJ">StringJ</a> 𝖆</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -2494,7 +2494,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#sum">sum</a> ∷ <a class="tref" href="./prelude/PreludeBase.html#Num">Num</a> α ⇒ <b>[α]</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#sum">sum</a> ∷ <a class="tref" href="./prelude/PreludeBase.html#Num">Num</a> 𝖆 ⇒ <b>[𝖆]</b> → 𝖆</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -2506,7 +2506,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#takeWhile">takeWhile</a> ∷ (<b>α→<a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></b>) → <b>[α]</b> → [α]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#takeWhile">takeWhile</a> ∷ (<b>𝖆→<a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></b>) → <b>[𝖆]</b> → [𝖆]</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -2514,7 +2514,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#$throw">throw</a> ∷ <b><a class="tref" href="./prelude/PreludeBase.html#Throwable">Throwable</a></b> → α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#$throw">throw</a> ∷ <b><a class="tref" href="./prelude/PreludeBase.html#Throwable">Throwable</a></b> → 𝖆</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -2546,11 +2546,11 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeIO.html#$try">try</a> ∷ (<a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> α, <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> α) ⇒ (<b>γ→α β</b>) → γ → α β</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeIO.html#$try">try</a> ∷ (<a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> 𝖆, <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> 𝖆) ⇒ (<b>𝖈→𝖆 𝖇</b>) → 𝖈 → 𝖆 𝖇</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/Maybe.html#unJust">unJust</a> ∷ <b><a class="tref" href="./prelude/PreludeBase.html#Maybe">Maybe</a> α</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/Maybe.html#unJust">unJust</a> ∷ <b><a class="tref" href="./prelude/PreludeBase.html#Maybe">Maybe</a> 𝖆</b> → 𝖆</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -2558,7 +2558,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#uncurry">uncurry</a> ∷ (<b>β→γ→α</b>) → <b>(β, γ)</b> → α</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#uncurry">uncurry</a> ∷ (<b>𝖇→𝖈→𝖆</b>) → <b>(𝖇, 𝖈)</b> → 𝖆</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -2570,7 +2570,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#unless">unless</a> ∷ <a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> α ⇒ <b><a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></b> → α <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a> → α <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#unless">unless</a> ∷ <a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> 𝖆 ⇒ <b><a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></b> → 𝖆 <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a> → 𝖆 <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -2586,23 +2586,23 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#unzip">unzip</a> ∷ <b>[(α, β)]</b> → ([α], [β])</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#unzip">unzip</a> ∷ <b>[(𝖆, 𝖇)]</b> → ([𝖆], [𝖇])</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#unzip3">unzip3</a> ∷ <b>[(α, β, γ)]</b> → ([α], [β], [γ])</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#unzip3">unzip3</a> ∷ <b>[(𝖆, 𝖇, 𝖈)]</b> → ([𝖆], [𝖇], [𝖈])</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#using">using</a> ∷ <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> β ⇒ (<b>α→β</b>) → α → α → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeBase.html#using">using</a> ∷ <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖇 ⇒ (<b>𝖆→𝖇</b>) → 𝖆 → 𝖆 → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#$void">void</a> ∷ <a class="tref" href="./prelude/PreludeMonad.html#Functor">Functor</a> α ⇒ α β → α <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#$void">void</a> ∷ <a class="tref" href="./prelude/PreludeMonad.html#Functor">Functor</a> 𝖆 ⇒ 𝖆 𝖇 → 𝖆 <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#when">when</a> ∷ <a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> α ⇒ <b><a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></b> → α <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a> → α <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#when">when</a> ∷ <a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> 𝖆 ⇒ <b><a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></b> → 𝖆 <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a> → 𝖆 <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -2622,27 +2622,27 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#zip">zip</a> ∷ <b>[α]</b> → [β] → [(α, β)]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#zip">zip</a> ∷ <b>[𝖆]</b> → [𝖇] → [(𝖆, 𝖇)]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#zip3">zip3</a> ∷ <b>[α]</b> → [β] → [γ] → [(α, β, γ)]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#zip3">zip3</a> ∷ <b>[𝖆]</b> → [𝖇] → [𝖈] → [(𝖆, 𝖇, 𝖈)]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#zipWith">zipWith</a> ∷ (<b>β→γ→α</b>) → <b>[β]</b> → [γ] → [α]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#zipWith">zipWith</a> ∷ (<b>𝖇→𝖈→𝖆</b>) → <b>[𝖇]</b> → [𝖈] → [𝖆]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#zipWith3">zipWith3</a> ∷ (<b>β→γ→δ→α</b>) → <b>[β]</b> → [γ] → [δ] → [α]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeList.html#zipWith3">zipWith3</a> ∷ (<b>𝖇→𝖈→𝖉→𝖆</b>) → <b>[𝖇]</b> → [𝖈] → [𝖉] → [𝖆]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#zipWithM">zipWithM</a> ∷ (<a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> α, <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> α) ⇒ (<b>γ→δ→α β</b>) → <b>[γ]</b> → [δ] → α [β]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#zipWithM">zipWithM</a> ∷ (<a class="tref" href="./prelude/PreludeMonad.html#Applicative">Applicative</a> 𝖆, <a class="tref" href="./prelude/PreludeMonad.html#Bind">Bind</a> 𝖆) ⇒ (<b>𝖈→𝖉→𝖆 𝖇</b>) → <b>[𝖈]</b> → [𝖉] → 𝖆 [𝖇]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#zipWithM_">zipWithM_</a> ∷ <a class="tref" href="./prelude/PreludeMonad.html#Monad">Monad</a> α ⇒ (<b>γ→δ→α β</b>) → <b>[γ]</b> → [δ] → α <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="./prelude/PreludeMonad.html#zipWithM_">zipWithM_</a> ∷ <a class="tref" href="./prelude/PreludeMonad.html#Monad">Monad</a> 𝖆 ⇒ (<b>𝖈→𝖉→𝖆 𝖇</b>) → <b>[𝖈]</b> → [𝖉] → 𝖆 <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -2723,6 +2723,10 @@ Table of Content</h3>
 <SPAN CLASS="code"><b>instance </b><a class="tref" href="#Ord_Ordering"> </a><a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> <a class="tref" href="./prelude/PreludeBase.html#Ordering">Ordering</a></SPAN></dt>
 <dd>
 </dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Show_Decimal"> </a><a class="tref" href="./prelude/PreludeText.html#Show">Show</a> <a class="tref" href="./prelude/PreludeDecimal.html#Decimal">Decimal</a></SPAN></dt>
+<dd>
+</dd>
 </dl>
 </li>
 <li>
@@ -2734,7 +2738,13 @@ Table of Content</h3>
 <a NAME="data">Definitions</a></h2>
 <dl class="data">
 <dt class="data">
-<SPAN CLASS="code"><a name=print>print</a> ∷ <a class="tref" href="./prelude/PreludeText.html#Show">Show</a> α ⇒ <b>α</b> → <a class="tref" href="./prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name=parseDecimal>parseDecimal</a> ∷ <b><a class="tref" href="./prelude/PreludeBase.html#String">String</a></b> → (<a class="tref" href="./prelude/PreludeBase.html#NumberFormatException">NumberFormatException</a> | <a class="tref" href="./prelude/PreludeDecimal.html#Decimal">Decimal</a>)</SPAN></dt>
+<dd class="data">
+<p>
+for now   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=print>print</a> ∷ <a class="tref" href="./prelude/PreludeText.html#Show">Show</a> 𝖆 ⇒ <b>𝖆</b> → <a class="tref" href="./prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="data">
 <p>
 Print a value to the standard output writer.</p>
@@ -2742,7 +2752,7 @@ Print a value to the standard output writer.</p>
 This will come out UTF8 encoded.   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=println>println</a> ∷ <a class="tref" href="./prelude/PreludeText.html#Show">Show</a> α ⇒ <b>α</b> → <a class="tref" href="./prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name=println>println</a> ∷ <a class="tref" href="./prelude/PreludeText.html#Show">Show</a> 𝖆 ⇒ <b>𝖆</b> → <a class="tref" href="./prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="data">
 <p>
 Print a value to the standard output stream and append a platform typical new line character.</p>
@@ -2786,7 +2796,7 @@ read a line from the standard input reader, end of line characters are removed. 
 The <a class="fref" href="#getContents">getContents</a> operation returns all user input as a single string   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=getContentsOf>getContentsOf</a> ∷ <b><a class="tref" href="./java/IO.html#Reader">Reader</a></b> → <a class="tref" href="./prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="./prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code"><a name=getContentsOf>getContentsOf</a> ∷ <b><a class="tref" href="./prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="./java/IO.html#Reader">Reader</a></b> → <a class="tref" href="./prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="./prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="data">
 <p>
 The <a class="fref" href="#getContentsOf">getContentsOf</a> operation returns all input from the supplied <a class="tref" href="./java/IO.html#Reader">Reader</a> as a single string.</p>
@@ -2827,6 +2837,8 @@ After completion, the file will be closed.   </p>
 <SPAN CLASS="code"><a name=trace>trace</a> ∷ <b><a class="tref" href="./prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="data">
 <p>
+nowarn: performUnsafe</p>
+<p>
 unsafe trace, returns always <b>false</b> and can thus be used like</p>
 <PRE>
  fun x y
@@ -2839,6 +2851,8 @@ Note that this imposes strictness on the traced data.</p>
 <dt class="data">
 <SPAN CLASS="code"><a name=traceLn>traceLn</a> ∷ <b><a class="tref" href="./prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="data">
+<p>
+nowarn: performUnsafe</p>
 <p>
 same as <a class="fref" href="#trace">trace</a> but appends a line break    </p>
 </dd>
@@ -2853,11 +2867,11 @@ same as <a class="fref" href="#trace">trace</a> but appends a line break    </p>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Bounded_$l$c$r.maxBound>maxBound</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Bounded">Bounded</a> β, <a class="tref" href="./prelude/PreludeBase.html#Bounded">Bounded</a> α) ⇒ (β, α)</SPAN></dt>
+<SPAN CLASS="code"><a name=Bounded_$l$c$r.maxBound>maxBound</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Bounded">Bounded</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Bounded">Bounded</a> 𝖆) ⇒ (𝖇, 𝖆)</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Bounded_$l$c$r.minBound>minBound</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Bounded">Bounded</a> β, <a class="tref" href="./prelude/PreludeBase.html#Bounded">Bounded</a> α) ⇒ (β, α)</SPAN></dt>
+<SPAN CLASS="code"><a name=Bounded_$l$c$r.minBound>minBound</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Bounded">Bounded</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Bounded">Bounded</a> 𝖆) ⇒ (𝖇, 𝖆)</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -2869,11 +2883,11 @@ Member Functions</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Bounded_$l$c$c$r.maxBound>maxBound</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Bounded">Bounded</a> β, <a class="tref" href="./prelude/PreludeBase.html#Bounded">Bounded</a> γ, <a class="tref" href="./prelude/PreludeBase.html#Bounded">Bounded</a> α) ⇒ (β, γ, α)</SPAN></dt>
+<SPAN CLASS="code"><a name=Bounded_$l$c$c$r.maxBound>maxBound</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Bounded">Bounded</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Bounded">Bounded</a> 𝖈, <a class="tref" href="./prelude/PreludeBase.html#Bounded">Bounded</a> 𝖆) ⇒ (𝖇, 𝖈, 𝖆)</SPAN></dt>
 <dd class="func">
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Bounded_$l$c$c$r.minBound>minBound</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Bounded">Bounded</a> β, <a class="tref" href="./prelude/PreludeBase.html#Bounded">Bounded</a> γ, <a class="tref" href="./prelude/PreludeBase.html#Bounded">Bounded</a> α) ⇒ (β, γ, α)</SPAN></dt>
+<SPAN CLASS="code"><a name=Bounded_$l$c$c$r.minBound>minBound</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Bounded">Bounded</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Bounded">Bounded</a> 𝖈, <a class="tref" href="./prelude/PreludeBase.html#Bounded">Bounded</a> 𝖆) ⇒ (𝖇, 𝖈, 𝖆)</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -2941,19 +2955,19 @@ Function generated for derived instance.</p>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Eq_$l$c$r.$excl$eq>!=</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> β, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> α) ⇒ <b>(β, α)</b> → <b>(β, α)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
+<SPAN CLASS="code"><a name=Eq_$l$c$r.$excl$eq>!=</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖆) ⇒ <b>(𝖇, 𝖆)</b> → <b>(𝖇, 𝖆)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./prelude/PreludeBase.html#Eq.$excl$eq">Eq.!=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Eq_$l$c$r.$eq$eq>==</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> β, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> α) ⇒ <b>(β, α)</b> → <b>(β, α)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
+<SPAN CLASS="code"><a name=Eq_$l$c$r.$eq$eq>==</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖆) ⇒ <b>(𝖇, 𝖆)</b> → <b>(𝖇, 𝖆)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
 <dd class="func">
 <p>
 Function generated for derived instance.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Eq_$l$c$r.hashCode>hashCode</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> β, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> α) ⇒ <b>(β, α)</b> → <a class="tref" href="./prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Eq_$l$c$r.hashCode>hashCode</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖆) ⇒ <b>(𝖇, 𝖆)</b> → <a class="tref" href="./prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
 Function generated for derived instance.</p>
@@ -2967,19 +2981,19 @@ Function generated for derived instance.</p>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Eq_$l$c$c$r.$excl$eq>!=</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> β, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> γ, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> α) ⇒ <b>(β, γ, α)</b> → <b>(β, γ, α)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
+<SPAN CLASS="code"><a name=Eq_$l$c$c$r.$excl$eq>!=</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖈, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖆) ⇒ <b>(𝖇, 𝖈, 𝖆)</b> → <b>(𝖇, 𝖈, 𝖆)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./prelude/PreludeBase.html#Eq.$excl$eq">Eq.!=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Eq_$l$c$c$r.$eq$eq>==</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> β, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> γ, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> α) ⇒ <b>(β, γ, α)</b> → <b>(β, γ, α)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
+<SPAN CLASS="code"><a name=Eq_$l$c$c$r.$eq$eq>==</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖈, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖆) ⇒ <b>(𝖇, 𝖈, 𝖆)</b> → <b>(𝖇, 𝖈, 𝖆)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
 <dd class="func">
 <p>
 Function generated for derived instance.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Eq_$l$c$c$r.hashCode>hashCode</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> β, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> γ, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> α) ⇒ <b>(β, γ, α)</b> → <a class="tref" href="./prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Eq_$l$c$c$r.hashCode>hashCode</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖈, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖆) ⇒ <b>(𝖇, 𝖈, 𝖆)</b> → <a class="tref" href="./prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
 Function generated for derived instance.</p>
@@ -2993,19 +3007,19 @@ Function generated for derived instance.</p>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Eq_Either.$excl$eq>!=</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> β, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> α) ⇒ <b>(β | α)</b> → <b>(β | α)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
+<SPAN CLASS="code"><a name=Eq_Either.$excl$eq>!=</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖆) ⇒ <b>(𝖇 | 𝖆)</b> → <b>(𝖇 | 𝖆)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./prelude/PreludeBase.html#Eq.$excl$eq">Eq.!=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Eq_Either.$eq$eq>==</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> β, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> α) ⇒ <b>(β | α)</b> → <b>(β | α)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
+<SPAN CLASS="code"><a name=Eq_Either.$eq$eq>==</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖆) ⇒ <b>(𝖇 | 𝖆)</b> → <b>(𝖇 | 𝖆)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
 <dd class="func">
 <p>
 Function generated for derived instance.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Eq_Either.hashCode>hashCode</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> β, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> α) ⇒ <b>(β | α)</b> → <a class="tref" href="./prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Eq_Either.hashCode>hashCode</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖆) ⇒ <b>(𝖇 | 𝖆)</b> → <a class="tref" href="./prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
 Function generated for derived instance.</p>
@@ -3101,49 +3115,49 @@ inherited from <a class="fref" href="./prelude/PreludeBase.html#Ord.min">Ord.min
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_$l$c$r.$lt>&lt;</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ <b>(β, α)</b> → <b>(β, α)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_$l$c$r.$lt>&lt;</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ <b>(𝖇, 𝖆)</b> → <b>(𝖇, 𝖆)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./prelude/PreludeBase.html#Ord.$lt">Ord.&lt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_$l$c$r.$lt$eq>&lt;=</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ <b>(β, α)</b> → <b>(β, α)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_$l$c$r.$lt$eq>&lt;=</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ <b>(𝖇, 𝖆)</b> → <b>(𝖇, 𝖆)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./prelude/PreludeBase.html#Ord.$lt$eq">Ord.&lt;=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_$l$c$r.$lt$eq$gt>&lt;=&gt;</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ <b>(β, α)</b> → <b>(β, α)</b> → <a class="tref" href="./prelude/PreludeBase.html#Ordering">Ordering</a><br><b>infix</b>&nbsp;&nbsp;8</SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_$l$c$r.$lt$eq$gt>&lt;=&gt;</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ <b>(𝖇, 𝖆)</b> → <b>(𝖇, 𝖆)</b> → <a class="tref" href="./prelude/PreludeBase.html#Ordering">Ordering</a><br><b>infix</b>&nbsp;&nbsp;8</SPAN></dt>
 <dd class="func">
 <p>
 Function generated for derived instance.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_$l$c$r.$gt>&gt;</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ <b>(β, α)</b> → <b>(β, α)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_$l$c$r.$gt>&gt;</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ <b>(𝖇, 𝖆)</b> → <b>(𝖇, 𝖆)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./prelude/PreludeBase.html#Ord.$gt">Ord.&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_$l$c$r.$gt$eq>&gt;=</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ <b>(β, α)</b> → <b>(β, α)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_$l$c$r.$gt$eq>&gt;=</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ <b>(𝖇, 𝖆)</b> → <b>(𝖇, 𝖆)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./prelude/PreludeBase.html#Ord.$gt$eq">Ord.&gt;=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_$l$c$r.compare>compare</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ <b>(β, α)</b> → <b>(β, α)</b> → <a class="tref" href="./prelude/PreludeBase.html#Ordering">Ordering</a><br><b>infix</b>&nbsp;&nbsp;8</SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_$l$c$r.compare>compare</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ <b>(𝖇, 𝖆)</b> → <b>(𝖇, 𝖆)</b> → <a class="tref" href="./prelude/PreludeBase.html#Ordering">Ordering</a><br><b>infix</b>&nbsp;&nbsp;8</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./prelude/PreludeBase.html#Ord.compare">Ord.compare</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_$l$c$r.max>max</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ <b>(β, α)</b> → <b>(β, α)</b> → (β, α)</SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_$l$c$r.max>max</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ <b>(𝖇, 𝖆)</b> → <b>(𝖇, 𝖆)</b> → (𝖇, 𝖆)</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./prelude/PreludeBase.html#Ord.max">Ord.max</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_$l$c$r.min>min</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ <b>(β, α)</b> → <b>(β, α)</b> → (β, α)</SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_$l$c$r.min>min</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ <b>(𝖇, 𝖆)</b> → <b>(𝖇, 𝖆)</b> → (𝖇, 𝖆)</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./prelude/PreludeBase.html#Ord.min">Ord.min</a></p>
@@ -3157,49 +3171,49 @@ inherited from <a class="fref" href="./prelude/PreludeBase.html#Ord.min">Ord.min
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_$l$c$c$r.$lt>&lt;</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> γ, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ <b>(β, γ, α)</b> → <b>(β, γ, α)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_$l$c$c$r.$lt>&lt;</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖈, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ <b>(𝖇, 𝖈, 𝖆)</b> → <b>(𝖇, 𝖈, 𝖆)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./prelude/PreludeBase.html#Ord.$lt">Ord.&lt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_$l$c$c$r.$lt$eq>&lt;=</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> γ, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ <b>(β, γ, α)</b> → <b>(β, γ, α)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_$l$c$c$r.$lt$eq>&lt;=</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖈, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ <b>(𝖇, 𝖈, 𝖆)</b> → <b>(𝖇, 𝖈, 𝖆)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./prelude/PreludeBase.html#Ord.$lt$eq">Ord.&lt;=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_$l$c$c$r.$lt$eq$gt>&lt;=&gt;</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> γ, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ <b>(β, γ, α)</b> → <b>(β, γ, α)</b> → <a class="tref" href="./prelude/PreludeBase.html#Ordering">Ordering</a><br><b>infix</b>&nbsp;&nbsp;8</SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_$l$c$c$r.$lt$eq$gt>&lt;=&gt;</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖈, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ <b>(𝖇, 𝖈, 𝖆)</b> → <b>(𝖇, 𝖈, 𝖆)</b> → <a class="tref" href="./prelude/PreludeBase.html#Ordering">Ordering</a><br><b>infix</b>&nbsp;&nbsp;8</SPAN></dt>
 <dd class="func">
 <p>
 Function generated for derived instance.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_$l$c$c$r.$gt>&gt;</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> γ, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ <b>(β, γ, α)</b> → <b>(β, γ, α)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_$l$c$c$r.$gt>&gt;</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖈, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ <b>(𝖇, 𝖈, 𝖆)</b> → <b>(𝖇, 𝖈, 𝖆)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./prelude/PreludeBase.html#Ord.$gt">Ord.&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_$l$c$c$r.$gt$eq>&gt;=</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> γ, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ <b>(β, γ, α)</b> → <b>(β, γ, α)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_$l$c$c$r.$gt$eq>&gt;=</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖈, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ <b>(𝖇, 𝖈, 𝖆)</b> → <b>(𝖇, 𝖈, 𝖆)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./prelude/PreludeBase.html#Ord.$gt$eq">Ord.&gt;=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_$l$c$c$r.compare>compare</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> γ, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ <b>(β, γ, α)</b> → <b>(β, γ, α)</b> → <a class="tref" href="./prelude/PreludeBase.html#Ordering">Ordering</a><br><b>infix</b>&nbsp;&nbsp;8</SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_$l$c$c$r.compare>compare</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖈, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ <b>(𝖇, 𝖈, 𝖆)</b> → <b>(𝖇, 𝖈, 𝖆)</b> → <a class="tref" href="./prelude/PreludeBase.html#Ordering">Ordering</a><br><b>infix</b>&nbsp;&nbsp;8</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./prelude/PreludeBase.html#Ord.compare">Ord.compare</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_$l$c$c$r.max>max</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> γ, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ <b>(β, γ, α)</b> → <b>(β, γ, α)</b> → (β, γ, α)</SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_$l$c$c$r.max>max</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖈, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ <b>(𝖇, 𝖈, 𝖆)</b> → <b>(𝖇, 𝖈, 𝖆)</b> → (𝖇, 𝖈, 𝖆)</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./prelude/PreludeBase.html#Ord.max">Ord.max</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_$l$c$c$r.min>min</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> γ, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ <b>(β, γ, α)</b> → <b>(β, γ, α)</b> → (β, γ, α)</SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_$l$c$c$r.min>min</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖈, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ <b>(𝖇, 𝖈, 𝖆)</b> → <b>(𝖇, 𝖈, 𝖆)</b> → (𝖇, 𝖈, 𝖆)</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./prelude/PreludeBase.html#Ord.min">Ord.min</a></p>
@@ -3213,49 +3227,49 @@ inherited from <a class="fref" href="./prelude/PreludeBase.html#Ord.min">Ord.min
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_Either.$lt>&lt;</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ <b>(β | α)</b> → <b>(β | α)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_Either.$lt>&lt;</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ <b>(𝖇 | 𝖆)</b> → <b>(𝖇 | 𝖆)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./prelude/PreludeBase.html#Ord.$lt">Ord.&lt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_Either.$lt$eq>&lt;=</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ <b>(β | α)</b> → <b>(β | α)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_Either.$lt$eq>&lt;=</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ <b>(𝖇 | 𝖆)</b> → <b>(𝖇 | 𝖆)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./prelude/PreludeBase.html#Ord.$lt$eq">Ord.&lt;=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_Either.$lt$eq$gt>&lt;=&gt;</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ <b>(β | α)</b> → <b>(β | α)</b> → <a class="tref" href="./prelude/PreludeBase.html#Ordering">Ordering</a><br><b>infix</b>&nbsp;&nbsp;8</SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_Either.$lt$eq$gt>&lt;=&gt;</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ <b>(𝖇 | 𝖆)</b> → <b>(𝖇 | 𝖆)</b> → <a class="tref" href="./prelude/PreludeBase.html#Ordering">Ordering</a><br><b>infix</b>&nbsp;&nbsp;8</SPAN></dt>
 <dd class="func">
 <p>
 Function generated for derived instance.</p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_Either.$gt>&gt;</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ <b>(β | α)</b> → <b>(β | α)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_Either.$gt>&gt;</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ <b>(𝖇 | 𝖆)</b> → <b>(𝖇 | 𝖆)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./prelude/PreludeBase.html#Ord.$gt">Ord.&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_Either.$gt$eq>&gt;=</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ <b>(β | α)</b> → <b>(β | α)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_Either.$gt$eq>&gt;=</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ <b>(𝖇 | 𝖆)</b> → <b>(𝖇 | 𝖆)</b> → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;9</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./prelude/PreludeBase.html#Ord.$gt$eq">Ord.&gt;=</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_Either.compare>compare</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ <b>(β | α)</b> → <b>(β | α)</b> → <a class="tref" href="./prelude/PreludeBase.html#Ordering">Ordering</a><br><b>infix</b>&nbsp;&nbsp;8</SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_Either.compare>compare</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ <b>(𝖇 | 𝖆)</b> → <b>(𝖇 | 𝖆)</b> → <a class="tref" href="./prelude/PreludeBase.html#Ordering">Ordering</a><br><b>infix</b>&nbsp;&nbsp;8</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./prelude/PreludeBase.html#Ord.compare">Ord.compare</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_Either.max>max</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ <b>(β | α)</b> → <b>(β | α)</b> → (β | α)</SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_Either.max>max</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ <b>(𝖇 | 𝖆)</b> → <b>(𝖇 | 𝖆)</b> → (𝖇 | 𝖆)</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./prelude/PreludeBase.html#Ord.max">Ord.max</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ord_Either.min>min</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ <b>(β | α)</b> → <b>(β | α)</b> → (β | α)</SPAN></dt>
+<SPAN CLASS="code"><a name=Ord_Either.min>min</a> ∷ (<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ <b>(𝖇 | 𝖆)</b> → <b>(𝖇 | 𝖆)</b> → (𝖇 | 𝖆)</SPAN></dt>
 <dd class="func">
 <p>
 inherited from <a class="fref" href="./prelude/PreludeBase.html#Ord.min">Ord.min</a></p>
@@ -3318,6 +3332,48 @@ inherited from <a class="fref" href="./prelude/PreludeBase.html#Ord.min">Ord.min
 </dd>
 </dl>
 </dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Show_Decimal> </a><a class="tref" href="./prelude/PreludeText.html#Show">Show</a> <a class="tref" href="./prelude/PreludeDecimal.html#Decimal">Decimal</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Decimal.display>display</a> ∷ <b><a class="tref" href="./prelude/PreludeDecimal.html#Decimal">Decimal</a></b> → <a class="tref" href="./prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="./prelude/PreludeText.html#Show.display">Show.display</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Decimal.show>show</a> ∷ <b><a class="tref" href="./prelude/PreludeDecimal.html#Decimal">Decimal</a></b> → <a class="tref" href="./prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Decimal.showChars>showChars</a> ∷ <b><a class="tref" href="./prelude/PreludeDecimal.html#Decimal">Decimal</a></b> → [<a class="tref" href="./prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="./prelude/PreludeText.html#Show.showChars">Show.showChars</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Decimal.showList>showList</a> ∷ <b>[<a class="tref" href="./prelude/PreludeDecimal.html#Decimal">Decimal</a>]</b> → <b><a class="tref" href="./prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="./prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="./prelude/PreludeText.html#Show.showList">Show.showList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Decimal.showsPrec>showsPrec</a> ∷ <a class="tref" href="./prelude/PreludeBase.html#Int">Int</a> → <b><a class="tref" href="./prelude/PreludeDecimal.html#Decimal">Decimal</a></b> → <b><a class="tref" href="./prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="./prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="./prelude/PreludeText.html#Show.showsPrec">Show.showsPrec</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Decimal.showsub>showsub</a> ∷ <b><a class="tref" href="./prelude/PreludeDecimal.html#Decimal">Decimal</a></b> → <a class="tref" href="./prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="./prelude/PreludeText.html#Show.showsub">Show.showsub</a></p>
+</dd>
+</dl>
+</dd>
 </dl>
 <h2>
 <a NAME="case">Functions and Values by Type</a></h2>
@@ -3329,10 +3385,22 @@ inherited from <a class="fref" href="./prelude/PreludeBase.html#Ord.min">Ord.min
 <a class="fref" href="#interact">interact</a></p>
 </dd>
 <dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="./java/IO.html#Reader">Reader</a> → <a class="tref" href="./prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="./prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#getContentsOf">getContentsOf</a></p>
+</dd>
+<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="./prelude/PreludeBase.html#String">String</a> → <a class="tref" href="./prelude/PreludeBase.html#String">String</a> → <a class="tref" href="./prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#appendFile">appendFile</a>, <a class="fref" href="#writeFile">writeFile</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./prelude/PreludeBase.html#String">String</a> → (<a class="tref" href="./prelude/PreludeBase.html#NumberFormatException">NumberFormatException</a> | <a class="tref" href="./prelude/PreludeDecimal.html#Decimal">Decimal</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#parseDecimal">parseDecimal</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="./prelude/PreludeBase.html#String">String</a> → <a class="tref" href="./prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="./prelude/PreludeBase.html#String">String</a></SPAN></dt>
@@ -3353,10 +3421,10 @@ inherited from <a class="fref" href="./prelude/PreludeBase.html#Ord.min">Ord.min
 <a class="fref" href="#trace">trace</a>, <a class="fref" href="#traceLn">traceLn</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./java/IO.html#Reader">Reader</a> → <a class="tref" href="./prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="./prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<SPAN CLASS="code">[<a class="tref" href="./prelude/PreludeDecimal.html#Decimal">Decimal</a>] → <a class="tref" href="./prelude/PreludeBase.html#String">String</a> → <a class="tref" href="./prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
-<a class="fref" href="#getContentsOf">getContentsOf</a></p>
+<a class="fref" href="#Show_Decimal.showList">Show_Decimal.showList</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="./prelude/PreludeBase.html#Unit">()</a> → <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a> → <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
@@ -3381,6 +3449,12 @@ inherited from <a class="fref" href="./prelude/PreludeBase.html#Ord.min">Ord.min
 <dd class="func">
 <p>
 <a class="fref" href="#putChar">putChar</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="./prelude/PreludeDecimal.html#Decimal">Decimal</a> → <a class="tref" href="./prelude/PreludeBase.html#String">String</a> → <a class="tref" href="./prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_Decimal.showsPrec">Show_Decimal.showsPrec</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="./prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="./prelude/PreludeBase.html#Ordering">Ordering</a></SPAN></dt>
@@ -3431,6 +3505,18 @@ inherited from <a class="fref" href="./prelude/PreludeBase.html#Ord.min">Ord.min
 <a class="fref" href="#Enum_Ordering.succ">Enum_Ordering.succ</a>, <a class="fref" href="#Enum_Ordering.pred">Enum_Ordering.pred</a></p>
 </dd>
 <dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./prelude/PreludeDecimal.html#Decimal">Decimal</a> → <a class="tref" href="./prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_Decimal.showsub">Show_Decimal.showsub</a>, <a class="fref" href="#Show_Decimal.display">Show_Decimal.display</a>, <a class="fref" href="#Show_Decimal.show">Show_Decimal.show</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="./prelude/PreludeDecimal.html#Decimal">Decimal</a> → [<a class="tref" href="./prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_Decimal.showChars">Show_Decimal.showChars</a></p>
+</dd>
+<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="./prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="./prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
@@ -3443,109 +3529,109 @@ inherited from <a class="fref" href="./prelude/PreludeBase.html#Ord.min">Ord.min
 <a class="fref" href="#getChar">getChar</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="./prelude/PreludeText.html#Show">Show</a> α ⇒ α → <a class="tref" href="./prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="./prelude/PreludeText.html#Show">Show</a> 𝖆 ⇒ 𝖆 → <a class="tref" href="./prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="./prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#print">print</a>, <a class="fref" href="#println">println</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> β, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> α) ⇒ (β, α) → (β, α) → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖆) ⇒ (𝖇, 𝖆) → (𝖇, 𝖆) → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Eq_$l$c$r.$excl$eq">Eq_(,).!=</a>, <a class="fref" href="#Eq_$l$c$r.$eq$eq">Eq_(,).==</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> β, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> α) ⇒ (β, α) → <a class="tref" href="./prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖆) ⇒ (𝖇, 𝖆) → <a class="tref" href="./prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Eq_$l$c$r.hashCode">Eq_(,).hashCode</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> β, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> α) ⇒ (β | α) → (β | α) → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖆) ⇒ (𝖇 | 𝖆) → (𝖇 | 𝖆) → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Eq_Either.$excl$eq">Eq_Either.!=</a>, <a class="fref" href="#Eq_Either.$eq$eq">Eq_Either.==</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> β, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> α) ⇒ (β | α) → <a class="tref" href="./prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖆) ⇒ (𝖇 | 𝖆) → <a class="tref" href="./prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Eq_Either.hashCode">Eq_Either.hashCode</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ (β, α) → (β, α) → (β, α)</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ (𝖇, 𝖆) → (𝖇, 𝖆) → (𝖇, 𝖆)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Ord_$l$c$r.min">Ord_(,).min</a>, <a class="fref" href="#Ord_$l$c$r.max">Ord_(,).max</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ (β, α) → (β, α) → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ (𝖇, 𝖆) → (𝖇, 𝖆) → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Ord_$l$c$r.$gt$eq">Ord_(,).&gt;=</a>, <a class="fref" href="#Ord_$l$c$r.$lt">Ord_(,).&lt;</a>, <a class="fref" href="#Ord_$l$c$r.$lt$eq">Ord_(,).&lt;=</a>, <a class="fref" href="#Ord_$l$c$r.$gt">Ord_(,).&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ (β, α) → (β, α) → <a class="tref" href="./prelude/PreludeBase.html#Ordering">Ordering</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ (𝖇, 𝖆) → (𝖇, 𝖆) → <a class="tref" href="./prelude/PreludeBase.html#Ordering">Ordering</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Ord_$l$c$r.compare">Ord_(,).compare</a>, <a class="fref" href="#Ord_$l$c$r.$lt$eq$gt">Ord_(,).&lt;=&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ (β | α) → (β | α) → (β | α)</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ (𝖇 | 𝖆) → (𝖇 | 𝖆) → (𝖇 | 𝖆)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Ord_Either.min">Ord_Either.min</a>, <a class="fref" href="#Ord_Either.max">Ord_Either.max</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ (β | α) → (β | α) → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ (𝖇 | 𝖆) → (𝖇 | 𝖆) → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Ord_Either.$gt$eq">Ord_Either.&gt;=</a>, <a class="fref" href="#Ord_Either.$lt">Ord_Either.&lt;</a>, <a class="fref" href="#Ord_Either.$lt$eq">Ord_Either.&lt;=</a>, <a class="fref" href="#Ord_Either.$gt">Ord_Either.&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ (β | α) → (β | α) → <a class="tref" href="./prelude/PreludeBase.html#Ordering">Ordering</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ (𝖇 | 𝖆) → (𝖇 | 𝖆) → <a class="tref" href="./prelude/PreludeBase.html#Ordering">Ordering</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Ord_Either.compare">Ord_Either.compare</a>, <a class="fref" href="#Ord_Either.$lt$eq$gt">Ord_Either.&lt;=&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Bounded">Bounded</a> β, <a class="tref" href="./prelude/PreludeBase.html#Bounded">Bounded</a> α) ⇒ (β, α)</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Bounded">Bounded</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Bounded">Bounded</a> 𝖆) ⇒ (𝖇, 𝖆)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Bounded_$l$c$r.maxBound">Bounded_(,).maxBound</a>, <a class="fref" href="#Bounded_$l$c$r.minBound">Bounded_(,).minBound</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> β, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> γ, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> α) ⇒ (β, γ, α) → (β, γ, α) → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖈, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖆) ⇒ (𝖇, 𝖈, 𝖆) → (𝖇, 𝖈, 𝖆) → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Eq_$l$c$c$r.$excl$eq">Eq_(,,).!=</a>, <a class="fref" href="#Eq_$l$c$c$r.$eq$eq">Eq_(,,).==</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> β, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> γ, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> α) ⇒ (β, γ, α) → <a class="tref" href="./prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖈, <a class="tref" href="./prelude/PreludeBase.html#Eq">Eq</a> 𝖆) ⇒ (𝖇, 𝖈, 𝖆) → <a class="tref" href="./prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Eq_$l$c$c$r.hashCode">Eq_(,,).hashCode</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> γ, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ (β, γ, α) → (β, γ, α) → (β, γ, α)</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖈, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ (𝖇, 𝖈, 𝖆) → (𝖇, 𝖈, 𝖆) → (𝖇, 𝖈, 𝖆)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Ord_$l$c$c$r.min">Ord_(,,).min</a>, <a class="fref" href="#Ord_$l$c$c$r.max">Ord_(,,).max</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> γ, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ (β, γ, α) → (β, γ, α) → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖈, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ (𝖇, 𝖈, 𝖆) → (𝖇, 𝖈, 𝖆) → <a class="tref" href="./prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Ord_$l$c$c$r.$gt$eq">Ord_(,,).&gt;=</a>, <a class="fref" href="#Ord_$l$c$c$r.$lt">Ord_(,,).&lt;</a>, <a class="fref" href="#Ord_$l$c$c$r.$lt$eq">Ord_(,,).&lt;=</a>, <a class="fref" href="#Ord_$l$c$c$r.$gt">Ord_(,,).&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> β, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> γ, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> α) ⇒ (β, γ, α) → (β, γ, α) → <a class="tref" href="./prelude/PreludeBase.html#Ordering">Ordering</a></SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖈, <a class="tref" href="./prelude/PreludeBase.html#Ord">Ord</a> 𝖆) ⇒ (𝖇, 𝖈, 𝖆) → (𝖇, 𝖈, 𝖆) → <a class="tref" href="./prelude/PreludeBase.html#Ordering">Ordering</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Ord_$l$c$c$r.compare">Ord_(,,).compare</a>, <a class="fref" href="#Ord_$l$c$c$r.$lt$eq$gt">Ord_(,,).&lt;=&gt;</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Bounded">Bounded</a> β, <a class="tref" href="./prelude/PreludeBase.html#Bounded">Bounded</a> γ, <a class="tref" href="./prelude/PreludeBase.html#Bounded">Bounded</a> α) ⇒ (β, γ, α)</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="./prelude/PreludeBase.html#Bounded">Bounded</a> 𝖇, <a class="tref" href="./prelude/PreludeBase.html#Bounded">Bounded</a> 𝖈, <a class="tref" href="./prelude/PreludeBase.html#Bounded">Bounded</a> 𝖆) ⇒ (𝖇, 𝖈, 𝖆)</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Bounded_$l$c$c$r.maxBound">Bounded_(,,).maxBound</a>, <a class="fref" href="#Bounded_$l$c$c$r.minBound">Bounded_(,,).minBound</a></p>

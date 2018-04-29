@@ -1,0 +1,2432 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<META http-equiv="Content-Type" content="text/html;charset=utf-8">
+<TITLE>Interpreter.FregeInterpreter - frege documentation</TITLE>
+<style TYPE="text/css">
+body { font-family: helvetica, arial, sans-serif }
+pre { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
+h3  { font-weight: lighter }
+dt.func { background: rgb(95%, 95%, 80%); margin-top: 10px }
+dt.clas { background: rgb(80%, 95%, 95%); margin-top: 10px }
+dt.inst { background: rgb(95%, 90%, 95%); margin-top: 10px }
+dt.data { background: rgb(95%, 95%, 95%); margin-top: 10px }
+span.code { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
+span.unknown { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: red }
+a.fref { text-decoration: none; font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(30%, 30%, 0%) }
+a.tref { text-decoration: none; font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(40%, 0%,  40%) }
+</style>
+<BODY>
+<h1>
+Module <SPAN CLASS="code">Interpreter.FregeInterpreter</SPAN></h1>
+<p>
+Frege Interpreter</p>
+<h3>
+Imports</h3>
+<ul>
+<li>
+<div>
+import <a HREF="../compiler/Classes.html">Compiler.Classes</a> as Classes</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/common/Types.html">Compiler.common.Types</a> as CommonTypes</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/common/CompilerOptions.html">Compiler.common.CompilerOptions</a> as CompilerOptions</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/common/Desugar.html">Compiler.common.Desugar</a> as Desugar</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/common/Errors.html">Compiler.common.Errors</a> as E</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/passes/Easy.html">Compiler.passes.Easy</a> as EA</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/passes/Enter.html">Compiler.passes.Enter</a> as Enter</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/types/External.html">Compiler.types.External</a> as External</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/grammar/Frege.html">Compiler.grammar.Frege</a> as F</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/passes/Fields.html">Compiler.passes.Fields</a> as Fields</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/passes/Fix.html">Compiler.passes.Fix</a> as Fix</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/enums/Flags.html">Compiler.enums.Flags</a> as Flags</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/passes/GlobalLam.html">Compiler.passes.GlobalLam</a> as GL</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/GenMeta.html">Compiler.GenMeta</a> as GM</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/passes/GenCode.html">Compiler.passes.GenCode</a> as GenCode</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/types/Global.html">Compiler.types.Global</a> as Global</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/passes/Imp.html">Compiler.passes.Imp</a> as Imp</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/types/ImportDetails.html">Compiler.types.ImportDetails</a> as ImportDetails</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/passes/Instances.html">Compiler.passes.Instances</a> as Instances</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/types/JNames.html">Compiler.types.JNames</a> as JNames</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/common/JavaName.html">Compiler.common.JavaName</a> as JavaName</div>
+</li>
+<li>
+<div>
+import <a HREF="../control/arrow/Kleisli.html">Control.arrow.Kleisli</a> as Kleisli</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/grammar/Lexer.html">Compiler.grammar.Lexer</a> as L</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/passes/LetUnroll.html">Compiler.passes.LetUnroll</a> as LU</div>
+</li>
+<li>
+<div>
+import <a HREF="../data/List.html">Data.List</a> as List</div>
+</li>
+<li>
+<div>
+import <a HREF="../control/monad/trans/MonadIO.html">Control.monad.trans.MonadIO</a> as MonadIO</div>
+</li>
+<li>
+<div>
+import <a HREF="../control/monad/trans/MonadTrans.html">Control.monad.trans.MonadTrans</a> as MonadTrans</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/types/NSNames.html">Compiler.types.NSNames</a> as NSNames</div>
+</li>
+<li>
+<div>
+import <a HREF="../java/Net.html">Java.Net</a> as Net</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/classes/Nice.html">Compiler.classes.Nice</a> as Nice</div>
+</li>
+<li>
+<div>
+import <a HREF="../lib/PP.html">Lib.PP</a> as PP</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/types/Packs.html">Compiler.types.Packs</a> as Packs</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/types/Positions.html">Compiler.types.Positions</a> as Positions</div>
+</li>
+<li>
+<div>
+import <a HREF="../Prelude.html">frege.Prelude</a> as Prelude</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeArrays.html">Prelude.PreludeArrays</a> as PreludeArrays</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeDecimal.html">Prelude.PreludeDecimal</a> as PreludeDecimal</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as PreludeMonad</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeText.html">Prelude.PreludeText</a> as PreludeText</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/types/QNames.html">Compiler.types.QNames</a> as QNames</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/common/Resolve.html">Compiler.common.Resolve</a> as R</div>
+</li>
+<li>
+<div>
+import <a HREF="../control/monad/Reader.html">Control.monad.Reader</a> as Reader</div>
+</li>
+<li>
+<div>
+import <a HREF="../java/util/Regex.html">Java.util.Regex</a> as Regexp</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/passes/Strict.html">Compiler.passes.Strict</a> as SC</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/types/SNames.html">Compiler.types.SNames</a> as SNames</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/types/SourceDefinitions.html">Compiler.types.SourceDefinitions</a> as SourceDefinitions</div>
+</li>
+<li>
+<div>
+import <a HREF="../control/monad/State.html">Control.monad.State</a> as State</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/types/Symbols.html">Compiler.types.Symbols</a> as Symbols</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/Typecheck.html">Compiler.Typecheck</a> as TC</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/types/Targets.html">Compiler.types.Targets</a> as Targets</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/enums/TokenID.html">Compiler.enums.TokenID</a> as TokenID</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/types/Tokens.html">Compiler.types.Tokens</a> as Tokens</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/passes/Transdef.html">Compiler.passes.Transdef</a> as Transdef</div>
+</li>
+<li>
+<div>
+import <a HREF="../data/TreeMap.html">Data.TreeMap</a> as TreeMap</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/passes/TypeAlias.html">Compiler.passes.TypeAlias</a> as TypeAlias</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/types/Types.html">Compiler.types.Types</a> as Types</div>
+</li>
+<li>
+<div>
+import <a HREF="../ide/Utilities.html">Ide.Utilities</a> as Util</div>
+</li>
+</ul>
+<h3>
+Table of Content</h3>
+<ul class="data">
+<li>
+<div>
+<a HREF="#data">Definitions</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><b>type </b><a class="tref" href="#ByteArray">ByteArray</a>  = <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> <a class="tref" href="../java/Lang.html#Byte">Byte</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>type </b><a class="tref" href="#InterpreterState">InterpreterState</a>  = <a class="tref" href="../control/monad/State.html#StateT">StateT</a> (<a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a>) (<a class="tref" href="../control/monad/State.html#StateT">StateT</a> <a class="tref" href="../compiler/types/Global.html#Global">Global</a> (<a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a>))</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#HashMap"> </a> <a class="tref" href="#HashMap">HashMap</a> k v = <b>native </b>java.util.HashMap</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#Interpreter"> </a> <a class="tref" href="#Interpreter">Interpreter</a> result</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#InterpreterClassLoader"> </a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a> = <b>native </b>frege.interpreter.javasupport.InterpreterClassLoader</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#InterpreterConfig"> </a> <a class="tref" href="#InterpreterConfig">InterpreterConfig</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#InterpreterResult"> </a> <a class="tref" href="#InterpreterResult">InterpreterResult</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#JMap"> </a> <a class="tref" href="#JMap">JMap</a> k v = <b>native </b>java.util.Map</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#JavaCompilationInfo"> </a> <a class="tref" href="#JavaCompilationInfo">JavaCompilationInfo</a> = <b>native </b>frege.interpreter.javasupport.CompilationInfo</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#MemoryJavaCompiler"> </a> <a class="tref" href="#MemoryJavaCompiler">MemoryJavaCompiler</a> = <b>native </b>frege.interpreter.javasupport.MemoryJavaCompiler</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#Message"> </a> <a class="tref" href="#Message">Message</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#MessageType"> </a> <a class="tref" href="#MessageType">MessageType</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#Method"> </a> <a class="tref" href="#Method">Method</a> = <b>pure </b><b>native </b>java.lang.reflect.Method</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#SourceInfo"> </a> <a class="tref" href="#SourceInfo">SourceInfo</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#SourceType"> </a> <a class="tref" href="#SourceType">SourceType</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#createopts">createopts</a> ∷ <b>[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</b> → <b><a class="tref" href="../compiler/enums/Flags.html#Flags">Flags</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b>[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../compiler/types/Global.html#Options">Options</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#standardOptions">standardOptions</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../compiler/types/Global.html#Global">Global</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#javaSourceGen">javaSourceGen</a> ∷ <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="#Interpreter">Interpreter</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#javagen">javagen</a> ∷ <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="#Interpreter">Interpreter</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#typecheck">typecheck</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Interpreter">Interpreter</a> (<a class="tref" href="../compiler/types/Global.html#Global">Global</a>, <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="#SourceInfo">SourceInfo</a>)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#interpret">interpret</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Interpreter">Interpreter</a> <a class="tref" href="#InterpreterResult">InterpreterResult</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#run">run</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → (<b><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → [(<a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>), <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</b>) → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="#SourceInfo">SourceInfo</a>)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#browseModule">browseModule</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Interpreter">Interpreter</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> ([<a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a>], <a class="tref" href="../compiler/types/Global.html#Global">Global</a>))</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#browse">browse</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Interpreter">Interpreter</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> ([<a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a>], <a class="tref" href="../compiler/types/Global.html#Global">Global</a>))</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#typeof">typeof</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Interpreter">Interpreter</a> ([<a class="tref" href="#Message">Message</a>] | <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#javaSource">javaSource</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Interpreter">Interpreter</a> ([<a class="tref" href="#Message">Message</a>] | <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#docHelp">docHelp</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Interpreter">Interpreter</a> ([<a class="tref" href="#Message">Message</a>] | <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#removeDuplicateDefs">removeDuplicateDefs</a> ∷ [<a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a>] → <a class="tref" href="../compiler/types/Global.html#StG">StG</a> [<a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a>]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#symbolVar">symbolVar</a> ∷ <b><a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a></b> → <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#symbolClass">symbolClass</a> ∷ <b><a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a></b> → <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#findSourceType">findSourceType</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> <a class="tref" href="#SourceType">SourceType</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#isDefinitionOrExpr">isDefinitionOrExpr</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> <a class="tref" href="#SourceType">SourceType</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#interpreterCompilerEnv">interpreterCompilerEnv</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a></b> → <a class="tref" href="../compiler/enums/Flags.html#Flags">Flags</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../compiler/types/Global.html#Global">Global</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#runpass">runpass</a> ∷ <b>(<a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>), <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</b> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#browseSymbols">browseSymbols</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> [<a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a>]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#getEnv">getEnv</a> ∷ <b><a class="tref" href="../compiler/types/Global.html#Global">Global</a></b> → <b><a class="tref" href="../compiler/types/QNames.html#QName">QName</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../compiler/types/Global.html#Symtab">Symtab</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#outlineSymbols">outlineSymbols</a> ∷ <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#newLine">newLine</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#className">className</a> ∷ <b><a class="tref" href="../compiler/types/Global.html#Global">Global</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#noDocComment">noDocComment</a> ∷ <b><a class="tref" href="../compiler/types/Tokens.html#Token">Token</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#moduleDeclScript">moduleDeclScript</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#variableDeclScript">variableDeclScript</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#intercalateNewLine">intercalateNewLine</a> ∷ [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>] → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#buildScript">buildScript</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <b><a class="tref" href="#SourceType">SourceType</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#freshVarPrefix">freshVarPrefix</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#freshVarRegex">freshVarRegex</a> ∷ <a class="tref" href="../java/util/Regex.html#Regex">Regex</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#findUnusedVariableName">findUnusedVariableName</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#helpDoc">helpDoc</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#sNameToQName">sNameToQName</a> ∷ <b><a class="tref" href="../compiler/types/SNames.html#SName">SName</a></b> → <a class="tref" href="../compiler/types/Global.html#StG">StG</a> [<a class="tref" href="../compiler/types/QNames.html#QName">QName</a>]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#resolveSymbol">resolveSymbol</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../compiler/types/Global.html#StG">StG</a> [<a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a>]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#createSName">createSName</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../compiler/types/SNames.html#SName">SName</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#match">match</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../java/util/Regex.html#Regex">Regex</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> [<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#buildShowScript">buildShowScript</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <b><a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#openPrinter">openPrinter</a> ∷ <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#StringWriter">StringWriter</a> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#javaSourcePasses">javaSourcePasses</a> ∷ <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#StringWriter">StringWriter</a> → [(<a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>), <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#javagenPasses">javagenPasses</a> ∷ <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#StringWriter">StringWriter</a> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#MemoryJavaCompiler">MemoryJavaCompiler</a> → [(<a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>), <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#typecheckPasses">typecheckPasses</a> ∷ <a class="tref" href="#InterpreterConfig">InterpreterConfig</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → [(<a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>), <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#derivePass">derivePass</a> ∷ <a class="tref" href="../compiler/types/Global.html#StG">StG</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#javacPass">javacPass</a> ∷ <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#MemoryJavaCompiler">MemoryJavaCompiler</a> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#StringWriter">StringWriter</a> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#matching">matching</a> ∷ <b><a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a></b> → <a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#funcMatching">funcMatching</a> ∷ <a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a> → <a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#getSymbolType">getSymbolType</a> ∷ <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <b><a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#showSymbol">showSymbol</a> ∷ <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <b><a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#getSymbols">getSymbols</a> ∷ <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="../compiler/types/Global.html#Symtab">Symtab</a> → [<a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a>]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#iparsePass">iparsePass</a> ∷ (<b>[<a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a>]→<a class="tref" href="../compiler/types/Global.html#StG">StG</a> [<a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a>]</b>) → <a class="tref" href="../compiler/types/Global.html#StG">StG</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#interpreterPreludeImport">interpreterPreludeImport</a> ∷ <a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#preludeHidingImport">preludeHidingImport</a> ∷ <a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#transformDefs">transformDefs</a> ∷ <b><a class="tref" href="#InterpreterConfig">InterpreterConfig</a></b> → [<a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a>] → <a class="tref" href="../compiler/types/Global.html#StG">StG</a> [<a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a>]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#indent">indent</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#lexPass">lexPass</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#isVariable">isVariable</a> ∷ <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <b><a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#isIO">isIO</a> ∷ <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <b><a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#isString">isString</a> ∷ <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <b><a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#showThrowableCause">showThrowableCause</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Throwable">Throwable</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#showThrowableCause$tick">showThrowableCause'</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Throwable">Throwable</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#groupCount">groupCount</a> ∷ <b><a class="tref" href="../java/util/Regex.html#MatchResult">MatchResult</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#fieldValue">fieldValue</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#Object">Object</a>)&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#sandboxFieldValue">sandboxFieldValue</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#StringWriter">StringWriter</a></b> → <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#StringWriter">StringWriter</a></b> → <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#Object">Object</a>)&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#fieldValueWithRuntime">fieldValueWithRuntime</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#StringWriter">StringWriter</a></b> → <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#StringWriter">StringWriter</a></b> → <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#Object">Object</a>)&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#longToString">longToString</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#showNative">showNative</a> ∷ <b>a</b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#throwableCause">throwableCause</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Throwable">Throwable</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#Throwable">Throwable</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#split">split</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#trim">trim</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#asURLClassLoader">asURLClassLoader</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a></b> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="../java/Net.html#URLClassLoader">URLClassLoader</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#instance">Instances</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#MonadIO_Interpreter"> </a><a class="tref" href="../control/monad/trans/MonadIO.html#MonadIO">MonadIO</a> <a class="tref" href="#Interpreter">Interpreter</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Monad_Interpreter"> </a><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> <a class="tref" href="#Interpreter">Interpreter</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Show_Message"> </a><a class="tref" href="../prelude/PreludeText.html#Show">Show</a> <a class="tref" href="#Message">Message</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Show_MessageType"> </a><a class="tref" href="../prelude/PreludeText.html#Show">Show</a> <a class="tref" href="#MessageType">MessageType</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Show_SourceInfo"> </a><a class="tref" href="../prelude/PreludeText.html#Show">Show</a> <a class="tref" href="#SourceInfo">SourceInfo</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Show_SourceType"> </a><a class="tref" href="../prelude/PreludeText.html#Show">Show</a> <a class="tref" href="#SourceType">SourceType</a></SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#case">Functions and Values by Type</a></div>
+</li>
+</ul>
+<h2>
+<a NAME="data">Definitions</a></h2>
+<dl class="data">
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=InterpreterConfig> </a> <a class="tref" href="#InterpreterConfig">InterpreterConfig</a></SPAN></dt>
+<dd class="data">
+<h3>
+Constructors</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=InterpreterConfig.InterpreterConfig>InterpreterConfig</a> {predefs ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a>, compilerFlags ∷ <a class="tref" href="../compiler/enums/Flags.html#Flags">Flags</a>, useSandbox ∷ <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>}</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=InterpreterConfig.compilerFlags>compilerFlags</a> ∷ <b><a class="tref" href="#InterpreterConfig">InterpreterConfig</a></b> → <a class="tref" href="../compiler/enums/Flags.html#Flags">Flags</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">compilerFlags</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=InterpreterConfig.initialState>initialState</a> ∷ <a class="tref" href="#InterpreterConfig">InterpreterConfig</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=InterpreterConfig.predefs>predefs</a> ∷ <b><a class="tref" href="#InterpreterConfig">InterpreterConfig</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">predefs</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=InterpreterConfig.useSandbox>useSandbox</a> ∷ <b><a class="tref" href="#InterpreterConfig">InterpreterConfig</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">useSandbox</SPAN></p>
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>type </b><a name=InterpreterState>InterpreterState</a>  = <a class="tref" href="../control/monad/State.html#StateT">StateT</a> (<a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a>) (<a class="tref" href="../control/monad/State.html#StateT">StateT</a> <a class="tref" href="../compiler/types/Global.html#Global">Global</a> (<a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a>))</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=Interpreter> </a> <a class="tref" href="#Interpreter">Interpreter</a> result</SPAN></dt>
+<dd class="data">
+<h3>
+Constructors</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Interpreter.Interpreter>Interpreter</a> {un ∷ <a class="tref" href="../control/monad/Reader.html#ReaderT">ReaderT</a> <a class="tref" href="#InterpreterState">InterpreterState</a> <a class="tref" href="#InterpreterConfig">InterpreterConfig</a> result}</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Interpreter.ask>ask</a> ∷ <a class="tref" href="#Interpreter">Interpreter</a> <a class="tref" href="#InterpreterConfig">InterpreterConfig</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Interpreter.get>get</a> ∷ <a class="tref" href="#Interpreter">Interpreter</a> (<a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a>)</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Interpreter.getCompilerState>getCompilerState</a> ∷ <a class="tref" href="#Interpreter">Interpreter</a> <a class="tref" href="../compiler/types/Global.html#Global">Global</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Interpreter.modify>modify</a> ∷ (<b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a>→<a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a></b>) → <a class="tref" href="#Interpreter">Interpreter</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Interpreter.put>put</a> ∷ <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a> → <a class="tref" href="#Interpreter">Interpreter</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Interpreter.putCompilerState>putCompilerState</a> ∷ <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="#Interpreter">Interpreter</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Interpreter.run>run</a> ∷ <b><a class="tref" href="#Interpreter">Interpreter</a> result</b> → <a class="tref" href="#InterpreterConfig">InterpreterConfig</a> → <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (result, <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a>)</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Interpreter.un>un</a> ∷ <b><a class="tref" href="#Interpreter">Interpreter</a> α</b> → <a class="tref" href="../control/monad/Reader.html#ReaderT">ReaderT</a> <a class="tref" href="#InterpreterState">InterpreterState</a> <a class="tref" href="#InterpreterConfig">InterpreterConfig</a> α</SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">un</SPAN></p>
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=createopts>createopts</a> ∷ <b>[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</b> → <b><a class="tref" href="../compiler/enums/Flags.html#Flags">Flags</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b>[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../compiler/types/Global.html#Options">Options</a></SPAN></dt>
+<dd class="data">
+<p>
+utility function to create <a class="tref" href="../compiler/types/Global.html#Options">Options</a> data structure   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=standardOptions>standardOptions</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../compiler/types/Global.html#Global">Global</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=InterpreterResult> </a> <a class="tref" href="#InterpreterResult">InterpreterResult</a></SPAN></dt>
+<dd class="data">
+<h3>
+Constructors</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=InterpreterResult.Failure>Failure</a> [<a class="tref" href="#Message">Message</a>]</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=InterpreterResult.Success>Success</a> {sourceRepr ∷ <a class="tref" href="#SourceInfo">SourceInfo</a>, compilerState ∷ <a class="tref" href="../compiler/types/Global.html#Global">Global</a>}</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=InterpreterResult.compilerState>compilerState</a> ∷ <b><a class="tref" href="#InterpreterResult">InterpreterResult</a></b> → <a class="tref" href="../compiler/types/Global.html#Global">Global</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">compilerState</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=InterpreterResult.sourceRepr>sourceRepr</a> ∷ <b><a class="tref" href="#InterpreterResult">InterpreterResult</a></b> → <a class="tref" href="#SourceInfo">SourceInfo</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">sourceRepr</SPAN></p>
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=javaSourceGen>javaSourceGen</a> ∷ <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="#Interpreter">Interpreter</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=javagen>javagen</a> ∷ <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="#Interpreter">Interpreter</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=typecheck>typecheck</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Interpreter">Interpreter</a> (<a class="tref" href="../compiler/types/Global.html#Global">Global</a>, <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="#SourceInfo">SourceInfo</a>)</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=interpret>interpret</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Interpreter">Interpreter</a> <a class="tref" href="#InterpreterResult">InterpreterResult</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=run>run</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → (<b><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → [(<a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>), <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</b>) → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="#SourceInfo">SourceInfo</a>)</SPAN></dt>
+<dd class="data">
+<p>
+<a class="fref" href="#run">run</a> all passes, one after another until one of them returns an error</p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=browseModule>browseModule</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Interpreter">Interpreter</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> ([<a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a>], <a class="tref" href="../compiler/types/Global.html#Global">Global</a>))</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=browse>browse</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Interpreter">Interpreter</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> ([<a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a>], <a class="tref" href="../compiler/types/Global.html#Global">Global</a>))</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=typeof>typeof</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Interpreter">Interpreter</a> ([<a class="tref" href="#Message">Message</a>] | <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=javaSource>javaSource</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Interpreter">Interpreter</a> ([<a class="tref" href="#Message">Message</a>] | <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=docHelp>docHelp</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Interpreter">Interpreter</a> ([<a class="tref" href="#Message">Message</a>] | <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=removeDuplicateDefs>removeDuplicateDefs</a> ∷ [<a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a>] → <a class="tref" href="../compiler/types/Global.html#StG">StG</a> [<a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a>]</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=MessageType> </a> <a class="tref" href="#MessageType">MessageType</a></SPAN></dt>
+<dd class="data">
+<h3>
+Constructors</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=MessageType.ERROR>ERROR</a> </SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=MessageType.HINT>HINT</a> </SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=MessageType.INFO>INFO</a> </SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=MessageType.WARNING>WARNING</a> </SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=MessageType.translateCompilerMsgType>translateCompilerMsgType</a> ∷ <b><a class="tref" href="../compiler/types/Global.html#Severity">Severity</a></b> → <a class="tref" href="#MessageType">MessageType</a></SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=Message> </a> <a class="tref" href="#Message">Message</a></SPAN></dt>
+<dd class="data">
+<h3>
+Constructors</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Message.Message>Message</a> {pos ∷ <a class="tref" href="../compiler/types/Positions.html#Position">Position</a>, msgType ∷ <a class="tref" href="#MessageType">MessageType</a>, text ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a>}</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Message.error>error</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Message">Message</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Message.fromCompilerMessage>fromCompilerMessage</a> ∷ <b><a class="tref" href="../compiler/types/Global.html#Message">Global.Message</a></b> → <a class="tref" href="#Message">Message</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Message.fromGlobal>fromGlobal</a> ∷ <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → [<a class="tref" href="#Message">Message</a>]</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Message.hint>hint</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Message">Message</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Message.info>info</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Message">Message</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Message.msgType>msgType</a> ∷ <b><a class="tref" href="#Message">Message</a></b> → <a class="tref" href="#MessageType">MessageType</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">msgType</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Message.pos>pos</a> ∷ <b><a class="tref" href="#Message">Message</a></b> → <a class="tref" href="../compiler/types/Positions.html#Position">Position</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">pos</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Message.text>text</a> ∷ <b><a class="tref" href="#Message">Message</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">text</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Message.warning>warning</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Message">Message</a></SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=symbolVar>symbolVar</a> ∷ <b><a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a></b> → <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=symbolClass>symbolClass</a> ∷ <b><a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a></b> → <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=findSourceType>findSourceType</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> <a class="tref" href="#SourceType">SourceType</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=isDefinitionOrExpr>isDefinitionOrExpr</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> <a class="tref" href="#SourceType">SourceType</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=interpreterCompilerEnv>interpreterCompilerEnv</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a></b> → <a class="tref" href="../compiler/enums/Flags.html#Flags">Flags</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../compiler/types/Global.html#Global">Global</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=runpass>runpass</a> ∷ <b>(<a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>), <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</b> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=browseSymbols>browseSymbols</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> [<a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a>]</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=getEnv>getEnv</a> ∷ <b><a class="tref" href="../compiler/types/Global.html#Global">Global</a></b> → <b><a class="tref" href="../compiler/types/QNames.html#QName">QName</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../compiler/types/Global.html#Symtab">Symtab</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=outlineSymbols>outlineSymbols</a> ∷ <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=newLine>newLine</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=className>className</a> ∷ <b><a class="tref" href="../compiler/types/Global.html#Global">Global</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=SourceType> </a> <a class="tref" href="#SourceType">SourceType</a></SPAN></dt>
+<dd class="data">
+<h3>
+Constructors</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=SourceType.DefinitionsSource>DefinitionsSource</a> </SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=SourceType.ExpressionSource>ExpressionSource</a> </SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=SourceType.ModuleSource>ModuleSource</a> </SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=SourceInfo> </a> <a class="tref" href="#SourceInfo">SourceInfo</a></SPAN></dt>
+<dd class="data">
+<h3>
+Constructors</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=SourceInfo.Definitions>Definitions</a> [<a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a>]</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=SourceInfo.Expression>Expression</a> (<a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a>)</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=SourceInfo.Module>Module</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=noDocComment>noDocComment</a> ∷ <b><a class="tref" href="../compiler/types/Tokens.html#Token">Token</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=moduleDeclScript>moduleDeclScript</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=variableDeclScript>variableDeclScript</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=intercalateNewLine>intercalateNewLine</a> ∷ [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>] → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=buildScript>buildScript</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <b><a class="tref" href="#SourceType">SourceType</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=freshVarPrefix>freshVarPrefix</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=freshVarRegex>freshVarRegex</a> ∷ <a class="tref" href="../java/util/Regex.html#Regex">Regex</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=findUnusedVariableName>findUnusedVariableName</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=helpDoc>helpDoc</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=sNameToQName>sNameToQName</a> ∷ <b><a class="tref" href="../compiler/types/SNames.html#SName">SName</a></b> → <a class="tref" href="../compiler/types/Global.html#StG">StG</a> [<a class="tref" href="../compiler/types/QNames.html#QName">QName</a>]</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=resolveSymbol>resolveSymbol</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../compiler/types/Global.html#StG">StG</a> [<a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a>]</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=createSName>createSName</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../compiler/types/SNames.html#SName">SName</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=match>match</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../java/util/Regex.html#Regex">Regex</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> [<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=buildShowScript>buildShowScript</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <b><a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=openPrinter>openPrinter</a> ∷ <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#StringWriter">StringWriter</a> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=javaSourcePasses>javaSourcePasses</a> ∷ <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#StringWriter">StringWriter</a> → [(<a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>), <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=javagenPasses>javagenPasses</a> ∷ <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#StringWriter">StringWriter</a> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#MemoryJavaCompiler">MemoryJavaCompiler</a> → [(<a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>), <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=typecheckPasses>typecheckPasses</a> ∷ <a class="tref" href="#InterpreterConfig">InterpreterConfig</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → [(<a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>), <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=derivePass>derivePass</a> ∷ <a class="tref" href="../compiler/types/Global.html#StG">StG</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=javacPass>javacPass</a> ∷ <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#MemoryJavaCompiler">MemoryJavaCompiler</a> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#StringWriter">StringWriter</a> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=matching>matching</a> ∷ <b><a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a></b> → <a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=funcMatching>funcMatching</a> ∷ <a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a> → <a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=getSymbolType>getSymbolType</a> ∷ <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <b><a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=showSymbol>showSymbol</a> ∷ <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <b><a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=getSymbols>getSymbols</a> ∷ <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="../compiler/types/Global.html#Symtab">Symtab</a> → [<a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a>]</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=iparsePass>iparsePass</a> ∷ (<b>[<a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a>]→<a class="tref" href="../compiler/types/Global.html#StG">StG</a> [<a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a>]</b>) → <a class="tref" href="../compiler/types/Global.html#StG">StG</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=interpreterPreludeImport>interpreterPreludeImport</a> ∷ <a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=preludeHidingImport>preludeHidingImport</a> ∷ <a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=transformDefs>transformDefs</a> ∷ <b><a class="tref" href="#InterpreterConfig">InterpreterConfig</a></b> → [<a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a>] → <a class="tref" href="../compiler/types/Global.html#StG">StG</a> [<a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a>]</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=indent>indent</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=lexPass>lexPass</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=isVariable>isVariable</a> ∷ <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <b><a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=isIO>isIO</a> ∷ <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <b><a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=isString>isString</a> ∷ <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <b><a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=showThrowableCause>showThrowableCause</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Throwable">Throwable</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=showThrowableCause$tick>showThrowableCause'</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Throwable">Throwable</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=MemoryJavaCompiler> </a> <a class="tref" href="#MemoryJavaCompiler">MemoryJavaCompiler</a> = <b>native </b>frege.interpreter.javasupport.MemoryJavaCompiler</SPAN></dt>
+<dd class="data">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=MemoryJavaCompiler.classLoader>classLoader</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#MemoryJavaCompiler">MemoryJavaCompiler</a></b> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> s <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a><br><b>native </b>classLoader</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=MemoryJavaCompiler.compile>compile</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#MemoryJavaCompiler">MemoryJavaCompiler</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> s <a class="tref" href="#JavaCompilationInfo">JavaCompilationInfo</a><br><b>native </b>compile</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=MemoryJavaCompiler.$new>new</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a></b> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> s <a class="tref" href="#MemoryJavaCompiler">MemoryJavaCompiler</a><br><b>native </b>new</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=InterpreterClassLoader> </a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a> = <b>native </b>frege.interpreter.javasupport.InterpreterClassLoader</SPAN></dt>
+<dd class="data">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=InterpreterClassLoader.classes>classes</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a></b> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> (<a class="tref" href="#JMap">JMap</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a> <a class="tref" href="#ByteArray">ByteArray</a>)<br><b>native </b>classes</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=InterpreterClassLoader.$new>new</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> s <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/Lang.html#ClassLoader">ClassLoader</a> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s (<a class="tref" href="#JMap">JMap</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a> <a class="tref" href="#ByteArray">ByteArray</a>) → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> s <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/Lang.html#ClassLoader">ClassLoader</a> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> (<a class="tref" href="#JMap">JMap</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a> <a class="tref" href="#ByteArray">ByteArray</a>) → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a><br><b>native </b>new</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=InterpreterClassLoader.newα>newα</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></b> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> s <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a><br><b>native </b>new&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#InterpreterClassLoader.$new">new</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=InterpreterClassLoader.newβ>newβ</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/Lang.html#ClassLoader">ClassLoader</a></b> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a><br><b>native </b>new&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#InterpreterClassLoader.$new">new</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=InterpreterClassLoader.newγ>newγ</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s (<a class="tref" href="#JMap">JMap</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a> <a class="tref" href="#ByteArray">ByteArray</a>)</b> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> s <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a><br><b>native </b>new&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#InterpreterClassLoader.$new">new</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=InterpreterClassLoader.newδ>newδ</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/Lang.html#ClassLoader">ClassLoader</a></b> → <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> (<a class="tref" href="#JMap">JMap</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a> <a class="tref" href="#ByteArray">ByteArray</a>)</b> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a><br><b>native </b>new&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#InterpreterClassLoader.$new">new</a></SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=JavaCompilationInfo> </a> <a class="tref" href="#JavaCompilationInfo">JavaCompilationInfo</a> = <b>native </b>frege.interpreter.javasupport.CompilationInfo</SPAN></dt>
+<dd class="data">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=JavaCompilationInfo.errorsAsString>errorsAsString</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#JavaCompilationInfo">JavaCompilationInfo</a></b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#String">String</a><br><b>native </b>errorsAsString</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=JavaCompilationInfo.isSuccess>isSuccess</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#JavaCompilationInfo">JavaCompilationInfo</a></b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a><br><b>native </b>isSuccess</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>type </b><a name=ByteArray>ByteArray</a>  = <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> <a class="tref" href="../java/Lang.html#Byte">Byte</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=JMap> </a> <a class="tref" href="#JMap">JMap</a> k v = <b>native </b>java.util.Map</SPAN></dt>
+<dd class="data">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=JMap.get>get</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s (<a class="tref" href="#JMap">JMap</a> k v)</b> → <b>k</b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> v)<br><b>native </b>get</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=JMap.isEmpty>isEmpty</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s (<a class="tref" href="#JMap">JMap</a> k v)</b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a><br><b>native </b>isEmpty</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=JMap.put>put</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s (<a class="tref" href="#JMap">JMap</a> k v)</b> → <b>k</b> → <b>v</b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a><br><b>native </b>put</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=JMap.putAll>putAll</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s (<a class="tref" href="#JMap">JMap</a> k v)</b> → <b><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s (<a class="tref" href="#JMap">JMap</a> k v)</b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a><br><b>native </b>putAll</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=HashMap> </a> <a class="tref" href="#HashMap">HashMap</a> k v = <b>native </b>java.util.HashMap</SPAN></dt>
+<dd class="data">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=HashMap.$new>new</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></b> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> s (<a class="tref" href="#HashMap">HashMap</a> k v)<br><b>native </b>new</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=groupCount>groupCount</a> ∷ <b><a class="tref" href="../java/util/Regex.html#MatchResult">MatchResult</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a><br><b>pure </b><b>native </b>groupCount</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=fieldValue>fieldValue</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#Object">Object</a>)<br><b>native </b>frege.interpreter.javasupport.JavaUtils.fieldValue</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=sandboxFieldValue>sandboxFieldValue</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#StringWriter">StringWriter</a></b> → <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#StringWriter">StringWriter</a></b> → <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#Object">Object</a>)<br><b>native </b>frege.interpreter.javasupport.JavaUtils.sandboxFieldValue</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=fieldValueWithRuntime>fieldValueWithRuntime</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#StringWriter">StringWriter</a></b> → <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#StringWriter">StringWriter</a></b> → <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#Object">Object</a>)<br><b>native </b>frege.interpreter.javasupport.JavaUtils.fieldValueWithRuntime</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=longToString>longToString</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a><br><b>pure </b><b>native </b>Long.toString</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=showNative>showNative</a> ∷ <b>a</b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a><br><b>pure </b><b>native </b>String.valueOf</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=throwableCause>throwableCause</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Throwable">Throwable</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#Throwable">Throwable</a><br><b>pure </b><b>native </b>getCause</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=Method> </a> <a class="tref" href="#Method">Method</a> = <b>pure </b><b>native </b>java.lang.reflect.Method</SPAN></dt>
+<dd class="data">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Method.getName>getName</a> ∷ <b><a class="tref" href="#Method">Method</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a><br><b>pure </b><b>native </b>getName</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=split>split</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a><br><b>pure </b><b>native </b>split</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=trim>trim</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a><br><b>pure </b><b>native </b>trim</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=asURLClassLoader>asURLClassLoader</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a></b> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="../java/Net.html#URLClassLoader">URLClassLoader</a><br><b>native </b>(java.net.URLClassLoader)</SPAN></dt>
+<dd class="data">
+</dd>
+</dl>
+<h2>
+<a NAME="instance">Instances</a></h2>
+<dl class="inst">
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=MonadIO_Interpreter> </a><a class="tref" href="../control/monad/trans/MonadIO.html#MonadIO">MonadIO</a> <a class="tref" href="#Interpreter">Interpreter</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=MonadIO_Interpreter.liftIO>liftIO</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> α → <a class="tref" href="#Interpreter">Interpreter</a> α</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Monad_Interpreter> </a><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> <a class="tref" href="#Interpreter">Interpreter</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_Interpreter.$star$gt>*&gt;</a> ∷ <a class="tref" href="#Interpreter">Interpreter</a> α → <a class="tref" href="#Interpreter">Interpreter</a> β → <a class="tref" href="#Interpreter">Interpreter</a> β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeMonad.html#Applicative.$star$gt">Applicative.*&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_Interpreter.$lt$star>&lt;*</a> ∷ <a class="tref" href="#Interpreter">Interpreter</a> α → <a class="tref" href="#Interpreter">Interpreter</a> β → <a class="tref" href="#Interpreter">Interpreter</a> α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeMonad.html#Applicative.$lt$star">Applicative.&lt;*</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_Interpreter.$lt$star$gt>&lt;*&gt;</a> ∷ <a class="tref" href="#Interpreter">Interpreter</a> (α→β) → <a class="tref" href="#Interpreter">Interpreter</a> α → <a class="tref" href="#Interpreter">Interpreter</a> β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad.$lt$star$gt">Monad.&lt;*&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_Interpreter.$gt$gt>&gt;&gt;</a> ∷ <b><a class="tref" href="#Interpreter">Interpreter</a> α</b> → <a class="tref" href="#Interpreter">Interpreter</a> β → <a class="tref" href="#Interpreter">Interpreter</a> β<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad.$gt$gt">Monad.&gt;&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_Interpreter.$gt$gt$eq>&gt;&gt;=</a> ∷ <b><a class="tref" href="#Interpreter">Interpreter</a> α</b> → (<b>α → <a class="tref" href="#Interpreter">Interpreter</a> β</b>) → <a class="tref" href="#Interpreter">Interpreter</a> β<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_Interpreter.fmap>fmap</a> ∷ (<b>α → β</b>) → <b><a class="tref" href="#Interpreter">Interpreter</a> α</b> → <a class="tref" href="#Interpreter">Interpreter</a> β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad.fmap">Monad.fmap</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_Interpreter.join>join</a> ∷ <b><a class="tref" href="#Interpreter">Interpreter</a> (<a class="tref" href="#Interpreter">Interpreter</a> α)</b> → <a class="tref" href="#Interpreter">Interpreter</a> α</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad.join">Monad.join</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_Interpreter.pure>pure</a> ∷ α → <a class="tref" href="#Interpreter">Interpreter</a> α</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Show_Message> </a><a class="tref" href="../prelude/PreludeText.html#Show">Show</a> <a class="tref" href="#Message">Message</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Message.display>display</a> ∷ <b><a class="tref" href="#Message">Message</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.display">Show.display</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Message.show>show</a> ∷ <b><a class="tref" href="#Message">Message</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Message.showChars>showChars</a> ∷ <a class="tref" href="#Message">Message</a> → [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showChars">Show.showChars</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Message.showList>showList</a> ∷ <b>[<a class="tref" href="#Message">Message</a>]</b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showList">Show.showList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Message.showsPrec>showsPrec</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <b><a class="tref" href="#Message">Message</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsPrec">Show.showsPrec</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Message.showsub>showsub</a> ∷ <b><a class="tref" href="#Message">Message</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsub">Show.showsub</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Show_MessageType> </a><a class="tref" href="../prelude/PreludeText.html#Show">Show</a> <a class="tref" href="#MessageType">MessageType</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_MessageType.display>display</a> ∷ <b><a class="tref" href="#MessageType">MessageType</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.display">Show.display</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_MessageType.show>show</a> ∷ <b><a class="tref" href="#MessageType">MessageType</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+Function generated for derived instance.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_MessageType.showChars>showChars</a> ∷ <a class="tref" href="#MessageType">MessageType</a> → [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showChars">Show.showChars</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_MessageType.showList>showList</a> ∷ <b>[<a class="tref" href="#MessageType">MessageType</a>]</b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showList">Show.showList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_MessageType.showsPrec>showsPrec</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <b><a class="tref" href="#MessageType">MessageType</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsPrec">Show.showsPrec</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_MessageType.showsub>showsub</a> ∷ <b><a class="tref" href="#MessageType">MessageType</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+Function generated for derived instance.</p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Show_SourceInfo> </a><a class="tref" href="../prelude/PreludeText.html#Show">Show</a> <a class="tref" href="#SourceInfo">SourceInfo</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_SourceInfo.display>display</a> ∷ <b><a class="tref" href="#SourceInfo">SourceInfo</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.display">Show.display</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_SourceInfo.show>show</a> ∷ <b><a class="tref" href="#SourceInfo">SourceInfo</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_SourceInfo.showChars>showChars</a> ∷ <a class="tref" href="#SourceInfo">SourceInfo</a> → [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showChars">Show.showChars</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_SourceInfo.showList>showList</a> ∷ <b>[<a class="tref" href="#SourceInfo">SourceInfo</a>]</b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showList">Show.showList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_SourceInfo.showsPrec>showsPrec</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <b><a class="tref" href="#SourceInfo">SourceInfo</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsPrec">Show.showsPrec</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_SourceInfo.showsub>showsub</a> ∷ <b><a class="tref" href="#SourceInfo">SourceInfo</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsub">Show.showsub</a></p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Show_SourceType> </a><a class="tref" href="../prelude/PreludeText.html#Show">Show</a> <a class="tref" href="#SourceType">SourceType</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_SourceType.display>display</a> ∷ <b><a class="tref" href="#SourceType">SourceType</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.display">Show.display</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_SourceType.show>show</a> ∷ <b><a class="tref" href="#SourceType">SourceType</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+Function generated for derived instance.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_SourceType.showChars>showChars</a> ∷ <a class="tref" href="#SourceType">SourceType</a> → [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showChars">Show.showChars</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_SourceType.showList>showList</a> ∷ <b>[<a class="tref" href="#SourceType">SourceType</a>]</b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showList">Show.showList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_SourceType.showsPrec>showsPrec</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <b><a class="tref" href="#SourceType">SourceType</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsPrec">Show.showsPrec</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_SourceType.showsub>showsub</a> ∷ <b><a class="tref" href="#SourceType">SourceType</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+Function generated for derived instance.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<h2>
+<a NAME="case">Functions and Values by Type</a></h2>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>), <a class="tref" href="../prelude/PreludeBase.html#String">String</a>) → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#runpass">runpass</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a>→<a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a>) → <a class="tref" href="#Interpreter">Interpreter</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Interpreter.modify">Interpreter.modify</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">([<a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a>]→<a class="tref" href="../compiler/types/Global.html#StG">StG</a> [<a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a>]) → <a class="tref" href="../compiler/types/Global.html#StG">StG</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#iparsePass">iparsePass</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a> → <a class="tref" href="../compiler/enums/Flags.html#Flags">Flags</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../compiler/types/Global.html#Global">Global</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#interpreterCompilerEnv">interpreterCompilerEnv</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> (<a class="tref" href="#JMap">JMap</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a> <a class="tref" href="#ByteArray">ByteArray</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#InterpreterClassLoader.classes">InterpreterClassLoader.classes</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="../java/Net.html#URLClassLoader">URLClassLoader</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#asURLClassLoader">asURLClassLoader</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../compiler/types/Global.html#Global">Global</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#standardOptions">standardOptions</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a> → <a class="tref" href="#Interpreter">Interpreter</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Interpreter.put">Interpreter.put</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#MemoryJavaCompiler">MemoryJavaCompiler</a> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#StringWriter">StringWriter</a> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#javacPass">javacPass</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#StringWriter">StringWriter</a> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#MemoryJavaCompiler">MemoryJavaCompiler</a> → [(<a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>), <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#javagenPasses">javagenPasses</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#StringWriter">StringWriter</a> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#openPrinter">openPrinter</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#StringWriter">StringWriter</a> → [(<a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>), <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#javaSourcePasses">javaSourcePasses</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/Lang.html#ClassLoader">ClassLoader</a> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> (<a class="tref" href="#JMap">JMap</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a> <a class="tref" href="#ByteArray">ByteArray</a>) → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#InterpreterClassLoader.newδ">InterpreterClassLoader.newδ</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/Lang.html#ClassLoader">ClassLoader</a> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#InterpreterClassLoader.newβ">InterpreterClassLoader.newβ</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a> → <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#symbolClass">symbolClass</a>, <a class="fref" href="#symbolVar">symbolVar</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a> → <a class="tref" href="#SourceInfo">SourceInfo</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#SourceInfo.Expression">SourceInfo.Expression</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../compiler/enums/Flags.html#Flags">Flags</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a> → <a class="tref" href="#InterpreterConfig">InterpreterConfig</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#InterpreterConfig.InterpreterConfig">InterpreterConfig.InterpreterConfig</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → (<a class="tref" href="../prelude/PreludeBase.html#String">String</a> → [(<a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>), <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]) → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="#SourceInfo">SourceInfo</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#run">run</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#Object">Object</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#fieldValue">fieldValue</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#StringWriter">StringWriter</a> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#StringWriter">StringWriter</a> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#Object">Object</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#fieldValueWithRuntime">fieldValueWithRuntime</a>, <a class="fref" href="#sandboxFieldValue">sandboxFieldValue</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> <a class="tref" href="#SourceType">SourceType</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#findSourceType">findSourceType</a>, <a class="fref" href="#isDefinitionOrExpr">isDefinitionOrExpr</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeArrays.html#JArray">JArray</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#split">split</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#findUnusedVariableName">findUnusedVariableName</a>, <a class="fref" href="#variableDeclScript">variableDeclScript</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#SourceType">SourceType</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#buildScript">buildScript</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../java/util/Regex.html#Regex">Regex</a> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> [<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#match">match</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#buildShowScript">buildShowScript</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#lexPass">lexPass</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> [<a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#browseSymbols">browseSymbols</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#helpDoc">helpDoc</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../compiler/types/Global.html#StG">StG</a> [<a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#resolveSymbol">resolveSymbol</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Interpreter">Interpreter</a> (<a class="tref" href="../compiler/types/Global.html#Global">Global</a>, <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="#SourceInfo">SourceInfo</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#typecheck">typecheck</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Interpreter">Interpreter</a> ([<a class="tref" href="#Message">Message</a>] | <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#docHelp">docHelp</a>, <a class="fref" href="#javaSource">javaSource</a>, <a class="fref" href="#typeof">typeof</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Interpreter">Interpreter</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> ([<a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a>], <a class="tref" href="../compiler/types/Global.html#Global">Global</a>))</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#browse">browse</a>, <a class="fref" href="#browseModule">browseModule</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Interpreter">Interpreter</a> <a class="tref" href="#InterpreterResult">InterpreterResult</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#interpret">interpret</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#moduleDeclScript">moduleDeclScript</a>, <a class="fref" href="#trim">trim</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../compiler/types/SNames.html#SName">SName</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#createSName">createSName</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Message">Message</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Message.warning">Message.warning</a>, <a class="fref" href="#Message.info">Message.info</a>, <a class="fref" href="#Message.hint">Message.hint</a>, <a class="fref" href="#Message.error">Message.error</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#SourceInfo">SourceInfo</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#SourceInfo.Module">SourceInfo.Module</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">[<a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a>] → <a class="tref" href="#SourceInfo">SourceInfo</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#SourceInfo.Definitions">SourceInfo.Definitions</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>] → <a class="tref" href="../compiler/enums/Flags.html#Flags">Flags</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>] → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../compiler/types/Global.html#Options">Options</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#createopts">createopts</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">[<a class="tref" href="../prelude/PreludeBase.html#String">String</a>] → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#intercalateNewLine">intercalateNewLine</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">[<a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a>] → <a class="tref" href="../compiler/types/Global.html#StG">StG</a> [<a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#removeDuplicateDefs">removeDuplicateDefs</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">[<a class="tref" href="#Message">Message</a>] → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_Message.showList">Show_Message.showList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">[<a class="tref" href="#Message">Message</a>] → <a class="tref" href="#InterpreterResult">InterpreterResult</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#InterpreterResult.Failure">InterpreterResult.Failure</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">[<a class="tref" href="#MessageType">MessageType</a>] → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_MessageType.showList">Show_MessageType.showList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">[<a class="tref" href="#SourceInfo">SourceInfo</a>] → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_SourceInfo.showList">Show_SourceInfo.showList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">[<a class="tref" href="#SourceType">SourceType</a>] → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_SourceType.showList">Show_SourceType.showList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="../compiler/types/Global.html#Symtab">Symtab</a> → [<a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#getSymbols">getSymbols</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#getSymbolType">getSymbolType</a>, <a class="fref" href="#showSymbol">showSymbol</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#isIO">isIO</a>, <a class="fref" href="#isString">isString</a>, <a class="fref" href="#isVariable">isVariable</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="../compiler/types/QNames.html#QName">QName</a> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../compiler/types/Global.html#Symtab">Symtab</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#getEnv">getEnv</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="#Interpreter">Interpreter</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#javaSourceGen">javaSourceGen</a>, <a class="fref" href="#javagen">javagen</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="#Interpreter">Interpreter</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Interpreter.putCompilerState">Interpreter.putCompilerState</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#className">className</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/Global.html#Global">Global</a> → [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#outlineSymbols">outlineSymbols</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/Global.html#Global">Global</a> → [<a class="tref" href="#Message">Message</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Message.fromGlobal">Message.fromGlobal</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/Global.html#Message">Global.Message</a> → <a class="tref" href="#Message">Message</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Message.fromCompilerMessage">Message.fromCompilerMessage</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/Global.html#Severity">Severity</a> → <a class="tref" href="#MessageType">MessageType</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#MessageType.translateCompilerMsgType">MessageType.translateCompilerMsgType</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/Positions.html#Position">Position</a> → <a class="tref" href="#MessageType">MessageType</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Message">Message</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Message.Message">Message.Message</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/SNames.html#SName">SName</a> → <a class="tref" href="../compiler/types/Global.html#StG">StG</a> [<a class="tref" href="../compiler/types/QNames.html#QName">QName</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#sNameToQName">sNameToQName</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a> → <a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#funcMatching">funcMatching</a>, <a class="fref" href="#matching">matching</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/Tokens.html#Token">Token</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#noDocComment">noDocComment</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#InterpreterConfig">InterpreterConfig</a> → (<a class="tref" href="../compiler/enums/Flags.html#Flags">Flags</a>→<a class="tref" href="../compiler/enums/Flags.html#Flags">Flags</a>) → <a class="tref" href="#InterpreterConfig">InterpreterConfig</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#InterpreterConfig.chg$compilerFlags">InterpreterConfig.chg$compilerFlags</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#InterpreterConfig">InterpreterConfig</a> → (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>→<a class="tref" href="../prelude/PreludeBase.html#String">String</a>) → <a class="tref" href="#InterpreterConfig">InterpreterConfig</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#InterpreterConfig.chg$predefs">InterpreterConfig.chg$predefs</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#InterpreterConfig">InterpreterConfig</a> → (<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>→<a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>) → <a class="tref" href="#InterpreterConfig">InterpreterConfig</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#InterpreterConfig.chg$useSandbox">InterpreterConfig.chg$useSandbox</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#InterpreterConfig">InterpreterConfig</a> → <a class="tref" href="../compiler/enums/Flags.html#Flags">Flags</a> → <a class="tref" href="#InterpreterConfig">InterpreterConfig</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#InterpreterConfig.upd$compilerFlags">InterpreterConfig.upd$compilerFlags</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#InterpreterConfig">InterpreterConfig</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → [(<a class="tref" href="../compiler/types/Global.html#StIO">StIO</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>), <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#typecheckPasses">typecheckPasses</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#InterpreterConfig">InterpreterConfig</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#InterpreterConfig">InterpreterConfig</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#InterpreterConfig.upd$predefs">InterpreterConfig.upd$predefs</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#InterpreterConfig">InterpreterConfig</a> → [<a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a>] → <a class="tref" href="../compiler/types/Global.html#StG">StG</a> [<a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#transformDefs">transformDefs</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#InterpreterConfig">InterpreterConfig</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a> → <a class="tref" href="#InterpreterConfig">InterpreterConfig</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#InterpreterConfig.upd$useSandbox">InterpreterConfig.upd$useSandbox</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#InterpreterConfig">InterpreterConfig</a> → <a class="tref" href="../compiler/enums/Flags.html#Flags">Flags</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#InterpreterConfig.compilerFlags">InterpreterConfig.compilerFlags</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#InterpreterConfig">InterpreterConfig</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#InterpreterConfig.predefs">InterpreterConfig.predefs</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#InterpreterConfig">InterpreterConfig</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#InterpreterConfig.useSandbox">InterpreterConfig.useSandbox</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#InterpreterResult">InterpreterResult</a> → (<a class="tref" href="../compiler/types/Global.html#Global">Global</a>→<a class="tref" href="../compiler/types/Global.html#Global">Global</a>) → <a class="tref" href="#InterpreterResult">InterpreterResult</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#InterpreterResult.chg$compilerState">InterpreterResult.chg$compilerState</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#InterpreterResult">InterpreterResult</a> → (<a class="tref" href="#SourceInfo">SourceInfo</a>→<a class="tref" href="#SourceInfo">SourceInfo</a>) → <a class="tref" href="#InterpreterResult">InterpreterResult</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#InterpreterResult.chg$sourceRepr">InterpreterResult.chg$sourceRepr</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#InterpreterResult">InterpreterResult</a> → <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="#InterpreterResult">InterpreterResult</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#InterpreterResult.upd$compilerState">InterpreterResult.upd$compilerState</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#InterpreterResult">InterpreterResult</a> → <a class="tref" href="#SourceInfo">SourceInfo</a> → <a class="tref" href="#InterpreterResult">InterpreterResult</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#InterpreterResult.upd$sourceRepr">InterpreterResult.upd$sourceRepr</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#InterpreterResult">InterpreterResult</a> → <a class="tref" href="../compiler/types/Global.html#Global">Global</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#InterpreterResult.compilerState">InterpreterResult.compilerState</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#InterpreterResult">InterpreterResult</a> → <a class="tref" href="#SourceInfo">SourceInfo</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#InterpreterResult.sourceRepr">InterpreterResult.sourceRepr</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#InterpreterResult">InterpreterResult</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#InterpreterResult.has$compilerState">InterpreterResult.has$compilerState</a>, <a class="fref" href="#InterpreterResult.has$sourceRepr">InterpreterResult.has$sourceRepr</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Message">Message</a> → (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>→<a class="tref" href="../prelude/PreludeBase.html#String">String</a>) → <a class="tref" href="#Message">Message</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Message.chg$text">Message.chg$text</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Message">Message</a> → (<a class="tref" href="../compiler/types/Positions.html#Position">Position</a>→<a class="tref" href="../compiler/types/Positions.html#Position">Position</a>) → <a class="tref" href="#Message">Message</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Message.chg$pos">Message.chg$pos</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Message">Message</a> → (<a class="tref" href="#MessageType">MessageType</a>→<a class="tref" href="#MessageType">MessageType</a>) → <a class="tref" href="#Message">Message</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Message.chg$msgType">Message.chg$msgType</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Message">Message</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Message">Message</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Message.upd$text">Message.upd$text</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Message">Message</a> → <a class="tref" href="../compiler/types/Positions.html#Position">Position</a> → <a class="tref" href="#Message">Message</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Message.upd$pos">Message.upd$pos</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Message">Message</a> → <a class="tref" href="#MessageType">MessageType</a> → <a class="tref" href="#Message">Message</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Message.upd$msgType">Message.upd$msgType</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Message">Message</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_Message.showsub">Show_Message.showsub</a>, <a class="fref" href="#Show_Message.display">Show_Message.display</a>, <a class="fref" href="#Show_Message.show">Show_Message.show</a>, <a class="fref" href="#Message.text">Message.text</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Message">Message</a> → [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_Message.showChars">Show_Message.showChars</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Message">Message</a> → <a class="tref" href="../compiler/types/Positions.html#Position">Position</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Message.pos">Message.pos</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Message">Message</a> → <a class="tref" href="#MessageType">MessageType</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Message.msgType">Message.msgType</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#MessageType">MessageType</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_MessageType.showsub">Show_MessageType.showsub</a>, <a class="fref" href="#Show_MessageType.display">Show_MessageType.display</a>, <a class="fref" href="#Show_MessageType.show">Show_MessageType.show</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#MessageType">MessageType</a> → [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_MessageType.showChars">Show_MessageType.showChars</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Method">Method</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Method.getName">Method.getName</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#SourceInfo">SourceInfo</a> → <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="#InterpreterResult">InterpreterResult</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#InterpreterResult.Success">InterpreterResult.Success</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#SourceInfo">SourceInfo</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_SourceInfo.showsub">Show_SourceInfo.showsub</a>, <a class="fref" href="#Show_SourceInfo.display">Show_SourceInfo.display</a>, <a class="fref" href="#Show_SourceInfo.show">Show_SourceInfo.show</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#SourceInfo">SourceInfo</a> → [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_SourceInfo.showChars">Show_SourceInfo.showChars</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#SourceType">SourceType</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_SourceType.showsub">Show_SourceType.showsub</a>, <a class="fref" href="#Show_SourceType.display">Show_SourceType.display</a>, <a class="fref" href="#Show_SourceType.show">Show_SourceType.show</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#SourceType">SourceType</a> → [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_SourceType.showChars">Show_SourceType.showChars</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../java/util/Regex.html#MatchResult">MatchResult</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#groupCount">groupCount</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#indent">indent</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#Message">Message</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_Message.showsPrec">Show_Message.showsPrec</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#MessageType">MessageType</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_MessageType.showsPrec">Show_MessageType.showsPrec</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#SourceInfo">SourceInfo</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_SourceInfo.showsPrec">Show_SourceInfo.showsPrec</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#SourceType">SourceType</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_SourceType.showsPrec">Show_SourceType.showsPrec</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Throwable">Throwable</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#showThrowableCause$tick">showThrowableCause'</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Long">Long</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#longToString">longToString</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Throwable">Throwable</a> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#Throwable">Throwable</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#throwableCause">throwableCause</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Throwable">Throwable</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#showThrowableCause">showThrowableCause</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/Global.html#StG">StG</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#derivePass">derivePass</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Interpreter">Interpreter</a> (<a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Interpreter.get">Interpreter.get</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Interpreter">Interpreter</a> <a class="tref" href="../compiler/types/Global.html#Global">Global</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Interpreter.getCompilerState">Interpreter.getCompilerState</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Interpreter">Interpreter</a> <a class="tref" href="#InterpreterConfig">InterpreterConfig</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Interpreter.ask">Interpreter.ask</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#freshVarPrefix">freshVarPrefix</a>, <a class="fref" href="#newLine">newLine</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/SourceDefinitions.html#DefinitionS">DefinitionS</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#interpreterPreludeImport">interpreterPreludeImport</a>, <a class="fref" href="#preludeHidingImport">preludeHidingImport</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#InterpreterConfig">InterpreterConfig</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#InterpreterConfig.initialState">InterpreterConfig.initialState</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#MessageType">MessageType</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#MessageType.INFO">MessageType.INFO</a>, <a class="fref" href="#MessageType.ERROR">MessageType.ERROR</a>, <a class="fref" href="#MessageType.HINT">MessageType.HINT</a>, <a class="fref" href="#MessageType.WARNING">MessageType.WARNING</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#SourceType">SourceType</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#SourceType.DefinitionsSource">SourceType.DefinitionsSource</a>, <a class="fref" href="#SourceType.ExpressionSource">SourceType.ExpressionSource</a>, <a class="fref" href="#SourceType.ModuleSource">SourceType.ModuleSource</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../java/util/Regex.html#Regex">Regex</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#freshVarRegex">freshVarRegex</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../control/monad/Reader.html#ReaderT">ReaderT</a> <a class="tref" href="#InterpreterState">InterpreterState</a> <a class="tref" href="#InterpreterConfig">InterpreterConfig</a> result → <a class="tref" href="#Interpreter">Interpreter</a> result</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Interpreter.Interpreter">Interpreter.Interpreter</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> α → <a class="tref" href="#Interpreter">Interpreter</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#MonadIO_Interpreter.liftIO">MonadIO_Interpreter.liftIO</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s (<a class="tref" href="#JMap">JMap</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a> <a class="tref" href="#ByteArray">ByteArray</a>) → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> s <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#InterpreterClassLoader.newγ">InterpreterClassLoader.newγ</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> s <a class="tref" href="#MemoryJavaCompiler">MemoryJavaCompiler</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#MemoryJavaCompiler.$new">MemoryJavaCompiler.new</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#JavaCompilationInfo">JavaCompilationInfo</a> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JavaCompilationInfo.errorsAsString">JavaCompilationInfo.errorsAsString</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#JavaCompilationInfo">JavaCompilationInfo</a> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JavaCompilationInfo.isSuccess">JavaCompilationInfo.isSuccess</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#MemoryJavaCompiler">MemoryJavaCompiler</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> s <a class="tref" href="#JavaCompilationInfo">JavaCompilationInfo</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#MemoryJavaCompiler.compile">MemoryJavaCompiler.compile</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s <a class="tref" href="#MemoryJavaCompiler">MemoryJavaCompiler</a> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> s <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#MemoryJavaCompiler.classLoader">MemoryJavaCompiler.classLoader</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Interpreter">Interpreter</a> (<a class="tref" href="#Interpreter">Interpreter</a> α) → <a class="tref" href="#Interpreter">Interpreter</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_Interpreter.join">Monad_Interpreter.join</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Interpreter">Interpreter</a> result → <a class="tref" href="#InterpreterConfig">InterpreterConfig</a> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (result, <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Interpreter.run">Interpreter.run</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Interpreter">Interpreter</a> α → <a class="tref" href="../control/monad/Reader.html#ReaderT">ReaderT</a> <a class="tref" href="#InterpreterState">InterpreterState</a> <a class="tref" href="#InterpreterConfig">InterpreterConfig</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Interpreter.un">Interpreter.un</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Unit">()</a> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> s <a class="tref" href="#InterpreterClassLoader">InterpreterClassLoader</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#InterpreterClassLoader.newα">InterpreterClassLoader.newα</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">a → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#showNative">showNative</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">α → <a class="tref" href="#Interpreter">Interpreter</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_Interpreter.pure">Monad_Interpreter.pure</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">α → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Interpreter.has$un">Interpreter.has$un</a>, <a class="fref" href="#InterpreterConfig.has$predefs">InterpreterConfig.has$predefs</a>, <a class="fref" href="#InterpreterConfig.has$compilerFlags">InterpreterConfig.has$compilerFlags</a>, <a class="fref" href="#InterpreterConfig.has$useSandbox">InterpreterConfig.has$useSandbox</a>, <a class="fref" href="#Message.has$text">Message.has$text</a>, <a class="fref" href="#Message.has$msgType">Message.has$msgType</a>, <a class="fref" href="#Message.has$pos">Message.has$pos</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">ω</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#InterpreterClassLoader.$new">InterpreterClassLoader.new</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(α → β) → <a class="tref" href="#Interpreter">Interpreter</a> α → <a class="tref" href="#Interpreter">Interpreter</a> β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_Interpreter.fmap">Monad_Interpreter.fmap</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Interpreter">Interpreter</a> (α→β) → <a class="tref" href="#Interpreter">Interpreter</a> α → <a class="tref" href="#Interpreter">Interpreter</a> β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_Interpreter.$lt$star$gt">Monad_Interpreter.&lt;*&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Interpreter">Interpreter</a> α → (α → <a class="tref" href="#Interpreter">Interpreter</a> β) → <a class="tref" href="#Interpreter">Interpreter</a> β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_Interpreter.$gt$gt$eq">Monad_Interpreter.&gt;&gt;=</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Interpreter">Interpreter</a> α → <a class="tref" href="../control/monad/Reader.html#ReaderT">ReaderT</a> <a class="tref" href="#InterpreterState">InterpreterState</a> <a class="tref" href="#InterpreterConfig">InterpreterConfig</a> β → <a class="tref" href="#Interpreter">Interpreter</a> β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Interpreter.upd$un">Interpreter.upd$un</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Interpreter">Interpreter</a> α → (<a class="tref" href="../control/monad/Reader.html#ReaderT">ReaderT</a> <a class="tref" href="#InterpreterState">InterpreterState</a> <a class="tref" href="#InterpreterConfig">InterpreterConfig</a> α→<a class="tref" href="../control/monad/Reader.html#ReaderT">ReaderT</a> <a class="tref" href="#InterpreterState">InterpreterState</a> <a class="tref" href="#InterpreterConfig">InterpreterConfig</a> β) → <a class="tref" href="#Interpreter">Interpreter</a> β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Interpreter.chg$un">Interpreter.chg$un</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Interpreter">Interpreter</a> α → <a class="tref" href="#Interpreter">Interpreter</a> β → <a class="tref" href="#Interpreter">Interpreter</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_Interpreter.$lt$star">Monad_Interpreter.&lt;*</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Interpreter">Interpreter</a> α → <a class="tref" href="#Interpreter">Interpreter</a> β → <a class="tref" href="#Interpreter">Interpreter</a> β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_Interpreter.$star$gt">Monad_Interpreter.*&gt;</a>, <a class="fref" href="#Monad_Interpreter.$gt$gt">Monad_Interpreter.&gt;&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s (<a class="tref" href="#JMap">JMap</a> k v) → <a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s (<a class="tref" href="#JMap">JMap</a> k v) → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JMap.putAll">JMap.putAll</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s (<a class="tref" href="#JMap">JMap</a> k v) → k → v → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JMap.put">JMap.put</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s (<a class="tref" href="#JMap">JMap</a> k v) → k → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> v)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JMap.get">JMap.get</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> s (<a class="tref" href="#JMap">JMap</a> k v) → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JMap.isEmpty">JMap.isEmpty</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Unit">()</a> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> s (<a class="tref" href="#HashMap">HashMap</a> k v)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#HashMap.$new">HashMap.new</a></p>
+</dd>
+</dl>
+<p>
+<a HREF="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Strict" height="31" width="88"></a></p>
+</BODY>
+</HTML>

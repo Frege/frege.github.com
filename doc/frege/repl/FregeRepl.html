@@ -1,0 +1,1928 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<META http-equiv="Content-Type" content="text/html;charset=utf-8">
+<TITLE>Repl.FregeRepl - frege documentation</TITLE>
+<style TYPE="text/css">
+body { font-family: helvetica, arial, sans-serif }
+pre { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
+h3  { font-weight: lighter }
+dt.func { background: rgb(95%, 95%, 80%); margin-top: 10px }
+dt.clas { background: rgb(80%, 95%, 95%); margin-top: 10px }
+dt.inst { background: rgb(95%, 90%, 95%); margin-top: 10px }
+dt.data { background: rgb(95%, 95%, 95%); margin-top: 10px }
+span.code { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(0%,0%,60%) }
+span.unknown { font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: red }
+a.fref { text-decoration: none; font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(30%, 30%, 0%) }
+a.tref { text-decoration: none; font-family: "lucida console", "courier new", monospaced; font-size: 100%; color: rgb(40%, 0%,  40%) }
+</style>
+<BODY>
+<h1>
+Module <SPAN CLASS="code">Repl.FregeRepl</SPAN></h1>
+<h3>
+Imports</h3>
+<ul>
+<li>
+<div>
+import <a HREF="../java/Awt.html">Java.Awt</a> as Awt</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/common/CompilerOptions.html">Compiler.common.CompilerOptions</a> as CompilerOptions</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/enums/Flags.html">Compiler.enums.Flags</a> as Flags</div>
+</li>
+<li>
+<div>
+import <a HREF="../interpreter/FregeInterpreter.html">Interpreter.FregeInterpreter</a> as FregeInterpreter</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/types/Global.html">Compiler.types.Global</a> as Global</div>
+</li>
+<li>
+<div>
+import <a HREF="./Gui.html">Repl.Gui</a> as Gui</div>
+</li>
+<li>
+<div>
+import <a HREF="../data/List.html">Data.List</a> as List</div>
+</li>
+<li>
+<div>
+import <a HREF="../control/monad/trans/MonadIO.html">Control.monad.trans.MonadIO</a> as MonadIO</div>
+</li>
+<li>
+<div>
+import <a HREF="../java/Net.html">Java.Net</a> as Net</div>
+</li>
+<li>
+<div>
+import <a HREF="../compiler/types/Positions.html">Compiler.types.Positions</a> as Positions</div>
+</li>
+<li>
+<div>
+import <a HREF="../Prelude.html">frege.Prelude</a> as Prelude</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeArrays.html">Prelude.PreludeArrays</a> as PreludeArrays</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeBase.html">Prelude.PreludeBase</a> as PreludeBase</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeDecimal.html">Prelude.PreludeDecimal</a> as PreludeDecimal</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeIO.html">Prelude.PreludeIO</a> as PreludeIO</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeList.html">Prelude.PreludeList</a> as PreludeList</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeMonad.html">Prelude.PreludeMonad</a> as PreludeMonad</div>
+</li>
+<li>
+<div>
+import <a HREF="../prelude/PreludeText.html">Prelude.PreludeText</a> as PreludeText</div>
+</li>
+<li>
+<div>
+import <a HREF="../java/util/Regex.html">Java.util.Regex</a> as Regexp</div>
+</li>
+<li>
+<div>
+import <a HREF="../control/monad/State.html">Control.monad.State</a> as State</div>
+</li>
+<li>
+<div>
+import <a HREF="../java/Swing.html">Java.Swing</a> as Swing</div>
+</li>
+<li>
+<div>
+import <a HREF="../java/Util.html">Java.Util</a> as Util</div>
+</li>
+<li>
+<div>
+import <a HREF="../Version.html">frege.Version</a> as Version</div>
+</li>
+</ul>
+<h3>
+Table of Content</h3>
+<ul class="data">
+<li>
+<div>
+<a HREF="#data">Definitions</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><b>class </b> <a class="tref" href="#ReplIO">ReplIO</a> a</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#Command"> </a> <a class="tref" href="#Command">Command</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#ConsoleReader"> </a> <a class="tref" href="#ConsoleReader">ConsoleReader</a> = <b>native </b>jline.console.ConsoleReader</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#JLineConsole"> </a> <a class="tref" href="#JLineConsole">JLineConsole</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#ReaderWriterConsole"> </a> <a class="tref" href="#ReaderWriterConsole">ReaderWriterConsole</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#Repl"> </a> <a class="tref" href="#Repl">Repl</a> a</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#ReplEnv"> </a> <a class="tref" href="#ReplEnv">ReplEnv</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#ReplOpts"> </a> <a class="tref" href="#ReplOpts">ReplOpts</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#ReplResult"> </a> <a class="tref" href="#ReplResult">ReplResult</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>data </b><a class="tref" href="#Terminal"> </a> <a class="tref" href="#Terminal">Terminal</a> = <b>native </b>jline.Terminal</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#repl">repl</a> ∷ <a class="tref" href="#ReplIO">ReplIO</a> a ⇒ a → <a class="tref" href="#ReplEnv">ReplEnv</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#read">read</a> ∷ <a class="tref" href="#ReplIO">ReplIO</a> a ⇒ a → <a class="tref" href="#ReplEnv">ReplEnv</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Command">Command</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#print">print</a> ∷ <a class="tref" href="#ReplIO">ReplIO</a> a ⇒ a → <b><a class="tref" href="#Command">Command</a></b> → <a class="tref" href="#ReplResult">ReplResult</a> → <a class="tref" href="#ReplEnv">ReplEnv</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#loop">loop</a> ∷ <a class="tref" href="#ReplIO">ReplIO</a> a ⇒ a → <b><a class="tref" href="#Command">Command</a></b> → <a class="tref" href="#ReplResult">ReplResult</a> → <a class="tref" href="#ReplEnv">ReplEnv</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#eval">eval</a> ∷ <b><a class="tref" href="#Command">Command</a></b> → <a class="tref" href="#Repl">Repl</a> <a class="tref" href="#ReplResult">ReplResult</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#parseAndSetCompilerFlag">parseAndSetCompilerFlag</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Repl">Repl</a> <a class="tref" href="#ReplResult">ReplResult</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#clearCompilerFlag">clearCompilerFlag</a> ∷ <a class="tref" href="../compiler/enums/Flags.html#Flag">Flag</a> → <a class="tref" href="#Repl">Repl</a> <a class="tref" href="#ReplResult">ReplResult</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#setCompilerFlag">setCompilerFlag</a> ∷ <a class="tref" href="../compiler/enums/Flags.html#Flag">Flag</a> → <a class="tref" href="#Repl">Repl</a> <a class="tref" href="#ReplResult">ReplResult</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#symbolsToReplInfo">symbolsToReplInfo</a> ∷ <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → [<a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a>] → <a class="tref" href="#ReplResult">ReplResult</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#java">java</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Repl">Repl</a> <a class="tref" href="#ReplResult">ReplResult</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#slurp">slurp</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../interpreter/FregeInterpreter.html#Message">Message</a> | <a class="tref" href="#Command">Command</a>)</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#printMessages">printMessages</a> ∷ <a class="tref" href="#ReplIO">ReplIO</a> a ⇒ a → <b>[<a class="tref" href="../interpreter/FregeInterpreter.html#Message">Message</a>]</b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#printSymbolType">printSymbolType</a> ∷ <a class="tref" href="#ReplIO">ReplIO</a> a ⇒ a → <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#readMultiline">readMultiline</a> ∷ <a class="tref" href="#ReplIO">ReplIO</a> a ⇒ a → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#hoogle">hoogle</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#cmdHelp">cmdHelp</a> ∷ [(<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#renderCmdHelp">renderCmdHelp</a> ∷ <b>[(<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</b> → [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#help">help</a> ∷ [(<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)] → [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#urlContents">urlContents</a> ∷ <b><a class="tref" href="../java/Net.html#URL">URL</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#fileContents">fileContents</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#scannerFromInputStream">scannerFromInputStream</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#InputStream">InputStream</a></b> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="../java/Util.html#Scanner">Scanner</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#javaSourceGUI">javaSourceGUI</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#toURI">toURI</a> ∷ <b><a class="tref" href="../java/Net.html#URL">URL</a></b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../java/Net.html#URI">URI</a>&nbsp;&nbsp;&nbsp;<b>throws </b><a class="tref" href="../java/Net.html#URISyntaxException">URISyntaxException</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#asObject">asObject</a> ∷ <b>a</b> → <a class="tref" href="../prelude/PreludeBase.html#Object">Object</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#isEmpty">isEmpty</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#replaceAll">replaceAll</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#indexOf">indexOf</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#substring">substring</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a>&nbsp;<a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#substringα">substringα</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#substring">substring</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#substringβ">substringβ</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a>&nbsp;&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#substring">substring</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#vmVendor">vmVendor</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#vmName">vmName</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#javaVersion">javaVersion</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#toString">toString</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Object">Object</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#sysin">sysin</a> ∷ <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#InputStream">InputStream</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#welcome">welcome</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#readResourceAsString">readResourceAsString</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#getResourceAsStream">getResourceAsStream</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/Lang.html#ClassLoader">ClassLoader</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="../java/IO.html#InputStream">InputStream</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#containsStr">containsStr</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#launchBrowser">launchBrowser</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#encodeURIComponent">encodeURIComponent</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a>&nbsp;</SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#warmup">warmup</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><a class="fref" href="#$main">main</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#instance">Instances</a></div>
+<dl>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Eq_Command"> </a><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> <a class="tref" href="#Command">Command</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#MonadIO_Repl"> </a><a class="tref" href="../control/monad/trans/MonadIO.html#MonadIO">MonadIO</a> <a class="tref" href="#Repl">Repl</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Monad_Repl"> </a><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> <a class="tref" href="#Repl">Repl</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#ReplIO_JLineConsole"> </a><a class="tref" href="#ReplIO">ReplIO</a> <a class="tref" href="#JLineConsole">JLineConsole</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#ReplIO_ReaderWriterConsole"> </a><a class="tref" href="#ReplIO">ReplIO</a> <a class="tref" href="#ReaderWriterConsole">ReaderWriterConsole</a></SPAN></dt>
+<dd>
+</dd>
+<dt>
+<SPAN CLASS="code"><b>instance </b><a class="tref" href="#Show_Command"> </a><a class="tref" href="../prelude/PreludeText.html#Show">Show</a> <a class="tref" href="#Command">Command</a></SPAN></dt>
+<dd>
+</dd>
+</dl>
+</li>
+<li>
+<div>
+<a HREF="#case">Functions and Values by Type</a></div>
+</li>
+</ul>
+<h2>
+<a NAME="data">Definitions</a></h2>
+<dl class="data">
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=ReplEnv> </a> <a class="tref" href="#ReplEnv">ReplEnv</a></SPAN></dt>
+<dd class="data">
+<h3>
+Constructors</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplEnv.ReplEnv>ReplEnv</a> {lastJavaGenSrc ∷ <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a>, lastExternalScript ∷ <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a>, opts ∷ <a class="tref" href="#ReplOpts">ReplOpts</a>, config ∷ <a class="tref" href="../interpreter/FregeInterpreter.html#InterpreterConfig">InterpreterConfig</a>, lineStart ∷ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>, state ∷ <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../interpreter/FregeInterpreter.html#InterpreterClassLoader">InterpreterClassLoader</a>}</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplEnv.config>config</a> ∷ <b><a class="tref" href="#ReplEnv">ReplEnv</a></b> → <a class="tref" href="../interpreter/FregeInterpreter.html#InterpreterConfig">InterpreterConfig</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">config</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplEnv.initialState>initialState</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ReplEnv">ReplEnv</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplEnv.lastExternalScript>lastExternalScript</a> ∷ <b><a class="tref" href="#ReplEnv">ReplEnv</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">lastExternalScript</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplEnv.lastJavaGenSrc>lastJavaGenSrc</a> ∷ <b><a class="tref" href="#ReplEnv">ReplEnv</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">lastJavaGenSrc</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplEnv.lineStart>lineStart</a> ∷ <b><a class="tref" href="#ReplEnv">ReplEnv</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">lineStart</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplEnv.opts>opts</a> ∷ <b><a class="tref" href="#ReplEnv">ReplEnv</a></b> → <a class="tref" href="#ReplOpts">ReplOpts</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">opts</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplEnv.reset>reset</a> ∷ <a class="tref" href="#Repl">Repl</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplEnv.state>state</a> ∷ <b><a class="tref" href="#ReplEnv">ReplEnv</a></b> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../interpreter/FregeInterpreter.html#InterpreterClassLoader">InterpreterClassLoader</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">state</SPAN></p>
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=ReplOpts> </a> <a class="tref" href="#ReplOpts">ReplOpts</a></SPAN></dt>
+<dd class="data">
+<h3>
+Constructors</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplOpts.ReplOpts>ReplOpts</a> {prompt ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a>, multilinePrompt ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a>, showLimit ∷ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>}</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplOpts.initialState>initialState</a> ∷ <a class="tref" href="#ReplOpts">ReplOpts</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplOpts.multilinePrompt>multilinePrompt</a> ∷ <b><a class="tref" href="#ReplOpts">ReplOpts</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">multilinePrompt</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplOpts.prompt>prompt</a> ∷ <b><a class="tref" href="#ReplOpts">ReplOpts</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">prompt</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplOpts.showLimit>showLimit</a> ∷ <b><a class="tref" href="#ReplOpts">ReplOpts</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">showLimit</SPAN></p>
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=Repl> </a> <a class="tref" href="#Repl">Repl</a> a</SPAN></dt>
+<dd class="data">
+<h3>
+Constructors</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Repl.Repl>Repl</a> {un ∷ <a class="tref" href="../control/monad/State.html#StateT">StateT</a> <a class="tref" href="#ReplEnv">ReplEnv</a> <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> a}</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Repl.get>get</a> ∷ <a class="tref" href="#Repl">Repl</a> <a class="tref" href="#ReplEnv">ReplEnv</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Repl.modify>modify</a> ∷ (<b><a class="tref" href="#ReplEnv">ReplEnv</a>→<a class="tref" href="#ReplEnv">ReplEnv</a></b>) → <a class="tref" href="#Repl">Repl</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Repl.put>put</a> ∷ <a class="tref" href="#ReplEnv">ReplEnv</a> → <a class="tref" href="#Repl">Repl</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Repl.run>run</a> ∷ <b><a class="tref" href="#Repl">Repl</a> α</b> → <a class="tref" href="#ReplEnv">ReplEnv</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (α, <a class="tref" href="#ReplEnv">ReplEnv</a>)</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Repl.runWithDefault>runWithDefault</a> ∷ <b><a class="tref" href="#Repl">Repl</a> α</b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (α, <a class="tref" href="#ReplEnv">ReplEnv</a>)</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Repl.un>un</a> ∷ <b><a class="tref" href="#Repl">Repl</a> α</b> → <a class="tref" href="../control/monad/State.html#StateT">StateT</a> <a class="tref" href="#ReplEnv">ReplEnv</a> <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> α</SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">un</SPAN></p>
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=ReplResult> </a> <a class="tref" href="#ReplResult">ReplResult</a></SPAN></dt>
+<dd class="data">
+<h3>
+Constructors</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplResult.CodeInfo>CodeInfo</a> {sourceRepr ∷ <a class="tref" href="../interpreter/FregeInterpreter.html#SourceInfo">SourceInfo</a>, compilerState ∷ <a class="tref" href="../compiler/types/Global.html#Global">Global</a>, messages ∷ [<a class="tref" href="../interpreter/FregeInterpreter.html#Message">Message</a>]}</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplResult.JavaSource>JavaSource</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplResult.ReplInfo>ReplInfo</a> [<a class="tref" href="../interpreter/FregeInterpreter.html#Message">Message</a>]</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplResult.compilerState>compilerState</a> ∷ <b><a class="tref" href="#ReplResult">ReplResult</a></b> → <a class="tref" href="../compiler/types/Global.html#Global">Global</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">compilerState</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplResult.messages>messages</a> ∷ <b><a class="tref" href="#ReplResult">ReplResult</a></b> → [<a class="tref" href="../interpreter/FregeInterpreter.html#Message">Message</a>]</SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">messages</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplResult.sourceRepr>sourceRepr</a> ∷ <b><a class="tref" href="#ReplResult">ReplResult</a></b> → <a class="tref" href="../interpreter/FregeInterpreter.html#SourceInfo">SourceInfo</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">sourceRepr</SPAN></p>
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=repl>repl</a> ∷ <a class="tref" href="#ReplIO">ReplIO</a> a ⇒ a → <a class="tref" href="#ReplEnv">ReplEnv</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=read>read</a> ∷ <a class="tref" href="#ReplIO">ReplIO</a> a ⇒ a → <a class="tref" href="#ReplEnv">ReplEnv</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Command">Command</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=print>print</a> ∷ <a class="tref" href="#ReplIO">ReplIO</a> a ⇒ a → <b><a class="tref" href="#Command">Command</a></b> → <a class="tref" href="#ReplResult">ReplResult</a> → <a class="tref" href="#ReplEnv">ReplEnv</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=loop>loop</a> ∷ <a class="tref" href="#ReplIO">ReplIO</a> a ⇒ a → <b><a class="tref" href="#Command">Command</a></b> → <a class="tref" href="#ReplResult">ReplResult</a> → <a class="tref" href="#ReplEnv">ReplEnv</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=eval>eval</a> ∷ <b><a class="tref" href="#Command">Command</a></b> → <a class="tref" href="#Repl">Repl</a> <a class="tref" href="#ReplResult">ReplResult</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=parseAndSetCompilerFlag>parseAndSetCompilerFlag</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Repl">Repl</a> <a class="tref" href="#ReplResult">ReplResult</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=clearCompilerFlag>clearCompilerFlag</a> ∷ <a class="tref" href="../compiler/enums/Flags.html#Flag">Flag</a> → <a class="tref" href="#Repl">Repl</a> <a class="tref" href="#ReplResult">ReplResult</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=setCompilerFlag>setCompilerFlag</a> ∷ <a class="tref" href="../compiler/enums/Flags.html#Flag">Flag</a> → <a class="tref" href="#Repl">Repl</a> <a class="tref" href="#ReplResult">ReplResult</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=symbolsToReplInfo>symbolsToReplInfo</a> ∷ <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → [<a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a>] → <a class="tref" href="#ReplResult">ReplResult</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=java>java</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Repl">Repl</a> <a class="tref" href="#ReplResult">ReplResult</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=slurp>slurp</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../interpreter/FregeInterpreter.html#Message">Message</a> | <a class="tref" href="#Command">Command</a>)</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=printMessages>printMessages</a> ∷ <a class="tref" href="#ReplIO">ReplIO</a> a ⇒ a → <b>[<a class="tref" href="../interpreter/FregeInterpreter.html#Message">Message</a>]</b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=printSymbolType>printSymbolType</a> ∷ <a class="tref" href="#ReplIO">ReplIO</a> a ⇒ a → <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=readMultiline>readMultiline</a> ∷ <a class="tref" href="#ReplIO">ReplIO</a> a ⇒ a → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=hoogle>hoogle</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=cmdHelp>cmdHelp</a> ∷ [(<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=renderCmdHelp>renderCmdHelp</a> ∷ <b>[(<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</b> → [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=help>help</a> ∷ [(<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)] → [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=urlContents>urlContents</a> ∷ <b><a class="tref" href="../java/Net.html#URL">URL</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=fileContents>fileContents</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=scannerFromInputStream>scannerFromInputStream</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#InputStream">InputStream</a></b> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="../java/Util.html#Scanner">Scanner</a><br><b>native </b>new</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=javaSourceGUI>javaSourceGUI</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=toURI>toURI</a> ∷ <b><a class="tref" href="../java/Net.html#URL">URL</a></b> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../java/Net.html#URI">URI</a><br><b>native </b>toURI&nbsp;&nbsp;<b>throws </b><a class="tref" href="../java/Net.html#URISyntaxException">URISyntaxException</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=asObject>asObject</a> ∷ <b>a</b> → <a class="tref" href="../prelude/PreludeBase.html#Object">Object</a><br><b>pure </b><b>native </b>(java.lang.Object)</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=isEmpty>isEmpty</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a><br><b>pure </b><b>native </b>isEmpty</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=replaceAll>replaceAll</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a><br><b>pure </b><b>native </b>replaceAll</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=indexOf>indexOf</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a><br><b>pure </b><b>native </b>indexOf</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=substring>substring</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a><br><b>pure </b><b>native </b>substring</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=substringα>substringα</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a><br><b>pure </b><b>native </b>substring&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#substring">substring</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=substringβ>substringβ</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a><br><b>pure </b><b>native </b>substring&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#substring">substring</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=Command> </a> <a class="tref" href="#Command">Command</a></SPAN></dt>
+<dd class="data">
+<h3>
+Constructors</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Command.Browse>Browse</a> </SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Command.BrowseModule>BrowseModule</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Command.DefMulti>DefMulti</a> </SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Command.Eval>Eval</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Command.Help>Help</a> </SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Command.HelpDoc>HelpDoc</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Command.History>History</a> </SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Command.Java>Java</a> </SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Command.Load>Load</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Command.LoadExternal>LoadExternal</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>)&nbsp;&nbsp; (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Command.Quit>Quit</a> </SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Command.Reload>Reload</a> </SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Command.Reset>Reset</a> </SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Command.Set>Set</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Command.Skip>Skip</a> </SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Command.Type>Type</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Command.Unset>Unset</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Command.Version>Version</a> </SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Command.parse>parse</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → (<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | <a class="tref" href="#Command">Command</a>)</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Command.parseCommand>parseCommand</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → (<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | <a class="tref" href="#Command">Command</a>)</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=vmVendor>vmVendor</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=vmName>vmName</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=javaVersion>javaVersion</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=toString>toString</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Object">Object</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a><br><b>pure </b><b>native </b>toString</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=sysin>sysin</a> ∷ <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#InputStream">InputStream</a><br><b>native </b>java.lang.System.in</SPAN></dt>
+<dd class="data">
+<p>
+nowarn: Don't warn because of constantness   </p>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=welcome>welcome</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>class </b> <a name=ReplIO>ReplIO</a> a</SPAN></dt>
+<dd class="data">
+<h3>
+Known Instances</h3>
+<p>
+<a class="tref" href="#ReplIO_JLineConsole">JLineConsole</a>, <a class="tref" href="#ReplIO_ReaderWriterConsole">ReaderWriterConsole</a></p>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplIO.interpretSym>interpretSym</a> ∷ <a class="tref" href="#ReplIO">ReplIO</a> a ⇒ a → <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a> → <a class="tref" href="#ReplEnv">ReplEnv</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplIO.readline>readline</a> ∷ <a class="tref" href="#ReplIO">ReplIO</a> a ⇒ a → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplIO.write>write</a> ∷ <a class="tref" href="#ReplIO">ReplIO</a> a ⇒ a → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplIO.writeln>writeln</a> ∷ <a class="tref" href="#ReplIO">ReplIO</a> a ⇒ a → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=ConsoleReader> </a> <a class="tref" href="#ConsoleReader">ConsoleReader</a> = <b>native </b>jline.console.ConsoleReader</SPAN></dt>
+<dd class="data">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=ConsoleReader.flush>flush</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a><br><b>native </b>flush&nbsp;&nbsp;<b>throws </b><a class="tref" href="../java/Lang.html#IOException">IOException</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ConsoleReader.$new>new</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>throws </b><a class="tref" href="../java/Lang.html#IOException">IOException</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#InputStream">InputStream</a> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#OutputStream">OutputStream</a> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="#Terminal">Terminal</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>throws </b><a class="tref" href="../java/Lang.html#IOException">IOException</a><br><b>native </b>new</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ConsoleReader.newα>newα</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></b> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a><br><b>native </b>new&nbsp;&nbsp;<b>throws </b><a class="tref" href="../java/Lang.html#IOException">IOException</a>&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ConsoleReader.$new">new</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ConsoleReader.newβ>newβ</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#InputStream">InputStream</a></b> → <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#OutputStream">OutputStream</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="#Terminal">Terminal</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a><br><b>native </b>new&nbsp;&nbsp;<b>throws </b><a class="tref" href="../java/Lang.html#IOException">IOException</a>&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ConsoleReader.$new">new</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ConsoleReader.print>print</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a></b> → <b><a class="tref" href="../java/Lang.html#CharSequence">CharSequence</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a><br><b>native </b>print&nbsp;&nbsp;<b>throws </b><a class="tref" href="../java/Lang.html#IOException">IOException</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ConsoleReader.println>println</a> ∷ <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a> → <a class="tref" href="../java/Lang.html#CharSequence">CharSequence</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>throws </b><a class="tref" href="../java/Lang.html#IOException">IOException</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>throws </b><a class="tref" href="../java/Lang.html#IOException">IOException</a><br><b>native </b>println</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ConsoleReader.printlnα>printlnα</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a></b> → <b><a class="tref" href="../java/Lang.html#CharSequence">CharSequence</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a><br><b>native </b>println&nbsp;&nbsp;<b>throws </b><a class="tref" href="../java/Lang.html#IOException">IOException</a>&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ConsoleReader.println">println</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ConsoleReader.printlnβ>printlnβ</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a><br><b>native </b>println&nbsp;&nbsp;<b>throws </b><a class="tref" href="../java/Lang.html#IOException">IOException</a>&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ConsoleReader.println">println</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ConsoleReader.readLine>readLine</a> ∷ <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>throws </b><a class="tref" href="../java/Lang.html#IOException">IOException</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>throws </b><a class="tref" href="../java/Lang.html#IOException">IOException</a><br><b>native </b>readLine</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ConsoleReader.readLineα>readLineα</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)<br><b>native </b>readLine&nbsp;&nbsp;<b>throws </b><a class="tref" href="../java/Lang.html#IOException">IOException</a>&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ConsoleReader.readLine">readLine</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ConsoleReader.readLineβ>readLineβ</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)<br><b>native </b>readLine&nbsp;&nbsp;<b>throws </b><a class="tref" href="../java/Lang.html#IOException">IOException</a>&nbsp;&nbsp;<b>overloads </b><a class="fref" href="#ConsoleReader.readLine">readLine</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ConsoleReader.setExpandEvents>setExpandEvents</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a><br><b>native </b>setExpandEvents</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ConsoleReader.setPrompt>setPrompt</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a><br><b>native </b>setPrompt</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=Terminal> </a> <a class="tref" href="#Terminal">Terminal</a> = <b>native </b>jline.Terminal</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=JLineConsole> </a> <a class="tref" href="#JLineConsole">JLineConsole</a></SPAN></dt>
+<dd class="data">
+<h3>
+Constructors</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=JLineConsole.JLineConsole>JLineConsole</a> {console ∷ <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a>}</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=JLineConsole.console>console</a> ∷ <b><a class="tref" href="#JLineConsole">JLineConsole</a></b> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">console</SPAN></p>
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><b>data </b><a name=ReaderWriterConsole> </a> <a class="tref" href="#ReaderWriterConsole">ReaderWriterConsole</a></SPAN></dt>
+<dd class="data">
+<h3>
+Constructors</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=ReaderWriterConsole.ReaderWriterConsole>ReaderWriterConsole</a> {input ∷ <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#BufferedReader">BufferedReader</a>, output ∷ <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#PrintWriter">PrintWriter</a>}</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=ReaderWriterConsole.input>input</a> ∷ <b><a class="tref" href="#ReaderWriterConsole">ReaderWriterConsole</a></b> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#BufferedReader">BufferedReader</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">input</SPAN></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ReaderWriterConsole.output>output</a> ∷ <b><a class="tref" href="#ReaderWriterConsole">ReaderWriterConsole</a></b> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#PrintWriter">PrintWriter</a></SPAN></dt>
+<dd class="func">
+<p>
+access field <SPAN CLASS="code">output</SPAN></p>
+</dd>
+</dl>
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=readResourceAsString>readResourceAsString</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=getResourceAsStream>getResourceAsStream</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/Lang.html#ClassLoader">ClassLoader</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="../java/IO.html#InputStream">InputStream</a><br><b>native </b>getResourceAsStream</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=containsStr>containsStr</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a><br><b>pure </b><b>native </b>contains</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=launchBrowser>launchBrowser</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a><br><b>native </b>frege.repl.nativedeps.Browser.show</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=encodeURIComponent>encodeURIComponent</a> ∷ <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a><br><b>pure </b><b>native </b>frege.repl.FregeRepl.encodeURIComponent</SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=warmup>warmup</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="data">
+</dd>
+<dt class="data">
+<SPAN CLASS="code"><a name=$main>main</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="data">
+</dd>
+</dl>
+<h2>
+<a NAME="instance">Instances</a></h2>
+<dl class="inst">
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Eq_Command> </a><a class="tref" href="../prelude/PreludeBase.html#Eq">Eq</a> <a class="tref" href="#Command">Command</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Eq_Command.$excl$eq>!=</a> ∷ <b><a class="tref" href="#Command">Command</a></b> → <b><a class="tref" href="#Command">Command</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeBase.html#Eq.$excl$eq">Eq.!=</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Eq_Command.$eq$eq>==</a> ∷ <b><a class="tref" href="#Command">Command</a></b> → <b><a class="tref" href="#Command">Command</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a><br><b>infix</b>&nbsp;&nbsp;7</SPAN></dt>
+<dd class="func">
+<p>
+Function generated for derived instance.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Eq_Command.hashCode>hashCode</a> ∷ <b><a class="tref" href="#Command">Command</a></b> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+Function generated for derived instance.</p>
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=MonadIO_Repl> </a><a class="tref" href="../control/monad/trans/MonadIO.html#MonadIO">MonadIO</a> <a class="tref" href="#Repl">Repl</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=MonadIO_Repl.liftIO>liftIO</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> α → <a class="tref" href="#Repl">Repl</a> α</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Monad_Repl> </a><a class="tref" href="../prelude/PreludeMonad.html#Monad">Monad</a> <a class="tref" href="#Repl">Repl</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_Repl.$star$gt>*&gt;</a> ∷ <a class="tref" href="#Repl">Repl</a> α → <a class="tref" href="#Repl">Repl</a> β → <a class="tref" href="#Repl">Repl</a> β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeMonad.html#Applicative.$star$gt">Applicative.*&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_Repl.$lt$star>&lt;*</a> ∷ <a class="tref" href="#Repl">Repl</a> α → <a class="tref" href="#Repl">Repl</a> β → <a class="tref" href="#Repl">Repl</a> α<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeMonad.html#Applicative.$lt$star">Applicative.&lt;*</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_Repl.$lt$star$gt>&lt;*&gt;</a> ∷ <a class="tref" href="#Repl">Repl</a> (α→β) → <a class="tref" href="#Repl">Repl</a> α → <a class="tref" href="#Repl">Repl</a> β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad.$lt$star$gt">Monad.&lt;*&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_Repl.$gt$gt>&gt;&gt;</a> ∷ <b><a class="tref" href="#Repl">Repl</a> α</b> → <a class="tref" href="#Repl">Repl</a> β → <a class="tref" href="#Repl">Repl</a> β<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad.$gt$gt">Monad.&gt;&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_Repl.$gt$gt$eq>&gt;&gt;=</a> ∷ <b><a class="tref" href="#Repl">Repl</a> α</b> → (<b>α → <a class="tref" href="#Repl">Repl</a> β</b>) → <a class="tref" href="#Repl">Repl</a> β<br><b>infixl</b>&nbsp;&nbsp;3</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_Repl.fmap>fmap</a> ∷ (<b>α → β</b>) → <b><a class="tref" href="#Repl">Repl</a> α</b> → <a class="tref" href="#Repl">Repl</a> β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad.fmap">Monad.fmap</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_Repl.join>join</a> ∷ <b><a class="tref" href="#Repl">Repl</a> (<a class="tref" href="#Repl">Repl</a> α)</b> → <a class="tref" href="#Repl">Repl</a> α</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeMonad.html#Monad.join">Monad.join</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Monad_Repl.pure>pure</a> ∷ α → <a class="tref" href="#Repl">Repl</a> α</SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=ReplIO_JLineConsole> </a><a class="tref" href="#ReplIO">ReplIO</a> <a class="tref" href="#JLineConsole">JLineConsole</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplIO_JLineConsole.interpretSym>interpretSym</a> ∷ <a class="tref" href="#JLineConsole">JLineConsole</a> → <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <b><a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a></b> → <b><a class="tref" href="#ReplEnv">ReplEnv</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplIO_JLineConsole.readline>readline</a> ∷ <a class="tref" href="#JLineConsole">JLineConsole</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplIO_JLineConsole.write>write</a> ∷ <a class="tref" href="#JLineConsole">JLineConsole</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplIO_JLineConsole.writeln>writeln</a> ∷ <a class="tref" href="#JLineConsole">JLineConsole</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=ReplIO_ReaderWriterConsole> </a><a class="tref" href="#ReplIO">ReplIO</a> <a class="tref" href="#ReaderWriterConsole">ReaderWriterConsole</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplIO_ReaderWriterConsole.interpretSym>interpretSym</a> ∷ <a class="tref" href="#ReaderWriterConsole">ReaderWriterConsole</a> → <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <b><a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a></b> → <b><a class="tref" href="#ReplEnv">ReplEnv</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplIO_ReaderWriterConsole.readline>readline</a> ∷ <a class="tref" href="#ReaderWriterConsole">ReaderWriterConsole</a> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplIO_ReaderWriterConsole.write>write</a> ∷ <a class="tref" href="#ReaderWriterConsole">ReaderWriterConsole</a> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=ReplIO_ReaderWriterConsole.writeln>writeln</a> ∷ <a class="tref" href="#ReaderWriterConsole">ReaderWriterConsole</a> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+</dd>
+</dl>
+</dd>
+<dt class="inst">
+<SPAN CLASS="code"><b>instance </b><a name=Show_Command> </a><a class="tref" href="../prelude/PreludeText.html#Show">Show</a> <a class="tref" href="#Command">Command</a></SPAN></dt>
+<dd class="inst">
+<h3>
+Member Functions</h3>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Command.display>display</a> ∷ <b><a class="tref" href="#Command">Command</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.display">Show.display</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Command.show>show</a> ∷ <b><a class="tref" href="#Command">Command</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+Function generated for derived instance.</p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Command.showChars>showChars</a> ∷ <a class="tref" href="#Command">Command</a> → [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showChars">Show.showChars</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Command.showList>showList</a> ∷ <b>[<a class="tref" href="#Command">Command</a>]</b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showList">Show.showList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Command.showsPrec>showsPrec</a> ∷ <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <b><a class="tref" href="#Command">Command</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsPrec">Show.showsPrec</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a name=Show_Command.showsub>showsub</a> ∷ <b><a class="tref" href="#Command">Command</a></b> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+Function generated for derived instance.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<h2>
+<a NAME="case">Functions and Values by Type</a></h2>
+<dl class="func">
+<dt class="func">
+<SPAN CLASS="code">(<a class="tref" href="#ReplEnv">ReplEnv</a>→<a class="tref" href="#ReplEnv">ReplEnv</a>) → <a class="tref" href="#Repl">Repl</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Repl.modify">Repl.modify</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#BufferedReader">BufferedReader</a> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#PrintWriter">PrintWriter</a> → <a class="tref" href="#ReaderWriterConsole">ReaderWriterConsole</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReaderWriterConsole.ReaderWriterConsole">ReaderWriterConsole.ReaderWriterConsole</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#InputStream">InputStream</a> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="../java/Util.html#Scanner">Scanner</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#scannerFromInputStream">scannerFromInputStream</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/Lang.html#ClassLoader">ClassLoader</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="../java/IO.html#InputStream">InputStream</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#getResourceAsStream">getResourceAsStream</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ConsoleReader.readLineα">ConsoleReader.readLineα</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ConsoleReader.setPrompt">ConsoleReader.setPrompt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a> → <a class="tref" href="../java/Lang.html#CharSequence">CharSequence</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ConsoleReader.print">ConsoleReader.print</a>, <a class="fref" href="#ConsoleReader.printlnα">ConsoleReader.printlnα</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ConsoleReader.setExpandEvents">ConsoleReader.setExpandEvents</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ConsoleReader.readLineβ">ConsoleReader.readLineβ</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ConsoleReader.printlnβ">ConsoleReader.printlnβ</a>, <a class="fref" href="#ConsoleReader.flush">ConsoleReader.flush</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a> → <a class="tref" href="#JLineConsole">JLineConsole</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JLineConsole.JLineConsole">JLineConsole.JLineConsole</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#ReplOpts">ReplOpts</a> → <a class="tref" href="../interpreter/FregeInterpreter.html#InterpreterConfig">InterpreterConfig</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../interpreter/FregeInterpreter.html#InterpreterClassLoader">InterpreterClassLoader</a> → <a class="tref" href="#ReplEnv">ReplEnv</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplEnv.ReplEnv">ReplEnv.ReplEnv</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#InputStream">InputStream</a> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#OutputStream">OutputStream</a> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="#Terminal">Terminal</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ConsoleReader.newβ">ConsoleReader.newβ</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#replaceAll">replaceAll</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#ReplOpts">ReplOpts</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplOpts.ReplOpts">ReplOpts.ReplOpts</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#launchBrowser">launchBrowser</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#containsStr">containsStr</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#indexOf">indexOf</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Command">Command</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Command.LoadExternal">Command.LoadExternal</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#substringβ">substringβ</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#substringα">substringα</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → (<a class="tref" href="../prelude/PreludeBase.html#String">String</a> | <a class="tref" href="#Command">Command</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Command.parseCommand">Command.parseCommand</a>, <a class="fref" href="#Command.parse">Command.parse</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../interpreter/FregeInterpreter.html#Message">Message</a> | <a class="tref" href="#Command">Command</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#slurp">slurp</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#fileContents">fileContents</a>, <a class="fref" href="#readResourceAsString">readResourceAsString</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#javaSourceGUI">javaSourceGUI</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#encodeURIComponent">encodeURIComponent</a>, <a class="fref" href="#hoogle">hoogle</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Repl">Repl</a> <a class="tref" href="#ReplResult">ReplResult</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#java">java</a>, <a class="fref" href="#parseAndSetCompilerFlag">parseAndSetCompilerFlag</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#isEmpty">isEmpty</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#Command">Command</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Command.Type">Command.Type</a>, <a class="fref" href="#Command.Unset">Command.Unset</a>, <a class="fref" href="#Command.Set">Command.Set</a>, <a class="fref" href="#Command.Load">Command.Load</a>, <a class="fref" href="#Command.HelpDoc">Command.HelpDoc</a>, <a class="fref" href="#Command.BrowseModule">Command.BrowseModule</a>, <a class="fref" href="#Command.Eval">Command.Eval</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#ReplResult">ReplResult</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplResult.JavaSource">ReplResult.JavaSource</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">[(<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)] → [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#help">help</a>, <a class="fref" href="#renderCmdHelp">renderCmdHelp</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">[<a class="tref" href="../interpreter/FregeInterpreter.html#Message">Message</a>] → <a class="tref" href="#ReplResult">ReplResult</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplResult.ReplInfo">ReplResult.ReplInfo</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">[<a class="tref" href="#Command">Command</a>] → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_Command.showList">Show_Command.showList</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/enums/Flags.html#Flag">Flag</a> → <a class="tref" href="#Repl">Repl</a> <a class="tref" href="#ReplResult">ReplResult</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#clearCompilerFlag">clearCompilerFlag</a>, <a class="fref" href="#setCompilerFlag">setCompilerFlag</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../compiler/types/Global.html#Global">Global</a> → [<a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a>] → <a class="tref" href="#ReplResult">ReplResult</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#symbolsToReplInfo">symbolsToReplInfo</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../interpreter/FregeInterpreter.html#SourceInfo">SourceInfo</a> → <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → [<a class="tref" href="../interpreter/FregeInterpreter.html#Message">Message</a>] → <a class="tref" href="#ReplResult">ReplResult</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplResult.CodeInfo">ReplResult.CodeInfo</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../java/Net.html#URL">URL</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#urlContents">urlContents</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Unit">()</a> → <a class="tref" href="../prelude/PreludeIO.html#STMutable">STMutable</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ConsoleReader.newα">ConsoleReader.newα</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#Command">Command</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_Command.showsPrec">Show_Command.showsPrec</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Object">Object</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#toString">toString</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Command">Command</a> → <a class="tref" href="#Command">Command</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Eq_Command.$excl$eq">Eq_Command.!=</a>, <a class="fref" href="#Eq_Command.$eq$eq">Eq_Command.==</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Command">Command</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_Command.showsub">Show_Command.showsub</a>, <a class="fref" href="#Show_Command.display">Show_Command.display</a>, <a class="fref" href="#Show_Command.show">Show_Command.show</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Command">Command</a> → [<a class="tref" href="../prelude/PreludeBase.html#Char">Char</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Show_Command.showChars">Show_Command.showChars</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Command">Command</a> → <a class="tref" href="#Repl">Repl</a> <a class="tref" href="#ReplResult">ReplResult</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#eval">eval</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Command">Command</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Eq_Command.hashCode">Eq_Command.hashCode</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JLineConsole">JLineConsole</a> → (<a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a>→<a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a>) → <a class="tref" href="#JLineConsole">JLineConsole</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JLineConsole.chg$console">JLineConsole.chg$console</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JLineConsole">JLineConsole</a> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a> → <a class="tref" href="#JLineConsole">JLineConsole</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JLineConsole.upd$console">JLineConsole.upd$console</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JLineConsole">JLineConsole</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplIO_JLineConsole.readline">ReplIO_JLineConsole.readline</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JLineConsole">JLineConsole</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplIO_JLineConsole.write">ReplIO_JLineConsole.write</a>, <a class="fref" href="#ReplIO_JLineConsole.writeln">ReplIO_JLineConsole.writeln</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JLineConsole">JLineConsole</a> → <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a> → <a class="tref" href="#ReplEnv">ReplEnv</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplIO_JLineConsole.interpretSym">ReplIO_JLineConsole.interpretSym</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#JLineConsole">JLineConsole</a> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="#ConsoleReader">ConsoleReader</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JLineConsole.console">JLineConsole.console</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReaderWriterConsole">ReaderWriterConsole</a> → (<a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#BufferedReader">BufferedReader</a>→<a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#BufferedReader">BufferedReader</a>) → <a class="tref" href="#ReaderWriterConsole">ReaderWriterConsole</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReaderWriterConsole.chg$input">ReaderWriterConsole.chg$input</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReaderWriterConsole">ReaderWriterConsole</a> → (<a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#PrintWriter">PrintWriter</a>→<a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#PrintWriter">PrintWriter</a>) → <a class="tref" href="#ReaderWriterConsole">ReaderWriterConsole</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReaderWriterConsole.chg$output">ReaderWriterConsole.chg$output</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReaderWriterConsole">ReaderWriterConsole</a> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#BufferedReader">BufferedReader</a> → <a class="tref" href="#ReaderWriterConsole">ReaderWriterConsole</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReaderWriterConsole.upd$input">ReaderWriterConsole.upd$input</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReaderWriterConsole">ReaderWriterConsole</a> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#PrintWriter">PrintWriter</a> → <a class="tref" href="#ReaderWriterConsole">ReaderWriterConsole</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReaderWriterConsole.upd$output">ReaderWriterConsole.upd$output</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReaderWriterConsole">ReaderWriterConsole</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplIO_ReaderWriterConsole.readline">ReplIO_ReaderWriterConsole.readline</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReaderWriterConsole">ReaderWriterConsole</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplIO_ReaderWriterConsole.write">ReplIO_ReaderWriterConsole.write</a>, <a class="fref" href="#ReplIO_ReaderWriterConsole.writeln">ReplIO_ReaderWriterConsole.writeln</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReaderWriterConsole">ReaderWriterConsole</a> → <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a> → <a class="tref" href="#ReplEnv">ReplEnv</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplIO_ReaderWriterConsole.interpretSym">ReplIO_ReaderWriterConsole.interpretSym</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReaderWriterConsole">ReaderWriterConsole</a> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#BufferedReader">BufferedReader</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReaderWriterConsole.input">ReaderWriterConsole.input</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReaderWriterConsole">ReaderWriterConsole</a> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#PrintWriter">PrintWriter</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReaderWriterConsole.output">ReaderWriterConsole.output</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplEnv">ReplEnv</a> → (<a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../interpreter/FregeInterpreter.html#InterpreterClassLoader">InterpreterClassLoader</a>→<a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../interpreter/FregeInterpreter.html#InterpreterClassLoader">InterpreterClassLoader</a>) → <a class="tref" href="#ReplEnv">ReplEnv</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplEnv.chg$state">ReplEnv.chg$state</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplEnv">ReplEnv</a> → (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a>→<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a>) → <a class="tref" href="#ReplEnv">ReplEnv</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplEnv.chg$lastJavaGenSrc">ReplEnv.chg$lastJavaGenSrc</a>, <a class="fref" href="#ReplEnv.chg$lastExternalScript">ReplEnv.chg$lastExternalScript</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplEnv">ReplEnv</a> → (<a class="tref" href="../interpreter/FregeInterpreter.html#InterpreterConfig">InterpreterConfig</a>→<a class="tref" href="../interpreter/FregeInterpreter.html#InterpreterConfig">InterpreterConfig</a>) → <a class="tref" href="#ReplEnv">ReplEnv</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplEnv.chg$config">ReplEnv.chg$config</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplEnv">ReplEnv</a> → (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>→<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>) → <a class="tref" href="#ReplEnv">ReplEnv</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplEnv.chg$lineStart">ReplEnv.chg$lineStart</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplEnv">ReplEnv</a> → (<a class="tref" href="#ReplOpts">ReplOpts</a>→<a class="tref" href="#ReplOpts">ReplOpts</a>) → <a class="tref" href="#ReplEnv">ReplEnv</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplEnv.chg$opts">ReplEnv.chg$opts</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplEnv">ReplEnv</a> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../interpreter/FregeInterpreter.html#InterpreterClassLoader">InterpreterClassLoader</a> → <a class="tref" href="#ReplEnv">ReplEnv</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplEnv.upd$state">ReplEnv.upd$state</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplEnv">ReplEnv</a> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#ReplEnv">ReplEnv</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplEnv.upd$lastExternalScript">ReplEnv.upd$lastExternalScript</a>, <a class="fref" href="#ReplEnv.upd$lastJavaGenSrc">ReplEnv.upd$lastJavaGenSrc</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplEnv">ReplEnv</a> → <a class="tref" href="../interpreter/FregeInterpreter.html#InterpreterConfig">InterpreterConfig</a> → <a class="tref" href="#ReplEnv">ReplEnv</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplEnv.upd$config">ReplEnv.upd$config</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplEnv">ReplEnv</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#ReplEnv">ReplEnv</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplEnv.upd$lineStart">ReplEnv.upd$lineStart</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplEnv">ReplEnv</a> → <a class="tref" href="#ReplOpts">ReplOpts</a> → <a class="tref" href="#ReplEnv">ReplEnv</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplEnv.upd$opts">ReplEnv.upd$opts</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplEnv">ReplEnv</a> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../interpreter/FregeInterpreter.html#InterpreterClassLoader">InterpreterClassLoader</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplEnv.state">ReplEnv.state</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplEnv">ReplEnv</a> → <a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplEnv.lastJavaGenSrc">ReplEnv.lastJavaGenSrc</a>, <a class="fref" href="#ReplEnv.lastExternalScript">ReplEnv.lastExternalScript</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplEnv">ReplEnv</a> → <a class="tref" href="#Repl">Repl</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Repl.put">Repl.put</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplEnv">ReplEnv</a> → <a class="tref" href="../interpreter/FregeInterpreter.html#InterpreterConfig">InterpreterConfig</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplEnv.config">ReplEnv.config</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplEnv">ReplEnv</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplEnv.lineStart">ReplEnv.lineStart</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplEnv">ReplEnv</a> → <a class="tref" href="#ReplOpts">ReplOpts</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplEnv.opts">ReplEnv.opts</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplOpts">ReplOpts</a> → (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>→<a class="tref" href="../prelude/PreludeBase.html#String">String</a>) → <a class="tref" href="#ReplOpts">ReplOpts</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplOpts.chg$prompt">ReplOpts.chg$prompt</a>, <a class="fref" href="#ReplOpts.chg$multilinePrompt">ReplOpts.chg$multilinePrompt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplOpts">ReplOpts</a> → (<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>→<a class="tref" href="../prelude/PreludeBase.html#Int">Int</a>) → <a class="tref" href="#ReplOpts">ReplOpts</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplOpts.chg$showLimit">ReplOpts.chg$showLimit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplOpts">ReplOpts</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="#ReplOpts">ReplOpts</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplOpts.upd$multilinePrompt">ReplOpts.upd$multilinePrompt</a>, <a class="fref" href="#ReplOpts.upd$prompt">ReplOpts.upd$prompt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplOpts">ReplOpts</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="#ReplOpts">ReplOpts</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplOpts.upd$showLimit">ReplOpts.upd$showLimit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplOpts">ReplOpts</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplOpts.prompt">ReplOpts.prompt</a>, <a class="fref" href="#ReplOpts.multilinePrompt">ReplOpts.multilinePrompt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplOpts">ReplOpts</a> → <a class="tref" href="../prelude/PreludeBase.html#Int">Int</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplOpts.showLimit">ReplOpts.showLimit</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplResult">ReplResult</a> → ([<a class="tref" href="../interpreter/FregeInterpreter.html#Message">Message</a>]→[<a class="tref" href="../interpreter/FregeInterpreter.html#Message">Message</a>]) → <a class="tref" href="#ReplResult">ReplResult</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplResult.chg$messages">ReplResult.chg$messages</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplResult">ReplResult</a> → (<a class="tref" href="../compiler/types/Global.html#Global">Global</a>→<a class="tref" href="../compiler/types/Global.html#Global">Global</a>) → <a class="tref" href="#ReplResult">ReplResult</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplResult.chg$compilerState">ReplResult.chg$compilerState</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplResult">ReplResult</a> → (<a class="tref" href="../interpreter/FregeInterpreter.html#SourceInfo">SourceInfo</a>→<a class="tref" href="../interpreter/FregeInterpreter.html#SourceInfo">SourceInfo</a>) → <a class="tref" href="#ReplResult">ReplResult</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplResult.chg$sourceRepr">ReplResult.chg$sourceRepr</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplResult">ReplResult</a> → [<a class="tref" href="../interpreter/FregeInterpreter.html#Message">Message</a>] → <a class="tref" href="#ReplResult">ReplResult</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplResult.upd$messages">ReplResult.upd$messages</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplResult">ReplResult</a> → <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="#ReplResult">ReplResult</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplResult.upd$compilerState">ReplResult.upd$compilerState</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplResult">ReplResult</a> → <a class="tref" href="../interpreter/FregeInterpreter.html#SourceInfo">SourceInfo</a> → <a class="tref" href="#ReplResult">ReplResult</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplResult.upd$sourceRepr">ReplResult.upd$sourceRepr</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplResult">ReplResult</a> → [<a class="tref" href="../interpreter/FregeInterpreter.html#Message">Message</a>]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplResult.messages">ReplResult.messages</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplResult">ReplResult</a> → <a class="tref" href="../compiler/types/Global.html#Global">Global</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplResult.compilerState">ReplResult.compilerState</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplResult">ReplResult</a> → <a class="tref" href="../interpreter/FregeInterpreter.html#SourceInfo">SourceInfo</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplResult.sourceRepr">ReplResult.sourceRepr</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplResult">ReplResult</a> → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplResult.has$sourceRepr">ReplResult.has$sourceRepr</a>, <a class="fref" href="#ReplResult.has$compilerState">ReplResult.has$compilerState</a>, <a class="fref" href="#ReplResult.has$messages">ReplResult.has$messages</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#$main">main</a>, <a class="fref" href="#warmup">warmup</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#ReplEnv">ReplEnv</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplEnv.initialState">ReplEnv.initialState</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#InputStream">InputStream</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#sysin">sysin</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#javaVersion">javaVersion</a>, <a class="fref" href="#vmName">vmName</a>, <a class="fref" href="#vmVendor">vmVendor</a>, <a class="fref" href="#welcome">welcome</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">[(<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#cmdHelp">cmdHelp</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Repl">Repl</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplEnv.reset">ReplEnv.reset</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Repl">Repl</a> <a class="tref" href="#ReplEnv">ReplEnv</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Repl.get">Repl.get</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Command">Command</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Command.Version">Command.Version</a>, <a class="fref" href="#Command.Reset">Command.Reset</a>, <a class="fref" href="#Command.Skip">Command.Skip</a>, <a class="fref" href="#Command.Quit">Command.Quit</a>, <a class="fref" href="#Command.Java">Command.Java</a>, <a class="fref" href="#Command.Help">Command.Help</a>, <a class="fref" href="#Command.DefMulti">Command.DefMulti</a>, <a class="fref" href="#Command.Browse">Command.Browse</a>, <a class="fref" href="#Command.History">Command.History</a>, <a class="fref" href="#Command.Reload">Command.Reload</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplOpts">ReplOpts</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplOpts.initialState">ReplOpts.initialState</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../control/monad/State.html#StateT">StateT</a> <a class="tref" href="#ReplEnv">ReplEnv</a> <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> a → <a class="tref" href="#Repl">Repl</a> a</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Repl.Repl">Repl.Repl</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> α → <a class="tref" href="#Repl">Repl</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#MonadIO_Repl.liftIO">MonadIO_Repl.liftIO</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Repl">Repl</a> (<a class="tref" href="#Repl">Repl</a> α) → <a class="tref" href="#Repl">Repl</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_Repl.join">Monad_Repl.join</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Repl">Repl</a> α → <a class="tref" href="#ReplEnv">ReplEnv</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (α, <a class="tref" href="#ReplEnv">ReplEnv</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Repl.run">Repl.run</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Repl">Repl</a> α → <a class="tref" href="../control/monad/State.html#StateT">StateT</a> <a class="tref" href="#ReplEnv">ReplEnv</a> <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Repl.un">Repl.un</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Repl">Repl</a> α → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (α, <a class="tref" href="#ReplEnv">ReplEnv</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Repl.runWithDefault">Repl.runWithDefault</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../java/Net.html#URL">URL</a> → <a class="tref" href="../prelude/PreludeBase.html#ST">ST</a> s <a class="tref" href="../java/Net.html#URI">URI</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#toURI">toURI</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">a → <a class="tref" href="../prelude/PreludeBase.html#Object">Object</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#asObject">asObject</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">α → <a class="tref" href="#Repl">Repl</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_Repl.pure">Monad_Repl.pure</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">α → <a class="tref" href="../prelude/PreludeBase.html#Bool">Bool</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#JLineConsole.has$console">JLineConsole.has$console</a>, <a class="fref" href="#ReaderWriterConsole.has$input">ReaderWriterConsole.has$input</a>, <a class="fref" href="#ReaderWriterConsole.has$output">ReaderWriterConsole.has$output</a>, <a class="fref" href="#Repl.has$un">Repl.has$un</a>, <a class="fref" href="#ReplEnv.has$state">ReplEnv.has$state</a>, <a class="fref" href="#ReplEnv.has$lineStart">ReplEnv.has$lineStart</a>, <a class="fref" href="#ReplEnv.has$lastExternalScript">ReplEnv.has$lastExternalScript</a>, <a class="fref" href="#ReplEnv.has$lastJavaGenSrc">ReplEnv.has$lastJavaGenSrc</a>, <a class="fref" href="#ReplEnv.has$config">ReplEnv.has$config</a>, <a class="fref" href="#ReplEnv.has$opts">ReplEnv.has$opts</a>, <a class="fref" href="#ReplOpts.has$showLimit">ReplOpts.has$showLimit</a>, <a class="fref" href="#ReplOpts.has$multilinePrompt">ReplOpts.has$multilinePrompt</a>, <a class="fref" href="#ReplOpts.has$prompt">ReplOpts.has$prompt</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplIO">ReplIO</a> a ⇒ a → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplIO.readline">ReplIO.readline</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplIO">ReplIO</a> a ⇒ a → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#readMultiline">readMultiline</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplIO">ReplIO</a> a ⇒ a → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplIO.write">ReplIO.write</a>, <a class="fref" href="#ReplIO.writeln">ReplIO.writeln</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplIO">ReplIO</a> a ⇒ a → [<a class="tref" href="../interpreter/FregeInterpreter.html#Message">Message</a>] → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#printMessages">printMessages</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplIO">ReplIO</a> a ⇒ a → <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a> → <a class="tref" href="#ReplEnv">ReplEnv</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#ReplIO.interpretSym">ReplIO.interpretSym</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplIO">ReplIO</a> a ⇒ a → <a class="tref" href="../compiler/types/Global.html#Global">Global</a> → <a class="tref" href="../compiler/types/Global.html#Symbol">Symbol</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#printSymbolType">printSymbolType</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplIO">ReplIO</a> a ⇒ a → <a class="tref" href="#Command">Command</a> → <a class="tref" href="#ReplResult">ReplResult</a> → <a class="tref" href="#ReplEnv">ReplEnv</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#loop">loop</a>, <a class="fref" href="#print">print</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplIO">ReplIO</a> a ⇒ a → <a class="tref" href="#ReplEnv">ReplEnv</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#repl">repl</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#ReplIO">ReplIO</a> a ⇒ a → <a class="tref" href="#ReplEnv">ReplEnv</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="#Command">Command</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#read">read</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">ω</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#substring">substring</a>, <a class="fref" href="#ConsoleReader.println">ConsoleReader.println</a>, <a class="fref" href="#ConsoleReader.$new">ConsoleReader.new</a>, <a class="fref" href="#ConsoleReader.readLine">ConsoleReader.readLine</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code">(α → β) → <a class="tref" href="#Repl">Repl</a> α → <a class="tref" href="#Repl">Repl</a> β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_Repl.fmap">Monad_Repl.fmap</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Repl">Repl</a> (α→β) → <a class="tref" href="#Repl">Repl</a> α → <a class="tref" href="#Repl">Repl</a> β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_Repl.$lt$star$gt">Monad_Repl.&lt;*&gt;</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Repl">Repl</a> α → (α → <a class="tref" href="#Repl">Repl</a> β) → <a class="tref" href="#Repl">Repl</a> β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_Repl.$gt$gt$eq">Monad_Repl.&gt;&gt;=</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Repl">Repl</a> α → <a class="tref" href="../control/monad/State.html#StateT">StateT</a> <a class="tref" href="#ReplEnv">ReplEnv</a> <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> β → <a class="tref" href="#Repl">Repl</a> β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Repl.upd$un">Repl.upd$un</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Repl">Repl</a> α → (<a class="tref" href="../control/monad/State.html#StateT">StateT</a> <a class="tref" href="#ReplEnv">ReplEnv</a> <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> α→<a class="tref" href="../control/monad/State.html#StateT">StateT</a> <a class="tref" href="#ReplEnv">ReplEnv</a> <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> β) → <a class="tref" href="#Repl">Repl</a> β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Repl.chg$un">Repl.chg$un</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Repl">Repl</a> α → <a class="tref" href="#Repl">Repl</a> β → <a class="tref" href="#Repl">Repl</a> α</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_Repl.$lt$star">Monad_Repl.&lt;*</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Repl">Repl</a> α → <a class="tref" href="#Repl">Repl</a> β → <a class="tref" href="#Repl">Repl</a> β</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#Monad_Repl.$gt$gt">Monad_Repl.&gt;&gt;</a>, <a class="fref" href="#Monad_Repl.$star$gt">Monad_Repl.*&gt;</a></p>
+</dd>
+</dl>
+<p>
+<a HREF="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Strict" height="31" width="88"></a></p>
+</BODY>
+</HTML>

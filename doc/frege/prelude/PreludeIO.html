@@ -116,7 +116,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#$try">try</a> ∷ (<a class="tref" href="./PreludeMonad.html#Applicative">Applicative</a> α, <a class="tref" href="./PreludeMonad.html#Bind">Bind</a> α) ⇒ (<b>γ→α β</b>) → γ → α β</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#$try">try</a> ∷ (<a class="tref" href="./PreludeMonad.html#Applicative">Applicative</a> 𝖆, <a class="tref" href="./PreludeMonad.html#Bind">Bind</a> 𝖆) ⇒ (<b>𝖈→𝖆 𝖇</b>) → 𝖈 → 𝖆 𝖇</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -128,7 +128,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#mutable">mutable</a> ∷ β → <a class="tref" href="#Mutable">Mutable</a> α β</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#mutable">mutable</a> ∷ 𝖇 → <a class="tref" href="#Mutable">Mutable</a> 𝖆 𝖇</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -140,7 +140,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#modifyIORef">modifyIORef</a> ∷ <b><a class="tref" href="#Mutable">Mutable</a> β (<a class="tref" href="#Ref">Ref</a> α)</b> → (<b>α→α</b>) → <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#modifyIORef">modifyIORef</a> ∷ <b><a class="tref" href="#Mutable">Mutable</a> 𝖇 (<a class="tref" href="#Ref">Ref</a> 𝖆)</b> → (<b>𝖆→𝖆</b>) → <a class="tref" href="./PreludeBase.html#ST">ST</a> 𝖇 <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -300,7 +300,7 @@ Deliberately throw an exception in the <a class="tref" href="./PreludeBase.html#
 Deliberately throw an exception in the <a class="tref" href="./PreludeBase.html#IO">IO</a> monad.   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=$try>try</a> ∷ (<a class="tref" href="./PreludeMonad.html#Applicative">Applicative</a> α, <a class="tref" href="./PreludeMonad.html#Bind">Bind</a> α) ⇒ (<b>γ→α β</b>) → γ → α β</SPAN></dt>
+<SPAN CLASS="code"><a name=$try>try</a> ∷ (<a class="tref" href="./PreludeMonad.html#Applicative">Applicative</a> 𝖆, <a class="tref" href="./PreludeMonad.html#Bind">Bind</a> 𝖆) ⇒ (<b>𝖈→𝖆 𝖇</b>) → 𝖈 → 𝖆 𝖇</SPAN></dt>
 <dd class="data">
 <p>
 Make sure that exceptions thrown during construction of an action can be catched. See <a class="fref" href="#$catch">catch</a> for an explanation.</p>
@@ -406,7 +406,7 @@ obtain a mutable copy of a read only value through cloning or serialization.   <
 Alias for <a class="fref" href="#Mutable.readonly">Mutable.readonly</a></p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=mutable>mutable</a> ∷ β → <a class="tref" href="#Mutable">Mutable</a> α β</SPAN></dt>
+<SPAN CLASS="code"><a name=mutable>mutable</a> ∷ 𝖇 → <a class="tref" href="#Mutable">Mutable</a> 𝖆 𝖇</SPAN></dt>
 <dd class="data">
 <p>
 Obtain a read only native value (temporarily) typed as <a class="tref" href="#Mutable">Mutable</a></p>
@@ -559,7 +559,7 @@ Member Functions</h3>
 get the value the reference is pointing to   </p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a name=Ref.modify>modify</a> ∷ <b><a class="tref" href="#Mutable">Mutable</a> β (<a class="tref" href="#Ref">Ref</a> α)</b> → (<b>α→α</b>) → <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name=Ref.modify>modify</a> ∷ <b><a class="tref" href="#Mutable">Mutable</a> 𝖇 (<a class="tref" href="#Ref">Ref</a> 𝖆)</b> → (<b>𝖆→𝖆</b>) → <a class="tref" href="./PreludeBase.html#ST">ST</a> 𝖇 <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 modify the referenced value with a function   </p>
@@ -597,7 +597,7 @@ Alias for <a class="fref" href="#Ref.get">Ref.get</a></p>
 Alias for <a class="fref" href="#Ref.put">Ref.put</a></p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=modifyIORef>modifyIORef</a> ∷ <b><a class="tref" href="#Mutable">Mutable</a> β (<a class="tref" href="#Ref">Ref</a> α)</b> → (<b>α→α</b>) → <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name=modifyIORef>modifyIORef</a> ∷ <b><a class="tref" href="#Mutable">Mutable</a> 𝖇 (<a class="tref" href="#Ref">Ref</a> 𝖆)</b> → (<b>𝖆→𝖆</b>) → <a class="tref" href="./PreludeBase.html#ST">ST</a> 𝖇 <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="data">
 <p>
 Alias for <a class="fref" href="#Ref.modify">Ref.modify</a></p>
@@ -743,7 +743,7 @@ Member Functions</h3>
 <a class="fref" href="#Ref.get">Ref.get</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code"><a class="tref" href="#Mutable">Mutable</a> β (<a class="tref" href="#Ref">Ref</a> α) → (α→α) → <a class="tref" href="./PreludeBase.html#ST">ST</a> β <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="tref" href="#Mutable">Mutable</a> 𝖇 (<a class="tref" href="#Ref">Ref</a> 𝖆) → (𝖆→𝖆) → <a class="tref" href="./PreludeBase.html#ST">ST</a> 𝖇 <a class="tref" href="./PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Ref.modify">Ref.modify</a></p>
@@ -767,7 +767,7 @@ Member Functions</h3>
 <a class="fref" href="#Mutable.Mutable">Mutable.Mutable</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">β → <a class="tref" href="#Mutable">Mutable</a> α β</SPAN></dt>
+<SPAN CLASS="code">𝖇 → <a class="tref" href="#Mutable">Mutable</a> 𝖆 𝖇</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#mutable">mutable</a></p>
@@ -803,7 +803,7 @@ Member Functions</h3>
 <a class="fref" href="#$catch">catch</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(<a class="tref" href="./PreludeMonad.html#Applicative">Applicative</a> α, <a class="tref" href="./PreludeMonad.html#Bind">Bind</a> α) ⇒ (γ→α β) → γ → α β</SPAN></dt>
+<SPAN CLASS="code">(<a class="tref" href="./PreludeMonad.html#Applicative">Applicative</a> 𝖆, <a class="tref" href="./PreludeMonad.html#Bind">Bind</a> 𝖆) ⇒ (𝖈→𝖆 𝖇) → 𝖈 → 𝖆 𝖇</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#$try">try</a></p>

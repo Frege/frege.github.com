@@ -96,11 +96,11 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#zipWalk">zipWalk</a> ∷ <a class="tref" href="../java/Lang.html#ClassLoader">ClassLoader</a> → <b><a class="tref" href="../java/util/Zip.html#ZipFile">ZipFile</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> [(<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#zipWalk">zipWalk</a> ∷ <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/Lang.html#ClassLoader">ClassLoader</a> → <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/util/Zip.html#ZipFile">ZipFile</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> [(<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#getX">getX</a> ∷ <b><a class="tref" href="../java/Lang.html#ClassLoader">ClassLoader</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../compiler/Classtools.html#FregePackage">FregePackage</a>))</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#getX">getX</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/Lang.html#ClassLoader">ClassLoader</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../compiler/Classtools.html#FregePackage">FregePackage</a>))</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -128,7 +128,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#dirWalk">dirWalk</a> ∷ <a class="tref" href="../java/Lang.html#ClassLoader">ClassLoader</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#File">File</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> [(<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#dirWalk">dirWalk</a> ∷ <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/Lang.html#ClassLoader">ClassLoader</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#File">File</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> [(<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -196,7 +196,7 @@ Table of Content</h3>
 <a NAME="data">Definitions</a></h2>
 <dl class="data">
 <dt class="data">
-<SPAN CLASS="code"><a name=zipWalk>zipWalk</a> ∷ <a class="tref" href="../java/Lang.html#ClassLoader">ClassLoader</a> → <b><a class="tref" href="../java/util/Zip.html#ZipFile">ZipFile</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> [(<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</SPAN></dt>
+<SPAN CLASS="code"><a name=zipWalk>zipWalk</a> ∷ <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/Lang.html#ClassLoader">ClassLoader</a> → <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/util/Zip.html#ZipFile">ZipFile</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> [(<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</SPAN></dt>
 <dd class="data">
 <p>
 Walk a <a class="tref" href="../java/util/Zip.html#ZipFile">ZipFile</a> and find Frege modules.</p>
@@ -206,7 +206,7 @@ The classes inside the ZIP/JAR must be loadable with the given <a class="tref" h
 Ignores <a class="tref" href="../prelude/PreludeBase.html#ClassNotFoundException">ClassNotFoundException</a>s and the strange <a class="tref" href="../java/Lang.html#Error">Error</a>s that can happen during class loading.</p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=getX>getX</a> ∷ <b><a class="tref" href="../java/Lang.html#ClassLoader">ClassLoader</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../compiler/Classtools.html#FregePackage">FregePackage</a>))</SPAN></dt>
+<SPAN CLASS="code"><a name=getX>getX</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/Lang.html#ClassLoader">ClassLoader</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../compiler/Classtools.html#FregePackage">FregePackage</a>))</SPAN></dt>
 <dd class="data">
 <p>
 load a package and return maybe a tuple of package name and <a class="tref" href="../compiler/Classtools.html#FregePackage">FregePackage</a>   </p>
@@ -242,7 +242,7 @@ a pattern that can be used to <a class="fref" href="../java/util/Regex.html#Rege
 the class path this JVM started with, as [<a class="tref" href="../prelude/PreludeBase.html#String">String</a>]   </p>
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=dirWalk>dirWalk</a> ∷ <a class="tref" href="../java/Lang.html#ClassLoader">ClassLoader</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#File">File</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> [(<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</SPAN></dt>
+<SPAN CLASS="code"><a name=dirWalk>dirWalk</a> ∷ <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/Lang.html#ClassLoader">ClassLoader</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#File">File</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> [(<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</SPAN></dt>
 <dd class="data">
 <p>
 Walk a directory and find Frege modules.</p>
@@ -342,7 +342,7 @@ Constructors</h3>
 Member Functions</h3>
 <dl class="func">
 <dt class="func">
-<SPAN CLASS="code"><a name=Functor_RTree.fmap>fmap</a> ∷ (<b>α → β</b>) → <b><a class="tref" href="#RTree">RTree</a> α</b> → <a class="tref" href="#RTree">RTree</a> β<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
+<SPAN CLASS="code"><a name=Functor_RTree.fmap>fmap</a> ∷ (<b>𝖆 → 𝖇</b>) → <b><a class="tref" href="#RTree">RTree</a> 𝖆</b> → <a class="tref" href="#RTree">RTree</a> 𝖇<br><b>infixl</b>&nbsp;&nbsp;4</SPAN></dt>
 <dd class="func">
 </dd>
 </dl>
@@ -351,6 +351,24 @@ Member Functions</h3>
 <h2>
 <a NAME="case">Functions and Values by Type</a></h2>
 <dl class="func">
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/Lang.html#ClassLoader">ClassLoader</a> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/util/Zip.html#ZipFile">ZipFile</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> [(<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#zipWalk">zipWalk</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/Lang.html#ClassLoader">ClassLoader</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#File">File</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> [(<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#dirWalk">dirWalk</a></p>
+</dd>
+<dt class="func">
+<SPAN CLASS="code"><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/Lang.html#ClassLoader">ClassLoader</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../compiler/Classtools.html#FregePackage">FregePackage</a>))</SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#getX">getX</a></p>
+</dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="#Y">Y</a> <a class="tref" href="#RTree">RTree</a> → ([<a class="tref" href="../prelude/PreludeBase.html#String">String</a>], <a class="tref" href="../prelude/PreludeBase.html#String">String</a>) → <a class="tref" href="#Y">Y</a> <a class="tref" href="#RTree">RTree</a></SPAN></dt>
 <dd class="func">
@@ -392,24 +410,6 @@ Member Functions</h3>
 <dd class="func">
 <p>
 <a class="fref" href="#$main">main</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../java/Lang.html#ClassLoader">ClassLoader</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#File">File</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> [(<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#dirWalk">dirWalk</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../java/Lang.html#ClassLoader">ClassLoader</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> (<a class="tref" href="../prelude/PreludeBase.html#Maybe">Maybe</a> (<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../compiler/Classtools.html#FregePackage">FregePackage</a>))</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#getX">getX</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../java/Lang.html#ClassLoader">ClassLoader</a> → <a class="tref" href="../java/util/Zip.html#ZipFile">ZipFile</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> [(<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#zipWalk">zipWalk</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> [(<a class="tref" href="../prelude/PreludeBase.html#String">String</a>, <a class="tref" href="../prelude/PreludeBase.html#String">String</a>)]</SPAN></dt>
@@ -466,7 +466,7 @@ Member Functions</h3>
 <a class="fref" href="#Y.Y">Y.Y</a></p>
 </dd>
 <dt class="func">
-<SPAN CLASS="code">(α → β) → <a class="tref" href="#RTree">RTree</a> α → <a class="tref" href="#RTree">RTree</a> β</SPAN></dt>
+<SPAN CLASS="code">(𝖆 → 𝖇) → <a class="tref" href="#RTree">RTree</a> 𝖆 → <a class="tref" href="#RTree">RTree</a> 𝖇</SPAN></dt>
 <dd class="func">
 <p>
 <a class="fref" href="#Functor_RTree.fmap">Functor_RTree.fmap</a></p>

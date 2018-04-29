@@ -70,7 +70,7 @@ Table of Content</h3>
 <a HREF="#data">Definitions</a></div>
 <dl>
 <dt>
-<SPAN CLASS="code"><b>type </b><a class="tref" href="#Handle">Handle</a>  = <a class="tref" href="../java/IO.html#PrintWriter">PrintWriter</a></SPAN></dt>
+<SPAN CLASS="code"><b>type </b><a class="tref" href="#Handle">Handle</a>  = <a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="../java/IO.html#PrintWriter">PrintWriter</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -134,7 +134,7 @@ Table of Content</h3>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="#handle">handle</a> ∷ <b><a class="tref" href="../java/IO.html#PrintWriter">PrintWriter</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="#handle">handle</a> ∷ <b><a class="tref" href="#Handle">Handle</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
@@ -176,11 +176,11 @@ Table of Content</h3>
 <a HREF="#of">Re-Exported Items</a></div>
 <dl>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="../java/IO.html#Flushable.flush">flush</a> ∷ <b><a class="tref" href="../java/IO.html#Flushable">Flushable</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a>&nbsp;&nbsp;&nbsp;<b>throws </b><a class="tref" href="../java/Lang.html#IOException">IOException</a></SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="../java/IO.html#Flushable.flush">flush</a> ∷ <b><a class="tref" href="../prelude/PreludeIO.html#MutableIO">MutableIO</a> <a class="tref" href="../java/IO.html#Flushable">Flushable</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a>&nbsp;&nbsp;&nbsp;<b>throws </b><a class="tref" href="../java/Lang.html#IOException">IOException</a></SPAN></dt>
 <dd>
 </dd>
 <dt>
-<SPAN CLASS="code"><a class="fref" href="../java/IO.html#PrintWriter.print">print</a> ∷ <b><a class="tref" href="../java/IO.html#PrintWriter">PrintWriter</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a>&nbsp;</SPAN></dt>
+<SPAN CLASS="code"><a class="fref" href="../java/IO.html#PrintWriter.print">print</a> ∷ <b><a class="tref" href="#Handle">Handle</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a>&nbsp;</SPAN></dt>
 <dd>
 </dd>
 </dl>
@@ -296,11 +296,11 @@ Constructors</h3>
 <dd class="data">
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><b>type </b><a name=Handle>Handle</a>  = <a class="tref" href="../java/IO.html#PrintWriter">PrintWriter</a></SPAN></dt>
+<SPAN CLASS="code"><b>type </b><a name=Handle>Handle</a>  = <a class="tref" href="../prelude/PreludeIO.html#Mutable">Mutable</a> <a class="tref" href="../prelude/PreludeBase.html#RealWorld">RealWorld</a> <a class="tref" href="../java/IO.html#PrintWriter">PrintWriter</a></SPAN></dt>
 <dd class="data">
 </dd>
 <dt class="data">
-<SPAN CLASS="code"><a name=handle>handle</a> ∷ <b><a class="tref" href="../java/IO.html#PrintWriter">PrintWriter</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<SPAN CLASS="code"><a name=handle>handle</a> ∷ <b><a class="tref" href="#Handle">Handle</a></b> → <b><a class="tref" href="../prelude/PreludeBase.html#String">String</a></b> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
 <dd class="data">
 </dd>
 <dt class="data">
@@ -404,6 +404,12 @@ inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsub">S
 <a class="fref" href="#Terminal.MkTerminal">Terminal.MkTerminal</a></p>
 </dd>
 <dt class="func">
+<SPAN CLASS="code"><a class="tref" href="#Handle">Handle</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
+<dd class="func">
+<p>
+<a class="fref" href="#handle">handle</a></p>
+</dd>
+<dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
 <dd class="func">
 <p>
@@ -426,12 +432,6 @@ inherited from <a class="fref" href="../prelude/PreludeText.html#Show.showsub">S
 <dd class="func">
 <p>
 <a class="fref" href="#Show_Str.showList">Show_Str.showList</a></p>
-</dd>
-<dt class="func">
-<SPAN CLASS="code"><a class="tref" href="../java/IO.html#PrintWriter">PrintWriter</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#IO">IO</a> <a class="tref" href="../prelude/PreludeBase.html#Unit">()</a></SPAN></dt>
-<dd class="func">
-<p>
-<a class="fref" href="#handle">handle</a></p>
 </dd>
 <dt class="func">
 <SPAN CLASS="code"><a class="tref" href="../prelude/PreludeBase.html#Int">Int</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a> → <a class="tref" href="../prelude/PreludeBase.html#String">String</a></SPAN></dt>
